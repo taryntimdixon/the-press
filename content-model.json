@@ -1,0 +1,57 @@
+{
+  "site": "The Press",
+  "content_types": {
+    "story": {
+      "fields": [
+        "headline",
+        "dek",
+        "section",
+        "type",
+        "slug",
+        "publishedAt",
+        "updatedAt",
+        "authors[]",
+        "editor",
+        "factCheckedBy",
+        "wordCount",
+        "readTime",
+        "heroImage",
+        "body",
+        "keyPoints[]",
+        "toc[]",
+        "sourceNotes[]",
+        "primaryDocuments[]",
+        "relatedStories[]",
+        "corrections[]",
+        "homepagePlacement",
+        "searchKeywords[]",
+        "canonicalUrl"
+      ]
+    },
+    "heroImage": {
+      "fields": [
+        "src",
+        "alt",
+        "captionHtml",
+        "creator",
+        "filePageUrl",
+        "license",
+        "licenseUrl",
+        "width",
+        "height",
+        "relevanceNote"
+      ]
+    },
+    "author": {
+      "fields": [
+        "name",
+        "slug",
+        "role",
+        "bio",
+        "email",
+        "topics[]",
+        "sameAs[]"
+      ]
+    }
+  }
+}

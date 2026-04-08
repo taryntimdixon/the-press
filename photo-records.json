@@ -1,0 +1,114 @@
+{
+  "politics-vote-here.jpg": {
+    "creator": "Lorie Shaull",
+    "file_page": "https://commons.wikimedia.org/wiki/File:Election_Day-_Vote_Here,_Vote_Aqui_(30229936394).jpg",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "status": "reusable with attribution",
+    "note": "Election signage is directly relevant to a story about voter registration and election administration."
+  },
+  "tech-tsmc-fab-21.jpg": {
+    "creator": "Hunter Trick",
+    "file_page": "https://commons.wikimedia.org/wiki/File:231105-1_TSMC_Fab_21_construction.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "status": "reusable with attribution",
+    "note": "Shows TSMC Fab 21 construction, matching a story about AI infrastructure and chip supply."
+  },
+  "culture-broadway-times-square.jpg": {
+    "creator": "Ken Lund",
+    "file_page": "https://commons.wikimedia.org/wiki/File:Broadway_Near_Times_Square,_Midtown_Manhattan,_New_York_(7237734018).jpg",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "status": "reusable with attribution",
+    "note": "Broadway streetscape matches story on live audiences and cultural economics."
+  },
+  "culture-sag-aftra-picket.jpg": {
+    "creator": "Eden, Janine and Jim",
+    "file_page": "https://commons.wikimedia.org/wiki/File:SAG-AFTRA_Picket_I_(53051649802).jpg",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "status": "reusable with attribution",
+    "note": "A SAG-AFTRA picket line fits a story about streaming, labor contracts, and TV economics."
+  },
+  "economics-shoppers-supermarket.jpg": {
+    "creator": "Mohamed mfuu",
+    "file_page": "https://commons.wikimedia.org/wiki/File:Shoppers_supermarket_02.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "status": "reusable with attribution",
+    "note": "A supermarket checkout visual grounds a consumer-spending and prices story."
+  },
+  "economics-apartment-construction-vuosaari.jpg": {
+    "creator": "kallerna",
+    "file_page": "https://commons.wikimedia.org/wiki/File:Apartment_building_construction_site_Vuosaari_1.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "status": "reusable with attribution",
+    "note": "Housing construction is directly relevant to shelter costs and supply."
+  },
+  "education-classroom-with-students.jpg": {
+    "creator": "Jeff chenqinyi",
+    "file_page": "https://commons.wikimedia.org/wiki/File:Classroom_with_students.JPG",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "status": "reusable with attribution",
+    "note": "Classroom scene fits reporting on school recovery and attendance."
+  },
+  "education-berea-college-students.jpg": {
+    "creator": "IMCBerea College",
+    "file_page": "https://commons.wikimedia.org/wiki/File:Berea_College_Students_on_Campus_(20748267091).jpg",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "status": "reusable with attribution",
+    "note": "Campus image fits uneven college enrollment recovery."
+  },
+  "health-mmr-vaccine.jpg": {
+    "creator": "Whispyhistory",
+    "file_page": "https://commons.wikimedia.org/wiki/File:MMR_vaccine.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "status": "reusable with attribution",
+    "note": "Vaccination image is directly tied to measles coverage."
+  },
+  "health-usda-dairy-cows.jpg": {
+    "creator": "USDA / Jim G. Peeples",
+    "file_page": "https://commons.wikimedia.org/wiki/File:20250813-USDA-RD-VA-JGP-0001_(54721557540).jpg",
+    "license": "Public domain",
+    "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
+    "status": "public domain",
+    "note": "Dairy cattle photo fits H5N1 farm-policy coverage."
+  },
+  "philosophy-hannah-arendt-1933.jpg": {
+    "creator": "Unknown / public domain",
+    "file_page": "https://commons.wikimedia.org/wiki/File:Hannah_Arendt_1933.jpg",
+    "license": "Public domain",
+    "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
+    "status": "public domain",
+    "note": "A public-domain Hannah Arendt portrait suits an essay on judgment."
+  },
+  "science-artemis-ii-launch.jpg": {
+    "creator": "NASA / Brandon Hancock",
+    "file_page": "https://commons.wikimedia.org/wiki/File:Artemis_II_Launch_(KSC-04012026-Artemis_II_Launch-4).jpg",
+    "license": "Public domain",
+    "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
+    "status": "public domain",
+    "note": "Launch image directly depicts the Artemis II mission discussed in the story."
+  },
+  "world-nato-summit-the-hague.jpg": {
+    "creator": "Bart Maat / Ministry of Foreign Affairs of the Netherlands",
+    "file_page": "https://commons.wikimedia.org/wiki/File:NATO_Summit_2025_(54611755854).jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "status": "reusable with attribution",
+    "note": "NATO summit photo directly matches a story about Europe’s defense turn."
+  },
+  "opinion-census-bureau-headquarters.jpg": {
+    "creator": "U.S. government / public domain",
+    "file_page": "https://commons.wikimedia.org/wiki/File:Census_Bureau_headquarters,_Suitland,_Maryland,_2007.jpg",
+    "license": "Public domain",
+    "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
+    "status": "public domain",
+    "note": "Census Bureau headquarters is a natural fit for an essay on national measurement and statistical institutions."
+  }
+}
