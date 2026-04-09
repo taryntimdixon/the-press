@@ -1,0 +1,24 @@
+name: Daily AI Newsroom
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Create sample article
+        run: |
+          echo "<html><body><h1>Daily Edition</h1><p>This is your AI newsroom working.</p></body></html>" > ai-edition.html
+
+      - name: Commit new edition
+        run: |
+          git config --global user.name "AI Newsroom"
+          git config --global user.email "bot@press.com"
+          git add .
+          git commit -m "New AI edition"
+          git push
