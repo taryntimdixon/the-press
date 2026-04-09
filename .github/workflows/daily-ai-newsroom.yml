@@ -9,19 +9,22 @@ jobs:
 
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Create sample article
+      - name: Create article
         run: |
-          echo "<html><body><h1>Daily Edition</h1><p>Your AI newsroom is working.</p></body></html>" > ai-edition.html
+          echo "<html><body><h1>Daily Edition</h1><p>This is your AI newsroom working.</p></body></html>" > ai-edition.html
 
-      - name: Commit new edition
-        run: |
-          git config --global user.name "AI Newsroom"
-          git config --global user.email "bot@press.com"
-          git add .
-          git commit -m "New AI edition" || echo "No changes to commit"
-          git push origin main
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "Daily AI Edition"
+          body: "Review today's AI-generated articles before publishing."
+          commit-message: "New daily edition"
+          branch: daily-edition
+          base: main
+          add-paths: |
+            ai-edition.html
