@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // 🔥 FIX AUTHOR NAME EVERYWHERE
-  document.querySelectorAll(".byline").forEach(el => {
-    el.textContent = "Written and investigated by AI";
-  });
+  // 🔥 Replace any author text anywhere on page
+  document.body.innerHTML = document.body.innerHTML.replace(
+    /By\s+[A-Z][a-z]+\s+[A-Z][a-z]+/g,
+    "Written and investigated by AI"
+  );
 
-  // 🔥 FIX MISSING IMAGES
+  // 🔥 Fix missing images
   document.querySelectorAll("img").forEach(img => {
     img.onerror = function () {
       this.src = "https://via.placeholder.com/800x500?text=The+Press";
