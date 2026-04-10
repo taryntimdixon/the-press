@@ -14,16 +14,59 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create article
+      - name: Install OpenAI
+        run: pip install openai
+
+      - name: Generate real article
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          echo "<html><body><h1>Daily Edition</h1><p>Test article working.</p></body></html>" > ai-edition.html
+          python - << 'EOF'
+          from openai import OpenAI
+          import os
+
+          client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+
+          response = client.responses.create(
+              model="gpt-5.4-mini",
+              input="""
+              Write a 1500+ word high-quality news article.
+              Use a professional news tone like a major publication.
+
+              Include:
+              - Headline
+              - Subheadline
+              - Multiple sections
+              - Real-world style reporting
+              - No fake author names
+
+              At the top include:
+              Written and investigated by Intelligent AI
+              """
+          )
+
+          content = response.output_text
+
+          html = f"""
+          <html>
+          <body style="font-family: Georgia, serif; max-width: 800px; margin: auto;">
+              <h1>Daily Edition</h1>
+              <p><strong>Written and investigated by Intelligent AI</strong></p>
+              <div>{content}</div>
+          </body>
+          </html>
+          """
+
+          with open("ai-edition.html", "w") as f:
+              f.write(html)
+          EOF
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           title: "Daily AI Edition"
-          body: "Test run"
-          commit-message: "Test article"
+          body: "Review today's AI-generated articles before publishing."
+          commit-message: "New AI article"
           branch: daily-edition
           base: main
           add-paths: |
