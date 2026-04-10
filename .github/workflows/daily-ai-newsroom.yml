@@ -14,16 +14,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create article
+      - name: Generate article
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          echo "<html><body><h1>Daily Edition</h1><p>This is your AI newsroom working.</p></body></html>" > ai-edition.html
+          python - << 'EOF'
+          from openai import OpenAI
+          import os
+
+          client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+
+          response = client.responses.create(
+              model="gpt-5.4-mini",
+              input="Write a 1500 word high-quality news article about a major current topic."
+          )
+
+          content = response.output_text
+
+          with open("ai-edition.html", "w") as f:
+              f.write(f"<html><body><h1>Daily Edition</h1><p>{content}</p></body></html>")
+          EOF
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           title: "Daily AI Edition"
           body: "Review today's AI-generated articles before publishing."
-          commit-message: "New daily edition"
+          commit-message: "New AI edition"
           branch: daily-edition
           base: main
           add-paths: |
