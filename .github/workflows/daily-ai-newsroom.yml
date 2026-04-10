@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install OpenAI
+        run: pip install openai
+
       - name: Generate article
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
