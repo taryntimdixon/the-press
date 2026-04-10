@@ -1,114 +1,114 @@
-{
-  "politics-vote-here.jpg": {
-    "creator": "Lorie Shaull",
-    "file_page": "https://commons.wikimedia.org/wiki/File:Election_Day-_Vote_Here,_Vote_Aqui_(30229936394).jpg",
-    "license": "CC BY-SA 2.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
-    "status": "reusable with attribution",
-    "note": "Election signage is directly relevant to a story about voter registration and election administration."
+[
+  {
+    "story": "A Country That Cannot Measure Itself Cannot Govern Itself",
+    "page": "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html",
+    "section": "Opinion",
+    "image": "assets/opinion-census-bureau-headquarters.jpg",
+    "alt": "Front view of the U.S. Census Bureau headquarters building in Suitland, Maryland",
+    "credit": "Front view of the U.S. Census Bureau headquarters in Suitland, Md. The country’s statistical institutions are part of the machinery by which it learns what it is. Photo from the U.S. Census Bureau photo library , available from an official U.S. government source."
   },
-  "tech-tsmc-fab-21.jpg": {
-    "creator": "Hunter Trick",
-    "file_page": "https://commons.wikimedia.org/wiki/File:231105-1_TSMC_Fab_21_construction.jpg",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "status": "reusable with attribution",
-    "note": "Shows TSMC Fab 21 construction, matching a story about AI infrastructure and chip supply."
+  {
+    "story": "Streaming Grew Up and Became TV Again.",
+    "page": "culture-streaming-grew-up-and-became-tv-again.html",
+    "section": "Culture",
+    "image": "assets/culture-sag-aftra-picket.jpg",
+    "alt": "SAG-AFTRA members on a picket line during the 2023 strike",
+    "credit": "SAG-AFTRA members on a picket line in Los Angeles in July 2023. Streaming’s adulthood has become a labor, compensation, and business-model story as much as a platform story. Photo by Eden, Janine and Jim, via Wikimedia Commons , licensed CC BY 2.0 ."
   },
-  "culture-broadway-times-square.jpg": {
-    "creator": "Ken Lund",
-    "file_page": "https://commons.wikimedia.org/wiki/File:Broadway_Near_Times_Square,_Midtown_Manhattan,_New_York_(7237734018).jpg",
-    "license": "CC BY-SA 2.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
-    "status": "reusable with attribution",
-    "note": "Broadway streetscape matches story on live audiences and cultural economics."
+  {
+    "story": "Bird Flu Changed Farm Policy Before It Changed Human Medicine.",
+    "page": "health-bird-flu-changed-farm-policy-before-it-changed-human-medicine.html",
+    "section": "Health",
+    "image": "assets/health-usda-dairy-cows.jpg",
+    "alt": "Holstein dairy cows being milked on a rotary parlor in Virginia",
+    "credit": "Holstein dairy cows on a rotary milking parlor in Bealeton, Va., on Aug. 13, 2025. Bird flu’s policy story is unfolding in surveillance, testing, and biosecurity long before any mass human-medicine response is needed. USDA photo by James Pinsky, available via Wikimedia Commons as a U.S. government work in the public domain."
   },
-  "culture-sag-aftra-picket.jpg": {
-    "creator": "Eden, Janine and Jim",
-    "file_page": "https://commons.wikimedia.org/wiki/File:SAG-AFTRA_Picket_I_(53051649802).jpg",
-    "license": "CC BY 2.0",
-    "license_url": "https://creativecommons.org/licenses/by/2.0/",
-    "status": "reusable with attribution",
-    "note": "A SAG-AFTRA picket line fits a story about streaming, labor contracts, and TV economics."
+  {
+    "story": "Europe’s Defense Turn Is Now a Budget, Supply-Chain, and Time Problem",
+    "page": "world-europes-defense-turn-is-now-a-budget-supply-chain-and-time-problem.html",
+    "section": "World",
+    "image": "assets/world-nato-summit-the-hague.jpg",
+    "alt": "Group photo of leaders at the 2025 NATO Summit in The Hague",
+    "credit": "Leaders pose for a group photograph at the 2025 NATO summit in The Hague. Europe’s new defense posture now lives in budgets, production capacity, and movement as much as in summit language. Photo by Bart Maat / Ministry of Foreign Affairs of the Netherlands via Wikimedia Commons, licensed CC BY-SA 4.0 ."
   },
-  "economics-shoppers-supermarket.jpg": {
-    "creator": "Mohamed mfuu",
-    "file_page": "https://commons.wikimedia.org/wiki/File:Shoppers_supermarket_02.jpg",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "status": "reusable with attribution",
-    "note": "A supermarket checkout visual grounds a consumer-spending and prices story."
+  {
+    "story": "The College Comeback Is Real. It Is Also Uneven.",
+    "page": "education-the-college-comeback-is-real-it-is-also-uneven.html",
+    "section": "Education",
+    "image": "assets/education-berea-college-students.jpg",
+    "alt": "Students walking toward class on the Berea College campus",
+    "credit": "Students walk toward class on the Berea College campus. The higher-ed rebound is visible, but its gains remain uneven across sectors, pathways, and student groups. Photo by IMCBerea College, via Wikimedia Commons , licensed CC BY 2.0 ."
   },
-  "economics-apartment-construction-vuosaari.jpg": {
-    "creator": "kallerna",
-    "file_page": "https://commons.wikimedia.org/wiki/File:Apartment_building_construction_site_Vuosaari_1.jpg",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "status": "reusable with attribution",
-    "note": "Housing construction is directly relevant to shelter costs and supply."
+  {
+    "story": "Shelter Is Still the Inflation Story People Live Inside.",
+    "page": "economics-shelter-is-still-the-inflation-story-people-live-inside.html",
+    "section": "Economics",
+    "image": "assets/economics-apartment-construction-vuosaari.jpg",
+    "alt": "Apartment building construction site in Vuosaari, Helsinki",
+    "credit": "Apartment building construction in Vuosaari, Helsinki. Housing supply takes longer to arrive than monetary policy takes to tighten, which is part of why relief feels late. Photo by kallerna, via Wikimedia Commons , licensed CC BY-SA 4.0 ."
   },
-  "education-classroom-with-students.jpg": {
-    "creator": "Jeff chenqinyi",
-    "file_page": "https://commons.wikimedia.org/wiki/File:Classroom_with_students.JPG",
-    "license": "CC BY-SA 3.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
-    "status": "reusable with attribution",
-    "note": "Classroom scene fits reporting on school recovery and attendance."
+  {
+    "story": "Proof of Citizenship Is Not Just a Voting Rule. It Is a Theory of the Electorate.",
+    "page": "article.html",
+    "section": "Politics",
+    "image": "assets/politics-vote-here.jpg",
+    "alt": "A Vote Here / Vote Aqui sign on Election Day",
+    "credit": "A “Vote Here / Vote Aqui” sign on Election Day. The latest proof-of-citizenship fight is about the administrative gate in front of the ballot as much as the ballot itself. Photo by Lorie Shaull , via Wikimedia Commons, licensed CC BY-SA 2.0 ."
   },
-  "education-berea-college-students.jpg": {
-    "creator": "IMCBerea College",
-    "file_page": "https://commons.wikimedia.org/wiki/File:Berea_College_Students_on_Campus_(20748267091).jpg",
-    "license": "CC BY 2.0",
-    "license_url": "https://creativecommons.org/licenses/by/2.0/",
-    "status": "reusable with attribution",
-    "note": "Campus image fits uneven college enrollment recovery."
+  {
+    "story": "Artemis II Proved the Moon Is an Engineering Project Again",
+    "page": "science-artemis-ii-proved-the-moon-is-an-engineering-project-again.html",
+    "section": "Science",
+    "image": "assets/science-artemis-ii-launch.jpg",
+    "alt": "NASA’s Artemis II mission lifting off from Kennedy Space Center",
+    "credit": "Artemis II lifts off from Launch Complex 39B at NASA’s Kennedy Space Center on April 1, 2026. The mission’s meaning lies not only in spectacle but in the operational data it produced. Image via Wikimedia Commons ; catalogued by NASA Kennedy Space Center / NASA/Brandon Hancock and described on the file page as public domain ."
   },
-  "health-mmr-vaccine.jpg": {
-    "creator": "Whispyhistory",
-    "file_page": "https://commons.wikimedia.org/wiki/File:MMR_vaccine.jpg",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "status": "reusable with attribution",
-    "note": "Vaccination image is directly tied to measles coverage."
+  {
+    "story": "The Missing Word in the AI Debate Is Judgment.",
+    "page": "philosophy-the-missing-word-in-the-ai-debate-is-judgment.html",
+    "section": "Philosophy",
+    "image": "assets/philosophy-hannah-arendt-1933.jpg",
+    "alt": "Photograph of Hannah Arendt in 1933",
+    "credit": "Hannah Arendt in 1933. Her writing on thinking, judging, and the public realm keeps resurfacing in the AI-governance debate. Image via Wikimedia Commons , public domain as described on the file page."
   },
-  "health-usda-dairy-cows.jpg": {
-    "creator": "USDA / Jim G. Peeples",
-    "file_page": "https://commons.wikimedia.org/wiki/File:20250813-USDA-RD-VA-JGP-0001_(54721557540).jpg",
-    "license": "Public domain",
-    "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-    "status": "public domain",
-    "note": "Dairy cattle photo fits H5N1 farm-policy coverage."
+  {
+    "story": "Measles Is Not a Childhood Memory Anymore.",
+    "page": "health-measles-is-not-a-childhood-memory-anymore.html",
+    "section": "Health",
+    "image": "assets/health-mmr-vaccine.jpg",
+    "alt": "A bottle of measles, mumps, and rubella vaccine",
+    "credit": "A bottle of MMR vaccine. Measles prevention still depends most of all on routine immunization and high coverage. Photo by Whispyhistory, via Wikimedia Commons , licensed CC BY-SA 4.0 ."
   },
-  "philosophy-hannah-arendt-1933.jpg": {
-    "creator": "Unknown / public domain",
-    "file_page": "https://commons.wikimedia.org/wiki/File:Hannah_Arendt_1933.jpg",
-    "license": "Public domain",
-    "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-    "status": "public domain",
-    "note": "A public-domain Hannah Arendt portrait suits an essay on judgment."
+  {
+    "story": "School Recovery Is Now an Attendance Story.",
+    "page": "education-school-recovery-is-now-an-attendance-story.html",
+    "section": "Education",
+    "image": "assets/education-classroom-with-students.jpg",
+    "alt": "Students seated in a classroom",
+    "credit": "A classroom in session. The next phase of school recovery depends on whether attendance, focus, and instructional continuity hold at the same time. Photo by Jeff chenqinyi, via Wikimedia Commons , licensed CC BY-SA 3.0 ."
   },
-  "science-artemis-ii-launch.jpg": {
-    "creator": "NASA / Brandon Hancock",
-    "file_page": "https://commons.wikimedia.org/wiki/File:Artemis_II_Launch_(KSC-04012026-Artemis_II_Launch-4).jpg",
-    "license": "Public domain",
-    "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-    "status": "public domain",
-    "note": "Launch image directly depicts the Artemis II mission discussed in the story."
+  {
+    "story": "The Consumer Has Not Quit. The Economy Still Feels Cautious.",
+    "page": "economics-the-consumer-has-not-quit-the-economy-still-feels-cautious.html",
+    "section": "Economics",
+    "image": "assets/economics-shoppers-supermarket.jpg",
+    "alt": "Shoppers inside a supermarket in Arusha",
+    "credit": "Shoppers move through a supermarket aisle. In the current economy, household spending remains one of the broadest supports under growth. Photo by Mohamed mfuu, via Wikimedia Commons , licensed CC BY-SA 4.0 ."
   },
-  "world-nato-summit-the-hague.jpg": {
-    "creator": "Bart Maat / Ministry of Foreign Affairs of the Netherlands",
-    "file_page": "https://commons.wikimedia.org/wiki/File:NATO_Summit_2025_(54611755854).jpg",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "status": "reusable with attribution",
-    "note": "NATO summit photo directly matches a story about Europe’s defense turn."
+  {
+    "story": "The Crowd Came Back. The Old Economics Did Not.",
+    "page": "culture-the-crowd-came-back-the-old-economics-did-not.html",
+    "section": "Culture",
+    "image": "assets/culture-broadway-times-square.jpg",
+    "alt": "Broadway near Times Square in Midtown Manhattan",
+    "credit": "Broadway near Times Square in Midtown Manhattan. The commercial theater district remains the clearest public barometer of live-culture demand. Photo by Ken Lund, via Wikimedia Commons , licensed CC BY-SA 2.0 ."
   },
-  "opinion-census-bureau-headquarters.jpg": {
-    "creator": "U.S. government / public domain",
-    "file_page": "https://commons.wikimedia.org/wiki/File:Census_Bureau_headquarters,_Suitland,_Maryland,_2007.jpg",
-    "license": "Public domain",
-    "license_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
-    "status": "public domain",
-    "note": "Census Bureau headquarters is a natural fit for an essay on national measurement and statistical institutions."
+  {
+    "story": "AI Needs Electricity, Steel, and Time",
+    "page": "technology-ai-needs-electricity-steel-and-time.html",
+    "section": "Technology",
+    "image": "assets/tech-tsmc-fab-21.jpg",
+    "alt": "Construction at TSMC Fab 21 in Phoenix, Arizona",
+    "credit": "TSMC Fab 21 under construction in Phoenix, Arizona, on Nov. 5, 2023. AI’s future depends not only on models but on fabs, substations, and power delivery. Photo by Hunter Trick, via Wikimedia Commons , licensed CC BY-SA 4.0 ."
   }
-}
+]

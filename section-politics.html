@@ -1,138 +1,130 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Politics — The Press</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Power, administration, elections, and the law of democratic procedure." />
-  <meta name="theme-color" content="#f4f0e8" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
-  
-  
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Politics — The Press",
-  "url": "https://www.thepress.example/section-politics.html",
-  "about": "Politics"
-}
-</script>
-
+<meta charset="utf-8"/>
+<title>Politics — The Press</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Power, administration, elections, and the law of democratic procedure." name="description"/>
+<meta content="#f4f0e8" name="theme-color"/>
+<meta content="The Press" name="apple-mobile-web-app-title"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<link href="https://www.thepress.example/section-politics.html" rel="canonical"/>
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="assets/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="styles.css" rel="stylesheet"/>
+<link href="site.webmanifest" rel="manifest"/>
+<link href="feed.xml" rel="alternate" title="The Press feed" type="application/rss+xml"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsMediaOrganization", "name": "The Press", "url": "https://www.thepress.example", "logo": "https://www.thepress.example/assets/favicon.svg", "slogan": "A digital newspaper built for sourced long-form reporting.", "publishingPrinciples": "https://www.thepress.example/standards.html", "correctionsPolicy": "https://www.thepress.example/corrections.html", "ethicsPolicy": "https://www.thepress.example/standards.html", "diversityPolicy": "https://www.thepress.example/about.html"}</script>
 </head>
-<body class="is-section">
-  
-<div class="search-overlay" hidden data-search-overlay>
-  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="search-title">
-    <div class="search-panel__header">
-      <h2 id="search-title">Search The Press</h2>
-      <button class="search-close" type="button" aria-label="Close search" data-search-close>Close</button>
-    </div>
-    <label class="search-label" for="global-search-input">Search headlines, sections, or topics</label>
-    <input class="search-input" id="global-search-input" type="search" placeholder="Search for housing, NASA, attendance, elections…" autocomplete="off" data-search-input />
-    <p class="search-hint">Results update as you type. Try: housing, Artemis, voter registration, measles, streaming.</p>
-    <div class="search-results" data-search-results>
-      <div class="search-empty">
-        <p>Start typing to search the full edition.</p>
-      </div>
-    </div>
-  </div>
+<body class="page-section">
+<div class="search-overlay" data-search-overlay="" hidden="">
+<div aria-labelledby="search-title" aria-modal="true" class="search-panel" role="dialog">
+<div class="search-panel__header">
+<h2 id="search-title">Search The Press</h2>
+<button aria-label="Close search" class="search-close" data-search-close="" type="button">Close</button>
 </div>
-<script id="press-search-data" type="application/json">[{&quot;title&quot;: &quot;A Country That Cannot Measure Itself Cannot Govern Itself&quot;, &quot;section&quot;: &quot;Opinion&quot;, &quot;type&quot;: &quot;Essay&quot;, &quot;dek&quot;: &quot;Public statistics are not bureaucratic garnish. They are the information infrastructure that lets a democratic state know its labor markets, neighborhoods, businesses, and population well enough to act without governing by mood.&quot;, &quot;url&quot;: &quot;opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html&quot;, &quot;author&quot;: &quot;Ada Brooks&quot;, &quot;published&quot;: &quot;April 7, 2026 • 4:10 p.m. EDT&quot;, &quot;keywords&quot;: [&quot;Census&quot;, &quot;ACS&quot;, &quot;AIES&quot;, &quot;federal statistics&quot;, &quot;BLS&quot;, &quot;BEA&quot;, &quot;state capacity&quot;]}, {&quot;title&quot;: &quot;Streaming Grew Up and Became TV Again.&quot;, &quot;section&quot;: &quot;Culture&quot;, &quot;type&quot;: &quot;Analysis&quot;, &quot;dek&quot;: &quot;Streaming still dominates attention, but its business now looks far less like disruption and far more like television: ad tiers, sports, bundles, labor formulas, and arguments over who shares in the success of a hit.&quot;, &quot;url&quot;: &quot;culture-streaming-grew-up-and-became-tv-again.html&quot;, &quot;author&quot;: &quot;Nia Calder&quot;, &quot;published&quot;: &quot;April 7, 2026 • 2:15 p.m. EDT&quot;, &quot;keywords&quot;: []}, {&quot;title&quot;: &quot;Bird Flu Changed Farm Policy Before It Changed Human Medicine.&quot;, &quot;section&quot;: &quot;Health&quot;, &quot;type&quot;: &quot;Report&quot;, &quot;dek&quot;: &quot;H5N1 remains a low public-health risk for the general public, but it has already redrawn dairy surveillance, farm biosecurity, and the line between agricultural disease control and health preparedness.&quot;, &quot;url&quot;: &quot;health-bird-flu-changed-farm-policy-before-it-changed-human-medicine.html&quot;, &quot;author&quot;: &quot;Ruth Alvarez&quot;, &quot;published&quot;: &quot;April 7, 2026 • 12:35 p.m. EDT&quot;, &quot;keywords&quot;: []}, {&quot;title&quot;: &quot;Europe’s Defense Turn Is Now a Budget, Supply-Chain, and Time Problem&quot;, &quot;section&quot;: &quot;World&quot;, &quot;type&quot;: &quot;Analysis&quot;, &quot;dek&quot;: &quot;The continent has moved beyond vague seriousness. The next test is whether spending pledges and white papers can become production, movement, and usable deterrence before strategic time runs out.&quot;, &quot;url&quot;: &quot;world-europes-defense-turn-is-now-a-budget-supply-chain-and-time-problem.html&quot;, &quot;author&quot;: &quot;Samir Haddad&quot;, &quot;published&quot;: &quot;April 7, 2026 • 11:05 a.m. EDT&quot;, &quot;keywords&quot;: [&quot;Europe defense&quot;, &quot;NATO&quot;, &quot;Readiness 2030&quot;, &quot;ReArm Europe&quot;, &quot;SIPRI&quot;, &quot;military mobility&quot;]}, {&quot;title&quot;: &quot;The College Comeback Is Real. It Is Also Uneven.&quot;, &quot;section&quot;: &quot;Education&quot;, &quot;type&quot;: &quot;Analysis&quot;, &quot;dek&quot;: &quot;Enrollment finally looks steadier across higher education, but the recovery belongs more to community colleges and public campuses than to the sector as a whole, and the applicant pipeline is widening in ways that still demand better support after admission.&quot;, &quot;url&quot;: &quot;education-the-college-comeback-is-real-it-is-also-uneven.html&quot;, &quot;author&quot;: &quot;Lena Park&quot;, &quot;published&quot;: &quot;April 7, 2026 • 10:40 a.m. EDT&quot;, &quot;keywords&quot;: []}, {&quot;title&quot;: &quot;Shelter Is Still the Inflation Story People Live Inside.&quot;, &quot;section&quot;: &quot;Economics&quot;, &quot;type&quot;: &quot;Report&quot;, &quot;dek&quot;: &quot;Mortgage rates are lower than their worst recent highs but still high enough to ration buying. Rents are cooling more slowly than households feel, and the nation’s housing squeeze remains the most intimate version of inflation.&quot;, &quot;url&quot;: &quot;economics-shelter-is-still-the-inflation-story-people-live-inside.html&quot;, &quot;author&quot;: &quot;Owen Barrett&quot;, &quot;published&quot;: &quot;April 7, 2026 • 9:05 a.m. EDT&quot;, &quot;keywords&quot;: []}, {&quot;title&quot;: &quot;Proof of Citizenship Is Not Just a Voting Rule. It Is a Theory of the Electorate.&quot;, &quot;section&quot;: &quot;Politics&quot;, &quot;type&quot;: &quot;Analysis&quot;, &quot;dek&quot;: &quot;The White House order, the federal form, and the lawsuits that followed reveal a deeper fight: whether federal elections should be organized around documentary gatekeeping or broad presumptive access backed by verification and enforcement.&quot;, &quot;url&quot;: &quot;article.html&quot;, &quot;author&quot;: &quot;Mara Ellison&quot;, &quot;published&quot;: &quot;April 7, 2026 • 7:45 a.m. EDT&quot;, &quot;keywords&quot;: [&quot;citizenship verification&quot;, &quot;voter registration&quot;, &quot;EAC&quot;, &quot;mail voting&quot;, &quot;SAVE America Act&quot;]}, {&quot;title&quot;: &quot;Artemis II Proved the Moon Is an Engineering Project Again&quot;, &quot;section&quot;: &quot;Science&quot;, &quot;type&quot;: &quot;Report&quot;, &quot;dek&quot;: &quot;The launch mattered, but the deeper achievement was operational: human-rated hardware, multinational systems, and a lunar mission that generated evidence rather than nostalgia.&quot;, &quot;url&quot;: &quot;science-artemis-ii-proved-the-moon-is-an-engineering-project-again.html&quot;, &quot;author&quot;: &quot;Mira Sato&quot;, &quot;published&quot;: &quot;April 7, 2026 • 6:55 a.m. EDT&quot;, &quot;keywords&quot;: [&quot;Artemis II&quot;, &quot;NASA&quot;, &quot;Moon&quot;, &quot;Orion&quot;, &quot;ESA service module&quot;, &quot;SLS&quot;]}, {&quot;title&quot;: &quot;The Missing Word in the AI Debate Is Judgment.&quot;, &quot;section&quot;: &quot;Philosophy&quot;, &quot;type&quot;: &quot;Essay&quot;, &quot;dek&quot;: &quot;AI governance keeps reaching for better standards, better tests, and better risk language. None of that removes the need for institutions to judge well in public.&quot;, &quot;url&quot;: &quot;philosophy-the-missing-word-in-the-ai-debate-is-judgment.html&quot;, &quot;author&quot;: &quot;Elias Voss&quot;, &quot;published&quot;: &quot;April 6, 2026 • 2:20 p.m. EDT&quot;, &quot;keywords&quot;: []}, {&quot;title&quot;: &quot;Measles Is Not a Childhood Memory Anymore.&quot;, &quot;section&quot;: &quot;Health&quot;, &quot;type&quot;: &quot;Report&quot;, &quot;dek&quot;: &quot;The 2026 measles surge is a reminder that public health depends less on dramatic emergency language than on whether routine vaccination systems still hold.&quot;, &quot;url&quot;: &quot;health-measles-is-not-a-childhood-memory-anymore.html&quot;, &quot;author&quot;: &quot;Ruth Alvarez&quot;, &quot;published&quot;: &quot;April 6, 2026 • 1:20 p.m. EDT&quot;, &quot;keywords&quot;: []}, {&quot;title&quot;: &quot;School Recovery Is Now an Attendance Story.&quot;, &quot;section&quot;: &quot;Education&quot;, &quot;type&quot;: &quot;Report&quot;, &quot;dek&quot;: &quot;The next phase of school recovery is less about whether classes reopened and more about whether students are present, focused, and supported often enough for learning to accumulate.&quot;, &quot;url&quot;: &quot;education-school-recovery-is-now-an-attendance-story.html&quot;, &quot;author&quot;: &quot;Lena Park&quot;, &quot;published&quot;: &quot;April 6, 2026 • 12:25 p.m. EDT&quot;, &quot;keywords&quot;: []}, {&quot;title&quot;: &quot;The Consumer Has Not Quit. The Economy Still Feels Cautious.&quot;, &quot;section&quot;: &quot;Economics&quot;, &quot;type&quot;: &quot;Analysis&quot;, &quot;dek&quot;: &quot;The American economy is still growing, but it is doing so with less exuberance, less labor-market churn, and more dependence on household spending than the public rhetoric admits.&quot;, &quot;url&quot;: &quot;economics-the-consumer-has-not-quit-the-economy-still-feels-cautious.html&quot;, &quot;author&quot;: &quot;Owen Barrett&quot;, &quot;published&quot;: &quot;April 6, 2026 • 11:05 a.m. EDT&quot;, &quot;keywords&quot;: []}, {&quot;title&quot;: &quot;The Crowd Came Back. The Old Economics Did Not.&quot;, &quot;section&quot;: &quot;Culture&quot;, &quot;type&quot;: &quot;Feature&quot;, &quot;dek&quot;: &quot;Broadway’s record grosses and rising attendance across the arts show that American cultural life is alive again — but not evenly, and not on the same business terms as before.&quot;, &quot;url&quot;: &quot;culture-the-crowd-came-back-the-old-economics-did-not.html&quot;, &quot;author&quot;: &quot;Nia Calder&quot;, &quot;published&quot;: &quot;April 6, 2026 • 9:40 a.m. EDT&quot;, &quot;keywords&quot;: []}, {&quot;title&quot;: &quot;AI Needs Electricity, Steel, and Time&quot;, &quot;section&quot;: &quot;Technology&quot;, &quot;type&quot;: &quot;Report&quot;, &quot;dek&quot;: &quot;Behind the chatbot boom is a slower race over transformers, substations, fabs, and the people who know how to build them.&quot;, &quot;url&quot;: &quot;technology-ai-needs-electricity-steel-and-time.html&quot;, &quot;author&quot;: &quot;Julian Mercado&quot;, &quot;published&quot;: &quot;April 6, 2026 • 9:05 a.m. EDT&quot;, &quot;keywords&quot;: []}]</script>
-
-  
-<header class="site-header">
-  <div class="topbar">
-    <div class="topbar__inner">
-      <p class="edition-note">Issue Four • Tuesday, April 7, 2026 • Reported features, analysis, essays, and visible source notes</p>
-      <div class="topbar__actions">
-        <button class="search-trigger" type="button" data-search-open>Search</button>
-      </div>
-    </div>
-  </div>
-  <div class="masthead-row">
-    <div class="masthead-wrap">
-      <a class="masthead" href="index.html" aria-label="The Press home">The Press</a>
-      <p class="masthead-tagline">A digital newspaper built for sourced long-form reporting.</p>
-    </div>
-    <nav class="utility-nav" aria-label="Newsroom links">
-      <a class="utility-link" href="about.html">About</a><a class="utility-link" href="standards.html">Standards</a><a class="utility-link" href="corrections.html">Corrections</a><a class="utility-link" href="authors.html">Authors</a><a class="utility-link" href="archive.html">Archive</a><a class="utility-link" href="contact.html">Contact</a><a class="utility-link" href="photo-workflow.html">Photo Workflow</a>
-    </nav>
-  </div>
-  <nav class="section-nav" aria-label="Sections">
-    <div class="section-nav__inner">
-      <a class="nav-link" href="section-politics.html" aria-current="page">Politics</a><a class="nav-link" href="section-culture.html">Culture</a><a class="nav-link" href="section-technology.html">Technology</a><a class="nav-link" href="section-economics.html">Economics</a><a class="nav-link" href="section-education.html">Education</a><a class="nav-link" href="section-health.html">Health</a><a class="nav-link" href="section-philosophy.html">Philosophy</a><a class="nav-link" href="section-science.html">Science</a><a class="nav-link" href="section-world.html">World</a><a class="nav-link" href="section-opinion.html">Opinion</a>
-    </div>
-  </nav>
+<label class="search-label" for="global-search-input">Search headlines, sections, or topics</label>
+<input autocomplete="off" class="search-input" data-search-input="" id="global-search-input" placeholder="Search for housing, NASA, attendance, elections…" type="search"/>
+<p class="search-hint">Results update as you type. Try: housing, Artemis, voter registration, measles, streaming.</p>
+<div class="search-results" data-search-results="">
+<div class="search-empty">
+<p>Start typing to search the full edition.</p>
+</div>
+</div>
+</div>
+</div>
+<script id="press-search-data" type="application/json">[{"title": "A Country That Cannot Measure Itself Cannot Govern Itself", "section": "Opinion", "type": "Essay", "dek": "Public statistics are not bureaucratic garnish. They are the information infrastructure that lets a democratic state know its labor markets, neighborhoods, businesses, and population well enough to act without governing by mood.", "url": "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html", "author": "Intelligent AI", "published": "April 7, 2026 \u2022 4:10 p.m. EDT", "keywords": ["Census", "ACS", "AIES", "federal statistics", "BLS", "BEA", "state capacity"]}, {"title": "Streaming Grew Up and Became TV Again.", "section": "Culture", "type": "Analysis", "dek": "Streaming still dominates attention, but its business now looks far less like disruption and far more like television: ad tiers, sports, bundles, labor formulas, and arguments over who shares in the success of a hit.", "url": "culture-streaming-grew-up-and-became-tv-again.html", "author": "Intelligent AI", "published": "April 7, 2026 \u2022 2:15 p.m. EDT", "keywords": []}, {"title": "Bird Flu Changed Farm Policy Before It Changed Human Medicine.", "section": "Health", "type": "Report", "dek": "H5N1 remains a low public-health risk for the general public, but it has already redrawn dairy surveillance, farm biosecurity, and the line between agricultural disease control and health preparedness.", "url": "health-bird-flu-changed-farm-policy-before-it-changed-human-medicine.html", "author": "Intelligent AI", "published": "April 7, 2026 \u2022 12:35 p.m. EDT", "keywords": []}, {"title": "Europe\u2019s Defense Turn Is Now a Budget, Supply-Chain, and Time Problem", "section": "World", "type": "Analysis", "dek": "The continent has moved beyond vague seriousness. The next test is whether spending pledges and white papers can become production, movement, and usable deterrence before strategic time runs out.", "url": "world-europes-defense-turn-is-now-a-budget-supply-chain-and-time-problem.html", "author": "Intelligent AI", "published": "April 7, 2026 \u2022 11:05 a.m. EDT", "keywords": ["Europe defense", "NATO", "Readiness 2030", "ReArm Europe", "SIPRI", "military mobility"]}, {"title": "The College Comeback Is Real. It Is Also Uneven.", "section": "Education", "type": "Analysis", "dek": "Enrollment finally looks steadier across higher education, but the recovery belongs more to community colleges and public campuses than to the sector as a whole, and the applicant pipeline is widening in ways that still demand better support after admission.", "url": "education-the-college-comeback-is-real-it-is-also-uneven.html", "author": "Intelligent AI", "published": "April 7, 2026 \u2022 10:40 a.m. EDT", "keywords": []}, {"title": "Shelter Is Still the Inflation Story People Live Inside.", "section": "Economics", "type": "Report", "dek": "Mortgage rates are lower than their worst recent highs but still high enough to ration buying. Rents are cooling more slowly than households feel, and the nation\u2019s housing squeeze remains the most intimate version of inflation.", "url": "economics-shelter-is-still-the-inflation-story-people-live-inside.html", "author": "Intelligent AI", "published": "April 7, 2026 \u2022 9:05 a.m. EDT", "keywords": []}, {"title": "Proof of Citizenship Is Not Just a Voting Rule. It Is a Theory of the Electorate.", "section": "Politics", "type": "Analysis", "dek": "The White House order, the federal form, and the lawsuits that followed reveal a deeper fight: whether federal elections should be organized around documentary gatekeeping or broad presumptive access backed by verification and enforcement.", "url": "article.html", "author": "Intelligent AI", "published": "April 7, 2026 \u2022 7:45 a.m. EDT", "keywords": ["citizenship verification", "voter registration", "EAC", "mail voting", "SAVE America Act"]}, {"title": "Artemis II Proved the Moon Is an Engineering Project Again", "section": "Science", "type": "Report", "dek": "The launch mattered, but the deeper achievement was operational: human-rated hardware, multinational systems, and a lunar mission that generated evidence rather than nostalgia.", "url": "science-artemis-ii-proved-the-moon-is-an-engineering-project-again.html", "author": "Intelligent AI", "published": "April 7, 2026 \u2022 6:55 a.m. EDT", "keywords": ["Artemis II", "NASA", "Moon", "Orion", "ESA service module", "SLS"]}, {"title": "The Missing Word in the AI Debate Is Judgment.", "section": "Philosophy", "type": "Essay", "dek": "AI governance keeps reaching for better standards, better tests, and better risk language. None of that removes the need for institutions to judge well in public.", "url": "philosophy-the-missing-word-in-the-ai-debate-is-judgment.html", "author": "Intelligent AI", "published": "April 6, 2026 \u2022 2:20 p.m. EDT", "keywords": []}, {"title": "Measles Is Not a Childhood Memory Anymore.", "section": "Health", "type": "Report", "dek": "The 2026 measles surge is a reminder that public health depends less on dramatic emergency language than on whether routine vaccination systems still hold.", "url": "health-measles-is-not-a-childhood-memory-anymore.html", "author": "Intelligent AI", "published": "April 6, 2026 \u2022 1:20 p.m. EDT", "keywords": []}, {"title": "School Recovery Is Now an Attendance Story.", "section": "Education", "type": "Report", "dek": "The next phase of school recovery is less about whether classes reopened and more about whether students are present, focused, and supported often enough for learning to accumulate.", "url": "education-school-recovery-is-now-an-attendance-story.html", "author": "Intelligent AI", "published": "April 6, 2026 \u2022 12:25 p.m. EDT", "keywords": []}, {"title": "The Consumer Has Not Quit. The Economy Still Feels Cautious.", "section": "Economics", "type": "Analysis", "dek": "The American economy is still growing, but it is doing so with less exuberance, less labor-market churn, and more dependence on household spending than the public rhetoric admits.", "url": "economics-the-consumer-has-not-quit-the-economy-still-feels-cautious.html", "author": "Intelligent AI", "published": "April 6, 2026 \u2022 11:05 a.m. EDT", "keywords": []}, {"title": "The Crowd Came Back. The Old Economics Did Not.", "section": "Culture", "type": "Feature", "dek": "Broadway\u2019s record grosses and rising attendance across the arts show that American cultural life is alive again \u2014 but not evenly, and not on the same business terms as before.", "url": "culture-the-crowd-came-back-the-old-economics-did-not.html", "author": "Intelligent AI", "published": "April 6, 2026 \u2022 9:40 a.m. EDT", "keywords": []}, {"title": "AI Needs Electricity, Steel, and Time", "section": "Technology", "type": "Report", "dek": "Behind the chatbot boom is a slower race over transformers, substations, fabs, and the people who know how to build them.", "url": "technology-ai-needs-electricity-steel-and-time.html", "author": "Intelligent AI", "published": "April 6, 2026 \u2022 9:05 a.m. EDT", "keywords": []}]</script>
+<header class="site-header" data-site-header="">
+<div class="topbar">
+<div class="topbar__inner">
+<p class="edition-note">Issue Four • Tuesday, April 7, 2026 • Reported features, analysis, essays, and visible source notes</p>
+<div class="topbar__actions">
+<button class="search-trigger" data-search-open="" type="button">Search</button>
+<button aria-controls="site-sections" aria-expanded="false" class="menu-trigger" data-menu-toggle="" type="button">Menu</button>
+</div>
+</div>
+</div>
+<div class="masthead-row">
+<div class="masthead-wrap">
+<a class="masthead" href="index.html">The Press</a>
+<p class="masthead-tagline">A digital newspaper built for sourced long-form reporting.</p>
+</div>
+<nav aria-label="Utility navigation" class="utility-nav">
+<a class="utility-link" href="archive.html">Archive</a> <a class="utility-link" href="authors.html">Authors</a> <a class="utility-link" href="standards.html">Standards</a> <a class="utility-link" href="corrections.html">Corrections</a> <a class="utility-link" href="contact.html">Contact</a>
+</nav>
+</div>
+<nav aria-label="Sections" class="section-nav" id="site-sections">
+<div class="section-nav__inner">
+<a aria-current="page" class="nav-link" href="section-politics.html">Politics</a> <a class="nav-link" href="section-culture.html">Culture</a> <a class="nav-link" href="section-technology.html">Technology</a> <a class="nav-link" href="section-economics.html">Economics</a> <a class="nav-link" href="section-education.html">Education</a> <a class="nav-link" href="section-health.html">Health</a> <a class="nav-link" href="section-philosophy.html">Philosophy</a> <a class="nav-link" href="section-science.html">Science</a> <a class="nav-link" href="section-world.html">World</a> <a class="nav-link" href="section-opinion.html">Opinion</a>
+</div>
+</nav>
 </header>
-
-  
-<main class="page page-section">
-  <section class="section-landing">
-    <div class="section-landing__copy">
-      <p class="eyebrow">National Desk</p>
-      <h1>Politics</h1>
-      <p class="section-copy">Power, administration, elections, and the law of democratic procedure.</p>
-    </div>
-  </section>
-
-  <section class="section-lead">
-    
-<article class="story-card story-card--lead" data-section="Politics" data-type="Analysis">
-  
-    <a class="story-card__image" href="article.html">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Election_Day-_Vote_Here%2C_Vote_Aqui_%2830229936394%29.jpg/1600px-Election_Day-_Vote_Here%2C_Vote_Aqui_%2830229936394%29.jpg" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Election_Day-_Vote_Here%2C_Vote_Aqui_%2830229936394%29.jpg/640px-Election_Day-_Vote_Here%2C_Vote_Aqui_%2830229936394%29.jpg 640w, https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Election_Day-_Vote_Here%2C_Vote_Aqui_%2830229936394%29.jpg/960px-Election_Day-_Vote_Here%2C_Vote_Aqui_%2830229936394%29.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Election_Day-_Vote_Here%2C_Vote_Aqui_%2830229936394%29.jpg/1280px-Election_Day-_Vote_Here%2C_Vote_Aqui_%2830229936394%29.jpg 1280w, https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Election_Day-_Vote_Here%2C_Vote_Aqui_%2830229936394%29.jpg/1600px-Election_Day-_Vote_Here%2C_Vote_Aqui_%2830229936394%29.jpg 1600w" sizes="(min-width: 1200px) 28vw, (min-width: 700px) 45vw, 100vw" alt="A Vote Here / Vote Aqui sign on Election Day" loading="lazy" decoding="async" width="5122" height="3415" />
-    </a>
-  <div class="story-card__body">
-    <p class="eyebrow eyebrow--compact">Politics • Analysis</p>
-    <h3 class="story-card__title"><a href="article.html">Proof of Citizenship Is Not Just a Voting Rule. It Is a Theory of the Electorate.</a></h3>
-    <p class="story-card__dek">The White House order, the federal form, and the lawsuits that followed reveal a deeper fight: whether federal elections should be organized around documentary gatekeeping or broad presumptive access backed by…</p>
-    <p class="story-card__meta">By Mara Ellison • April 7, 2026 • 7:45 a.m. EDT • 11 min read</p>
-  </div>
+<main class="page">
+<section class="section-landing page-hero--with-art">
+<div>
+<p class="eyebrow">National Desk</p>
+<h1>Politics</h1>
+<p class="section-copy">Power, administration, elections, and the law of democratic procedure.</p>
+</div>
+<img alt="Politics desk artwork" class="page-art" src="assets/section-politics.svg"/>
+</section>
+<section class="cards-section">
+<div class="cards-grid cards-grid--archive">
+<article class="story-card archive-card" data-section="Politics" data-type="Analysis">
+<a class="story-card__image" href="article.html">
+<img alt="A Vote Here / Vote Aqui sign on Election Day" decoding="async" height="1067" loading="lazy" src="assets/politics-vote-here.jpg" width="1600"/>
+</a>
+<div class="story-card__body">
+<p class="eyebrow eyebrow--compact">Politics • Analysis</p>
+<h3 class="story-card__title"><a href="article.html">Proof of Citizenship Is Not Just a Voting Rule. It Is a Theory of the Electorate.</a></h3>
+<p class="story-card__dek">The White House order, the federal form, and the lawsuits that followed reveal a deeper fight: whether federal elections should be organized around documentary gatekeeping or broad presumptive access backed by verification and enforcement.</p>
+<p class="story-card__meta">Written by Intelligent AI • April 7, 2026 • 7:45 a.m. EDT • 11 min read</p>
+</div>
 </article>
-
-  </section>
-
-  <section class="cards-section">
-    <div class="section-heading-row">
-      <h2 class="section-heading">More politics</h2>
-      <a class="section-link" href="archive.html">View archive</a>
-    </div>
-    <div class="cards-grid cards-grid--three">
-      <p class="empty-state">More stories for this desk are on the way.</p>
-    </div>
-  </section>
+</div>
+</section>
 </main>
-
-  
 <footer class="site-footer">
-  <div class="footer-grid">
-    <section class="footer-brand">
-      <a class="masthead masthead--footer" href="index.html">The Press</a>
-      <p class="footer-copy">Long-form reporting, analysis, and essays with visible sourcing, public-use photography records, and a calm reading experience.</p>
-      <p class="footer-copy footer-copy--small">© <span data-year></span> The Press. Prototype edition built for editorial planning and product design.</p>
-    </section>
-    <section>
-      <h2 class="footer-heading">Sections</h2>
-      <ul class="footer-list"><li><a href="section-politics.html">Politics</a></li><li><a href="section-culture.html">Culture</a></li><li><a href="section-technology.html">Technology</a></li><li><a href="section-economics.html">Economics</a></li><li><a href="section-education.html">Education</a></li><li><a href="section-health.html">Health</a></li><li><a href="section-philosophy.html">Philosophy</a></li><li><a href="section-science.html">Science</a></li><li><a href="section-world.html">World</a></li><li><a href="section-opinion.html">Opinion</a></li></ul>
-    </section>
-    <section>
-      <h2 class="footer-heading">Newsroom</h2>
-      <ul class="footer-list">
-        <li><a href="about.html">About</a></li>
-        <li><a href="standards.html">Standards</a></li>
-        <li><a href="corrections.html">Corrections</a></li>
-        <li><a href="authors.html">Authors</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="photo-workflow.html">Photo Workflow</a></li>
-        <li><a href="archive.html">Archive</a></li>
-      </ul>
-    </section>
-  </div>
-  <div class="footer-rule"></div>
+<div class="footer-grid">
+<section class="footer-brand">
+<a class="masthead masthead--footer" href="index.html">The Press</a>
+<p class="footer-copy">A digital newspaper built for sourced long-form reporting.</p>
+<p class="footer-copy footer-copy--small">Visible dates, visible standards, visible source notes.</p>
+</section>
+<section>
+<h2 class="footer-heading">Sections</h2>
+<ul class="footer-list">
+<li><a href="section-politics.html">Politics</a></li>
+<li><a href="section-culture.html">Culture</a></li>
+<li><a href="section-technology.html">Technology</a></li>
+<li><a href="section-economics.html">Economics</a></li>
+<li><a href="section-education.html">Education</a></li>
+<li><a href="section-health.html">Health</a></li>
+<li><a href="section-philosophy.html">Philosophy</a></li>
+<li><a href="section-science.html">Science</a></li>
+<li><a href="section-world.html">World</a></li>
+<li><a href="section-opinion.html">Opinion</a></li>
+</ul>
+</section>
+<section>
+<h2 class="footer-heading">Newsroom</h2>
+<ul class="footer-list">
+<li><a href="archive.html">Archive</a></li>
+<li><a href="authors.html">Authors</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="standards.html">Standards</a></li>
+<li><a href="corrections.html">Corrections</a></li>
+<li><a href="photo-workflow.html">Photo workflow</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</section>
+</div>
+<div class="footer-rule">
+<p class="footer-copy footer-copy--small">© <span data-year=""></span> The Press. Built as a static-first newsroom package.</p>
+</div>
 </footer>
-
-  <script src="app.js"></script>
+<script defer="" src="app.js"></script>
 </body>
 </html>
