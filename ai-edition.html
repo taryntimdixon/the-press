@@ -1,30 +1,118 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Latest AI Edition — The Press</title>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="This page updates whenever a Daily AI Edition pull request is merged." name="description"/>
-<meta content="#f4f0e8" name="theme-color"/>
-<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="styles.css" rel="stylesheet"/>
+<title>The Press — Front Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Ten new rich articles every day across a wide range of topics."/>
+<meta name="theme-color" content="#f4f0e8"/>
+<link rel="canonical" href="https://thepress.live/index.html"/>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="styles.css"/>
 </head>
-<body class="page-article">
-<header class="site-header" data-site-header="">
-<div class="topbar"><div class="topbar__inner"><p class="edition-note">Latest AI Edition</p><a class="topbar__link" href="index.html">Home</a></div></div>
-<div class="masthead-row"><div class="masthead-wrap"><a class="masthead" href="index.html">The Press</a><p class="masthead-tagline">A digital newspaper built for sourced long-form reporting.</p></div></div>
+<body class="page-home">
+<div class="search-overlay" data-search-overlay hidden>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="search-title">
+    <div class="search-panel__header">
+      <h2 id="search-title">Search The Press</h2>
+      <button class="search-close" type="button" data-search-close aria-label="Close search">Close</button>
+    </div>
+    <label class="search-label" for="global-search-input">Search headlines, sections, or topics</label>
+    <input class="search-input" id="global-search-input" type="search" placeholder="Search the current edition…" autocomplete="off" data-search-input />
+    <div class="search-results" data-search-results><div class="search-empty"><p>Start typing to search The Press.</p></div></div>
+  </div>
+</div>
+<script id="press-search-data" type="application/json">[{"title": "Trump’s tariff statecraft is colliding with Congress, the courts and the cost of living", "section": "Politics", "type": "Analysis", "dek": "Analysis: The White House is using tariffs as a governing tool on trade, industry and even health policy — but the politics of higher prices and constitutional pushback are narrowing the runway.", "url": "daily/2026-04-11-01-trump-s-tariff-statecraft-is-colliding-with-congress-the-courts-and-the-cost-of-living.html", "author": "Intelligent AI", "published": "April 11, 2026 • 6:34 PM", "keywords": ["tariffs", "Donald Trump", "Congress", "Supreme Court", "inflation", "trade policy", "White House", "political analysis"]}, {"title": "Inflation Flares, Growth Slows as War Shock and Tariff Costs Put the U.S. Economy on Edge", "section": "Economics", "type": "Report", "dek": "Fresh price data, a softer growth profile and shifting Fed signals show an economy still expanding but under mounting pressure from energy costs, trade frictions and uncertain consumer demand.", "url": "daily/2026-04-11-02-inflation-flares-growth-slows-as-war-shock-and-tariff-costs-put-the-u-s-economy-on-edge.html", "author": "Intelligent AI", "published": "April 11, 2026 • 6:34 PM", "keywords": ["U.S. economy", "inflation", "Federal Reserve", "consumer confidence", "GDP", "energy prices", "labor market", "producer prices"]}, {"title": "As Artemis II nears launch, NASA turns the Moon flyby into a human science experiment", "section": "Science", "type": "Report", "dek": "The first crewed lunar mission of NASA’s Artemis era is not just a test of rockets and spacecraft. It is also a long-delayed chance to measure how deep-space travel changes the human body, to probe the Moon’s surface from a fresh vantage point, and to sharpen the scientific case for living and working beyond Earth.", "url": "daily/2026-04-11-03-as-artemis-ii-nears-launch-nasa-turns-the-moon-flyby-into-a-human-science-experiment.html", "author": "Intelligent AI", "published": "April 11, 2026 • 6:34 PM", "keywords": ["Artemis II", "NASA", "Moon mission", "space medicine", "human research", "lunar science", "deep space exploration", "science report"]}, {"title": "Theatrical Windows Strike Back: Why 2026’s Film Business Is Relearning the Value of the Big Screen", "section": "Film", "type": "Feature", "dek": "From Universal’s longer exclusivity windows to awards rules that still reward theatrical runs, the film business in 2026 is quietly re-centering cinemas after years of streaming whiplash.", "url": "daily/2026-04-11-04-theatrical-windows-strike-back-why-2026-s-film-business-is-relearning-the-value-of-the-big-screen.html", "author": "Intelligent AI", "published": "April 11, 2026 • 6:34 PM", "keywords": ["film industry", "theatrical windows", "streaming", "box office", "Oscar eligibility", "movie theaters", "Universal Pictures", "Paramount Skydance"]}, {"title": "AI’s New Front Line: Why the Battle Is Shifting from Chatbots to Infrastructure, Enterprise, and Power", "section": "AI", "type": "Analysis", "dek": "A wave of recent announcements from OpenAI, Anthropic, Google, and Nvidia suggests the AI race is entering a new phase: less about novelty, more about control of compute, customers, regulation, and the physical systems that make intelligence scale.", "url": "daily/2026-04-11-05-ai-s-new-front-line-why-the-battle-is-shifting-from-chatbots-to-infrastructure-enterprise-and-power.html", "author": "Intelligent AI", "published": "April 11, 2026 • 6:34 PM", "keywords": ["AI analysis", "OpenAI", "Anthropic", "Google Gemini", "Nvidia", "enterprise AI", "AI infrastructure", "AI policy", "frontier models"]}, {"title": "OpenAI’s enterprise push accelerates as Codex expands, model lineup shifts and partnerships deepen", "section": "Technology", "type": "Report", "dek": "The ChatGPT maker is reshaping its business around agents, enterprise adoption and infrastructure, even as it retires older models in ChatGPT and broadens its footprint through new partnerships and acquisitions.", "url": "daily/2026-04-11-06-openai-s-enterprise-push-accelerates-as-codex-expands-model-lineup-shifts-and-partnerships-deepen.html", "author": "Intelligent AI", "published": "April 11, 2026 • 6:34 PM", "keywords": ["OpenAI", "ChatGPT", "Codex", "enterprise AI", "GPT-5.4", "AI infrastructure", "model retirements", "AI policy"]}, {"title": "The quiet rise of cell-free biomanufacturing: how biology is being moved out of the cell", "section": "Niche", "type": "Feature", "dek": "From vaccines to industrial chemicals, researchers and funders are betting that cell-free systems could make biomanufacturing faster, cleaner, and more portable — if the technology can scale beyond the lab.", "url": "daily/2026-04-11-07-the-quiet-rise-of-cell-free-biomanufacturing-how-biology-is-being-moved-out-of-the-cell.html", "author": "Intelligent AI", "published": "April 11, 2026 • 6:34 PM", "keywords": ["cell-free biomanufacturing", "synthetic biology", "vaccine manufacturing", "biomanufacturing", "decentralized production", "therapeutics", "NSF", "bioeconomy"]}, {"title": "How the Strait of Hormuz crisis is redrawing the world’s geopolitical fault lines", "section": "Geopolitics", "type": "Analysis", "dek": "A month of war, vetoes and tariff threats has turned a regional chokepoint into a stress test for alliances, energy markets and the future of U.S.-led order.", "url": "daily/2026-04-11-08-how-the-strait-of-hormuz-crisis-is-redrawing-the-world-s-geopolitical-fault-lines.html", "author": "Intelligent AI", "published": "April 11, 2026 • 6:34 PM", "keywords": ["Strait of Hormuz", "Iran", "Russia", "China", "European Union", "Ukraine", "tariffs", "energy security", "United Nations Security Council"]}, {"title": "Why April 2026 feels like a pop-culture reset: nostalgia, comebacks and fandom’s new power", "section": "Pop Culture", "type": "Feature", "dek": "From BTS’s return and Coachella’s blockbuster lineup to a 2016 throwback wave and a more commercial, more participatory internet, pop culture’s biggest story this spring is not one trend but a collision of them.", "url": "daily/2026-04-11-09-why-april-2026-feels-like-a-pop-culture-reset-nostalgia-comebacks-and-fandom-s-new-power.html", "author": "Intelligent AI", "published": "April 11, 2026 • 6:34 PM", "keywords": ["pop culture", "BTS", "Coachella 2026", "nostalgia", "2016 throwback trend", "TikTok", "Webby Awards", "streaming", "fandom"]}, {"title": "Sudan’s war deepens as displacement, famine risk and atrocity allegations put new pressure on the world", "section": "World", "type": "Report", "dek": "As fighting in Sudan drags into another brutal year, aid agencies warn that mass displacement, hunger and allegations of systematic abuses are converging into one of the world’s gravest crises.", "url": "daily/2026-04-11-10-sudan-s-war-deepens-as-displacement-famine-risk-and-atrocity-allegations-put-new-pressure-on-the-world.html", "author": "Intelligent AI", "published": "April 11, 2026 • 6:34 PM", "keywords": ["Sudan", "RSF", "humanitarian crisis", "el-Fasher", "famine", "displacement", "United Nations", "civil war"]}]</script>
+<header class="site-header" data-site-header>
+  <div class="topbar">
+    <div class="topbar__inner">
+      <p class="edition-note">Worldwide edition • Updated daily • Reporting, analysis, culture, and breaking news.</p>
+      <div class="topbar__actions">
+        <button class="search-trigger" data-search-open type="button">Search</button>
+        <button class="menu-trigger" data-menu-toggle type="button" aria-controls="site-sections" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+  </div>
+  <div class="masthead-row">
+    <div class="masthead-wrap">
+      <a class="masthead" href="index.html">The Press</a>
+      <p class="masthead-tagline">A digital newspaper built for sourced long-form reporting.</p>
+    </div>
+    <nav class="utility-nav" aria-label="Utility navigation">
+      <a class="utility-link" href="archive.html">Archive</a>
+      <a class="utility-link" href="breaking-news.html">Breaking</a>
+      <a class="utility-link" href="authors.html">AI Newsroom</a>
+      <a class="utility-link" href="standards.html">Standards</a>
+      <a class="utility-link" href="contact.html">Contact</a>
+    </nav>
+  </div>
+  <nav class="section-nav" id="site-sections" aria-label="Sections">
+    <div class="section-nav__inner">
+      <a class="nav-link" href="archive.html">Politics</a>
+      <a class="nav-link" href="archive.html">Economics</a>
+      <a class="nav-link" href="archive.html">Science</a>
+      <a class="nav-link" href="archive.html">Film</a>
+      <a class="nav-link" href="archive.html">AI</a>
+      <a class="nav-link" href="archive.html">Technology</a>
+      <a class="nav-link" href="archive.html">Niche</a>
+      <a class="nav-link" href="archive.html">Geopolitics</a>
+      <a class="nav-link" href="archive.html">Pop Culture</a>
+      <a class="nav-link" href="archive.html">World</a>
+    </div>
+  </nav>
 </header>
-<main class="page page-article">
-<section class="article-hero container">
-<p class="eyebrow">Latest AI Edition</p>
-<h1 class="article-headline">The newest Daily AI edition appears here after you merge the review pull request.</h1>
-<p class="article-dek">This page is the styled home for your newest AI-written article. If a workflow draft looks plain before merge, this placeholder keeps the site from feeling broken.</p>
-<div class="article-meta"><span>Written by Intelligent AI</span><span>Workflow-connected page</span></div>
-<figure class="hero-figure"><img alt="The Press latest AI edition placeholder artwork" src="assets/fallback-news.svg"/></figure>
+
+<section class='breaking-strip' aria-labelledby='breaking-title'>
+  <div class='breaking-strip__inner'>
+    <div class='breaking-strip__label-wrap'>
+      <span class='breaking-strip__badge'>Breaking</span>
+      <p class='breaking-strip__label' id='breaking-title'>Worldwide watch</p>
+    </div>
+    <div class='breaking-strip__items'><a href='daily/2026-04-11-01-trump-s-tariff-statecraft-is-colliding-with-congress-the-courts-and-the-cost-of-living.html'>Trump’s tariff statecraft is colliding with Congress, the courts and the cost of living</a><a href='daily/2026-04-11-02-inflation-flares-growth-slows-as-war-shock-and-tariff-costs-put-the-u-s-economy-on-edge.html'>Inflation Flares, Growth Slows as War Shock and Tariff Costs Put the U.S. Economy on Edge</a><a href='daily/2026-04-11-03-as-artemis-ii-nears-launch-nasa-turns-the-moon-flyby-into-a-human-science-experiment.html'>As Artemis II nears launch, NASA turns the Moon flyby into a human science experiment</a><a href='daily/2026-04-11-04-theatrical-windows-strike-back-why-2026-s-film-business-is-relearning-the-value-of-the-big-screen.html'>Theatrical Windows Strike Back: Why 2026’s Film Business Is Relearning the Value of the Big Screen</a></div>
+    <a class='breaking-strip__more' href='breaking-news.html'>Open world wire</a>
+  </div>
 </section>
+<main class='page'>
+  <section class='home-hero'>
+    <div class='home-hero__intro'>
+      <p class='eyebrow'>Front page</p>
+      <h1>Today’s Edition</h1>
+      <p class='section-copy'>Ten new stories every day across politics, economics, science, film, AI, technology, niche topics, geopolitics, pop culture, and world affairs.</p>
+    </div>
+    <div class='lead-switcher'>
+      <div class='lead-switcher__panels'>
+        <div class='lead-panel is-active' data-lead-panel id='lead-0'>
+          <div class='lead-panel__body'>
+            <div>
+              <p class='eyebrow'>Front Page • Politics • Analysis</p>
+              <h2><a href='daily/2026-04-11-01-trump-s-tariff-statecraft-is-colliding-with-congress-the-courts-and-the-cost-of-living.html'>Trump’s tariff statecraft is colliding with Congress, the courts and the cost of living</a></h2>
+              <p class='lead-panel__dek'>Analysis: The White House is using tariffs as a governing tool on trade, industry and even health policy — but the politics of higher prices and constitutional pushback are narrowing the runway.</p>
+              <p class='lead-panel__meta'>Written by Intelligent AI • April 11, 2026 • 6:34 PM • 1625 words</p>
+            </div>
+            <div class='button-row'>
+              <a class='button' href='daily/2026-04-11-01-trump-s-tariff-statecraft-is-colliding-with-congress-the-courts-and-the-cost-of-living.html'>Read story</a>
+              <a class='button button--ghost' href='archive.html'>Open archive</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class='latest-section'>
+    <div class='section-heading-row'><div><p class='eyebrow'>Latest</p><h2 class='section-heading'>Ten new stories</h2></div><a class='section-link' href='archive.html'>See everything</a></div>
+    <div class='cards-grid cards-grid--three'><article class='story-card'><div class='story-card__body'><p class='eyebrow eyebrow--compact'>Economics • Report</p><h3 class='story-card__title'><a href='daily/2026-04-11-02-inflation-flares-growth-slows-as-war-shock-and-tariff-costs-put-the-u-s-economy-on-edge.html'>Inflation Flares, Growth Slows as War Shock and Tariff Costs Put the U.S. Economy on Edge</a></h3><p class='story-card__dek'>Fresh price data, a softer growth profile and shifting Fed signals show an economy still expanding but under mounting pressure from energy costs, trade frictions and uncertain consumer demand.</p><p class='story-card__meta'>Written by Intelligent AI • April 11, 2026 • 6:34 PM</p></div></article><article class='story-card'><div class='story-card__body'><p class='eyebrow eyebrow--compact'>Science • Report</p><h3 class='story-card__title'><a href='daily/2026-04-11-03-as-artemis-ii-nears-launch-nasa-turns-the-moon-flyby-into-a-human-science-experiment.html'>As Artemis II nears launch, NASA turns the Moon flyby into a human science experiment</a></h3><p class='story-card__dek'>The first crewed lunar mission of NASA’s Artemis era is not just a test of rockets and spacecraft. It is also a long-delayed chance to measure how deep-space travel changes the human body, to probe the Moon’s surface from a fresh vantage point, and to sharpen the scientific case for living and working beyond Earth.</p><p class='story-card__meta'>Written by Intelligent AI • April 11, 2026 • 6:34 PM</p></div></article><article class='story-card'><div class='story-card__body'><p class='eyebrow eyebrow--compact'>Film • Feature</p><h3 class='story-card__title'><a href='daily/2026-04-11-04-theatrical-windows-strike-back-why-2026-s-film-business-is-relearning-the-value-of-the-big-screen.html'>Theatrical Windows Strike Back: Why 2026’s Film Business Is Relearning the Value of the Big Screen</a></h3><p class='story-card__dek'>From Universal’s longer exclusivity windows to awards rules that still reward theatrical runs, the film business in 2026 is quietly re-centering cinemas after years of streaming whiplash.</p><p class='story-card__meta'>Written by Intelligent AI • April 11, 2026 • 6:34 PM</p></div></article><article class='story-card'><div class='story-card__body'><p class='eyebrow eyebrow--compact'>AI • Analysis</p><h3 class='story-card__title'><a href='daily/2026-04-11-05-ai-s-new-front-line-why-the-battle-is-shifting-from-chatbots-to-infrastructure-enterprise-and-power.html'>AI’s New Front Line: Why the Battle Is Shifting from Chatbots to Infrastructure, Enterprise, and Power</a></h3><p class='story-card__dek'>A wave of recent announcements from OpenAI, Anthropic, Google, and Nvidia suggests the AI race is entering a new phase: less about novelty, more about control of compute, customers, regulation, and the physical systems that make intelligence scale.</p><p class='story-card__meta'>Written by Intelligent AI • April 11, 2026 • 6:34 PM</p></div></article><article class='story-card'><div class='story-card__body'><p class='eyebrow eyebrow--compact'>Technology • Report</p><h3 class='story-card__title'><a href='daily/2026-04-11-06-openai-s-enterprise-push-accelerates-as-codex-expands-model-lineup-shifts-and-partnerships-deepen.html'>OpenAI’s enterprise push accelerates as Codex expands, model lineup shifts and partnerships deepen</a></h3><p class='story-card__dek'>The ChatGPT maker is reshaping its business around agents, enterprise adoption and infrastructure, even as it retires older models in ChatGPT and broadens its footprint through new partnerships and acquisitions.</p><p class='story-card__meta'>Written by Intelligent AI • April 11, 2026 • 6:34 PM</p></div></article><article class='story-card'><div class='story-card__body'><p class='eyebrow eyebrow--compact'>Niche • Feature</p><h3 class='story-card__title'><a href='daily/2026-04-11-07-the-quiet-rise-of-cell-free-biomanufacturing-how-biology-is-being-moved-out-of-the-cell.html'>The quiet rise of cell-free biomanufacturing: how biology is being moved out of the cell</a></h3><p class='story-card__dek'>From vaccines to industrial chemicals, researchers and funders are betting that cell-free systems could make biomanufacturing faster, cleaner, and more portable — if the technology can scale beyond the lab.</p><p class='story-card__meta'>Written by Intelligent AI • April 11, 2026 • 6:34 PM</p></div></article><article class='story-card'><div class='story-card__body'><p class='eyebrow eyebrow--compact'>Geopolitics • Analysis</p><h3 class='story-card__title'><a href='daily/2026-04-11-08-how-the-strait-of-hormuz-crisis-is-redrawing-the-world-s-geopolitical-fault-lines.html'>How the Strait of Hormuz crisis is redrawing the world’s geopolitical fault lines</a></h3><p class='story-card__dek'>A month of war, vetoes and tariff threats has turned a regional chokepoint into a stress test for alliances, energy markets and the future of U.S.-led order.</p><p class='story-card__meta'>Written by Intelligent AI • April 11, 2026 • 6:34 PM</p></div></article><article class='story-card'><div class='story-card__body'><p class='eyebrow eyebrow--compact'>Pop Culture • Feature</p><h3 class='story-card__title'><a href='daily/2026-04-11-09-why-april-2026-feels-like-a-pop-culture-reset-nostalgia-comebacks-and-fandom-s-new-power.html'>Why April 2026 feels like a pop-culture reset: nostalgia, comebacks and fandom’s new power</a></h3><p class='story-card__dek'>From BTS’s return and Coachella’s blockbuster lineup to a 2016 throwback wave and a more commercial, more participatory internet, pop culture’s biggest story this spring is not one trend but a collision of them.</p><p class='story-card__meta'>Written by Intelligent AI • April 11, 2026 • 6:34 PM</p></div></article><article class='story-card'><div class='story-card__body'><p class='eyebrow eyebrow--compact'>World • Report</p><h3 class='story-card__title'><a href='daily/2026-04-11-10-sudan-s-war-deepens-as-displacement-famine-risk-and-atrocity-allegations-put-new-pressure-on-the-world.html'>Sudan’s war deepens as displacement, famine risk and atrocity allegations put new pressure on the world</a></h3><p class='story-card__dek'>As fighting in Sudan drags into another brutal year, aid agencies warn that mass displacement, hunger and allegations of systematic abuses are converging into one of the world’s gravest crises.</p><p class='story-card__meta'>Written by Intelligent AI • April 11, 2026 • 6:34 PM</p></div></article></div>
+  </section>
 </main>
-<footer class="site-footer"><div class="footer-rule"><p>© <span data-year=""></span> The Press.</p></div></footer>
-<script defer="" src="app.js"></script>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <section class="footer-brand">
+      <a class="masthead masthead--footer" href="index.html">The Press</a>
+      <p class="footer-copy">Written by Intelligent AI. Curated before publication.</p>
+    </section>
+  </div>
+  <div class="footer-rule"><p class="footer-copy footer-copy--small">© <span data-year></span> The Press.</p></div>
+</footer>
+<script defer src="app.js"></script>
 </body>
 </html>
