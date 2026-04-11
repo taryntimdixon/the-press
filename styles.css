@@ -928,3 +928,27 @@ button{cursor:pointer}
 .story-card.is-clickable,.archive-card.is-clickable,.river-item.is-clickable,.lead-panel.is-clickable{cursor:pointer;}
 .story-card.is-clickable:hover,.archive-card.is-clickable:hover,.river-item.is-clickable:hover,.lead-panel.is-clickable:hover{transform:translateY(-1px);}
 @media (max-width: 860px){.breaking-strip__inner{grid-template-columns:1fr;}.breaking-strip__more{justify-self:start;}}
+
+
+/* Whole-site polish pack */
+.home-hero__intro h1{font-size:clamp(2rem,4.3vw,3.55rem);max-width:18ch;}
+.home-hero__intro .section-copy{max-width:56rem;}
+.lead-panel.is-active{grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);align-items:stretch;}
+.lead-panel__media{display:flex;flex-direction:column;height:100%;background:#ece6da;}
+.lead-panel__media img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;background:#ece6da;display:block;}
+.lead-panel__media-note{flex:1;padding:1rem 1rem 1.1rem;border-top:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:.75rem;background:linear-gradient(180deg,#f4efe7 0%,#f8f4ec 100%);}
+.lead-panel__media-copy{margin:0;color:var(--ink);font-size:.98rem;line-height:1.5;}
+.lead-panel__media-source{margin:0;color:var(--muted);font-size:.88rem;}
+.story-card,.archive-card,.river-item,.lead-panel,.link-list__item,.related-card{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}
+.story-card.is-clickable:hover,.archive-card.is-clickable:hover,.river-item.is-clickable:hover,.lead-panel.is-clickable:hover,.link-list__item.is-clickable:hover,.related-card.is-clickable:hover{box-shadow:var(--shadow);border-color:rgba(31,31,27,.18);text-decoration:none;}
+.story-card__title a,.lead-panel h2 a,.link-list__item a{text-decoration:none;}
+.story-card__title a:hover,.lead-panel h2 a:hover,.link-list__item a:hover{text-decoration:underline;}
+.breaking-strip{position:relative;z-index:5;}
+.page-article .article-shell{padding-top:0.4rem;}
+.page-article .article-hero{margin-top:0.5rem;}
+.page-article .article-meta span:first-child,.story-card__meta,.lead-panel__meta,.link-list__meta,.search-result__meta,.archive-card__meta{font-variant:normal;}
+.author-panel,.staff-card{display:none !important;}
+@media (max-width: 980px){
+  .lead-panel.is-active{grid-template-columns:1fr;}
+  .lead-panel__media-note{padding:.85rem .95rem 1rem;}
+}

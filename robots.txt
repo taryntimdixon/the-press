@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.thepress.example/sitemap.xml
+Sitemap: https://thepress.live/sitemap.xml
