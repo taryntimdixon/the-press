@@ -1,0 +1,51 @@
+name: Daily AI Newsroom
+
+on:
+  workflow_dispatch:
+    inputs:
+      story_count:
+        description: How many stories to draft
+        required: false
+        default: "10"
+      model:
+        description: OpenAI model
+        required: false
+        default: "gpt-5.4-mini"
+  schedule:
+    - cron: "15 9 * * *"
+
+jobs:
+  draft-edition:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install OpenAI SDK
+        run: python -m pip install --upgrade openai
+
+      - name: Generate edition
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          STORY_COUNT: ${{ github.event.inputs.story_count || '10' }}
+          OPENAI_MODEL: ${{ github.event.inputs.model || 'gpt-5.4-mini' }}
+          SITE_BASE_URL: https://thepress.live
+        run: python studio/automation/daily_worldwide_issue.py
+
+      - name: Open review PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "Daily AI Edition"
+          body: |
+            This PR contains today's automatically drafted edition.
+            Review the article pages, breaking page, and archive before publishing.
+          commit-message: "Draft daily AI edition"
+          branch: daily-ai-edition
+          base: main
