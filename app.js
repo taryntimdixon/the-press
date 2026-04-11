@@ -19,6 +19,8 @@
     makeCardsClickable();
     bindThumbnailFallbacks(document);
     rewriteAuthorsPage();
+    relabelUtilityNav();
+    injectReadAloudControls();
   });
 
   function setupMenu() {
@@ -89,7 +91,7 @@
   }
 
   function makeCardsClickable() {
-    document.querySelectorAll('.link-list__item, .related-card').forEach((card) => {
+    document.querySelectorAll('.link-list__item, .related-card, .story-card, .archive-card, .river-item, .lead-panel').forEach((card) => {
       const link = card.querySelector('a[href]');
       if (!link) return;
       card.classList.add('is-clickable');
@@ -106,6 +108,81 @@
         }
       });
     });
+  }
+
+
+  function relabelUtilityNav() {
+    document.querySelectorAll('a[href="authors.html"]').forEach((link) => {
+      if (/authors/i.test(link.textContent || '')) {
+        link.textContent = 'AI Newsroom';
+      }
+    });
+  }
+
+  function injectReadAloudControls() {
+    const article = document.querySelector('.article');
+    const body = document.querySelector('.article-body');
+    const hero = document.querySelector('.article-hero');
+    if (!article || !body || !hero || !('speechSynthesis' in window)) return;
+    if (document.querySelector('[data-listen-controls]')) return;
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'listen-controls';
+    wrapper.setAttribute('data-listen-controls', '');
+    wrapper.innerHTML = `
+      <button class="listen-button" type="button" data-listen-play aria-label="Read this article aloud">🔊 Listen</button>
+      <button class="listen-button listen-button--ghost" type="button" data-listen-pause aria-label="Pause reading">Pause</button>
+      <button class="listen-button listen-button--ghost" type="button" data-listen-stop aria-label="Stop reading">Stop</button>
+      <span class="listen-status" data-listen-status>Ready to read aloud</span>
+    `;
+    const meta = hero.querySelector('.article-meta');
+    if (meta) meta.insertAdjacentElement('afterend', wrapper); else hero.appendChild(wrapper);
+
+    const play = wrapper.querySelector('[data-listen-play]');
+    const pause = wrapper.querySelector('[data-listen-pause]');
+    const stop = wrapper.querySelector('[data-listen-stop]');
+    const status = wrapper.querySelector('[data-listen-status]');
+
+    let utterance = null;
+    const getText = () => collapseWhitespace(body.innerText || body.textContent || '');
+
+    const stopSpeech = () => {
+      window.speechSynthesis.cancel();
+      utterance = null;
+      if (status) status.textContent = 'Stopped';
+    };
+
+    play.addEventListener('click', () => {
+      const text = getText();
+      if (!text) return;
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+        if (status) status.textContent = 'Reading aloud';
+        return;
+      }
+      window.speechSynthesis.cancel();
+      utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 1;
+      utterance.pitch = 1;
+      utterance.onstart = () => { if (status) status.textContent = 'Reading aloud'; };
+      utterance.onend = () => { if (status) status.textContent = 'Finished reading'; utterance = null; };
+      utterance.onerror = () => { if (status) status.textContent = 'Read-aloud unavailable in this browser'; utterance = null; };
+      window.speechSynthesis.speak(utterance);
+    });
+
+    pause.addEventListener('click', () => {
+      if (!window.speechSynthesis.speaking) return;
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+        if (status) status.textContent = 'Reading aloud';
+      } else {
+        window.speechSynthesis.pause();
+        if (status) status.textContent = 'Paused';
+      }
+    });
+
+    stop.addEventListener('click', stopSpeech);
+    window.addEventListener('beforeunload', stopSpeech);
   }
 
   function bindThumbnailFallbacks(root) {

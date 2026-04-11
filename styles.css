@@ -909,3 +909,22 @@ button{cursor:pointer}
 .author-panel{display:none !important;}
 .is-thumbnail-fallback{object-fit:contain !important;background:#f6f0e6;padding:.65rem;}
 @media (max-width: 700px){.lead-panel.is-active{grid-template-columns:1fr;}.lead-panel__media img{max-height:52vh;}}
+
+
+/* Preserve-everything upgrade */
+.breaking-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#f7f1e7;}
+.breaking-strip__inner{max-width:1280px;margin:0 auto;padding:.8rem 1rem;display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;}
+.breaking-strip__label-wrap{display:flex;align-items:center;gap:.6rem;white-space:nowrap;}
+.breaking-strip__badge{display:inline-flex;align-items:center;justify-content:center;padding:.24rem .55rem;border-radius:999px;background:#8f1d22;color:#fff;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+.breaking-strip__label{margin:0;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:#6b5b48;}
+.breaking-strip__items{display:flex;gap:1rem;overflow:auto;scrollbar-width:thin;}
+.breaking-strip__items a{white-space:nowrap;color:var(--ink);text-decoration:none;font-weight:600;}
+.breaking-strip__items a:hover{text-decoration:underline;}
+.breaking-strip__more{white-space:nowrap;font-weight:700;text-decoration:none;color:var(--accent);}
+.listen-controls{display:flex;flex-wrap:wrap;align-items:center;gap:.65rem;margin:1rem 0 0;}
+.listen-button{appearance:none;border:1px solid var(--line);background:#1a1a1a;color:#fff;border-radius:999px;padding:.55rem .9rem;font:inherit;font-weight:700;cursor:pointer;}
+.listen-button--ghost{background:#fff;color:var(--ink);}
+.listen-status{font-size:.95rem;color:var(--muted);}
+.story-card.is-clickable,.archive-card.is-clickable,.river-item.is-clickable,.lead-panel.is-clickable{cursor:pointer;}
+.story-card.is-clickable:hover,.archive-card.is-clickable:hover,.river-item.is-clickable:hover,.lead-panel.is-clickable:hover{transform:translateY(-1px);}
+@media (max-width: 860px){.breaking-strip__inner{grid-template-columns:1fr;}.breaking-strip__more{justify-self:start;}}
