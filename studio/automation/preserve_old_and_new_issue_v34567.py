@@ -290,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /* PRESS_AI_BYLINE_PATCH_END */
 """.strip()
     if start in existing and end in existing:
-        existing = re.sub(re.escape(start) + r".*?" + re.escape(end), patch, existing, flags=re.S)
+        existing = re.sub(re.escape(start) + r".*?" + re.escape(end), lambda m: patch, existing, flags=re.S)
     else:
         existing = existing.rstrip() + "\n\n" + patch + "\n"
     path.write_text(existing, encoding="utf-8")
@@ -357,7 +357,7 @@ def patch_styles() -> None:
 /* PRESS_DAILY_SECTION_END */
 """.strip()
     if start in existing and end in existing:
-        existing = re.sub(re.escape(start) + r".*?" + re.escape(end), patch, existing, flags=re.S)
+        existing = re.sub(re.escape(start) + r".*?" + re.escape(end), lambda m: patch, existing, flags=re.S)
     else:
         existing = existing.rstrip() + "\n\n" + patch + "\n"
     path.write_text(existing, encoding="utf-8")
