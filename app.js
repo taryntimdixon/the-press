@@ -424,23 +424,27 @@
     });
   }
 
-  function enhanceBreakingStrip(stories) {
-    const strip = document.querySelector('.breaking-strip');
-    const itemsBox = strip?.querySelector('.breaking-strip__items');
-    if (!strip || !itemsBox) return;
-    const existing = Array.from(itemsBox.querySelectorAll('a')).map((a) => ({ title: collapseWhitespace(a.textContent), url: a.getAttribute('href') }));
-    const extra = stories.slice(0, 12).map((story) => ({ title: story.title, url: story.url }));
-    const seen = new Set();
-    const merged = [...existing, ...extra].filter((item) => {
-      const key = `${item.title}|${item.url}`;
-      if (!item.title || seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    }).slice(0, 14);
-    if (!merged.length) return;
-    const markup = merged.map((item) => `<a href="${escapeAttribute(item.url)}">${escapeHtml(item.title)}</a>`).join('');
-    itemsBox.innerHTML = `<div class="breaking-strip__track">${markup}${markup}</div>`;
-  }
+
+function enhanceBreakingStrip(stories) {
+  const strip = document.querySelector('.breaking-strip');
+  const itemsBox = strip?.querySelector('.breaking-strip__items');
+  if (!strip || !itemsBox) return;
+  const existing = Array.from(itemsBox.querySelectorAll('a')).map((a) => ({ title: collapseWhitespace(a.textContent), url: a.getAttribute('href') }));
+  const extra = stories.slice(0, 12).map((story) => ({ title: story.title, url: story.url }));
+  const seen = new Set();
+  const merged = [...existing, ...extra].filter((item) => {
+    const key = `${item.title}|${item.url}`;
+    if (!item.title || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  }).slice(0, 14);
+  if (!merged.length) return;
+  const markup = merged.map((item) => `<a href="${escapeAttribute(item.url)}">${escapeHtml(item.title)}</a>`).join('');
+  const charBudget = merged.reduce((sum, item) => sum + Math.min(96, (item.title || '').length), 0);
+  const duration = Math.max(78, Math.min(138, Math.round(charBudget / 8)));
+  itemsBox.style.setProperty('--press-ticker-duration', `${duration}s`);
+  itemsBox.innerHTML = `<div class="breaking-strip__track">${markup}${markup}</div>`;
+}
 
   function injectEditionRadar(stories) {
     if (!document.body.classList.contains('page-home')) return;

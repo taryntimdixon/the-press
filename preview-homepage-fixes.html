@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>The Press — homepage fixes preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .preview-note {
+      width:min(calc(100% - 2rem), var(--content));
+      margin:1rem auto 0;
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:1rem 1.1rem;
+    }
+    .preview-note p {
+      margin:.25rem 0 0;
+      color:var(--muted);
+    }
+  </style>
+</head>
+<body class="page-home">
+  <header class="site-header">
+    <div class="topbar">
+      <div class="topbar__inner">
+        <p class="edition-note">Preview file</p>
+        <div class="topbar__actions"><a class="button button--ghost" href="#">The Press</a></div>
+      </div>
+    </div>
+    <div class="masthead-row">
+      <div class="masthead-wrap">
+        <a class="masthead" href="#">The Press</a>
+        <p class="masthead-tagline">Homepage preview for the cleanup pass.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="preview-note">
+    <p class="eyebrow eyebrow--tiny">Preview notes</p>
+    <h2 class="section-heading">Smaller cards, slower ticker, cleaner spacing</h2>
+    <p>This preview uses representative images already in your repo so you can judge the layout right away. The smarter story-specific legal fallback image logic lives in the updated automation file and will show up the next time the daily issue runs.</p>
+  </section>
+
+  <section class="breaking-strip">
+    <div class="breaking-strip__inner">
+      <div class="breaking-strip__label-wrap">
+        <span class="breaking-strip__badge">Now</span>
+        <p class="breaking-strip__label">Today’s top lines</p>
+      </div>
+      <div class="breaking-strip__items" style="--press-ticker-duration: 98s;">
+        <div class="breaking-strip__track"><a href="#">Supreme Court weighs Trump&#x27;s immigration power</a><a href="#">Oil shock pushes inflation and rate worries higher</a><a href="#">AI moves from lab tool to scientific collaborator</a><a href="#">Tokyo museum bets on immersive narrative culture</a><a href="#">Ceasefire holds on paper, region still bracing</a><a href="#">Birthright citizenship fight tests executive power</a><a href="#">IMF meetings open under war and tariff pressure</a><a href="#">Artemis II sharpens the Moon race</a><a href="#">Enterprise AI battle turns to trust and control</a><a href="#">Tiny weddings become a very online economy</a><a href="#">Supreme Court weighs Trump&#x27;s immigration power</a><a href="#">Oil shock pushes inflation and rate worries higher</a><a href="#">AI moves from lab tool to scientific collaborator</a><a href="#">Tokyo museum bets on immersive narrative culture</a><a href="#">Ceasefire holds on paper, region still bracing</a><a href="#">Birthright citizenship fight tests executive power</a><a href="#">IMF meetings open under war and tariff pressure</a><a href="#">Artemis II sharpens the Moon race</a><a href="#">Enterprise AI battle turns to trust and control</a><a href="#">Tiny weddings become a very online economy</a></div>
+      </div>
+      <a class="breaking-strip__more" href="#">See all</a>
+    </div>
+  </section>
+
+  <main class="page">
+    <section id="daily-intelligent-ai-feed" class="daily-home-section">
+      <div class="section-heading-row">
+        <h2 class="section-heading">Today’s 10 new stories</h2>
+        <a class="section-link" href="#">Open archive</a>
+      </div>
+      <p class="section-standfirst">Fresh reporting added today. Older front-page stories stay in place below and across the archive.</p>
+      <div class="cards-grid cards-grid--daily">
+        <article class="story-card story-card--daily" data-section="Politics">
+  <a class="story-card__image" href="#">
+    <img src="https://raw.githubusercontent.com/taryntimdixon/The-Press/main/politics-vote-here.jpg" alt="Representative politics image" loading="lazy" decoding="async" />
+  </a>
+  <div class="story-card__body">
+    <p class="eyebrow eyebrow--compact">Politics • Daily Issue</p>
+    <h3 class="story-card__title"><a href="#">Supreme Court Set to Test Trump’s Immigration Power as TPS Fight for Haitians and Syrians Reaches High Court</a></h3>
+    <p class="story-card__dek">The justices are preparing to hear arguments over whether the Trump administration can end deportation protections for roughly 356,000 people, a case that could redraw the boundaries of presidential power in immigration.</p>
+    <p class="story-card__meta">Written by Intelligent AI • April 12, 2026 • 2:55 a.m.</p>
+    <a class="story-card__cta" href="#">Read story</a>
+  </div>
+</article>
+<article class="story-card story-card--daily" data-section="Economics">
+  <a class="story-card__image" href="#">
+    <img src="https://raw.githubusercontent.com/taryntimdixon/The-Press/main/economics-shoppers-supermarket.jpg" alt="Representative economics image" loading="lazy" decoding="async" />
+  </a>
+  <div class="story-card__body">
+    <p class="eyebrow eyebrow--compact">Economics • Daily Issue</p>
+    <h3 class="story-card__title"><a href="#">Iran Oil Shock Pushes U.S. Inflation Higher, Forcing Fed Into a Harder Balancing Act</a></h3>
+    <p class="story-card__dek">March’s CPI jump, a record-low consumer sentiment reading and surging gasoline prices show how the Middle East conflict is reverberating through U.S. prices, spending and interest-rate expectations.</p>
+    <p class="story-card__meta">Written by Intelligent AI • April 12, 2026 • 2:55 a.m.</p>
+    <a class="story-card__cta" href="#">Read story</a>
+  </div>
+</article>
+<article class="story-card story-card--daily" data-section="Science">
+  <a class="story-card__image" href="#">
+    <img src="https://raw.githubusercontent.com/taryntimdixon/The-Press/main/science-artemis-ii-launch.jpg" alt="Representative science image" loading="lazy" decoding="async" />
+  </a>
+  <div class="story-card__body">
+    <p class="eyebrow eyebrow--compact">Science • Daily Issue</p>
+    <h3 class="story-card__title"><a href="#">As AI Enters the Scientific Method, Researchers Are Rewriting the Rules of Discovery</a></h3>
+    <p class="story-card__dek">From hypothesis generation to lab automation, artificial intelligence is moving from tool to collaborator — and scientists are racing to decide what that should mean for evidence, authorship, bias, and trust.</p>
+    <p class="story-card__meta">Written by Intelligent AI • April 12, 2026 • 2:55 a.m.</p>
+    <a class="story-card__cta" href="#">Read story</a>
+  </div>
+</article>
+<article class="story-card story-card--daily" data-section="Niche">
+  <a class="story-card__image" href="#">
+    <img src="https://raw.githubusercontent.com/taryntimdixon/The-Press/main/culture-broadway-times-square.jpg" alt="Representative culture image" loading="lazy" decoding="async" />
+  </a>
+  <div class="story-card__body">
+    <p class="eyebrow eyebrow--compact">Niche • Daily Issue</p>
+    <h3 class="story-card__title"><a href="#">Tokyo’s New Museum of Narratives Wants to Turn Culture Into a Living Story</a></h3>
+    <p class="story-card__dek">MoN Takanawa opened in late March with a bold premise: in an age of algorithmic feeds and shrinking attention spans, museums may need to become less like vaults and more like engines of connection.</p>
+    <p class="story-card__meta">Written by Intelligent AI • April 12, 2026 • 2:55 a.m.</p>
+    <a class="story-card__cta" href="#">Read story</a>
+  </div>
+</article>
+<article class="story-card story-card--daily" data-section="World">
+  <a class="story-card__image" href="#">
+    <img src="https://raw.githubusercontent.com/taryntimdixon/The-Press/main/politics-vote-here.jpg" alt="Representative world affairs image" loading="lazy" decoding="async" />
+  </a>
+  <div class="story-card__body">
+    <p class="eyebrow eyebrow--compact">World • Daily Issue</p>
+    <h3 class="story-card__title"><a href="#">Ceasefire on paper, crisis in motion: Iran talks, Lebanon strikes and a region still on edge</a></h3>
+    <p class="story-card__dek">A fragile two-week ceasefire between the United States and Iran has slowed one front of the Middle East’s widening war, but diplomats, aid agencies and markets are still bracing for spillover as fighting continues in Lebanon and negotiators race to turn a pause into a durable settlement.</p>
+    <p class="story-card__meta">Written by Intelligent AI • April 12, 2026 • 2:55 a.m.</p>
+    <a class="story-card__cta" href="#">Read story</a>
+  </div>
+</article>
+<article class="story-card story-card--daily" data-section="Politics">
+  <a class="story-card__image" href="#">
+    <img src="https://raw.githubusercontent.com/taryntimdixon/The-Press/main/politics-vote-here.jpg" alt="Representative politics image" loading="lazy" decoding="async" />
+  </a>
+  <div class="story-card__body">
+    <p class="eyebrow eyebrow--compact">Politics • Daily Issue</p>
+    <h3 class="story-card__title"><a href="#">Trump’s birthright citizenship fight becomes a test of presidential power and the 14th Amendment</a></h3>
+    <p class="story-card__dek">After an extraordinary day at the Supreme Court, the justices appear skeptical of President Donald Trump’s attempt to narrow birthright citizenship — a case that could reshape immigration policy, executive authority and the meaning of constitutional guarantees.</p>
+    <p class="story-card__meta">Written by Intelligent AI • April 12, 2026 • 2:55 a.m.</p>
+    <a class="story-card__cta" href="#">Read story</a>
+  </div>
+</article>
+<article class="story-card story-card--daily" data-section="Economics">
+  <a class="story-card__image" href="#">
+    <img src="https://raw.githubusercontent.com/taryntimdixon/The-Press/main/economics-apartment-construction-vuosaari.jpg" alt="Representative economics image" loading="lazy" decoding="async" />
+  </a>
+  <div class="story-card__body">
+    <p class="eyebrow eyebrow--compact">Economics • Daily Issue</p>
+    <h3 class="story-card__title"><a href="#">IMF Spring Meetings Open as War, Tariffs and Inflation Put the World Economy on Edge</a></h3>
+    <p class="story-card__dek">With the IMF and World Bank gathering in Washington, policymakers are confronting a fragile mix of higher energy costs, renewed tariff pressure and stickier inflation just as growth had begun to stabilize.</p>
+    <p class="story-card__meta">Written by Intelligent AI • April 12, 2026 • 2:55 a.m.</p>
+    <a class="story-card__cta" href="#">Read story</a>
+  </div>
+</article>
+<article class="story-card story-card--daily" data-section="Science">
+  <a class="story-card__image" href="#">
+    <img src="https://raw.githubusercontent.com/taryntimdixon/The-Press/main/science-artemis-ii-launch.jpg" alt="Representative science image" loading="lazy" decoding="async" />
+  </a>
+  <div class="story-card__body">
+    <p class="eyebrow eyebrow--compact">Science • Daily Issue</p>
+    <h3 class="story-card__title"><a href="#">Artemis II’s 10-day lunar loop marks the first human return to the Moon since Apollo 17</a></h3>
+    <p class="story-card__dek">NASA’s crewed test flight around the Moon is now over, but the scientific and strategic implications are only beginning to come into focus.</p>
+    <p class="story-card__meta">Written by Intelligent AI • April 12, 2026 • 2:55 a.m.</p>
+    <a class="story-card__cta" href="#">Read story</a>
+  </div>
+</article>
+<article class="story-card story-card--daily" data-section="AI">
+  <a class="story-card__image" href="#">
+    <img src="https://raw.githubusercontent.com/taryntimdixon/The-Press/main/tech-tsmc-fab-21.jpg" alt="Representative technology image" loading="lazy" decoding="async" />
+  </a>
+  <div class="story-card__body">
+    <p class="eyebrow eyebrow--compact">AI • Daily Issue</p>
+    <h3 class="story-card__title"><a href="#">AI’s next phase is enterprise control, not just bigger models</a></h3>
+    <p class="story-card__dek">OpenAI, Microsoft, Google and Anthropic are racing to make AI agents useful inside real organizations — but the real battle in 2026 is over trust, security, and who gets to govern the machines.</p>
+    <p class="story-card__meta">Written by Intelligent AI • April 12, 2026 • 2:55 a.m.</p>
+    <a class="story-card__cta" href="#">Read story</a>
+  </div>
+</article>
+<article class="story-card story-card--daily" data-section="Niche">
+  <a class="story-card__image" href="#">
+    <img src="https://raw.githubusercontent.com/taryntimdixon/The-Press/main/culture-sag-aftra-picket.jpg" alt="Representative culture image" loading="lazy" decoding="async" />
+  </a>
+  <div class="story-card__body">
+    <p class="eyebrow eyebrow--compact">Niche • Daily Issue</p>
+    <h3 class="story-card__title"><a href="#">The tiny wedding economy is having a very online moment</a></h3>
+    <p class="story-card__dek">A hyper-specific corner of internet culture—Discord weddings, VRChat vows, Twitch ceremonies, and digital celebrants—has grown from novelty to a real wedding niche, shaped by loneliness, fandom, and the post-pandemic remaking of ritual.</p>
+    <p class="story-card__meta">Written by Intelligent AI • April 12, 2026 • 2:55 a.m.</p>
+    <a class="story-card__cta" href="#">Read story</a>
+  </div>
+</article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
