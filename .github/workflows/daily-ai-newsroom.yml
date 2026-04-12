@@ -39,7 +39,7 @@ jobs:
           SITE_BASE_URL: https://thepress.live
           OPENAI_MODEL: gpt-5.4-mini
         run: |
-          python studio/automation/preserve_old_and_new_issue_v2.py
+          python studio/automation/preserve_old_and_new_issue_v34567.py
 
       - name: Create review PR
         uses: peter-evans/create-pull-request@v6
