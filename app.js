@@ -1,8 +1,8 @@
-
 (() => {
   const AUTHOR_LABEL = 'Written by Intelligent AI';
   const SEARCH_EMPTY = '<div class="search-empty"><p>Start typing to search the full edition.</p></div>';
   const SEARCH_NONE = '<div class="search-empty"><p>No stories matched that search yet.</p></div>';
+  let storyIndexPromise = null;
 
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-year]').forEach((node) => {
@@ -21,7 +21,60 @@
     rewriteAuthorsPage();
     relabelUtilityNav();
     injectReadAloudControls();
+    prettifySourceLinks(document);
+    extendSectionNavigation();
+
+    loadStoryIndex().then((stories) => {
+      enhanceBreakingStrip(stories);
+      injectEditionRadar(stories);
+      renderSectionPage(stories);
+      renderDynamicCategoryPages(stories);
+      hydrateMissingCardImages();
+    });
   });
+
+  function loadStoryIndex() {
+    if (storyIndexPromise) return storyIndexPromise;
+    storyIndexPromise = fetch('search-index.json', { cache: 'no-store' })
+      .then((response) => (response.ok ? response.json() : Promise.reject(new Error('no search index'))))
+      .then((data) => normalizeStoryArray(data))
+      .catch(() => {
+        const embedded = document.getElementById('press-search-data');
+        if (embedded) {
+          try {
+            return normalizeStoryArray(JSON.parse(embedded.textContent));
+          } catch (_) {
+            return [];
+          }
+        }
+        return [];
+      });
+    return storyIndexPromise;
+  }
+
+  function normalizeStoryArray(data) {
+    const items = Array.isArray(data) ? data.slice() : [];
+    return items.map((item) => ({
+      title: item.title || '',
+      section: normalizeSectionLabel(item.section || ''),
+      type: item.type || 'Report',
+      dek: item.dek || item.summary || '',
+      summary: item.summary || item.dek || '',
+      url: item.url || '#',
+      published: item.published || '',
+      keywords: Array.isArray(item.keywords) ? item.keywords : [],
+      image: item.image || item.thumbnail || item.photo || '',
+      imageAlt: item.imageAlt || item.alt || item.photoAlt || '',
+      sourceLabel: item.sourceLabel || '',
+      sortValue: parsePublished(item.published || ''),
+    })).sort((a, b) => b.sortValue - a.sortValue);
+  }
+
+  function parsePublished(value) {
+    const text = String(value || '').replace(/•/g, ' ').replace(/\ba\.m\./gi, 'AM').replace(/\bp\.m\./gi, 'PM').replace(/\bEDT\b|\bEST\b|\bUTC\b/gi, '').trim();
+    const time = Date.parse(text);
+    return Number.isFinite(time) ? time : 0;
+  }
 
   function setupMenu() {
     const siteHeader = document.querySelector('[data-site-header]');
@@ -110,7 +163,6 @@
     });
   }
 
-
   function relabelUtilityNav() {
     document.querySelectorAll('a[href="authors.html"]').forEach((link) => {
       if (/authors/i.test(link.textContent || '')) {
@@ -189,19 +241,14 @@
     root.querySelectorAll('img').forEach((img) => {
       if (img.dataset.pressFallbackBound === 'true') return;
       img.dataset.pressFallbackBound = 'true';
-      img.addEventListener('error', () => applyThumbnailFallback(img));
-      if (img.complete && img.naturalWidth === 0) applyThumbnailFallback(img);
+      img.addEventListener('error', () => hideBrokenImage(img));
+      if (img.complete && img.naturalWidth === 0) hideBrokenImage(img);
     });
   }
 
-  function applyThumbnailFallback(img) {
-    if (img.dataset.pressFallbackApplied === 'true') return;
-    img.dataset.pressFallbackApplied = 'true';
-    img.removeAttribute('srcset');
-    const fallback = 'assets/fallback-news.svg';
-    img.src = fallback;
-    img.alt = img.alt || 'The Press fallback artwork';
-    img.classList.add('is-thumbnail-fallback');
+  function hideBrokenImage(img) {
+    const holder = img.closest('.story-card__image, .lead-panel__media, .river-item__media, .archive-card__image, figure, .card-media');
+    if (holder) holder.classList.add('is-hidden'); else img.style.display = 'none';
   }
 
   function setupSearch() {
@@ -259,27 +306,9 @@
       `).join('');
     }
 
-    function loadSearchData() {
-      const embedded = document.getElementById('press-search-data');
-      if (embedded) {
-        try {
-          searchData = JSON.parse(embedded.textContent);
-          searchData.forEach((item) => { item.author = 'Intelligent AI'; });
-          return Promise.resolve(searchData);
-        } catch (error) {}
-      }
-      return fetch('search-index.json')
-        .then((response) => response.ok ? response.json() : [])
-        .then((data) => {
-          searchData = Array.isArray(data) ? data : [];
-          searchData.forEach((item) => { item.author = 'Intelligent AI'; });
-          return searchData;
-        })
-        .catch(() => []);
-    }
-
     if (!searchInput) return;
-    loadSearchData().then(() => {
+    loadStoryIndex().then((stories) => {
+      searchData = stories;
       searchInput.addEventListener('input', () => {
         const query = searchInput.value.trim().toLowerCase();
         if (!query) return renderSearchResults([], '');
@@ -311,8 +340,8 @@
   }
 
   function setupLeadPanels() {
-    const leadButtons = document.querySelectorAll('[data-lead-button]');
-    const leadPanels = document.querySelectorAll('[data-lead-panel]');
+    const leadButtons = Array.from(document.querySelectorAll('[data-lead-button]'));
+    const leadPanels = Array.from(document.querySelectorAll('[data-lead-panel]'));
     if (!leadButtons.length || !leadPanels.length) return;
     const setLead = (targetId) => {
       leadButtons.forEach((btn) => {
@@ -323,6 +352,14 @@
       leadPanels.forEach((panel) => panel.classList.toggle('is-active', panel.id === targetId));
     };
     leadButtons.forEach((btn) => btn.addEventListener('click', () => setLead(btn.dataset.target)));
+
+    const weightedOrder = [0, 0, 0, 1, 1, 2, 3];
+    const key = new Date().toISOString().slice(0, 10).split('-').join('');
+    let hash = 0;
+    for (const char of key) hash = ((hash * 31) + char.charCodeAt(0)) >>> 0;
+    const chosen = weightedOrder[hash % weightedOrder.length];
+    const chosenButton = leadButtons[chosen];
+    if (chosenButton) setLead(chosenButton.dataset.target);
   }
 
   function setupArchiveFilters() {
@@ -339,7 +376,7 @@
         });
         archiveCards.forEach((card) => {
           if (filterValue === 'All') return card.hidden = false;
-          const section = card.dataset.section;
+          const section = normalizeSectionLabel(card.dataset.section);
           const type = card.dataset.type;
           card.hidden = !(section === filterValue || type === filterValue);
         });
@@ -356,6 +393,273 @@
         form.reset();
       });
     });
+  }
+
+  function extendSectionNavigation() {
+    const extra = [
+      { label: 'AI', href: 'section-ai.html' },
+      { label: 'Geopolitics', href: 'section-geopolitics.html' },
+      { label: 'Film', href: 'section-film.html' },
+      { label: 'Pop Culture', href: 'section-pop-culture.html' },
+      { label: 'Niche', href: 'section-niche.html' },
+    ];
+    document.querySelectorAll('.section-nav__inner').forEach((nav) => {
+      extra.forEach((item) => {
+        if (nav.querySelector(`a[href="${item.href}"]`)) return;
+        const a = document.createElement('a');
+        a.className = 'nav-link';
+        a.href = item.href;
+        a.textContent = item.label;
+        nav.appendChild(a);
+      });
+    });
+    document.querySelectorAll('.footer-list').forEach((list) => {
+      if (!list.closest('section')?.querySelector('.footer-heading')?.textContent?.match(/Sections/i)) return;
+      extra.forEach((item) => {
+        if (list.querySelector(`a[href="${item.href}"]`)) return;
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="${item.href}">${item.label}</a>`;
+        list.appendChild(li);
+      });
+    });
+  }
+
+  function enhanceBreakingStrip(stories) {
+    const strip = document.querySelector('.breaking-strip');
+    const itemsBox = strip?.querySelector('.breaking-strip__items');
+    if (!strip || !itemsBox) return;
+    const existing = Array.from(itemsBox.querySelectorAll('a')).map((a) => ({ title: collapseWhitespace(a.textContent), url: a.getAttribute('href') }));
+    const extra = stories.slice(0, 12).map((story) => ({ title: story.title, url: story.url }));
+    const seen = new Set();
+    const merged = [...existing, ...extra].filter((item) => {
+      const key = `${item.title}|${item.url}`;
+      if (!item.title || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    }).slice(0, 14);
+    if (!merged.length) return;
+    const markup = merged.map((item) => `<a href="${escapeAttribute(item.url)}">${escapeHtml(item.title)}</a>`).join('');
+    itemsBox.innerHTML = `<div class="breaking-strip__track">${markup}${markup}</div>`;
+  }
+
+  function injectEditionRadar(stories) {
+    if (!document.body.classList.contains('page-home')) return;
+    const main = document.querySelector('.home-grid__main');
+    const anchor = document.querySelector('.home-grid__main .cards-grid');
+    if (!main || !anchor || document.querySelector('.edition-radar')) return;
+
+    const used = new Set(Array.from(document.querySelectorAll('.home-grid a[href]')).map((a) => a.getAttribute('href')));
+    const picks = stories.filter((story) => !used.has(story.url)).slice(0, 3);
+    const desks = [...new Set(stories.slice(0, 10).map((story) => story.section))];
+    const updated = stories[0]?.published || 'Updated recently';
+
+    const block = document.createElement('section');
+    block.className = 'edition-radar';
+    block.innerHTML = `
+      <div class="section-heading-row">
+        <div>
+          <p class="eyebrow eyebrow--tiny">Edition Radar</p>
+          <h2 class="section-heading">More from the edition</h2>
+        </div>
+        <a class="section-link" href="ai-edition.html">Open latest issue</a>
+      </div>
+      <div class="edition-radar__grid">
+        <div class="edition-radar__stack">
+          ${(picks.length ? picks : stories.slice(0, 3)).map((story) => `
+            <article class="edition-radar__item">
+              <p class="eyebrow eyebrow--tiny">${escapeHtml(story.section)} • ${escapeHtml(story.type)}</p>
+              <h3><a href="${escapeAttribute(story.url)}">${escapeHtml(story.title)}</a></h3>
+              <p>${escapeHtml(story.dek || story.summary || '')}</p>
+            </article>
+          `).join('')}
+        </div>
+        <aside class="edition-radar__aside">
+          <div class="edition-radar__stat"><span>Updated</span><strong>${escapeHtml(updated)}</strong></div>
+          <div class="edition-radar__stat"><span>Stories tracked</span><strong>${stories.length}</strong></div>
+          <div class="edition-radar__stat"><span>Desks in play</span><strong>${desks.length}</strong></div>
+          <div class="edition-radar__desks">${desks.slice(0, 8).map((desk) => `<span>${escapeHtml(desk)}</span>`).join('')}</div>
+        </aside>
+      </div>
+    `;
+    anchor.insertAdjacentElement('afterend', block);
+    normalizeVisibleBylines(block);
+    makeCardsClickable();
+  }
+
+  function renderSectionPage(stories) {
+    if (!document.body.classList.contains('page-section')) return;
+    const heading = document.querySelector('.section-landing h1, .page-hero h1');
+    const sectionName = normalizeSectionLabel(heading?.textContent || '');
+    if (!sectionName) return;
+
+    const grid = document.querySelector('.cards-grid--archive, .cards-grid');
+    if (!grid) return;
+
+    const aliases = sectionAliases(sectionName);
+    const existingCards = Array.from(grid.querySelectorAll('.story-card, .archive-card'));
+    const imageMap = new Map();
+    existingCards.forEach((card) => {
+      const link = card.querySelector('a[href]');
+      const img = card.querySelector('img');
+      if (!link || !img) return;
+      imageMap.set(link.getAttribute('href'), { src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' });
+    });
+
+    const matches = stories.filter((story) => aliases.includes(normalizeSectionLabel(story.section)));
+    if (!matches.length) return;
+
+    const deduped = [];
+    const seen = new Set();
+    matches.forEach((story) => {
+      if (seen.has(story.url)) return;
+      seen.add(story.url);
+      deduped.push(story);
+    });
+
+    grid.innerHTML = deduped.map((story) => renderSectionCard(story, imageMap.get(story.url))).join('');
+    normalizeVisibleBylines(grid);
+    makeCardsClickable();
+    bindThumbnailFallbacks(grid);
+    hydrateMissingCardImages(grid);
+  }
+
+  function renderDynamicCategoryPages(stories) {
+    const main = document.querySelector('.page-home .desk-directory .desk-grid');
+    if (!main) return;
+    const cards = Array.from(main.querySelectorAll('.desk-card'));
+    const allSections = new Map();
+    stories.forEach((story) => {
+      const key = normalizeSectionLabel(story.section);
+      if (!allSections.has(key)) allSections.set(key, []);
+      allSections.get(key).push(story);
+    });
+    cards.forEach((card) => {
+      const heading = card.querySelector('h3 a');
+      if (!heading) return;
+      const section = normalizeSectionLabel(heading.textContent);
+      const pool = allSections.get(sectionAliases(section)[0]) || allSections.get(section) || [];
+      const link = card.querySelector('.desk-card__story');
+      if (pool.length && link) {
+        link.textContent = pool[0].title;
+        link.href = pool[0].url;
+      }
+    });
+  }
+
+  function renderSectionCard(story, existingImage) {
+    const image = story.image || existingImage?.src || '';
+    const imageAlt = story.imageAlt || existingImage?.alt || story.title;
+    const imageHtml = image ? `
+      <a class="story-card__image" href="${escapeAttribute(story.url)}" data-card-image-wrap>
+        <img src="${escapeAttribute(image)}" alt="${escapeAttribute(imageAlt)}" loading="lazy" decoding="async" />
+      </a>` : '';
+    return `
+      <article class="story-card archive-card" data-section="${escapeAttribute(story.section)}" data-type="${escapeAttribute(story.type)}" data-story-url="${escapeAttribute(story.url)}">
+        ${imageHtml}
+        <div class="story-card__body">
+          <p class="eyebrow eyebrow--compact">${escapeHtml(story.section)} • ${escapeHtml(story.type)}</p>
+          <h3 class="story-card__title"><a href="${escapeAttribute(story.url)}">${escapeHtml(story.title)}</a></h3>
+          <p class="story-card__dek">${escapeHtml(story.dek || story.summary || '')}</p>
+          <p class="story-card__meta">${AUTHOR_LABEL} • ${escapeHtml(story.published || '')}</p>
+        </div>
+      </article>
+    `;
+  }
+
+  async function hydrateMissingCardImages(scope = document) {
+    const cards = Array.from(scope.querySelectorAll('[data-story-url]')).filter((card) => !card.querySelector('img'));
+    for (const card of cards.slice(0, 18)) {
+      const url = card.getAttribute('data-story-url');
+      if (!url || url === '#') continue;
+      try {
+        const response = await fetch(url, { cache: 'force-cache' });
+        if (!response.ok) continue;
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const img = doc.querySelector('.article-hero img, .generated-story img, main img');
+        if (!img) continue;
+        const src = img.getAttribute('src') || '';
+        const alt = collapseWhitespace(img.getAttribute('alt') || '');
+        if (!src || isBadImageCandidate(src, alt)) continue;
+        const wrap = document.createElement('a');
+        wrap.className = 'story-card__image';
+        wrap.href = url;
+        wrap.setAttribute('data-card-image-wrap', '');
+        wrap.innerHTML = `<img src="${escapeAttribute(src)}" alt="${escapeAttribute(alt || card.querySelector('h3 a')?.textContent || 'Story image')}" loading="lazy" decoding="async" />`;
+        card.insertBefore(wrap, card.firstChild);
+        bindThumbnailFallbacks(card);
+      } catch (_) {}
+    }
+  }
+
+  function isBadImageCandidate(src, alt) {
+    const joined = `${src} ${alt}`.toLowerCase();
+    return ['no image', 'placeholder', 'fallback', 'default', 'blank.svg', 'no_image_available'].some((needle) => joined.includes(needle));
+  }
+
+  function prettifySourceLinks(root) {
+    root.querySelectorAll('.source-notes a, .source-list a, .article-source-notes a, .generated-story .source-notes a').forEach((a) => {
+      const raw = collapseWhitespace(a.textContent || '');
+      const href = a.getAttribute('href') || '';
+      if (!raw || !/^https?:\/\//i.test(raw)) return;
+      try {
+        const url = new URL(href || raw);
+        a.textContent = humanSourceLabel(url.hostname, url.pathname);
+      } catch (_) {}
+    });
+  }
+
+  function humanSourceLabel(hostname, pathname) {
+    const host = hostname.replace(/^www\./, '').toLowerCase();
+    const nice = {
+      'reuters.com': 'Reuters',
+      'apnews.com': 'AP News',
+      'nasa.gov': 'NASA',
+      'census.gov': 'U.S. Census Bureau',
+      'bls.gov': 'U.S. Bureau of Labor Statistics',
+      'bea.gov': 'U.S. Bureau of Economic Analysis',
+      'cdc.gov': 'CDC',
+      'whitehouse.gov': 'The White House',
+      'commons.wikimedia.org': 'Wikimedia Commons',
+      'loc.gov': 'Library of Congress',
+      'worldbank.org': 'World Bank',
+      'imf.org': 'IMF',
+      'oecd.org': 'OECD',
+      'unesco.org': 'UNESCO',
+      'nato.int': 'NATO',
+      'europarl.europa.eu': 'European Parliament',
+      'ec.europa.eu': 'European Commission',
+    };
+    if (nice[host]) return nice[host];
+    const parts = host.split('.');
+    const brand = parts.length >= 2 ? parts[parts.length - 2] : host;
+    return brand.charAt(0).toUpperCase() + brand.slice(1).replace(/-/g, ' ');
+  }
+
+  function sectionAliases(sectionName) {
+    const section = normalizeSectionLabel(sectionName);
+    const aliases = {
+      'Politics': ['Politics'],
+      'Culture': ['Culture', 'Pop Culture', 'Film'],
+      'Technology': ['Technology', 'AI'],
+      'Economics': ['Economics'],
+      'Education': ['Education'],
+      'Health': ['Health'],
+      'Philosophy': ['Philosophy'],
+      'Science': ['Science'],
+      'World': ['World', 'Geopolitics'],
+      'Opinion': ['Opinion'],
+      'AI': ['AI', 'Technology'],
+      'Geopolitics': ['Geopolitics', 'World'],
+      'Film': ['Film', 'Culture', 'Pop Culture'],
+      'Pop Culture': ['Pop Culture', 'Culture', 'Film'],
+      'Niche': ['Niche'],
+    };
+    return aliases[section] || [section];
+  }
+
+  function normalizeSectionLabel(section) {
+    return collapseWhitespace(String(section || ''));
   }
 
   function collapseWhitespace(value) {
@@ -375,20 +679,3 @@
     return escapeHtml(value).replace(/`/g, '&#96;');
   }
 })();
-
-/* PRESS_AI_BYLINE_PATCH_START */
-document.addEventListener("DOMContentLoaded", () => {
-  const selectors = [
-    ".byline",
-    ".story-card__meta",
-    ".lead-panel__meta",
-    ".link-list__meta",
-    ".article-meta"
-  ];
-  document.querySelectorAll(selectors.join(",")).forEach((el) => {
-    const text = (el.textContent || "").trim();
-    if (!text) return;
-    el.textContent = text.replace(/^By\s+[^•]+/, "Written by Intelligent AI");
-  });
-});
-/* PRESS_AI_BYLINE_PATCH_END */
