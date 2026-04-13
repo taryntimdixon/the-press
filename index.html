@@ -10,6 +10,20 @@
 <meta content="The Press" name="apple-mobile-web-app-title"/>
 <meta content="yes" name="mobile-web-app-capable"/>
 <link href="https://thepress.live/index.html" rel="canonical"/>
+<!-- Open Graph / social sharing -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="The Press"/>
+<meta property="og:title" content="The Press — Front Page"/>
+<meta property="og:description" content="Worldwide breaking items, lead stories, and sourced long-form reporting across politics, culture, technology, economics, education, health, science, world, and opinion."/>
+<meta property="og:url" content="https://thepress.live/index.html"/>
+<meta property="og:image" content="https://thepress.live/assets/politics-vote-here.jpg"/>
+<meta property="og:image:width" content="1600"/>
+<meta property="og:image:height" content="1067"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@thepress"/>
+<meta name="twitter:title" content="The Press — Front Page"/>
+<meta name="twitter:description" content="Sourced long-form reporting across politics, culture, technology, economics, health, science, and opinion."/>
+<meta name="twitter:image" content="https://thepress.live/assets/politics-vote-here.jpg"/>
 <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="assets/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="assets/apple-touch-icon.png" rel="apple-touch-icon"/>
@@ -17,6 +31,10 @@
 <link href="site.webmanifest" rel="manifest"/>
 <link href="feed.xml" rel="alternate" title="The Press feed" type="application/rss+xml"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsMediaOrganization", "name": "The Press", "url": "https://thepress.live", "logo": "https://thepress.live/assets/favicon.svg", "slogan": "A digital newspaper built for sourced long-form reporting.", "publishingPrinciples": "https://thepress.live/standards.html", "correctionsPolicy": "https://thepress.live/corrections.html", "ethicsPolicy": "https://thepress.live/standards.html", "diversityPolicy": "https://thepress.live/about.html"}</script>
+<script>
+  // Restore theme before first paint to avoid flash
+  (function(){var t=localStorage.getItem('press-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);})();
+</script>
 </head>
 <body class="page-home">
 <div class="search-overlay" data-search-overlay="" hidden="">
@@ -42,6 +60,7 @@
 <p class="edition-note">Issue Four • Tuesday, April 7, 2026 • Reported features, analysis, essays, and visible source notes</p>
 <div class="topbar__actions">
 <button class="search-trigger" data-search-open="" type="button">Search</button>
+<button aria-label="Toggle dark mode" class="theme-toggle" data-theme-toggle="" type="button" title="Toggle dark/light mode">☀︎</button>
 <button aria-controls="site-sections" aria-expanded="false" class="menu-trigger" data-menu-toggle="" type="button">Menu</button>
 </div>
 </div>

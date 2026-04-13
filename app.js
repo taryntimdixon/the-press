@@ -23,6 +23,10 @@
     injectReadAloudControls();
     prettifySourceLinks(document);
     extendSectionNavigation();
+    setupDarkMode();
+    injectShareButtons();
+    applyDailyCardHover();
+    injectReadingTime();
 
     loadStoryIndex().then((stories) => {
       enhanceBreakingStrip(stories);
@@ -682,4 +686,124 @@ function enhanceBreakingStrip(stories) {
   function escapeAttribute(value) {
     return escapeHtml(value).replace(/`/g, '&#96;');
   }
+
+  /* ── Dark-mode toggle ──────────────────────────────────────────────── */
+  function setupDarkMode() {
+    const STORAGE_KEY = 'press-theme';
+    const root = document.documentElement;
+
+    // Restore saved preference immediately (before paint)
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+
+    const toggle = document.querySelector('[data-theme-toggle]');
+    if (!toggle) return;
+
+    function updateIcon() {
+      const isDark = root.getAttribute('data-theme') === 'dark' ||
+        (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      toggle.textContent = isDark ? '☽' : '☀︎';
+      toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    toggle.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark' ||
+        (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      const next = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem(STORAGE_KEY, next);
+      updateIcon();
+    });
+
+    updateIcon();
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateIcon);
+  }
+
+  /* ── Share buttons ────────────────────────────────────────────────── */
+  function injectShareButtons() {
+    const article = document.querySelector('.article, .article-shell');
+    const body = document.querySelector('.article-body');
+    if (!article || !body) return;
+    if (document.querySelector('.share-row')) return;
+
+    const title = encodeURIComponent(document.title.replace(' — The Press', '').trim());
+    const url = encodeURIComponent(window.location.href);
+    const tweetUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}&via=thepress`;
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+
+    const shareRow = document.createElement('div');
+    shareRow.className = 'share-row';
+    shareRow.innerHTML = `
+      <span class="share-row__label">Share this story</span>
+      <a class="share-btn" href="${tweetUrl}" target="_blank" rel="noopener noreferrer" aria-label="Share on X (Twitter)">
+        𝕏&nbsp;Post
+      </a>
+      <a class="share-btn" href="${linkedInUrl}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+        in&nbsp;LinkedIn
+      </a>
+      <button class="share-btn share-btn--copy" type="button" data-copy-link aria-label="Copy link to article">
+        🔗&nbsp;Copy link
+      </button>
+      ${navigator.share ? '<button class="share-btn share-btn--native" type="button" data-native-share aria-label="Share via system menu">↗ Share</button>' : ''}
+    `;
+    body.insertAdjacentElement('afterend', shareRow);
+
+    // Copy link
+    const copyBtn = shareRow.querySelector('[data-copy-link]');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          copyBtn.textContent = '✓ Copied!';
+          copyBtn.classList.add('copied');
+          setTimeout(() => {
+            copyBtn.innerHTML = '🔗&nbsp;Copy link';
+            copyBtn.classList.remove('copied');
+          }, 2200);
+        } catch (_) {
+          copyBtn.textContent = 'Copy failed';
+        }
+      });
+    }
+
+    // Native share
+    const nativeBtn = shareRow.querySelector('[data-native-share]');
+    if (nativeBtn && navigator.share) {
+      nativeBtn.addEventListener('click', () => {
+        navigator.share({
+          title: document.title.replace(' — The Press', '').trim(),
+          text: document.querySelector('meta[name="description"]')?.content || '',
+          url: window.location.href,
+        }).catch(() => {});
+      });
+    }
+  }
+
+  /* ── Hover micro-animation for daily cards ────────────────────────── */
+  function applyDailyCardHover() {
+    document.querySelectorAll('.daily-card, .story-card--daily').forEach((card) => {
+      const link = card.querySelector('a[href]');
+      if (!link) return;
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('a')) return;
+        window.location.href = link.href;
+      });
+    });
+  }
+
+  /* ── Inject "min read" reading-time badge on article pages ─────────  */
+  function injectReadingTime() {
+    const body = document.querySelector('.article-body, [data-article-body]');
+    const meta = document.querySelector('.article-meta');
+    if (!body || !meta) return;
+    if (meta.querySelector('[data-reading-time]')) return;
+    const words = (body.textContent || '').trim().split(/\s+/).length;
+    const mins = Math.max(1, Math.round(words / 230));
+    const badge = document.createElement('span');
+    badge.setAttribute('data-reading-time', '');
+    badge.textContent = `${mins} min read`;
+    meta.appendChild(badge);
+  }
+
 })();
