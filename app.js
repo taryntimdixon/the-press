@@ -807,3 +807,20 @@ function enhanceBreakingStrip(stories) {
   }
 
 })();
+
+/* PRESS_AI_BYLINE_PATCH_START */
+document.addEventListener("DOMContentLoaded", () => {
+  const selectors = [
+    ".byline",
+    ".story-card__meta",
+    ".lead-panel__meta",
+    ".link-list__meta",
+    ".article-meta"
+  ];
+  document.querySelectorAll(selectors.join(",")).forEach((el) => {
+    const text = (el.textContent || "").trim();
+    if (!text) return;
+    el.textContent = text.replace(/^By\s+[^•]+/, "Written by Intelligent AI");
+  });
+});
+/* PRESS_AI_BYLINE_PATCH_END */
