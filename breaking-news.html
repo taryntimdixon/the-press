@@ -4,12 +4,26 @@
 <head>
 <meta charset="utf-8"/>
 <title>Breaking News — The Press</title>
+<\!-- Open Graph -->
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="The Press"/>
+<meta property="og:title" content="Breaking News — The Press"/>
+<meta property="og:description" content="Worldwide breaking and fast-moving stories curated by The Press."/>
+<meta property="og:image" content="https://thepress.live/assets/politics-vote-here.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Breaking News — The Press"/>
+<meta name="twitter:description" content="Worldwide breaking and fast-moving stories curated by The Press."/>
+<meta name="twitter:image" content="https://thepress.live/assets/politics-vote-here.jpg"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Worldwide breaking and fast-moving stories curated by The Press." name="description"/>
 <link href="https://thepress.live/breaking-news.html" rel="canonical"/>
 <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="assets/apple-touch-icon.png" rel="apple-touch-icon"/>
 <link href="styles.css" rel="stylesheet"/>
+<script>
+  // Restore theme before first paint to avoid flash
+  (function(){var t=localStorage.getItem('press-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);})();
+</script>
 </head>
 <body class="page-breaking">
 <header class="site-header" data-site-header="">
@@ -18,6 +32,7 @@
 <p class="edition-note">The Press • Breaking news desk • Worldwide developments worth immediate attention</p>
 <div class="topbar__actions">
 <button class="search-trigger" data-search-open="" type="button">Search</button>
+<button aria-label="Toggle dark mode" class="theme-toggle" data-theme-toggle="" type="button" title="Toggle dark/light mode">☀︎</button>
 <button aria-controls="site-sections" aria-expanded="false" class="menu-trigger" data-menu-toggle="" type="button">Menu</button>
 </div>
 </div>
