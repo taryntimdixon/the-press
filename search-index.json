@@ -1,5 +1,147 @@
 [
   {
+    "title": "Trump’s White House ballroom fight turns into a test of presidential power",
+    "section": "Politics",
+    "type": "Daily Issue",
+    "dek": "A construction project that began as a flashy presidential makeover has become a live legal and political battle over Congress, the courts and how far a White House occupant can go in reshaping the historic grounds.",
+    "url": "daily/2026-04-13-trump-s-white-house-ballroom-fight-turns-into-a-test-of-presidential-power.html",
+    "author": "Intelligent AI",
+    "published": "April 13, 2026 • 1:26 a.m.",
+    "keywords": [
+      "Donald Trump",
+      "White House ballroom",
+      "presidential power"
+    ]
+  },
+  {
+    "title": "Tariffs, Inflation and a Late-Cycle Economy: Why April’s Data Still Leave Washington Guessing",
+    "section": "Economics",
+    "type": "Daily Issue",
+    "dek": "Fresh federal data show consumer spending holding up, inflation still running above the Fed’s target and the labor market cooling only gradually—just as tariff uncertainty threatens to complicate the path forward.",
+    "url": "daily/2026-04-13-tariffs-inflation-and-a-late-cycle-economy-why-april-s-data-still-leave-washington-guessing.html",
+    "author": "Intelligent AI",
+    "published": "April 13, 2026 • 1:26 a.m.",
+    "keywords": [
+      "inflation",
+      "tariffs",
+      "Federal Reserve"
+    ]
+  },
+  {
+    "title": "OpenAI’s push into safety, enterprise and influence shows AI’s new center of gravity",
+    "section": "AI",
+    "type": "Daily Issue",
+    "dek": "In a single week, OpenAI moved on child safety, startup investment, a safety fellowship and a media acquisition, underscoring how the AI race in 2026 is now as much about trust, governance and reach as it is about model quality.",
+    "url": "daily/2026-04-13-openai-s-push-into-safety-enterprise-and-influence-shows-ai-s-new-center-of-gravity.html",
+    "author": "Intelligent AI",
+    "published": "April 13, 2026 • 1:26 a.m.",
+    "keywords": [
+      "OpenAI",
+      "AI safety",
+      "enterprise AI"
+    ]
+  },
+  {
+    "title": "Earth’s night lights are flickering, and the map of civilization is getting stranger",
+    "section": "Niche",
+    "type": "Daily Issue",
+    "dek": "A new Nature study shows that artificial light on Earth is no longer simply expanding outward. It is brightening, dimming and shifting in bursts—especially across Asia—offering a rare, data-rich glimpse of how urbanization, electrification and instability are reshaping the planet after dark.",
+    "url": "daily/2026-04-13-earth-s-night-lights-are-flickering-and-the-map-of-civilization-is-getting-stranger.html",
+    "author": "Intelligent AI",
+    "published": "April 13, 2026 • 1:26 a.m.",
+    "keywords": [
+      "artificial light",
+      "satellite imagery",
+      "urbanization"
+    ]
+  },
+  {
+    "title": "Inflation Has Eased, But the Fed’s Next Move Is Still Complicated",
+    "section": "Economics",
+    "type": "Daily Issue",
+    "dek": "March CPI and PCE data point to cooling price pressures, but sticky services inflation, tariff uncertainty and a still-tight labor market are keeping the Federal Reserve cautious ahead of its April 28-29 meeting.",
+    "url": "daily/2026-04-13-inflation-has-eased-but-the-fed-s-next-move-is-still-complicated.html",
+    "author": "Intelligent AI",
+    "published": "April 13, 2026 • 1:26 a.m.",
+    "keywords": [
+      "Federal Reserve",
+      "inflation",
+      "CPI"
+    ]
+  },
+  {
+    "title": "Artemis II’s moon flyby is over. What the mission has already changed for science.",
+    "section": "Science",
+    "type": "Daily Issue",
+    "dek": "NASA’s first crewed lunar mission in more than half a century has returned four astronauts to Earth, but its real significance may be what it teaches about deep-space flight, lunar operations, and the next phase of the Artemis program.",
+    "url": "daily/2026-04-13-artemis-ii-s-moon-flyby-is-over-what-the-mission-has-already-changed-for-science.html",
+    "author": "Intelligent AI",
+    "published": "April 13, 2026 • 1:26 a.m.",
+    "keywords": [
+      "Artemis II",
+      "NASA",
+      "Moon mission"
+    ]
+  },
+  {
+    "title": "AI’s new center of gravity is enterprise control, not just model bragging rights",
+    "section": "AI",
+    "type": "Daily Issue",
+    "dek": "OpenAI, Google and Anthropic have spent the first weeks of spring 2026 pushing a clear message: the AI race is shifting from raw model launches to the harder work of wiring agents into real businesses, with security, context, and governance now part of the product itself.",
+    "url": "daily/2026-04-13-ai-s-new-center-of-gravity-is-enterprise-control-not-just-model-bragging-rights.html",
+    "author": "Intelligent AI",
+    "published": "April 13, 2026 • 1:26 a.m.",
+    "keywords": [
+      "artificial intelligence",
+      "enterprise AI",
+      "OpenAI",
+      "Google Gemini",
+      "Anthropic Claude"
+    ]
+  },
+  {
+    "title": "NASA’s Swift spacecraft is getting a rescue mission in orbit",
+    "section": "Niche",
+    "type": "Daily Issue",
+    "dek": "A 21-year-old gamma-ray observatory is losing altitude faster than expected. NASA is betting that a commercial robot can save it — and prove a new kind of space tug is viable.",
+    "url": "daily/2026-04-13-nasa-s-swift-spacecraft-is-getting-a-rescue-mission-in-orbit.html",
+    "author": "Intelligent AI",
+    "published": "April 13, 2026 • 1:26 a.m.",
+    "keywords": [
+      "NASA",
+      "spacecraft servicing",
+      "gamma-ray bursts"
+    ]
+  },
+  {
+    "title": "U.S.-Iran ceasefire talks collapse, leaving the Strait of Hormuz and a wider regional war on edge",
+    "section": "Geopolitics",
+    "type": "Daily Issue",
+    "dek": "After two days of talks in Pakistan ended without a deal, Washington and Tehran are back to brinkmanship over Iran’s nuclear program, a fragile ceasefire, and the prospect of confrontation in one of the world’s most strategic waterways.",
+    "url": "daily/2026-04-13-u-s-iran-ceasefire-talks-collapse-leaving-the-strait-of-hormuz-and-a-wider-regional-war-on-edge.html",
+    "author": "Intelligent AI",
+    "published": "April 13, 2026 • 1:26 a.m.",
+    "keywords": [
+      "Iran",
+      "United States",
+      "Strait of Hormuz"
+    ]
+  },
+  {
+    "title": "The redistricting war that could decide the 2026 House: Texas holds, Missouri follows, and the map fight widens",
+    "section": "Politics",
+    "type": "Daily Issue",
+    "dek": "A Supreme Court ruling on Texas, a Missouri court victory for Republicans, and the broader collapse of stable redistricting rules have turned the 2026 House map into a high-stakes political weapon.",
+    "url": "daily/2026-04-13-the-redistricting-war-that-could-decide-the-2026-house-texas-holds-missouri-follows-and-the-map-fight-widens.html",
+    "author": "Intelligent AI",
+    "published": "April 13, 2026 • 1:26 a.m.",
+    "keywords": [
+      "politics",
+      "redistricting",
+      "Supreme Court"
+    ]
+  },
+  {
     "title": "Inflation’s new shock: the Iran war, gasoline and the Fed’s narrowing path",
     "section": "Economics",
     "type": "Daily Issue",
