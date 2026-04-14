@@ -34,7 +34,14 @@
       pressRefreshHomepageStoryBlocks(stories);
       renderSectionPage(stories);
       renderDynamicCategoryPages(stories);
-      hydrateMissingCardImages();
+      const hasHomepageTargets =
+  document.querySelector('.lead-switcher__panels') ||
+  document.querySelector('.home-grid__main .cards-grid.cards-grid--three') ||
+  document.querySelector('.latest-section .river');
+
+if (!hasHomepageTargets) {
+  hydrateMissingCardImages();
+}
     });
   });
 
