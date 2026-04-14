@@ -31,6 +31,7 @@
     loadStoryIndex().then((stories) => {
       enhanceBreakingStrip(stories);
       injectEditionRadar(stories);
+      pressRefreshHomepageStoryBlocks(stories);
       renderSectionPage(stories);
       renderDynamicCategoryPages(stories);
       hydrateMissingCardImages();
@@ -805,7 +806,374 @@ function enhanceBreakingStrip(stories) {
     badge.textContent = `${mins} min read`;
     meta.appendChild(badge);
   }
+/* =========================
+   HOMEPAGE ROTATION PATCH
+   ========================= */
 
+function pressEscapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function pressEscapeAttribute(value) {
+  return pressEscapeHtml(value);
+}
+
+function pressSectionHref(sectionName) {
+  const slug = String(sectionName || '')
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+  return slug ? `section-${slug}.html` : 'archive.html';
+}
+
+function pressNormalizeSectionLabel(value) {
+  return String(value || 'front page')
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function pressSortValue(story) {
+  const direct = Number(story && story.sortValue);
+  if (Number.isFinite(direct)) return direct;
+
+  const maybeDates = [
+    story && story.publishedAt,
+    story && story.published,
+    story && story.publishDate,
+    story && story.date,
+    story && story.updatedAt,
+    story && story.timestamp
+  ];
+
+  for (const value of maybeDates) {
+    if (!value) continue;
+    const parsed = Date.parse(value);
+    if (!Number.isNaN(parsed)) return parsed;
+  }
+
+  return 0;
+}
+
+function pressNormalizeStory(story) {
+  if (!story) return null;
+
+  const url = story.url || story.href || story.link || story.permalink || '';
+  const title = story.title || story.headline || story.name || '';
+  if (!url || !title) return null;
+
+  const summary = story.dek || story.summary || story.description || story.excerpt || '';
+  const image = story.image || story.imageUrl || story.thumbnail || story.photo || '';
+
+  return {
+    ...story,
+    url,
+    title,
+    image,
+    imageAlt: story.imageAlt || story.alt || title,
+    section: story.section || story.desk || story.category || 'News',
+    type: story.type || story.kind || 'Story',
+    dek: summary,
+    summary,
+    published: story.published || story.displayDate || story.date || '',
+    byline: story.byline || story.author || story.authors || '',
+    sortValue: pressSortValue(story),
+  };
+}
+
+function pressMetaLabel(story) {
+  return story && story.byline ? story.byline : 'The Press';
+}
+
+function pressMetaLine(story) {
+  const author = pressMetaLabel(story);
+  const published = String((story && story.published) || '').trim();
+  return published ? `${author} • ${published}` : author;
+}
+
+function pressBindThumbnailFallbacks(root = document) {
+  const scope = root && root.querySelectorAll ? root : document;
+
+  scope.querySelectorAll('img').forEach((img) => {
+    if (img.dataset.pressFallbackBound === 'true') return;
+    img.dataset.pressFallbackBound = 'true';
+
+    img.addEventListener('error', () => {
+      const wrapper = img.closest('.story-card__image, .river-item__thumb, .lead-panel__media');
+      if (wrapper) {
+        wrapper.style.display = 'none';
+      } else {
+        img.style.display = 'none';
+      }
+    });
+  });
+}
+
+function pressNormalizeVisibleBylines(root = document) {
+  const scope = root && root.querySelectorAll ? root : document;
+
+  scope.querySelectorAll('.story-card__meta, .river-item__meta, .lead-panel__meta').forEach((el) => {
+    const text = String(el.textContent || '').replace(/\s+/g, ' ').trim();
+    if (!text || text === '•') el.remove();
+  });
+}
+
+function pressHydrateMissingCardImages(root = document) {
+  try {
+    if (typeof hydrateMissingCardImages === 'function') {
+      hydrateMissingCardImages(root);
+    }
+  } catch (error) {
+    /* noop */
+  }
+}
+
+function pressSetupLeadPanels() {
+  const leadButtons = Array.from(document.querySelectorAll('[data-lead-button]'));
+  const leadPanels = Array.from(document.querySelectorAll('[data-lead-panel]'));
+  if (!leadButtons.length || !leadPanels.length) return;
+
+  const setLead = (targetId) => {
+    leadButtons.forEach((btn) => {
+      const active = btn.dataset.target === targetId;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', String(active));
+    });
+
+    leadPanels.forEach((panel) => {
+      panel.classList.toggle('is-active', panel.id === targetId);
+    });
+  };
+
+  leadButtons.forEach((btn) => {
+    if (btn.dataset.pressLeadBound === 'true') return;
+    btn.dataset.pressLeadBound = 'true';
+    btn.addEventListener('click', () => setLead(btn.dataset.target));
+  });
+
+  const previous = Number(sessionStorage.getItem('press-last-lead-index') ?? -1);
+  let chosen = Math.floor(Math.random() * leadButtons.length);
+  if (leadButtons.length > 1 && chosen === previous) {
+    chosen = (chosen + 1) % leadButtons.length;
+  }
+  sessionStorage.setItem('press-last-lead-index', String(chosen));
+
+  const chosenButton = leadButtons[chosen];
+  if (chosenButton) setLead(chosenButton.dataset.target);
+}
+
+function pressShuffleArray(items) {
+  const copy = Array.isArray(items) ? items.slice() : [];
+
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+
+  return copy;
+}
+
+function pressPickStorySet(source, count, used, uniqueSections = false) {
+  const picked = [];
+  const seenSections = new Set();
+  const candidates = pressShuffleArray(Array.isArray(source) ? source : []);
+
+  const tryTake = (story, enforceUniqueSections) => {
+    if (!story || !story.url || used.has(story.url)) return false;
+
+    const sectionKey = pressNormalizeSectionLabel(story.section);
+    if (enforceUniqueSections && seenSections.has(sectionKey)) return false;
+
+    used.add(story.url);
+    seenSections.add(sectionKey);
+    picked.push(story);
+
+    return picked.length >= count;
+  };
+
+  for (const story of candidates) {
+    if (tryTake(story, uniqueSections)) return picked;
+  }
+
+  for (const story of candidates) {
+    if (tryTake(story, false)) return picked;
+  }
+
+  return picked;
+}
+
+function pressRenderLeadPanel(story, index) {
+  const imageHtml = story.image
+    ? `<img src="${pressEscapeAttribute(story.image)}" alt="${pressEscapeAttribute(story.imageAlt || story.title || '')}" loading="eager" decoding="async" />`
+    : '';
+
+  return `
+    <div class="lead-panel${index === 0 ? ' is-active' : ''}" data-lead-panel id="lead-${index}">
+      <div class="lead-panel__media">
+        ${imageHtml}
+      </div>
+      <div class="lead-panel__body">
+        <div>
+          <p class="eyebrow">Front Page • ${pressEscapeHtml(story.section || 'News')} • ${pressEscapeHtml(story.type || 'Story')}</p>
+          <h2><a href="${pressEscapeAttribute(story.url)}">${pressEscapeHtml(story.title || '')}</a></h2>
+          <p class="lead-panel__dek">${pressEscapeHtml(story.dek || story.summary || '')}</p>
+          <p class="lead-panel__meta">${pressEscapeHtml(pressMetaLine(story))}</p>
+        </div>
+        <div class="button-row">
+          <a class="button" href="${pressEscapeAttribute(story.url)}">Read story</a>
+          <a class="button button--ghost" href="${pressEscapeAttribute(pressSectionHref(story.section))}">More ${pressEscapeHtml(String(story.section || 'news').toLowerCase())}</a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function pressRenderHomepageLeadStories(stories) {
+  const panelBox = document.querySelector('.lead-switcher__panels');
+  const navBox = document.querySelector('.lead-nav');
+
+  if (!panelBox || !navBox || !stories.length) return;
+
+  panelBox.innerHTML = stories.map((story, index) => pressRenderLeadPanel(story, index)).join('');
+  navBox.innerHTML = stories.map((story, index) => `
+    <button class="lead-nav__button${index === 0 ? ' is-active' : ''}" type="button" data-lead-button data-target="lead-${index}" aria-pressed="${String(index === 0)}">
+      <span>${pressEscapeHtml(story.section || 'Front Page')}</span>
+      <strong>${pressEscapeHtml(story.title || '')}</strong>
+    </button>
+  `).join('');
+
+  pressBindThumbnailFallbacks(panelBox);
+  pressSetupLeadPanels();
+}
+
+function pressRenderHomeStoryCard(story) {
+  const imageHtml = story.image ? `
+    <a class="story-card__image" href="${pressEscapeAttribute(story.url)}">
+      <img alt="${pressEscapeAttribute(story.imageAlt || story.title || '')}" decoding="async" loading="lazy" src="${pressEscapeAttribute(story.image)}" />
+    </a>
+  ` : '';
+
+  return `
+    <article class="story-card" data-section="${pressEscapeAttribute(story.section || '')}" data-type="${pressEscapeAttribute(story.type || '')}" data-story-url="${pressEscapeAttribute(story.url)}">
+      ${imageHtml}
+      <div class="story-card__body">
+        <p class="eyebrow eyebrow--compact">${pressEscapeHtml(story.section || '')} • ${pressEscapeHtml(story.type || '')}</p>
+        <h3 class="story-card__title"><a href="${pressEscapeAttribute(story.url)}">${pressEscapeHtml(story.title || '')}</a></h3>
+        <p class="story-card__dek">${pressEscapeHtml(story.dek || story.summary || '')}</p>
+        <p class="story-card__meta">${pressEscapeHtml(pressMetaLine(story))}</p>
+      </div>
+    </article>
+  `;
+}
+
+function pressRenderHomepageSecondaryStories(stories) {
+  const grid = document.querySelector('.home-grid__main .cards-grid.cards-grid--three');
+  if (!grid || !stories.length) return;
+
+  grid.innerHTML = stories.map((story) => pressRenderHomeStoryCard(story)).join('');
+  pressNormalizeVisibleBylines(grid);
+  pressBindThumbnailFallbacks(grid);
+  pressHydrateMissingCardImages(grid);
+}
+
+function pressRenderRiverStory(story) {
+  const imageHtml = story.image ? `
+    <a class="river-item__thumb" href="${pressEscapeAttribute(story.url)}">
+      <img alt="${pressEscapeAttribute(story.imageAlt || story.title || '')}" decoding="async" loading="lazy" src="${pressEscapeAttribute(story.image)}" />
+    </a>
+  ` : '';
+
+  return `
+    <article class="river-item" data-story-url="${pressEscapeAttribute(story.url)}">
+      ${imageHtml}
+      <div class="river-item__body">
+        <p class="eyebrow eyebrow--tiny">${pressEscapeHtml(story.section || '')} • ${pressEscapeHtml(story.type || '')}</p>
+        <h3><a href="${pressEscapeAttribute(story.url)}">${pressEscapeHtml(story.title || '')}</a></h3>
+        <p>${pressEscapeHtml(story.dek || story.summary || '')}</p>
+        <p class="river-item__meta">${pressEscapeHtml(pressMetaLine(story))}</p>
+      </div>
+    </article>
+  `;
+}
+
+function pressRenderHomepageRiverStories(stories) {
+  const river = document.querySelector('.latest-section .river');
+  if (!river || !stories.length) return;
+
+  river.innerHTML = stories.map((story) => pressRenderRiverStory(story)).join('');
+  pressNormalizeVisibleBylines(river);
+  pressBindThumbnailFallbacks(river);
+  pressHydrateMissingCardImages(river);
+}
+
+function pressMakeCardsClickable() {
+  document.querySelectorAll('.link-list__item, .related-card, .story-card, .archive-card, .river-item, .lead-panel').forEach((card) => {
+    if (card.dataset.pressClickableBound === 'true') return;
+    card.dataset.pressClickableBound = 'true';
+
+    const link = card.querySelector('a[href]');
+    if (!link) return;
+
+    card.classList.add('is-clickable');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'link');
+
+    card.addEventListener('click', (event) => {
+      if (event.target.closest('a, button, input, textarea, select, label')) return;
+      window.location.href = link.href;
+    });
+
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        link.click();
+      }
+    });
+  });
+}
+
+function pressRefreshHomepageStoryBlocks(stories) {
+  const hasHomepageTargets =
+    document.querySelector('.lead-switcher__panels') ||
+    document.querySelector('.home-grid__main .cards-grid.cards-grid--three') ||
+    document.querySelector('.latest-section .river');
+
+  if (!hasHomepageTargets) return;
+
+  const pool = Array.isArray(stories)
+    ? stories.map(pressNormalizeStory).filter((story) => story && story.url && story.title)
+    : [];
+
+  if (!pool.length) return;
+
+  const recent = pool.slice().sort((a, b) => b.sortValue - a.sortValue);
+  const used = new Set();
+
+  const leadPool = recent.filter((story) => story.image);
+
+  pressRenderHomepageLeadStories(
+    pressPickStorySet(leadPool.length ? leadPool : recent, 4, used, true)
+  );
+
+  pressRenderHomepageSecondaryStories(
+    pressPickStorySet(recent.filter((story) => !used.has(story.url)), 3, used, true)
+  );
+
+  pressRenderHomepageRiverStories(
+    pressPickStorySet(recent.filter((story) => !used.has(story.url)), 8, used, false)
+  );
+
+  pressMakeCardsClickable();
+}
 })();
 
 /* PRESS_AI_BYLINE_PATCH_START */
