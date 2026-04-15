@@ -32,6 +32,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install openai requests beautifulsoup4
 
+      - name: Verify automation script exists
+        run: |
+          ls -la studio/automation
+          test -f studio/automation/preserve_old_and_new_issue_v34567.py
+
       - name: Generate new issue without wiping old site
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
