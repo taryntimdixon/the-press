@@ -122,6 +122,13 @@ Rules:
 
 
 def wiki_thumbnail(query: str) -> tuple[str, str]:
+HTTP_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+}
+
+
+def wiki_thumbnail(query: str) -> tuple[str, str]:
     search_url = "https://commons.wikimedia.org/w/api.php"
     params = {
         "action": "query",
@@ -134,7 +141,7 @@ def wiki_thumbnail(query: str) -> tuple[str, str]:
         "iiurlwidth": 1200,
         "format": "json",
     }
-    r = requests.get(search_url, params=params, timeout=20)
+    r = requests.get(search_url, params=params, headers=HTTP_HEADERS, timeout=20)
     r.raise_for_status()
     data = r.json()
     pages = data.get("query", {}).get("pages", {})
@@ -148,11 +155,61 @@ def wiki_thumbnail(query: str) -> tuple[str, str]:
 
 def guess_ext(url: str) -> str:
     path = urlparse(url).path.lower()
+    if path.endswith(".jpeg"):
+        return ".jpeg"
+    if path.endswith(".jpg"):
+        return ".jpg"
     if path.endswith(".png"):
         return ".png"
     if path.endswith(".webp"):
         return ".webp"
+    if path.endswith(".gif"):
+        return ".gif"
+    if path.endswith(".svg"):
+        return ".svg"
     return ".jpg"
+
+
+def write_placeholder_image(slug: str, edition_date: str) -> str:
+    ASSETS_DAILY.mkdir(parents=True, exist_ok=True)
+    target = ASSETS_DAILY / f"{edition_date}-{slug}.svg"
+    svg = """<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">The Press image placeholder</title>
+  <desc id="desc">Fallback image used when a remote thumbnail cannot be downloaded.</desc>
+  <rect width="1200" height="675" fill="#f4efe8"/>
+  <rect x="40" y="40" width="1120" height="595" rx="24" fill="#ffffff" stroke="#d7cdc0" stroke-width="4"/>
+  <text x="600" y="290" text-anchor="middle" font-family="Georgia, serif" font-size="64" fill="#111111">The Press</text>
+  <text x="600" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#444444">Image unavailable</text>
+</svg>
+"""
+    target.write_text(svg, encoding="utf-8")
+    return str(target.relative_to(ROOT)).replace("\\", "/")
+
+
+def download_image(url: str, slug: str, edition_date: str) -> str:
+    ASSETS_DAILY.mkdir(parents=True, exist_ok=True)
+
+    if not url or "No_image_available.svg" in url:
+        return write_placeholder_image(slug, edition_date)
+
+    ext = guess_ext(url)
+    target = ASSETS_DAILY / f"{edition_date}-{slug}{ext}"
+
+    try:
+        r = requests.get(url, headers=HTTP_HEADERS, timeout=30)
+        r.raise_for_status()
+
+        content_type = (r.headers.get("Content-Type") or "").lower()
+        if "image" not in content_type and "svg" not in content_type:
+            raise RuntimeError(f"Unexpected content type: {content_type}")
+
+        target.write_bytes(r.content)
+        return str(target.relative_to(ROOT)).replace("\\", "/")
+    except Exception as exc:
+        print(f"Image download failed for {url}: {exc}")
+        return write_placeholder_image(slug, edition_date)
+    
+
 
 
 def download_image(url: str, slug: str, edition_date: str) -> str:
