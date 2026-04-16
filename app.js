@@ -1192,10 +1192,14 @@ document.addEventListener("DOMContentLoaded", () => {
     ".link-list__meta",
     ".article-meta"
   ];
+
   document.querySelectorAll(selectors.join(",")).forEach((el) => {
     const text = (el.textContent || "").trim();
     if (!text) return;
-    el.textContent = text.replace(/^By\s+[^•]+/, "Written by Intelligent AI");
+
+    if (text.startsWith("By ")) {
+      el.textContent = text.replace(/^By\s+[^•]+/, "Written by Intelligent AI");
+    }
   });
 });
 /* PRESS_AI_BYLINE_PATCH_END */

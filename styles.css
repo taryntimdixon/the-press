@@ -1036,51 +1036,65 @@ button{cursor:pointer}
 .breaking-wire-section {
   margin: 2.5rem auto;
 }
-.daily-home-section .cards-grid--daily,
-.daily-archive-section .cards-grid--daily {
+
+.cards-grid--daily {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.25rem;
 }
+
 .story-card--daily .story-card__image img {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
 }
+
 .story-card__cta {
   display: inline-block;
-  margin-top: .8rem;
+  margin-top: 0.8rem;
   font-weight: 700;
 }
+
 .breaking-wire-list {
   display: grid;
   gap: 1rem;
+  list-style: none;
+  padding-left: 0;
 }
+
 .breaking-wire-list li {
   background: #fff;
   border: 1px solid #e3d9cc;
   border-radius: 18px;
   padding: 1rem 1.1rem;
 }
+
 .article-layout {
   max-width: 920px;
   margin: 0 auto;
   padding: 2rem 1rem 4rem;
 }
+
 .article-shell .article-hero img {
   width: 100%;
   display: block;
   border-radius: 18px;
 }
+
 .article-sources ol {
   padding-left: 1.25rem;
 }
+
 .article-sources a {
   text-decoration: underline;
 }
+
 .button-row--article {
   margin: 1rem 0 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 /* PRESS_DAILY_SECTION_END */
 
