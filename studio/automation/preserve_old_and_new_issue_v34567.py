@@ -185,7 +185,7 @@ Requirements:
                 )
                 payload = extract_json(getattr(response, "output_text", "") or "")
                 return payload
-            except Exception as exc:
+            except Exception as exc:  # pragma: no cover - runtime retry path
                 last_error = exc
                 if attempt == 1:
                     break
@@ -268,7 +268,7 @@ def download_image(url: str | None, page_slug: str) -> str:
 
         target.write_bytes(response.content)
         return str(target.relative_to(ROOT)).replace("\\", "/")
-    except Exception as exc:
+    except Exception as exc:  # pragma: no cover - runtime fallback path
         print(f"Image download failed for {url}: {exc}")
         return write_placeholder_image(page_slug)
 
@@ -655,7 +655,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if start in existing and end in existing:
         updated = re.sub(
             re.escape(start) + r".*?" + re.escape(end),
-            patch,
+            lambda _: patch,
             existing,
             flags=re.S,
         )
@@ -744,7 +744,7 @@ def patch_styles() -> None:
     if start in existing and end in existing:
         updated = re.sub(
             re.escape(start) + r".*?" + re.escape(end),
-            patch,
+            lambda _: patch,
             existing,
             flags=re.S,
         )
