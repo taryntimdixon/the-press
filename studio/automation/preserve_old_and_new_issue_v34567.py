@@ -56,6 +56,8 @@ class Story:
     thumbnail_alt: str
     published_label: str
     keywords: list[str]
+    thumbnail_caption_html: str = ""
+    thumbnail_credit_plain: str = ""
 
 
 def slugify(text: str) -> str:
@@ -225,6 +227,56 @@ def wiki_thumbnail(query: str) -> str | None:
     return None
 
 
+def pexels_thumbnail(query: str) -> dict[str, str] | None:
+    api_key = os.getenv("PEXELS_API_KEY", "").strip()
+    if not api_key or not query.strip():
+        return None
+
+    try:
+        response = requests.get(
+            "https://api.pexels.com/v1/search",
+            headers={"Authorization": api_key},
+            params={"query": query, "per_page": 5, "orientation": "landscape"},
+            timeout=20,
+        )
+        response.raise_for_status()
+        photos = response.json().get("photos", [])
+        for photo in photos:
+            src = photo.get("src") or {}
+            image_url = (
+                src.get("landscape")
+                or src.get("large")
+                or src.get("large2x")
+                or src.get("original")
+                or src.get("medium")
+                or ""
+            )
+            if not image_url:
+                continue
+
+            alt = (photo.get("alt") or query).strip()
+            photographer = (photo.get("photographer") or "Pexels photographer").strip()
+            photographer_url = (photo.get("photographer_url") or "https://www.pexels.com/").strip()
+            photo_page = (photo.get("url") or "https://www.pexels.com/").strip()
+
+            return {
+                "url": image_url,
+                "alt": alt,
+                "credit_plain": f"{alt}. Photo by {photographer} on Pexels.",
+                "caption_html": (
+                    f"{html.escape(alt)}. "
+                    f'<span class="figure-credit">Photo by '
+                    f'<a href="{html.escape(photographer_url)}">{html.escape(photographer)}</a> '
+                    f'on <a href="{html.escape(photo_page)}">Pexels</a>.</span>'
+                ),
+            }
+    except Exception as exc:  # pragma: no cover - runtime fallback path
+        print(f"Pexels search failed for {query}: {exc}")
+        return None
+
+    return None
+
+
 def guess_ext(url: str) -> str:
     path = urlparse(url).path.lower()
     for ext in (".jpeg", ".jpg", ".png", ".webp", ".gif", ".svg"):
@@ -349,6 +401,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       <figure class="article-hero">
         <img src="../{story.thumbnail_local}" alt="{alt}" loading="eager" decoding="async" />
+        {f'<figcaption class="article-hero__caption">{story.thumbnail_caption_html}</figcaption>' if story.thumbnail_caption_html else ""}
       </figure>
 
       <div class="article-body" data-article-body>
@@ -565,6 +618,7 @@ def write_latest_json(stories: list[Story], edition_date: str) -> None:
                 "url": f"daily/{story.slug}.html",
                 "section": story.section_name,
                 "image": story.thumbnail_local,
+                "image_credit": story.thumbnail_credit_plain,
                 "published": story.published_label,
             }
             for story in stories
@@ -724,6 +778,22 @@ def patch_styles() -> None:
   border-radius: 18px;
 }
 
+.article-shell .article-hero__caption {
+  margin-top: 0.7rem;
+  color: #5e584f;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.article-shell .article-hero__caption a,
+.figure-credit a {
+  text-decoration: underline;
+}
+
+.figure-credit {
+  color: #6b645b;
+}
+
 .article-sources ol {
   padding-left: 1.25rem;
 }
@@ -768,6 +838,17 @@ def build_story_from_payload(payload: dict[str, Any], section_slug: str, section
     thumb_alt = str(payload.get("thumbnail_alt") or title).strip()
 
     thumbnail_url = wiki_thumbnail(thumb_query) or wiki_thumbnail(title)
+    thumbnail_caption_html = ""
+    thumbnail_credit_plain = ""
+
+    if not thumbnail_url:
+        pexels_meta = pexels_thumbnail(thumb_query) or pexels_thumbnail(title)
+        if pexels_meta:
+            thumbnail_url = pexels_meta.get("url") or ""
+            thumb_alt = (pexels_meta.get("alt") or thumb_alt).strip()
+            thumbnail_caption_html = pexels_meta.get("caption_html") or ""
+            thumbnail_credit_plain = pexels_meta.get("credit_plain") or ""
+
     thumbnail_local = download_image(thumbnail_url, page_slug)
 
     return Story(
@@ -782,6 +863,8 @@ def build_story_from_payload(payload: dict[str, Any], section_slug: str, section
         thumbnail_alt=thumb_alt,
         published_label=published_label,
         keywords=keywords,
+        thumbnail_caption_html=thumbnail_caption_html,
+        thumbnail_credit_plain=thumbnail_credit_plain,
     )
 
 
