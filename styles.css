@@ -1528,3 +1528,133 @@ body,
   background:var(--accent-soft);color:var(--accent);
   border-radius:999px;text-transform:uppercase;letter-spacing:.08em;
 }
+/* ===============================
+   DAILY ARTICLE WIDTH REPAIR
+   Paste at the very bottom
+   =============================== */
+
+/* Old daily pages currently using:
+   <main class="article-layout"><article class="article-shell">... */
+.article-layout {
+  width: min(94vw, 1240px);
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.article-layout > .article-shell {
+  display: block !important;
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.article-layout > .article-shell > * {
+  grid-column: auto !important;
+}
+
+.article-layout > .article-shell > h1 {
+  margin: 0.2rem 0 0.7rem;
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 6vw, 4.6rem);
+  line-height: 0.96;
+  max-width: 18ch;
+}
+
+.article-layout > .article-shell > .article-dek {
+  margin: 0 0 0.8rem;
+  color: var(--muted);
+  font-size: 1.12rem;
+  line-height: 1.55;
+  max-width: 55rem;
+}
+
+.article-layout > .article-shell > .article-meta {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.article-layout > .article-shell > .article-hero {
+  margin: 1rem 0 1.25rem;
+}
+
+.article-layout > .article-shell > .article-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: calc(var(--radius) + 2px);
+}
+
+.article-layout > .article-shell > .article-body,
+.article-layout > .article-shell > .article-sources {
+  width: 100%;
+  max-width: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 2px);
+  box-shadow: var(--shadow);
+}
+
+.article-layout > .article-shell > .article-body {
+  padding: 1.55rem 1.7rem 1.7rem;
+}
+
+.article-layout > .article-shell > .article-body p,
+.article-layout > .article-shell > .article-body li {
+  max-width: 78ch;
+  font-size: 1.1rem;
+  line-height: 1.78;
+}
+
+.article-layout > .article-shell > .article-sources {
+  margin-top: 1.2rem;
+  padding: 1.15rem 1.25rem;
+}
+
+/* Newer daily generator output — future-proof it too */
+.page.page-article .article-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+
+.page.page-article .info-card,
+.page.page-article .source-notes {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 2px);
+  box-shadow: var(--shadow);
+  padding: 1.15rem 1.25rem;
+}
+
+.page.page-article .bullet-list,
+.page.page-article .source-list {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.page.page-article .source-list li,
+.page.page-article .bullet-list li {
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 1120px) {
+  .page.page-article .article-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .article-layout {
+    width: 100%;
+    padding: 1rem 0.8rem 2rem;
+  }
+
+  .article-layout > .article-shell > .article-body {
+    padding: 1rem;
+  }
+}
