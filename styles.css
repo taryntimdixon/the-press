@@ -1082,6 +1082,22 @@ button{cursor:pointer}
   border-radius: 18px;
 }
 
+.article-shell .article-hero__caption {
+  margin-top: 0.7rem;
+  color: #5e584f;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.article-shell .article-hero__caption a,
+.figure-credit a {
+  text-decoration: underline;
+}
+
+.figure-credit {
+  color: #6b645b;
+}
+
 .article-sources ol {
   padding-left: 1.25rem;
 }
