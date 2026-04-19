@@ -1,5 +1,145 @@
 [
   {
+    "title": "Trump signs stopgap surveillance extension as Congress faces a new Section 702 clash",
+    "section": "Politics",
+    "type": "Daily Issue",
+    "dek": "The brief extension keeps a controversial spy power alive until April 30, but it also guarantees another high-stakes fight over privacy, national security and the reach of federal surveillance.",
+    "url": "daily/2026-04-19-trump-signs-stopgap-surveillance-extension-as-congress-faces-a-new-section-702-clash.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:56 a.m.",
+    "keywords": [
+      "Politics",
+      "Congress",
+      "Surveillance"
+    ]
+  },
+  {
+    "title": "IMF says war shock is slowing global growth and keeping inflation hotter than hoped",
+    "section": "Economics",
+    "type": "Daily Issue",
+    "dek": "The fund’s latest outlook warns that Middle East conflict has knocked the world economy off a calmer path, making price pressures stickier and narrowing room for central banks to cut rates.",
+    "url": "daily/2026-04-19-imf-says-war-shock-is-slowing-global-growth-and-keeping-inflation-hotter-than-hoped.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:56 a.m.",
+    "keywords": [
+      "IMF",
+      "inflation",
+      "global growth"
+    ]
+  },
+  {
+    "title": "Artemis II's lunar flyby marks a new science dress rehearsal for deep-space exploration",
+    "section": "Science",
+    "type": "Daily Issue",
+    "dek": "NASA’s first crewed Moon mission in more than 50 years is not just a milestone for exploration. It is a high-value science testbed for radiation exposure, lunar observations and the next phase of human deep-space missions.",
+    "url": "daily/2026-04-19-artemis-ii-s-lunar-flyby-marks-a-new-science-dress-rehearsal-for-deep-space-exploration.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:56 a.m.",
+    "keywords": [
+      "NASA",
+      "Artemis II",
+      "Moon"
+    ]
+  },
+  {
+    "title": "Hollywood’s theater owners get an unusually blunt promise as the merger fight intensifies",
+    "section": "Film",
+    "type": "Daily Issue",
+    "dek": "At CinemaCon, Paramount Skydance chief David Ellison pledged 30 annual releases with Warner Bros. if his company’s proposed acquisition wins approval, even as more than 1,000 film professionals condemn the deal.",
+    "url": "daily/2026-04-19-hollywood-s-theater-owners-get-an-unusually-blunt-promise-as-the-merger-fight-intensifies.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:56 a.m.",
+    "keywords": [
+      "CinemaCon",
+      "Paramount",
+      "Warner Bros. Discovery"
+    ]
+  },
+  {
+    "title": "Anthropic’s White House moment signals a new phase in the AI policy race",
+    "section": "AI",
+    "type": "Daily Issue",
+    "dek": "After a high-level West Wing meeting and a fresh update to its safety policy, Anthropic is leaning harder into Washington as the AI industry heads into a year defined by regulation, procurement and national-security scrutiny.",
+    "url": "daily/2026-04-19-anthropic-s-white-house-moment-signals-a-new-phase-in-the-ai-policy-race.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:56 a.m.",
+    "keywords": [
+      "anthropic",
+      "white house",
+      "ai policy"
+    ]
+  },
+  {
+    "title": "White House pushes Congress to set federal AI rules as states race ahead",
+    "section": "Technology",
+    "type": "Daily Issue",
+    "dek": "The Trump administration says a patchwork of state AI laws could slow U.S. innovation, but its new blueprint leaves lawmakers with the hard work of turning broad principles into a real national standard.",
+    "url": "daily/2026-04-19-white-house-pushes-congress-to-set-federal-ai-rules-as-states-race-ahead.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:56 a.m.",
+    "keywords": [
+      "artificial intelligence",
+      "technology policy",
+      "Nvidia"
+    ]
+  },
+  {
+    "title": "Mahjong’s social comeback is turning a centuries-old game into a 2026 nightlife staple",
+    "section": "Niche",
+    "type": "Daily Issue",
+    "dek": "From San Francisco bars to hobby-led travel and private events, mahjong’s resurgence shows how younger adults are trading screens for tactile, in-person play.",
+    "url": "daily/2026-04-19-mahjong-s-social-comeback-is-turning-a-centuries-old-game-into-a-2026-nightlife-staple.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:56 a.m.",
+    "keywords": [
+      "mahjong",
+      "culture",
+      "travel"
+    ]
+  },
+  {
+    "title": "Hormuz standoff tests fragile U.S.-Iran diplomacy as ceasefire clock ticks down",
+    "section": "Geopolitics",
+    "type": "Daily Issue",
+    "dek": "With Tehran again tightening its grip on the Strait of Hormuz and Washington signaling it may resume pressure if talks fail, the world’s most sensitive energy chokepoint has become the fulcrum of a fast-moving geopolitical crisis.",
+    "url": "daily/2026-04-19-hormuz-standoff-tests-fragile-u-s-iran-diplomacy-as-ceasefire-clock-ticks-down.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:56 a.m.",
+    "keywords": [
+      "Iran",
+      "United States",
+      "Strait of Hormuz"
+    ]
+  },
+  {
+    "title": "Justin Bieber’s Coachella surge shows how one festival set can still move pop culture in real time",
+    "section": "Pop Culture",
+    "type": "Daily Issue",
+    "dek": "Bieber’s April 11 Coachella performance lit up social media — and, days later, produced his biggest streaming day of 2026 so far, underscoring the festival’s continuing power as a pop culture accelerant.",
+    "url": "daily/2026-04-19-justin-bieber-s-coachella-surge-shows-how-one-festival-set-can-still-move-pop-culture-in-real-time.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:56 a.m.",
+    "keywords": [
+      "Justin Bieber",
+      "Coachella",
+      "music streaming"
+    ]
+  },
+  {
+    "title": "Lebanon’s fragile truce eases a front line, but not the fear of a wider war",
+    "section": "World",
+    "type": "Daily Issue",
+    "dek": "A 10-day ceasefire has stopped the worst of the fighting between Israel and Hezbollah, yet the deal has left many questions unanswered — and Lebanon’s civilians still live with the war’s wreckage.",
+    "url": "daily/2026-04-19-lebanon-s-fragile-truce-eases-a-front-line-but-not-the-fear-of-a-wider-war.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:56 a.m.",
+    "keywords": [
+      "Lebanon",
+      "ceasefire",
+      "Middle East"
+    ]
+  },
+  {
     "title": "House, Senate race to patch surveillance law after GOP revolt, with Trump pressing for a longer extension",
     "section": "Politics",
     "type": "Daily Issue",
