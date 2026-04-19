@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-19T14:33:27.047436+00:00",
+  "generated_at": "2026-04-19T16:44:33.905158+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,128 +9,128 @@
   },
   "home": {
     "hero": [
-      "2026-04-19-congress-buys-time-on-section-702-setting-up-another-surveillance-showdown",
-      "2026-04-19-imf-says-war-shock-is-cooling-global-growth-as-inflation-flares-again",
-      "2026-04-19-nasa-s-satellites-are-now-spotting-forest-loss-months-earlier",
-      "2026-04-19-cinemacon-s-biggest-movies-signal-hollywood-s-bid-to-revive-the-theater-experience"
+      "2026-04-19-courts-are-rewriting-the-rules-of-the-2026-midterms",
+      "2026-04-19-how-the-2026-box-office-rebound-is-testing-hollywood-s-streaming-bargain",
+      "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips",
+      "2026-04-19-tariffs-are-back-in-the-inflation-data-and-in-the-family-budget"
     ],
     "secondary": [
-      "2026-04-19-anthropic-s-latest-claude-release-sharpens-the-ai-race-over-power-safety-and-security",
-      "2026-04-19-openai-escalates-the-ai-cyber-arms-race-with-a-gated-model-for-defenders",
-      "2026-04-19-america-s-most-whimsical-housing-ranking-gets-a-2026-reset"
+      "2026-04-19-workforce-pell-is-about-to-land-colleges-and-students-are-racing-to-prepare",
+      "2026-04-19-u-s-measles-surge-enters-late-spring-danger-zone-as-outbreaks-spread-vaccination-gaps-widen",
+      "2026-04-19-the-new-intimacy-machine"
     ],
     "most_read": [
-      "2026-04-19-hormuz-standoff-puts-global-trade-and-war-footing-on-the-same-map",
-      "2026-04-19-justin-bieber-s-coachella-return-turns-into-a-pop-culture-reset-and-a-streaming-surge",
-      "2026-04-19-sudan-s-war-deepens-into-a-fourth-year-as-famine-disease-and-displacement-spread",
-      "2026-04-19-trump-signs-stopgap-surveillance-extension-as-congress-faces-a-new-section-702-clash",
-      "2026-04-19-imf-says-war-shock-is-slowing-global-growth-and-keeping-inflation-hotter-than-hoped"
+      "2026-04-19-as-federal-science-archives-recede-researchers-race-to-save-the-public-record",
+      "2026-04-19-sudan-s-border-war-how-a-three-year-conflict-is-remaking-chad-aid-routes-and-regional-security",
+      "2026-04-19-trump-s-tariff-machine-is-no-longer-trade-policy-congress-should-say-so",
+      "2026-04-19-ai-s-next-regulatory-clash-is-arriving-in-classrooms-agencies-and-chip-racks-at-once",
+      "2026-04-19-u-s-iran-brinkmanship-turns-the-strait-of-hormuz-into-the-world-s-most-expensive-chokepoint-again"
     ],
     "editors_picks": [
-      "2026-04-19-artemis-ii-s-lunar-flyby-marks-a-new-science-dress-rehearsal-for-deep-space-exploration",
-      "2026-04-19-hollywood-s-theater-owners-get-an-unusually-blunt-promise-as-the-merger-fight-intensifies",
-      "2026-04-19-anthropic-s-white-house-moment-signals-a-new-phase-in-the-ai-policy-race",
-      "2026-04-19-white-house-pushes-congress-to-set-federal-ai-rules-as-states-race-ahead"
+      "2026-04-19-hollywood-s-window-wars-enter-a-new-phase-as-studios-reopen-the-theater-question",
+      "2026-04-19-coachella-2026-is-rewriting-pop-s-power-map-in-real-time",
+      "2026-04-19-how-urban-beekeeping-became-a-climate-hobby-a-data-network-and-a-politics-of-the-sidewalk",
+      "2026-04-19-congress-buys-time-on-section-702-setting-up-another-surveillance-showdown"
     ],
     "latest": [
-      "2026-04-19-congress-buys-time-on-section-702-setting-up-another-surveillance-showdown",
-      "2026-04-19-imf-says-war-shock-is-cooling-global-growth-as-inflation-flares-again",
-      "2026-04-19-nasa-s-satellites-are-now-spotting-forest-loss-months-earlier",
-      "2026-04-19-cinemacon-s-biggest-movies-signal-hollywood-s-bid-to-revive-the-theater-experience",
-      "2026-04-19-anthropic-s-latest-claude-release-sharpens-the-ai-race-over-power-safety-and-security",
-      "2026-04-19-openai-escalates-the-ai-cyber-arms-race-with-a-gated-model-for-defenders",
-      "2026-04-19-america-s-most-whimsical-housing-ranking-gets-a-2026-reset",
-      "2026-04-19-hormuz-standoff-puts-global-trade-and-war-footing-on-the-same-map",
-      "2026-04-19-justin-bieber-s-coachella-return-turns-into-a-pop-culture-reset-and-a-streaming-surge",
-      "2026-04-19-sudan-s-war-deepens-into-a-fourth-year-as-famine-disease-and-displacement-spread",
-      "2026-04-19-trump-signs-stopgap-surveillance-extension-as-congress-faces-a-new-section-702-clash",
-      "2026-04-19-imf-says-war-shock-is-slowing-global-growth-and-keeping-inflation-hotter-than-hoped"
+      "2026-04-19-courts-are-rewriting-the-rules-of-the-2026-midterms",
+      "2026-04-19-how-the-2026-box-office-rebound-is-testing-hollywood-s-streaming-bargain",
+      "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips",
+      "2026-04-19-tariffs-are-back-in-the-inflation-data-and-in-the-family-budget",
+      "2026-04-19-workforce-pell-is-about-to-land-colleges-and-students-are-racing-to-prepare",
+      "2026-04-19-u-s-measles-surge-enters-late-spring-danger-zone-as-outbreaks-spread-vaccination-gaps-widen",
+      "2026-04-19-the-new-intimacy-machine",
+      "2026-04-19-as-federal-science-archives-recede-researchers-race-to-save-the-public-record",
+      "2026-04-19-sudan-s-border-war-how-a-three-year-conflict-is-remaking-chad-aid-routes-and-regional-security",
+      "2026-04-19-trump-s-tariff-machine-is-no-longer-trade-policy-congress-should-say-so",
+      "2026-04-19-ai-s-next-regulatory-clash-is-arriving-in-classrooms-agencies-and-chip-racks-at-once",
+      "2026-04-19-u-s-iran-brinkmanship-turns-the-strait-of-hormuz-into-the-world-s-most-expensive-chokepoint-again"
     ],
     "daily": [
-      "2026-04-19-congress-buys-time-on-section-702-setting-up-another-surveillance-showdown",
-      "2026-04-19-imf-says-war-shock-is-cooling-global-growth-as-inflation-flares-again",
-      "2026-04-19-nasa-s-satellites-are-now-spotting-forest-loss-months-earlier",
-      "2026-04-19-cinemacon-s-biggest-movies-signal-hollywood-s-bid-to-revive-the-theater-experience",
-      "2026-04-19-anthropic-s-latest-claude-release-sharpens-the-ai-race-over-power-safety-and-security",
-      "2026-04-19-openai-escalates-the-ai-cyber-arms-race-with-a-gated-model-for-defenders",
-      "2026-04-19-america-s-most-whimsical-housing-ranking-gets-a-2026-reset",
-      "2026-04-19-hormuz-standoff-puts-global-trade-and-war-footing-on-the-same-map",
-      "2026-04-19-justin-bieber-s-coachella-return-turns-into-a-pop-culture-reset-and-a-streaming-surge",
-      "2026-04-19-sudan-s-war-deepens-into-a-fourth-year-as-famine-disease-and-displacement-spread"
+      "2026-04-19-courts-are-rewriting-the-rules-of-the-2026-midterms",
+      "2026-04-19-how-the-2026-box-office-rebound-is-testing-hollywood-s-streaming-bargain",
+      "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips",
+      "2026-04-19-tariffs-are-back-in-the-inflation-data-and-in-the-family-budget",
+      "2026-04-19-workforce-pell-is-about-to-land-colleges-and-students-are-racing-to-prepare",
+      "2026-04-19-u-s-measles-surge-enters-late-spring-danger-zone-as-outbreaks-spread-vaccination-gaps-widen",
+      "2026-04-19-the-new-intimacy-machine",
+      "2026-04-19-as-federal-science-archives-recede-researchers-race-to-save-the-public-record",
+      "2026-04-19-sudan-s-border-war-how-a-three-year-conflict-is-remaking-chad-aid-routes-and-regional-security",
+      "2026-04-19-trump-s-tariff-machine-is-no-longer-trade-policy-congress-should-say-so"
     ],
     "breaking": [
-      "2026-04-19-congress-buys-time-on-section-702-setting-up-another-surveillance-showdown",
-      "2026-04-19-imf-says-war-shock-is-cooling-global-growth-as-inflation-flares-again",
-      "2026-04-19-nasa-s-satellites-are-now-spotting-forest-loss-months-earlier",
-      "2026-04-19-cinemacon-s-biggest-movies-signal-hollywood-s-bid-to-revive-the-theater-experience",
-      "2026-04-19-anthropic-s-latest-claude-release-sharpens-the-ai-race-over-power-safety-and-security",
-      "2026-04-19-openai-escalates-the-ai-cyber-arms-race-with-a-gated-model-for-defenders",
-      "2026-04-19-america-s-most-whimsical-housing-ranking-gets-a-2026-reset",
-      "2026-04-19-hormuz-standoff-puts-global-trade-and-war-footing-on-the-same-map",
-      "2026-04-19-justin-bieber-s-coachella-return-turns-into-a-pop-culture-reset-and-a-streaming-surge",
-      "2026-04-19-sudan-s-war-deepens-into-a-fourth-year-as-famine-disease-and-displacement-spread",
-      "2026-04-19-trump-signs-stopgap-surveillance-extension-as-congress-faces-a-new-section-702-clash",
-      "2026-04-19-imf-says-war-shock-is-slowing-global-growth-and-keeping-inflation-hotter-than-hoped"
+      "2026-04-19-courts-are-rewriting-the-rules-of-the-2026-midterms",
+      "2026-04-19-how-the-2026-box-office-rebound-is-testing-hollywood-s-streaming-bargain",
+      "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips",
+      "2026-04-19-tariffs-are-back-in-the-inflation-data-and-in-the-family-budget",
+      "2026-04-19-workforce-pell-is-about-to-land-colleges-and-students-are-racing-to-prepare",
+      "2026-04-19-u-s-measles-surge-enters-late-spring-danger-zone-as-outbreaks-spread-vaccination-gaps-widen",
+      "2026-04-19-the-new-intimacy-machine",
+      "2026-04-19-as-federal-science-archives-recede-researchers-race-to-save-the-public-record",
+      "2026-04-19-sudan-s-border-war-how-a-three-year-conflict-is-remaking-chad-aid-routes-and-regional-security",
+      "2026-04-19-trump-s-tariff-machine-is-no-longer-trade-policy-congress-should-say-so",
+      "2026-04-19-ai-s-next-regulatory-clash-is-arriving-in-classrooms-agencies-and-chip-racks-at-once",
+      "2026-04-19-u-s-iran-brinkmanship-turns-the-strait-of-hormuz-into-the-world-s-most-expensive-chokepoint-again"
     ],
     "desk_pulse": [
       {
-        "count": 18,
-        "latest_ts": 1776608760.0,
-        "story_id": "2026-04-19-imf-says-war-shock-is-cooling-global-growth-as-inflation-flares-again",
+        "count": 19,
+        "latest_ts": 1776614400.0,
+        "story_id": "2026-04-19-tariffs-are-back-in-the-inflation-data-and-in-the-family-budget",
         "section": "Economics"
       },
       {
-        "count": 18,
-        "latest_ts": 1776608760.0,
-        "story_id": "2026-04-19-nasa-s-satellites-are-now-spotting-forest-loss-months-earlier",
+        "count": 19,
+        "latest_ts": 1776614400.0,
+        "story_id": "2026-04-19-as-federal-science-archives-recede-researchers-race-to-save-the-public-record",
         "section": "Science"
       },
       {
-        "count": 17,
-        "latest_ts": 1776608760.0,
-        "story_id": "2026-04-19-congress-buys-time-on-section-702-setting-up-another-surveillance-showdown",
+        "count": 18,
+        "latest_ts": 1776614400.0,
+        "story_id": "2026-04-19-courts-are-rewriting-the-rules-of-the-2026-midterms",
         "section": "Politics"
       },
       {
-        "count": 17,
-        "latest_ts": 1776608760.0,
-        "story_id": "2026-04-19-anthropic-s-latest-claude-release-sharpens-the-ai-race-over-power-safety-and-security",
+        "count": 18,
+        "latest_ts": 1776614400.0,
+        "story_id": "2026-04-19-ai-s-next-regulatory-clash-is-arriving-in-classrooms-agencies-and-chip-racks-at-once",
         "section": "AI"
       },
       {
-        "count": 16,
-        "latest_ts": 1776608760.0,
-        "story_id": "2026-04-19-america-s-most-whimsical-housing-ranking-gets-a-2026-reset",
+        "count": 17,
+        "latest_ts": 1776614400.0,
+        "story_id": "2026-04-19-how-urban-beekeeping-became-a-climate-hobby-a-data-network-and-a-politics-of-the-sidewalk",
         "section": "Niche"
       },
       {
-        "count": 14,
-        "latest_ts": 1776608760.0,
-        "story_id": "2026-04-19-sudan-s-war-deepens-into-a-fourth-year-as-famine-disease-and-displacement-spread",
+        "count": 15,
+        "latest_ts": 1776614400.0,
+        "story_id": "2026-04-19-sudan-s-border-war-how-a-three-year-conflict-is-remaking-chad-aid-routes-and-regional-security",
         "section": "World"
       },
       {
-        "count": 13,
-        "latest_ts": 1776608760.0,
-        "story_id": "2026-04-19-openai-escalates-the-ai-cyber-arms-race-with-a-gated-model-for-defenders",
+        "count": 14,
+        "latest_ts": 1776614400.0,
+        "story_id": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips",
         "section": "Technology"
       },
       {
-        "count": 13,
-        "latest_ts": 1776608760.0,
-        "story_id": "2026-04-19-hormuz-standoff-puts-global-trade-and-war-footing-on-the-same-map",
+        "count": 14,
+        "latest_ts": 1776614400.0,
+        "story_id": "2026-04-19-u-s-iran-brinkmanship-turns-the-strait-of-hormuz-into-the-world-s-most-expensive-chokepoint-again",
         "section": "Geopolitics"
       },
       {
-        "count": 10,
-        "latest_ts": 1776608760.0,
-        "story_id": "2026-04-19-cinemacon-s-biggest-movies-signal-hollywood-s-bid-to-revive-the-theater-experience",
+        "count": 11,
+        "latest_ts": 1776614400.0,
+        "story_id": "2026-04-19-hollywood-s-window-wars-enter-a-new-phase-as-studios-reopen-the-theater-question",
         "section": "Film"
       },
       {
-        "count": 10,
-        "latest_ts": 1776608760.0,
-        "story_id": "2026-04-19-justin-bieber-s-coachella-return-turns-into-a-pop-culture-reset-and-a-streaming-surge",
+        "count": 11,
+        "latest_ts": 1776614400.0,
+        "story_id": "2026-04-19-coachella-2026-is-rewriting-pop-s-power-map-in-real-time",
         "section": "Pop Culture"
       }
     ]
