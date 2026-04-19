@@ -3,13 +3,15 @@ name: Build Press Article Ecosystem
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
       - 'daily-latest.json'
       - 'edition.json'
       - 'search-index.json'
       - 'master-edition.json'
       - 'tools/build_press_ecosystem.py'
+      - '.github/workflows/press-ecosystem.yml'
 
 permissions:
   contents: write
@@ -17,9 +19,12 @@ permissions:
 jobs:
   build-ecosystem:
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -30,7 +35,16 @@ jobs:
         run: python tools/build_press_ecosystem.py
 
       - name: Commit generated ecosystem files
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'Build live article ecosystem indexes'
-          file_pattern: 'content-index.json live-index.json archive-index.json placements.json'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add content-index.json live-index.json archive-index.json placements.json
+
+          if git diff --cached --quiet; then
+            echo "No ecosystem file changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Build live article ecosystem indexes"
+          git push
