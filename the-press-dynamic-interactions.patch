@@ -1,0 +1,553 @@
+--- a/styles.css
++++ b/styles.css
+@@ -2023,3 +2023,264 @@
+ }
+ 
+ /* PRESS_ECOSYSTEM_STYLES_END */
++
++/* PRESS_DYNAMIC_INTERACTIONS_START
++   Progressive motion layer: subtle card lift, reveal-on-scroll, link transitions,
++   tactile ripples, and a floating return-to-top control. No dependencies.
++*/
++:root{
++  --press-ease-out:cubic-bezier(.2,.8,.2,1);
++  --press-ease-spring:cubic-bezier(.16,1,.3,1);
++  --press-motion-fast:.18s;
++  --press-motion-med:.34s;
++  --press-micro-shadow:0 22px 50px rgba(18,18,16,.14);
++  --press-micro-border:color-mix(in srgb, var(--accent) 38%, var(--line));
++}
++
++html.press-dynamic-page.press-page-ready body{
++  animation:press-page-enter .42s var(--press-ease-spring) both;
++}
++html.press-dynamic-page.press-page-leaving body{
++  pointer-events:none;
++  animation:press-page-leave .18s ease both;
++}
++@keyframes press-page-enter{
++  from{opacity:.001;transform:translateY(10px);filter:blur(1.5px)}
++  to{opacity:1;transform:translateY(0);filter:blur(0)}
++}
++@keyframes press-page-leave{
++  from{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
++  to{opacity:.38;transform:translateY(-8px) scale(.995);filter:blur(1.4px)}
++}
++
++.press-micro-card{
++  --press-mouse-x:50%;
++  --press-mouse-y:50%;
++  --press-tilt-x:0deg;
++  --press-tilt-y:0deg;
++  --press-card-lift:-5px;
++  position:relative;
++  isolation:isolate;
++  transform:translate3d(0,0,0);
++  backface-visibility:hidden;
++  transition:
++    transform var(--press-motion-med) var(--press-ease-spring),
++    box-shadow var(--press-motion-med) var(--press-ease-out),
++    border-color var(--press-motion-fast) ease,
++    background-color var(--press-motion-fast) ease;
++}
++.press-micro-card::before{
++  content:"";
++  position:absolute;
++  inset:0;
++  border-radius:inherit;
++  pointer-events:none;
++  z-index:0;
++  opacity:0;
++  background:
++    radial-gradient(360px circle at var(--press-mouse-x) var(--press-mouse-y), color-mix(in srgb, var(--accent-soft) 70%, transparent), transparent 44%),
++    linear-gradient(135deg, rgba(255,255,255,.16), transparent 38%);
++  transition:opacity var(--press-motion-med) ease;
++}
++.press-micro-card > *{position:relative;z-index:1}
++.press-micro-card:focus-visible{
++  outline:3px solid color-mix(in srgb, var(--accent) 38%, transparent);
++  outline-offset:4px;
++}
++@media (hover:hover) and (pointer:fine){
++  .press-micro-card:hover{
++    transform:translateY(var(--press-card-lift)) rotateX(var(--press-tilt-x)) rotateY(var(--press-tilt-y));
++    box-shadow:var(--press-micro-shadow);
++    border-color:var(--press-micro-border);
++    text-decoration:none;
++  }
++  .press-micro-card:hover::before{opacity:.72}
++  .press-micro-card:hover .story-card__image img,
++  .press-micro-card:hover .river-item__thumb img,
++  .press-micro-card:hover .archive-card__image img,
++  .press-micro-card:hover .lead-panel__media img{
++    transform:scale(1.035);
++  }
++  .press-micro-card:active{
++    transform:translateY(-2px) scale(.995) rotateX(var(--press-tilt-x)) rotateY(var(--press-tilt-y));
++  }
++}
++.story-card__image img,
++.river-item__thumb img,
++.archive-card__image img,
++.lead-panel__media img{
++  transition:transform .48s var(--press-ease-spring), filter .48s ease;
++}
++.story-card__cta::after,
++.button:not(.button--ghost)::after,
++.section-link::after{
++  display:inline-block;
++  transform:translateX(.15rem);
++  transition:transform var(--press-motion-fast) ease;
++}
++.story-card__cta::after{content:" →"}
++.button:not(.button--ghost):hover::after,
++.story-card:hover .story-card__cta::after,
++.section-link:hover::after{
++  transform:translateX(.36rem);
++}
++
++[data-press-reveal]{
++  opacity:.001;
++  transform:translateY(18px);
++  transition:
++    opacity .58s var(--press-ease-out),
++    transform .58s var(--press-ease-spring),
++    filter .58s ease;
++  filter:blur(2px);
++  transition-delay:var(--press-reveal-delay,0ms);
++}
++[data-press-reveal].is-revealed{
++  opacity:1;
++  transform:translateY(0);
++  filter:blur(0);
++}
++
++.press-ripple-host{position:relative;overflow:hidden}
++.press-ink-ripple{
++  position:absolute;
++  left:var(--press-ripple-x);
++  top:var(--press-ripple-y);
++  width:var(--press-ripple-size);
++  height:var(--press-ripple-size);
++  border-radius:999px;
++  pointer-events:none;
++  z-index:5;
++  background:color-mix(in srgb, var(--accent) 24%, transparent);
++  transform:translate(-50%,-50%) scale(0);
++  animation:press-ink-ripple .62s ease-out forwards;
++  mix-blend-mode:multiply;
++}
++[data-theme="dark"] .press-ink-ripple{
++  mix-blend-mode:screen;
++  background:color-mix(in srgb, var(--accent) 30%, transparent);
++}
++@media (prefers-color-scheme:dark){
++  :root:not([data-theme="light"]) .press-ink-ripple{
++    mix-blend-mode:screen;
++    background:color-mix(in srgb, var(--accent) 30%, transparent);
++  }
++}
++@keyframes press-ink-ripple{
++  0%{opacity:.42;transform:translate(-50%,-50%) scale(0)}
++  70%{opacity:.18;transform:translate(-50%,-50%) scale(1)}
++  100%{opacity:0;transform:translate(-50%,-50%) scale(1.12)}
++}
++
++.search-overlay{
++  opacity:1;
++  transition:opacity .22s ease;
++  backdrop-filter:blur(6px);
++}
++.search-overlay[hidden],
++.search-overlay.is-hidden{opacity:0}
++.search-panel{
++  transform-origin:top center;
++}
++.search-overlay:not([hidden]):not(.is-hidden) .search-panel{
++  animation:press-modal-rise .24s var(--press-ease-spring) both;
++}
++@keyframes press-modal-rise{
++  from{opacity:.001;transform:translateY(12px) scale(.985)}
++  to{opacity:1;transform:translateY(0) scale(1)}
++}
++
++.site-header.is-menu-open .utility-nav,
++.site-header.is-menu-open .section-nav{
++  animation:press-menu-drop .24s var(--press-ease-spring) both;
++}
++@keyframes press-menu-drop{
++  from{opacity:.001;transform:translateY(-8px)}
++  to{opacity:1;transform:translateY(0)}
++}
++
++.press-back-to-top{
++  position:fixed;
++  right:clamp(.85rem,2vw,1.35rem);
++  bottom:clamp(.85rem,2vw,1.35rem);
++  z-index:50;
++  display:inline-flex;
++  align-items:center;
++  gap:.4rem;
++  border:1px solid color-mix(in srgb, var(--line) 70%, var(--accent));
++  border-radius:999px;
++  background:color-mix(in srgb, var(--surface) 88%, transparent);
++  color:var(--ink);
++  box-shadow:0 14px 32px rgba(18,18,16,.14);
++  padding:.68rem .86rem;
++  font-weight:800;
++  letter-spacing:.01em;
++  opacity:0;
++  pointer-events:none;
++  transform:translateY(12px) scale(.96);
++  transition:opacity .22s ease, transform .22s var(--press-ease-spring), background .18s ease, border-color .18s ease;
++  backdrop-filter:blur(10px);
++}
++.press-back-to-top span{
++  display:inline-grid;
++  place-items:center;
++  width:1.35rem;
++  height:1.35rem;
++  border-radius:999px;
++  background:var(--accent);
++  color:#fff;
++  line-height:1;
++}
++.press-back-to-top.is-visible{
++  opacity:1;
++  pointer-events:auto;
++  transform:translateY(0) scale(1);
++}
++.press-back-to-top:hover{
++  border-color:var(--accent);
++  background:var(--surface);
++  transform:translateY(-2px) scale(1.01);
++}
++
++.article-body p,
++.generated-story .article-body p{
++  transition:background-color .2s ease, box-shadow .2s ease;
++}
++@media (hover:hover) and (pointer:fine){
++  .article-body p:hover,
++  .generated-story .article-body p:hover{
++    background:color-mix(in srgb, var(--accent-soft) 34%, transparent);
++    box-shadow:-.55rem 0 0 color-mix(in srgb, var(--accent) 34%, transparent);
++  }
++}
++
++@media (max-width:700px){
++  .press-back-to-top{padding:.62rem .75rem;font-size:.92rem}
++  .press-micro-card{--press-card-lift:-3px}
++}
++@media (prefers-reduced-motion:reduce){
++  html.press-dynamic-page.press-page-ready body,
++  html.press-dynamic-page.press-page-leaving body,
++  .search-overlay:not([hidden]):not(.is-hidden) .search-panel,
++  .site-header.is-menu-open .utility-nav,
++  .site-header.is-menu-open .section-nav{
++    animation:none!important;
++  }
++  html.press-dynamic-page.press-page-leaving body{opacity:1;transform:none;filter:none}
++  [data-press-reveal],
++  [data-press-reveal].is-revealed,
++  .press-micro-card,
++  .press-back-to-top,
++  .story-card__image img,
++  .river-item__thumb img,
++  .archive-card__image img,
++  .lead-panel__media img{
++    opacity:1!important;
++    transform:none!important;
++    filter:none!important;
++    transition:none!important;
++  }
++  .press-micro-card::before,
++  .press-ink-ripple{display:none!important}
++}
++/* PRESS_DYNAMIC_INTERACTIONS_END */
+--- a/app.js
++++ b/app.js
+@@ -3496,3 +3496,283 @@
+   ready(runRestoreSeveralTimes);
+ 
+ })();
++
++/* PRESS_DYNAMIC_INTERACTIONS_START
++   Progressive dynamic UI layer: subtle tilt/lift, reveal-on-scroll, tactile ripples,
++   smooth internal navigation, and a small back-to-top helper. Respects reduced motion.
++*/
++(() => {
++
++  const root = document.documentElement;
++  const CARD_SELECTOR = [
++    '.story-card',
++    '.archive-card',
++    '.river-item',
++    '.lead-panel',
++    '.desk-card',
++    '.link-list__item',
++    '.related-card',
++    '.edition-radar__item',
++    '.press-catchup__item',
++    '.daily-card'
++  ].join(', ');
++
++  const REVEAL_SELECTOR = [
++    '.story-card',
++    '.archive-card',
++    '.river-item',
++    '.lead-panel',
++    '.desk-card',
++    '.rail',
++    '.newsletter-block',
++    '.trust-card',
++    '.article-body',
++    '.article-sources',
++    '.edition-radar',
++    '.desk-pulse',
++    '.press-catchup',
++    '.daily-home-section',
++    '.daily-archive-section',
++    '.breaking-wire-section'
++  ].join(', ');
++
++  const RIPPLE_SELECTOR = [
++    'button',
++    '.button',
++    '.theme-toggle',
++    '.reader-mode-toggle',
++    '.lead-nav__button',
++    '.desk-pulse__catchup',
++    '.press-micro-card',
++    '.story-card__cta'
++  ].join(', ');
++
++  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
++  const finePointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
++
++  root.classList.add('press-dynamic-page');
++
++  const ready = (callback) => {
++    if (document.readyState === 'loading') {
++      document.addEventListener('DOMContentLoaded', callback, { once: true });
++    } else {
++      callback();
++    }
++  };
++
++  const prefersReducedMotion = () => reducedMotionQuery.matches;
++
++  function markPageReady() {
++    window.requestAnimationFrame(() => root.classList.add('press-page-ready'));
++    window.addEventListener('pageshow', () => root.classList.remove('press-page-leaving'));
++  }
++
++  function isModifiedClick(event) {
++    return event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
++  }
++
++  function findInternalNavigationTarget(event) {
++    if (event.defaultPrevented || isModifiedClick(event)) return null;
++    const target = event.target instanceof Element ? event.target : null;
++    if (!target) return null;
++    if (target.closest('button, input, textarea, select, label, [contenteditable="true"]')) return null;
++
++    const directLink = target.closest('a[href]');
++    const cardLink = directLink ? null : target.closest(CARD_SELECTOR)?.querySelector('a[href]');
++    const link = directLink || cardLink;
++    if (!link) return null;
++
++    const rawHref = link.getAttribute('href') || '';
++    if (!rawHref || rawHref.startsWith('#') || /^(mailto|tel|javascript):/i.test(rawHref)) return null;
++    if (link.hasAttribute('download')) return null;
++    if (link.target && link.target !== '_self') return null;
++
++    let url;
++    try {
++      url = new URL(rawHref, window.location.href);
++    } catch (_) {
++      return null;
++    }
++
++    if (url.origin !== window.location.origin) return null;
++    const sameDocument = url.pathname === window.location.pathname &&
++      url.search === window.location.search &&
++      Boolean(url.hash);
++    if (sameDocument) return null;
++
++    return { url: url.href, host: directLink || target.closest(CARD_SELECTOR) || link };
++  }
++
++  function setupSmoothNavigation() {
++    document.addEventListener('click', (event) => {
++      const navigation = findInternalNavigationTarget(event);
++      if (!navigation || prefersReducedMotion()) return;
++
++      event.preventDefault();
++      event.stopImmediatePropagation();
++      createRipple(navigation.host, event);
++      root.classList.add('press-page-leaving');
++      window.setTimeout(() => {
++        window.location.href = navigation.url;
++      }, 170);
++    }, true);
++  }
++
++  function enhanceCard(card) {
++    if (!(card instanceof HTMLElement)) return;
++    if (card.dataset.pressDynamicCard === 'true') return;
++    card.dataset.pressDynamicCard = 'true';
++    card.classList.add('press-micro-card');
++
++    if (!finePointerQuery.matches || prefersReducedMotion()) return;
++
++    card.addEventListener('pointermove', (event) => {
++      const rect = card.getBoundingClientRect();
++      if (!rect.width || !rect.height) return;
++      const x = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
++      const y = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1);
++      const tiltX = (0.5 - y) * 2.4;
++      const tiltY = (x - 0.5) * 2.4;
++      card.style.setProperty('--press-mouse-x', `${(x * 100).toFixed(2)}%`);
++      card.style.setProperty('--press-mouse-y', `${(y * 100).toFixed(2)}%`);
++      card.style.setProperty('--press-tilt-x', `${tiltX.toFixed(2)}deg`);
++      card.style.setProperty('--press-tilt-y', `${tiltY.toFixed(2)}deg`);
++    });
++
++    card.addEventListener('pointerleave', () => {
++      card.style.removeProperty('--press-tilt-x');
++      card.style.removeProperty('--press-tilt-y');
++      card.style.setProperty('--press-mouse-x', '50%');
++      card.style.setProperty('--press-mouse-y', '50%');
++    });
++  }
++
++  function setupMicroInteractions(scope = document) {
++    const nodes = [];
++    if (scope instanceof Element && scope.matches(CARD_SELECTOR)) nodes.push(scope);
++    nodes.push(...scope.querySelectorAll(CARD_SELECTOR));
++    nodes.forEach(enhanceCard);
++  }
++
++  function setupRevealOnScroll(scope = document, observer) {
++    const nodes = [];
++    if (scope instanceof Element && scope.matches(REVEAL_SELECTOR)) nodes.push(scope);
++    nodes.push(...scope.querySelectorAll(REVEAL_SELECTOR));
++
++    nodes.forEach((node, index) => {
++      if (!(node instanceof HTMLElement)) return;
++      if (node.dataset.pressRevealBound === 'true') return;
++      node.dataset.pressRevealBound = 'true';
++      node.setAttribute('data-press-reveal', '');
++      node.style.setProperty('--press-reveal-delay', `${Math.min(index % 6, 5) * 45}ms`);
++
++      if (!observer || prefersReducedMotion()) {
++        node.classList.add('is-revealed');
++        return;
++      }
++
++      observer.observe(node);
++    });
++  }
++
++  function buildRevealObserver() {
++    if (!('IntersectionObserver' in window) || prefersReducedMotion()) return null;
++    return new IntersectionObserver((entries, observer) => {
++      entries.forEach((entry) => {
++        if (!entry.isIntersecting) return;
++        entry.target.classList.add('is-revealed');
++        observer.unobserve(entry.target);
++      });
++    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
++  }
++
++  function createRipple(host, event) {
++    if (!(host instanceof HTMLElement) || prefersReducedMotion()) return;
++    if (host.matches('input, textarea, select')) return;
++
++    const rect = host.getBoundingClientRect();
++    if (!rect.width || !rect.height) return;
++
++    host.classList.add('press-ripple-host');
++    const ripple = document.createElement('span');
++    ripple.className = 'press-ink-ripple';
++    const size = Math.max(rect.width, rect.height) * 2.15;
++    const x = event.clientX ? event.clientX - rect.left : rect.width / 2;
++    const y = event.clientY ? event.clientY - rect.top : rect.height / 2;
++
++    ripple.style.setProperty('--press-ripple-size', `${size}px`);
++    ripple.style.setProperty('--press-ripple-x', `${x}px`);
++    ripple.style.setProperty('--press-ripple-y', `${y}px`);
++    host.appendChild(ripple);
++    ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
++  }
++
++  function setupRipples() {
++    document.addEventListener('pointerdown', (event) => {
++      if (!(event.target instanceof Element)) return;
++      if (event.target.closest('input, textarea, select, label, [contenteditable="true"]')) return;
++      const host = event.target.closest(RIPPLE_SELECTOR);
++      if (!host) return;
++      createRipple(host, event);
++    });
++  }
++
++  function setupBackToTop() {
++    if (document.querySelector('[data-press-back-to-top]')) return;
++
++    const button = document.createElement('button');
++    button.type = 'button';
++    button.className = 'press-back-to-top';
++    button.setAttribute('data-press-back-to-top', '');
++    button.setAttribute('aria-label', 'Back to top');
++    button.innerHTML = '<span aria-hidden="true">↑</span> Top';
++    document.body.appendChild(button);
++
++    button.addEventListener('click', () => {
++      window.scrollTo({
++        top: 0,
++        behavior: prefersReducedMotion() ? 'auto' : 'smooth'
++      });
++    });
++
++    let ticking = false;
++    const update = () => {
++      ticking = false;
++      button.classList.toggle('is-visible', window.scrollY > 640);
++    };
++
++    update();
++    window.addEventListener('scroll', () => {
++      if (ticking) return;
++      ticking = true;
++      window.requestAnimationFrame(update);
++    }, { passive: true });
++  }
++
++  function watchDynamicContent(revealObserver) {
++    if (!('MutationObserver' in window) || !document.body) return;
++    const observer = new MutationObserver((mutations) => {
++      mutations.forEach((mutation) => {
++        mutation.addedNodes.forEach((node) => {
++          if (!(node instanceof Element)) return;
++          setupMicroInteractions(node);
++          setupRevealOnScroll(node, revealObserver);
++        });
++      });
++    });
++    observer.observe(document.body, { childList: true, subtree: true });
++  }
++
++  ready(() => {
++    markPageReady();
++    const revealObserver = buildRevealObserver();
++    setupMicroInteractions();
++    setupRevealOnScroll(document, revealObserver);
++    setupSmoothNavigation();
++    setupRipples();
++    setupBackToTop();
++    watchDynamicContent(revealObserver);
++  });
++
++})();
++/* PRESS_DYNAMIC_INTERACTIONS_END */

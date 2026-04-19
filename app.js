@@ -3496,3 +3496,283 @@ document.addEventListener("DOMContentLoaded", () => {
   ready(runRestoreSeveralTimes);
 
 })();
+
+/* PRESS_DYNAMIC_INTERACTIONS_START
+   Progressive dynamic UI layer: subtle tilt/lift, reveal-on-scroll, tactile ripples,
+   smooth internal navigation, and a small back-to-top helper. Respects reduced motion.
+*/
+(() => {
+
+  const root = document.documentElement;
+  const CARD_SELECTOR = [
+    '.story-card',
+    '.archive-card',
+    '.river-item',
+    '.lead-panel',
+    '.desk-card',
+    '.link-list__item',
+    '.related-card',
+    '.edition-radar__item',
+    '.press-catchup__item',
+    '.daily-card'
+  ].join(', ');
+
+  const REVEAL_SELECTOR = [
+    '.story-card',
+    '.archive-card',
+    '.river-item',
+    '.lead-panel',
+    '.desk-card',
+    '.rail',
+    '.newsletter-block',
+    '.trust-card',
+    '.article-body',
+    '.article-sources',
+    '.edition-radar',
+    '.desk-pulse',
+    '.press-catchup',
+    '.daily-home-section',
+    '.daily-archive-section',
+    '.breaking-wire-section'
+  ].join(', ');
+
+  const RIPPLE_SELECTOR = [
+    'button',
+    '.button',
+    '.theme-toggle',
+    '.reader-mode-toggle',
+    '.lead-nav__button',
+    '.desk-pulse__catchup',
+    '.press-micro-card',
+    '.story-card__cta'
+  ].join(', ');
+
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  root.classList.add('press-dynamic-page');
+
+  const ready = (callback) => {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
+    } else {
+      callback();
+    }
+  };
+
+  const prefersReducedMotion = () => reducedMotionQuery.matches;
+
+  function markPageReady() {
+    window.requestAnimationFrame(() => root.classList.add('press-page-ready'));
+    window.addEventListener('pageshow', () => root.classList.remove('press-page-leaving'));
+  }
+
+  function isModifiedClick(event) {
+    return event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
+  }
+
+  function findInternalNavigationTarget(event) {
+    if (event.defaultPrevented || isModifiedClick(event)) return null;
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target) return null;
+    if (target.closest('button, input, textarea, select, label, [contenteditable="true"]')) return null;
+
+    const directLink = target.closest('a[href]');
+    const cardLink = directLink ? null : target.closest(CARD_SELECTOR)?.querySelector('a[href]');
+    const link = directLink || cardLink;
+    if (!link) return null;
+
+    const rawHref = link.getAttribute('href') || '';
+    if (!rawHref || rawHref.startsWith('#') || /^(mailto|tel|javascript):/i.test(rawHref)) return null;
+    if (link.hasAttribute('download')) return null;
+    if (link.target && link.target !== '_self') return null;
+
+    let url;
+    try {
+      url = new URL(rawHref, window.location.href);
+    } catch (_) {
+      return null;
+    }
+
+    if (url.origin !== window.location.origin) return null;
+    const sameDocument = url.pathname === window.location.pathname &&
+      url.search === window.location.search &&
+      Boolean(url.hash);
+    if (sameDocument) return null;
+
+    return { url: url.href, host: directLink || target.closest(CARD_SELECTOR) || link };
+  }
+
+  function setupSmoothNavigation() {
+    document.addEventListener('click', (event) => {
+      const navigation = findInternalNavigationTarget(event);
+      if (!navigation || prefersReducedMotion()) return;
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      createRipple(navigation.host, event);
+      root.classList.add('press-page-leaving');
+      window.setTimeout(() => {
+        window.location.href = navigation.url;
+      }, 170);
+    }, true);
+  }
+
+  function enhanceCard(card) {
+    if (!(card instanceof HTMLElement)) return;
+    if (card.dataset.pressDynamicCard === 'true') return;
+    card.dataset.pressDynamicCard = 'true';
+    card.classList.add('press-micro-card');
+
+    if (!finePointerQuery.matches || prefersReducedMotion()) return;
+
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const x = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
+      const y = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1);
+      const tiltX = (0.5 - y) * 2.4;
+      const tiltY = (x - 0.5) * 2.4;
+      card.style.setProperty('--press-mouse-x', `${(x * 100).toFixed(2)}%`);
+      card.style.setProperty('--press-mouse-y', `${(y * 100).toFixed(2)}%`);
+      card.style.setProperty('--press-tilt-x', `${tiltX.toFixed(2)}deg`);
+      card.style.setProperty('--press-tilt-y', `${tiltY.toFixed(2)}deg`);
+    });
+
+    card.addEventListener('pointerleave', () => {
+      card.style.removeProperty('--press-tilt-x');
+      card.style.removeProperty('--press-tilt-y');
+      card.style.setProperty('--press-mouse-x', '50%');
+      card.style.setProperty('--press-mouse-y', '50%');
+    });
+  }
+
+  function setupMicroInteractions(scope = document) {
+    const nodes = [];
+    if (scope instanceof Element && scope.matches(CARD_SELECTOR)) nodes.push(scope);
+    nodes.push(...scope.querySelectorAll(CARD_SELECTOR));
+    nodes.forEach(enhanceCard);
+  }
+
+  function setupRevealOnScroll(scope = document, observer) {
+    const nodes = [];
+    if (scope instanceof Element && scope.matches(REVEAL_SELECTOR)) nodes.push(scope);
+    nodes.push(...scope.querySelectorAll(REVEAL_SELECTOR));
+
+    nodes.forEach((node, index) => {
+      if (!(node instanceof HTMLElement)) return;
+      if (node.dataset.pressRevealBound === 'true') return;
+      node.dataset.pressRevealBound = 'true';
+      node.setAttribute('data-press-reveal', '');
+      node.style.setProperty('--press-reveal-delay', `${Math.min(index % 6, 5) * 45}ms`);
+
+      if (!observer || prefersReducedMotion()) {
+        node.classList.add('is-revealed');
+        return;
+      }
+
+      observer.observe(node);
+    });
+  }
+
+  function buildRevealObserver() {
+    if (!('IntersectionObserver' in window) || prefersReducedMotion()) return null;
+    return new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+  }
+
+  function createRipple(host, event) {
+    if (!(host instanceof HTMLElement) || prefersReducedMotion()) return;
+    if (host.matches('input, textarea, select')) return;
+
+    const rect = host.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+
+    host.classList.add('press-ripple-host');
+    const ripple = document.createElement('span');
+    ripple.className = 'press-ink-ripple';
+    const size = Math.max(rect.width, rect.height) * 2.15;
+    const x = event.clientX ? event.clientX - rect.left : rect.width / 2;
+    const y = event.clientY ? event.clientY - rect.top : rect.height / 2;
+
+    ripple.style.setProperty('--press-ripple-size', `${size}px`);
+    ripple.style.setProperty('--press-ripple-x', `${x}px`);
+    ripple.style.setProperty('--press-ripple-y', `${y}px`);
+    host.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+  }
+
+  function setupRipples() {
+    document.addEventListener('pointerdown', (event) => {
+      if (!(event.target instanceof Element)) return;
+      if (event.target.closest('input, textarea, select, label, [contenteditable="true"]')) return;
+      const host = event.target.closest(RIPPLE_SELECTOR);
+      if (!host) return;
+      createRipple(host, event);
+    });
+  }
+
+  function setupBackToTop() {
+    if (document.querySelector('[data-press-back-to-top]')) return;
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'press-back-to-top';
+    button.setAttribute('data-press-back-to-top', '');
+    button.setAttribute('aria-label', 'Back to top');
+    button.innerHTML = '<span aria-hidden="true">↑</span> Top';
+    document.body.appendChild(button);
+
+    button.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+      });
+    });
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      button.classList.toggle('is-visible', window.scrollY > 640);
+    };
+
+    update();
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }, { passive: true });
+  }
+
+  function watchDynamicContent(revealObserver) {
+    if (!('MutationObserver' in window) || !document.body) return;
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (!(node instanceof Element)) return;
+          setupMicroInteractions(node);
+          setupRevealOnScroll(node, revealObserver);
+        });
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  ready(() => {
+    markPageReady();
+    const revealObserver = buildRevealObserver();
+    setupMicroInteractions();
+    setupRevealOnScroll(document, revealObserver);
+    setupSmoothNavigation();
+    setupRipples();
+    setupBackToTop();
+    watchDynamicContent(revealObserver);
+  });
+
+})();
+/* PRESS_DYNAMIC_INTERACTIONS_END */
