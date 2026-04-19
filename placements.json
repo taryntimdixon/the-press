@@ -1,0 +1,138 @@
+{
+  "generated_at": "2026-04-19T01:49:23.421115+00:00",
+  "rules": {
+    "live_window_days": 14,
+    "dedupe": "url + cluster_id",
+    "hero": "fresh, image-ready, section-diverse",
+    "secondary": "fresh, section-diverse, hero clusters excluded",
+    "rails": "freshness-weighted fallback if manual analytics are unavailable"
+  },
+  "home": {
+    "hero": [
+      "2026-04-17-house-senate-race-to-patch-surveillance-law-after-gop-revolt-with-trump-pressing-for-a-longer-extension",
+      "2026-04-17-imf-warns-middle-east-war-could-stall-disinflation-and-keep-global-growth-below-trend",
+      "2026-04-17-mars-organics-revisited-nasa-study-keeps-the-search-for-life-alive",
+      "2026-04-17-cannes-2026-leans-arthouse-as-festival-confirms-a-star-sparse-competition-lineup"
+    ],
+    "secondary": [
+      "2026-04-17-openai-s-122-billion-raise-signals-the-ai-race-is-now-a-capital-and-compute-war",
+      "2026-04-17-u-s-chip-export-reviews-are-slowing-the-ai-hardware-market-and-nvidia-feels-the-drag",
+      "2026-04-17-why-2016-nostalgia-is-still-dominating-social-feeds-in-april-2026"
+    ],
+    "most_read": [
+      "2026-04-17-u-s-brokered-truce-in-lebanon-tests-whether-washington-can-turn-battlefield-pause-into-diplomacy",
+      "2026-04-17-coachella-2026-s-second-weekend-arrives-with-pop-s-biggest-names-and-a-lot-to-prove",
+      "2026-04-17-lebanon-truce-brings-first-real-test-of-whether-the-war-can-be-pulled-back-from-the-brink",
+      "2026-04-17-house-race-to-save-surveillance-powers-exposes-trump-s-grip-and-its-limits",
+      "2026-04-17-imf-warns-war-shock-could-stall-a-fragile-global-recovery"
+    ],
+    "editors_picks": [
+      "2026-04-17-nasa-s-moonshot-is-now-a-science-mission-not-just-a-dress-rehearsal",
+      "2026-04-17-cannes-2026-leans-back-toward-the-auteurs-as-hollywood-s-tentpoles-stay-home",
+      "2026-04-17-anthropic-s-latest-claude-release-underscores-a-new-ai-frontier-cybersecurity-risk",
+      "2026-04-17-openai-s-gpt-5-4-cyber-launch-shows-how-fast-ai-safety-and-security-are-colliding"
+    ],
+    "latest": [
+      "2026-04-17-house-senate-race-to-patch-surveillance-law-after-gop-revolt-with-trump-pressing-for-a-longer-extension",
+      "2026-04-17-imf-warns-middle-east-war-could-stall-disinflation-and-keep-global-growth-below-trend",
+      "2026-04-17-mars-organics-revisited-nasa-study-keeps-the-search-for-life-alive",
+      "2026-04-17-cannes-2026-leans-arthouse-as-festival-confirms-a-star-sparse-competition-lineup",
+      "2026-04-17-openai-s-122-billion-raise-signals-the-ai-race-is-now-a-capital-and-compute-war",
+      "2026-04-17-u-s-chip-export-reviews-are-slowing-the-ai-hardware-market-and-nvidia-feels-the-drag",
+      "2026-04-17-why-2016-nostalgia-is-still-dominating-social-feeds-in-april-2026",
+      "2026-04-17-u-s-brokered-truce-in-lebanon-tests-whether-washington-can-turn-battlefield-pause-into-diplomacy",
+      "2026-04-17-coachella-2026-s-second-weekend-arrives-with-pop-s-biggest-names-and-a-lot-to-prove",
+      "2026-04-17-lebanon-truce-brings-first-real-test-of-whether-the-war-can-be-pulled-back-from-the-brink",
+      "2026-04-17-house-race-to-save-surveillance-powers-exposes-trump-s-grip-and-its-limits",
+      "2026-04-17-imf-warns-war-shock-could-stall-a-fragile-global-recovery"
+    ],
+    "daily": [
+      "2026-04-17-house-senate-race-to-patch-surveillance-law-after-gop-revolt-with-trump-pressing-for-a-longer-extension",
+      "2026-04-17-imf-warns-middle-east-war-could-stall-disinflation-and-keep-global-growth-below-trend",
+      "2026-04-17-mars-organics-revisited-nasa-study-keeps-the-search-for-life-alive",
+      "2026-04-17-cannes-2026-leans-arthouse-as-festival-confirms-a-star-sparse-competition-lineup",
+      "2026-04-17-openai-s-122-billion-raise-signals-the-ai-race-is-now-a-capital-and-compute-war",
+      "2026-04-17-u-s-chip-export-reviews-are-slowing-the-ai-hardware-market-and-nvidia-feels-the-drag",
+      "2026-04-17-why-2016-nostalgia-is-still-dominating-social-feeds-in-april-2026",
+      "2026-04-17-u-s-brokered-truce-in-lebanon-tests-whether-washington-can-turn-battlefield-pause-into-diplomacy",
+      "2026-04-17-coachella-2026-s-second-weekend-arrives-with-pop-s-biggest-names-and-a-lot-to-prove",
+      "2026-04-17-lebanon-truce-brings-first-real-test-of-whether-the-war-can-be-pulled-back-from-the-brink"
+    ],
+    "breaking": [
+      "2026-04-17-house-senate-race-to-patch-surveillance-law-after-gop-revolt-with-trump-pressing-for-a-longer-extension",
+      "2026-04-17-imf-warns-middle-east-war-could-stall-disinflation-and-keep-global-growth-below-trend",
+      "2026-04-17-mars-organics-revisited-nasa-study-keeps-the-search-for-life-alive",
+      "2026-04-17-cannes-2026-leans-arthouse-as-festival-confirms-a-star-sparse-competition-lineup",
+      "2026-04-17-openai-s-122-billion-raise-signals-the-ai-race-is-now-a-capital-and-compute-war",
+      "2026-04-17-u-s-chip-export-reviews-are-slowing-the-ai-hardware-market-and-nvidia-feels-the-drag",
+      "2026-04-17-why-2016-nostalgia-is-still-dominating-social-feeds-in-april-2026",
+      "2026-04-17-u-s-brokered-truce-in-lebanon-tests-whether-washington-can-turn-battlefield-pause-into-diplomacy",
+      "2026-04-17-coachella-2026-s-second-weekend-arrives-with-pop-s-biggest-names-and-a-lot-to-prove",
+      "2026-04-17-lebanon-truce-brings-first-real-test-of-whether-the-war-can-be-pulled-back-from-the-brink",
+      "2026-04-17-house-race-to-save-surveillance-powers-exposes-trump-s-grip-and-its-limits",
+      "2026-04-17-imf-warns-war-shock-could-stall-a-fragile-global-recovery"
+    ],
+    "desk_pulse": [
+      {
+        "count": 16,
+        "latest_ts": 1776440460.0,
+        "story_id": "2026-04-17-imf-warns-middle-east-war-could-stall-disinflation-and-keep-global-growth-below-trend",
+        "section": "Economics"
+      },
+      {
+        "count": 16,
+        "latest_ts": 1776440460.0,
+        "story_id": "2026-04-17-mars-organics-revisited-nasa-study-keeps-the-search-for-life-alive",
+        "section": "Science"
+      },
+      {
+        "count": 15,
+        "latest_ts": 1776440460.0,
+        "story_id": "2026-04-17-house-senate-race-to-patch-surveillance-law-after-gop-revolt-with-trump-pressing-for-a-longer-extension",
+        "section": "Politics"
+      },
+      {
+        "count": 15,
+        "latest_ts": 1776440460.0,
+        "story_id": "2026-04-17-openai-s-122-billion-raise-signals-the-ai-race-is-now-a-capital-and-compute-war",
+        "section": "AI"
+      },
+      {
+        "count": 14,
+        "latest_ts": 1776440460.0,
+        "story_id": "2026-04-17-why-2016-nostalgia-is-still-dominating-social-feeds-in-april-2026",
+        "section": "Niche"
+      },
+      {
+        "count": 12,
+        "latest_ts": 1776440460.0,
+        "story_id": "2026-04-17-lebanon-truce-brings-first-real-test-of-whether-the-war-can-be-pulled-back-from-the-brink",
+        "section": "World"
+      },
+      {
+        "count": 11,
+        "latest_ts": 1776440460.0,
+        "story_id": "2026-04-17-u-s-chip-export-reviews-are-slowing-the-ai-hardware-market-and-nvidia-feels-the-drag",
+        "section": "Technology"
+      },
+      {
+        "count": 11,
+        "latest_ts": 1776440460.0,
+        "story_id": "2026-04-17-u-s-brokered-truce-in-lebanon-tests-whether-washington-can-turn-battlefield-pause-into-diplomacy",
+        "section": "Geopolitics"
+      },
+      {
+        "count": 8,
+        "latest_ts": 1776440460.0,
+        "story_id": "2026-04-17-cannes-2026-leans-arthouse-as-festival-confirms-a-star-sparse-competition-lineup",
+        "section": "Film"
+      },
+      {
+        "count": 8,
+        "latest_ts": 1776440460.0,
+        "story_id": "2026-04-17-coachella-2026-s-second-weekend-arrives-with-pop-s-biggest-names-and-a-lot-to-prove",
+        "section": "Pop Culture"
+      }
+    ]
+  }
+}
