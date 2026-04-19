@@ -1203,3 +1203,1297 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 /* PRESS_AI_BYLINE_PATCH_END */
+/* PRESS_ECOSYSTEM_ENGINE_START
+   Drop this entire block at the very bottom of app.js.
+   It turns the homepage, section pages, archive, freshness chips, desk pulse,
+   catch-up cards, and reading modes into a cleaner live article ecosystem.
+*/
+(() => {
+  'use strict';
+
+  const PRESS_AUTHOR = 'Written by Intelligent AI';
+  const CACHE_PREFIX = 'press-ecosystem-cache:';
+  const MODE_KEY = 'press-reader-mode';
+  const FRESH_HOURS = 72;
+  const LIVE_DAYS = 14;
+  const FETCH_TARGETS = {
+    placements: 'placements.json',
+    live: 'live-index.json',
+    content: 'content-index.json',
+    daily: 'daily-latest.json',
+    edition: 'edition.json',
+    search: 'search-index.json',
+  };
+
+  const SECTION_COPY = {
+    ai: 'Model labs, compute, safety, infrastructure, and the business systems underneath artificial intelligence.',
+    culture: 'Institutions, labor, audiences, and the economics under the room.',
+    economics: 'Indicators translated back into rent, wages, spending, and shelter.',
+    education: 'Schools, campuses, attendance, learning, and public-system capacity.',
+    film: 'Festivals, studios, directors, box office, and the machinery of screen culture.',
+    geopolitics: 'War, diplomacy, alliances, borders, and the logistics behind power.',
+    health: 'Public health, vaccination, surveillance, and the line between fear and evidence.',
+    niche: 'Internet microcultures, collector obsessions, odd markets, and the small trends that explain big moods.',
+    opinion: 'Arguments anchored in public facts, not hot air.',
+    philosophy: 'Essays on judgment, ethics, institutions, and the words societies use to think.',
+    politics: 'Power, administration, elections, and the law of democratic procedure.',
+    popculture: 'Pop music, fandom, celebrity systems, festivals, and the internet’s cultural weather.',
+    science: 'Research, engineering, and the physical systems required to turn ambition into evidence.',
+    technology: 'Infrastructure, industry, and the machinery behind digital life.',
+    world: 'Alliances, borders, defense industry, and how geopolitical language becomes logistics.',
+  };
+
+  const SECTION_ALIAS = {
+    ai: ['ai', 'artificial intelligence', 'technology'],
+    artificialintelligence: ['ai', 'artificial intelligence', 'technology'],
+    film: ['film', 'culture'],
+    geopolitics: ['geopolitics', 'world'],
+    popculture: ['pop culture', 'popculture', 'culture'],
+    niche: ['niche', 'culture'],
+    world: ['world', 'geopolitics'],
+    technology: ['technology', 'ai'],
+    culture: ['culture', 'film', 'pop culture', 'niche'],
+  };
+
+  const STOP_WORDS = new Set([
+    'a', 'an', 'and', 'are', 'as', 'at', 'be', 'but', 'by', 'can', 'could', 'for', 'from', 'has', 'have', 'how', 'in', 'into', 'is',
+    'it', 'its', 'new', 'not', 'now', 'of', 'on', 'or', 'over', 'that', 'the', 'their', 'this', 'to', 'with', 'without', 'why', 'will',
+    'after', 'before', 'still', 'about', 'what', 'when', 'where', 'who', 'than', 'then', 'there', 'they', 'was', 'were', 'been', 'being',
+  ]);
+
+  let ecosystemState = null;
+  let ecosystemPromise = null;
+
+  function ready(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
+    } else {
+      callback();
+    }
+  }
+
+  ready(() => {
+    document.documentElement.classList.add('press-ecosystem-booting');
+    installReadingModes();
+    installWhyTooltips();
+    installSmartSearchHook();
+
+    loadEcosystem().then((state) => {
+      ecosystemState = state;
+      document.documentElement.classList.remove('press-ecosystem-booting');
+      document.documentElement.classList.add('press-ecosystem-ready');
+
+      renderEverything(state);
+
+      // Existing app.js also refreshes some slots asynchronously.
+      // These passes make this engine the final source of truth.
+      window.setTimeout(() => renderEverything(state), 300);
+      window.setTimeout(() => renderEverything(state), 1200);
+
+      window.dispatchEvent(new CustomEvent('press:ecosystem-ready', { detail: state }));
+    }).catch((error) => {
+      document.documentElement.classList.remove('press-ecosystem-booting');
+      console.warn('[The Press] Ecosystem engine could not initialize:', error);
+    });
+  });
+
+  function loadEcosystem() {
+    if (ecosystemPromise) return ecosystemPromise;
+
+    ecosystemPromise = (async () => {
+      const [placementsRaw, liveRaw, contentRaw] = await Promise.all([
+        fetchOptionalJson(FETCH_TARGETS.placements),
+        fetchOptionalJson(FETCH_TARGETS.live),
+        fetchOptionalJson(FETCH_TARGETS.content),
+      ]);
+
+      let sourceStories = mergeStories([
+        extractStories(contentRaw, 'content-index'),
+        extractStories(liveRaw, 'live-index'),
+      ]);
+
+      if (sourceStories.length < 8) {
+        const [dailyRaw, editionRaw, searchRaw, embeddedRaw] = await Promise.all([
+          fetchOptionalJson(FETCH_TARGETS.daily),
+          fetchOptionalJson(FETCH_TARGETS.edition),
+          fetchOptionalJson(FETCH_TARGETS.search),
+          Promise.resolve(readEmbeddedSearchJson()),
+        ]);
+
+        sourceStories = mergeStories([
+          sourceStories,
+          extractStories(dailyRaw, 'daily-latest'),
+          extractStories(editionRaw, 'edition'),
+          extractStories(searchRaw, 'search-index'),
+          extractStories(embeddedRaw, 'embedded-search'),
+        ]);
+      }
+
+      const stories = sourceStories
+        .filter((story) => story.title && story.url)
+        .sort((a, b) => b.sortValue - a.sortValue || a.title.localeCompare(b.title));
+
+      const model = buildPlacementModel(stories, normalizePlacementFile(placementsRaw));
+
+      return {
+        stories,
+        model,
+        generatedAt: new Date().toISOString(),
+      };
+    })();
+
+    return ecosystemPromise;
+  }
+
+  async function fetchOptionalJson(url) {
+    try {
+      const response = await fetch(url, { cache: 'default' });
+      if (!response.ok) return readCachedJson(url);
+
+      const json = await response.json();
+      writeCachedJson(url, json);
+      return json;
+    } catch (_) {
+      return readCachedJson(url);
+    }
+  }
+
+  function writeCachedJson(url, data) {
+    try {
+      localStorage.setItem(CACHE_PREFIX + url, JSON.stringify({
+        savedAt: Date.now(),
+        data,
+      }));
+    } catch (_) {}
+  }
+
+  function readCachedJson(url) {
+    try {
+      const raw = localStorage.getItem(CACHE_PREFIX + url);
+      if (!raw) return null;
+
+      const parsed = JSON.parse(raw);
+      return parsed && parsed.data ? parsed.data : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function readEmbeddedSearchJson() {
+    const node = document.getElementById('press-search-data');
+    if (!node) return null;
+
+    try {
+      return JSON.parse(node.textContent || '[]');
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function extractStories(payload, sourceName) {
+    if (!payload) return [];
+
+    if (Array.isArray(payload)) {
+      return payload.map((item) => normalizeStory(item, sourceName)).filter(Boolean);
+    }
+
+    if (Array.isArray(payload.stories)) {
+      return payload.stories.map((item) => normalizeStory(item, sourceName)).filter(Boolean);
+    }
+
+    if (Array.isArray(payload.articles)) {
+      return payload.articles.map((item) => normalizeStory(item, sourceName)).filter(Boolean);
+    }
+
+    if (Array.isArray(payload.items)) {
+      return payload.items.map((item) => normalizeStory(item, sourceName)).filter(Boolean);
+    }
+
+    return [];
+  }
+
+  function normalizeStory(item, sourceName) {
+    if (!item || typeof item !== 'object') return null;
+
+    const title = clean(item.title || item.headline || item.name || '');
+    const url = clean(item.url || item.href || item.link || item.filename || item.permalink || '');
+
+    if (!title || !url || url === '#') return null;
+
+    const section = titleCaseSection(item.section || item.desk || item.category || inferSectionFromUrl(url) || 'News');
+    const type = clean(item.type || item.kind || item.story_type || (url.startsWith('daily/') ? 'Daily Issue' : 'Report'));
+    const summary = clean(item.dek || item.summary || item.description || item.excerpt || '');
+    const publishedLabel = clean(item.published || item.publishedLabel || item.published_label || item.displayDate || item.date || '');
+    const updatedLabel = clean(item.updated || item.updatedLabel || item.updated_label || item.updatedAt || '');
+    const publishedIso = clean(item.publishedIso || item.published_iso || item.publishedAt || item.published_at || '');
+    const updatedIso = clean(item.updatedIso || item.updated_iso || item.updatedAt || item.updated_at || '');
+    const sortValue = parsePressDate(publishedIso || publishedLabel || item.date || urlDateHint(url));
+    const image = clean(item.image || item.imageUrl || item.image_url || item.thumbnail || item.photo || '');
+    const imageAlt = clean(item.imageAlt || item.image_alt || item.alt || item.photoAlt || item.photo_alt || title);
+    const keywords = Array.isArray(item.keywords) ? item.keywords.filter(Boolean).map(String) : [];
+    const storyId = clean(item.story_id || item.storyId || item.id || slugFromUrl(url));
+    const clusterId = clean(item.cluster_id || item.clusterId || makeClusterId(title, keywords, section));
+    const readTime = clean(item.readTime || item.read_time || '');
+    const wordCount = clean(item.wordCount || item.word_count || '');
+    const author = clean(item.author || item.byline || item.authors || PRESS_AUTHOR).replace(/^By\s+/i, '');
+
+    return {
+      raw: item,
+      sourceName,
+      storyId,
+      clusterId,
+      title,
+      section,
+      sectionSlug: slugify(section),
+      type,
+      dek: summary,
+      summary,
+      url,
+      image,
+      imageAlt,
+      author: author || PRESS_AUTHOR,
+      byline: PRESS_AUTHOR,
+      published: publishedLabel || formatDateLabel(sortValue),
+      publishedIso: publishedIso || (sortValue ? new Date(sortValue).toISOString() : ''),
+      updated: updatedLabel,
+      updatedIso,
+      sortValue,
+      ageHours: sortValue ? Math.max(0, (Date.now() - sortValue) / 36e5) : 999999,
+      keywords,
+      readTime,
+      wordCount,
+      priority: Number(item.priority || item.editorial_priority || 0) || 0,
+      heroEligible: item.hero_eligible !== false,
+      status: clean(item.status || 'published'),
+      isDaily: /daily\//i.test(url) || /daily/i.test(type),
+    };
+  }
+
+  function mergeStories(groups) {
+    const byUrl = new Map();
+    const flat = groups.flat().filter(Boolean);
+
+    flat.forEach((story) => {
+      const key = normalizeUrlKey(story.url);
+      const previous = byUrl.get(key);
+
+      if (!previous) {
+        byUrl.set(key, story);
+        return;
+      }
+
+      byUrl.set(key, mergeStoryPair(previous, story));
+    });
+
+    return Array.from(byUrl.values())
+      .filter((story) => !/draft|private|trash/i.test(story.status || ''));
+  }
+
+  function mergeStoryPair(a, b) {
+    const newer = (b.sortValue || 0) >= (a.sortValue || 0) ? b : a;
+    const older = newer === b ? a : b;
+
+    return {
+      ...older,
+      ...newer,
+      image: newer.image || older.image,
+      imageAlt: newer.imageAlt || older.imageAlt,
+      dek: longer(newer.dek, older.dek),
+      summary: longer(newer.summary, older.summary),
+      keywords: Array.from(new Set([...(older.keywords || []), ...(newer.keywords || [])])),
+      readTime: newer.readTime || older.readTime,
+      wordCount: newer.wordCount || older.wordCount,
+      clusterId: newer.clusterId || older.clusterId,
+      priority: Math.max(Number(older.priority || 0), Number(newer.priority || 0)),
+    };
+  }
+
+  function longer(a, b) {
+    return String(a || '').length >= String(b || '').length ? (a || b || '') : (b || a || '');
+  }
+
+  function buildPlacementModel(stories, placementFile) {
+    const all = stories.slice().sort((a, b) => b.sortValue - a.sortValue);
+
+    const byId = new Map();
+    all.forEach((story) => {
+      byId.set(story.storyId, story);
+      byId.set(story.url, story);
+      byId.set(normalizeUrlKey(story.url), story);
+    });
+
+    const liveCutoff = Date.now() - LIVE_DAYS * 24 * 36e5;
+    const recentEnough = all.filter((story) => !story.sortValue || story.sortValue >= liveCutoff);
+    const livePool = recentEnough.length >= 12 ? recentEnough : all.slice(0, Math.max(24, Math.min(all.length, 60)));
+    const clusterFresh = freshestPerCluster(livePool);
+
+    const usedClusters = new Set();
+    const usedUrls = new Set();
+
+    const resolvedHero = resolvePlacementList(placementFile?.home?.hero, byId, 4);
+    const hero = resolvedHero.length
+      ? resolvedHero
+      : pickStories(clusterFresh.filter((story) => story.heroEligible && story.image), 4, {
+          usedClusters,
+          usedUrls,
+          uniqueSections: true,
+        })
+          .concat(pickStories(clusterFresh, 4, {
+            usedClusters,
+            usedUrls,
+            uniqueSections: true,
+          }))
+          .slice(0, 4);
+
+    hero.forEach((story) => remember(story, usedClusters, usedUrls));
+
+    const secondary = resolvePlacementList(placementFile?.home?.secondary, byId, 3);
+    const secondaryFinal = secondary.length
+      ? secondary
+      : pickStories(clusterFresh, 3, {
+          usedClusters,
+          usedUrls,
+          uniqueSections: true,
+        });
+
+    secondaryFinal.forEach((story) => remember(story, usedClusters, usedUrls));
+
+    const latest = uniqueByCluster(all).slice(0, 12);
+    const daily = all.filter((story) => story.isDaily).slice(0, 10);
+    const railUsed = new Set([...hero, ...secondaryFinal].map((story) => story.clusterId));
+    const railPool = clusterFresh.filter((story) => !railUsed.has(story.clusterId));
+
+    const mostRead = resolvePlacementList(placementFile?.home?.most_read || placementFile?.home?.mostRead, byId, 5);
+    const mostReadFinal = mostRead.length ? mostRead : scoreSort(railPool, 'mostRead').slice(0, 5);
+
+    const pickUsed = new Set([...railUsed, ...mostReadFinal.map((story) => story.clusterId)]);
+    const editorsPicks = resolvePlacementList(placementFile?.home?.editors_picks || placementFile?.home?.editorsPicks, byId, 4);
+    const editorsFinal = editorsPicks.length
+      ? editorsPicks
+      : scoreSort(clusterFresh.filter((story) => !pickUsed.has(story.clusterId)), 'editors').slice(0, 4);
+
+    const breaking = uniqueByCluster(all).slice(0, 14);
+    const deskPulse = buildDeskPulse(livePool);
+
+    return {
+      all,
+      livePool,
+      hero,
+      secondary: secondaryFinal,
+      mostRead: mostReadFinal,
+      editorsPicks: editorsFinal,
+      latest,
+      daily: daily.length >= 5 ? daily : latest.slice(0, 10),
+      breaking,
+      deskPulse,
+      updatedLabel: latest[0]?.published || 'Updated recently',
+      storyCount: all.length,
+      liveCount: livePool.length,
+    };
+  }
+
+  function normalizePlacementFile(payload) {
+    if (!payload || typeof payload !== 'object') return null;
+    if (payload.slots) return { home: payload.slots.home || payload.home || {} };
+    if (payload.home) return payload;
+    return null;
+  }
+
+  function resolvePlacementList(value, byId, limit) {
+    const values = Array.isArray(value) ? value : value ? [value] : [];
+
+    return values.map((entry) => {
+      const key = typeof entry === 'string'
+        ? entry
+        : entry?.story_id || entry?.storyId || entry?.url || entry?.id;
+
+      return byId.get(key) || byId.get(normalizeUrlKey(key || ''));
+    }).filter(Boolean).slice(0, limit);
+  }
+
+  function freshestPerCluster(stories) {
+    const map = new Map();
+
+    stories.forEach((story) => {
+      const key = story.clusterId || story.url;
+      const previous = map.get(key);
+
+      if (!previous || story.sortValue > previous.sortValue || (story.image && !previous.image)) {
+        map.set(key, story);
+      }
+    });
+
+    return Array.from(map.values()).sort((a, b) => b.sortValue - a.sortValue);
+  }
+
+  function uniqueByCluster(stories) {
+    const seen = new Set();
+
+    return stories.filter((story) => {
+      const key = story.clusterId || story.url;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
+  function pickStories(source, count, options = {}) {
+    const picked = [];
+    const sectionSeen = new Set();
+    const candidates = scoreSort(source, 'placement');
+
+    for (const story of candidates) {
+      if (!story || picked.length >= count) break;
+      if (options.usedUrls?.has(story.url)) continue;
+      if (options.usedClusters?.has(story.clusterId)) continue;
+
+      const sectionKey = slugify(story.section);
+      if (options.uniqueSections && sectionSeen.has(sectionKey)) continue;
+
+      picked.push(story);
+      sectionSeen.add(sectionKey);
+      remember(story, options.usedClusters, options.usedUrls);
+    }
+
+    if (picked.length < count && options.uniqueSections) {
+      picked.push(...pickStories(source, count - picked.length, {
+        ...options,
+        uniqueSections: false,
+      }));
+    }
+
+    return uniqueByUrl(picked).slice(0, count);
+  }
+
+  function remember(story, usedClusters, usedUrls) {
+    if (!story) return;
+    usedClusters?.add(story.clusterId);
+    usedUrls?.add(story.url);
+  }
+
+  function uniqueByUrl(stories) {
+    const seen = new Set();
+
+    return stories.filter((story) => {
+      const key = normalizeUrlKey(story.url);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
+  function scoreSort(stories, mode = 'placement') {
+    return stories.slice().sort((a, b) => storyScore(b, mode) - storyScore(a, mode));
+  }
+
+  function storyScore(story, mode) {
+    const recency = story.sortValue ? story.sortValue / 1e10 : 0;
+    const freshBoost = story.ageHours <= FRESH_HOURS ? 24 : story.ageHours <= 168 ? 8 : 0;
+    const imageBoost = story.image ? 6 : 0;
+    const dailyBoost = story.isDaily ? 4 : 0;
+    const priorityBoost = Number(story.priority || 0) * 20;
+    const summaryBoost = story.dek && story.dek.length > 90 ? 2 : 0;
+    const modeBoost = mode === 'editors' && /analysis|essay|feature/i.test(story.type) ? 6 : 0;
+
+    return recency + freshBoost + imageBoost + dailyBoost + priorityBoost + summaryBoost + modeBoost;
+  }
+
+  function buildDeskPulse(stories) {
+    const map = new Map();
+
+    stories.forEach((story) => {
+      const slug = slugify(story.section);
+      const current = map.get(slug) || {
+        section: story.section,
+        slug,
+        count: 0,
+        latest: story.sortValue,
+        story,
+      };
+
+      current.count += 1;
+
+      if (story.sortValue > current.latest) {
+        current.latest = story.sortValue;
+        current.story = story;
+      }
+
+      map.set(slug, current);
+    });
+
+    return Array.from(map.values())
+      .sort((a, b) => b.latest - a.latest || b.count - a.count)
+      .slice(0, 10);
+  }
+
+  function renderEverything(state) {
+    if (!state?.model?.all?.length) return;
+
+    renderGlobalFreshness(state.model);
+    renderBreakingStrip(state.model.breaking);
+    renderHomepage(state.model);
+    renderSectionPage(state.model.all);
+    renderArchivePage(state.model.all);
+    renderSearchResultsFromState(state.model.all);
+    bindCardInteractions();
+    bindImageFallbacks(document);
+  }
+
+  function renderGlobalFreshness(model) {
+    const note = document.querySelector('.edition-note');
+
+    if (note) {
+      note.textContent = `Live edition • ${model.liveCount} active stories • ${model.deskPulse.length} desks • Latest ${model.updatedLabel}`;
+    }
+
+    const banner = document.querySelector('.ai-edition-banner .section-copy');
+
+    if (banner) {
+      banner.textContent = 'New stories now replenish the live homepage slots automatically. Older pieces move into the archive instead of haunting the front page.';
+    }
+  }
+
+  function renderBreakingStrip(stories) {
+    const box = document.querySelector('.breaking-strip__items');
+    if (!box || !stories.length) return;
+
+    const links = stories.slice(0, 12)
+      .map((story) => `<a href="${escapeAttr(story.url)}">${escapeHtml(story.title)}</a>`)
+      .join('');
+
+    box.innerHTML = `<div class="breaking-strip__track">${links}${links}</div>`;
+    box.style.setProperty('--press-ticker-duration', `${Math.max(72, Math.min(140, stories.length * 12))}s`);
+  }
+
+  function renderHomepage(model) {
+    if (!document.body.classList.contains('page-home')) return;
+
+    updateHomeIntro(model);
+    renderDeskPulse(model);
+    renderCatchUp(model);
+    renderHero(model.hero);
+    renderSecondary(model.secondary);
+    renderRail('.rail--most-read .link-list', model.mostRead, {
+      ranked: true,
+      reason: 'Trending because it is fresh, prominent, and part of an active topic cluster.',
+    });
+    renderRail('.rail--editors .link-list', model.editorsPicks, {
+      ranked: false,
+      reason: 'Chosen as a section-diverse editor-style pick with lasting context.',
+    });
+    renderDailySection(model.daily);
+    renderLatestRiver(model.latest);
+    renderDeskDirectory(model.all);
+  }
+
+  function updateHomeIntro(model) {
+    const h1 = document.querySelector('.home-hero__intro h1');
+
+    if (h1) {
+      h1.textContent = 'Live Front Page';
+    }
+
+    const copy = document.querySelector('.home-hero__intro .section-copy');
+
+    if (copy) {
+      copy.textContent = `A cleaner live edition: ${model.liveCount} active stories, ${model.deskPulse.length} desks in motion, and automatic article replenishment across the homepage.`;
+    }
+  }
+
+  function renderDeskPulse(model) {
+    const hero = document.querySelector('.home-hero');
+
+    if (!hero || document.querySelector('.desk-pulse')) return;
+
+    const pulse = document.createElement('section');
+    pulse.className = 'desk-pulse';
+
+    pulse.innerHTML = `
+      <div class="desk-pulse__head">
+        <p class="eyebrow eyebrow--tiny">Desk Pulse</p>
+        <h2>What’s active right now</h2>
+      </div>
+
+      <div class="desk-pulse__rail">
+        ${model.deskPulse.map((desk) => `
+          <a class="desk-pulse__chip" href="${escapeAttr(sectionHref(desk.section))}">
+            <span>${escapeHtml(desk.section)}</span>
+            <strong>${desk.count}</strong>
+          </a>
+        `).join('')}
+      </div>
+
+      <button class="desk-pulse__catchup" type="button" data-press-catchup-toggle>Catch me up</button>
+    `;
+
+    hero.insertAdjacentElement('beforebegin', pulse);
+
+    pulse.querySelector('[data-press-catchup-toggle]')?.addEventListener('click', () => {
+      document.querySelector('.press-catchup')?.classList.toggle('is-open');
+    });
+  }
+
+  function renderCatchUp(model) {
+    const hero = document.querySelector('.home-hero');
+
+    if (!hero || document.querySelector('.press-catchup')) return;
+
+    const panel = document.createElement('section');
+    panel.className = 'press-catchup';
+
+    panel.innerHTML = `
+      <div class="section-heading-row">
+        <div>
+          <p class="eyebrow eyebrow--tiny">Catch Me Up</p>
+          <h2 class="section-heading">Five stories to understand the edition</h2>
+        </div>
+        <a class="section-link" href="archive.html">Full archive</a>
+      </div>
+
+      <div class="press-catchup__grid">
+        ${model.latest.slice(0, 5).map((story, index) => `
+          <article class="press-catchup__item">
+            <span>${index + 1}</span>
+            <div>
+              <p class="eyebrow eyebrow--tiny">${escapeHtml(story.section)} • ${freshnessLabel(story)}</p>
+              <h3><a href="${escapeAttr(story.url)}">${escapeHtml(story.title)}</a></h3>
+              <p>${escapeHtml(shorten(story.dek || story.summary, 145))}</p>
+            </div>
+          </article>
+        `).join('')}
+      </div>
+    `;
+
+    hero.insertAdjacentElement('beforebegin', panel);
+  }
+
+  function renderHero(stories) {
+    const panelBox = document.querySelector('.lead-switcher__panels');
+    const navBox = document.querySelector('.lead-nav');
+
+    if (!panelBox || !navBox || !stories?.length) return;
+
+    panelBox.innerHTML = stories.map((story, index) => leadPanel(story, index)).join('');
+
+    navBox.innerHTML = stories.map((story, index) => `
+      <button aria-pressed="${index === 0}" class="lead-nav__button${index === 0 ? ' is-active' : ''}" data-lead-button data-target="lead-${index}" type="button">
+        <span>${escapeHtml(story.section)}</span>
+        <strong>${escapeHtml(story.title)}</strong>
+      </button>
+    `).join('');
+
+    bindLeadSwitcher(navBox, panelBox);
+  }
+
+  function leadPanel(story, index) {
+    const imageHtml = story.image
+      ? `<img alt="${escapeAttr(story.imageAlt || story.title)}" decoding="async" loading="${index === 0 ? 'eager' : 'lazy'}" src="${escapeAttr(story.image)}" />`
+      : `<div class="press-image-fallback"><span>${escapeHtml(story.section)}</span></div>`;
+
+    return `
+      <div class="lead-panel${index === 0 ? ' is-active' : ''}" data-lead-panel id="lead-${index}">
+        <div class="lead-panel__media">
+          ${imageHtml}
+          <div class="lead-panel__media-note">
+            <p class="eyebrow eyebrow--tiny">${escapeHtml(freshnessLabel(story))}</p>
+            <p class="lead-panel__media-copy">${escapeHtml(shorten(story.dek || story.summary, 150))}</p>
+            <p class="lead-panel__media-source">Live slot • Replenishes automatically</p>
+          </div>
+        </div>
+
+        <div class="lead-panel__body">
+          <div>
+            <p class="eyebrow">Front Page • ${escapeHtml(story.section)} • ${escapeHtml(story.type)}</p>
+            <h2><a href="${escapeAttr(story.url)}">${escapeHtml(story.title)}</a></h2>
+            <p class="lead-panel__dek">${escapeHtml(story.dek || story.summary)}</p>
+            <p class="lead-panel__meta">${escapeHtml(metaLine(story))}</p>
+            ${whyDetail('Hero slot', story, 'Selected for freshness, image readiness, and section variety.')}
+          </div>
+
+          <div class="button-row">
+            <a class="button" href="${escapeAttr(story.url)}">Read story</a>
+            <a class="button button--ghost" href="${escapeAttr(sectionHref(story.section))}">More ${escapeHtml(story.section.toLowerCase())}</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function bindLeadSwitcher(navBox, panelBox) {
+    navBox.querySelectorAll('[data-lead-button]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.target;
+
+        navBox.querySelectorAll('[data-lead-button]').forEach((btn) => {
+          const active = btn === button;
+          btn.classList.toggle('is-active', active);
+          btn.setAttribute('aria-pressed', String(active));
+        });
+
+        panelBox.querySelectorAll('[data-lead-panel]').forEach((panel) => {
+          panel.classList.toggle('is-active', panel.id === target);
+        });
+      });
+    });
+  }
+
+  function renderSecondary(stories) {
+    const grid = document.querySelector('.home-grid__main .cards-grid.cards-grid--three');
+
+    if (!grid || !stories?.length) return;
+
+    grid.innerHTML = stories.map((story) => storyCard(story, {
+      reason: 'Fresh section-diverse secondary story.',
+    })).join('');
+  }
+
+  function renderRail(selector, stories, options = {}) {
+    const list = document.querySelector(selector);
+
+    if (!list || !stories?.length) return;
+
+    list.innerHTML = stories.map((story, index) => `
+      <li class="link-list__item" data-story-url="${escapeAttr(story.url)}">
+        ${options.ranked ? `<span class="rank-number">${index + 1}</span>` : ''}
+        <div>
+          <p class="eyebrow eyebrow--tiny">${escapeHtml(story.section)} • ${escapeHtml(story.type)}</p>
+          <a href="${escapeAttr(story.url)}">${escapeHtml(story.title)}</a>
+          <p class="link-list__meta">${escapeHtml(metaLine(story))}</p>
+          ${whyDetail(options.ranked ? `Rank ${index + 1}` : 'Editor pick', story, options.reason)}
+        </div>
+      </li>
+    `).join('');
+  }
+
+  function renderDailySection(stories) {
+    const section = document.querySelector('.daily-home-section');
+
+    if (!section || !stories?.length) return;
+
+    const heading = section.querySelector('.section-heading');
+
+    if (heading) {
+      heading.textContent = `${stories.length} newest live stories`;
+    }
+
+    const standfirst = section.querySelector('.section-standfirst');
+
+    if (standfirst) {
+      standfirst.textContent = 'This row is now replenished by the article ecosystem. Old daily stories age into archive instead of staying pinned.';
+    }
+
+    const grid = section.querySelector('.cards-grid--daily, .cards-grid');
+
+    if (grid) {
+      grid.innerHTML = stories.map((story) => storyCard(story, {
+        daily: true,
+        reason: 'Part of the newest generated daily batch.',
+      })).join('');
+    }
+  }
+
+  function renderLatestRiver(stories) {
+    const river = document.querySelector('.latest-section .river');
+
+    if (!river || !stories?.length) return;
+
+    river.innerHTML = stories.slice(0, 8).map((story) => `
+      <article class="river-item" data-story-url="${escapeAttr(story.url)}">
+        ${story.image ? `<a class="river-item__thumb" href="${escapeAttr(story.url)}"><img alt="${escapeAttr(story.imageAlt || story.title)}" decoding="async" loading="lazy" src="${escapeAttr(story.image)}" /></a>` : ''}
+
+        <div class="river-item__body">
+          <p class="eyebrow eyebrow--tiny">${escapeHtml(story.section)} • ${escapeHtml(story.type)} <span class="freshness-chip">${escapeHtml(freshnessLabel(story))}</span></p>
+          <h3><a href="${escapeAttr(story.url)}">${escapeHtml(story.title)}</a></h3>
+          <p>${escapeHtml(shorten(story.dek || story.summary, 180))}</p>
+          <p class="river-item__meta">${escapeHtml(metaLine(story))}</p>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  function renderDeskDirectory(stories) {
+    const cards = document.querySelectorAll('.page-home .desk-card');
+
+    if (!cards.length) return;
+
+    const bySection = new Map();
+
+    stories.forEach((story) => {
+      const slug = slugify(story.section);
+      if (!bySection.has(slug)) bySection.set(slug, story);
+    });
+
+    cards.forEach((card) => {
+      const heading = card.querySelector('h3 a');
+      const link = card.querySelector('.desk-card__story');
+
+      if (!heading || !link) return;
+
+      const slug = slugify(heading.textContent || '');
+      const story = bySection.get(slug) || findBySectionAlias(stories, slug);
+
+      if (!story) return;
+
+      link.textContent = story.title;
+      link.href = story.url;
+    });
+  }
+
+  function renderSectionPage(stories) {
+    if (!document.body.classList.contains('page-section')) return;
+
+    const sectionSlug = currentSectionSlug();
+
+    if (!sectionSlug) return;
+
+    const matches = stories.filter((story) => sectionMatches(story.section, sectionSlug));
+
+    if (!matches.length) return;
+
+    const h1 = document.querySelector('.section-landing h1, .page-hero h1');
+
+    if (h1) {
+      h1.textContent = titleForSlug(sectionSlug);
+    }
+
+    const copy = document.querySelector('.section-landing .section-copy, .page-hero .section-copy');
+
+    if (copy) {
+      copy.textContent = SECTION_COPY[sectionSlug] || `The latest ${titleForSlug(sectionSlug).toLowerCase()} stories from The Press.`;
+    }
+
+    const grid = document.querySelector('.page-section .cards-grid--archive, .page-section .cards-grid');
+
+    if (!grid) return;
+
+    grid.innerHTML = uniqueByCluster(matches)
+      .slice(0, 36)
+      .map((story) => storyCard(story, {
+        archive: true,
+        reason: `Newest ${titleForSlug(sectionSlug)} story.`,
+      }))
+      .join('');
+  }
+
+  function renderArchivePage(stories) {
+    if (!document.body.classList.contains('page-archive')) return;
+
+    const grid = document.querySelector('.page-archive .cards-grid--archive, .page-archive .cards-grid');
+
+    if (!grid) return;
+
+    grid.innerHTML = stories.map((story) => storyCard(story, {
+      archive: true,
+      reason: 'Archive card sorted by publication date.',
+    })).join('');
+
+    const toolbar = document.querySelector('.filter-toolbar');
+
+    if (toolbar && !toolbar.dataset.pressEcosystemBound) {
+      toolbar.dataset.pressEcosystemBound = 'true';
+
+      toolbar.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-filter]');
+        if (!button) return;
+
+        const value = button.dataset.filter || 'All';
+
+        toolbar.querySelectorAll('[data-filter]').forEach((btn) => {
+          btn.classList.toggle('is-active', btn === button);
+        });
+
+        grid.querySelectorAll('[data-section]').forEach((card) => {
+          const show = value === 'All' || card.dataset.section === value || card.dataset.type === value;
+          card.hidden = !show;
+        });
+      });
+    }
+  }
+
+  function storyCard(story, options = {}) {
+    const imageHtml = story.image ? `
+      <a class="story-card__image" href="${escapeAttr(story.url)}">
+        <img alt="${escapeAttr(story.imageAlt || story.title)}" decoding="async" loading="lazy" src="${escapeAttr(story.image)}" />
+      </a>
+    ` : '';
+
+    const classes = ['story-card'];
+
+    if (options.archive) classes.push('archive-card');
+    if (options.daily) classes.push('story-card--daily');
+
+    return `
+      <article class="${classes.join(' ')}" data-section="${escapeAttr(story.section)}" data-type="${escapeAttr(story.type)}" data-story-url="${escapeAttr(story.url)}">
+        ${imageHtml}
+
+        <div class="story-card__body">
+          <p class="eyebrow eyebrow--compact">${escapeHtml(story.section)} • ${escapeHtml(story.type)} <span class="freshness-chip">${escapeHtml(freshnessLabel(story))}</span></p>
+          <h3 class="story-card__title"><a href="${escapeAttr(story.url)}">${escapeHtml(story.title)}</a></h3>
+          <p class="story-card__dek">${escapeHtml(shorten(story.dek || story.summary, 170))}</p>
+          <p class="story-card__meta">${escapeHtml(metaLine(story))}</p>
+          ${whyDetail('Placement', story, options.reason || 'Selected by the live article ecosystem.')}
+          ${options.daily ? `<a class="story-card__cta" href="${escapeAttr(story.url)}">Read story</a>` : ''}
+        </div>
+      </article>
+    `;
+  }
+
+  function whyDetail(label, story, reason) {
+    return `
+      <details class="press-why">
+        <summary>${escapeHtml(label)} info</summary>
+        <p>${escapeHtml(reason)} ${escapeHtml(freshnessLabel(story))}. Cluster: ${escapeHtml(story.clusterId || 'single story')}.</p>
+      </details>
+    `;
+  }
+
+  function installReadingModes() {
+    applyStoredMode();
+
+    const topbar = document.querySelector('.topbar__actions');
+
+    if (!topbar || document.querySelector('[data-reader-mode-toggle]')) return;
+
+    const button = document.createElement('button');
+    button.className = 'reader-mode-toggle';
+    button.type = 'button';
+    button.setAttribute('data-reader-mode-toggle', '');
+    button.textContent = modeButtonLabel(currentMode());
+
+    button.addEventListener('click', () => {
+      const next = nextMode(currentMode());
+      setMode(next);
+      button.textContent = modeButtonLabel(next);
+    });
+
+    topbar.insertBefore(button, topbar.firstChild);
+  }
+
+  function currentMode() {
+    try {
+      return localStorage.getItem(MODE_KEY) || 'standard';
+    } catch (_) {
+      return 'standard';
+    }
+  }
+
+  function setMode(mode) {
+    try {
+      localStorage.setItem(MODE_KEY, mode);
+    } catch (_) {}
+
+    document.documentElement.dataset.readerMode = mode;
+  }
+
+  function applyStoredMode() {
+    setMode(currentMode());
+  }
+
+  function nextMode(mode) {
+    return mode === 'standard' ? 'quiet' : mode === 'quiet' ? 'edition' : 'standard';
+  }
+
+  function modeButtonLabel(mode) {
+    return mode === 'quiet'
+      ? 'Edition mode'
+      : mode === 'edition'
+        ? 'Standard mode'
+        : 'Quiet mode';
+  }
+
+  function installWhyTooltips() {
+    document.addEventListener('toggle', (event) => {
+      const target = event.target;
+
+      if (!target?.matches?.('.press-why') || !target.open) return;
+
+      document.querySelectorAll('.press-why[open]').forEach((detail) => {
+        if (detail !== target) detail.removeAttribute('open');
+      });
+    }, true);
+  }
+
+  function installSmartSearchHook() {
+    document.addEventListener('input', (event) => {
+      if (!event.target.matches('[data-search-input]')) return;
+      if (!ecosystemState?.model?.all?.length) return;
+
+      renderSearchResultsFromState(ecosystemState.model.all, event.target.value || '');
+    }, true);
+  }
+
+  function renderSearchResultsFromState(stories, queryOverride) {
+    const input = document.querySelector('[data-search-input]');
+    const box = document.querySelector('[data-search-results]');
+
+    if (!input || !box) return;
+
+    const query = typeof queryOverride === 'string'
+      ? queryOverride.trim().toLowerCase()
+      : input.value.trim().toLowerCase();
+
+    if (!query) return;
+
+    const results = stories.filter((story) => {
+      const haystack = [
+        story.title,
+        story.section,
+        story.type,
+        story.dek,
+        story.summary,
+        ...(story.keywords || []),
+      ].join(' ').toLowerCase();
+
+      return haystack.includes(query);
+    }).slice(0, 12);
+
+    if (!results.length) {
+      box.innerHTML = '<div class="search-empty"><p>No stories matched that search yet.</p></div>';
+      return;
+    }
+
+    box.innerHTML = results.map((story) => `
+      <article class="search-result">
+        <p class="eyebrow eyebrow--tiny">${escapeHtml(story.section)} • ${escapeHtml(story.type)} • ${escapeHtml(freshnessLabel(story))}</p>
+        <h3><a href="${escapeAttr(story.url)}">${escapeHtml(story.title)}</a></h3>
+        <p>${escapeHtml(shorten(story.dek || story.summary, 180))}</p>
+        <p class="search-result__meta">${escapeHtml(metaLine(story))}</p>
+      </article>
+    `).join('');
+  }
+
+  function bindCardInteractions() {
+    document.querySelectorAll('.story-card, .archive-card, .river-item, .link-list__item, .lead-panel, .press-catchup__item').forEach((card) => {
+      if (card.dataset.ecosystemClickable === 'true') return;
+
+      const link = card.querySelector('a[href]');
+      if (!link) return;
+
+      card.dataset.ecosystemClickable = 'true';
+      card.classList.add('is-clickable');
+
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('a, button, summary, details, input, textarea, select, label')) return;
+        window.location.href = link.href;
+      });
+    });
+  }
+
+  function bindImageFallbacks(root = document) {
+    root.querySelectorAll('img').forEach((img) => {
+      if (img.dataset.ecosystemFallbackBound === 'true') return;
+
+      img.dataset.ecosystemFallbackBound = 'true';
+
+      img.addEventListener('error', () => {
+        const holder = img.closest('.story-card__image, .lead-panel__media, .river-item__thumb');
+
+        if (holder) {
+          holder.classList.add('is-hidden');
+        } else {
+          img.hidden = true;
+        }
+      });
+    });
+  }
+
+  function sectionMatches(sectionName, wantedSlug) {
+    const storySlug = slugify(sectionName);
+
+    if (storySlug === wantedSlug) return true;
+
+    const aliases = SECTION_ALIAS[wantedSlug] || [wantedSlug];
+
+    return aliases.map(slugify).includes(storySlug);
+  }
+
+  function findBySectionAlias(stories, slug) {
+    return stories.find((story) => sectionMatches(story.section, slug));
+  }
+
+  function currentSectionSlug() {
+    const file = location.pathname.split('/').pop() || '';
+    const match = file.match(/^section-(.+)\.html$/i);
+
+    if (match) return slugify(match[1]);
+
+    const heading = document.querySelector('.section-landing h1, .page-hero h1');
+
+    return heading ? slugify(heading.textContent || '') : '';
+  }
+
+  function titleForSlug(slug) {
+    const nice = {
+      ai: 'AI',
+      popculture: 'Pop Culture',
+    };
+
+    return nice[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());
+  }
+
+  function titleCaseSection(value) {
+    const text = clean(value).replace(/[-_]+/g, ' ');
+    const key = slugify(text);
+
+    if (key === 'ai') return 'AI';
+    if (key === 'popculture') return 'Pop Culture';
+
+    return text.replace(/\b\w/g, (m) => m.toUpperCase());
+  }
+
+  function sectionHref(sectionName) {
+    const slug = slugify(sectionName);
+
+    if (!slug) return 'archive.html';
+    if (slug === 'popculture') return 'section-pop-culture.html';
+
+    return `section-${slug}.html`;
+  }
+
+  function metaLine(story) {
+    const parts = [PRESS_AUTHOR];
+
+    if (story.published) parts.push(story.published);
+
+    if (story.readTime) {
+      parts.push(story.readTime);
+    } else if (story.wordCount) {
+      parts.push(story.wordCount);
+    }
+
+    return parts.join(' • ');
+  }
+
+  function freshnessLabel(story) {
+    if (!story?.sortValue) return 'Archive';
+
+    const hours = Math.max(0, (Date.now() - story.sortValue) / 36e5);
+
+    if (hours < 1) return 'Just now';
+    if (hours < 24) return `${Math.floor(hours)}h ago`;
+    if (hours < 48) return 'Yesterday';
+    if (hours <= FRESH_HOURS) return `${Math.floor(hours / 24)}d ago`;
+    if (hours < 168) return 'This week';
+
+    return 'Archive';
+  }
+
+  function formatDateLabel(timestamp) {
+    if (!timestamp) return '';
+
+    try {
+      return new Intl.DateTimeFormat('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+      }).format(new Date(timestamp));
+    } catch (_) {
+      return '';
+    }
+  }
+
+  function parsePressDate(value) {
+    const raw = clean(value);
+
+    if (!raw) return 0;
+
+    let text = raw
+      .replace(/•/g, ' ')
+      .replace(/\ba\.m\./gi, 'AM')
+      .replace(/\bp\.m\./gi, 'PM')
+      .replace(/\bEDT\b|\bEST\b|\bUTC\b/gi, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    let parsed = Date.parse(text);
+
+    if (Number.isFinite(parsed)) return parsed;
+
+    parsed = Date.parse(text.replace(/(\d{4})-(\d{2})-(\d{2}).*/, '$1-$2-$3T12:00:00'));
+
+    return Number.isFinite(parsed) ? parsed : 0;
+  }
+
+  function urlDateHint(url) {
+    const match = String(url || '').match(/(20\d{2})[-/](\d{2})[-/](\d{2})/);
+
+    return match ? `${match[1]}-${match[2]}-${match[3]}T12:00:00` : '';
+  }
+
+  function inferSectionFromUrl(url) {
+    const file = String(url || '').split('/').pop() || '';
+    const first = file.split('-')[0];
+
+    return first && !/^20\d{2}$/.test(first) ? first : '';
+  }
+
+  function makeClusterId(title, keywords = [], section = '') {
+    const words = `${title} ${keywords.slice(0, 5).join(' ')}`
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9\s]/g, ' ')
+      .split(/\s+/)
+      .filter((word) => word.length > 2 && !STOP_WORDS.has(word));
+
+    const core = Array.from(new Set(words)).slice(0, 6).join('-');
+
+    return `${slugify(section)}-${core || slugify(title).slice(0, 48)}`;
+  }
+
+  function slugFromUrl(url) {
+    const last = String(url || '').split('/').pop() || '';
+
+    return last.replace(/\.html?$/i, '') || slugify(url);
+  }
+
+  function slugify(value) {
+    return clean(value)
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/&/g, ' and ')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .replace(/^pop-culture$/, 'popculture');
+  }
+
+  function normalizeUrlKey(url) {
+    return clean(url)
+      .replace(/^https?:\/\/[^/]+\//i, '')
+      .replace(/^\.\//, '')
+      .replace(/\?.*$/, '')
+      .replace(/#.*$/, '');
+  }
+
+  function shorten(value, max = 160) {
+    const text = clean(value);
+
+    if (text.length <= max) return text;
+
+    const clipped = text.slice(0, max - 1);
+    const lastSpace = clipped.lastIndexOf(' ');
+
+    return `${clipped.slice(0, lastSpace > 80 ? lastSpace : clipped.length)}…`;
+  }
+
+  function clean(value) {
+    return String(value ?? '').replace(/\s+/g, ' ').trim();
+  }
+
+  function escapeHtml(value) {
+    return clean(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function escapeAttr(value) {
+    return escapeHtml(value);
+  }
+})();
+/* PRESS_ECOSYSTEM_ENGINE_END */
