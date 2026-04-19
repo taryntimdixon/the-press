@@ -212,10 +212,6 @@ def header(current_section: str = "", current_aux: str = "") -> str:
     for link in SITE.get("mastheadLinks", []):
         current = ' aria-current="page"' if current_aux == link["href"] else ""
         utility_links.append(f'<a class="utility-link" href="{h(link["href"])}"{current}>{h(link["label"])}</a>')
-    section_links = []
-    for section in SECTIONS:
-        current = ' aria-current="page"' if current_section == section["slug"] else ""
-        section_links.append(f'<a class="nav-link" href="{h(section["filename"])}"{current}>{h(section["name"])}</a>')
     return f"""
 <header class="site-header" data-site-header>
   <div class="topbar">
@@ -223,7 +219,6 @@ def header(current_section: str = "", current_aux: str = "") -> str:
       <p class="edition-note">{h(SITE['editionNote'])}</p>
       <div class="topbar__actions">
         <button class="search-trigger" type="button" data-search-open>Search</button>
-        <button class="menu-trigger" type="button" aria-expanded="false" aria-controls="site-sections" data-menu-toggle>Menu</button>
       </div>
     </div>
   </div>
@@ -236,17 +231,11 @@ def header(current_section: str = "", current_aux: str = "") -> str:
       {' '.join(utility_links)}
     </nav>
   </div>
-  <nav class="section-nav" id="site-sections" aria-label="Sections">
-    <div class="section-nav__inner">
-      {' '.join(section_links)}
-    </div>
-  </nav>
 </header>
 """.strip()
 
 
 def footer() -> str:
-    section_links = "\n".join(f'<li><a href="{h(section["filename"])}">{h(section["name"])}</a></li>' for section in SECTIONS)
     newsroom_links = """
 <li><a href="archive.html">Archive</a></li>
 <li><a href="authors.html">Authors</a></li>
@@ -258,17 +247,11 @@ def footer() -> str:
 """.strip()
     return f"""
 <footer class="site-footer">
-  <div class="footer-grid">
+  <div class="footer-grid footer-grid--archive-only">
     <section class="footer-brand">
       <a class="masthead masthead--footer" href="index.html">{h(SITE['name'])}</a>
       <p class="footer-copy">{h(SITE['tagline'])}</p>
       <p class="footer-copy footer-copy--small">Visible dates, visible standards, visible source notes.</p>
-    </section>
-    <section>
-      <h2 class="footer-heading">Sections</h2>
-      <ul class="footer-list">
-        {section_links}
-      </ul>
     </section>
     <section>
       <h2 class="footer-heading">Newsroom</h2>
@@ -422,7 +405,7 @@ def render_homepage() -> str:
     </div>
     <div class="button-row">
       <a class="button" href="{h(story['filename'])}">Read story</a>
-      <a class="button button--ghost" href="section-{h(story['sectionSlug'])}.html">More {h(story['section'].lower())}</a>
+      <a class="button button--ghost" href="archive.html">Open archive</a>
     </div>
   </div>
 </div>
@@ -435,11 +418,6 @@ def render_homepage() -> str:
     most_read_html = "\n".join(ranked_list_item(STORY_BY_FILE[file], rank + 1) for rank, file in enumerate(DATA["homepage"]["mostRead"]) if file in STORY_BY_FILE)
     editors_html = "\n".join(simple_list_item(STORY_BY_FILE[file]) for file in DATA["homepage"]["editorsPicks"] if file in STORY_BY_FILE)
     latest_html = "\n".join(river_item(story) for story in STORIES[:8])
-    desk_html = "\n".join(
-        desk_card(section, section_stories(section["slug"])[0])
-        for section in SECTIONS
-        if section_stories(section["slug"])
-    )
     main = f"""
 <main class="page">
   <section class="home-hero">
@@ -498,18 +476,6 @@ def render_homepage() -> str:
     </div>
     <div class="river">
       {latest_html}
-    </div>
-  </section>
-
-  <section class="desk-directory">
-    <div class="section-heading-row">
-      <div>
-        <p class="eyebrow">Desks</p>
-        <h2 class="section-heading">Browse the newsroom by subject</h2>
-      </div>
-    </div>
-    <div class="desk-grid">
-      {desk_html}
     </div>
   </section>
 
@@ -734,7 +700,6 @@ def render_feed() -> str:
 
 def render_sitemap() -> str:
     urls = ['index.html', 'archive.html', 'authors.html', 'about.html', 'standards.html', 'corrections.html', 'contact.html', 'photo-workflow.html', '404.html']
-    urls += [section["filename"] for section in SECTIONS]
     urls += [story["filename"] for story in STORIES]
     urlset = []
     for path in urls:

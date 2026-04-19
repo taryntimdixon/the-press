@@ -3776,3 +3776,91 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })();
 /* PRESS_DYNAMIC_INTERACTIONS_END */
+
+/* PRESS_CATEGORYLESS_START */
+(() => {
+  const SECTION_HREF = /^section-[^/?#]+\.html(?:[?#].*)?$/i;
+
+  function looksLikeSectionLink(anchor) {
+    const raw = (anchor.getAttribute('href') || '').trim();
+    if (SECTION_HREF.test(raw)) return true;
+    try {
+      const url = new URL(anchor.href, window.location.href);
+      return SECTION_HREF.test(url.pathname.split('/').pop() || '');
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function removeAccidentalOpenGraphText(root = document.documentElement) {
+    if (!root || !document.createTreeWalker) return;
+    const doomed = [];
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let node = walker.nextNode();
+    while (node) {
+      const text = node.nodeValue || '';
+      if (/open\s*graph/i.test(text) && /(<!--|&lt;|\\!--)/i.test(text)) {
+        doomed.push(node);
+      }
+      node = walker.nextNode();
+    }
+    doomed.forEach((nodeToRemove) => nodeToRemove.remove());
+  }
+
+  function removeFooterSectionLists() {
+    document.querySelectorAll('.site-footer section').forEach((section) => {
+      const heading = section.querySelector('.footer-heading');
+      if (!heading) return;
+      if (/^sections$/i.test((heading.textContent || '').trim())) {
+        section.remove();
+      }
+    });
+  }
+
+  function rerouteSectionLinksToArchive() {
+    document.querySelectorAll('a[href]').forEach((anchor) => {
+      if (!looksLikeSectionLink(anchor)) return;
+      anchor.setAttribute('href', 'archive.html');
+      if (/^\s*More\s+/i.test(anchor.textContent || '')) {
+        anchor.textContent = 'Open archive';
+      }
+      anchor.removeAttribute('aria-current');
+    });
+  }
+
+  function removeCategorySurfaces() {
+    document.documentElement.classList.add('press-categoryless');
+    removeAccidentalOpenGraphText();
+    document.querySelectorAll('.section-nav, [data-menu-toggle], .menu-trigger, .desk-directory, .desk-pulse').forEach((node) => node.remove());
+    removeFooterSectionLists();
+    rerouteSectionLinksToArchive();
+  }
+
+  function bootCategorylessMode() {
+    removeCategorySurfaces();
+    let queued = false;
+    const scheduleCleanup = () => {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(() => {
+        queued = false;
+        removeCategorySurfaces();
+      });
+    };
+    const target = document.body || document.documentElement;
+    if (target && window.MutationObserver) {
+      const observer = new MutationObserver(scheduleCleanup);
+      observer.observe(target, { childList: true, subtree: true });
+    }
+    window.setTimeout(removeCategorySurfaces, 120);
+    window.setTimeout(removeCategorySurfaces, 600);
+    window.setTimeout(removeCategorySurfaces, 1600);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootCategorylessMode, { once: true });
+  } else {
+    bootCategorylessMode();
+  }
+})();
+/* PRESS_CATEGORYLESS_END */
