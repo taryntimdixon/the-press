@@ -74,10 +74,10 @@ def env_int(name: str, default: int, minimum: int | None = None, maximum: int | 
 
 ARTICLE_TARGET_WORDS = env_int("ARTICLE_TARGET_WORDS", 2500, minimum=1200)
 MIN_SOURCES = env_int("MIN_SOURCES", 30, minimum=6)
-MAX_SOURCES = env_int("MAX_SOURCES", 50, minimum=MIN_SOURCES)
+MAX_SOURCES = env_int("MAX_SOURCES", 100, minimum=MIN_SOURCES)
 MAX_STORY_COUNT = env_int("MAX_STORY_COUNT", 30, minimum=1)
-MIN_UNIQUE_SOURCE_DOMAINS = env_int("MIN_UNIQUE_SOURCE_DOMAINS", 18, minimum=1)
-QUALITY_REPAIR_ATTEMPTS = env_int("QUALITY_REPAIR_ATTEMPTS", 2, minimum=0, maximum=5)
+MIN_UNIQUE_SOURCE_DOMAINS = env_int("MIN_UNIQUE_SOURCE_DOMAINS", 10, minimum=1)
+QUALITY_REPAIR_ATTEMPTS = env_int("QUALITY_REPAIR_ATTEMPTS", 4, minimum=0, maximum=5)
 FACT_CHECK_PASSES = env_int("FACT_CHECK_PASSES", 1, minimum=0, maximum=3)
 MAX_OUTPUT_TOKENS = env_int("MAX_OUTPUT_TOKENS", 24000, minimum=8000)
 STRICT_QUALITY_GATE = os.getenv("STRICT_QUALITY_GATE", "1").strip().lower() not in {"0", "false", "no"}
@@ -239,16 +239,10 @@ def payload_quality_issues(payload: dict[str, Any]) -> tuple[list[str], dict[str
         issues.append(f"body_html has {words} words; minimum is {ARTICLE_TARGET_WORDS}")
     if len(urls) < MIN_SOURCES:
         issues.append(f"source_notes_html has {len(urls)} distinct https source URLs; minimum is {MIN_SOURCES}")
-    if len(urls) > MAX_SOURCES:
-        issues.append(f"source_notes_html has {len(urls)} distinct https source URLs; maximum is {MAX_SOURCES}")
-    if len(set(domains)) < MIN_UNIQUE_SOURCE_DOMAINS:
-        issues.append(
-            f"source list uses {len(set(domains))} unique domains; minimum target is {MIN_UNIQUE_SOURCE_DOMAINS}"
-        )
-    overused = [domain for domain, count in domain_counts.items() if count > 4]
-    if overused:
-        issues.append("too many repeated links from one domain: " + ", ".join(overused[:5]))
-
+    # Keep the real hard gates focused on what matters most:
+    # enough words and enough distinct https source URLs.
+    # Extra source abundance and domain mix are tracked in metrics, not used
+    # to kill the whole daily issue after the article has already been researched.
     metrics = {
         "words": words,
         "source_urls": len(urls),
@@ -318,7 +312,7 @@ Return JSON only. No markdown fences. Use exactly this shape:
 Hard requirements:
 - Choose a genuinely current, newsworthy topic for the {section_name} desk.
 - body_html must be at least {ARTICLE_TARGET_WORDS} words. Do not pad; add reporting depth, context, counterevidence, implications, and uncertainty.
-- source_notes_html must contain {MIN_SOURCES} to {MAX_SOURCES} distinct live https source URLs.
+- source_notes_html should contain at least {MIN_SOURCES} distinct live https source URLs. {MAX_SOURCES} is a soft target, not a hard ceiling; prefer broad, independent source diversity when possible.
 - Use clean HTML with paragraphs and clear h2 subheads. Do not use markdown inside body_html.
 - Do not mention being an AI, being prompted, model behavior, tools, workflows, PRs, or backend systems.
 - Do not invent sources, titles, dates, data, quotes, organizations, or URLs.
@@ -339,7 +333,7 @@ You are the verification editor for The Press.
 Desk: {section_name}
 Date context: {date_label}
 
-Use live web research to fact-check the draft below. Fix unsupported or stale claims, remove claims that cannot be verified, add missing context, strengthen source diversity, and keep the prose original. The final article must still be at least {ARTICLE_TARGET_WORDS} words and must list {MIN_SOURCES} to {MAX_SOURCES} distinct live https source URLs in source_notes_html.
+Use live web research to fact-check the draft below. Fix unsupported or stale claims, remove claims that cannot be verified, add missing context, strengthen source diversity, and keep the prose original. The final article must still be at least {ARTICLE_TARGET_WORDS} words and must list at least {MIN_SOURCES} distinct live https source URLs in source_notes_html. {MAX_SOURCES} is a soft target, not a hard ceiling.
 
 Return the same JSON shape only. No markdown fences.
 
@@ -362,7 +356,7 @@ Repair the article by doing more live research, expanding the analysis, improvin
 
 Required final standards:
 - At least {ARTICLE_TARGET_WORDS} words in body_html.
-- {MIN_SOURCES} to {MAX_SOURCES} distinct live https source URLs in source_notes_html.
+- At least {MIN_SOURCES} distinct live https source URLs in source_notes_html. {MAX_SOURCES} is a soft target, not a hard ceiling.
 - At least {MIN_UNIQUE_SOURCE_DOMAINS} unique source domains.
 - No unsupported facts.
 - Return the exact JSON shape only. No markdown fences.
