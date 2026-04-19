@@ -1,0 +1,453 @@
+--- a/studio/automation/preserve_old_and_new_issue_v34567.py
++++ b/studio/automation/preserve_old_and_new_issue_v34567.py
+@@ -1,6 +1,8 @@
+ #!/usr/bin/env python3
+ from __future__ import annotations
+ 
++from collections import Counter
++
+ import html
+ import json
+ import os
+@@ -21,18 +23,66 @@
+ DAILY_DIR = ROOT / "daily"
+ 
+ SECTIONS: list[tuple[str, str]] = [
++    # Mirrors the public nav so every desk can receive daily attention.
+     ("politics", "Politics"),
++    ("culture", "Culture"),
++    ("technology", "Technology"),
+     ("economics", "Economics"),
++    ("education", "Education"),
++    ("health", "Health"),
++    ("philosophy", "Philosophy"),
+     ("science", "Science"),
+-    ("film", "Film"),
++    ("world", "World"),
++    ("opinion", "Opinion"),
+     ("ai", "AI"),
+-    ("technology", "Technology"),
+-    ("niche", "Niche"),
+     ("geopolitics", "Geopolitics"),
++    ("film", "Film"),
+     ("pop-culture", "Pop Culture"),
+-    ("world", "World"),
++    ("niche", "Niche"),
+ ]
+ 
++SECTION_GUIDANCE: dict[str, str] = {
++    "Politics": "Report power, public administration, elections, courts, and democratic procedure with primary documents whenever possible.",
++    "Culture": "Cover culture as institutions, labor, audiences, money, taste, and public meaning — not just celebrity chatter.",
++    "Technology": "Explain infrastructure, markets, policy, energy, security, chips, software, and the real-world machinery behind digital life.",
++    "Economics": "Translate macro indicators into household budgets, wages, rent, prices, firms, labor markets, and policy choices.",
++    "Education": "Cover schools, colleges, attendance, learning, finance, labor, students, families, and the capacity of public systems.",
++    "Health": "Use a public-health lens: surveillance, vaccination, evidence, risk, prevention, medical systems, and policy; prioritize CDC, WHO, FDA, peer-reviewed, and official data where relevant.",
++    "Philosophy": "Write a sourced ideas essay with a clear thesis, counterarguments, ethical stakes, and concrete examples. It may be opinionated, but public claims must be evidence-anchored.",
++    "Science": "Report evidence, uncertainty, methodology, institutions, engineering limits, and what would change the conclusion.",
++    "World": "Connect local events to alliances, borders, migration, trade, security, humanitarian systems, and regional institutions.",
++    "Opinion": "Write an AI editorial essay: argue a sharp thesis, steelman the best opposing case, and ground every factual claim in sources rather than vibes.",
++    "AI": "Cover AI as technology, labor, power, safety, law, infrastructure, business, education, science, and public institutions.",
++    "Geopolitics": "Emphasize state interests, alliances, deterrence, logistics, economic pressure, geography, and institutional constraints.",
++    "Film": "Cover film as art and industry: studios, theaters, labor, distribution, technology, audiences, awards, and criticism.",
++    "Pop Culture": "Treat pop culture as a serious signal of audience behavior, platform economics, identity, taste, and media power.",
++    "Niche": "Find a specific undercovered subculture, industry, hobby, dataset, community, or odd institution and make it legible without condescension.",
++}
++
++
++def env_int(name: str, default: int, minimum: int | None = None, maximum: int | None = None) -> int:
++    try:
++        value = int(os.getenv(name, str(default)))
++    except ValueError:
++        value = default
++    if minimum is not None:
++        value = max(minimum, value)
++    if maximum is not None:
++        value = min(maximum, value)
++    return value
++
++
++ARTICLE_TARGET_WORDS = env_int("ARTICLE_TARGET_WORDS", 2500, minimum=1200)
++MIN_SOURCES = env_int("MIN_SOURCES", 30, minimum=6)
++MAX_SOURCES = env_int("MAX_SOURCES", 50, minimum=MIN_SOURCES)
++MAX_STORY_COUNT = env_int("MAX_STORY_COUNT", 30, minimum=1)
++MIN_UNIQUE_SOURCE_DOMAINS = env_int("MIN_UNIQUE_SOURCE_DOMAINS", 18, minimum=1)
++QUALITY_REPAIR_ATTEMPTS = env_int("QUALITY_REPAIR_ATTEMPTS", 2, minimum=0, maximum=5)
++FACT_CHECK_PASSES = env_int("FACT_CHECK_PASSES", 1, minimum=0, maximum=3)
++MAX_OUTPUT_TOKENS = env_int("MAX_OUTPUT_TOKENS", 24000, minimum=8000)
++STRICT_QUALITY_GATE = os.getenv("STRICT_QUALITY_GATE", "1").strip().lower() not in {"0", "false", "no"}
++SECTION_STATE_PATH = DAILY_DIR / "section-rotation.json"
++
+ HTTP_HEADERS = {
+     "User-Agent": (
+         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+@@ -75,9 +125,38 @@
+     return now.date().isoformat(), f"{month} {now.day}, {now.year} • {hour}:{minute} {ampm}"
+ 
+ 
++def read_section_cursor() -> int:
++    if not SECTION_STATE_PATH.exists():
++        return 0
++    try:
++        payload = json.loads(SECTION_STATE_PATH.read_text(encoding="utf-8"))
++        return int(payload.get("next_index", 0)) % len(SECTIONS)
++    except Exception:
++        return 0
++
++
++def save_section_cursor(stories_generated: int) -> None:
++    SECTION_STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
++    next_index = (read_section_cursor() + max(0, stories_generated)) % len(SECTIONS)
++    SECTION_STATE_PATH.write_text(
++        json.dumps(
++            {
++                "next_index": next_index,
++                "section_count": len(SECTIONS),
++                "updated_at": datetime.now().isoformat(timespec="seconds"),
++            },
++            indent=2,
++        )
++        + "\n",
++        encoding="utf-8",
++    )
++
++
+ def pick_sections(story_count: int) -> list[tuple[str, str]]:
+-    capped = max(1, min(10, story_count))
+-    return SECTIONS[:capped]
++    """Rotate through every desk instead of always favoring the first few."""
++    capped = max(1, min(MAX_STORY_COUNT, story_count))
++    start = read_section_cursor()
++    return [SECTIONS[(start + i) % len(SECTIONS)] for i in range(capped)]
+ 
+ 
+ def extract_json(text: str) -> dict[str, Any]:
+@@ -132,36 +211,54 @@
+     return f"<ol><li>{html.escape(p)}</li></ol>"
+ 
+ 
+-def call_model(client: OpenAI, section_name: str, date_label: str) -> dict[str, Any]:
+-    prompt = f"""
+-You are the newsroom engine for The Press.
+-
+-Write one current, sourced article for the {section_name} desk.
+-
+-Return JSON only. No markdown fences. Use exactly this shape:
+-{{
+-  "title": "string",
+-  "dek": "string",
+-  "keywords": ["string", "string", "string"],
+-  "thumbnail_search_hint": "string",
+-  "thumbnail_alt": "string",
+-  "body_html": "<p>...</p><h2>...</h2>...",
+-  "source_notes_html": "<ol><li><a href='https://example.com'>Source label</a></li></ol>"
+-}}
++def source_domain(url: str) -> str:
++    host = urlparse(url).netloc.lower()
++    return host[4:] if host.startswith("www.") else host
++
++
++def extract_source_urls(fragment: str) -> list[str]:
++    soup = BeautifulSoup(fragment or "", "html.parser")
++    urls: list[str] = []
++    for anchor in soup.find_all("a"):
++        href = str(anchor.get("href") or "").strip()
++        if href.startswith("https://"):
++            urls.append(href)
++    return list(dict.fromkeys(urls))
++
++
++def payload_quality_issues(payload: dict[str, Any]) -> tuple[list[str], dict[str, Any]]:
++    body_html = str(payload.get("body_html") or "")
++    source_notes_html = str(payload.get("source_notes_html") or "")
++    words = story_word_count(body_html)
++    urls = extract_source_urls(source_notes_html)
++    domains = [source_domain(url) for url in urls if source_domain(url)]
++    domain_counts = Counter(domains)
++
++    issues: list[str] = []
++    if words < ARTICLE_TARGET_WORDS:
++        issues.append(f"body_html has {words} words; minimum is {ARTICLE_TARGET_WORDS}")
++    if len(urls) < MIN_SOURCES:
++        issues.append(f"source_notes_html has {len(urls)} distinct https source URLs; minimum is {MIN_SOURCES}")
++    if len(urls) > MAX_SOURCES:
++        issues.append(f"source_notes_html has {len(urls)} distinct https source URLs; maximum is {MAX_SOURCES}")
++    if len(set(domains)) < MIN_UNIQUE_SOURCE_DOMAINS:
++        issues.append(
++            f"source list uses {len(set(domains))} unique domains; minimum target is {MIN_UNIQUE_SOURCE_DOMAINS}"
++        )
++    overused = [domain for domain, count in domain_counts.items() if count > 4]
++    if overused:
++        issues.append("too many repeated links from one domain: " + ", ".join(overused[:5]))
++
++    metrics = {
++        "words": words,
++        "source_urls": len(urls),
++        "source_domains": len(set(domains)),
++        "top_domains": domain_counts.most_common(5),
++    }
++    return issues, metrics
+ 
+-Requirements:
+-- Choose a genuinely current, newsworthy topic for {section_name}.
+-- body_html should be roughly 900 to 1300 words.
+-- Use clean HTML with paragraphs and 2 to 4 h2 subheads.
+-- Do not use markdown.
+-- Do not mention being an AI, being prompted, or using tools.
+-- Do not invent sources.
+-- source_notes_html must be an ordered list with 6 to 10 live https sources.
+-- Use concise source link labels.
+-- thumbnail_search_hint should be a short Wikimedia Commons-friendly search phrase.
+-- Date context: {date_label}
+-""".strip()
+ 
++def request_payload(client: OpenAI, prompt: str) -> dict[str, Any]:
+     tool_candidates = [
+         os.getenv("OPENAI_WEB_SEARCH_TOOL", "").strip(),
+         "web_search",
+@@ -183,10 +280,9 @@
+                     model=os.getenv("OPENAI_MODEL", "gpt-5.4-mini"),
+                     tools=[{"type": tool_type}],
+                     input=prompt,
+-                    max_output_tokens=10000,
++                    max_output_tokens=MAX_OUTPUT_TOKENS,
+                 )
+-                payload = extract_json(getattr(response, "output_text", "") or "")
+-                return payload
++                return extract_json(getattr(response, "output_text", "") or "")
+             except Exception as exc:  # pragma: no cover - runtime retry path
+                 last_error = exc
+                 if attempt == 1:
+@@ -197,6 +293,108 @@
+     raise last_error
+ 
+ 
++def generation_prompt(section_name: str, date_label: str) -> str:
++    guidance = SECTION_GUIDANCE.get(section_name, f"Cover {section_name} with depth, humility, and strong sourcing.")
++    return f"""
++You are the newsroom engine for The Press.
++
++Desk: {section_name}
++Desk mandate: {guidance}
++Date context: {date_label}
++
++First research widely, then write. Gather a broad source map before drafting: primary documents, official datasets, credible news reports, local reporting where useful, academic or technical sources when relevant, explainers from authoritative institutions, and at least a few sources that complicate or challenge the main thesis.
++
++Return JSON only. No markdown fences. Use exactly this shape:
++{{
++  "title": "string",
++  "dek": "string",
++  "keywords": ["string", "string", "string"],
++  "thumbnail_search_hint": "string",
++  "thumbnail_alt": "string",
++  "body_html": "<p>...</p><h2>...</h2>...",
++  "source_notes_html": "<ol><li><a href='https://example.com'>Source label</a> — one short note about what it supports</li></ol>"
++}}
++
++Hard requirements:
++- Choose a genuinely current, newsworthy topic for the {section_name} desk.
++- body_html must be at least {ARTICLE_TARGET_WORDS} words. Do not pad; add reporting depth, context, counterevidence, implications, and uncertainty.
++- source_notes_html must contain {MIN_SOURCES} to {MAX_SOURCES} distinct live https source URLs.
++- Use clean HTML with paragraphs and clear h2 subheads. Do not use markdown inside body_html.
++- Do not mention being an AI, being prompted, model behavior, tools, workflows, PRs, or backend systems.
++- Do not invent sources, titles, dates, data, quotes, organizations, or URLs.
++- Do not copy source text. Write in original synthesized prose. Direct quotes should be rare, short, and clearly attributed.
++- Fact-check hard claims: dates, numbers, names, laws, studies, medical claims, scientific claims, market claims, and geopolitical claims.
++- Triangulate major claims across independent sources. Mark uncertainty where sources disagree.
++- Source notes should make it obvious what each source contributed.
++- Use concise source labels, not raw naked URLs.
++- thumbnail_search_hint should be a short Wikimedia Commons-friendly search phrase.
++- For Opinion and Philosophy, write an argument with a clear point of view, but keep the factual scaffolding sourced and include a strong counterargument.
++""".strip()
++
++
++def verification_prompt(payload: dict[str, Any], section_name: str, date_label: str) -> str:
++    return f"""
++You are the verification editor for The Press.
++
++Desk: {section_name}
++Date context: {date_label}
++
++Use live web research to fact-check the draft below. Fix unsupported or stale claims, remove claims that cannot be verified, add missing context, strengthen source diversity, and keep the prose original. The final article must still be at least {ARTICLE_TARGET_WORDS} words and must list {MIN_SOURCES} to {MAX_SOURCES} distinct live https source URLs in source_notes_html.
++
++Return the same JSON shape only. No markdown fences.
++
++Draft JSON:
++{json.dumps(payload, ensure_ascii=False)}
++""".strip()
++
++
++def repair_prompt(payload: dict[str, Any], section_name: str, date_label: str, issues: list[str], metrics: dict[str, Any]) -> str:
++    return f"""
++The Press quality gate rejected this {section_name} draft.
++
++Issues:
++{chr(10).join(f"- {issue}" for issue in issues)}
++
++Current metrics:
++{json.dumps(metrics, ensure_ascii=False)}
++
++Repair the article by doing more live research, expanding the analysis, improving fact-checking, and fixing the source list. Do not merely add a pile of links; every source must support the article. Keep the writing original and polished.
++
++Required final standards:
++- At least {ARTICLE_TARGET_WORDS} words in body_html.
++- {MIN_SOURCES} to {MAX_SOURCES} distinct live https source URLs in source_notes_html.
++- At least {MIN_UNIQUE_SOURCE_DOMAINS} unique source domains.
++- No unsupported facts.
++- Return the exact JSON shape only. No markdown fences.
++
++Date context: {date_label}
++
++Rejected draft JSON:
++{json.dumps(payload, ensure_ascii=False)}
++""".strip()
++
++
++def call_model(client: OpenAI, section_name: str, date_label: str) -> dict[str, Any]:
++    payload = request_payload(client, generation_prompt(section_name, date_label))
++
++    for _ in range(FACT_CHECK_PASSES):
++        payload = request_payload(client, verification_prompt(payload, section_name, date_label))
++
++    for _ in range(QUALITY_REPAIR_ATTEMPTS):
++        issues, metrics = payload_quality_issues(payload)
++        if not issues:
++            return payload
++        print(f"Quality repair needed for {section_name}: {issues}")
++        payload = request_payload(client, repair_prompt(payload, section_name, date_label, issues, metrics))
++
++    issues, metrics = payload_quality_issues(payload)
++    if issues:
++        message = f"{section_name} article failed quality gates after repairs: {issues}; metrics={metrics}"
++        if STRICT_QUALITY_GATE:
++            raise RuntimeError(message)
++        print("WARNING: " + message)
++    return payload
++
+ def wiki_thumbnail(query: str) -> str | None:
+     search_url = "https://commons.wikimedia.org/w/api.php"
+     params = {
+@@ -571,6 +769,40 @@
+     path.write_text(str(soup), encoding="utf-8")
+ 
+ 
++def patch_section_pages(stories: list[Story], edition_date: str) -> None:
++    by_section: dict[str, list[Story]] = {}
++    for story in stories:
++        by_section.setdefault(story.section_slug, []).append(story)
++
++    for section_slug, section_name in SECTIONS:
++        section_stories = by_section.get(section_slug, [])
++        if not section_stories:
++            continue
++
++        path = ROOT / f"section-{section_slug}.html"
++        soup = load_or_minimal_html(path, f"{section_name} — The Press")
++        cards = "\n".join(daily_card(story) for story in section_stories)
++        html_fragment = f"""
++<section id="daily-section-feed" class="daily-section-feed daily-home-section">
++  <div class="section-heading-row">
++    <h2 class="section-heading">Latest in {html.escape(section_name)} — {html.escape(edition_date)}</h2>
++    <a class="section-link" href="archive.html">Open archive</a>
++  </div>
++  <p class="section-standfirst">New long-form work for this desk, built from broad source gathering, verification, and original synthesis.</p>
++  <div class="cards-grid cards-grid--daily">
++    {cards}
++  </div>
++</section>
++""".strip()
++        upsert_section(
++            soup,
++            "daily-section-feed",
++            html_fragment,
++            after_selector=".section-hero, .desk-hero, header",
++        )
++        path.write_text(str(soup), encoding="utf-8")
++
++
+ def update_search_index(stories: list[Story]) -> None:
+     path = ROOT / "search-index.json"
+     existing: list[dict[str, Any]] = []
+@@ -664,7 +896,7 @@
+     <article class="article-shell">
+       <p class="eyebrow">Latest AI Edition</p>
+       <h1>{html.escape(edition_date)} — {len(stories)} new stories</h1>
+-      <p class="article-dek">Today’s full set of new stories across the desks included in the daily workflow.</p>
++      <p class="article-dek">Today’s full set of new long-form stories across the desks included in the daily workflow.</p>
+       <p class="article-meta">Written by Intelligent AI</p>
+       <ol>
+         {items}
+@@ -881,8 +1113,9 @@
+     DAILY_DIR.mkdir(parents=True, exist_ok=True)
+ 
+     stories: list[Story] = []
++    selected_sections = pick_sections(story_count)
+ 
+-    for section_slug, section_name in pick_sections(story_count):
++    for section_slug, section_name in selected_sections:
+         payload = call_model(client, section_name, published_label)
+         story = build_story_from_payload(
+             payload=payload,
+@@ -900,11 +1133,13 @@
+     patch_index(stories, edition_date)
+     patch_archive(stories, edition_date)
+     patch_breaking(stories, edition_date)
++    patch_section_pages(stories, edition_date)
+     update_search_index(stories)
+     write_latest_json(stories, edition_date)
+     write_daily_edition_page(stories, edition_date)
+     patch_bylines_in_js()
+     patch_styles()
++    save_section_cursor(len(selected_sections))
+ 
+     print(f"Generated {len(stories)} stories for {edition_date}")
+     return 0
+--- a/.github/workflows/daily-ai-newsroom.yml
++++ b/.github/workflows/daily-ai-newsroom.yml
+@@ -4,15 +4,16 @@
+   workflow_dispatch:
+     inputs:
+       story_count:
+-        description: "How many stories to generate (1-10)"
++        description: "How many long-form stories to generate (1-30); 15 covers every public desk once"
+         required: true
+-        default: "10"
++        default: "15"
+   schedule:
+     - cron: "5 12 * * *"
+ 
+ jobs:
+   preserve-and-append:
+     runs-on: ubuntu-latest
++    timeout-minutes: 360
+ 
+     permissions:
+       contents: write
+@@ -41,9 +42,18 @@
+         env:
+           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+-          STORY_COUNT: ${{ github.event.inputs.story_count || '10' }}
++          STORY_COUNT: ${{ github.event.inputs.story_count || '15' }}
+           SITE_BASE_URL: https://thepress.live
+           OPENAI_MODEL: gpt-5.4-mini
++          ARTICLE_TARGET_WORDS: "2500"
++          MIN_SOURCES: "30"
++          MAX_SOURCES: "50"
++          MIN_UNIQUE_SOURCE_DOMAINS: "18"
++          QUALITY_REPAIR_ATTEMPTS: "2"
++          FACT_CHECK_PASSES: "1"
++          MAX_OUTPUT_TOKENS: "24000"
++          MAX_STORY_COUNT: "30"
++          STRICT_QUALITY_GATE: "1"
+         run: |
+           python studio/automation/preserve_old_and_new_issue_v34567.py
+ 
+@@ -64,6 +74,8 @@
+             - update search-index.json
+             - keep visible bylines as Written by Intelligent AI
+             - keep old thumbnails while adding thumbnails for new stories
++            - publish 2,500+ word articles with 30-50 source notes
++            - rotate attention across every public desk
+ 
+             Do not merge if the PR only changes one file.
+           commit-message: "Append daily issue and preserve existing site"
