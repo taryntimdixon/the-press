@@ -2887,3 +2887,612 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })();
 /* PRESS_ECOSYSTEM_ENGINE_END */
+(() => {
+
+  'use strict';
+
+  const AUTHOR_LABEL = 'Written by Intelligent AI';
+
+  const SECTION_ALIASES = {
+
+    ai: ['ai', 'artificialintelligence', 'technology'],
+
+    artificialintelligence: ['ai', 'artificialintelligence', 'technology'],
+
+    technology: ['technology', 'ai', 'artificialintelligence'],
+
+    culture: ['culture', 'film', 'popculture', 'pop-culture', 'niche'],
+
+    film: ['film', 'culture'],
+
+    popculture: ['popculture', 'pop-culture', 'culture'],
+
+    'pop-culture': ['popculture', 'pop-culture', 'culture'],
+
+    niche: ['niche', 'culture'],
+
+    world: ['world', 'geopolitics'],
+
+    geopolitics: ['geopolitics', 'world'],
+
+    politics: ['politics'],
+
+    economics: ['economics'],
+
+    education: ['education'],
+
+    health: ['health'],
+
+    philosophy: ['philosophy'],
+
+    science: ['science'],
+
+    opinion: ['opinion']
+
+  };
+
+  function ready(fn) {
+
+    if (document.readyState === 'loading') {
+
+      document.addEventListener('DOMContentLoaded', fn, { once: true });
+
+    } else {
+
+      fn();
+
+    }
+
+  }
+
+  function slugify(value) {
+
+    return String(value || '')
+
+      .toLowerCase()
+
+      .replace(/&/g, 'and')
+
+      .replace(/[^a-z0-9]+/g, '-')
+
+      .replace(/^-+|-+$/g, '');
+
+  }
+
+  function compactSlug(value) {
+
+    return slugify(value).replace(/-/g, '');
+
+  }
+
+  function escapeHtml(value) {
+
+    return String(value || '')
+
+      .replace(/&/g, '&amp;')
+
+      .replace(/</g, '&lt;')
+
+      .replace(/>/g, '&gt;')
+
+      .replace(/"/g, '&quot;')
+
+      .replace(/'/g, '&#039;');
+
+  }
+
+  function storyUrl(story) {
+
+    return String(story.url || story.href || story.link || story.filename || '#').trim();
+
+  }
+
+  function normalizeStory(story) {
+
+    if (!story) return null;
+
+    const title = story.title || story.headline || story.name || '';
+
+    const url = storyUrl(story);
+
+    if (!title || !url || url === '#') return null;
+
+    const section =
+
+      story.section ||
+
+      story.section_name ||
+
+      story.desk ||
+
+      story.category ||
+
+      story.section_slug ||
+
+      'News';
+
+    const image =
+
+      story.image ||
+
+      story.imageUrl ||
+
+      story.thumbnail ||
+
+      story.photo ||
+
+      '';
+
+    const imageAlt =
+
+      story.imageAlt ||
+
+      story.image_alt ||
+
+      story.alt ||
+
+      title;
+
+    const published =
+
+      story.published ||
+
+      story.publishedLabel ||
+
+      story.displayDate ||
+
+      story.date ||
+
+      story.published_iso ||
+
+      '';
+
+    const sortValue = Date.parse(
+
+      story.published_iso ||
+
+      story.publishedIso ||
+
+      story.updated_iso ||
+
+      story.updatedIso ||
+
+      published ||
+
+      ''
+
+    );
+
+    return {
+
+      title,
+
+      url,
+
+      section,
+
+      sectionSlug: story.section_slug || story.sectionSlug || slugify(section),
+
+      type: story.type || story.kind || 'Story',
+
+      dek: story.dek || story.summary || story.description || story.excerpt || '',
+
+      image,
+
+      imageAlt,
+
+      published,
+
+      readTime: story.read_time || story.readTime || '',
+
+      isDaily: Boolean(story.is_daily || story.isDaily || url.startsWith('daily/')),
+
+      sortValue: Number.isFinite(sortValue) ? sortValue : 0
+
+    };
+
+  }
+
+  function getCurrentSectionSlug() {
+
+    const fromUrl = location.pathname.match(/section-([a-z0-9-]+)\.html/i);
+
+    if (fromUrl && fromUrl[1]) return slugify(fromUrl[1]);
+
+    const heading = document.querySelector('.section-landing h1, .page-hero h1, h1');
+
+    if (heading) return slugify(heading.textContent);
+
+    return '';
+
+  }
+
+  function sectionMatches(story, pageSlug) {
+
+    const pageCompact = compactSlug(pageSlug);
+
+    const storySlug = slugify(story.sectionSlug || story.section);
+
+    const storyCompact = compactSlug(storySlug);
+
+    if (storyCompact === pageCompact) return true;
+
+    const aliases = SECTION_ALIASES[pageSlug] || SECTION_ALIASES[pageCompact] || [];
+
+    const compactAliases = aliases.map(compactSlug);
+
+    return compactAliases.includes(storyCompact);
+
+  }
+
+  function getEmbeddedSearchStories() {
+
+    const node = document.getElementById('press-search-data');
+
+    if (!node) return [];
+
+    try {
+
+      const parsed = JSON.parse(node.textContent || '[]');
+
+      return Array.isArray(parsed) ? parsed : [];
+
+    } catch (_) {
+
+      return [];
+
+    }
+
+  }
+
+  async function fetchJson(url) {
+
+    const cacheBuster = `${url}${url.includes('?') ? '&' : '?'}restore=${Date.now()}`;
+
+    const response = await fetch(cacheBuster, { cache: 'no-store' });
+
+    if (!response.ok) {
+
+      throw new Error(`Could not load ${url}`);
+
+    }
+
+    return response.json();
+
+  }
+
+  async function loadAllKnownStories() {
+
+    const buckets = [];
+
+    buckets.push(getEmbeddedSearchStories());
+
+    const files = [
+
+      'content-index.json',
+
+      'search-index.json',
+
+      'live-index.json',
+
+      'archive-index.json',
+
+      'daily-latest.json'
+
+    ];
+
+    for (const file of files) {
+
+      try {
+
+        const data = await fetchJson(file);
+
+        if (Array.isArray(data)) {
+
+          buckets.push(data);
+
+        } else if (data && Array.isArray(data.stories)) {
+
+          buckets.push(data.stories);
+
+        } else if (data && Array.isArray(data.articles)) {
+
+          buckets.push(data.articles);
+
+        } else if (data && Array.isArray(data.items)) {
+
+          buckets.push(data.items);
+
+        }
+
+      } catch (_) {
+
+        /* Keep going. Some pages may not have every file available. */
+
+      }
+
+    }
+
+    const seen = new Set();
+
+    const stories = [];
+
+    buckets
+
+      .flat()
+
+      .map(normalizeStory)
+
+      .filter(Boolean)
+
+      .forEach((story) => {
+
+        const key = story.url.replace(/^\/+/, '').toLowerCase();
+
+        if (seen.has(key)) return;
+
+        seen.add(key);
+
+        stories.push(story);
+
+      });
+
+    return stories.sort((a, b) => b.sortValue - a.sortValue);
+
+  }
+
+  function findOrCreateArchiveGrid() {
+
+    let grid = document.querySelector('main .cards-section .cards-grid--archive');
+
+    if (grid) return grid;
+
+    let main = document.querySelector('main.page') || document.querySelector('main');
+
+    if (!main) {
+
+      main = document.createElement('main');
+
+      main.className = 'page';
+
+      document.body.insertBefore(main, document.querySelector('.site-footer') || null);
+
+    }
+
+    let section = main.querySelector('.cards-section');
+
+    if (!section) {
+
+      section = document.createElement('section');
+
+      section.className = 'cards-section';
+
+      main.appendChild(section);
+
+    }
+
+    grid = document.createElement('div');
+
+    grid.className = 'cards-grid cards-grid--archive';
+
+    section.appendChild(grid);
+
+    return grid;
+
+  }
+
+  function urlsAlreadyShownInDailyFeed() {
+
+    const urls = new Set();
+
+    document.querySelectorAll('.daily-section-feed a[href], .daily-home-section a[href]').forEach((link) => {
+
+      const href = link.getAttribute('href');
+
+      if (href) urls.add(href.replace(/^\/+/, '').toLowerCase());
+
+    });
+
+    return urls;
+
+  }
+
+  function renderCard(story) {
+
+    const imageHtml = story.image
+
+      ? `
+
+        <a class="story-card__image" href="${escapeHtml(story.url)}">
+
+          <img
+
+            alt="${escapeHtml(story.imageAlt || story.title)}"
+
+            decoding="async"
+
+            loading="lazy"
+
+            src="${escapeHtml(story.image)}"
+
+          />
+
+        </a>`
+
+      : '';
+
+    const metaParts = [AUTHOR_LABEL];
+
+    if (story.published) metaParts.push(story.published);
+
+    if (story.readTime) metaParts.push(story.readTime);
+
+    return `
+
+      <article
+
+        class="story-card archive-card"
+
+        data-section="${escapeHtml(story.section)}"
+
+        data-type="${escapeHtml(story.type)}"
+
+        data-story-url="${escapeHtml(story.url)}"
+
+      >
+
+        ${imageHtml}
+
+        <div class="story-card__body">
+
+          <p class="eyebrow eyebrow--compact">${escapeHtml(story.section)} • ${escapeHtml(story.type)}</p>
+
+          <h3 class="story-card__title">
+
+            <a href="${escapeHtml(story.url)}">${escapeHtml(story.title)}</a>
+
+          </h3>
+
+          ${story.dek ? `<p class="story-card__dek">${escapeHtml(story.dek)}</p>` : ''}
+
+          <p class="story-card__meta">${escapeHtml(metaParts.join(' • '))}</p>
+
+        </div>
+
+      </article>
+
+    `;
+
+  }
+
+  function makeCardsClickable(scope) {
+
+    scope.querySelectorAll('.story-card, .archive-card').forEach((card) => {
+
+      if (card.dataset.restoreClickBound === 'true') return;
+
+      const link = card.querySelector('a[href]');
+
+      if (!link) return;
+
+      card.dataset.restoreClickBound = 'true';
+
+      card.classList.add('is-clickable');
+
+      card.setAttribute('tabindex', '0');
+
+      card.setAttribute('role', 'link');
+
+      card.addEventListener('click', (event) => {
+
+        if (event.target.closest('a, button, input, textarea, select, label')) return;
+
+        window.location.href = link.href;
+
+      });
+
+      card.addEventListener('keydown', (event) => {
+
+        if (event.key === 'Enter' || event.key === ' ') {
+
+          event.preventDefault();
+
+          link.click();
+
+        }
+
+      });
+
+    });
+
+  }
+
+  function clearOldAppCaches() {
+
+    try {
+
+      Object.keys(localStorage)
+
+        .filter((key) => key.startsWith('press-ecosystem-cache:'))
+
+        .forEach((key) => localStorage.removeItem(key));
+
+    } catch (_) {
+
+      /* localStorage may be blocked. Ignore safely. */
+
+    }
+
+  }
+
+  async function restoreCategoryArticles() {
+
+    if (!document.body.classList.contains('page-section')) return;
+
+    const pageSlug = getCurrentSectionSlug();
+
+    if (!pageSlug) return;
+
+    clearOldAppCaches();
+
+    const allStories = await loadAllKnownStories();
+
+    const dailyUrls = urlsAlreadyShownInDailyFeed();
+
+    let sectionStories = allStories.filter((story) => sectionMatches(story, pageSlug));
+
+    sectionStories = sectionStories.filter((story) => {
+
+      const cleanUrl = story.url.replace(/^\/+/, '').toLowerCase();
+
+      return !dailyUrls.has(cleanUrl);
+
+    });
+
+    if (!sectionStories.length) {
+
+      sectionStories = allStories.filter((story) => sectionMatches(story, pageSlug));
+
+    }
+
+    if (!sectionStories.length) return;
+
+    const grid = findOrCreateArchiveGrid();
+
+    grid.innerHTML = sectionStories.map(renderCard).join('');
+
+    grid.setAttribute('data-restored-old-category-articles', 'true');
+
+    makeCardsClickable(grid);
+
+    grid.querySelectorAll('img').forEach((img) => {
+
+      img.addEventListener('error', () => {
+
+        const wrap = img.closest('.story-card__image');
+
+        if (wrap) wrap.style.display = 'none';
+
+      });
+
+    });
+
+  }
+
+  function runRestoreSeveralTimes() {
+
+    restoreCategoryArticles();
+
+    window.setTimeout(restoreCategoryArticles, 250);
+
+    window.setTimeout(restoreCategoryArticles, 900);
+
+    window.setTimeout(restoreCategoryArticles, 1800);
+
+    window.setTimeout(restoreCategoryArticles, 3500);
+
+  }
+
+  ready(runRestoreSeveralTimes);
+
+})();
