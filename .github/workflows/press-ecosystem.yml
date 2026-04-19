@@ -1,0 +1,36 @@
+name: Build Press Article Ecosystem
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'daily-latest.json'
+      - 'edition.json'
+      - 'search-index.json'
+      - 'master-edition.json'
+      - 'tools/build_press_ecosystem.py'
+
+permissions:
+  contents: write
+
+jobs:
+  build-ecosystem:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build ecosystem indexes and placements
+        run: python tools/build_press_ecosystem.py
+
+      - name: Commit generated ecosystem files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Build live article ecosystem indexes'
+          file_pattern: 'content-index.json live-index.json archive-index.json placements.json'
