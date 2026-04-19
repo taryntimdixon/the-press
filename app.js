@@ -46,23 +46,42 @@ if (!hasHomepageTargets) {
   });
 
   function loadStoryIndex() {
-    if (storyIndexPromise) return storyIndexPromise;
-    storyIndexPromise = fetch('search-index.json', { cache: 'no-store' })
-      .then((response) => (response.ok ? response.json() : Promise.reject(new Error('no search index'))))
-      .then((data) => normalizeStoryArray(data))
-      .catch(() => {
-        const embedded = document.getElementById('press-search-data');
-        if (embedded) {
-          try {
-            return normalizeStoryArray(JSON.parse(embedded.textContent));
-          } catch (_) {
-            return [];
-          }
+  if (storyIndexPromise) return storyIndexPromise;
+
+  const normalizePayload = (data) => {
+    if (Array.isArray(data)) return normalizeStoryArray(data);
+    if (data && Array.isArray(data.stories)) return normalizeStoryArray(data.stories);
+    if (data && Array.isArray(data.articles)) return normalizeStoryArray(data.articles);
+    if (data && Array.isArray(data.items)) return normalizeStoryArray(data.items);
+    return [];
+  };
+
+  const fetchJson = (url) =>
+    fetch(url, { cache: 'default' }).then((response) => {
+      if (!response.ok) throw new Error(`Could not load ${url}`);
+      return response.json();
+    });
+
+  storyIndexPromise = fetchJson('live-index.json')
+    .catch(() => fetchJson('content-index.json'))
+    .catch(() => fetchJson('search-index.json'))
+    .then(normalizePayload)
+    .catch(() => {
+      const embedded = document.getElementById('press-search-data');
+
+      if (embedded) {
+        try {
+          return normalizePayload(JSON.parse(embedded.textContent));
+        } catch (_) {
+          return [];
         }
-        return [];
-      });
-    return storyIndexPromise;
-  }
+      }
+
+      return [];
+    });
+
+  return storyIndexPromise;
+}
 
   function normalizeStoryArray(data) {
     const items = Array.isArray(data) ? data.slice() : [];
