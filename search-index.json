@@ -1,5 +1,145 @@
 [
   {
+    "title": "Congress buys time on Section 702, setting up another surveillance showdown",
+    "section": "Politics",
+    "type": "Daily Issue",
+    "dek": "Lawmakers approved a stopgap renewal of the post-9/11 surveillance authority through April 30, after a frantic scramble exposed deep divisions over privacy, oversight and the reach of federal power.",
+    "url": "daily/2026-04-19-congress-buys-time-on-section-702-setting-up-another-surveillance-showdown.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 2:26 p.m.",
+    "keywords": [
+      "Congress",
+      "Section 702",
+      "Surveillance"
+    ]
+  },
+  {
+    "title": "IMF says war shock is cooling global growth as inflation flares again",
+    "section": "Economics",
+    "type": "Daily Issue",
+    "dek": "The fund’s April outlook cuts into the idea of a soft landing, warning that conflict-driven energy costs, tighter financial conditions and lingering tariff effects could keep prices elevated into next year.",
+    "url": "daily/2026-04-19-imf-says-war-shock-is-cooling-global-growth-as-inflation-flares-again.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 2:26 p.m.",
+    "keywords": [
+      "IMF",
+      "inflation",
+      "global growth"
+    ]
+  },
+  {
+    "title": "NASA’s satellites are now spotting forest loss months earlier",
+    "section": "Science",
+    "type": "Daily Issue",
+    "dek": "A new system that blends optical and radar data could give conservationists and governments a much faster read on deforestation — especially under cloudy skies.",
+    "url": "daily/2026-04-19-nasa-s-satellites-are-now-spotting-forest-loss-months-earlier.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 2:26 p.m.",
+    "keywords": [
+      "NASA",
+      "deforestation",
+      "satellites"
+    ]
+  },
+  {
+    "title": "CinemaCon’s biggest movies signal Hollywood’s bid to revive the theater experience",
+    "section": "Film",
+    "type": "Daily Issue",
+    "dek": "From new franchise footage to star-driven originals, studios used CinemaCon 2026 to argue that the big screen still matters — and that the next wave of moviegoing will be built on spectacle, nostalgia and event cinema.",
+    "url": "daily/2026-04-19-cinemacon-s-biggest-movies-signal-hollywood-s-bid-to-revive-the-theater-experience.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 2:26 p.m.",
+    "keywords": [
+      "CinemaCon",
+      "Hollywood",
+      "movie theaters"
+    ]
+  },
+  {
+    "title": "Anthropic’s latest Claude release sharpens the AI race over power, safety and security",
+    "section": "AI",
+    "type": "Daily Issue",
+    "dek": "The company’s new Opus 4.7 model lands as AI labs compete on coding, autonomy and cybersecurity — and as Washington and Europe press for clearer guardrails.",
+    "url": "daily/2026-04-19-anthropic-s-latest-claude-release-sharpens-the-ai-race-over-power-safety-and-security.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 2:26 p.m.",
+    "keywords": [
+      "Anthropic",
+      "Claude Opus 4.7",
+      "AI safety"
+    ]
+  },
+  {
+    "title": "OpenAI escalates the AI cyber arms race with a gated model for defenders",
+    "section": "Technology",
+    "type": "Daily Issue",
+    "dek": "The company is widening access to GPT-5.4-Cyber and its Trusted Access for Cyber program just days after Anthropic’s Mythos debut, intensifying the contest to arm security teams with frontier AI without handing the same power to attackers.",
+    "url": "daily/2026-04-19-openai-escalates-the-ai-cyber-arms-race-with-a-gated-model-for-defenders.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 2:26 p.m.",
+    "keywords": [
+      "OpenAI",
+      "cybersecurity",
+      "artificial intelligence"
+    ]
+  },
+  {
+    "title": "America’s most whimsical housing ranking gets a 2026 reset",
+    "section": "Niche",
+    "type": "Daily Issue",
+    "dek": "Niche’s annual Best Places to Live in America list has become a social-media pastime, a local bragging-rights contest and a reminder that “best” is often in the eye of the beholder.",
+    "url": "daily/2026-04-19-america-s-most-whimsical-housing-ranking-gets-a-2026-reset.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 2:26 p.m.",
+    "keywords": [
+      "Niche.com",
+      "housing",
+      "social media"
+    ]
+  },
+  {
+    "title": "Hormuz standoff puts global trade and war footing on the same map",
+    "section": "Geopolitics",
+    "type": "Daily Issue",
+    "dek": "With U.S.-Iran talks set to resume in Pakistan, the closure of the Strait of Hormuz has turned a regional war into a test of maritime power, energy security and diplomatic leverage.",
+    "url": "daily/2026-04-19-hormuz-standoff-puts-global-trade-and-war-footing-on-the-same-map.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 2:26 p.m.",
+    "keywords": [
+      "Iran",
+      "Strait of Hormuz",
+      "United States"
+    ]
+  },
+  {
+    "title": "Justin Bieber’s Coachella return turns into a pop-culture reset, and a streaming surge",
+    "section": "Pop Culture",
+    "type": "Daily Issue",
+    "dek": "Billie Eilish’s surprise appearance, SZA’s guest spot and a renewed spotlight on Bieber’s catalog underscore how Coachella 2026 became a week-long culture event.",
+    "url": "daily/2026-04-19-justin-bieber-s-coachella-return-turns-into-a-pop-culture-reset-and-a-streaming-surge.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 2:26 p.m.",
+    "keywords": [
+      "Justin Bieber",
+      "Coachella 2026",
+      "Billie Eilish"
+    ]
+  },
+  {
+    "title": "Sudan’s war deepens into a fourth year as famine, disease and displacement spread",
+    "section": "World",
+    "type": "Daily Issue",
+    "dek": "A relentless conflict between Sudan’s army and the RSF has become the world’s largest displacement and hunger crisis, with aid access worsening and outside powers still failing to force a ceasefire.",
+    "url": "daily/2026-04-19-sudan-s-war-deepens-into-a-fourth-year-as-famine-disease-and-displacement-spread.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 2:26 p.m.",
+    "keywords": [
+      "Sudan",
+      "humanitarian crisis",
+      "world news"
+    ]
+  },
+  {
     "title": "Trump signs stopgap surveillance extension as Congress faces a new Section 702 clash",
     "section": "Politics",
     "type": "Daily Issue",
