@@ -1,4 +1,375 @@
 (() => {
+
+  const BODY_CLASS = 'page-section';
+
+  const GRID_SELECTOR = [
+
+    '.page-section .cards-grid--archive',
+
+    '.page-section .cards-grid',
+
+    '.cards-grid--archive',
+
+    '.cards-grid'
+
+  ].join(', ');
+
+  const CARD_SELECTOR = '.story-card, .archive-card';
+
+  const DAILY_SECTION_SELECTOR = [
+
+    '.daily-section-feed',
+
+    '.daily-home-section',
+
+    '[data-daily-section-feed]',
+
+    '[data-daily-feed]',
+
+    '[data-live-feed]'
+
+  ].join(', ');
+
+  let preservedCards = [];
+
+  let preservedKeys = new Set();
+
+  let observer = null;
+
+  let restoreQueued = false;
+
+  let isRestoring = false;
+
+  function isSectionPage() {
+
+    return document.body && document.body.classList.contains(BODY_CLASS);
+
+  }
+
+  function normalizeHref(href) {
+
+    return String(href || '')
+
+      .trim()
+
+      .replace(/^https?:\/\/[^/]+\//i, '')
+
+      .replace(/^\/+/, '')
+
+      .replace(/[?#].*$/, '')
+
+      .toLowerCase();
+
+  }
+
+  function normalizeText(text) {
+
+    return String(text || '')
+
+      .trim()
+
+      .replace(/\s+/g, ' ')
+
+      .toLowerCase();
+
+  }
+
+  function cardKey(card) {
+
+    if (!card) return '';
+
+    const link = card.querySelector('a[href]');
+
+    const href = normalizeHref(link && link.getAttribute('href'));
+
+    if (href) return `url:${href}`;
+
+    const heading = card.querySelector('h1, h2, h3, .story-card__title, .archive-card__title');
+
+    const title = normalizeText(heading ? heading.textContent : card.textContent);
+
+    return title ? `title:${title}` : '';
+
+  }
+
+  function isDailyGrid(grid) {
+
+    return Boolean(grid && grid.closest(DAILY_SECTION_SELECTOR));
+
+  }
+
+  function findBestCategoryGrid() {
+
+    const grids = Array.from(document.querySelectorAll(GRID_SELECTOR));
+
+    if (!grids.length) return null;
+
+    const nonDailyWithCards = grids.find((grid) => {
+
+      return !isDailyGrid(grid) && grid.querySelector(CARD_SELECTOR);
+
+    });
+
+    if (nonDailyWithCards) return nonDailyWithCards;
+
+    const archiveGrid = grids.find((grid) => {
+
+      return !isDailyGrid(grid) && grid.classList.contains('cards-grid--archive');
+
+    });
+
+    if (archiveGrid) return archiveGrid;
+
+    return grids.find((grid) => !isDailyGrid(grid)) || null;
+
+  }
+
+  function saveOriginalCards() {
+
+    if (!isSectionPage()) return;
+
+    const grid = findBestCategoryGrid();
+
+    if (!grid) return;
+
+    const cards = Array.from(grid.querySelectorAll(CARD_SELECTOR));
+
+    if (!cards.length) return;
+
+    preservedCards = cards.map((card) => card.cloneNode(true));
+
+    preservedKeys = new Set(
+
+      preservedCards
+
+        .map(cardKey)
+
+        .filter(Boolean)
+
+    );
+
+    grid.setAttribute('data-press-preserved-category-grid', 'true');
+
+  }
+
+  function makeCardsClickableAgain(scope) {
+
+    if (!scope) return;
+
+    scope.querySelectorAll('.link-list__item, .related-card, .story-card, .archive-card, .river-item, .lead-panel').forEach((card) => {
+
+      if (card.dataset.pressPreserveClickBound === 'true') return;
+
+      const link = card.querySelector('a[href]');
+
+      if (!link) return;
+
+      card.dataset.pressPreserveClickBound = 'true';
+
+      card.classList.add('is-clickable');
+
+      card.setAttribute('tabindex', '0');
+
+      card.setAttribute('role', 'link');
+
+      card.addEventListener('click', (event) => {
+
+        if (event.target.closest('a, button, input, textarea, select, label')) return;
+
+        window.location.href = link.href;
+
+      });
+
+      card.addEventListener('keydown', (event) => {
+
+        if (event.key === 'Enter' || event.key === ' ') {
+
+          event.preventDefault();
+
+          link.click();
+
+        }
+
+      });
+
+    });
+
+  }
+
+  function bindImageFallbacksAgain(scope) {
+
+    if (!scope) return;
+
+    scope.querySelectorAll('img').forEach((img) => {
+
+      if (img.dataset.pressPreserveFallbackBound === 'true') return;
+
+      img.dataset.pressPreserveFallbackBound = 'true';
+
+      img.addEventListener('error', () => {
+
+        const holder = img.closest(
+
+          '.story-card__image, .lead-panel__media, .river-item__media, .archive-card__image, figure, .card-media'
+
+        );
+
+        if (holder) {
+
+          holder.classList.add('is-hidden');
+
+        } else {
+
+          img.style.display = 'none';
+
+        }
+
+      });
+
+    });
+
+  }
+
+  function restoreMissingCards() {
+
+    if (!isSectionPage()) return;
+
+    if (!preservedCards.length) return;
+
+    const grid = findBestCategoryGrid();
+
+    if (!grid) return;
+
+    isRestoring = true;
+
+    const currentCards = Array.from(grid.querySelectorAll(CARD_SELECTOR));
+
+    const currentKeys = new Set(
+
+      currentCards
+
+        .map(cardKey)
+
+        .filter(Boolean)
+
+    );
+
+    const missingCards = preservedCards.filter((card) => {
+
+      const key = cardKey(card);
+
+      return key && !currentKeys.has(key);
+
+    });
+
+    if (missingCards.length) {
+
+      const fragment = document.createDocumentFragment();
+
+      missingCards.forEach((card) => {
+
+        const clone = card.cloneNode(true);
+
+        clone.setAttribute('data-press-restored-old-article', 'true');
+
+        fragment.appendChild(clone);
+
+      });
+
+      grid.appendChild(fragment);
+
+    }
+
+    grid.setAttribute('data-press-preserved-category-grid', 'true');
+
+    makeCardsClickableAgain(grid);
+
+    bindImageFallbacksAgain(grid);
+
+    window.setTimeout(() => {
+
+      isRestoring = false;
+
+    }, 0);
+
+  }
+
+  function queueRestore() {
+
+    if (restoreQueued || isRestoring) return;
+
+    restoreQueued = true;
+
+    window.requestAnimationFrame(() => {
+
+      restoreQueued = false;
+
+      restoreMissingCards();
+
+    });
+
+  }
+
+  function startObserver() {
+
+    if (!isSectionPage()) return;
+
+    if (observer) return;
+
+    const grid = findBestCategoryGrid();
+
+    if (!grid) return;
+
+    observer = new MutationObserver(() => {
+
+      if (!isRestoring) queueRestore();
+
+    });
+
+    observer.observe(grid, {
+
+      childList: true,
+
+      subtree: true
+
+    });
+
+  }
+
+  function bootPreservationGuard() {
+
+    if (!isSectionPage()) return;
+
+    saveOriginalCards();
+
+    restoreMissingCards();
+
+    startObserver();
+
+    window.setTimeout(restoreMissingCards, 50);
+
+    window.setTimeout(restoreMissingCards, 300);
+
+    window.setTimeout(restoreMissingCards, 900);
+
+    window.setTimeout(restoreMissingCards, 1500);
+
+    window.setTimeout(restoreMissingCards, 3000);
+
+  }
+
+  if (document.readyState === 'loading') {
+
+    document.addEventListener('DOMContentLoaded', bootPreservationGuard, { once: true });
+
+  } else {
+
+    bootPreservationGuard();
+
+  }
+
+})();
+(() => {
   const AUTHOR_LABEL = 'Written by Intelligent AI';
   const SEARCH_EMPTY = '<div class="search-empty"><p>Start typing to search the full edition.</p></div>';
   const SEARCH_NONE = '<div class="search-empty"><p>No stories matched that search yet.</p></div>';
