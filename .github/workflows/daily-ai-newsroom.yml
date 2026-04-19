@@ -4,15 +4,16 @@ on:
   workflow_dispatch:
     inputs:
       story_count:
-        description: "How many stories to generate (1-10)"
+        description: "How many long-form stories to generate (1-30); 15 covers every public desk once"
         required: true
-        default: "10"
+        default: "15"
   schedule:
     - cron: "5 12 * * *"
 
 jobs:
   preserve-and-append:
     runs-on: ubuntu-latest
+    timeout-minutes: 360
 
     permissions:
       contents: write
@@ -41,9 +42,18 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
-          STORY_COUNT: ${{ github.event.inputs.story_count || '10' }}
+          STORY_COUNT: ${{ github.event.inputs.story_count || '15' }}
           SITE_BASE_URL: https://thepress.live
           OPENAI_MODEL: gpt-5.4-mini
+          ARTICLE_TARGET_WORDS: "2500"
+          MIN_SOURCES: "30"
+          MAX_SOURCES: "50"
+          MIN_UNIQUE_SOURCE_DOMAINS: "18"
+          QUALITY_REPAIR_ATTEMPTS: "2"
+          FACT_CHECK_PASSES: "1"
+          MAX_OUTPUT_TOKENS: "24000"
+          MAX_STORY_COUNT: "30"
+          STRICT_QUALITY_GATE: "1"
         run: |
           python studio/automation/preserve_old_and_new_issue_v34567.py
 
@@ -64,6 +74,8 @@ jobs:
             - update search-index.json
             - keep visible bylines as Written by Intelligent AI
             - keep old thumbnails while adding thumbnails for new stories
+            - publish 2,500+ word articles with 30-50 source notes
+            - rotate attention across every public desk
 
             Do not merge if the PR only changes one file.
           commit-message: "Append daily issue and preserve existing site"
