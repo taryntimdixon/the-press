@@ -1,5 +1,216 @@
 [
   {
+    "title": "Courts Are Rewriting the Rules of the 2026 Midterms",
+    "section": "Politics",
+    "type": "Daily Issue",
+    "dek": "A wave of rulings and lawsuits over voter data, mail ballots, and congressional maps is forcing states, courts, and the White House into a fight over who really controls the next election.",
+    "url": "daily/2026-04-19-courts-are-rewriting-the-rules-of-the-2026-midterms.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "2026 midterms",
+      "election law",
+      "Supreme Court"
+    ]
+  },
+  {
+    "title": "How the 2026 box-office rebound is testing Hollywood’s streaming bargain",
+    "section": "Culture",
+    "type": "Daily Issue",
+    "dek": "A stronger spring at the movies is reviving old promises about theatrical culture, but the business and labor math still looks fragile.",
+    "url": "daily/2026-04-19-how-the-2026-box-office-rebound-is-testing-hollywood-s-streaming-bargain.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "Hollywood",
+      "streaming",
+      "movie theaters"
+    ]
+  },
+  {
+    "title": "Inside the new bottleneck shaping AI: power, permits, and chips",
+    "section": "Technology",
+    "type": "Daily Issue",
+    "dek": "The AI boom is no longer just a software story. It is colliding with utilities, grid queues, chip export rules, and local politics—and that is reshaping who gets to build the next generation of digital infrastructure.",
+    "url": "daily/2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "artificial intelligence",
+      "data centers",
+      "semiconductors"
+    ]
+  },
+  {
+    "title": "Tariffs are back in the inflation data—and in the family budget",
+    "section": "Economics",
+    "type": "Daily Issue",
+    "dek": "March’s price spike, fresh Fed analysis and new IMF warnings point to a household squeeze that is showing up first in gas, goods and expectations, with rent and wage gains offering only partial relief.",
+    "url": "daily/2026-04-19-tariffs-are-back-in-the-inflation-data-and-in-the-family-budget.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "inflation",
+      "tariffs",
+      "household budgets"
+    ]
+  },
+  {
+    "title": "Workforce Pell Is About to Land. Colleges and students are racing to prepare.",
+    "section": "Education",
+    "type": "Daily Issue",
+    "dek": "A new federal aid experiment could reshape short-term training, but weak oversight, thin state data and a strained aid system raise questions about who benefits and who gets left out.",
+    "url": "daily/2026-04-19-workforce-pell-is-about-to-land-colleges-and-students-are-racing-to-prepare.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "higher education",
+      "Pell Grants",
+      "workforce training"
+    ]
+  },
+  {
+    "title": "U.S. measles surge enters late-spring danger zone as outbreaks spread, vaccination gaps widen",
+    "section": "Health",
+    "type": "Daily Issue",
+    "dek": "With more than 1,700 U.S. cases already this year and outbreaks spreading across multiple states, public-health officials are racing to keep measles from exploiting falling MMR coverage, travel-linked introductions and under-vaccinated pockets.",
+    "url": "daily/2026-04-19-u-s-measles-surge-enters-late-spring-danger-zone-as-outbreaks-spread-vaccination-gaps-widen.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "measles",
+      "vaccination",
+      "public health"
+    ]
+  },
+  {
+    "title": "The New Intimacy Machine",
+    "section": "Philosophy",
+    "type": "Daily Issue",
+    "dek": "AI companions promise to ease loneliness, but they also monetize attachment, blur consent, and shift care from public life into private extraction.",
+    "url": "daily/2026-04-19-the-new-intimacy-machine.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "AI companions",
+      "loneliness",
+      "ethics"
+    ]
+  },
+  {
+    "title": "As federal science archives recede, researchers race to save the public record",
+    "section": "Science",
+    "type": "Daily Issue",
+    "dek": "Across climate, health and basic research, scientists and librarians are building parallel archives as federal data portals, webpages and tooling become harder to rely on.",
+    "url": "daily/2026-04-19-as-federal-science-archives-recede-researchers-race-to-save-the-public-record.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "science policy",
+      "data rescue",
+      "federal research",
+      "archives"
+    ]
+  },
+  {
+    "title": "Sudan’s border war: how a three-year conflict is remaking Chad, aid routes, and regional security",
+    "section": "World",
+    "type": "Daily Issue",
+    "dek": "As Sudan’s war enters its fourth year, the fighting is no longer contained by the country’s frontiers: it is redrawing the humanitarian map in Chad, hardening border politics, and exposing how dependent relief still is on fragile regional corridors.",
+    "url": "daily/2026-04-19-sudan-s-border-war-how-a-three-year-conflict-is-remaking-chad-aid-routes-and-regional-security.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "Sudan war",
+      "Chad border",
+      "humanitarian aid"
+    ]
+  },
+  {
+    "title": "Trump’s tariff machine is no longer trade policy. Congress should say so.",
+    "section": "Opinion",
+    "type": "Daily Issue",
+    "dek": "The president’s 2026 tariff escalation has turned a once-disputed import tax into a standing power to reprice the economy. The right answer is not another court fight by proxy. It is a statute that restores Congress’s tariff authority, limits emergency levies, and forces a real industrial policy debate into the open.",
+    "url": "daily/2026-04-19-trump-s-tariff-machine-is-no-longer-trade-policy-congress-should-say-so.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "tariffs",
+      "congress",
+      "industrial policy"
+    ]
+  },
+  {
+    "title": "AI’s next regulatory clash is arriving in classrooms, agencies and chip racks at once",
+    "section": "AI",
+    "type": "Daily Issue",
+    "dek": "As the EU AI Act’s main rules move into force, governments and schools are shifting from broad AI principles to enforcement, procurement and training — while companies race to sell safer systems, and critics warn the fixes may lag the technology.",
+    "url": "daily/2026-04-19-ai-s-next-regulatory-clash-is-arriving-in-classrooms-agencies-and-chip-racks-at-once.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "artificial intelligence",
+      "regulation",
+      "education"
+    ]
+  },
+  {
+    "title": "U.S.-Iran brinkmanship turns the Strait of Hormuz into the world’s most expensive chokepoint again",
+    "section": "Geopolitics",
+    "type": "Daily Issue",
+    "dek": "With talks sputtering, sanctions tightening and the Strait of Hormuz under pressure, the crisis is testing deterrence, allied coordination and the resilience of global trade routes.",
+    "url": "daily/2026-04-19-u-s-iran-brinkmanship-turns-the-strait-of-hormuz-into-the-world-s-most-expensive-chokepoint-again.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "Iran",
+      "Strait of Hormuz",
+      "sanctions"
+    ]
+  },
+  {
+    "title": "Hollywood’s Window Wars Enter a New Phase as Studios Reopen the Theater Question",
+    "section": "Film",
+    "type": "Daily Issue",
+    "dek": "At CinemaCon and in earnings calls, the industry is signaling a partial return to theatrical-first strategy — but the new consensus may be narrower, more premium, and more conditional than exhibitors want.",
+    "url": "daily/2026-04-19-hollywood-s-window-wars-enter-a-new-phase-as-studios-reopen-the-theater-question.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "film industry",
+      "CinemaCon",
+      "theatrical windows"
+    ]
+  },
+  {
+    "title": "Coachella 2026 Is Rewriting Pop’s Power Map in Real Time",
+    "section": "Pop Culture",
+    "type": "Daily Issue",
+    "dek": "From Sabrina Carpenter’s coronation to Justin Bieber’s viral return and the platform logic underneath both, this year’s Coachella is less a festival than a live stress test for how fame, fandom, and streaming now work.",
+    "url": "daily/2026-04-19-coachella-2026-is-rewriting-pop-s-power-map-in-real-time.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "Coachella 2026",
+      "music industry",
+      "creator economy"
+    ]
+  },
+  {
+    "title": "How urban beekeeping became a climate hobby, a data network, and a politics of the sidewalk",
+    "section": "Niche",
+    "type": "Daily Issue",
+    "dek": "From rooftop apiaries to youth fellowships and city pollinator plans, urban beekeeping is being remade as a test case for ecology, education, and neighborhood legitimacy.",
+    "url": "daily/2026-04-19-how-urban-beekeeping-became-a-climate-hobby-a-data-network-and-a-politics-of-the-sidewalk.html",
+    "author": "Intelligent AI",
+    "published": "April 19, 2026 • 4:00 p.m.",
+    "keywords": [
+      "urban beekeeping",
+      "pollinators",
+      "city ecology"
+    ]
+  },
+  {
     "title": "Congress buys time on Section 702, setting up another surveillance showdown",
     "section": "Politics",
     "type": "Daily Issue",
