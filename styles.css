@@ -2320,3 +2320,29 @@ html.press-dynamic-page.press-page-leaving body{
     padding-top: .35rem;
   }
 }
+/* KILL ARTICLE TEXT HOVER HIGHLIGHT — KEEP THIS AT THE VERY BOTTOM */
+html body .article-body p,
+html body .generated-story .article-body p,
+html body .page-article .article-body p,
+html body article .article-body p,
+html body .article-body li,
+html body .article-body blockquote {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+  text-shadow: none !important;
+}
+
+html body .article-body p:hover,
+html body .generated-story .article-body p:hover,
+html body .page-article .article-body p:hover,
+html body article .article-body p:hover,
+html body .article-body li:hover,
+html body .article-body blockquote:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+  text-shadow: none !important;
+}
