@@ -4,48 +4,92 @@ on:
   workflow_dispatch:
     inputs:
       story_count:
-        description: How many stories to draft
-        required: false
-        default: "10"
-      model:
-        description: OpenAI model
-        required: false
-        default: "gpt-5.4-mini"
+        description: "How many long-form stories to generate (1-30); 15 covers every public desk once"
+        required: true
+        default: "15"
   schedule:
-    - cron: "15 9 * * *"
+    - cron: "5 12 * * *"
 
 jobs:
-  draft-edition:
+  preserve-and-append:
     runs-on: ubuntu-latest
+    timeout-minutes: 360
     permissions:
       contents: write
       pull-requests: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out repo
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install OpenAI SDK
-        run: python -m pip install --upgrade openai
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install openai requests beautifulsoup4
 
-      - name: Generate edition
+      - name: Verify automation scripts exist
+        run: |
+          ls -la studio/automation
+          test -f studio/automation/preserve_old_and_new_issue_v34567.py
+          test -f studio/automation/ai_thumbnail_backfill.py
+
+      - name: Generate new issue without wiping old site
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          STORY_COUNT: ${{ github.event.inputs.story_count || '10' }}
-          OPENAI_MODEL: ${{ github.event.inputs.model || 'gpt-5.4-mini' }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          STORY_COUNT: ${{ github.event.inputs.story_count || '15' }}
           SITE_BASE_URL: https://thepress.live
-        run: python studio/automation/daily_worldwide_issue.py
+          OPENAI_MODEL: gpt-5.4-mini
+          ARTICLE_TARGET_WORDS: "2500"
+          MIN_SOURCES: "30"
+          MAX_SOURCES: "100"
+          MIN_UNIQUE_SOURCE_DOMAINS: "10"
+          QUALITY_REPAIR_ATTEMPTS: "4"
+          FACT_CHECK_PASSES: "1"
+          MAX_OUTPUT_TOKENS: "24000"
+          MAX_STORY_COUNT: "30"
+          STRICT_QUALITY_GATE: "1"
+        run: |
+          python studio/automation/preserve_old_and_new_issue_v34567.py
 
-      - name: Open review PR
+      - name: Fill weak/missing daily thumbnails with AI illustrations
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AI_THUMBNAIL_BACKFILL: "1"
+          OPENAI_IMAGE_MODEL: gpt-image-1.5
+          OPENAI_IMAGE_SIZE: 1536x1024
+          OPENAI_IMAGE_QUALITY: low
+          AI_THUMBNAIL_MAX_GENERATIONS: "0"
+          REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
+          FORCE_AI_FOR_DAILY_STORIES: "1"
+        run: |
+          python studio/automation/ai_thumbnail_backfill.py
+
+      - name: Create review PR
         uses: peter-evans/create-pull-request@v6
         with:
-          title: "Daily AI Edition"
+          branch: ai-preserve-${{ github.run_number }}
+          delete-branch: true
+          title: "The Press daily issue — preserve old + add new"
           body: |
-            This PR contains today's automatically drafted edition.
-            Review the article pages, breaking page, and archive before publishing.
-          commit-message: "Draft daily AI edition"
-          branch: daily-ai-edition
-          base: main
+            This PR preserves the existing site and appends the newest daily issue.
+
+            It should:
+            - keep old homepage stories
+            - add today's new stories below them
+            - keep archive history and prepend today's issue
+            - update breaking-news.html
+            - update search-index.json
+            - keep visible bylines as Written by Intelligent AI
+            - keep old curated real/legal thumbnails
+            - replace weak, missing, broken, placeholder, fallback, or auto-fetched daily thumbnails with AI-generated editorial illustrations
+            - publish long-form articles with source notes
+            - rotate attention across every public desk
+
+            Do not merge if the PR only changes one file.
+          commit-message: "Append daily issue and fill weak AI thumbnails"

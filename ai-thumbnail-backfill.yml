@@ -1,0 +1,51 @@
+name: Backfill Missing AI Thumbnails
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ai-thumbnail-backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install openai beautifulsoup4
+
+      - name: Run AI thumbnail backfill
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AI_THUMBNAIL_BACKFILL: "1"
+          OPENAI_IMAGE_MODEL: gpt-image-1.5
+          OPENAI_IMAGE_SIZE: 1536x1024
+          OPENAI_IMAGE_QUALITY: low
+          AI_THUMBNAIL_MAX_GENERATIONS: "0"
+          REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
+          FORCE_AI_FOR_DAILY_STORIES: "1"
+        run: |
+          python studio/automation/ai_thumbnail_backfill.py
+
+      - name: Create review PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: ai-thumbnail-backfill-${{ github.run_number }}
+          delete-branch: true
+          title: "Backfill weak article thumbnails with AI illustrations"
+          body: |
+            This PR replaces weak, missing, broken, placeholder, fallback, and auto-fetched daily article thumbnails with AI-generated editorial illustrations.
+
+            Please review the generated images, then merge when ready.
+          commit-message: "Backfill weak article thumbnails with AI illustrations"
