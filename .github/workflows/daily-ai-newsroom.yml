@@ -14,7 +14,6 @@ jobs:
   preserve-and-append:
     runs-on: ubuntu-latest
     timeout-minutes: 360
-
     permissions:
       contents: write
       pull-requests: write
@@ -33,10 +32,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install openai requests beautifulsoup4
 
-      - name: Verify automation script exists
+      - name: Verify automation scripts exist
         run: |
           ls -la studio/automation
           test -f studio/automation/preserve_old_and_new_issue_v34567.py
+          test -f studio/automation/ai_thumbnail_backfill.py
 
       - name: Generate new issue without wiping old site
         env:
@@ -57,6 +57,18 @@ jobs:
         run: |
           python studio/automation/preserve_old_and_new_issue_v34567.py
 
+      - name: Fill missing article thumbnails with AI illustrations
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AI_THUMBNAIL_BACKFILL: "1"
+          OPENAI_IMAGE_MODEL: gpt-image-1.5
+          OPENAI_IMAGE_SIZE: 1536x1024
+          OPENAI_IMAGE_QUALITY: low
+          AI_THUMBNAIL_MAX_GENERATIONS: "0"
+          REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
+        run: |
+          python studio/automation/ai_thumbnail_backfill.py
+
       - name: Create review PR
         uses: peter-evans/create-pull-request@v6
         with:
@@ -73,9 +85,10 @@ jobs:
             - update breaking-news.html
             - update search-index.json
             - keep visible bylines as Written by Intelligent AI
-            - keep old thumbnails while adding thumbnails for new stories
+            - keep old real/legal thumbnails
+            - replace missing, broken, placeholder, or fallback article thumbnails with AI-generated editorial illustrations
             - publish 2,500+ word articles with 30-50 source notes
             - rotate attention across every public desk
 
             Do not merge if the PR only changes one file.
-          commit-message: "Append daily issue and preserve existing site"
+          commit-message: "Append daily issue and fill missing AI thumbnails"
