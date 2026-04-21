@@ -1,4 +1,4 @@
-name: Backfill Missing AI Thumbnails
+name: Backfill AI Article Art Packages
 
 on:
   workflow_dispatch:
@@ -25,16 +25,23 @@ jobs:
           python -m pip install --upgrade pip
           pip install openai beautifulsoup4
 
-      - name: Run AI thumbnail backfill
+      - name: Run AI article-art backfill
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AI_THUMBNAIL_BACKFILL: "1"
           OPENAI_IMAGE_MODEL: gpt-image-1.5
           OPENAI_IMAGE_SIZE: 1536x1024
           OPENAI_IMAGE_QUALITY: low
+          AI_TOTAL_IMAGE_MAX_GENERATIONS: "0"
           AI_THUMBNAIL_MAX_GENERATIONS: "0"
           REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
+          FORCE_AI_FOR_ALL_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_DAILY_STORIES: "1"
+          AI_ART_PACKAGE_BACKFILL: "1"
+          AI_GALLERY_MIN_IMAGES: "6"
+          AI_GALLERY_MAX_IMAGES: "10"
+          AI_GALLERY_IMAGES_PER_ARTICLE: "8"
+          AI_ART_PROMPT_MODEL: gpt-5.4-mini
         run: |
           python studio/automation/ai_thumbnail_backfill.py
 
@@ -43,9 +50,9 @@ jobs:
         with:
           branch: ai-thumbnail-backfill-${{ github.run_number }}
           delete-branch: true
-          title: "Backfill weak article thumbnails with AI illustrations"
+          title: "Backfill article thumbnails and galleries with AI art"
           body: |
-            This PR replaces weak, missing, broken, placeholder, fallback, and auto-fetched daily article thumbnails with AI-generated editorial illustrations.
+            This PR replaces article thumbnails with article-specific AI images and adds 6-10 AI-generated visuals to each article, including scenes, explainers, and map-style illustrations.
 
             Please review the generated images, then merge when ready.
-          commit-message: "Backfill weak article thumbnails with AI illustrations"
+          commit-message: "Backfill AI article art packages"
