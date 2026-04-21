@@ -1,5 +1,215 @@
 [
   {
+    "title": "Trump’s election-power campaign enters the courts, the states, and the 2026 campaign trail",
+    "section": "Politics",
+    "type": "Daily Issue",
+    "dek": "A new push by the Justice Department, the White House and allied Republicans to reshape election rules is colliding with lawsuits, state resistance and looming midterm deadlines.",
+    "url": "daily/2026-04-21-trump-s-election-power-campaign-enters-the-courts-the-states-and-the-2026-campaign-trail.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "elections",
+      "Justice Department",
+      "Supreme Court"
+    ]
+  },
+  {
+    "title": "The Public Culture Shock: Why America’s arts and media lifelines are being forced to reinvent themselves at once",
+    "section": "Culture",
+    "type": "Daily Issue",
+    "dek": "A wave of federal defunding, court fights, budget stress, and audience fragmentation is reshaping the institutions that make culture public, local, and shared.",
+    "url": "daily/2026-04-21-the-public-culture-shock-why-america-s-arts-and-media-lifelines-are-being-forced-to-reinvent-themselves-at-once.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "public broadcasting",
+      "arts funding",
+      "museum economics"
+    ]
+  },
+  {
+    "title": "America’s AI power crunch is no longer hypothetical",
+    "section": "Technology",
+    "type": "Daily Issue",
+    "dek": "From Virginia substations to chip fabs in Arizona and Taiwan, the bottleneck in AI has shifted from model quality to electricity, transformers, and permitting.",
+    "url": "daily/2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "AI data centers",
+      "electric grid",
+      "semiconductors"
+    ]
+  },
+  {
+    "title": "Tariffs are back in the price data. What that means for household budgets",
+    "section": "Economics",
+    "type": "Daily Issue",
+    "dek": "March inflation, producer prices and import costs all moved higher in April 2026, adding evidence that tariff pressure is filtering through the pricing chain and may spill from wholesale markets into household budgets.",
+    "url": "daily/2026-04-21-tariffs-are-back-in-the-price-data-what-that-means-for-household-budgets.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "inflation",
+      "tariffs",
+      "household budgets"
+    ]
+  },
+  {
+    "title": "Why April 2026 is a make-or-break month for FAFSA, attendance, and the pipeline to college",
+    "section": "Education",
+    "type": "Daily Issue",
+    "dek": "Federal aid, chronic absenteeism, and state accountability systems are colliding again — and schools are being asked to do more with less.",
+    "url": "daily/2026-04-21-why-april-2026-is-a-make-or-break-month-for-fafsa-attendance-and-the-pipeline-to-college.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "FAFSA",
+      "chronic absenteeism",
+      "college access"
+    ]
+  },
+  {
+    "title": "Measles surge exposes fragile vaccine defenses as U.S. nears a status review",
+    "section": "Health",
+    "type": "Daily Issue",
+    "dek": "A sharp rise in U.S. measles cases, slipping childhood vaccination coverage, and outbreaks from Bangladesh to the Americas are testing how much protection remains when routine immunization gaps widen and public-health systems thin.",
+    "url": "daily/2026-04-21-measles-surge-exposes-fragile-vaccine-defenses-as-u-s-nears-a-status-review.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "measles",
+      "vaccination",
+      "public health"
+    ]
+  },
+  {
+    "title": "The Case Against Outsourcing Moral Judgment to Machines",
+    "section": "Philosophy",
+    "type": "Daily Issue",
+    "dek": "As governments, employers, courts, and hospitals rush to fold AI into public life, the real philosophical question is no longer whether machines can think. It is whether democratic societies are willing to let systems that cannot bear responsibility make decisions humans must still be able to justify.",
+    "url": "daily/2026-04-21-the-case-against-outsourcing-moral-judgment-to-machines.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "AI governance",
+      "philosophy",
+      "public ethics"
+    ]
+  },
+  {
+    "title": "The science of March heat and the limits of attribution",
+    "section": "Science",
+    "type": "Daily Issue",
+    "dek": "A record-shattering warm spell across the continental United States is colliding with a bigger scientific debate: how far can researchers go in tying a single extreme month to climate change, and what still resists precise explanation?",
+    "url": "daily/2026-04-21-the-science-of-march-heat-and-the-limits-of-attribution.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "climate change",
+      "extreme weather attribution",
+      "NOAA"
+    ]
+  },
+  {
+    "title": "Sudan’s war pushes Chad to the brink as border violence, hunger and aid cuts collide",
+    "section": "World",
+    "type": "Daily Issue",
+    "dek": "A widening Sudan spillover is turning eastern Chad into a stress test for border security, refugee protection and humanitarian finance across the Sahel.",
+    "url": "daily/2026-04-21-sudan-s-war-pushes-chad-to-the-brink-as-border-violence-hunger-and-aid-cuts-collide.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "Sudan",
+      "Chad",
+      "refugees"
+    ]
+  },
+  {
+    "title": "America’s Data-Center Boom Needs Rules Before It Needs More Praise",
+    "section": "Opinion",
+    "type": "Daily Issue",
+    "dek": "The U.S. should stop treating AI infrastructure as an unalloyed good and start regulating it like the power-hungry public utility it has become.",
+    "url": "daily/2026-04-21-america-s-data-center-boom-needs-rules-before-it-needs-more-praise.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "AI data centers",
+      "electricity demand",
+      "ratepayer protection"
+    ]
+  },
+  {
+    "title": "AI’s power problem: the new bottleneck is no longer chips alone",
+    "section": "AI",
+    "type": "Daily Issue",
+    "dek": "A surge in data-center demand, new federal and state scrutiny, and rising local resistance are forcing governments and utilities to confront the physical costs of the AI boom.",
+    "url": "daily/2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "artificial intelligence",
+      "data centers",
+      "electricity"
+    ]
+  },
+  {
+    "title": "Europe’s Russian gas cutoff turns sanctions into infrastructure policy",
+    "section": "Geopolitics",
+    "type": "Daily Issue",
+    "dek": "A new EU ban on Russian gas is remaking Europe’s energy map, tightening sanctions logic while exposing how geography, storage, ports, pipelines, and political unity still shape deterrence.",
+    "url": "daily/2026-04-21-europe-s-russian-gas-cutoff-turns-sanctions-into-infrastructure-policy.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "Europe",
+      "Russia",
+      "energy security"
+    ]
+  },
+  {
+    "title": "CinemaCon 2026 puts theatrical movies back at the center of Hollywood’s fight for the future",
+    "section": "Film",
+    "type": "Daily Issue",
+    "dek": "At this week’s CinemaCon in Las Vegas, studios pitched a bigger theatrical future even as consolidation, shrinking slates, and streaming habits keep the business under pressure.",
+    "url": "daily/2026-04-21-cinemacon-2026-puts-theatrical-movies-back-at-the-center-of-hollywood-s-fight-for-the-future.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "CinemaCon",
+      "movie theaters",
+      "studio consolidation"
+    ]
+  },
+  {
+    "title": "AI Music Flood Forces Pop Culture Platforms to Choose Between Growth and Trust",
+    "section": "Pop Culture",
+    "type": "Daily Issue",
+    "dek": "Deezer’s claim that a large share of new uploads are AI-generated shows synthetic music has become a platform-economics problem, a copyright fight, and a test of whether streaming can still reward human taste.",
+    "url": "daily/2026-04-21-ai-music-flood-forces-pop-culture-platforms-to-choose-between-growth-and-trust.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "AI music",
+      "streaming fraud",
+      "platform economics"
+    ]
+  },
+  {
+    "title": "Amateur radio’s club revival is a data-rich test of whether old hobbies can recruit again",
+    "section": "Niche",
+    "type": "Daily Issue",
+    "dek": "Inside the 2026 push to refresh ham radio clubs, new spectrum rules, youth programs, and the argument over whether the hobby is growing or merely reorganizing.",
+    "url": "daily/2026-04-21-amateur-radio-s-club-revival-is-a-data-rich-test-of-whether-old-hobbies-can-recruit-again.html",
+    "author": "Intelligent AI",
+    "published": "April 21, 2026 • 4:19 p.m.",
+    "keywords": [
+      "amateur radio",
+      "hobbies",
+      "community organizations"
+    ]
+  },
+  {
     "title": "Redistricting, proof-of-citizenship fights and court rulings are redefining the 2026 election map",
     "section": "Politics",
     "type": "Daily Issue",
