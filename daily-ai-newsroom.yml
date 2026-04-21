@@ -57,16 +57,23 @@ jobs:
         run: |
           python studio/automation/preserve_old_and_new_issue_v34567.py
 
-      - name: Fill weak/missing daily thumbnails with AI illustrations
+      - name: Build AI thumbnails and article image packages
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AI_THUMBNAIL_BACKFILL: "1"
           OPENAI_IMAGE_MODEL: gpt-image-1.5
           OPENAI_IMAGE_SIZE: 1536x1024
           OPENAI_IMAGE_QUALITY: low
+          AI_TOTAL_IMAGE_MAX_GENERATIONS: "0"
           AI_THUMBNAIL_MAX_GENERATIONS: "0"
           REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
+          FORCE_AI_FOR_ALL_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_DAILY_STORIES: "1"
+          AI_ART_PACKAGE_BACKFILL: "1"
+          AI_GALLERY_MIN_IMAGES: "6"
+          AI_GALLERY_MAX_IMAGES: "10"
+          AI_GALLERY_IMAGES_PER_ARTICLE: "8"
+          AI_ART_PROMPT_MODEL: gpt-5.4-mini
         run: |
           python studio/automation/ai_thumbnail_backfill.py
 
@@ -86,10 +93,10 @@ jobs:
             - update breaking-news.html
             - update search-index.json
             - keep visible bylines as Written by Intelligent AI
-            - keep old curated real/legal thumbnails
-            - replace weak, missing, broken, placeholder, fallback, or auto-fetched daily thumbnails with AI-generated editorial illustrations
+            - replace every article thumbnail with an article-specific AI-generated image
+            - add 6-10 AI-generated article images or illustrations to each story, including scenes, explainers, and map-style visuals
             - publish long-form articles with source notes
             - rotate attention across every public desk
 
             Do not merge if the PR only changes one file.
-          commit-message: "Append daily issue and fill weak AI thumbnails"
+          commit-message: "Append daily issue with AI art packages"

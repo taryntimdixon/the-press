@@ -207,6 +207,49 @@ def related_block(story: dict) -> str:
 """.strip()
 
 
+
+
+def gallery_block(story: dict) -> str:
+    images = story.get("galleryImages") or []
+    if not isinstance(images, list) or not images:
+        return ""
+
+    figures = []
+    for idx, image in enumerate(images[:10], start=1):
+        if not isinstance(image, dict):
+            continue
+        src = str(image.get("src") or "").strip()
+        if not src:
+            continue
+        alt = image.get("alt") or f"AI-generated visual {idx} for {story['title']}"
+        style = image.get("style") or "artistic"
+        caption_html = image.get("captionHtml") or image.get("relevanceNote") or "AI-generated image by The Press."
+        figures.append(
+            f'''
+<figure class="ai-article-gallery__item" data-ai-art-index="{idx}" data-ai-art-style="{h(style)}">
+  <img src="{h(src)}" alt="{h(alt)}" loading="lazy" decoding="async" />
+  <figcaption>{caption_html}</figcaption>
+</figure>
+'''.strip()
+        )
+
+    if not figures:
+        return ""
+
+    return f'''
+<section class="ai-article-gallery" data-ai-article-gallery>
+  <div class="ai-article-gallery__header">
+    <p class="eyebrow eyebrow--tiny">AI visual brief</p>
+    <h2>Scenes and explainers from this story</h2>
+    <p>AI-generated visuals built from this article's reporting.</p>
+  </div>
+  <div class="ai-article-gallery__grid">
+    {''.join(figures)}
+  </div>
+</section>
+'''.strip()
+
+
 def header(current_section: str = "", current_aux: str = "") -> str:
     utility_links = []
     for link in SITE.get("mastheadLinks", []):
@@ -615,6 +658,7 @@ def render_authors() -> str:
 def render_story(story: dict) -> str:
     aside_html = read_fragment(story["asideFile"])
     body_html = read_fragment(story["bodyFile"])
+    gallery_html = gallery_block(story)
     related_html = related_block(story)
     main = f"""
 <main class="page page-article">
@@ -643,6 +687,7 @@ def render_story(story: dict) -> str:
       </aside>
       <div class="article-body">
         {body_html}
+        {gallery_html}
         {related_html}
       </div>
     </div>

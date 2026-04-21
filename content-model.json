@@ -16,6 +16,7 @@
         "wordCount",
         "readTime",
         "heroImage",
+        "galleryImages[]",
         "body",
         "keyPoints[]",
         "toc[]",
@@ -51,6 +52,20 @@
         "email",
         "topics[]",
         "sameAs[]"
+      ]
+    },
+    "galleryImage": {
+      "fields": [
+        "src",
+        "alt",
+        "captionHtml",
+        "style",
+        "role",
+        "creator",
+        "license",
+        "width",
+        "height",
+        "relevanceNote"
       ]
     }
   }
