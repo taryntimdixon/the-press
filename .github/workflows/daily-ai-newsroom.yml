@@ -8,17 +8,13 @@ on:
         required: true
         default: "15"
       image_cap:
-        description: "Max NEW AI images this run. 45 = 15 articles x (1 thumbnail + 2 article photos)."
-        required: true
-        default: "45"
-      article_cap:
-        description: "Max NEW articles to receive AI art. Default: 15."
+        description: "Max NEW AI thumbnails this run. 15 = one thumbnail for each new article."
         required: true
         default: "15"
-      gallery_images_per_article:
-        description: "Article photos/visuals per article. Default: 2."
+      article_cap:
+        description: "Max newest articles to receive AI thumbnails. Default: 15."
         required: true
-        default: "2"
+        default: "15"
   schedule:
     - cron: "5 12 * * *"
 
@@ -57,11 +53,14 @@ jobs:
           STORY_COUNT: ${{ github.event.inputs.story_count || '15' }}
           SITE_BASE_URL: https://thepress.live
           OPENAI_MODEL: gpt-5.4-mini
+
+          # Keep the long-form standard, but make sourcing sane.
+          # The hard gate now requires 2,500+ words and 20+ distinct HTTPS sources.
           ARTICLE_TARGET_WORDS: "2500"
-          MIN_SOURCES: "30"
-          MAX_SOURCES: "100"
-          MIN_UNIQUE_SOURCE_DOMAINS: "10"
-          QUALITY_REPAIR_ATTEMPTS: "4"
+          MIN_SOURCES: "20"
+          MAX_SOURCES: "30"
+          MIN_UNIQUE_SOURCE_DOMAINS: "8"
+          QUALITY_REPAIR_ATTEMPTS: "5"
           FACT_CHECK_PASSES: "1"
           MAX_OUTPUT_TOKENS: "24000"
           MAX_STORY_COUNT: "30"
@@ -69,7 +68,7 @@ jobs:
         run: |
           python studio/automation/preserve_old_and_new_issue_v34567.py
 
-      - name: Build AI thumbnails and 2 article photos for new stories only
+      - name: Build GPT Image 2 thumbnails for new stories only
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AI_THUMBNAIL_BACKFILL: "1"
@@ -80,15 +79,13 @@ jobs:
           OPENAI_IMAGE_COMPRESSION: "85"
           AI_ART_SCOPE: current_issue
           AI_ART_MAX_ARTICLES: ${{ github.event.inputs.article_cap || '15' }}
-          AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '45' }}
-          AI_THUMBNAIL_MAX_GENERATIONS: "0"
+          AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
+          AI_THUMBNAIL_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
           REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_ALL_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_DAILY_STORIES: "1"
-          AI_ART_PACKAGE_BACKFILL: "1"
-          AI_GALLERY_MIN_IMAGES: "2"
-          AI_GALLERY_MAX_IMAGES: "2"
-          AI_GALLERY_IMAGES_PER_ARTICLE: ${{ github.event.inputs.gallery_images_per_article || '2' }}
+          AI_ART_PACKAGE_BACKFILL: "0"
+          AI_GALLERY_IMAGES_PER_ARTICLE: "0"
           AI_UPDATE_LINKED_CARDS: "1"
           AI_CARD_UPDATE_SCOPE: front_pages
           AI_ART_PROMPT_MODEL: gpt-5.4-mini
@@ -100,16 +97,18 @@ jobs:
         with:
           branch: ai-preserve-${{ github.run_number }}
           delete-branch: true
-          title: "The Press daily issue — 15 new stories with AI art"
+          title: "The Press daily issue — 15 sourced stories with GPT Image 2 thumbnails"
           body: |
             This PR preserves the existing site and appends the newest daily issue.
 
-            Image behavior in this version:
+            Current rules:
+            - 15 new long-form stories by default
+            - each article must pass the strict quality gate with 2,500+ words
+            - each article must include 20+ distinct live HTTPS source URLs
+            - generates one high-quality GPT Image 2 thumbnail per new article
+            - does not generate article galleries/photos
             - targets only the newest articles listed in daily-latest.json
-            - generates 1 AI thumbnail per new article
-            - generates 2 AI article photos/visuals per new article
-            - caps the run at 45 new images by default
-            - does not backfill the entire historical website
+            - does not backfill or rewrite the historical website
 
-            Do not merge if the PR only changes one file.
-          commit-message: "Append daily issue with AI thumbnails and 2 article photos"
+            Review the generated thumbnails before merging.
+          commit-message: "Append daily issue with GPT Image 2 thumbnails"
