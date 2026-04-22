@@ -1,17 +1,10 @@
-name: Daily AI Newsroom
+name: Backfill AI Article Art Packages
 
 on:
   workflow_dispatch:
-    inputs:
-      story_count:
-        description: "How many long-form stories to generate (1-30); 15 covers every public desk once"
-        required: true
-        default: "15"
-  schedule:
-    - cron: "5 12 * * *"
 
 jobs:
-  preserve-and-append:
+  ai-thumbnail-backfill:
     runs-on: ubuntu-latest
     timeout-minutes: 360
     permissions:
@@ -30,34 +23,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install openai requests beautifulsoup4
+          pip install openai beautifulsoup4
 
-      - name: Verify automation scripts exist
-        run: |
-          ls -la studio/automation
-          test -f studio/automation/preserve_old_and_new_issue_v34567.py
-          test -f studio/automation/ai_thumbnail_backfill.py
-
-      - name: Generate new issue without wiping old site
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
-          STORY_COUNT: ${{ github.event.inputs.story_count || '15' }}
-          SITE_BASE_URL: https://thepress.live
-          OPENAI_MODEL: gpt-5.4-mini
-          ARTICLE_TARGET_WORDS: "2500"
-          MIN_SOURCES: "30"
-          MAX_SOURCES: "100"
-          MIN_UNIQUE_SOURCE_DOMAINS: "10"
-          QUALITY_REPAIR_ATTEMPTS: "4"
-          FACT_CHECK_PASSES: "1"
-          MAX_OUTPUT_TOKENS: "24000"
-          MAX_STORY_COUNT: "30"
-          STRICT_QUALITY_GATE: "1"
-        run: |
-          python studio/automation/preserve_old_and_new_issue_v34567.py
-
-      - name: Build AI thumbnails and article image packages
+      - name: Run AI article-art backfill
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AI_THUMBNAIL_BACKFILL: "1"
@@ -80,23 +48,11 @@ jobs:
       - name: Create review PR
         uses: peter-evans/create-pull-request@v6
         with:
-          branch: ai-preserve-${{ github.run_number }}
+          branch: ai-thumbnail-backfill-${{ github.run_number }}
           delete-branch: true
-          title: "The Press daily issue — preserve old + add new"
+          title: "Backfill article thumbnails and galleries with AI art"
           body: |
-            This PR preserves the existing site and appends the newest daily issue.
+            This PR replaces article thumbnails with article-specific AI images and adds 6-10 AI-generated visuals to each article, including scenes, explainers, and map-style illustrations.
 
-            It should:
-            - keep old homepage stories
-            - add today's new stories below them
-            - keep archive history and prepend today's issue
-            - update breaking-news.html
-            - update search-index.json
-            - keep visible bylines as Written by Intelligent AI
-            - replace every article thumbnail with an article-specific AI-generated image
-            - add 6-10 AI-generated article images or illustrations to each story, including scenes, explainers, and map-style visuals
-            - publish 2,500+ word articles with 30-50 source notes
-            - rotate attention across every public desk
-
-            Do not merge if the PR only changes one file.
-          commit-message: "Append daily issue with AI art packages"
+            Please review the generated images, then merge when ready.
+          commit-message: "Backfill AI article art packages"
