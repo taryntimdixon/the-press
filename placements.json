@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T00:05:20.144884+00:00",
+  "generated_at": "2026-04-22T12:28:59.095780+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,128 +9,128 @@
   },
   "home": {
     "hero": [
-      "2026-04-21-trump-s-election-power-campaign-enters-the-courts-the-states-and-the-2026-campaign-trail",
-      "2026-04-21-the-public-culture-shock-why-america-s-arts-and-media-lifelines-are-being-forced-to-reinvent-themselves-at-once",
-      "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical",
-      "2026-04-21-tariffs-are-back-in-the-price-data-what-that-means-for-household-budgets"
+      "2026-04-22-supreme-court-clears-texas-s-new-house-map-for-2026-sharpening-the-fight-over-race-partisanship-and-the-midterms",
+      "2026-04-22-why-america-s-cultural-institutions-are-being-remade-around-2026-s-politics-not-just-its-audiences",
+      "2026-04-22-maine-s-data-center-moratorium-marks-a-turning-point-in-the-ai-buildout-backlash",
+      "2026-04-22-inflation-s-new-squeeze-how-the-iran-oil-shock-is-working-through-gas-rent-and-wages"
     ],
     "secondary": [
-      "2026-04-21-why-april-2026-is-a-make-or-break-month-for-fafsa-attendance-and-the-pipeline-to-college",
-      "2026-04-21-measles-surge-exposes-fragile-vaccine-defenses-as-u-s-nears-a-status-review",
-      "2026-04-21-the-case-against-outsourcing-moral-judgment-to-machines"
+      "2026-04-22-new-fafsa-new-rules-how-2026-is-reshaping-the-college-access-pipeline",
+      "2026-04-22-measles-2026-return-shows-how-fragile-u-s-immunity-has-become",
+      "2026-04-22-when-the-machine-becomes-the-confidant-ethics-stops-being-abstract"
     ],
     "most_read": [
-      "2026-04-21-the-science-of-march-heat-and-the-limits-of-attribution",
-      "2026-04-21-sudan-s-war-pushes-chad-to-the-brink-as-border-violence-hunger-and-aid-cuts-collide",
-      "2026-04-21-america-s-data-center-boom-needs-rules-before-it-needs-more-praise",
-      "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone",
-      "2026-04-21-europe-s-russian-gas-cutoff-turns-sanctions-into-infrastructure-policy"
+      "2026-04-22-artemis-ii-s-moonshot-shows-the-limits-and-the-value-of-high-stakes-space-science",
+      "2026-04-22-chad-s-closed-border-with-sudan-is-turning-a-refugee-lifeline-into-a-security-test",
+      "2026-04-22-the-tariff-rollback-illusion-why-the-real-fight-is-over-industrial-policy-not-import-taxes",
+      "2026-04-22-america-s-ai-boom-is-hitting-a-very-physical-limit-power-not-code",
+      "2026-04-22-japan-and-the-philippines-are-hardening-the-first-line-of-the-indo-pacific"
     ],
     "editors_picks": [
-      "2026-04-21-cinemacon-2026-puts-theatrical-movies-back-at-the-center-of-hollywood-s-fight-for-the-future",
-      "2026-04-21-ai-music-flood-forces-pop-culture-platforms-to-choose-between-growth-and-trust",
-      "2026-04-21-amateur-radio-s-club-revival-is-a-data-rich-test-of-whether-old-hobbies-can-recruit-again",
-      "2026-04-20-redistricting-proof-of-citizenship-fights-and-court-rulings-are-redefining-the-2026-election-map"
+      "2026-04-22-cinemacon-2026-shows-hollywood-still-believes-in-theaters-but-the-business-has-become-harder-to-read",
+      "2026-04-22-ai-music-is-flooding-the-stream-and-pop-culture-is-deciding-what-counts-as-real",
+      "2026-04-22-inside-the-ham-radio-licensing-bump-why-a-20th-century-hobby-keeps-recruiting-in-2026",
+      "2026-04-21-trump-s-election-power-campaign-enters-the-courts-the-states-and-the-2026-campaign-trail"
     ],
     "latest": [
-      "2026-04-21-trump-s-election-power-campaign-enters-the-courts-the-states-and-the-2026-campaign-trail",
-      "2026-04-21-the-public-culture-shock-why-america-s-arts-and-media-lifelines-are-being-forced-to-reinvent-themselves-at-once",
-      "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical",
-      "2026-04-21-tariffs-are-back-in-the-price-data-what-that-means-for-household-budgets",
-      "2026-04-21-why-april-2026-is-a-make-or-break-month-for-fafsa-attendance-and-the-pipeline-to-college",
-      "2026-04-21-measles-surge-exposes-fragile-vaccine-defenses-as-u-s-nears-a-status-review",
-      "2026-04-21-the-case-against-outsourcing-moral-judgment-to-machines",
-      "2026-04-21-the-science-of-march-heat-and-the-limits-of-attribution",
-      "2026-04-21-sudan-s-war-pushes-chad-to-the-brink-as-border-violence-hunger-and-aid-cuts-collide",
-      "2026-04-21-america-s-data-center-boom-needs-rules-before-it-needs-more-praise",
-      "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone",
-      "2026-04-21-europe-s-russian-gas-cutoff-turns-sanctions-into-infrastructure-policy"
+      "2026-04-22-supreme-court-clears-texas-s-new-house-map-for-2026-sharpening-the-fight-over-race-partisanship-and-the-midterms",
+      "2026-04-22-why-america-s-cultural-institutions-are-being-remade-around-2026-s-politics-not-just-its-audiences",
+      "2026-04-22-maine-s-data-center-moratorium-marks-a-turning-point-in-the-ai-buildout-backlash",
+      "2026-04-22-inflation-s-new-squeeze-how-the-iran-oil-shock-is-working-through-gas-rent-and-wages",
+      "2026-04-22-new-fafsa-new-rules-how-2026-is-reshaping-the-college-access-pipeline",
+      "2026-04-22-measles-2026-return-shows-how-fragile-u-s-immunity-has-become",
+      "2026-04-22-when-the-machine-becomes-the-confidant-ethics-stops-being-abstract",
+      "2026-04-22-artemis-ii-s-moonshot-shows-the-limits-and-the-value-of-high-stakes-space-science",
+      "2026-04-22-chad-s-closed-border-with-sudan-is-turning-a-refugee-lifeline-into-a-security-test",
+      "2026-04-22-the-tariff-rollback-illusion-why-the-real-fight-is-over-industrial-policy-not-import-taxes",
+      "2026-04-22-america-s-ai-boom-is-hitting-a-very-physical-limit-power-not-code",
+      "2026-04-22-japan-and-the-philippines-are-hardening-the-first-line-of-the-indo-pacific"
     ],
     "daily": [
-      "2026-04-21-trump-s-election-power-campaign-enters-the-courts-the-states-and-the-2026-campaign-trail",
-      "2026-04-21-the-public-culture-shock-why-america-s-arts-and-media-lifelines-are-being-forced-to-reinvent-themselves-at-once",
-      "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical",
-      "2026-04-21-tariffs-are-back-in-the-price-data-what-that-means-for-household-budgets",
-      "2026-04-21-why-april-2026-is-a-make-or-break-month-for-fafsa-attendance-and-the-pipeline-to-college",
-      "2026-04-21-measles-surge-exposes-fragile-vaccine-defenses-as-u-s-nears-a-status-review",
-      "2026-04-21-the-case-against-outsourcing-moral-judgment-to-machines",
-      "2026-04-21-the-science-of-march-heat-and-the-limits-of-attribution",
-      "2026-04-21-sudan-s-war-pushes-chad-to-the-brink-as-border-violence-hunger-and-aid-cuts-collide",
-      "2026-04-21-america-s-data-center-boom-needs-rules-before-it-needs-more-praise"
+      "2026-04-22-supreme-court-clears-texas-s-new-house-map-for-2026-sharpening-the-fight-over-race-partisanship-and-the-midterms",
+      "2026-04-22-why-america-s-cultural-institutions-are-being-remade-around-2026-s-politics-not-just-its-audiences",
+      "2026-04-22-maine-s-data-center-moratorium-marks-a-turning-point-in-the-ai-buildout-backlash",
+      "2026-04-22-inflation-s-new-squeeze-how-the-iran-oil-shock-is-working-through-gas-rent-and-wages",
+      "2026-04-22-new-fafsa-new-rules-how-2026-is-reshaping-the-college-access-pipeline",
+      "2026-04-22-measles-2026-return-shows-how-fragile-u-s-immunity-has-become",
+      "2026-04-22-when-the-machine-becomes-the-confidant-ethics-stops-being-abstract",
+      "2026-04-22-artemis-ii-s-moonshot-shows-the-limits-and-the-value-of-high-stakes-space-science",
+      "2026-04-22-chad-s-closed-border-with-sudan-is-turning-a-refugee-lifeline-into-a-security-test",
+      "2026-04-22-the-tariff-rollback-illusion-why-the-real-fight-is-over-industrial-policy-not-import-taxes"
     ],
     "breaking": [
-      "2026-04-21-trump-s-election-power-campaign-enters-the-courts-the-states-and-the-2026-campaign-trail",
-      "2026-04-21-the-public-culture-shock-why-america-s-arts-and-media-lifelines-are-being-forced-to-reinvent-themselves-at-once",
-      "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical",
-      "2026-04-21-tariffs-are-back-in-the-price-data-what-that-means-for-household-budgets",
-      "2026-04-21-why-april-2026-is-a-make-or-break-month-for-fafsa-attendance-and-the-pipeline-to-college",
-      "2026-04-21-measles-surge-exposes-fragile-vaccine-defenses-as-u-s-nears-a-status-review",
-      "2026-04-21-the-case-against-outsourcing-moral-judgment-to-machines",
-      "2026-04-21-the-science-of-march-heat-and-the-limits-of-attribution",
-      "2026-04-21-sudan-s-war-pushes-chad-to-the-brink-as-border-violence-hunger-and-aid-cuts-collide",
-      "2026-04-21-america-s-data-center-boom-needs-rules-before-it-needs-more-praise",
-      "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone",
-      "2026-04-21-europe-s-russian-gas-cutoff-turns-sanctions-into-infrastructure-policy"
+      "2026-04-22-supreme-court-clears-texas-s-new-house-map-for-2026-sharpening-the-fight-over-race-partisanship-and-the-midterms",
+      "2026-04-22-why-america-s-cultural-institutions-are-being-remade-around-2026-s-politics-not-just-its-audiences",
+      "2026-04-22-maine-s-data-center-moratorium-marks-a-turning-point-in-the-ai-buildout-backlash",
+      "2026-04-22-inflation-s-new-squeeze-how-the-iran-oil-shock-is-working-through-gas-rent-and-wages",
+      "2026-04-22-new-fafsa-new-rules-how-2026-is-reshaping-the-college-access-pipeline",
+      "2026-04-22-measles-2026-return-shows-how-fragile-u-s-immunity-has-become",
+      "2026-04-22-when-the-machine-becomes-the-confidant-ethics-stops-being-abstract",
+      "2026-04-22-artemis-ii-s-moonshot-shows-the-limits-and-the-value-of-high-stakes-space-science",
+      "2026-04-22-chad-s-closed-border-with-sudan-is-turning-a-refugee-lifeline-into-a-security-test",
+      "2026-04-22-the-tariff-rollback-illusion-why-the-real-fight-is-over-industrial-policy-not-import-taxes",
+      "2026-04-22-america-s-ai-boom-is-hitting-a-very-physical-limit-power-not-code",
+      "2026-04-22-japan-and-the-philippines-are-hardening-the-first-line-of-the-indo-pacific"
     ],
     "desk_pulse": [
       {
-        "count": 20,
-        "latest_ts": 1776788340.0,
-        "story_id": "2026-04-21-the-science-of-march-heat-and-the-limits-of-attribution",
+        "count": 21,
+        "latest_ts": 1776856920.0,
+        "story_id": "2026-04-22-artemis-ii-s-moonshot-shows-the-limits-and-the-value-of-high-stakes-space-science",
         "section": "Science"
       },
       {
-        "count": 20,
-        "latest_ts": 1776788340.0,
-        "story_id": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone",
+        "count": 21,
+        "latest_ts": 1776856920.0,
+        "story_id": "2026-04-22-america-s-ai-boom-is-hitting-a-very-physical-limit-power-not-code",
         "section": "AI"
       },
       {
-        "count": 19,
-        "latest_ts": 1776788340.0,
-        "story_id": "2026-04-21-trump-s-election-power-campaign-enters-the-courts-the-states-and-the-2026-campaign-trail",
+        "count": 20,
+        "latest_ts": 1776856920.0,
+        "story_id": "2026-04-22-supreme-court-clears-texas-s-new-house-map-for-2026-sharpening-the-fight-over-race-partisanship-and-the-midterms",
         "section": "Politics"
       },
       {
-        "count": 19,
-        "latest_ts": 1776788340.0,
-        "story_id": "2026-04-21-tariffs-are-back-in-the-price-data-what-that-means-for-household-budgets",
+        "count": 20,
+        "latest_ts": 1776856920.0,
+        "story_id": "2026-04-22-inflation-s-new-squeeze-how-the-iran-oil-shock-is-working-through-gas-rent-and-wages",
         "section": "Economics"
       },
       {
-        "count": 19,
-        "latest_ts": 1776788340.0,
-        "story_id": "2026-04-21-amateur-radio-s-club-revival-is-a-data-rich-test-of-whether-old-hobbies-can-recruit-again",
+        "count": 20,
+        "latest_ts": 1776856920.0,
+        "story_id": "2026-04-22-inside-the-ham-radio-licensing-bump-why-a-20th-century-hobby-keeps-recruiting-in-2026",
         "section": "Niche"
       },
       {
-        "count": 16,
-        "latest_ts": 1776788340.0,
-        "story_id": "2026-04-21-sudan-s-war-pushes-chad-to-the-brink-as-border-violence-hunger-and-aid-cuts-collide",
+        "count": 17,
+        "latest_ts": 1776856920.0,
+        "story_id": "2026-04-22-chad-s-closed-border-with-sudan-is-turning-a-refugee-lifeline-into-a-security-test",
         "section": "World"
       },
       {
-        "count": 16,
-        "latest_ts": 1776788340.0,
-        "story_id": "2026-04-21-europe-s-russian-gas-cutoff-turns-sanctions-into-infrastructure-policy",
+        "count": 17,
+        "latest_ts": 1776856920.0,
+        "story_id": "2026-04-22-japan-and-the-philippines-are-hardening-the-first-line-of-the-indo-pacific",
         "section": "Geopolitics"
       },
       {
-        "count": 15,
-        "latest_ts": 1776788340.0,
-        "story_id": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical",
+        "count": 16,
+        "latest_ts": 1776856920.0,
+        "story_id": "2026-04-22-maine-s-data-center-moratorium-marks-a-turning-point-in-the-ai-buildout-backlash",
         "section": "Technology"
       },
       {
-        "count": 13,
-        "latest_ts": 1776788340.0,
-        "story_id": "2026-04-21-cinemacon-2026-puts-theatrical-movies-back-at-the-center-of-hollywood-s-fight-for-the-future",
+        "count": 14,
+        "latest_ts": 1776856920.0,
+        "story_id": "2026-04-22-cinemacon-2026-shows-hollywood-still-believes-in-theaters-but-the-business-has-become-harder-to-read",
         "section": "Film"
       },
       {
-        "count": 13,
-        "latest_ts": 1776788340.0,
-        "story_id": "2026-04-21-ai-music-flood-forces-pop-culture-platforms-to-choose-between-growth-and-trust",
+        "count": 14,
+        "latest_ts": 1776856920.0,
+        "story_id": "2026-04-22-ai-music-is-flooding-the-stream-and-pop-culture-is-deciding-what-counts-as-real",
         "section": "Pop Culture"
       }
     ]
