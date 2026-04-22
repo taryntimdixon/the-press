@@ -1,7 +1,20 @@
-name: Backfill AI Article Art Packages
+name: Backfill Current Issue AI Article Art
 
 on:
   workflow_dispatch:
+    inputs:
+      image_cap:
+        description: "Max NEW AI images this run. 45 = 15 articles x (1 thumbnail + 2 article photos)."
+        required: true
+        default: "45"
+      article_cap:
+        description: "Max latest/current issue articles to receive AI art. Default: 15."
+        required: true
+        default: "15"
+      gallery_images_per_article:
+        description: "Article photos/visuals per article. Default: 2."
+        required: true
+        default: "2"
 
 jobs:
   ai-thumbnail-backfill:
@@ -25,22 +38,28 @@ jobs:
           python -m pip install --upgrade pip
           pip install openai beautifulsoup4
 
-      - name: Run AI article-art backfill
+      - name: Run AI art for current issue only
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AI_THUMBNAIL_BACKFILL: "1"
           OPENAI_IMAGE_MODEL: gpt-image-2
-          OPENAI_IMAGE_SIZE: 2048x1152
+          OPENAI_IMAGE_SIZE: 1536x864
           OPENAI_IMAGE_QUALITY: high
-          AI_TOTAL_IMAGE_MAX_GENERATIONS: "0"
+          OPENAI_IMAGE_FORMAT: jpeg
+          OPENAI_IMAGE_COMPRESSION: "85"
+          AI_ART_SCOPE: current_issue
+          AI_ART_MAX_ARTICLES: ${{ github.event.inputs.article_cap || '15' }}
+          AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '45' }}
           AI_THUMBNAIL_MAX_GENERATIONS: "0"
           REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_ALL_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_DAILY_STORIES: "1"
           AI_ART_PACKAGE_BACKFILL: "1"
-          AI_GALLERY_MIN_IMAGES: "6"
-          AI_GALLERY_MAX_IMAGES: "10"
-          AI_GALLERY_IMAGES_PER_ARTICLE: "8"
+          AI_GALLERY_MIN_IMAGES: "2"
+          AI_GALLERY_MAX_IMAGES: "2"
+          AI_GALLERY_IMAGES_PER_ARTICLE: ${{ github.event.inputs.gallery_images_per_article || '2' }}
+          AI_UPDATE_LINKED_CARDS: "1"
+          AI_CARD_UPDATE_SCOPE: front_pages
           AI_ART_PROMPT_MODEL: gpt-5.4-mini
         run: |
           python studio/automation/ai_thumbnail_backfill.py
@@ -48,11 +67,17 @@ jobs:
       - name: Create review PR
         uses: peter-evans/create-pull-request@v6
         with:
-          branch: ai-thumbnail-backfill-${{ github.run_number }}
+          branch: ai-current-issue-art-${{ github.run_number }}
           delete-branch: true
-          title: "Backfill article thumbnails and galleries with AI art"
+          title: "Add AI thumbnails and 2 article photos to current issue"
           body: |
-            This PR replaces article thumbnails with article-specific AI images and adds 6-10 AI-generated visuals to each article, including scenes, explainers, and map-style illustrations.
+            This PR targets only the newest/current issue articles from daily-latest.json.
 
-            Please review the generated images, then merge when ready.
-          commit-message: "Backfill AI article art packages"
+            It should:
+            - add 1 AI thumbnail per selected article
+            - add 2 AI article photos/visuals per selected article
+            - update matching front-page, section, archive, and JSON references
+            - avoid full-site historical backfill
+
+            Review the generated images before merging.
+          commit-message: "Add current issue AI thumbnails and 2 article photos"
