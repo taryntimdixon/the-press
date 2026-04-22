@@ -1,25 +1,21 @@
-name: Backfill Current Issue AI Article Art
+name: Backfill Current Issue GPT Image 2 Thumbnails
 
 on:
   workflow_dispatch:
     inputs:
       image_cap:
-        description: "Max NEW AI images this run. 45 = 15 articles x (1 thumbnail + 2 article photos)."
-        required: true
-        default: "45"
-      article_cap:
-        description: "Max latest/current issue articles to receive AI art. Default: 15."
+        description: "Max NEW AI thumbnails this run. 15 = one thumbnail for each current issue article."
         required: true
         default: "15"
-      gallery_images_per_article:
-        description: "Article photos/visuals per article. Default: 2."
+      article_cap:
+        description: "Max newest/current issue articles to receive AI thumbnails. Default: 15."
         required: true
-        default: "2"
+        default: "15"
 
 jobs:
   ai-thumbnail-backfill:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 180
     permissions:
       contents: write
       pull-requests: write
@@ -38,7 +34,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install openai beautifulsoup4
 
-      - name: Run AI art for current issue only
+      - name: Run GPT Image 2 thumbnail pass for current issue only
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AI_THUMBNAIL_BACKFILL: "1"
@@ -49,15 +45,13 @@ jobs:
           OPENAI_IMAGE_COMPRESSION: "85"
           AI_ART_SCOPE: current_issue
           AI_ART_MAX_ARTICLES: ${{ github.event.inputs.article_cap || '15' }}
-          AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '45' }}
-          AI_THUMBNAIL_MAX_GENERATIONS: "0"
+          AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
+          AI_THUMBNAIL_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
           REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_ALL_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_DAILY_STORIES: "1"
-          AI_ART_PACKAGE_BACKFILL: "1"
-          AI_GALLERY_MIN_IMAGES: "2"
-          AI_GALLERY_MAX_IMAGES: "2"
-          AI_GALLERY_IMAGES_PER_ARTICLE: ${{ github.event.inputs.gallery_images_per_article || '2' }}
+          AI_ART_PACKAGE_BACKFILL: "0"
+          AI_GALLERY_IMAGES_PER_ARTICLE: "0"
           AI_UPDATE_LINKED_CARDS: "1"
           AI_CARD_UPDATE_SCOPE: front_pages
           AI_ART_PROMPT_MODEL: gpt-5.4-mini
@@ -67,17 +61,17 @@ jobs:
       - name: Create review PR
         uses: peter-evans/create-pull-request@v6
         with:
-          branch: ai-current-issue-art-${{ github.run_number }}
+          branch: ai-current-issue-thumbnails-${{ github.run_number }}
           delete-branch: true
-          title: "Add AI thumbnails and 2 article photos to current issue"
+          title: "Add GPT Image 2 thumbnails to current issue"
           body: |
             This PR targets only the newest/current issue articles from daily-latest.json.
 
             It should:
-            - add 1 AI thumbnail per selected article
-            - add 2 AI article photos/visuals per selected article
-            - update matching front-page, section, archive, and JSON references
+            - add one GPT Image 2 thumbnail per selected article
+            - update matching front-page, section, archive, and JSON image references
+            - avoid article galleries/photos
             - avoid full-site historical backfill
 
-            Review the generated images before merging.
-          commit-message: "Add current issue AI thumbnails and 2 article photos"
+            Review the generated thumbnails before merging.
+          commit-message: "Add current issue GPT Image 2 thumbnails"
