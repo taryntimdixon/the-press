@@ -4,9 +4,21 @@ on:
   workflow_dispatch:
     inputs:
       story_count:
-        description: "How many long-form stories to generate (1-30); 15 covers every public desk once"
+        description: "How many new long-form stories to generate. Default: 15."
         required: true
         default: "15"
+      image_cap:
+        description: "Max NEW AI images this run. 45 = 15 articles x (1 thumbnail + 2 article photos)."
+        required: true
+        default: "45"
+      article_cap:
+        description: "Max NEW articles to receive AI art. Default: 15."
+        required: true
+        default: "15"
+      gallery_images_per_article:
+        description: "Article photos/visuals per article. Default: 2."
+        required: true
+        default: "2"
   schedule:
     - cron: "5 12 * * *"
 
@@ -57,22 +69,28 @@ jobs:
         run: |
           python studio/automation/preserve_old_and_new_issue_v34567.py
 
-      - name: Build AI thumbnails and article image packages
+      - name: Build AI thumbnails and 2 article photos for new stories only
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AI_THUMBNAIL_BACKFILL: "1"
           OPENAI_IMAGE_MODEL: gpt-image-2
-          OPENAI_IMAGE_SIZE: 2048x1152
+          OPENAI_IMAGE_SIZE: 1536x864
           OPENAI_IMAGE_QUALITY: high
-          AI_TOTAL_IMAGE_MAX_GENERATIONS: "0"
+          OPENAI_IMAGE_FORMAT: jpeg
+          OPENAI_IMAGE_COMPRESSION: "85"
+          AI_ART_SCOPE: current_issue
+          AI_ART_MAX_ARTICLES: ${{ github.event.inputs.article_cap || '15' }}
+          AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '45' }}
           AI_THUMBNAIL_MAX_GENERATIONS: "0"
           REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_ALL_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_DAILY_STORIES: "1"
           AI_ART_PACKAGE_BACKFILL: "1"
-          AI_GALLERY_MIN_IMAGES: "6"
-          AI_GALLERY_MAX_IMAGES: "10"
-          AI_GALLERY_IMAGES_PER_ARTICLE: "8"
+          AI_GALLERY_MIN_IMAGES: "2"
+          AI_GALLERY_MAX_IMAGES: "2"
+          AI_GALLERY_IMAGES_PER_ARTICLE: ${{ github.event.inputs.gallery_images_per_article || '2' }}
+          AI_UPDATE_LINKED_CARDS: "1"
+          AI_CARD_UPDATE_SCOPE: front_pages
           AI_ART_PROMPT_MODEL: gpt-5.4-mini
         run: |
           python studio/automation/ai_thumbnail_backfill.py
@@ -82,21 +100,16 @@ jobs:
         with:
           branch: ai-preserve-${{ github.run_number }}
           delete-branch: true
-          title: "The Press daily issue — preserve old + add new"
+          title: "The Press daily issue — 15 new stories with AI art"
           body: |
             This PR preserves the existing site and appends the newest daily issue.
 
-            It should:
-            - keep old homepage stories
-            - add today's new stories below them
-            - keep archive history and prepend today's issue
-            - update breaking-news.html
-            - update search-index.json
-            - keep visible bylines as Written by Intelligent AI
-            - replace every article thumbnail with an article-specific AI-generated image
-            - add 6-10 AI-generated article images or illustrations to each story, including scenes, explainers, and map-style visuals
-            - publish 2,500+ word articles with 30-50 source notes
-            - rotate attention across every public desk
+            Image behavior in this version:
+            - targets only the newest articles listed in daily-latest.json
+            - generates 1 AI thumbnail per new article
+            - generates 2 AI article photos/visuals per new article
+            - caps the run at 45 new images by default
+            - does not backfill the entire historical website
 
             Do not merge if the PR only changes one file.
-          commit-message: "Append daily issue with AI art packages"
+          commit-message: "Append daily issue with AI thumbnails and 2 article photos"
