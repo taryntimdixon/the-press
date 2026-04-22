@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-20T10:55:37.975512+00:00",
+  "generated_at": "2026-04-22T00:05:20.144884+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,128 +9,128 @@
   },
   "home": {
     "hero": [
-      "2026-04-20-redistricting-proof-of-citizenship-fights-and-court-rulings-are-redefining-the-2026-election-map",
-      "2026-04-20-as-governments-pump-money-back-into-culture-the-fight-is-over-who-gets-to-belong",
-      "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem",
-      "2026-04-20-gas-shock-rewrites-the-cost-of-living-story-forcing-a-new-household-arithmetic"
+      "2026-04-21-trump-s-election-power-campaign-enters-the-courts-the-states-and-the-2026-campaign-trail",
+      "2026-04-21-the-public-culture-shock-why-america-s-arts-and-media-lifelines-are-being-forced-to-reinvent-themselves-at-once",
+      "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical",
+      "2026-04-21-tariffs-are-back-in-the-price-data-what-that-means-for-household-budgets"
     ],
     "secondary": [
-      "2026-04-20-as-federal-aid-rules-shift-again-colleges-and-families-brace-for-another-year-of-education-policy-whiplash",
-      "2026-04-20-measles-is-back-in-the-u-s-at-the-start-of-spring-and-the-policy-response-is-under-strain",
-      "2026-04-20-the-moral-bargain-of-age-gates-why-child-safety-is-becoming-a-surveillance-state-in-miniature"
+      "2026-04-21-why-april-2026-is-a-make-or-break-month-for-fafsa-attendance-and-the-pipeline-to-college",
+      "2026-04-21-measles-surge-exposes-fragile-vaccine-defenses-as-u-s-nears-a-status-review",
+      "2026-04-21-the-case-against-outsourcing-moral-judgment-to-machines"
     ],
     "most_read": [
-      "2026-04-20-alaska-s-thawing-permafrost-is-moving-faster-than-the-models-some-planners-still-use",
-      "2026-04-20-lebanon-s-war-spillover-is-turning-a-border-into-a-regional-stress-test",
-      "2026-04-20-trump-s-tariff-refunds-are-not-a-technical-fix-they-are-a-confession",
-      "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays",
-      "2026-04-20-hormuz-standoff-forces-a-brutal-stress-test-of-deterrence-alliances-and-the-world-economy"
+      "2026-04-21-the-science-of-march-heat-and-the-limits-of-attribution",
+      "2026-04-21-sudan-s-war-pushes-chad-to-the-brink-as-border-violence-hunger-and-aid-cuts-collide",
+      "2026-04-21-america-s-data-center-boom-needs-rules-before-it-needs-more-praise",
+      "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone",
+      "2026-04-21-europe-s-russian-gas-cutoff-turns-sanctions-into-infrastructure-policy"
     ],
     "editors_picks": [
-      "2026-04-20-hollywood-s-movie-theaters-get-a-rare-boost-and-a-warning-at-cinemacon-2026",
-      "2026-04-20-tiktok-s-new-power-shift-is-rewriting-pop-culture-economics",
-      "2026-04-20-the-new-status-economy-of-indie-sleaze",
-      "2026-04-19-courts-are-rewriting-the-rules-of-the-2026-midterms"
+      "2026-04-21-cinemacon-2026-puts-theatrical-movies-back-at-the-center-of-hollywood-s-fight-for-the-future",
+      "2026-04-21-ai-music-flood-forces-pop-culture-platforms-to-choose-between-growth-and-trust",
+      "2026-04-21-amateur-radio-s-club-revival-is-a-data-rich-test-of-whether-old-hobbies-can-recruit-again",
+      "2026-04-20-redistricting-proof-of-citizenship-fights-and-court-rulings-are-redefining-the-2026-election-map"
     ],
     "latest": [
-      "2026-04-20-redistricting-proof-of-citizenship-fights-and-court-rulings-are-redefining-the-2026-election-map",
-      "2026-04-20-as-governments-pump-money-back-into-culture-the-fight-is-over-who-gets-to-belong",
-      "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem",
-      "2026-04-20-gas-shock-rewrites-the-cost-of-living-story-forcing-a-new-household-arithmetic",
-      "2026-04-20-as-federal-aid-rules-shift-again-colleges-and-families-brace-for-another-year-of-education-policy-whiplash",
-      "2026-04-20-measles-is-back-in-the-u-s-at-the-start-of-spring-and-the-policy-response-is-under-strain",
-      "2026-04-20-the-moral-bargain-of-age-gates-why-child-safety-is-becoming-a-surveillance-state-in-miniature",
-      "2026-04-20-alaska-s-thawing-permafrost-is-moving-faster-than-the-models-some-planners-still-use",
-      "2026-04-20-lebanon-s-war-spillover-is-turning-a-border-into-a-regional-stress-test",
-      "2026-04-20-trump-s-tariff-refunds-are-not-a-technical-fix-they-are-a-confession",
-      "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays",
-      "2026-04-20-hormuz-standoff-forces-a-brutal-stress-test-of-deterrence-alliances-and-the-world-economy"
+      "2026-04-21-trump-s-election-power-campaign-enters-the-courts-the-states-and-the-2026-campaign-trail",
+      "2026-04-21-the-public-culture-shock-why-america-s-arts-and-media-lifelines-are-being-forced-to-reinvent-themselves-at-once",
+      "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical",
+      "2026-04-21-tariffs-are-back-in-the-price-data-what-that-means-for-household-budgets",
+      "2026-04-21-why-april-2026-is-a-make-or-break-month-for-fafsa-attendance-and-the-pipeline-to-college",
+      "2026-04-21-measles-surge-exposes-fragile-vaccine-defenses-as-u-s-nears-a-status-review",
+      "2026-04-21-the-case-against-outsourcing-moral-judgment-to-machines",
+      "2026-04-21-the-science-of-march-heat-and-the-limits-of-attribution",
+      "2026-04-21-sudan-s-war-pushes-chad-to-the-brink-as-border-violence-hunger-and-aid-cuts-collide",
+      "2026-04-21-america-s-data-center-boom-needs-rules-before-it-needs-more-praise",
+      "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone",
+      "2026-04-21-europe-s-russian-gas-cutoff-turns-sanctions-into-infrastructure-policy"
     ],
     "daily": [
-      "2026-04-20-redistricting-proof-of-citizenship-fights-and-court-rulings-are-redefining-the-2026-election-map",
-      "2026-04-20-as-governments-pump-money-back-into-culture-the-fight-is-over-who-gets-to-belong",
-      "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem",
-      "2026-04-20-gas-shock-rewrites-the-cost-of-living-story-forcing-a-new-household-arithmetic",
-      "2026-04-20-as-federal-aid-rules-shift-again-colleges-and-families-brace-for-another-year-of-education-policy-whiplash",
-      "2026-04-20-measles-is-back-in-the-u-s-at-the-start-of-spring-and-the-policy-response-is-under-strain",
-      "2026-04-20-the-moral-bargain-of-age-gates-why-child-safety-is-becoming-a-surveillance-state-in-miniature",
-      "2026-04-20-alaska-s-thawing-permafrost-is-moving-faster-than-the-models-some-planners-still-use",
-      "2026-04-20-lebanon-s-war-spillover-is-turning-a-border-into-a-regional-stress-test",
-      "2026-04-20-trump-s-tariff-refunds-are-not-a-technical-fix-they-are-a-confession"
+      "2026-04-21-trump-s-election-power-campaign-enters-the-courts-the-states-and-the-2026-campaign-trail",
+      "2026-04-21-the-public-culture-shock-why-america-s-arts-and-media-lifelines-are-being-forced-to-reinvent-themselves-at-once",
+      "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical",
+      "2026-04-21-tariffs-are-back-in-the-price-data-what-that-means-for-household-budgets",
+      "2026-04-21-why-april-2026-is-a-make-or-break-month-for-fafsa-attendance-and-the-pipeline-to-college",
+      "2026-04-21-measles-surge-exposes-fragile-vaccine-defenses-as-u-s-nears-a-status-review",
+      "2026-04-21-the-case-against-outsourcing-moral-judgment-to-machines",
+      "2026-04-21-the-science-of-march-heat-and-the-limits-of-attribution",
+      "2026-04-21-sudan-s-war-pushes-chad-to-the-brink-as-border-violence-hunger-and-aid-cuts-collide",
+      "2026-04-21-america-s-data-center-boom-needs-rules-before-it-needs-more-praise"
     ],
     "breaking": [
-      "2026-04-20-redistricting-proof-of-citizenship-fights-and-court-rulings-are-redefining-the-2026-election-map",
-      "2026-04-20-as-governments-pump-money-back-into-culture-the-fight-is-over-who-gets-to-belong",
-      "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem",
-      "2026-04-20-gas-shock-rewrites-the-cost-of-living-story-forcing-a-new-household-arithmetic",
-      "2026-04-20-as-federal-aid-rules-shift-again-colleges-and-families-brace-for-another-year-of-education-policy-whiplash",
-      "2026-04-20-measles-is-back-in-the-u-s-at-the-start-of-spring-and-the-policy-response-is-under-strain",
-      "2026-04-20-the-moral-bargain-of-age-gates-why-child-safety-is-becoming-a-surveillance-state-in-miniature",
-      "2026-04-20-alaska-s-thawing-permafrost-is-moving-faster-than-the-models-some-planners-still-use",
-      "2026-04-20-lebanon-s-war-spillover-is-turning-a-border-into-a-regional-stress-test",
-      "2026-04-20-trump-s-tariff-refunds-are-not-a-technical-fix-they-are-a-confession",
-      "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays",
-      "2026-04-20-hormuz-standoff-forces-a-brutal-stress-test-of-deterrence-alliances-and-the-world-economy"
+      "2026-04-21-trump-s-election-power-campaign-enters-the-courts-the-states-and-the-2026-campaign-trail",
+      "2026-04-21-the-public-culture-shock-why-america-s-arts-and-media-lifelines-are-being-forced-to-reinvent-themselves-at-once",
+      "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical",
+      "2026-04-21-tariffs-are-back-in-the-price-data-what-that-means-for-household-budgets",
+      "2026-04-21-why-april-2026-is-a-make-or-break-month-for-fafsa-attendance-and-the-pipeline-to-college",
+      "2026-04-21-measles-surge-exposes-fragile-vaccine-defenses-as-u-s-nears-a-status-review",
+      "2026-04-21-the-case-against-outsourcing-moral-judgment-to-machines",
+      "2026-04-21-the-science-of-march-heat-and-the-limits-of-attribution",
+      "2026-04-21-sudan-s-war-pushes-chad-to-the-brink-as-border-violence-hunger-and-aid-cuts-collide",
+      "2026-04-21-america-s-data-center-boom-needs-rules-before-it-needs-more-praise",
+      "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone",
+      "2026-04-21-europe-s-russian-gas-cutoff-turns-sanctions-into-infrastructure-policy"
     ],
     "desk_pulse": [
       {
         "count": 20,
-        "latest_ts": 1776679620.0,
-        "story_id": "2026-04-20-gas-shock-rewrites-the-cost-of-living-story-forcing-a-new-household-arithmetic",
-        "section": "Economics"
-      },
-      {
-        "count": 20,
-        "latest_ts": 1776679620.0,
-        "story_id": "2026-04-20-alaska-s-thawing-permafrost-is-moving-faster-than-the-models-some-planners-still-use",
+        "latest_ts": 1776788340.0,
+        "story_id": "2026-04-21-the-science-of-march-heat-and-the-limits-of-attribution",
         "section": "Science"
       },
       {
+        "count": 20,
+        "latest_ts": 1776788340.0,
+        "story_id": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone",
+        "section": "AI"
+      },
+      {
         "count": 19,
-        "latest_ts": 1776679620.0,
-        "story_id": "2026-04-20-redistricting-proof-of-citizenship-fights-and-court-rulings-are-redefining-the-2026-election-map",
+        "latest_ts": 1776788340.0,
+        "story_id": "2026-04-21-trump-s-election-power-campaign-enters-the-courts-the-states-and-the-2026-campaign-trail",
         "section": "Politics"
       },
       {
         "count": 19,
-        "latest_ts": 1776679620.0,
-        "story_id": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays",
-        "section": "AI"
+        "latest_ts": 1776788340.0,
+        "story_id": "2026-04-21-tariffs-are-back-in-the-price-data-what-that-means-for-household-budgets",
+        "section": "Economics"
       },
       {
-        "count": 18,
-        "latest_ts": 1776679620.0,
-        "story_id": "2026-04-20-the-new-status-economy-of-indie-sleaze",
+        "count": 19,
+        "latest_ts": 1776788340.0,
+        "story_id": "2026-04-21-amateur-radio-s-club-revival-is-a-data-rich-test-of-whether-old-hobbies-can-recruit-again",
         "section": "Niche"
       },
       {
         "count": 16,
-        "latest_ts": 1776679620.0,
-        "story_id": "2026-04-20-lebanon-s-war-spillover-is-turning-a-border-into-a-regional-stress-test",
+        "latest_ts": 1776788340.0,
+        "story_id": "2026-04-21-sudan-s-war-pushes-chad-to-the-brink-as-border-violence-hunger-and-aid-cuts-collide",
         "section": "World"
       },
       {
-        "count": 15,
-        "latest_ts": 1776679620.0,
-        "story_id": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem",
-        "section": "Technology"
-      },
-      {
-        "count": 15,
-        "latest_ts": 1776679620.0,
-        "story_id": "2026-04-20-hormuz-standoff-forces-a-brutal-stress-test-of-deterrence-alliances-and-the-world-economy",
+        "count": 16,
+        "latest_ts": 1776788340.0,
+        "story_id": "2026-04-21-europe-s-russian-gas-cutoff-turns-sanctions-into-infrastructure-policy",
         "section": "Geopolitics"
       },
       {
-        "count": 12,
-        "latest_ts": 1776679620.0,
-        "story_id": "2026-04-20-hollywood-s-movie-theaters-get-a-rare-boost-and-a-warning-at-cinemacon-2026",
+        "count": 15,
+        "latest_ts": 1776788340.0,
+        "story_id": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical",
+        "section": "Technology"
+      },
+      {
+        "count": 13,
+        "latest_ts": 1776788340.0,
+        "story_id": "2026-04-21-cinemacon-2026-puts-theatrical-movies-back-at-the-center-of-hollywood-s-fight-for-the-future",
         "section": "Film"
       },
       {
-        "count": 12,
-        "latest_ts": 1776679620.0,
-        "story_id": "2026-04-20-tiktok-s-new-power-shift-is-rewriting-pop-culture-economics",
+        "count": 13,
+        "latest_ts": 1776788340.0,
+        "story_id": "2026-04-21-ai-music-flood-forces-pop-culture-platforms-to-choose-between-growth-and-trust",
         "section": "Pop Culture"
       }
     ]
