@@ -74,18 +74,8 @@ AI_REBUILD_ARTICLE_GALLERIES = env_bool("AI_REBUILD_ARTICLE_GALLERIES", False)
 
 OPENAI_IMAGE_MODEL = os.getenv("OPENAI_IMAGE_MODEL", "gpt-image-2")
 OPENAI_IMAGE_SIZE = os.getenv("OPENAI_IMAGE_SIZE", "2048x1152")
-OPENAI_IMAGE_QUALITY = os.getenv("OPENAI_IMAGE_QUALITY", "low")
+OPENAI_IMAGE_QUALITY = os.getenv("OPENAI_IMAGE_QUALITY", "high")
 OPENAI_ART_PROMPT_MODEL = os.getenv("AI_ART_PROMPT_MODEL", os.getenv("OPENAI_MODEL", "gpt-5.4-mini"))
-
-
-def parse_image_size(value: str, fallback: tuple[int, int] = (2048, 1152)) -> tuple[int, int]:
-    match = re.fullmatch(r"(\d+)x(\d+)", (value or "").strip().lower())
-    if not match:
-        return fallback
-    return int(match.group(1)), int(match.group(2))
-
-
-IMAGE_WIDTH, IMAGE_HEIGHT = parse_image_size(OPENAI_IMAGE_SIZE)
 
 AI_GALLERY_MIN_IMAGES = env_int("AI_GALLERY_MIN_IMAGES", 6, minimum=1, maximum=10)
 AI_GALLERY_MAX_IMAGES = env_int("AI_GALLERY_MAX_IMAGES", 10, minimum=AI_GALLERY_MIN_IMAGES, maximum=10)
@@ -173,8 +163,8 @@ class GalleryAsset:
             "relevanceNote": self.caption,
             "creator": "The Press AI art workflow",
             "license": "AI-generated; review before reuse",
-            "width": IMAGE_WIDTH,
-            "height": IMAGE_HEIGHT,
+            "width": 1536,
+            "height": 1024,
         }
 
 
@@ -1073,8 +1063,8 @@ def update_master_edition(updates: list[ArticleImageUpdate]) -> bool:
             story["imageAlt"] = update.alt
             story["imageCaptionHtml"] = update.caption_html
             story["imageCreditPlain"] = update.credit_plain
-            story["imageWidth"] = IMAGE_WIDTH
-            story["imageHeight"] = IMAGE_HEIGHT
+            story["imageWidth"] = 1536
+            story["imageHeight"] = 1024
             if update.gallery_assets:
                 story["galleryImages"] = gallery_records(update)
             changed = True
