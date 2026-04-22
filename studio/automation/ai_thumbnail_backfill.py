@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 """
-AI article-art backfill for The Press.
+AI article-art generator for The Press.
 
-What this script does:
-1. Scans article pages in the repo root and daily/*.html.
-2. Makes every article thumbnail an AI-generated, article-specific image.
-3. Adds a 6-10 image AI visual package to every article: photorealistic scenes,
-   artistic illustrations, symbolic explainers, overhead/map-style visuals, and
-   other article-relevant images.
-4. Updates linked homepage/archive/section cards and common JSON indexes.
+Default behavior for the daily newsroom:
+1. Uses daily-latest.json to target only the newest daily issue articles.
+2. Gives each selected article one AI-generated thumbnail.
+3. Adds exactly two AI-generated article visuals/photos to each selected article.
+4. Updates the matching front-page/section/archive cards and JSON indexes.
 
-Run by GitHub Actions after the daily newsroom generator, or run manually.
+It deliberately does not scan or rewrite the entire historical website unless
+AI_ART_SCOPE=all is set explicitly.
 """
 from __future__ import annotations
 
@@ -73,25 +72,49 @@ REPLACE_SVG_ARTICLE_THUMBNAILS = env_bool("REPLACE_SVG_ARTICLE_THUMBNAILS", True
 AI_REBUILD_ARTICLE_GALLERIES = env_bool("AI_REBUILD_ARTICLE_GALLERIES", False)
 
 OPENAI_IMAGE_MODEL = os.getenv("OPENAI_IMAGE_MODEL", "gpt-image-2")
-OPENAI_IMAGE_SIZE = os.getenv("OPENAI_IMAGE_SIZE", "2048x1152")
+# 1536x864 keeps the newspaper 16:9 look but is much faster than 2048x1152.
+OPENAI_IMAGE_SIZE = os.getenv("OPENAI_IMAGE_SIZE", "1536x864")
 OPENAI_IMAGE_QUALITY = os.getenv("OPENAI_IMAGE_QUALITY", "high")
+OPENAI_IMAGE_FORMAT = os.getenv("OPENAI_IMAGE_FORMAT", "jpeg").strip().lower() or "jpeg"
+if OPENAI_IMAGE_FORMAT == "jpg":
+    OPENAI_IMAGE_FORMAT = "jpeg"
+OPENAI_IMAGE_COMPRESSION = env_int("OPENAI_IMAGE_COMPRESSION", 85, minimum=0, maximum=100)
 OPENAI_ART_PROMPT_MODEL = os.getenv("AI_ART_PROMPT_MODEL", os.getenv("OPENAI_MODEL", "gpt-5.4-mini"))
 
-AI_GALLERY_MIN_IMAGES = env_int("AI_GALLERY_MIN_IMAGES", 6, minimum=1, maximum=10)
-AI_GALLERY_MAX_IMAGES = env_int("AI_GALLERY_MAX_IMAGES", 10, minimum=AI_GALLERY_MIN_IMAGES, maximum=10)
+AI_GALLERY_MIN_IMAGES = env_int("AI_GALLERY_MIN_IMAGES", 2, minimum=0, maximum=10)
+AI_GALLERY_MAX_IMAGES = env_int("AI_GALLERY_MAX_IMAGES", 2, minimum=AI_GALLERY_MIN_IMAGES, maximum=10)
 AI_GALLERY_IMAGES_PER_ARTICLE = env_int(
     "AI_GALLERY_IMAGES_PER_ARTICLE",
-    8,
+    2,
     minimum=AI_GALLERY_MIN_IMAGES,
     maximum=AI_GALLERY_MAX_IMAGES,
 )
 
 # 0 means unlimited. This counts new thumbnail + gallery generations together.
+# Daily default is 45: 15 new stories x (1 thumbnail + 2 article visuals).
 AI_TOTAL_IMAGE_MAX_GENERATIONS = env_int(
     "AI_TOTAL_IMAGE_MAX_GENERATIONS",
-    env_int("AI_THUMBNAIL_MAX_GENERATIONS", 0, minimum=0),
+    env_int("AI_THUMBNAIL_MAX_GENERATIONS", 45, minimum=0),
     minimum=0,
 )
+
+# Daily default is current_issue: only the newest articles in daily-latest.json.
+# Set AI_ART_SCOPE=all only for an intentional full-site backfill.
+AI_ART_SCOPE = os.getenv("AI_ART_SCOPE", "current_issue").strip().lower() or "current_issue"
+AI_ART_MAX_ARTICLES = env_int("AI_ART_MAX_ARTICLES", 15, minimum=0)
+AI_UPDATE_LINKED_CARDS = env_bool("AI_UPDATE_LINKED_CARDS", True)
+AI_CARD_UPDATE_SCOPE = os.getenv("AI_CARD_UPDATE_SCOPE", "front_pages").strip().lower() or "front_pages"
+
+
+def parse_image_size(size: str) -> tuple[int, int]:
+    match = re.match(r"^(\d+)x(\d+)$", size.strip().lower())
+    if not match:
+        return 1536, 864
+    return int(match.group(1)), int(match.group(2))
+
+
+IMAGE_WIDTH, IMAGE_HEIGHT = parse_image_size(OPENAI_IMAGE_SIZE)
+IMAGE_EXTENSION = ".jpg" if OPENAI_IMAGE_FORMAT == "jpeg" else f".{OPENAI_IMAGE_FORMAT}"
 
 SKIP_HTML_NAMES = {
     "404.html",
@@ -163,8 +186,8 @@ class GalleryAsset:
             "relevanceNote": self.caption,
             "creator": "The Press AI art workflow",
             "license": "AI-generated; review before reuse",
-            "width": 1536,
-            "height": 1024,
+            "width": IMAGE_WIDTH,
+            "height": IMAGE_HEIGHT,
         }
 
 
@@ -299,20 +322,82 @@ def should_replace_thumbnail(src: str | None, html_path: Path) -> bool:
     return is_bad_article_image(src, html_path)
 
 
-def load_master_story_filenames() -> set[str]:
+def load_master_story_filenames() -> list[str]:
     path = ROOT / "master-edition.json"
     if not path.exists():
-        return set()
+        return []
     try:
         data = json.loads(read_text(path))
     except Exception:
-        return set()
-    filenames: set[str] = set()
+        return []
+    filenames: list[str] = []
     for story in data.get("stories", []) if isinstance(data, dict) else []:
         filename = str(story.get("filename") or "").strip()
-        if filename:
-            filenames.add(filename)
+        if filename and filename not in filenames:
+            filenames.append(filename)
     return filenames
+
+
+def repo_html_path_from_url(value: str) -> Path | None:
+    raw = str(value or "").strip()
+    if not raw:
+        return None
+    parsed = urlparse(raw)
+    path_text = parsed.path if parsed.scheme or parsed.netloc else raw
+    path_text = path_text.split("#", 1)[0].split("?", 1)[0].strip()
+    if path_text.startswith("/"):
+        path_text = path_text.lstrip("/")
+    if not path_text:
+        return None
+    if path_text.endswith("/"):
+        path_text += "index.html"
+    candidate = (ROOT / path_text).resolve()
+    if candidate.suffix.lower() != ".html":
+        return None
+    return candidate
+
+
+def load_daily_latest_article_paths() -> list[Path]:
+    path = ROOT / "daily-latest.json"
+    if not path.exists():
+        return []
+    try:
+        data = json.loads(read_text(path))
+    except Exception as exc:
+        print(f"Could not read daily-latest.json: {exc}", file=sys.stderr)
+        return []
+
+    items: list[Any] = []
+    if isinstance(data, dict):
+        for key in ("articles", "stories", "items"):
+            value = data.get(key)
+            if isinstance(value, list):
+                items.extend(value)
+    elif isinstance(data, list):
+        items = data
+
+    paths: list[Path] = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        for key in ("url", "href", "filename", "page_url", "pageUrl"):
+            candidate = repo_html_path_from_url(str(item.get(key) or ""))
+            if candidate:
+                paths.append(candidate)
+                break
+    return ordered_unique_paths(paths)
+
+
+def ordered_unique_paths(paths: list[Path]) -> list[Path]:
+    seen: set[Path] = set()
+    output: list[Path] = []
+    for path in paths:
+        resolved = path.resolve()
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        output.append(path)
+    return output
 
 
 def looks_like_article_page(path: Path, soup: BeautifulSoup, master_filenames: set[str]) -> bool:
@@ -478,6 +563,17 @@ def extract_json(text: str) -> Any:
 
 
 def gallery_plan_prompt(title: str, dek: str, section: str, body_snippet: str, count: int) -> str:
+    if count <= 2:
+        package_direction = """
+Create exactly 2 images:
+- Image 1 should be a strong article-supporting scene: photorealistic documentary realism or polished editorial art tied to the story's main place, institution, people, or system.
+- Image 2 should explain something the article says: an unlabeled map-style visual, schematic, human-impact scene, object detail, or cause-and-effect illustration.
+""".strip()
+    else:
+        package_direction = """
+Create images that cover the article from several angles: establishing scene, explainer or map-like context when useful, human-scale impact, institutional detail, and a closing symbolic image.
+""".strip()
+
     return f"""
 You are the visual editor for The Press. Build an AI image plan for a serious digital newspaper article.
 
@@ -500,12 +596,8 @@ Return JSON only, no markdown fences. Use exactly this shape:
   ]
 }}
 
-Create exactly {count} images. Every image must be tied to something specific in the article. Mix photorealistic and artistic images. Include at least:
-- one establishing image for the core place, institution, or system;
-- one overhead map or map-like schematic when geography, routes, neighborhoods, borders, supply chains, campuses, facilities, or regions matter;
-- one explainer-style visual that expresses a key mechanism, tension, statistic, timeline, or cause-and-effect from the article without readable text;
-- one human-scale scene showing who is affected;
-- one symbolic or artistic image that captures the article's central argument.
+Create exactly {count} images. Every image must be tied to something specific in the article.
+{package_direction}
 
 Rules for prompts:
 - No readable text, labels, logos, watermarks, signatures, or fake documents.
@@ -523,62 +615,32 @@ def fallback_gallery_specs(title: str, dek: str, section: str, body_snippet: str
         (
             "establishing scene",
             "photorealistic",
-            "Where the story begins",
-            f"Photorealistic establishing scene that captures the main setting, institution, or public space implied by this {section} article: {base}",
+            "Inside the story",
+            f"Photorealistic documentary-style scene that captures the main setting, institution, community, public space, or system in this {section} article: {base}",
+        ),
+        (
+            "visual explainer",
+            "artistic",
+            "What the story explains",
+            f"Polished editorial illustration or unlabeled map-like visual that explains a key mechanism, tension, cause-and-effect, geography, timeline, or pressure point from the article without readable text: {base}",
+        ),
+        (
+            "human impact",
+            "photorealistic",
+            "Who feels the impact",
+            f"Photorealistic human-scale scene showing everyday people affected by the issue, with no identifiable real-person likenesses: {base}",
         ),
         (
             "symbolic argument",
             "artistic",
             "The central tension",
-            f"Artistic editorial illustration representing the central conflict, tradeoff, or argument in the article: {base}",
-        ),
-        (
-            "overhead map",
-            "artistic",
-            "The geography of the issue",
-            f"Unlabeled overhead map-like schematic showing relevant geography, routes, regions, supply chains, borders, campuses, or facilities connected to the article: {base}",
-        ),
-        (
-            "data explainer",
-            "artistic",
-            "How the system works",
-            f"Clean visual explainer without readable text showing the article's key mechanism, sequence, pressure point, or cause-and-effect: {base}",
-        ),
-        (
-            "human impact",
-            "photorealistic",
-            "People inside the story",
-            f"Photorealistic human-scale scene showing everyday people affected by the issue, with no identifiable real-person likenesses: {base}",
+            f"Original artistic editorial illustration representing the central conflict, tradeoff, or argument in the article: {base}",
         ),
         (
             "object detail",
             "photorealistic",
             "The telling detail",
-            f"Photorealistic close-up of an object, environment detail, tool, document-like shape without readable text, or material clue that symbolizes the article: {base}",
-        ),
-        (
-            "institutional scene",
-            "photorealistic",
-            "The institution at work",
-            f"Photorealistic scene of a relevant institution, facility, courtroom-like room, lab, school, market, newsroom, port, theater, clinic, or office setting tied to the article: {base}",
-        ),
-        (
-            "closing illustration",
-            "artistic",
-            "What changes next",
-            f"Artistic closing image that expresses what could change next or what uncertainty remains after the article's reporting: {base}",
-        ),
-        (
-            "symbolic portrait",
-            "artistic",
-            "Power without a headshot",
-            f"Non-photorealistic symbolic portrait or silhouette representing leadership, decision-making, or public pressure in the article without copying any living person's likeness: {base}",
-        ),
-        (
-            "scene contrast",
-            "artistic",
-            "Two sides of the story",
-            f"Artistic split-composition showing two forces, places, communities, or outcomes in tension in the article, with no readable text: {base}",
+            f"Photorealistic close-up of an object, environment detail, tool, or material clue that symbolizes the article; no readable text: {base}",
         ),
     ]
     specs: list[dict[str, str]] = []
@@ -644,7 +706,7 @@ def create_gallery_specs(client: OpenAI, title: str, dek: str, section: str, bod
         response = client.responses.create(
             model=OPENAI_ART_PROMPT_MODEL,
             input=prompt,
-            max_output_tokens=5000,
+            max_output_tokens=1800,
         )
         payload = extract_json(getattr(response, "output_text", "") or "")
         return normalize_gallery_specs(payload, title, dek, section, body_snippet, count)
@@ -690,13 +752,19 @@ Publishing requirements:
 
 def generate_ai_image(client: OpenAI, prompt: str, output_path: Path) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    result = client.images.generate(
-        model=OPENAI_IMAGE_MODEL,
-        prompt=prompt,
-        size=OPENAI_IMAGE_SIZE,
-        quality=OPENAI_IMAGE_QUALITY,
-        n=1,
-    )
+    request: dict[str, Any] = {
+        "model": OPENAI_IMAGE_MODEL,
+        "prompt": prompt,
+        "size": OPENAI_IMAGE_SIZE,
+        "quality": OPENAI_IMAGE_QUALITY,
+        "n": 1,
+    }
+    if OPENAI_IMAGE_FORMAT in {"jpeg", "png", "webp"}:
+        request["output_format"] = OPENAI_IMAGE_FORMAT
+    if OPENAI_IMAGE_FORMAT in {"jpeg", "webp"}:
+        request["output_compression"] = OPENAI_IMAGE_COMPRESSION
+
+    result = client.images.generate(**request)
     image_base64 = result.data[0].b64_json
     if not image_base64:
         raise RuntimeError("OpenAI image response did not include b64_json")
@@ -782,8 +850,8 @@ def render_gallery_section(soup: BeautifulSoup, assets: list[GalleryAsset]) -> A
 <section class="ai-article-gallery" data-ai-article-gallery>
   <div class="ai-article-gallery__header">
     <p class="eyebrow eyebrow--tiny">AI visual brief</p>
-    <h2>Scenes and explainers from this story</h2>
-    <p>AI-generated visuals built from this article’s reporting, including documentary-style scenes, editorial illustrations, map-style context, and explainer images.</p>
+    <h2>Images from this story</h2>
+    <p>Two AI-generated visuals built from this article’s reporting: one story image and one contextual/explainer image.</p>
   </div>
   <div class="ai-article-gallery__grid">
     {''.join(figures)}
@@ -846,7 +914,7 @@ def build_gallery_assets(
         style = str(spec.get("style") or ("photorealistic" if idx % 2 else "artistic")).lower()
         if style not in {"photorealistic", "artistic"}:
             style = "photorealistic" if idx % 2 else "artistic"
-        output_path = article_art_dir / f"{slug}-{idx:02d}-{style}.png"
+        output_path = article_art_dir / f"{slug}-{idx:02d}-{style}{IMAGE_EXTENSION}"
         prompt = compose_gallery_image_prompt(spec, title, dek, section, body_snippet, idx)
 
         if not output_path.exists():
@@ -897,7 +965,7 @@ def update_article_page(client: OpenAI, path: Path, generated_count: int) -> tup
     section = page_section(soup)
     body_snippet = page_body_snippet(container)
     slug = slugify(path.stem if path.stem != "article" else title)
-    output_path = AI_THUMBNAIL_DIR / f"{slug}-ai.png"
+    output_path = AI_THUMBNAIL_DIR / f"{slug}-ai{IMAGE_EXTENSION}"
     changed = False
 
     if should_replace_thumbnail(old_src, path):
@@ -989,6 +1057,56 @@ def html_files() -> list[Path]:
     return sorted(files)
 
 
+def discover_article_paths(master_filenames_ordered: list[str]) -> list[Path]:
+    master_set = set(master_filenames_ordered)
+
+    if AI_ART_SCOPE in {"current_issue", "current", "latest", "daily_latest", "new"}:
+        candidates = load_daily_latest_article_paths()
+        if candidates:
+            print(f"AI_ART_SCOPE=current_issue: using {len(candidates)} article(s) from daily-latest.json")
+        else:
+            print("AI_ART_SCOPE=current_issue: daily-latest.json had no article URLs; falling back to master-edition.json")
+            candidates = [(ROOT / filename).resolve() for filename in master_filenames_ordered]
+    else:
+        candidates = html_files()
+
+    article_paths: list[Path] = []
+    for path in ordered_unique_paths(candidates):
+        if not path.exists() or not path.is_file():
+            continue
+        try:
+            soup = BeautifulSoup(read_text(path), "html.parser")
+        except Exception as exc:
+            print(f"Skipping {path}: {exc}", file=sys.stderr)
+            continue
+        if looks_like_article_page(path, soup, master_set):
+            article_paths.append(path)
+
+    if AI_ART_MAX_ARTICLES:
+        article_paths = article_paths[:AI_ART_MAX_ARTICLES]
+    return article_paths
+
+
+def html_files_for_card_updates(article_updates: list[ArticleImageUpdate]) -> list[Path]:
+    if AI_CARD_UPDATE_SCOPE == "none":
+        return []
+    if AI_CARD_UPDATE_SCOPE == "all":
+        return [p for p in ROOT.rglob("*.html") if ".git" not in p.parts]
+
+    front_page_names = {
+        "index.html",
+        "archive.html",
+        "breaking-news.html",
+        "ai-edition.html",
+    }
+    paths: list[Path] = [ROOT / name for name in front_page_names if (ROOT / name).exists()]
+    paths.extend(sorted(ROOT.glob("section-*.html")))
+    # Include article pages that were just updated so their related cards can be patched,
+    # but do not sweep every historical article page.
+    paths.extend(update.page_path for update in article_updates)
+    return ordered_unique_paths([path for path in paths if path.exists()])
+
+
 def update_cards_in_html_file(path: Path, updates: list[ArticleImageUpdate]) -> bool:
     original = read_text(path)
     soup = BeautifulSoup(original, "html.parser")
@@ -1063,8 +1181,8 @@ def update_master_edition(updates: list[ArticleImageUpdate]) -> bool:
             story["imageAlt"] = update.alt
             story["imageCaptionHtml"] = update.caption_html
             story["imageCreditPlain"] = update.credit_plain
-            story["imageWidth"] = 1536
-            story["imageHeight"] = 1024
+            story["imageWidth"] = IMAGE_WIDTH
+            story["imageHeight"] = IMAGE_HEIGHT
             if update.gallery_assets:
                 story["galleryImages"] = gallery_records(update)
             changed = True
@@ -1244,15 +1362,14 @@ def main() -> int:
     AI_ART_DIR.mkdir(parents=True, exist_ok=True)
 
     master_filenames = load_master_story_filenames()
-    article_paths: list[Path] = []
-    for path in html_files():
-        soup = BeautifulSoup(read_text(path), "html.parser")
-        if looks_like_article_page(path, soup, master_filenames):
-            article_paths.append(path)
+    article_paths = discover_article_paths(master_filenames)
 
     print(
-        f"Scanning {len(article_paths)} article pages for AI thumbnails and "
-        f"{AI_GALLERY_MIN_IMAGES}-{AI_GALLERY_MAX_IMAGES} image article-art packages"
+        f"Scanning {len(article_paths)} selected article page(s) for AI thumbnails and "
+        f"{AI_GALLERY_IMAGES_PER_ARTICLE} article visual(s) each "
+        f"(scope={AI_ART_SCOPE}, max_articles={AI_ART_MAX_ARTICLES or 'all'}, "
+        f"image_cap={AI_TOTAL_IMAGE_MAX_GENERATIONS or 'unlimited'}, "
+        f"size={OPENAI_IMAGE_SIZE}, quality={OPENAI_IMAGE_QUALITY}, format={OPENAI_IMAGE_FORMAT})"
     )
 
     updates: list[ArticleImageUpdate] = []
@@ -1266,10 +1383,10 @@ def main() -> int:
             print(f"AI art update failed for {rel_from_root(path)}: {exc}", file=sys.stderr)
 
     if updates:
-        all_html = [p for p in ROOT.rglob("*.html") if ".git" not in p.parts]
-        for path in all_html:
-            if update_cards_in_html_file(path, updates):
-                print(f"Updated linked cards in {rel_from_root(path)}")
+        if AI_UPDATE_LINKED_CARDS:
+            for path in html_files_for_card_updates(updates):
+                if update_cards_in_html_file(path, updates):
+                    print(f"Updated linked cards in {rel_from_root(path)}")
 
         if update_master_edition(updates):
             print("Updated master-edition.json")
