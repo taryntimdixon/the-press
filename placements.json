@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T16:11:46.182786+00:00",
+  "generated_at": "2026-04-23T10:18:36.146620+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,128 +9,128 @@
   },
   "home": {
     "hero": [
-      "2026-04-22-virginia-voters-approve-redistricting-push-as-courts-race-to-decide-whether-the-map-can-stand",
-      "2026-04-22-as-public-media-money-disappears-local-stations-are-being-forced-to-choose-what-culture-means",
-      "2026-04-22-america-s-ai-data-center-boom-hits-the-grid-s-limits",
-      "2026-04-22-march-inflation-spike-rekindles-the-housing-and-gas-budget-squeeze"
+      "2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-congress-to-state-ballots",
+      "2026-04-22-america-s-arts-institutions-are-entering-a-new-season-of-politics-austerity-and-reinvention",
+      "2026-04-22-ai-s-power-problem-is-now-a-grid-problem",
+      "2026-04-22-why-april-s-inflation-report-matters-more-for-household-budgets-than-for-wall-street"
     ],
     "secondary": [
-      "2026-04-22-how-the-federal-student-loan-reset-is-rippling-through-colleges-households-and-public-budgets",
-      "2026-04-22-measles-resurgence-tests-the-u-s-public-health-firewall-as-outbreaks-misinformation-and-policy-churn-collide",
-      "2026-04-22-the-lonely-age-of-artificial-friends"
+      "2026-04-22-as-federal-student-aid-shifts-toward-treasury-colleges-and-borrowers-face-a-test-of-capacity",
+      "2026-04-22-measles-is-surging-across-the-americas-testing-the-region-s-public-health-defenses",
+      "2026-04-22-when-the-machine-says-it-loves-you"
     ],
     "most_read": [
-      "2026-04-22-nasa-s-moonshot-just-came-back-artemis-ii-ends-on-a-clean-arc-but-the-harder-science-begins-now",
-      "2026-04-22-lebanon-s-war-spillover-is-redrawing-the-syria-border-and-testing-the-region-s-aid-architecture",
-      "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers",
-      "2026-04-22-ai-s-next-regulatory-fight-is-over-proof-not-promise",
-      "2026-04-22-moldova-s-quiet-front-line-why-brussels-is-hardening-the-buffer-state-before-russia-can-reopen-it"
+      "2026-04-22-trump-s-2027-science-budget-revives-a-familiar-fight-over-the-future-of-u-s-research",
+      "2026-04-22-war-in-the-middle-east-is-redrawing-the-region-s-human-map",
+      "2026-04-22-the-fed-should-wait-trump-s-inflation-shock-isn-t-over",
+      "2026-04-22-ai-s-new-power-struggle-washington-utilities-and-the-bill-for-the-next-wave-of-models",
+      "2026-04-22-europe-s-defense-race-is-running-into-the-hard-edge-of-logistics-minerals-and-money"
     ],
     "editors_picks": [
-      "2026-04-22-cannes-2026-puts-the-movie-industry-s-fault-lines-on-display",
-      "2026-04-22-the-new-pop-culture-arms-race-is-the-video-podcast",
-      "2026-04-22-birders-are-becoming-citizen-scientists-in-the-age-of-avian-flu",
-      "2026-04-22-redistricting-war-escalates-as-supreme-court-looms-over-voting-rights-house-control"
+      "2026-04-22-cinemacon-s-new-deal-theatrical-exhibition-gets-a-reluctant-reprieve",
+      "2026-04-22-inside-pop-culture-s-new-money-map-why-fandom-now-matters-more-than-reach",
+      "2026-04-22-inside-the-americans-keeping-the-airspace-civil-the-faa-hobby-drone-world-in-2026",
+      "2026-04-22-virginia-voters-approve-redistricting-push-as-courts-race-to-decide-whether-the-map-can-stand"
     ],
     "latest": [
-      "2026-04-22-virginia-voters-approve-redistricting-push-as-courts-race-to-decide-whether-the-map-can-stand",
-      "2026-04-22-as-public-media-money-disappears-local-stations-are-being-forced-to-choose-what-culture-means",
-      "2026-04-22-america-s-ai-data-center-boom-hits-the-grid-s-limits",
-      "2026-04-22-march-inflation-spike-rekindles-the-housing-and-gas-budget-squeeze",
-      "2026-04-22-how-the-federal-student-loan-reset-is-rippling-through-colleges-households-and-public-budgets",
-      "2026-04-22-measles-resurgence-tests-the-u-s-public-health-firewall-as-outbreaks-misinformation-and-policy-churn-collide",
-      "2026-04-22-the-lonely-age-of-artificial-friends",
-      "2026-04-22-nasa-s-moonshot-just-came-back-artemis-ii-ends-on-a-clean-arc-but-the-harder-science-begins-now",
-      "2026-04-22-lebanon-s-war-spillover-is-redrawing-the-syria-border-and-testing-the-region-s-aid-architecture",
-      "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers",
-      "2026-04-22-ai-s-next-regulatory-fight-is-over-proof-not-promise",
-      "2026-04-22-moldova-s-quiet-front-line-why-brussels-is-hardening-the-buffer-state-before-russia-can-reopen-it"
+      "2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-congress-to-state-ballots",
+      "2026-04-22-america-s-arts-institutions-are-entering-a-new-season-of-politics-austerity-and-reinvention",
+      "2026-04-22-ai-s-power-problem-is-now-a-grid-problem",
+      "2026-04-22-why-april-s-inflation-report-matters-more-for-household-budgets-than-for-wall-street",
+      "2026-04-22-as-federal-student-aid-shifts-toward-treasury-colleges-and-borrowers-face-a-test-of-capacity",
+      "2026-04-22-measles-is-surging-across-the-americas-testing-the-region-s-public-health-defenses",
+      "2026-04-22-when-the-machine-says-it-loves-you",
+      "2026-04-22-trump-s-2027-science-budget-revives-a-familiar-fight-over-the-future-of-u-s-research",
+      "2026-04-22-war-in-the-middle-east-is-redrawing-the-region-s-human-map",
+      "2026-04-22-the-fed-should-wait-trump-s-inflation-shock-isn-t-over",
+      "2026-04-22-ai-s-new-power-struggle-washington-utilities-and-the-bill-for-the-next-wave-of-models",
+      "2026-04-22-europe-s-defense-race-is-running-into-the-hard-edge-of-logistics-minerals-and-money"
     ],
     "daily": [
-      "2026-04-22-virginia-voters-approve-redistricting-push-as-courts-race-to-decide-whether-the-map-can-stand",
-      "2026-04-22-as-public-media-money-disappears-local-stations-are-being-forced-to-choose-what-culture-means",
-      "2026-04-22-america-s-ai-data-center-boom-hits-the-grid-s-limits",
-      "2026-04-22-march-inflation-spike-rekindles-the-housing-and-gas-budget-squeeze",
-      "2026-04-22-how-the-federal-student-loan-reset-is-rippling-through-colleges-households-and-public-budgets",
-      "2026-04-22-measles-resurgence-tests-the-u-s-public-health-firewall-as-outbreaks-misinformation-and-policy-churn-collide",
-      "2026-04-22-the-lonely-age-of-artificial-friends",
-      "2026-04-22-nasa-s-moonshot-just-came-back-artemis-ii-ends-on-a-clean-arc-but-the-harder-science-begins-now",
-      "2026-04-22-lebanon-s-war-spillover-is-redrawing-the-syria-border-and-testing-the-region-s-aid-architecture",
-      "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers"
+      "2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-congress-to-state-ballots",
+      "2026-04-22-america-s-arts-institutions-are-entering-a-new-season-of-politics-austerity-and-reinvention",
+      "2026-04-22-ai-s-power-problem-is-now-a-grid-problem",
+      "2026-04-22-why-april-s-inflation-report-matters-more-for-household-budgets-than-for-wall-street",
+      "2026-04-22-as-federal-student-aid-shifts-toward-treasury-colleges-and-borrowers-face-a-test-of-capacity",
+      "2026-04-22-measles-is-surging-across-the-americas-testing-the-region-s-public-health-defenses",
+      "2026-04-22-when-the-machine-says-it-loves-you",
+      "2026-04-22-trump-s-2027-science-budget-revives-a-familiar-fight-over-the-future-of-u-s-research",
+      "2026-04-22-war-in-the-middle-east-is-redrawing-the-region-s-human-map",
+      "2026-04-22-the-fed-should-wait-trump-s-inflation-shock-isn-t-over"
     ],
     "breaking": [
-      "2026-04-22-virginia-voters-approve-redistricting-push-as-courts-race-to-decide-whether-the-map-can-stand",
-      "2026-04-22-as-public-media-money-disappears-local-stations-are-being-forced-to-choose-what-culture-means",
-      "2026-04-22-america-s-ai-data-center-boom-hits-the-grid-s-limits",
-      "2026-04-22-march-inflation-spike-rekindles-the-housing-and-gas-budget-squeeze",
-      "2026-04-22-how-the-federal-student-loan-reset-is-rippling-through-colleges-households-and-public-budgets",
-      "2026-04-22-measles-resurgence-tests-the-u-s-public-health-firewall-as-outbreaks-misinformation-and-policy-churn-collide",
-      "2026-04-22-the-lonely-age-of-artificial-friends",
-      "2026-04-22-nasa-s-moonshot-just-came-back-artemis-ii-ends-on-a-clean-arc-but-the-harder-science-begins-now",
-      "2026-04-22-lebanon-s-war-spillover-is-redrawing-the-syria-border-and-testing-the-region-s-aid-architecture",
-      "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers",
-      "2026-04-22-ai-s-next-regulatory-fight-is-over-proof-not-promise",
-      "2026-04-22-moldova-s-quiet-front-line-why-brussels-is-hardening-the-buffer-state-before-russia-can-reopen-it"
+      "2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-congress-to-state-ballots",
+      "2026-04-22-america-s-arts-institutions-are-entering-a-new-season-of-politics-austerity-and-reinvention",
+      "2026-04-22-ai-s-power-problem-is-now-a-grid-problem",
+      "2026-04-22-why-april-s-inflation-report-matters-more-for-household-budgets-than-for-wall-street",
+      "2026-04-22-as-federal-student-aid-shifts-toward-treasury-colleges-and-borrowers-face-a-test-of-capacity",
+      "2026-04-22-measles-is-surging-across-the-americas-testing-the-region-s-public-health-defenses",
+      "2026-04-22-when-the-machine-says-it-loves-you",
+      "2026-04-22-trump-s-2027-science-budget-revives-a-familiar-fight-over-the-future-of-u-s-research",
+      "2026-04-22-war-in-the-middle-east-is-redrawing-the-region-s-human-map",
+      "2026-04-22-the-fed-should-wait-trump-s-inflation-shock-isn-t-over",
+      "2026-04-22-ai-s-new-power-struggle-washington-utilities-and-the-bill-for-the-next-wave-of-models",
+      "2026-04-22-europe-s-defense-race-is-running-into-the-hard-edge-of-logistics-minerals-and-money"
     ],
     "desk_pulse": [
       {
-        "count": 23,
-        "latest_ts": 1776870960.0,
-        "story_id": "2026-04-22-nasa-s-moonshot-just-came-back-artemis-ii-ends-on-a-clean-arc-but-the-harder-science-begins-now",
+        "count": 24,
+        "latest_ts": 1776874680.0,
+        "story_id": "2026-04-22-trump-s-2027-science-budget-revives-a-familiar-fight-over-the-future-of-u-s-research",
         "section": "Science"
       },
       {
-        "count": 23,
-        "latest_ts": 1776870960.0,
-        "story_id": "2026-04-22-ai-s-next-regulatory-fight-is-over-proof-not-promise",
+        "count": 24,
+        "latest_ts": 1776874680.0,
+        "story_id": "2026-04-22-ai-s-new-power-struggle-washington-utilities-and-the-bill-for-the-next-wave-of-models",
         "section": "AI"
       },
       {
-        "count": 22,
-        "latest_ts": 1776870960.0,
-        "story_id": "2026-04-22-virginia-voters-approve-redistricting-push-as-courts-race-to-decide-whether-the-map-can-stand",
+        "count": 23,
+        "latest_ts": 1776874680.0,
+        "story_id": "2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-congress-to-state-ballots",
         "section": "Politics"
       },
       {
-        "count": 22,
-        "latest_ts": 1776870960.0,
-        "story_id": "2026-04-22-march-inflation-spike-rekindles-the-housing-and-gas-budget-squeeze",
+        "count": 23,
+        "latest_ts": 1776874680.0,
+        "story_id": "2026-04-22-why-april-s-inflation-report-matters-more-for-household-budgets-than-for-wall-street",
         "section": "Economics"
       },
       {
-        "count": 22,
-        "latest_ts": 1776870960.0,
-        "story_id": "2026-04-22-birders-are-becoming-citizen-scientists-in-the-age-of-avian-flu",
+        "count": 23,
+        "latest_ts": 1776874680.0,
+        "story_id": "2026-04-22-inside-the-americans-keeping-the-airspace-civil-the-faa-hobby-drone-world-in-2026",
         "section": "Niche"
       },
       {
-        "count": 19,
-        "latest_ts": 1776870960.0,
-        "story_id": "2026-04-22-lebanon-s-war-spillover-is-redrawing-the-syria-border-and-testing-the-region-s-aid-architecture",
+        "count": 20,
+        "latest_ts": 1776874680.0,
+        "story_id": "2026-04-22-war-in-the-middle-east-is-redrawing-the-region-s-human-map",
         "section": "World"
       },
       {
-        "count": 19,
-        "latest_ts": 1776870960.0,
-        "story_id": "2026-04-22-moldova-s-quiet-front-line-why-brussels-is-hardening-the-buffer-state-before-russia-can-reopen-it",
+        "count": 20,
+        "latest_ts": 1776874680.0,
+        "story_id": "2026-04-22-europe-s-defense-race-is-running-into-the-hard-edge-of-logistics-minerals-and-money",
         "section": "Geopolitics"
       },
       {
-        "count": 18,
-        "latest_ts": 1776870960.0,
-        "story_id": "2026-04-22-america-s-ai-data-center-boom-hits-the-grid-s-limits",
+        "count": 19,
+        "latest_ts": 1776874680.0,
+        "story_id": "2026-04-22-ai-s-power-problem-is-now-a-grid-problem",
         "section": "Technology"
       },
       {
-        "count": 16,
-        "latest_ts": 1776870960.0,
-        "story_id": "2026-04-22-cannes-2026-puts-the-movie-industry-s-fault-lines-on-display",
+        "count": 17,
+        "latest_ts": 1776874680.0,
+        "story_id": "2026-04-22-cinemacon-s-new-deal-theatrical-exhibition-gets-a-reluctant-reprieve",
         "section": "Film"
       },
       {
-        "count": 16,
-        "latest_ts": 1776870960.0,
-        "story_id": "2026-04-22-the-new-pop-culture-arms-race-is-the-video-podcast",
+        "count": 17,
+        "latest_ts": 1776874680.0,
+        "story_id": "2026-04-22-inside-pop-culture-s-new-money-map-why-fandom-now-matters-more-than-reach",
         "section": "Pop Culture"
       }
     ]
