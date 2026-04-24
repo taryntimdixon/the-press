@@ -485,6 +485,20 @@ def page_section(soup: BeautifulSoup) -> str:
     return "News"
 
 
+def meta_content(soup: BeautifulSoup, name: str) -> str:
+    node = soup.select_one(f'meta[name="{name}"]')
+    if not node:
+        return ""
+    return clean_text(str(node.get("content") or ""), 1000)
+
+
+def page_visual_archetype(soup: BeautifulSoup) -> str:
+    return meta_content(soup, "press:visual-archetype")
+
+
+def page_visual_brief(soup: BeautifulSoup) -> str:
+    return meta_content(soup, "press:visual-brief")
+
 def page_body_snippet(container: Any) -> str:
     body = (
         container.select_one(".article-body")
@@ -505,21 +519,51 @@ def generation_budget_available(generated_count: int) -> bool:
     return not AI_TOTAL_IMAGE_MAX_GENERATIONS or generated_count < AI_TOTAL_IMAGE_MAX_GENERATIONS
 
 
-def prompt_for_article(title: str, dek: str, section: str, body_snippet: str) -> str:
+def prompt_for_article(
+    title: str,
+    dek: str,
+    section: str,
+    body_snippet: str,
+    visual_archetype: str,
+    visual_brief: str,
+) -> str:
+    banned = "; ".join(
+        [
+            "balancing scales",
+            "red-versus-blue state maps",
+            "U.S. map overlays",
+            "floating state silhouettes",
+            "generic server racks",
+            "data-center exterior at sunset",
+            "child-with-rash outbreak imagery",
+            "vaccine vial on a map",
+            "Supreme Court plus map collage",
+            "space capsule splashdown beauty shot",
+            "glowing AI brain",
+            "hologram person sitting across from someone",
+            "giant pencil drawing district lines",
+        ]
+    )
     return f"""
-Create a premium 16:9 landscape GPT Image 2 thumbnail for a serious digital newspaper article.
+Create one premium 16:9 landscape GPT Image 2 thumbnail for a serious digital newspaper article.
 
 Section: {section}
 Title: {title}
 Summary: {dek}
 Article context: {body_snippet}
+Assigned visual archetype: {visual_archetype or 'unique concrete editorial scene'}
+Article-specific visual brief: {visual_brief or 'Choose a concrete visual moment from the reporting, with a fresh setting and one unmistakable subject.'}
 
 Visual direction:
-- Make the thumbnail clearly connected to this article, not a generic stock image.
+- Follow the assigned visual archetype and article-specific visual brief. Do not ignore them.
+- Make the thumbnail clearly connected to this article, not a generic stock image or reusable news symbol.
+- Favor concrete scenes: a specific room, street, workplace, clinic, court corridor, lab bench, classroom, kitchen table, market, field site, archive, machine, tool, document stack, weather condition, or human-scale object from the story.
+- Use one strong central subject that reads instantly at homepage thumbnail size, with a distinctive composition that has not appeared in other cards.
 - Choose either photorealistic documentary realism or polished editorial art, whichever best serves the story.
-- Use one strong central subject that reads instantly at homepage thumbnail size.
-- The image can use a relevant place, institution, object, public scene, symbolic metaphor, or overhead/map-like composition if that best explains the story.
 - Make it feel expensive, cinematic, original, and publishable for a modern newspaper.
+- Avoid these repeated thumbnail tropes completely: {banned}.
+- Only use a map when the article truly requires geography. Never make a red/blue political map, floating state silhouette, or state-outline collage.
+- Only show a data center, server rack, courthouse, vaccine vial, space capsule, AI brain, or balancing metaphor if the exact article demands it; even then, choose a new angle, location, texture, or object-detail approach.
 
 Safety and publishing requirements:
 - No logos, watermarks, signatures, fake screenshots, fake documents, or readable text.
@@ -527,7 +571,6 @@ Safety and publishing requirements:
 - If the story involves a living/current real person, do not create a photorealistic likeness; use a non-photorealistic editorial portrait, silhouette, or symbolic representation instead.
 - Avoid gore, graphic violence, shock imagery, or misleading visual claims.
 """.strip()
-
 
 def image_extension_from_bytes(data: bytes, default: str) -> str:
     if data.startswith(b"\xff\xd8\xff"):
@@ -646,6 +689,8 @@ def update_article_page(client: OpenAI, path: Path, generated_count: int) -> tup
     dek = page_dek(soup, container)
     section = page_section(soup)
     body_snippet = page_body_snippet(container)
+    visual_archetype = page_visual_archetype(soup)
+    visual_brief = page_visual_brief(soup)
     slug = slugify(path.stem or title)
     img = find_article_img(container)
     old_src = str(img.get("src") or "") if img else ""
@@ -670,7 +715,7 @@ def update_article_page(client: OpenAI, path: Path, generated_count: int) -> tup
                 write_text(path, str(soup))
             return None, generated_count
         print(f"Generating GPT Image 2 thumbnail for {rel_from_root(path)}")
-        prompt = prompt_for_article(title, dek, section, body_snippet)
+        prompt = prompt_for_article(title, dek, section, body_snippet, visual_archetype, visual_brief)
         output_path = generate_ai_image(client, prompt, output_path)
         generated_count += 1
         time.sleep(1)

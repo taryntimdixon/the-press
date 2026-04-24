@@ -130,7 +130,7 @@ def call_model(client: OpenAI, section_name: str, date_label: str) -> dict[str, 
     - Date context: {date_label}
     """
     resp = client.responses.create(
-        model=os.getenv("OPENAI_MODEL", "gpt-5.4-mini"),
+        model=os.getenv("OPENAI_MODEL", "gpt-5.4"),
         tools=[{"type": "web_search_preview"}],
         input=prompt,
         max_output_tokens=12000,

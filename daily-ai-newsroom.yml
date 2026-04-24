@@ -44,7 +44,7 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           STORY_COUNT: ${{ github.event.inputs.story_count || '15' }}
           SITE_BASE_URL: https://thepress.live
-          OPENAI_MODEL: gpt-5.4-mini
+          OPENAI_MODEL: gpt-5.4
           ARTICLE_TARGET_WORDS: "2500"
           MIN_SOURCES: "30"
           MAX_SOURCES: "100"
@@ -54,6 +54,12 @@ jobs:
           MAX_OUTPUT_TOKENS: "24000"
           MAX_STORY_COUNT: "30"
           STRICT_QUALITY_GATE: "1"
+          RECENT_TOPIC_LOOKBACK: "120"
+          RECENT_TOPIC_SIMILARITY_LIMIT: "0.34"
+          ISSUE_TOPIC_SIMILARITY_LIMIT: "0.26"
+          VISUAL_CONCEPT_SIMILARITY_LIMIT: "0.32"
+          TITLE_RHYTHM_SIMILARITY_LIMIT: "0.64"
+          TITLE_STYLE_GATE: "1"
         run: |
           python studio/automation/preserve_old_and_new_issue_v34567.py
 
@@ -73,7 +79,8 @@ jobs:
           AI_GALLERY_MIN_IMAGES: "6"
           AI_GALLERY_MAX_IMAGES: "10"
           AI_GALLERY_IMAGES_PER_ARTICLE: "8"
-          AI_ART_PROMPT_MODEL: gpt-5.4-mini
+          AI_ART_PROMPT_MODEL: gpt-5.4
+          AI_REGENERATE_AI_THUMBNAILS: "1"
         run: |
           python studio/automation/ai_thumbnail_backfill.py
 
