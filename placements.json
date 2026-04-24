@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-23T10:18:36.146620+00:00",
+  "generated_at": "2026-04-24T08:34:03.606070+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,128 +9,128 @@
   },
   "home": {
     "hero": [
-      "2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-congress-to-state-ballots",
-      "2026-04-22-america-s-arts-institutions-are-entering-a-new-season-of-politics-austerity-and-reinvention",
-      "2026-04-22-ai-s-power-problem-is-now-a-grid-problem",
-      "2026-04-22-why-april-s-inflation-report-matters-more-for-household-budgets-than-for-wall-street"
+      "2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency-s-paper-trail",
+      "2026-04-24-coachella-s-new-middle-class-is-on-layaway",
+      "2026-04-24-the-bug-ledger-is-breaking-and-security-teams-are-rewriting-the-rules",
+      "2026-04-24-the-housing-bill-keeps-growing-even-when-the-mortgage-doesn-t"
     ],
     "secondary": [
-      "2026-04-22-as-federal-student-aid-shifts-toward-treasury-colleges-and-borrowers-face-a-test-of-capacity",
-      "2026-04-22-measles-is-surging-across-the-americas-testing-the-region-s-public-health-defenses",
-      "2026-04-22-when-the-machine-says-it-loves-you"
+      "2026-04-24-lunch-debt-is-back-in-the-school-budget-fight-and-the-cafeteria-is-where-the-system-shows-its-seams",
+      "2026-04-24-candida-auris-is-turning-the-patient-handoff-into-an-infection-control-instrument",
+      "2026-04-24-the-childproof-internet-is-teaching-adults-to-show-their-papers"
     ],
     "most_read": [
-      "2026-04-22-trump-s-2027-science-budget-revives-a-familiar-fight-over-the-future-of-u-s-research",
-      "2026-04-22-war-in-the-middle-east-is-redrawing-the-region-s-human-map",
-      "2026-04-22-the-fed-should-wait-trump-s-inflation-shock-isn-t-over",
-      "2026-04-22-ai-s-new-power-struggle-washington-utilities-and-the-bill-for-the-next-wave-of-models",
-      "2026-04-22-europe-s-defense-race-is-running-into-the-hard-edge-of-logistics-minerals-and-money"
+      "2026-04-24-rubin-s-night-shift-is-turning-asteroid-discovery-into-a-systems-test",
+      "2026-04-24-the-camp-is-built-to-hold-people-the-sea-is-built-to-move-them",
+      "2026-04-24-a-stamp-should-not-be-a-bailout-plan",
+      "2026-04-24-the-courthouse-help-desk-is-becoming-an-ai-policy-lab",
+      "2026-04-24-the-new-minerals-bloc-is-being-built-in-customs-law-not-in-mines"
     ],
     "editors_picks": [
-      "2026-04-22-cinemacon-s-new-deal-theatrical-exhibition-gets-a-reluctant-reprieve",
-      "2026-04-22-inside-pop-culture-s-new-money-map-why-fandom-now-matters-more-than-reach",
-      "2026-04-22-inside-the-americans-keeping-the-airspace-civil-the-faa-hobby-drone-world-in-2026",
-      "2026-04-22-virginia-voters-approve-redistricting-push-as-courts-race-to-decide-whether-the-map-can-stand"
+      "2026-04-24-the-indie-movie-run-is-becoming-a-curated-event-not-a-market-norm",
+      "2026-04-24-concert-tickets-are-still-a-culture-tax-the-monopoly-verdict-just-made-that-harder-to-deny",
+      "2026-04-24-the-work-between-the-box-and-the-search-bar",
+      "2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-congress-to-state-ballots"
     ],
     "latest": [
-      "2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-congress-to-state-ballots",
-      "2026-04-22-america-s-arts-institutions-are-entering-a-new-season-of-politics-austerity-and-reinvention",
-      "2026-04-22-ai-s-power-problem-is-now-a-grid-problem",
-      "2026-04-22-why-april-s-inflation-report-matters-more-for-household-budgets-than-for-wall-street",
-      "2026-04-22-as-federal-student-aid-shifts-toward-treasury-colleges-and-borrowers-face-a-test-of-capacity",
-      "2026-04-22-measles-is-surging-across-the-americas-testing-the-region-s-public-health-defenses",
-      "2026-04-22-when-the-machine-says-it-loves-you",
-      "2026-04-22-trump-s-2027-science-budget-revives-a-familiar-fight-over-the-future-of-u-s-research",
-      "2026-04-22-war-in-the-middle-east-is-redrawing-the-region-s-human-map",
-      "2026-04-22-the-fed-should-wait-trump-s-inflation-shock-isn-t-over",
-      "2026-04-22-ai-s-new-power-struggle-washington-utilities-and-the-bill-for-the-next-wave-of-models",
-      "2026-04-22-europe-s-defense-race-is-running-into-the-hard-edge-of-logistics-minerals-and-money"
+      "2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency-s-paper-trail",
+      "2026-04-24-coachella-s-new-middle-class-is-on-layaway",
+      "2026-04-24-the-bug-ledger-is-breaking-and-security-teams-are-rewriting-the-rules",
+      "2026-04-24-the-housing-bill-keeps-growing-even-when-the-mortgage-doesn-t",
+      "2026-04-24-lunch-debt-is-back-in-the-school-budget-fight-and-the-cafeteria-is-where-the-system-shows-its-seams",
+      "2026-04-24-candida-auris-is-turning-the-patient-handoff-into-an-infection-control-instrument",
+      "2026-04-24-the-childproof-internet-is-teaching-adults-to-show-their-papers",
+      "2026-04-24-rubin-s-night-shift-is-turning-asteroid-discovery-into-a-systems-test",
+      "2026-04-24-the-camp-is-built-to-hold-people-the-sea-is-built-to-move-them",
+      "2026-04-24-a-stamp-should-not-be-a-bailout-plan",
+      "2026-04-24-the-courthouse-help-desk-is-becoming-an-ai-policy-lab",
+      "2026-04-24-the-new-minerals-bloc-is-being-built-in-customs-law-not-in-mines"
     ],
     "daily": [
-      "2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-congress-to-state-ballots",
-      "2026-04-22-america-s-arts-institutions-are-entering-a-new-season-of-politics-austerity-and-reinvention",
-      "2026-04-22-ai-s-power-problem-is-now-a-grid-problem",
-      "2026-04-22-why-april-s-inflation-report-matters-more-for-household-budgets-than-for-wall-street",
-      "2026-04-22-as-federal-student-aid-shifts-toward-treasury-colleges-and-borrowers-face-a-test-of-capacity",
-      "2026-04-22-measles-is-surging-across-the-americas-testing-the-region-s-public-health-defenses",
-      "2026-04-22-when-the-machine-says-it-loves-you",
-      "2026-04-22-trump-s-2027-science-budget-revives-a-familiar-fight-over-the-future-of-u-s-research",
-      "2026-04-22-war-in-the-middle-east-is-redrawing-the-region-s-human-map",
-      "2026-04-22-the-fed-should-wait-trump-s-inflation-shock-isn-t-over"
+      "2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency-s-paper-trail",
+      "2026-04-24-coachella-s-new-middle-class-is-on-layaway",
+      "2026-04-24-the-bug-ledger-is-breaking-and-security-teams-are-rewriting-the-rules",
+      "2026-04-24-the-housing-bill-keeps-growing-even-when-the-mortgage-doesn-t",
+      "2026-04-24-lunch-debt-is-back-in-the-school-budget-fight-and-the-cafeteria-is-where-the-system-shows-its-seams",
+      "2026-04-24-candida-auris-is-turning-the-patient-handoff-into-an-infection-control-instrument",
+      "2026-04-24-the-childproof-internet-is-teaching-adults-to-show-their-papers",
+      "2026-04-24-rubin-s-night-shift-is-turning-asteroid-discovery-into-a-systems-test",
+      "2026-04-24-the-camp-is-built-to-hold-people-the-sea-is-built-to-move-them",
+      "2026-04-24-a-stamp-should-not-be-a-bailout-plan"
     ],
     "breaking": [
-      "2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-congress-to-state-ballots",
-      "2026-04-22-america-s-arts-institutions-are-entering-a-new-season-of-politics-austerity-and-reinvention",
-      "2026-04-22-ai-s-power-problem-is-now-a-grid-problem",
-      "2026-04-22-why-april-s-inflation-report-matters-more-for-household-budgets-than-for-wall-street",
-      "2026-04-22-as-federal-student-aid-shifts-toward-treasury-colleges-and-borrowers-face-a-test-of-capacity",
-      "2026-04-22-measles-is-surging-across-the-americas-testing-the-region-s-public-health-defenses",
-      "2026-04-22-when-the-machine-says-it-loves-you",
-      "2026-04-22-trump-s-2027-science-budget-revives-a-familiar-fight-over-the-future-of-u-s-research",
-      "2026-04-22-war-in-the-middle-east-is-redrawing-the-region-s-human-map",
-      "2026-04-22-the-fed-should-wait-trump-s-inflation-shock-isn-t-over",
-      "2026-04-22-ai-s-new-power-struggle-washington-utilities-and-the-bill-for-the-next-wave-of-models",
-      "2026-04-22-europe-s-defense-race-is-running-into-the-hard-edge-of-logistics-minerals-and-money"
+      "2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency-s-paper-trail",
+      "2026-04-24-coachella-s-new-middle-class-is-on-layaway",
+      "2026-04-24-the-bug-ledger-is-breaking-and-security-teams-are-rewriting-the-rules",
+      "2026-04-24-the-housing-bill-keeps-growing-even-when-the-mortgage-doesn-t",
+      "2026-04-24-lunch-debt-is-back-in-the-school-budget-fight-and-the-cafeteria-is-where-the-system-shows-its-seams",
+      "2026-04-24-candida-auris-is-turning-the-patient-handoff-into-an-infection-control-instrument",
+      "2026-04-24-the-childproof-internet-is-teaching-adults-to-show-their-papers",
+      "2026-04-24-rubin-s-night-shift-is-turning-asteroid-discovery-into-a-systems-test",
+      "2026-04-24-the-camp-is-built-to-hold-people-the-sea-is-built-to-move-them",
+      "2026-04-24-a-stamp-should-not-be-a-bailout-plan",
+      "2026-04-24-the-courthouse-help-desk-is-becoming-an-ai-policy-lab",
+      "2026-04-24-the-new-minerals-bloc-is-being-built-in-customs-law-not-in-mines"
     ],
     "desk_pulse": [
       {
-        "count": 24,
-        "latest_ts": 1776874680.0,
-        "story_id": "2026-04-22-trump-s-2027-science-budget-revives-a-familiar-fight-over-the-future-of-u-s-research",
+        "count": 25,
+        "latest_ts": 1776997980.0,
+        "story_id": "2026-04-24-rubin-s-night-shift-is-turning-asteroid-discovery-into-a-systems-test",
         "section": "Science"
       },
       {
-        "count": 24,
-        "latest_ts": 1776874680.0,
-        "story_id": "2026-04-22-ai-s-new-power-struggle-washington-utilities-and-the-bill-for-the-next-wave-of-models",
+        "count": 25,
+        "latest_ts": 1776997980.0,
+        "story_id": "2026-04-24-the-courthouse-help-desk-is-becoming-an-ai-policy-lab",
         "section": "AI"
       },
       {
-        "count": 23,
-        "latest_ts": 1776874680.0,
-        "story_id": "2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-congress-to-state-ballots",
+        "count": 24,
+        "latest_ts": 1776997980.0,
+        "story_id": "2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency-s-paper-trail",
         "section": "Politics"
       },
       {
-        "count": 23,
-        "latest_ts": 1776874680.0,
-        "story_id": "2026-04-22-why-april-s-inflation-report-matters-more-for-household-budgets-than-for-wall-street",
+        "count": 24,
+        "latest_ts": 1776997980.0,
+        "story_id": "2026-04-24-the-housing-bill-keeps-growing-even-when-the-mortgage-doesn-t",
         "section": "Economics"
       },
       {
-        "count": 23,
-        "latest_ts": 1776874680.0,
-        "story_id": "2026-04-22-inside-the-americans-keeping-the-airspace-civil-the-faa-hobby-drone-world-in-2026",
+        "count": 24,
+        "latest_ts": 1776997980.0,
+        "story_id": "2026-04-24-the-work-between-the-box-and-the-search-bar",
         "section": "Niche"
       },
       {
-        "count": 20,
-        "latest_ts": 1776874680.0,
-        "story_id": "2026-04-22-war-in-the-middle-east-is-redrawing-the-region-s-human-map",
+        "count": 21,
+        "latest_ts": 1776997980.0,
+        "story_id": "2026-04-24-the-camp-is-built-to-hold-people-the-sea-is-built-to-move-them",
         "section": "World"
       },
       {
-        "count": 20,
-        "latest_ts": 1776874680.0,
-        "story_id": "2026-04-22-europe-s-defense-race-is-running-into-the-hard-edge-of-logistics-minerals-and-money",
+        "count": 21,
+        "latest_ts": 1776997980.0,
+        "story_id": "2026-04-24-the-new-minerals-bloc-is-being-built-in-customs-law-not-in-mines",
         "section": "Geopolitics"
       },
       {
-        "count": 19,
-        "latest_ts": 1776874680.0,
-        "story_id": "2026-04-22-ai-s-power-problem-is-now-a-grid-problem",
+        "count": 20,
+        "latest_ts": 1776997980.0,
+        "story_id": "2026-04-24-the-bug-ledger-is-breaking-and-security-teams-are-rewriting-the-rules",
         "section": "Technology"
       },
       {
-        "count": 17,
-        "latest_ts": 1776874680.0,
-        "story_id": "2026-04-22-cinemacon-s-new-deal-theatrical-exhibition-gets-a-reluctant-reprieve",
+        "count": 18,
+        "latest_ts": 1776997980.0,
+        "story_id": "2026-04-24-the-indie-movie-run-is-becoming-a-curated-event-not-a-market-norm",
         "section": "Film"
       },
       {
-        "count": 17,
-        "latest_ts": 1776874680.0,
-        "story_id": "2026-04-22-inside-pop-culture-s-new-money-map-why-fandom-now-matters-more-than-reach",
+        "count": 18,
+        "latest_ts": 1776997980.0,
+        "story_id": "2026-04-24-concert-tickets-are-still-a-culture-tax-the-monopoly-verdict-just-made-that-harder-to-deny",
         "section": "Pop Culture"
       }
     ]
