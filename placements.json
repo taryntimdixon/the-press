@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-24T08:34:03.606070+00:00",
+  "generated_at": "2026-04-24T12:19:13.360444+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,128 +9,128 @@
   },
   "home": {
     "hero": [
-      "2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency-s-paper-trail",
-      "2026-04-24-coachella-s-new-middle-class-is-on-layaway",
-      "2026-04-24-the-bug-ledger-is-breaking-and-security-teams-are-rewriting-the-rules",
-      "2026-04-24-the-housing-bill-keeps-growing-even-when-the-mortgage-doesn-t"
+      "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus",
+      "2026-04-24-the-hold-list-is-a-labor-story-illinois-is-trying-to-rewrite-the-terms-of-digital-reading",
+      "2026-04-24-open-source-security-s-new-scarcity-is-judgment",
+      "2026-04-24-the-refund-is-becoming-a-debt-collection-battleground"
     ],
     "secondary": [
-      "2026-04-24-lunch-debt-is-back-in-the-school-budget-fight-and-the-cafeteria-is-where-the-system-shows-its-seams",
-      "2026-04-24-candida-auris-is-turning-the-patient-handoff-into-an-infection-control-instrument",
-      "2026-04-24-the-childproof-internet-is-teaching-adults-to-show-their-papers"
+      "2026-04-24-when-enrollment-falls-the-hardest-school-cuts-hit-the-places-that-still-have-to-show-up-every-morning",
+      "2026-04-24-when-a-cdc-bulletin-goes-missing-vaccine-evidence-stops-moving-like-infrastructure",
+      "2026-04-24-the-dead-should-not-get-new-lines"
     ],
     "most_read": [
-      "2026-04-24-rubin-s-night-shift-is-turning-asteroid-discovery-into-a-systems-test",
-      "2026-04-24-the-camp-is-built-to-hold-people-the-sea-is-built-to-move-them",
-      "2026-04-24-a-stamp-should-not-be-a-bailout-plan",
-      "2026-04-24-the-courthouse-help-desk-is-becoming-an-ai-policy-lab",
-      "2026-04-24-the-new-minerals-bloc-is-being-built-in-customs-law-not-in-mines"
+      "2026-04-24-bird-flu-s-new-map-is-built-from-sewers-silos-and-lab-meetings",
+      "2026-04-24-the-border-bundle-is-now-a-regional-balance-sheet",
+      "2026-04-24-a-tornado-warning-is-labor-not-just-data",
+      "2026-04-24-the-meeting-is-in-session-so-is-the-ai-stack",
+      "2026-04-24-repair-time-is-the-new-fault-line-in-taiwan-s-cable-deterrence"
     ],
     "editors_picks": [
-      "2026-04-24-the-indie-movie-run-is-becoming-a-curated-event-not-a-market-norm",
-      "2026-04-24-concert-tickets-are-still-a-culture-tax-the-monopoly-verdict-just-made-that-harder-to-deny",
-      "2026-04-24-the-work-between-the-box-and-the-search-bar",
-      "2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-congress-to-state-ballots"
+      "2026-04-24-the-loan-form-not-the-print-is-becoming-repertory-cinema-s-scarce-asset",
+      "2026-04-24-youtube-wants-to-own-the-hours-you-only-half-watch-and-the-audio-business-shows-why",
+      "2026-04-24-at-the-postmark-table-a-mail-hobby-turns-into-event-labor",
+      "2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency-s-paper-trail"
     ],
     "latest": [
-      "2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency-s-paper-trail",
-      "2026-04-24-coachella-s-new-middle-class-is-on-layaway",
-      "2026-04-24-the-bug-ledger-is-breaking-and-security-teams-are-rewriting-the-rules",
-      "2026-04-24-the-housing-bill-keeps-growing-even-when-the-mortgage-doesn-t",
-      "2026-04-24-lunch-debt-is-back-in-the-school-budget-fight-and-the-cafeteria-is-where-the-system-shows-its-seams",
-      "2026-04-24-candida-auris-is-turning-the-patient-handoff-into-an-infection-control-instrument",
-      "2026-04-24-the-childproof-internet-is-teaching-adults-to-show-their-papers",
-      "2026-04-24-rubin-s-night-shift-is-turning-asteroid-discovery-into-a-systems-test",
-      "2026-04-24-the-camp-is-built-to-hold-people-the-sea-is-built-to-move-them",
-      "2026-04-24-a-stamp-should-not-be-a-bailout-plan",
-      "2026-04-24-the-courthouse-help-desk-is-becoming-an-ai-policy-lab",
-      "2026-04-24-the-new-minerals-bloc-is-being-built-in-customs-law-not-in-mines"
+      "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus",
+      "2026-04-24-the-hold-list-is-a-labor-story-illinois-is-trying-to-rewrite-the-terms-of-digital-reading",
+      "2026-04-24-open-source-security-s-new-scarcity-is-judgment",
+      "2026-04-24-the-refund-is-becoming-a-debt-collection-battleground",
+      "2026-04-24-when-enrollment-falls-the-hardest-school-cuts-hit-the-places-that-still-have-to-show-up-every-morning",
+      "2026-04-24-when-a-cdc-bulletin-goes-missing-vaccine-evidence-stops-moving-like-infrastructure",
+      "2026-04-24-the-dead-should-not-get-new-lines",
+      "2026-04-24-bird-flu-s-new-map-is-built-from-sewers-silos-and-lab-meetings",
+      "2026-04-24-the-border-bundle-is-now-a-regional-balance-sheet",
+      "2026-04-24-a-tornado-warning-is-labor-not-just-data",
+      "2026-04-24-the-meeting-is-in-session-so-is-the-ai-stack",
+      "2026-04-24-repair-time-is-the-new-fault-line-in-taiwan-s-cable-deterrence"
     ],
     "daily": [
-      "2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency-s-paper-trail",
-      "2026-04-24-coachella-s-new-middle-class-is-on-layaway",
-      "2026-04-24-the-bug-ledger-is-breaking-and-security-teams-are-rewriting-the-rules",
-      "2026-04-24-the-housing-bill-keeps-growing-even-when-the-mortgage-doesn-t",
-      "2026-04-24-lunch-debt-is-back-in-the-school-budget-fight-and-the-cafeteria-is-where-the-system-shows-its-seams",
-      "2026-04-24-candida-auris-is-turning-the-patient-handoff-into-an-infection-control-instrument",
-      "2026-04-24-the-childproof-internet-is-teaching-adults-to-show-their-papers",
-      "2026-04-24-rubin-s-night-shift-is-turning-asteroid-discovery-into-a-systems-test",
-      "2026-04-24-the-camp-is-built-to-hold-people-the-sea-is-built-to-move-them",
-      "2026-04-24-a-stamp-should-not-be-a-bailout-plan"
+      "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus",
+      "2026-04-24-the-hold-list-is-a-labor-story-illinois-is-trying-to-rewrite-the-terms-of-digital-reading",
+      "2026-04-24-open-source-security-s-new-scarcity-is-judgment",
+      "2026-04-24-the-refund-is-becoming-a-debt-collection-battleground",
+      "2026-04-24-when-enrollment-falls-the-hardest-school-cuts-hit-the-places-that-still-have-to-show-up-every-morning",
+      "2026-04-24-when-a-cdc-bulletin-goes-missing-vaccine-evidence-stops-moving-like-infrastructure",
+      "2026-04-24-the-dead-should-not-get-new-lines",
+      "2026-04-24-bird-flu-s-new-map-is-built-from-sewers-silos-and-lab-meetings",
+      "2026-04-24-the-border-bundle-is-now-a-regional-balance-sheet",
+      "2026-04-24-a-tornado-warning-is-labor-not-just-data"
     ],
     "breaking": [
-      "2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency-s-paper-trail",
-      "2026-04-24-coachella-s-new-middle-class-is-on-layaway",
-      "2026-04-24-the-bug-ledger-is-breaking-and-security-teams-are-rewriting-the-rules",
-      "2026-04-24-the-housing-bill-keeps-growing-even-when-the-mortgage-doesn-t",
-      "2026-04-24-lunch-debt-is-back-in-the-school-budget-fight-and-the-cafeteria-is-where-the-system-shows-its-seams",
-      "2026-04-24-candida-auris-is-turning-the-patient-handoff-into-an-infection-control-instrument",
-      "2026-04-24-the-childproof-internet-is-teaching-adults-to-show-their-papers",
-      "2026-04-24-rubin-s-night-shift-is-turning-asteroid-discovery-into-a-systems-test",
-      "2026-04-24-the-camp-is-built-to-hold-people-the-sea-is-built-to-move-them",
-      "2026-04-24-a-stamp-should-not-be-a-bailout-plan",
-      "2026-04-24-the-courthouse-help-desk-is-becoming-an-ai-policy-lab",
-      "2026-04-24-the-new-minerals-bloc-is-being-built-in-customs-law-not-in-mines"
+      "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus",
+      "2026-04-24-the-hold-list-is-a-labor-story-illinois-is-trying-to-rewrite-the-terms-of-digital-reading",
+      "2026-04-24-open-source-security-s-new-scarcity-is-judgment",
+      "2026-04-24-the-refund-is-becoming-a-debt-collection-battleground",
+      "2026-04-24-when-enrollment-falls-the-hardest-school-cuts-hit-the-places-that-still-have-to-show-up-every-morning",
+      "2026-04-24-when-a-cdc-bulletin-goes-missing-vaccine-evidence-stops-moving-like-infrastructure",
+      "2026-04-24-the-dead-should-not-get-new-lines",
+      "2026-04-24-bird-flu-s-new-map-is-built-from-sewers-silos-and-lab-meetings",
+      "2026-04-24-the-border-bundle-is-now-a-regional-balance-sheet",
+      "2026-04-24-a-tornado-warning-is-labor-not-just-data",
+      "2026-04-24-the-meeting-is-in-session-so-is-the-ai-stack",
+      "2026-04-24-repair-time-is-the-new-fault-line-in-taiwan-s-cable-deterrence"
     ],
     "desk_pulse": [
       {
-        "count": 25,
-        "latest_ts": 1776997980.0,
-        "story_id": "2026-04-24-rubin-s-night-shift-is-turning-asteroid-discovery-into-a-systems-test",
+        "count": 26,
+        "latest_ts": 1777025340.0,
+        "story_id": "2026-04-24-bird-flu-s-new-map-is-built-from-sewers-silos-and-lab-meetings",
         "section": "Science"
       },
       {
-        "count": 25,
-        "latest_ts": 1776997980.0,
-        "story_id": "2026-04-24-the-courthouse-help-desk-is-becoming-an-ai-policy-lab",
+        "count": 26,
+        "latest_ts": 1777025340.0,
+        "story_id": "2026-04-24-the-meeting-is-in-session-so-is-the-ai-stack",
         "section": "AI"
       },
       {
-        "count": 24,
-        "latest_ts": 1776997980.0,
-        "story_id": "2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency-s-paper-trail",
+        "count": 25,
+        "latest_ts": 1777025340.0,
+        "story_id": "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus",
         "section": "Politics"
       },
       {
-        "count": 24,
-        "latest_ts": 1776997980.0,
-        "story_id": "2026-04-24-the-housing-bill-keeps-growing-even-when-the-mortgage-doesn-t",
+        "count": 25,
+        "latest_ts": 1777025340.0,
+        "story_id": "2026-04-24-the-refund-is-becoming-a-debt-collection-battleground",
         "section": "Economics"
       },
       {
-        "count": 24,
-        "latest_ts": 1776997980.0,
-        "story_id": "2026-04-24-the-work-between-the-box-and-the-search-bar",
+        "count": 25,
+        "latest_ts": 1777025340.0,
+        "story_id": "2026-04-24-at-the-postmark-table-a-mail-hobby-turns-into-event-labor",
         "section": "Niche"
       },
       {
-        "count": 21,
-        "latest_ts": 1776997980.0,
-        "story_id": "2026-04-24-the-camp-is-built-to-hold-people-the-sea-is-built-to-move-them",
+        "count": 22,
+        "latest_ts": 1777025340.0,
+        "story_id": "2026-04-24-the-border-bundle-is-now-a-regional-balance-sheet",
         "section": "World"
       },
       {
-        "count": 21,
-        "latest_ts": 1776997980.0,
-        "story_id": "2026-04-24-the-new-minerals-bloc-is-being-built-in-customs-law-not-in-mines",
+        "count": 22,
+        "latest_ts": 1777025340.0,
+        "story_id": "2026-04-24-repair-time-is-the-new-fault-line-in-taiwan-s-cable-deterrence",
         "section": "Geopolitics"
       },
       {
-        "count": 20,
-        "latest_ts": 1776997980.0,
-        "story_id": "2026-04-24-the-bug-ledger-is-breaking-and-security-teams-are-rewriting-the-rules",
+        "count": 21,
+        "latest_ts": 1777025340.0,
+        "story_id": "2026-04-24-open-source-security-s-new-scarcity-is-judgment",
         "section": "Technology"
       },
       {
-        "count": 18,
-        "latest_ts": 1776997980.0,
-        "story_id": "2026-04-24-the-indie-movie-run-is-becoming-a-curated-event-not-a-market-norm",
+        "count": 19,
+        "latest_ts": 1777025340.0,
+        "story_id": "2026-04-24-the-loan-form-not-the-print-is-becoming-repertory-cinema-s-scarce-asset",
         "section": "Film"
       },
       {
-        "count": 18,
-        "latest_ts": 1776997980.0,
-        "story_id": "2026-04-24-concert-tickets-are-still-a-culture-tax-the-monopoly-verdict-just-made-that-harder-to-deny",
+        "count": 19,
+        "latest_ts": 1777025340.0,
+        "story_id": "2026-04-24-youtube-wants-to-own-the-hours-you-only-half-watch-and-the-audio-business-shows-why",
         "section": "Pop Culture"
       }
     ]
