@@ -52,7 +52,7 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           STORY_COUNT: ${{ github.event.inputs.story_count || '15' }}
           SITE_BASE_URL: https://thepress.live
-          OPENAI_MODEL: gpt-5.4-mini
+          OPENAI_MODEL: gpt-5.4
 
           # Keep the long-form standard, but make sourcing sane.
           # The hard gate now requires 2,500+ words and 20+ distinct HTTPS sources.
@@ -65,6 +65,12 @@ jobs:
           MAX_OUTPUT_TOKENS: "24000"
           MAX_STORY_COUNT: "30"
           STRICT_QUALITY_GATE: "1"
+          RECENT_TOPIC_LOOKBACK: "120"
+          RECENT_TOPIC_SIMILARITY_LIMIT: "0.34"
+          ISSUE_TOPIC_SIMILARITY_LIMIT: "0.26"
+          VISUAL_CONCEPT_SIMILARITY_LIMIT: "0.32"
+          TITLE_RHYTHM_SIMILARITY_LIMIT: "0.64"
+          TITLE_STYLE_GATE: "1"
         run: |
           python studio/automation/preserve_old_and_new_issue_v34567.py
 
@@ -88,7 +94,8 @@ jobs:
           AI_GALLERY_IMAGES_PER_ARTICLE: "0"
           AI_UPDATE_LINKED_CARDS: "1"
           AI_CARD_UPDATE_SCOPE: front_pages
-          AI_ART_PROMPT_MODEL: gpt-5.4-mini
+          AI_ART_PROMPT_MODEL: gpt-5.4
+          AI_REGENERATE_AI_THUMBNAILS: "1"
         run: |
           python studio/automation/ai_thumbnail_backfill.py
 
@@ -106,6 +113,7 @@ jobs:
             - each article must pass the strict quality gate with 2,500+ words
             - each article must include 20+ distinct live HTTPS source URLs
             - generates one high-quality GPT Image 2 thumbnail per new article
+            - rejects near-duplicate topics, formulaic headlines, and repeated thumbnail clichés
             - does not generate article galleries/photos
             - targets only the newest articles listed in daily-latest.json
             - does not backfill or rewrite the historical website

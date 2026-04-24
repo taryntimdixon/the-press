@@ -54,7 +54,8 @@ jobs:
           AI_GALLERY_IMAGES_PER_ARTICLE: "0"
           AI_UPDATE_LINKED_CARDS: "1"
           AI_CARD_UPDATE_SCOPE: front_pages
-          AI_ART_PROMPT_MODEL: gpt-5.4-mini
+          AI_ART_PROMPT_MODEL: gpt-5.4
+          AI_REGENERATE_AI_THUMBNAILS: "1"
         run: |
           python studio/automation/ai_thumbnail_backfill.py
 

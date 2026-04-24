@@ -41,7 +41,8 @@ jobs:
           AI_GALLERY_MIN_IMAGES: "6"
           AI_GALLERY_MAX_IMAGES: "10"
           AI_GALLERY_IMAGES_PER_ARTICLE: "8"
-          AI_ART_PROMPT_MODEL: gpt-5.4-mini
+          AI_ART_PROMPT_MODEL: gpt-5.4
+          AI_REGENERATE_AI_THUMBNAILS: "1"
         run: |
           python studio/automation/ai_thumbnail_backfill.py
 

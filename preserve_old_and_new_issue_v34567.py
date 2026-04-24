@@ -277,7 +277,7 @@ def request_payload(client: OpenAI, prompt: str) -> dict[str, Any]:
         for attempt in range(2):
             try:
                 response = client.responses.create(
-                    model=os.getenv("OPENAI_MODEL", "gpt-5.4-mini"),
+                    model=os.getenv("OPENAI_MODEL", "gpt-5.4"),
                     tools=[{"type": tool_type}],
                     input=prompt,
                     max_output_tokens=MAX_OUTPUT_TOKENS,
