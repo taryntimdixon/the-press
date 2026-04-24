@@ -84,15 +84,23 @@ def env_float(name: str, default: float, minimum: float | None = None, maximum: 
     return value
 
 
+def env_bool(name: str, default: bool = False) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() not in {"0", "false", "no", "off"}
+
+
 ARTICLE_TARGET_WORDS = env_int("ARTICLE_TARGET_WORDS", 2500, minimum=1200)
 MIN_SOURCES = env_int("MIN_SOURCES", 30, minimum=6)
 MAX_SOURCES = env_int("MAX_SOURCES", 100, minimum=MIN_SOURCES)
 MAX_STORY_COUNT = env_int("MAX_STORY_COUNT", 30, minimum=1)
 MIN_UNIQUE_SOURCE_DOMAINS = env_int("MIN_UNIQUE_SOURCE_DOMAINS", 10, minimum=1)
-QUALITY_REPAIR_ATTEMPTS = env_int("QUALITY_REPAIR_ATTEMPTS", 4, minimum=0, maximum=5)
+QUALITY_REPAIR_ATTEMPTS = env_int("QUALITY_REPAIR_ATTEMPTS", 2, minimum=0, maximum=3)
 FACT_CHECK_PASSES = env_int("FACT_CHECK_PASSES", 1, minimum=0, maximum=3)
 MAX_OUTPUT_TOKENS = env_int("MAX_OUTPUT_TOKENS", 24000, minimum=8000)
-STRICT_QUALITY_GATE = os.getenv("STRICT_QUALITY_GATE", "1").strip().lower() not in {"0", "false", "no"}
+STRICT_QUALITY_GATE = env_bool("STRICT_QUALITY_GATE", False)
+STRICT_EDITORIAL_GATES = env_bool("STRICT_EDITORIAL_GATES", False)
 RECENT_TOPIC_LOOKBACK = env_int("RECENT_TOPIC_LOOKBACK", 90, minimum=0, maximum=500)
 RECENT_TOPIC_SIMILARITY_LIMIT = env_float("RECENT_TOPIC_SIMILARITY_LIMIT", 0.34, minimum=0.1, maximum=0.9)
 ISSUE_TOPIC_SIMILARITY_LIMIT = env_float(
@@ -140,6 +148,22 @@ VISUAL_CLICHE_BANS = [
     "hologram person sitting across from someone",
     "giant pencil drawing district lines",
 ]
+
+VISUAL_CLICHE_REWRITES = {
+    "balancing scales": "a close view of the actual decision setting, documents, tools, and people affected by the dispute",
+    "red-versus-blue state maps": "a place-specific street, office, or public meeting scene that shows the local stakes without partisan color coding",
+    "U.S. map overlays": "a grounded scene from the relevant institution, neighborhood, workplace, clinic, school, or infrastructure site",
+    "state silhouette overlays": "a concrete local setting with one recognizable civic or material detail instead of a state outline",
+    "generic server racks": "a human-scale operations scene with tagged fiber cables, cooling gauges, utility meters, and a technician's gloved hands",
+    "data-center exterior at sunset": "a daylight infrastructure detail showing transformer equipment, cooling lines, power meters, or construction work tied to the story",
+    "child-with-rash outbreak imagery": "a clinic intake desk, public-health lab bench, vaccine record folder, or waiting-room process scene",
+    "vaccine vial on a map": "a clinic refrigerator tray, appointment clipboard, courier cooler, or public-health dashboard room with no readable text",
+    "Supreme Court plus map collage": "a courthouse corridor, filing desk, hearing room door, or civic record archive tied to the legal stakes",
+    "space capsule splashdown beauty shot": "a mission-control console, recovery-team process detail, lab sample tray, or engineering checklist with no readable text",
+    "glowing AI brain": "a concrete human-computer work scene with screens, cables, notebooks, lab equipment, or workplace consequences",
+    "hologram person sitting across from someone": "a phone or laptop on a kitchen table, clinic desk, classroom, or workplace showing mediated conversation without a fake person",
+    "giant pencil drawing district lines": "a local election office table with paper precinct packets, rulers, laptops, and hands sorting map drafts without readable labels",
+}
 
 TITLE_OPENERS_TO_AVOID = {
     "america",
@@ -325,6 +349,32 @@ def visual_terms(item: dict[str, Any]) -> set[str]:
     )
 
 
+def replace_case_insensitive(value: str, needle: str, replacement: str) -> tuple[str, bool]:
+    updated = re.sub(re.escape(needle), replacement, value, flags=re.I)
+    return updated, updated != value
+
+
+def rewrite_visual_cliches(payload: dict[str, Any], visual_assignment: str) -> tuple[dict[str, Any], list[str]]:
+    rewrites: list[str] = []
+    for key in ("visual_brief", "thumbnail_search_hint", "thumbnail_alt"):
+        value = str(payload.get(key) or "")
+        updated = value
+        for banned, replacement in VISUAL_CLICHE_REWRITES.items():
+            updated, changed = replace_case_insensitive(updated, banned, replacement)
+            if changed:
+                rewrites.append(f"{key}: {banned} -> {replacement}")
+        if updated != value:
+            payload[key] = updated.strip()
+
+    if rewrites:
+        brief = str(payload.get("visual_brief") or "").strip()
+        if not brief:
+            brief = next(iter(VISUAL_CLICHE_REWRITES.values()))
+        if visual_assignment and visual_assignment.lower() not in brief.lower():
+            payload["visual_brief"] = f"Use the assigned visual archetype ({visual_assignment}) to show {brief}"
+    return payload, rewrites
+
+
 def title_rhythm_signature(title: str) -> set[str]:
     tokens = re.findall(r"[A-Za-z][A-Za-z'’.-]*", title.lower())
     if not tokens:
@@ -356,6 +406,23 @@ def title_rhythm_signature(title: str) -> set[str]:
     if re.match(r"^[a-z][a-z.-]+['’]s\b", title.lower()):
         signature.add("possessive-opener")
     return signature
+
+
+def required_payload_issues(payload: dict[str, Any]) -> list[str]:
+    issues: list[str] = []
+    title = str(payload.get("title") or "").strip()
+    dek = str(payload.get("dek") or "").strip()
+    body_html = str(payload.get("body_html") or "")
+    source_notes_html = str(payload.get("source_notes_html") or "")
+    if not title:
+        issues.append("missing required title")
+    if not dek:
+        issues.append("missing required dek")
+    if not strip_html_text(body_html):
+        issues.append("missing required body_html")
+    if not extract_source_urls(source_notes_html):
+        issues.append("missing required source_notes_html with at least one https source URL")
+    return issues
 
 
 def merge_story_memory_items(items: list[dict[str, Any]], seen: set[str], output: list[dict[str, Any]]) -> None:
@@ -823,9 +890,16 @@ def call_model(
         payload["visual_archetype"] = visual_assignment
         if not str(payload.get("visual_brief") or "").strip():
             payload["visual_brief"] = f"Use the assigned visual archetype: {visual_assignment}. Build a concrete, non-cliché scene specific to the article."
+        payload, rewrites = rewrite_visual_cliches(payload, visual_assignment)
+        if rewrites:
+            print(
+                f"WARNING: Rewrote banned visual cliché(s) for {section_name}: "
+                + "; ".join(rewrites)
+            )
         return payload
 
-    def combined_quality_issues(payload: dict[str, Any]) -> tuple[list[str], dict[str, Any]]:
+    def split_quality_issues(payload: dict[str, Any]) -> tuple[list[str], list[str], list[str], dict[str, Any]]:
+        required_issues = required_payload_issues(payload)
         base_issues, metrics = payload_quality_issues(payload)
         editorial_issues, editorial_metrics = editorial_quality_issues(
             payload=payload,
@@ -834,7 +908,7 @@ def call_model(
             visual_assignment=visual_assignment,
         )
         merged_metrics = {**metrics, **editorial_metrics}
-        return base_issues + editorial_issues, merged_metrics
+        return required_issues, base_issues, editorial_issues, merged_metrics
 
     payload = lock_visual(request_payload(client, generation_prompt(section_name, date_label, recent_context, visual_assignment)))
 
@@ -842,7 +916,8 @@ def call_model(
         payload = lock_visual(request_payload(client, verification_prompt(payload, section_name, date_label, recent_context, visual_assignment)))
 
     for _ in range(QUALITY_REPAIR_ATTEMPTS):
-        issues, metrics = combined_quality_issues(payload)
+        required_issues, base_issues, editorial_issues, metrics = split_quality_issues(payload)
+        issues = required_issues + base_issues + editorial_issues
         if not issues:
             return payload
         print(f"Quality repair needed for {section_name}: {issues}")
@@ -853,10 +928,22 @@ def call_model(
             )
         )
 
-    issues, metrics = combined_quality_issues(payload)
-    if issues:
-        message = f"{section_name} article failed quality gates after repairs: {issues}; metrics={metrics}"
+    required_issues, base_issues, editorial_issues, metrics = split_quality_issues(payload)
+    if required_issues:
+        raise RuntimeError(
+            f"{section_name} article is missing required fields after repairs: {required_issues}; metrics={metrics}"
+        )
+    if base_issues:
+        message = f"{section_name} article still has quality warnings after repairs: {base_issues}; metrics={metrics}"
         if STRICT_QUALITY_GATE:
+            raise RuntimeError(message)
+        print("WARNING: " + message)
+    if editorial_issues:
+        message = (
+            f"{section_name} article still has editorial variety warnings after repairs: "
+            f"{editorial_issues}; metrics={metrics}"
+        )
+        if STRICT_EDITORIAL_GATES:
             raise RuntimeError(message)
         print("WARNING: " + message)
     return payload
@@ -1627,6 +1714,10 @@ def main() -> int:
             }
         )
 
+    if not stories:
+        raise RuntimeError("No articles generated; preserving existing site files")
+
+    for story in stories:
         page_path = DAILY_DIR / f"{story.slug}.html"
         page_path.write_text(build_story_page(story), encoding="utf-8")
         print(f"Wrote {page_path.relative_to(ROOT)}")

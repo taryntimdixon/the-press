@@ -92,6 +92,38 @@ AI_ART_MAX_ARTICLES = env_int("AI_ART_MAX_ARTICLES", 15, minimum=0)
 AI_UPDATE_LINKED_CARDS = env_bool("AI_UPDATE_LINKED_CARDS", True)
 AI_CARD_UPDATE_SCOPE = os.getenv("AI_CARD_UPDATE_SCOPE", "front_pages").strip().lower() or "front_pages"
 
+BANNED_VISUAL_TROPES = [
+    "balancing scales",
+    "red-versus-blue state maps",
+    "U.S. map overlays",
+    "floating state silhouettes",
+    "generic server racks",
+    "data-center exterior at sunset",
+    "child-with-rash outbreak imagery",
+    "vaccine vial on a map",
+    "Supreme Court plus map collage",
+    "space capsule splashdown beauty shot",
+    "glowing AI brain",
+    "hologram person sitting across from someone",
+    "giant pencil drawing district lines",
+]
+
+VISUAL_CLICHE_REWRITES = {
+    "balancing scales": "a close view of the actual decision setting, documents, tools, and people affected by the dispute",
+    "red-versus-blue state maps": "a place-specific street, office, or public meeting scene that shows the local stakes without partisan color coding",
+    "U.S. map overlays": "a grounded scene from the relevant institution, neighborhood, workplace, clinic, school, or infrastructure site",
+    "floating state silhouettes": "a concrete local setting with one recognizable civic or material detail instead of a floating state outline",
+    "generic server racks": "a human-scale operations scene with tagged fiber cables, cooling gauges, utility meters, and a technician's gloved hands",
+    "data-center exterior at sunset": "a daylight infrastructure detail showing transformer equipment, cooling lines, power meters, or construction work tied to the story",
+    "child-with-rash outbreak imagery": "a clinic intake desk, public-health lab bench, vaccine record folder, or waiting-room process scene",
+    "vaccine vial on a map": "a clinic refrigerator tray, appointment clipboard, courier cooler, or public-health dashboard room with no readable text",
+    "Supreme Court plus map collage": "a courthouse corridor, filing desk, hearing room door, or civic record archive tied to the legal stakes",
+    "space capsule splashdown beauty shot": "a mission-control console, recovery-team process detail, lab sample tray, or engineering checklist with no readable text",
+    "glowing AI brain": "a concrete human-computer work scene with screens, cables, notebooks, lab equipment, or workplace consequences",
+    "hologram person sitting across from someone": "a phone or laptop on a kitchen table, clinic desk, classroom, or workplace showing mediated conversation without a fake person",
+    "giant pencil drawing district lines": "a local election office table with paper precinct packets, rulers, laptops, and hands sorting map drafts without readable labels",
+}
+
 
 def parse_image_size(size: str) -> tuple[int, int]:
     match = re.match(r"^(\d+)x(\d+)$", size.strip().lower())
@@ -184,6 +216,17 @@ def clean_text(value: str, max_len: int = 600) -> str:
     if len(text) <= max_len:
         return text
     return text[: max_len - 1].rstrip() + "…"
+
+
+def rewrite_visual_cliches_text(value: str) -> tuple[str, list[str]]:
+    updated = value or ""
+    rewrites: list[str] = []
+    for banned, replacement in VISUAL_CLICHE_REWRITES.items():
+        next_value = re.sub(re.escape(banned), replacement, updated, flags=re.I)
+        if next_value != updated:
+            rewrites.append(banned)
+            updated = next_value
+    return updated.strip(), rewrites
 
 
 def path_from_img_src(src: str | None, html_path: Path) -> Path | None:
@@ -527,23 +570,10 @@ def prompt_for_article(
     visual_archetype: str,
     visual_brief: str,
 ) -> str:
-    banned = "; ".join(
-        [
-            "balancing scales",
-            "red-versus-blue state maps",
-            "U.S. map overlays",
-            "floating state silhouettes",
-            "generic server racks",
-            "data-center exterior at sunset",
-            "child-with-rash outbreak imagery",
-            "vaccine vial on a map",
-            "Supreme Court plus map collage",
-            "space capsule splashdown beauty shot",
-            "glowing AI brain",
-            "hologram person sitting across from someone",
-            "giant pencil drawing district lines",
-        ]
-    )
+    visual_brief, rewrites = rewrite_visual_cliches_text(visual_brief)
+    if rewrites:
+        print(f"WARNING: Rewrote banned thumbnail cliché(s) for {title}: {', '.join(rewrites)}")
+    banned = "; ".join(BANNED_VISUAL_TROPES)
     return f"""
 Create one premium 16:9 landscape GPT Image 2 thumbnail for a serious digital newspaper article.
 

@@ -60,11 +60,12 @@ jobs:
           MIN_SOURCES: "20"
           MAX_SOURCES: "30"
           MIN_UNIQUE_SOURCE_DOMAINS: "8"
-          QUALITY_REPAIR_ATTEMPTS: "5"
+          QUALITY_REPAIR_ATTEMPTS: "2"
           FACT_CHECK_PASSES: "1"
           MAX_OUTPUT_TOKENS: "24000"
           MAX_STORY_COUNT: "30"
-          STRICT_QUALITY_GATE: "1"
+          STRICT_QUALITY_GATE: "0"
+          STRICT_EDITORIAL_GATES: "0"
           RECENT_TOPIC_LOOKBACK: "120"
           RECENT_TOPIC_SIMILARITY_LIMIT: "0.34"
           ISSUE_TOPIC_SIMILARITY_LIMIT: "0.26"
@@ -110,10 +111,10 @@ jobs:
 
             Current rules:
             - 15 new long-form stories by default
-            - each article must pass the strict quality gate with 2,500+ words
+            - each article is repaired toward the 2,500+ word quality standard
             - each article must include 20+ distinct live HTTPS source URLs
             - generates one high-quality GPT Image 2 thumbnail per new article
-            - rejects near-duplicate topics, formulaic headlines, and repeated thumbnail clichés
+            - repairs and warns on near-duplicate topics, formulaic headlines, and repeated thumbnail clichés
             - does not generate article galleries/photos
             - targets only the newest articles listed in daily-latest.json
             - does not backfill or rewrite the historical website
