@@ -16,6 +16,7 @@ jobs:
   ai-thumbnail-backfill:
     runs-on: ubuntu-latest
     timeout-minutes: 180
+
     permissions:
       contents: write
       pull-requests: write
@@ -38,24 +39,31 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AI_THUMBNAIL_BACKFILL: "1"
+
           OPENAI_IMAGE_MODEL: gpt-image-2
           OPENAI_IMAGE_SIZE: 1536x864
           OPENAI_IMAGE_QUALITY: high
           OPENAI_IMAGE_FORMAT: jpeg
           OPENAI_IMAGE_COMPRESSION: "85"
+
           AI_ART_SCOPE: current_issue
           AI_ART_MAX_ARTICLES: ${{ github.event.inputs.article_cap || '15' }}
           AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
           AI_THUMBNAIL_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
+
           REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_ALL_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_DAILY_STORIES: "1"
+
           AI_ART_PACKAGE_BACKFILL: "0"
           AI_GALLERY_IMAGES_PER_ARTICLE: "0"
+
           AI_UPDATE_LINKED_CARDS: "1"
           AI_CARD_UPDATE_SCOPE: front_pages
           AI_ART_PROMPT_MODEL: gpt-5.4
-          AI_REGENERATE_AI_THUMBNAILS: "1"
+
+          # Reuse existing GPT Image thumbnails on reruns; new articles still generate thumbnails.
+          AI_REGENERATE_AI_THUMBNAILS: "0"
         run: |
           python studio/automation/ai_thumbnail_backfill.py
 
@@ -70,6 +78,7 @@ jobs:
 
             It should:
             - add one GPT Image 2 thumbnail per selected article
+            - reuse existing GPT Image thumbnails on reruns
             - update matching front-page, section, archive, and JSON image references
             - avoid article galleries/photos
             - avoid full-site historical backfill
