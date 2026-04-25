@@ -2544,8 +2544,8 @@ html.press-page-leaving body {
 }
 
 .masthead-with-logo .masthead-logo{
-  width:3.5rem;
-  height:3.5rem;
+  width:clamp(12rem, 26vw, 20rem);
+  height:auto;
   color:var(--accent);
   flex-shrink:0;
 }
@@ -2603,9 +2603,10 @@ html.press-page-leaving body {
   font-weight:800;
   letter-spacing:.14em;
   line-height:1.1;
+}
 .footer-brand .masthead-with-logo .masthead-logo{
-  width:2.5rem;
-  height:2.5rem;
+  width:clamp(8rem, 14vw, 11rem);
+  height:auto;
   color:var(--accent);
   flex-shrink:0;
 }
@@ -2626,8 +2627,8 @@ html.press-page-leaving body {
 
   .masthead .masthead-logo,
   .masthead-with-logo .masthead-logo{
-    width:2.5rem;
-    height:2.5rem;
+    width:clamp(9rem, 48vw, 14rem);
+    height:auto;
   }
 
   .masthead-tagline{
@@ -2651,8 +2652,8 @@ header.site-header,
 
 .masthead .masthead-logo,
 .masthead-with-logo .masthead-logo {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: clamp(12rem, 26vw, 20rem);
+  height: auto;
   flex-shrink: 0;
   object-fit: contain;
 }
