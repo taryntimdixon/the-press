@@ -3604,18 +3604,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setupSmoothNavigation() {
-    document.addEventListener('click', (event) => {
-      const navigation = findInternalNavigationTarget(event);
-      if (!navigation || prefersReducedMotion()) return;
-
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      createRipple(navigation.host, event);
-      root.classList.add('press-page-leaving');
-      window.setTimeout(() => {
-        window.location.href = navigation.url;
-      }, 170);
-    }, true);
+    return;
   }
 
   function enhanceCard(card) {

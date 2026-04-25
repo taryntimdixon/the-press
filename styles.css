@@ -2403,3 +2403,117 @@ body[class*="archive"] [data-press-reveal] {
   max-height: min(58vh, 560px);
   object-fit: cover;
 }
+
+.press-live-top-lead {
+  width: min(calc(100% - 2rem), var(--content));
+  margin: 0 auto 1rem;
+}
+
+.press-live-top-lead[hidden] {
+  display: none !important;
+}
+
+.press-live-top-lead__card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  animation: none !important;
+  transition: none !important;
+}
+
+.press-live-top-lead__media {
+  display: block;
+  background: #ece6da;
+}
+
+.press-live-top-lead__media img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  animation: none !important;
+  transition: none !important;
+}
+
+.press-live-top-lead__body {
+  padding: 0.95rem 1rem 1rem;
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+}
+
+.press-live-top-lead__kicker {
+  margin: 0;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.press-live-top-lead__title {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 2.4vw, 2.1rem);
+  line-height: 1.05;
+}
+
+.press-live-top-lead__summary {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.press-live-top-lead__meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.press-live-top-lead__actions {
+  margin: 0.15rem 0 0;
+}
+
+@media (max-width: 980px) {
+  .press-live-top-lead__card {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* NO_FLASH_OVERRIDE_START */
+html,
+body,
+.press-dynamic-page,
+.press-page-ready,
+.press-page-leaving,
+[data-press-reveal],
+.is-revealed,
+.press-micro-card,
+.story-card,
+.archive-card,
+.river-item,
+.lead-panel,
+.daily-card {
+  animation: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+html.press-page-leaving,
+html.press-page-leaving body {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.press-ink-ripple {
+  display: none !important;
+}
+/* NO_FLASH_OVERRIDE_END */

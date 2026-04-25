@@ -27,7 +27,7 @@
 <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="assets/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="assets/apple-touch-icon.png" rel="apple-touch-icon"/>
-<link href="styles.css" rel="stylesheet"/>
+<link href="styles.css?v=no-flash-live-lead-20260425" rel="stylesheet"/>
 <link href="site.webmanifest" rel="manifest"/>
 <link href="feed.xml" rel="alternate" title="The Press feed" type="application/rss+xml"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsMediaOrganization", "name": "The Press", "url": "https://thepress.live", "logo": "https://thepress.live/assets/favicon.svg", "slogan": "A digital newspaper built for sourced long-form reporting.", "publishingPrinciples": "https://thepress.live/standards.html", "correctionsPolicy": "https://thepress.live/corrections.html", "ethicsPolicy": "https://thepress.live/standards.html", "diversityPolicy": "https://thepress.live/about.html"}</script>
@@ -96,6 +96,7 @@
 </div>
 </section>
 <main class="page">
+<section id="press-live-top-lead" class="press-live-top-lead" data-live-top-lead aria-label="Latest lead story"></section>
 <section class="home-hero">
 <div class="home-hero__intro">
 <p class="eyebrow">Front page</p>
@@ -738,6 +739,88 @@
 <p class="footer-copy footer-copy--small">© <span data-year=""></span> The Press. Built as a static-first newsroom package.</p>
 </div>
 </footer>
-<script defer="" src="app.js"></script>
+<script defer="" src="app.js?v=no-flash-live-lead-20260425"></script>
+<script>
+(function () {
+  var mount = document.getElementById('press-live-top-lead');
+  if (!mount) return;
+
+  var storageKey = 'press-live-top-lead-last-url';
+
+  function escapeHtml(value) {
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function normalizeUrl(url) {
+    if (!url) return '#';
+    if (/^https?:\/\//i.test(url) || url.startsWith('/')) return url;
+    return url.replace(/^\.\//, '');
+  }
+
+  function chooseArticle(articles) {
+    if (!articles.length) return null;
+    var previous = sessionStorage.getItem(storageKey) || '';
+    var pool = articles.filter(function (item) {
+      return item.url !== previous;
+    });
+    var source = pool.length ? pool : articles;
+    return source[Math.floor(Math.random() * source.length)] || null;
+  }
+
+  function renderArticle(article) {
+    if (!article) {
+      mount.hidden = true;
+      return;
+    }
+
+    var safeTitle = escapeHtml(article.title);
+    var safeUrl = escapeHtml(normalizeUrl(article.url));
+    var safeImage = escapeHtml(article.image);
+    var safeSection = escapeHtml(article.section || 'Latest');
+    var safeSummary = escapeHtml(article.summary || article.dek || '');
+    var safePublished = escapeHtml(article.published || article.date || '');
+
+    mount.innerHTML =
+      '<article class="press-live-top-lead__card">' +
+      '<a class="press-live-top-lead__media" href="' + safeUrl + '">' +
+      '<img alt="' + safeTitle + '" loading="eager" decoding="async" src="' + safeImage + '">' +
+      '</a>' +
+      '<div class="press-live-top-lead__body">' +
+      '<p class="press-live-top-lead__kicker">Latest lead \u2022 ' + safeSection + '</p>' +
+      '<h2 class="press-live-top-lead__title"><a href="' + safeUrl + '">' + safeTitle + '</a></h2>' +
+      (safeSummary ? '<p class="press-live-top-lead__summary">' + safeSummary + '</p>' : '') +
+      (safePublished ? '<p class="press-live-top-lead__meta">' + safePublished + '</p>' : '') +
+      '<p class="press-live-top-lead__actions"><a class="button" href="' + safeUrl + '">Read story</a></p>' +
+      '</div>' +
+      '</article>';
+
+    mount.hidden = false;
+    sessionStorage.setItem(storageKey, article.url);
+  }
+
+  function hideOnFailure() {
+    mount.innerHTML = '';
+    mount.hidden = true;
+  }
+
+  fetch('daily-latest.json?ts=' + Date.now(), { cache: 'no-store' })
+    .then(function (response) {
+      if (!response.ok) throw new Error('Failed to load daily-latest.json');
+      return response.json();
+    })
+    .then(function (data) {
+      var articles = (data && Array.isArray(data.articles) ? data.articles : []).filter(function (item) {
+        return item && item.title && item.url && item.image;
+      });
+      renderArticle(chooseArticle(articles));
+    })
+    .catch(hideOnFailure);
+})();
+</script>
 </body>
 </html>
