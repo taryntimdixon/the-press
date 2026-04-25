@@ -22,6 +22,7 @@ jobs:
   preserve-and-append:
     runs-on: ubuntu-latest
     timeout-minutes: 360
+
     permissions:
       contents: write
       pull-requests: write
@@ -55,17 +56,19 @@ jobs:
           OPENAI_MODEL: gpt-5.4
 
           # Keep the long-form standard, but make sourcing sane.
-          # The hard gate now requires 2,500+ words and 20+ distinct HTTPS sources.
+          # The hard gate requires 2,500+ words and 20+ distinct HTTPS sources.
           ARTICLE_TARGET_WORDS: "2500"
           MIN_SOURCES: "20"
           MAX_SOURCES: "30"
           MIN_UNIQUE_SOURCE_DOMAINS: "8"
+
           QUALITY_REPAIR_ATTEMPTS: "2"
           FACT_CHECK_PASSES: "1"
           MAX_OUTPUT_TOKENS: "24000"
           MAX_STORY_COUNT: "30"
           STRICT_QUALITY_GATE: "0"
           STRICT_EDITORIAL_GATES: "0"
+
           RECENT_TOPIC_LOOKBACK: "120"
           RECENT_TOPIC_SIMILARITY_LIMIT: "0.34"
           ISSUE_TOPIC_SIMILARITY_LIMIT: "0.26"
@@ -79,24 +82,31 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AI_THUMBNAIL_BACKFILL: "1"
+
           OPENAI_IMAGE_MODEL: gpt-image-2
           OPENAI_IMAGE_SIZE: 1536x864
           OPENAI_IMAGE_QUALITY: high
           OPENAI_IMAGE_FORMAT: jpeg
           OPENAI_IMAGE_COMPRESSION: "85"
+
           AI_ART_SCOPE: current_issue
           AI_ART_MAX_ARTICLES: ${{ github.event.inputs.article_cap || '15' }}
           AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
           AI_THUMBNAIL_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
+
           REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_ALL_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_DAILY_STORIES: "1"
+
           AI_ART_PACKAGE_BACKFILL: "0"
           AI_GALLERY_IMAGES_PER_ARTICLE: "0"
+
           AI_UPDATE_LINKED_CARDS: "1"
           AI_CARD_UPDATE_SCOPE: front_pages
           AI_ART_PROMPT_MODEL: gpt-5.4
-          AI_REGENERATE_AI_THUMBNAILS: "1"
+
+          # Reuse existing GPT Image thumbnails on reruns; new articles still generate thumbnails.
+          AI_REGENERATE_AI_THUMBNAILS: "0"
         run: |
           python studio/automation/ai_thumbnail_backfill.py
 
@@ -114,6 +124,7 @@ jobs:
             - each article is repaired toward the 2,500+ word quality standard
             - each article must include 20+ distinct live HTTPS source URLs
             - generates one high-quality GPT Image 2 thumbnail per new article
+            - reuses existing GPT Image thumbnails on reruns
             - repairs and warns on near-duplicate topics, formulaic headlines, and repeated thumbnail clichés
             - does not generate article galleries/photos
             - targets only the newest articles listed in daily-latest.json
