@@ -2667,7 +2667,3 @@ body.page-home .masthead.masthead-with-logo .masthead-logo {
   width: clamp(18rem, 42vw, 30rem) !important;
   height: auto !important;
 }
-
-body.page-home .masthead.masthead-with-logo {
-  margin-left: 0.65rem !important;
-}
