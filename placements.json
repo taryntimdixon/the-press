@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-25T00:34:58.119714+00:00",
+  "generated_at": "2026-04-25T21:14:29.490837+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,128 +9,128 @@
   },
   "home": {
     "hero": [
-      "2026-04-24-the-postmark-is-no-longer-the-whole-story",
-      "2026-04-24-the-queue-looks-cleaner-now-the-work-of-letting-people-in-has-not-changed-hands",
-      "2026-04-24-the-cheap-box-at-the-edge-has-become-a-policy-problem",
-      "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze"
+      "2026-04-25-the-complaint-window-is-moving-inside-the-agency",
+      "2026-04-25-the-voice-track-has-become-a-labor-contract",
+      "2026-04-25-a-47-day-clock-lands-on-the-web-s-trust-desk",
+      "2026-04-25-the-harvest-wage-fight-has-reached-the-produce-cooler"
     ],
     "secondary": [
-      "2026-04-24-the-ride-written-into-the-iep-is-becoming-a-school-system-s-hardest-morning-test",
-      "2026-04-24-the-skin-test-the-x-ray-van-and-the-return-of-tuberculosis-work",
-      "2026-04-24-the-gift-needs-guardrails"
+      "2026-04-25-the-first-bell-now-rings-at-the-phone-pouch",
+      "2026-04-25-the-cheese-was-aged-the-warning-still-had-to-catch-up",
+      "2026-04-25-a-headband-should-not-own-the-quietest-room"
     ],
     "most_read": [
-      "2026-04-24-malaria-vaccines-have-reached-the-clinic-ledger-stage",
-      "2026-04-24-the-stamp-is-gone-the-friction-is-not",
-      "2026-04-24-a-real-heat-rule-would-put-the-shift-schedule-on-the-side-of-the-body",
-      "2026-04-24-the-note-is-getting-smarter-the-waiting-room-is-getting-more-expensive",
-      "2026-04-24-the-loan-is-large-the-harder-test-is-where-europe-can-actually-build-deterrence"
+      "2026-04-25-the-atlantic-current-warning-is-becoming-an-instrument-test",
+      "2026-04-25-chadian-boots-put-haiti-s-crisis-on-a-wider-ledger",
+      "2026-04-25-the-brand-checklist-should-not-erase-the-boss",
+      "2026-04-25-a-batch-record-met-an-ai-agent-fda-asked-who-checked-it",
+      "2026-04-25-syunik-s-42-kilometers-move-onto-washington-s-infrastructure-desk"
     ],
     "editors_picks": [
-      "2026-04-24-the-ballot-has-a-progress-bar-now",
-      "2026-04-24-coachella-s-second-venue-is-the-living-room",
-      "2026-04-24-before-an-orchid-wins-anything-someone-has-to-make-the-name-hold",
-      "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus"
+      "2026-04-25-the-animation-peg-bar-enters-california-s-subsidy-file",
+      "2026-04-25-the-studio-archive-is-now-a-merger-docket",
+      "2026-04-25-a-violin-bow-now-has-to-prove-its-tree",
+      "2026-04-24-the-postmark-is-no-longer-the-whole-story"
     ],
     "latest": [
-      "2026-04-24-the-postmark-is-no-longer-the-whole-story",
-      "2026-04-24-the-queue-looks-cleaner-now-the-work-of-letting-people-in-has-not-changed-hands",
-      "2026-04-24-the-cheap-box-at-the-edge-has-become-a-policy-problem",
-      "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze",
-      "2026-04-24-the-ride-written-into-the-iep-is-becoming-a-school-system-s-hardest-morning-test",
-      "2026-04-24-the-skin-test-the-x-ray-van-and-the-return-of-tuberculosis-work",
-      "2026-04-24-the-gift-needs-guardrails",
-      "2026-04-24-malaria-vaccines-have-reached-the-clinic-ledger-stage",
-      "2026-04-24-the-stamp-is-gone-the-friction-is-not",
-      "2026-04-24-a-real-heat-rule-would-put-the-shift-schedule-on-the-side-of-the-body",
-      "2026-04-24-the-note-is-getting-smarter-the-waiting-room-is-getting-more-expensive",
-      "2026-04-24-the-loan-is-large-the-harder-test-is-where-europe-can-actually-build-deterrence"
+      "2026-04-25-the-complaint-window-is-moving-inside-the-agency",
+      "2026-04-25-the-voice-track-has-become-a-labor-contract",
+      "2026-04-25-a-47-day-clock-lands-on-the-web-s-trust-desk",
+      "2026-04-25-the-harvest-wage-fight-has-reached-the-produce-cooler",
+      "2026-04-25-the-first-bell-now-rings-at-the-phone-pouch",
+      "2026-04-25-the-cheese-was-aged-the-warning-still-had-to-catch-up",
+      "2026-04-25-a-headband-should-not-own-the-quietest-room",
+      "2026-04-25-the-atlantic-current-warning-is-becoming-an-instrument-test",
+      "2026-04-25-chadian-boots-put-haiti-s-crisis-on-a-wider-ledger",
+      "2026-04-25-the-brand-checklist-should-not-erase-the-boss",
+      "2026-04-25-a-batch-record-met-an-ai-agent-fda-asked-who-checked-it",
+      "2026-04-25-syunik-s-42-kilometers-move-onto-washington-s-infrastructure-desk"
     ],
     "daily": [
-      "2026-04-24-the-postmark-is-no-longer-the-whole-story",
-      "2026-04-24-the-queue-looks-cleaner-now-the-work-of-letting-people-in-has-not-changed-hands",
-      "2026-04-24-the-cheap-box-at-the-edge-has-become-a-policy-problem",
-      "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze",
-      "2026-04-24-the-ride-written-into-the-iep-is-becoming-a-school-system-s-hardest-morning-test",
-      "2026-04-24-the-skin-test-the-x-ray-van-and-the-return-of-tuberculosis-work",
-      "2026-04-24-the-gift-needs-guardrails",
-      "2026-04-24-malaria-vaccines-have-reached-the-clinic-ledger-stage",
-      "2026-04-24-the-stamp-is-gone-the-friction-is-not",
-      "2026-04-24-a-real-heat-rule-would-put-the-shift-schedule-on-the-side-of-the-body"
+      "2026-04-25-the-complaint-window-is-moving-inside-the-agency",
+      "2026-04-25-the-voice-track-has-become-a-labor-contract",
+      "2026-04-25-a-47-day-clock-lands-on-the-web-s-trust-desk",
+      "2026-04-25-the-harvest-wage-fight-has-reached-the-produce-cooler",
+      "2026-04-25-the-first-bell-now-rings-at-the-phone-pouch",
+      "2026-04-25-the-cheese-was-aged-the-warning-still-had-to-catch-up",
+      "2026-04-25-a-headband-should-not-own-the-quietest-room",
+      "2026-04-25-the-atlantic-current-warning-is-becoming-an-instrument-test",
+      "2026-04-25-chadian-boots-put-haiti-s-crisis-on-a-wider-ledger",
+      "2026-04-25-the-brand-checklist-should-not-erase-the-boss"
     ],
     "breaking": [
-      "2026-04-24-the-postmark-is-no-longer-the-whole-story",
-      "2026-04-24-the-queue-looks-cleaner-now-the-work-of-letting-people-in-has-not-changed-hands",
-      "2026-04-24-the-cheap-box-at-the-edge-has-become-a-policy-problem",
-      "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze",
-      "2026-04-24-the-ride-written-into-the-iep-is-becoming-a-school-system-s-hardest-morning-test",
-      "2026-04-24-the-skin-test-the-x-ray-van-and-the-return-of-tuberculosis-work",
-      "2026-04-24-the-gift-needs-guardrails",
-      "2026-04-24-malaria-vaccines-have-reached-the-clinic-ledger-stage",
-      "2026-04-24-the-stamp-is-gone-the-friction-is-not",
-      "2026-04-24-a-real-heat-rule-would-put-the-shift-schedule-on-the-side-of-the-body",
-      "2026-04-24-the-note-is-getting-smarter-the-waiting-room-is-getting-more-expensive",
-      "2026-04-24-the-loan-is-large-the-harder-test-is-where-europe-can-actually-build-deterrence"
+      "2026-04-25-the-complaint-window-is-moving-inside-the-agency",
+      "2026-04-25-the-voice-track-has-become-a-labor-contract",
+      "2026-04-25-a-47-day-clock-lands-on-the-web-s-trust-desk",
+      "2026-04-25-the-harvest-wage-fight-has-reached-the-produce-cooler",
+      "2026-04-25-the-first-bell-now-rings-at-the-phone-pouch",
+      "2026-04-25-the-cheese-was-aged-the-warning-still-had-to-catch-up",
+      "2026-04-25-a-headband-should-not-own-the-quietest-room",
+      "2026-04-25-the-atlantic-current-warning-is-becoming-an-instrument-test",
+      "2026-04-25-chadian-boots-put-haiti-s-crisis-on-a-wider-ledger",
+      "2026-04-25-the-brand-checklist-should-not-erase-the-boss",
+      "2026-04-25-a-batch-record-met-an-ai-agent-fda-asked-who-checked-it",
+      "2026-04-25-syunik-s-42-kilometers-move-onto-washington-s-infrastructure-desk"
     ],
     "desk_pulse": [
       {
-        "count": 27,
-        "latest_ts": 1777046040.0,
-        "story_id": "2026-04-24-malaria-vaccines-have-reached-the-clinic-ledger-stage",
+        "count": 28,
+        "latest_ts": 1777144860.0,
+        "story_id": "2026-04-25-the-atlantic-current-warning-is-becoming-an-instrument-test",
         "section": "Science"
       },
       {
-        "count": 27,
-        "latest_ts": 1777046040.0,
-        "story_id": "2026-04-24-the-note-is-getting-smarter-the-waiting-room-is-getting-more-expensive",
+        "count": 28,
+        "latest_ts": 1777144860.0,
+        "story_id": "2026-04-25-a-batch-record-met-an-ai-agent-fda-asked-who-checked-it",
         "section": "AI"
       },
       {
-        "count": 26,
-        "latest_ts": 1777046040.0,
-        "story_id": "2026-04-24-the-postmark-is-no-longer-the-whole-story",
+        "count": 27,
+        "latest_ts": 1777144860.0,
+        "story_id": "2026-04-25-the-complaint-window-is-moving-inside-the-agency",
         "section": "Politics"
       },
       {
-        "count": 26,
-        "latest_ts": 1777046040.0,
-        "story_id": "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze",
+        "count": 27,
+        "latest_ts": 1777144860.0,
+        "story_id": "2026-04-25-the-harvest-wage-fight-has-reached-the-produce-cooler",
         "section": "Economics"
       },
       {
-        "count": 26,
-        "latest_ts": 1777046040.0,
-        "story_id": "2026-04-24-before-an-orchid-wins-anything-someone-has-to-make-the-name-hold",
+        "count": 27,
+        "latest_ts": 1777144860.0,
+        "story_id": "2026-04-25-a-violin-bow-now-has-to-prove-its-tree",
         "section": "Niche"
       },
       {
-        "count": 23,
-        "latest_ts": 1777046040.0,
-        "story_id": "2026-04-24-the-stamp-is-gone-the-friction-is-not",
+        "count": 24,
+        "latest_ts": 1777144860.0,
+        "story_id": "2026-04-25-chadian-boots-put-haiti-s-crisis-on-a-wider-ledger",
         "section": "World"
       },
       {
-        "count": 23,
-        "latest_ts": 1777046040.0,
-        "story_id": "2026-04-24-the-loan-is-large-the-harder-test-is-where-europe-can-actually-build-deterrence",
+        "count": 24,
+        "latest_ts": 1777144860.0,
+        "story_id": "2026-04-25-syunik-s-42-kilometers-move-onto-washington-s-infrastructure-desk",
         "section": "Geopolitics"
       },
       {
-        "count": 22,
-        "latest_ts": 1777046040.0,
-        "story_id": "2026-04-24-the-cheap-box-at-the-edge-has-become-a-policy-problem",
+        "count": 23,
+        "latest_ts": 1777144860.0,
+        "story_id": "2026-04-25-a-47-day-clock-lands-on-the-web-s-trust-desk",
         "section": "Technology"
       },
       {
-        "count": 20,
-        "latest_ts": 1777046040.0,
-        "story_id": "2026-04-24-the-ballot-has-a-progress-bar-now",
+        "count": 21,
+        "latest_ts": 1777144860.0,
+        "story_id": "2026-04-25-the-animation-peg-bar-enters-california-s-subsidy-file",
         "section": "Film"
       },
       {
-        "count": 20,
-        "latest_ts": 1777046040.0,
-        "story_id": "2026-04-24-coachella-s-second-venue-is-the-living-room",
+        "count": 21,
+        "latest_ts": 1777144860.0,
+        "story_id": "2026-04-25-the-studio-archive-is-now-a-merger-docket",
         "section": "Pop Culture"
       }
     ]
