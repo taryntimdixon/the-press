@@ -140,15 +140,15 @@ button{cursor:pointer}
   display:grid;
   grid-template-columns:1fr auto;
   gap:1rem;
-  align-items:end;
-  padding:1.15rem 0;
+  align-items:center;
+  padding:1rem 0;
 }
-.masthead-wrap{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.masthead-wrap{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
 .masthead{
   font-family:var(--serif);
   font-weight:700;
-  font-size:clamp(2rem,4vw,3.8rem);
-  line-height:.95;
+  font-size:clamp(1.6rem,3.5vw,3rem);
+  line-height:1;
   letter-spacing:-.03em;
 }
 .masthead:hover{text-decoration:none}
@@ -2544,8 +2544,8 @@ html.press-page-leaving body {
 }
 
 .masthead-with-logo .masthead-logo{
-  width:2.2rem;
-  height:2.2rem;
+  width:3.5rem;
+  height:3.5rem;
   color:var(--accent);
   flex-shrink:0;
 }
@@ -2604,21 +2604,30 @@ html.press-page-leaving body {
   letter-spacing:.14em;
   line-height:1.1;
 .footer-brand .masthead-with-logo .masthead-logo{
-  width:1.8rem;
-  height:1.8rem;
+  width:2.5rem;
+  height:2.5rem;
   color:var(--accent);
   flex-shrink:0;
 }
 
 @media (max-width: 700px){
   .masthead-row{
-    align-items:start;
+    align-items:center;
   }
 
   .masthead-wrap{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:.45rem;
+    align-items:center;
+    gap:.6rem;
+  }
+
+  .masthead{
+    font-size:clamp(1.2rem,3vw,1.8rem);
+  }
+
+  .masthead .masthead-logo,
+  .masthead-with-logo .masthead-logo{
+    width:2.5rem;
+    height:2.5rem;
   }
 
   .masthead-tagline{
@@ -2642,8 +2651,8 @@ header.site-header,
 
 .masthead .masthead-logo,
 .masthead-with-logo .masthead-logo {
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 3.5rem;
+  height: 3.5rem;
   flex-shrink: 0;
   object-fit: contain;
 }
