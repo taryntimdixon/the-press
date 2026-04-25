@@ -267,7 +267,7 @@ def header(current_section: str = "", current_aux: str = "") -> str:
   </div>
   <div class="masthead-row">
     <div class="masthead-wrap">
-      <a class="masthead" href="index.html">{h(SITE['name'])}</a>
+      <a class="masthead masthead-with-logo" href="index.html"><img class="masthead-logo" src="assets/the-press-logo.svg" alt="The Press logo" decoding="async" />{h(SITE['name'])}</a>
       <p class="masthead-tagline">{h(SITE['tagline'])}</p>
     </div>
     <nav class="utility-nav" aria-label="Utility navigation">

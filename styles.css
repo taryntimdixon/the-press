@@ -76,9 +76,9 @@ button{cursor:pointer}
   clip:rect(0,0,0,0);white-space:nowrap;border:0;
 }
 .site-header{
-  position:sticky;
-  top:0;
-  z-index:30;
+  position:static;
+  top:auto;
+  z-index:auto;
   background:rgba(244,240,232,.96);
   backdrop-filter:saturate(140%) blur(12px);
   border-bottom:1px solid rgba(31,31,27,.08);
@@ -2627,4 +2627,27 @@ html.press-page-leaving body {
     font-size:.64rem;
     letter-spacing:.13em;
   }
+}
+
+/* Keep header in normal document flow. */
+.site-header,
+header.site-header,
+.main-header,
+.topbar,
+.nav-shell {
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+}
+
+.masthead .masthead-logo,
+.masthead-with-logo .masthead-logo {
+  width: 2.2rem;
+  height: 2.2rem;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+body {
+  padding-top: 0 !important;
 }
