@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-24T12:19:13.360444+00:00",
+  "generated_at": "2026-04-25T00:34:58.119714+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,128 +9,128 @@
   },
   "home": {
     "hero": [
-      "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus",
-      "2026-04-24-the-hold-list-is-a-labor-story-illinois-is-trying-to-rewrite-the-terms-of-digital-reading",
-      "2026-04-24-open-source-security-s-new-scarcity-is-judgment",
-      "2026-04-24-the-refund-is-becoming-a-debt-collection-battleground"
+      "2026-04-24-the-postmark-is-no-longer-the-whole-story",
+      "2026-04-24-the-queue-looks-cleaner-now-the-work-of-letting-people-in-has-not-changed-hands",
+      "2026-04-24-the-cheap-box-at-the-edge-has-become-a-policy-problem",
+      "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze"
     ],
     "secondary": [
-      "2026-04-24-when-enrollment-falls-the-hardest-school-cuts-hit-the-places-that-still-have-to-show-up-every-morning",
-      "2026-04-24-when-a-cdc-bulletin-goes-missing-vaccine-evidence-stops-moving-like-infrastructure",
-      "2026-04-24-the-dead-should-not-get-new-lines"
+      "2026-04-24-the-ride-written-into-the-iep-is-becoming-a-school-system-s-hardest-morning-test",
+      "2026-04-24-the-skin-test-the-x-ray-van-and-the-return-of-tuberculosis-work",
+      "2026-04-24-the-gift-needs-guardrails"
     ],
     "most_read": [
-      "2026-04-24-bird-flu-s-new-map-is-built-from-sewers-silos-and-lab-meetings",
-      "2026-04-24-the-border-bundle-is-now-a-regional-balance-sheet",
-      "2026-04-24-a-tornado-warning-is-labor-not-just-data",
-      "2026-04-24-the-meeting-is-in-session-so-is-the-ai-stack",
-      "2026-04-24-repair-time-is-the-new-fault-line-in-taiwan-s-cable-deterrence"
+      "2026-04-24-malaria-vaccines-have-reached-the-clinic-ledger-stage",
+      "2026-04-24-the-stamp-is-gone-the-friction-is-not",
+      "2026-04-24-a-real-heat-rule-would-put-the-shift-schedule-on-the-side-of-the-body",
+      "2026-04-24-the-note-is-getting-smarter-the-waiting-room-is-getting-more-expensive",
+      "2026-04-24-the-loan-is-large-the-harder-test-is-where-europe-can-actually-build-deterrence"
     ],
     "editors_picks": [
-      "2026-04-24-the-loan-form-not-the-print-is-becoming-repertory-cinema-s-scarce-asset",
-      "2026-04-24-youtube-wants-to-own-the-hours-you-only-half-watch-and-the-audio-business-shows-why",
-      "2026-04-24-at-the-postmark-table-a-mail-hobby-turns-into-event-labor",
-      "2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency-s-paper-trail"
+      "2026-04-24-the-ballot-has-a-progress-bar-now",
+      "2026-04-24-coachella-s-second-venue-is-the-living-room",
+      "2026-04-24-before-an-orchid-wins-anything-someone-has-to-make-the-name-hold",
+      "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus"
     ],
     "latest": [
-      "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus",
-      "2026-04-24-the-hold-list-is-a-labor-story-illinois-is-trying-to-rewrite-the-terms-of-digital-reading",
-      "2026-04-24-open-source-security-s-new-scarcity-is-judgment",
-      "2026-04-24-the-refund-is-becoming-a-debt-collection-battleground",
-      "2026-04-24-when-enrollment-falls-the-hardest-school-cuts-hit-the-places-that-still-have-to-show-up-every-morning",
-      "2026-04-24-when-a-cdc-bulletin-goes-missing-vaccine-evidence-stops-moving-like-infrastructure",
-      "2026-04-24-the-dead-should-not-get-new-lines",
-      "2026-04-24-bird-flu-s-new-map-is-built-from-sewers-silos-and-lab-meetings",
-      "2026-04-24-the-border-bundle-is-now-a-regional-balance-sheet",
-      "2026-04-24-a-tornado-warning-is-labor-not-just-data",
-      "2026-04-24-the-meeting-is-in-session-so-is-the-ai-stack",
-      "2026-04-24-repair-time-is-the-new-fault-line-in-taiwan-s-cable-deterrence"
+      "2026-04-24-the-postmark-is-no-longer-the-whole-story",
+      "2026-04-24-the-queue-looks-cleaner-now-the-work-of-letting-people-in-has-not-changed-hands",
+      "2026-04-24-the-cheap-box-at-the-edge-has-become-a-policy-problem",
+      "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze",
+      "2026-04-24-the-ride-written-into-the-iep-is-becoming-a-school-system-s-hardest-morning-test",
+      "2026-04-24-the-skin-test-the-x-ray-van-and-the-return-of-tuberculosis-work",
+      "2026-04-24-the-gift-needs-guardrails",
+      "2026-04-24-malaria-vaccines-have-reached-the-clinic-ledger-stage",
+      "2026-04-24-the-stamp-is-gone-the-friction-is-not",
+      "2026-04-24-a-real-heat-rule-would-put-the-shift-schedule-on-the-side-of-the-body",
+      "2026-04-24-the-note-is-getting-smarter-the-waiting-room-is-getting-more-expensive",
+      "2026-04-24-the-loan-is-large-the-harder-test-is-where-europe-can-actually-build-deterrence"
     ],
     "daily": [
-      "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus",
-      "2026-04-24-the-hold-list-is-a-labor-story-illinois-is-trying-to-rewrite-the-terms-of-digital-reading",
-      "2026-04-24-open-source-security-s-new-scarcity-is-judgment",
-      "2026-04-24-the-refund-is-becoming-a-debt-collection-battleground",
-      "2026-04-24-when-enrollment-falls-the-hardest-school-cuts-hit-the-places-that-still-have-to-show-up-every-morning",
-      "2026-04-24-when-a-cdc-bulletin-goes-missing-vaccine-evidence-stops-moving-like-infrastructure",
-      "2026-04-24-the-dead-should-not-get-new-lines",
-      "2026-04-24-bird-flu-s-new-map-is-built-from-sewers-silos-and-lab-meetings",
-      "2026-04-24-the-border-bundle-is-now-a-regional-balance-sheet",
-      "2026-04-24-a-tornado-warning-is-labor-not-just-data"
+      "2026-04-24-the-postmark-is-no-longer-the-whole-story",
+      "2026-04-24-the-queue-looks-cleaner-now-the-work-of-letting-people-in-has-not-changed-hands",
+      "2026-04-24-the-cheap-box-at-the-edge-has-become-a-policy-problem",
+      "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze",
+      "2026-04-24-the-ride-written-into-the-iep-is-becoming-a-school-system-s-hardest-morning-test",
+      "2026-04-24-the-skin-test-the-x-ray-van-and-the-return-of-tuberculosis-work",
+      "2026-04-24-the-gift-needs-guardrails",
+      "2026-04-24-malaria-vaccines-have-reached-the-clinic-ledger-stage",
+      "2026-04-24-the-stamp-is-gone-the-friction-is-not",
+      "2026-04-24-a-real-heat-rule-would-put-the-shift-schedule-on-the-side-of-the-body"
     ],
     "breaking": [
-      "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus",
-      "2026-04-24-the-hold-list-is-a-labor-story-illinois-is-trying-to-rewrite-the-terms-of-digital-reading",
-      "2026-04-24-open-source-security-s-new-scarcity-is-judgment",
-      "2026-04-24-the-refund-is-becoming-a-debt-collection-battleground",
-      "2026-04-24-when-enrollment-falls-the-hardest-school-cuts-hit-the-places-that-still-have-to-show-up-every-morning",
-      "2026-04-24-when-a-cdc-bulletin-goes-missing-vaccine-evidence-stops-moving-like-infrastructure",
-      "2026-04-24-the-dead-should-not-get-new-lines",
-      "2026-04-24-bird-flu-s-new-map-is-built-from-sewers-silos-and-lab-meetings",
-      "2026-04-24-the-border-bundle-is-now-a-regional-balance-sheet",
-      "2026-04-24-a-tornado-warning-is-labor-not-just-data",
-      "2026-04-24-the-meeting-is-in-session-so-is-the-ai-stack",
-      "2026-04-24-repair-time-is-the-new-fault-line-in-taiwan-s-cable-deterrence"
+      "2026-04-24-the-postmark-is-no-longer-the-whole-story",
+      "2026-04-24-the-queue-looks-cleaner-now-the-work-of-letting-people-in-has-not-changed-hands",
+      "2026-04-24-the-cheap-box-at-the-edge-has-become-a-policy-problem",
+      "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze",
+      "2026-04-24-the-ride-written-into-the-iep-is-becoming-a-school-system-s-hardest-morning-test",
+      "2026-04-24-the-skin-test-the-x-ray-van-and-the-return-of-tuberculosis-work",
+      "2026-04-24-the-gift-needs-guardrails",
+      "2026-04-24-malaria-vaccines-have-reached-the-clinic-ledger-stage",
+      "2026-04-24-the-stamp-is-gone-the-friction-is-not",
+      "2026-04-24-a-real-heat-rule-would-put-the-shift-schedule-on-the-side-of-the-body",
+      "2026-04-24-the-note-is-getting-smarter-the-waiting-room-is-getting-more-expensive",
+      "2026-04-24-the-loan-is-large-the-harder-test-is-where-europe-can-actually-build-deterrence"
     ],
     "desk_pulse": [
       {
-        "count": 26,
-        "latest_ts": 1777025340.0,
-        "story_id": "2026-04-24-bird-flu-s-new-map-is-built-from-sewers-silos-and-lab-meetings",
+        "count": 27,
+        "latest_ts": 1777046040.0,
+        "story_id": "2026-04-24-malaria-vaccines-have-reached-the-clinic-ledger-stage",
         "section": "Science"
       },
       {
-        "count": 26,
-        "latest_ts": 1777025340.0,
-        "story_id": "2026-04-24-the-meeting-is-in-session-so-is-the-ai-stack",
+        "count": 27,
+        "latest_ts": 1777046040.0,
+        "story_id": "2026-04-24-the-note-is-getting-smarter-the-waiting-room-is-getting-more-expensive",
         "section": "AI"
       },
       {
-        "count": 25,
-        "latest_ts": 1777025340.0,
-        "story_id": "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus",
+        "count": 26,
+        "latest_ts": 1777046040.0,
+        "story_id": "2026-04-24-the-postmark-is-no-longer-the-whole-story",
         "section": "Politics"
       },
       {
-        "count": 25,
-        "latest_ts": 1777025340.0,
-        "story_id": "2026-04-24-the-refund-is-becoming-a-debt-collection-battleground",
+        "count": 26,
+        "latest_ts": 1777046040.0,
+        "story_id": "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze",
         "section": "Economics"
       },
       {
-        "count": 25,
-        "latest_ts": 1777025340.0,
-        "story_id": "2026-04-24-at-the-postmark-table-a-mail-hobby-turns-into-event-labor",
+        "count": 26,
+        "latest_ts": 1777046040.0,
+        "story_id": "2026-04-24-before-an-orchid-wins-anything-someone-has-to-make-the-name-hold",
         "section": "Niche"
       },
       {
-        "count": 22,
-        "latest_ts": 1777025340.0,
-        "story_id": "2026-04-24-the-border-bundle-is-now-a-regional-balance-sheet",
+        "count": 23,
+        "latest_ts": 1777046040.0,
+        "story_id": "2026-04-24-the-stamp-is-gone-the-friction-is-not",
         "section": "World"
       },
       {
-        "count": 22,
-        "latest_ts": 1777025340.0,
-        "story_id": "2026-04-24-repair-time-is-the-new-fault-line-in-taiwan-s-cable-deterrence",
+        "count": 23,
+        "latest_ts": 1777046040.0,
+        "story_id": "2026-04-24-the-loan-is-large-the-harder-test-is-where-europe-can-actually-build-deterrence",
         "section": "Geopolitics"
       },
       {
-        "count": 21,
-        "latest_ts": 1777025340.0,
-        "story_id": "2026-04-24-open-source-security-s-new-scarcity-is-judgment",
+        "count": 22,
+        "latest_ts": 1777046040.0,
+        "story_id": "2026-04-24-the-cheap-box-at-the-edge-has-become-a-policy-problem",
         "section": "Technology"
       },
       {
-        "count": 19,
-        "latest_ts": 1777025340.0,
-        "story_id": "2026-04-24-the-loan-form-not-the-print-is-becoming-repertory-cinema-s-scarce-asset",
+        "count": 20,
+        "latest_ts": 1777046040.0,
+        "story_id": "2026-04-24-the-ballot-has-a-progress-bar-now",
         "section": "Film"
       },
       {
-        "count": 19,
-        "latest_ts": 1777025340.0,
-        "story_id": "2026-04-24-youtube-wants-to-own-the-hours-you-only-half-watch-and-the-audio-business-shows-why",
+        "count": 20,
+        "latest_ts": 1777046040.0,
+        "story_id": "2026-04-24-coachella-s-second-venue-is-the-living-room",
         "section": "Pop Culture"
       }
     ]
