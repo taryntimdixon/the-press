@@ -1,13 +1,13 @@
 {
   "site": {
     "name": "The Press",
-    "tagline": "A digital newspaper built for sourced long-form reporting.",
+    "tagline": "AI Powered News",
     "baseUrl": "https://www.thepress.example",
     "editionNote": "Issue Four \u2022 Tuesday, April 7, 2026 \u2022 Reported features, analysis, essays, and visible source notes",
-    "description": "Politics, culture, technology, economics, education, health, philosophy, science, world, and opinion in a trust-first digital newspaper.",
+    "description": "AI powered news across politics, culture, technology, economics, education, health, philosophy, science, world, and opinion.",
     "contactEmail": "tips@thepress.example",
     "newsletterTitle": "Get the front page without the noise.",
-    "newsletterCopy": "A calm digest of the best reporting from every desk, with visible dates, named bylines, and real source notes.",
+    "newsletterCopy": "A calm digest of AI powered reporting from every desk, with visible dates, clear bylines, and transparent source notes.",
     "mastheadLinks": [
       {
         "label": "Archive",

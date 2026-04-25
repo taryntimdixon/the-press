@@ -1,7 +1,7 @@
 {
   "name": "The Press",
   "short_name": "The Press",
-  "description": "A digital newspaper built for sourced long-form reporting.",
+  "description": "AI Powered News",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f4f0e8",

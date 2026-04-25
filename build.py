@@ -294,7 +294,7 @@ def footer() -> str:
     <section class="footer-brand">
       <a class="masthead masthead--footer" href="index.html">{h(SITE['name'])}</a>
       <p class="footer-copy">{h(SITE['tagline'])}</p>
-      <p class="footer-copy footer-copy--small">Visible dates, visible standards, visible source notes.</p>
+      <p class="footer-copy footer-copy--small">Visible AI use, visible standards, visible source notes.</p>
     </section>
     <section>
       <h2 class="footer-heading">Newsroom</h2>
