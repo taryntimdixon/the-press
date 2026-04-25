@@ -268,7 +268,6 @@ def header(current_section: str = "", current_aux: str = "") -> str:
   <div class="masthead-row">
     <div class="masthead-wrap">
       <a class="masthead masthead-with-logo" href="index.html" aria-label="The Press home"><img class="masthead-logo" src="assets/the-press-logo.svg" alt="The Press logo" decoding="async" /></a>
-      <p class="masthead-tagline">{h(SITE['tagline'])}</p>
     </div>
     <nav class="utility-nav" aria-label="Utility navigation">
       {' '.join(utility_links)}
