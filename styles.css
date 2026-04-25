@@ -2661,3 +2661,9 @@ header.site-header,
 body {
   padding-top: 0 !important;
 }
+
+/* Homepage hard override to prevent cached/older rules from shrinking the main logo. */
+body.page-home .masthead.masthead-with-logo .masthead-logo {
+  width: clamp(18rem, 42vw, 30rem) !important;
+  height: auto !important;
+}
