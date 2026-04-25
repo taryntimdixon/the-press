@@ -267,7 +267,7 @@ def header(current_section: str = "", current_aux: str = "") -> str:
   </div>
   <div class="masthead-row">
     <div class="masthead-wrap">
-      <a class="masthead masthead-with-logo" href="index.html"><img class="masthead-logo" src="assets/the-press-logo.svg" alt="The Press logo" decoding="async" />{h(SITE['name'])}</a>
+      <a class="masthead masthead-with-logo" href="index.html" aria-label="The Press home"><img class="masthead-logo" src="assets/the-press-logo.svg" alt="The Press logo" decoding="async" /></a>
       <p class="masthead-tagline">{h(SITE['tagline'])}</p>
     </div>
     <nav class="utility-nav" aria-label="Utility navigation">
@@ -345,6 +345,7 @@ def page_head(title: str, description: str, canonical: str, jsonld: str = "", ex
   <meta name="mobile-web-app-capable" content="yes" />
   <link rel="canonical" href="{h(canonical_url)}" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/icon-192.png" sizes="192x192" type="image/png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="stylesheet" href="styles.css" />
