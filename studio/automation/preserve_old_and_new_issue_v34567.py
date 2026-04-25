@@ -92,16 +92,16 @@ def env_bool(name: str, default: bool = False) -> bool:
 
 
 ARTICLE_TARGET_WORDS = env_int("ARTICLE_TARGET_WORDS", 2500, minimum=1200)
-MIN_SOURCES = env_int("MIN_SOURCES", 30, minimum=6)
-MAX_SOURCES = env_int("MAX_SOURCES", 100, minimum=MIN_SOURCES)
+MIN_SOURCES = env_int("MIN_SOURCES", 20, minimum=6)
+MAX_SOURCES = env_int("MAX_SOURCES", 30, minimum=MIN_SOURCES)
 MAX_STORY_COUNT = env_int("MAX_STORY_COUNT", 30, minimum=1)
-MIN_UNIQUE_SOURCE_DOMAINS = env_int("MIN_UNIQUE_SOURCE_DOMAINS", 10, minimum=1)
+MIN_UNIQUE_SOURCE_DOMAINS = env_int("MIN_UNIQUE_SOURCE_DOMAINS", 8, minimum=1)
 QUALITY_REPAIR_ATTEMPTS = env_int("QUALITY_REPAIR_ATTEMPTS", 2, minimum=0, maximum=3)
 FACT_CHECK_PASSES = env_int("FACT_CHECK_PASSES", 1, minimum=0, maximum=3)
 MAX_OUTPUT_TOKENS = env_int("MAX_OUTPUT_TOKENS", 24000, minimum=8000)
 STRICT_QUALITY_GATE = env_bool("STRICT_QUALITY_GATE", False)
 STRICT_EDITORIAL_GATES = env_bool("STRICT_EDITORIAL_GATES", False)
-RECENT_TOPIC_LOOKBACK = env_int("RECENT_TOPIC_LOOKBACK", 90, minimum=0, maximum=500)
+RECENT_TOPIC_LOOKBACK = env_int("RECENT_TOPIC_LOOKBACK", 120, minimum=0, maximum=500)
 RECENT_TOPIC_SIMILARITY_LIMIT = env_float("RECENT_TOPIC_SIMILARITY_LIMIT", 0.34, minimum=0.1, maximum=0.9)
 ISSUE_TOPIC_SIMILARITY_LIMIT = env_float(
     "ISSUE_TOPIC_SIMILARITY_LIMIT",
@@ -883,70 +883,146 @@ def call_model(
 ) -> dict[str, Any]:
     recent_memory = recent_memory or []
     current_issue = current_issue or []
+
     visual_assignment = visual_archetype_for(issue_index, section_name)
     recent_context = brief_recent_context(recent_memory, section_name, current_issue)
 
     def lock_visual(payload: dict[str, Any]) -> dict[str, Any]:
         payload["visual_archetype"] = visual_assignment
+
         if not str(payload.get("visual_brief") or "").strip():
-            payload["visual_brief"] = f"Use the assigned visual archetype: {visual_assignment}. Build a concrete, non-cliché scene specific to the article."
+            payload[
+                "visual_brief"
+            ] = f"Use the assigned visual archetype: {visual_assignment}. Build a concrete, non-cliché scene specific to the article."
+
         payload, rewrites = rewrite_visual_cliches(payload, visual_assignment)
+
         if rewrites:
             print(
                 f"WARNING: Rewrote banned visual cliché(s) for {section_name}: "
                 + "; ".join(rewrites)
             )
+
         return payload
 
-    def split_quality_issues(payload: dict[str, Any]) -> tuple[list[str], list[str], list[str], dict[str, Any]]:
+    def split_quality_issues(
+        payload: dict[str, Any],
+    ) -> tuple[list[str], list[str], list[str], dict[str, Any]]:
         required_issues = required_payload_issues(payload)
         base_issues, metrics = payload_quality_issues(payload)
+
         editorial_issues, editorial_metrics = editorial_quality_issues(
             payload=payload,
             recent=recent_memory,
             current_issue=current_issue,
             visual_assignment=visual_assignment,
         )
+
         merged_metrics = {**metrics, **editorial_metrics}
         return required_issues, base_issues, editorial_issues, merged_metrics
 
-    payload = lock_visual(request_payload(client, generation_prompt(section_name, date_label, recent_context, visual_assignment)))
+    payload = lock_visual(
+        request_payload(
+            client,
+            generation_prompt(
+                section_name,
+                date_label,
+                recent_context,
+                visual_assignment,
+            ),
+        )
+    )
 
     for _ in range(FACT_CHECK_PASSES):
-        payload = lock_visual(request_payload(client, verification_prompt(payload, section_name, date_label, recent_context, visual_assignment)))
-
-    for _ in range(QUALITY_REPAIR_ATTEMPTS):
-        required_issues, base_issues, editorial_issues, metrics = split_quality_issues(payload)
-        issues = required_issues + base_issues + editorial_issues
-        if not issues:
-            return payload
-        print(f"Quality repair needed for {section_name}: {issues}")
         payload = lock_visual(
             request_payload(
                 client,
-                repair_prompt(payload, section_name, date_label, issues, metrics, recent_context, visual_assignment),
+                verification_prompt(
+                    payload,
+                    section_name,
+                    date_label,
+                    recent_context,
+                    visual_assignment,
+                ),
             )
         )
 
-    required_issues, base_issues, editorial_issues, metrics = split_quality_issues(payload)
+    for _ in range(QUALITY_REPAIR_ATTEMPTS):
+        required_issues, base_issues, editorial_issues, metrics = split_quality_issues(
+            payload
+        )
+
+        hard_repair_issues = required_issues + base_issues
+        blocking_editorial_issues = editorial_issues if STRICT_EDITORIAL_GATES else []
+        repair_issues = hard_repair_issues + blocking_editorial_issues
+
+        if not repair_issues:
+            if editorial_issues:
+                print(
+                    f"WARNING: {section_name} article has editorial variety warnings "
+                    f"but no repair-triggering quality issues: {editorial_issues}; metrics={metrics}"
+                )
+            return payload
+
+        prompt_issues = list(repair_issues)
+
+        if editorial_issues and not STRICT_EDITORIAL_GATES:
+            prompt_issues.append(
+                "Non-blocking editorial warnings to improve while repairing hard quality issues: "
+                + "; ".join(editorial_issues)
+            )
+
+        print(f"Quality repair needed for {section_name}: {repair_issues}")
+
+        payload = lock_visual(
+            request_payload(
+                client,
+                repair_prompt(
+                    payload,
+                    section_name,
+                    date_label,
+                    prompt_issues,
+                    metrics,
+                    recent_context,
+                    visual_assignment,
+                ),
+            )
+        )
+
+    required_issues, base_issues, editorial_issues, metrics = split_quality_issues(
+        payload
+    )
+
     if required_issues:
         raise RuntimeError(
-            f"{section_name} article is missing required fields after repairs: {required_issues}; metrics={metrics}"
+            f"{section_name} article is missing required fields after repairs: "
+            f"{required_issues}; metrics={metrics}"
         )
+
     if base_issues:
-        message = f"{section_name} article still has quality warnings after repairs: {base_issues}; metrics={metrics}"
+        message = (
+            f"{section_name} article still has quality warnings after repairs: "
+            f"{base_issues}; metrics={metrics}"
+        )
+
         if STRICT_QUALITY_GATE:
             raise RuntimeError(message)
+
         print("WARNING: " + message)
+
     if editorial_issues:
         message = (
             f"{section_name} article still has editorial variety warnings after repairs: "
             f"{editorial_issues}; metrics={metrics}"
         )
+
         if STRICT_EDITORIAL_GATES:
             raise RuntimeError(message)
+
         print("WARNING: " + message)
+
     return payload
+
 
 def wiki_thumbnail(query: str) -> str | None:
     search_url = "https://commons.wikimedia.org/w/api.php"
