@@ -8,13 +8,13 @@ on:
         required: true
         default: "15"
       image_cap:
-        description: "Max NEW AI thumbnails this run. 15 = one thumbnail for each new article."
+        description: "Max NEW AI thumbnails this run. 15 = one thumbnail for every selected article."
         required: true
-        default: "15"
+        default: "0"
       article_cap:
         description: "Max newest articles to receive AI thumbnails. Default: 15."
         required: true
-        default: "15"
+        default: "0"
   schedule:
     - cron: "5 12 * * *"
 
@@ -53,8 +53,7 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           STORY_COUNT: ${{ github.event.inputs.story_count || '15' }}
           SITE_BASE_URL: https://thepress.live
-          OPENAI_MODEL: gpt-5.4
-
+          OPENAI_MODEL: gpt-5.5
           # Keep the long-form standard, but make sourcing sane.
           # The hard gate requires 2,500+ words and 20+ distinct HTTPS sources.
           ARTICLE_TARGET_WORDS: "2500"
@@ -90,9 +89,9 @@ jobs:
           OPENAI_IMAGE_COMPRESSION: "85"
 
           AI_ART_SCOPE: current_issue
-          AI_ART_MAX_ARTICLES: ${{ github.event.inputs.article_cap || '15' }}
-          AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
-          AI_THUMBNAIL_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
+          AI_ART_MAX_ARTICLES: ${{ github.event.inputs.article_cap || '0' }}
+          AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '0' }}
+          AI_THUMBNAIL_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '0' }}
 
           REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_ALL_ARTICLE_THUMBNAILS: "1"
@@ -103,8 +102,7 @@ jobs:
 
           AI_UPDATE_LINKED_CARDS: "1"
           AI_CARD_UPDATE_SCOPE: front_pages
-          AI_ART_PROMPT_MODEL: gpt-5.4
-
+          AI_ART_PROMPT_MODEL: gpt-5.5
           # Reuse existing GPT Image thumbnails on reruns; new articles still generate thumbnails.
           AI_REGENERATE_AI_THUMBNAILS: "0"
         run: |

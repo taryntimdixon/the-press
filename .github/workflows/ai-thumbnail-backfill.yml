@@ -6,11 +6,11 @@ on:
       image_cap:
         description: "Max NEW AI thumbnails this run. 15 = one thumbnail for each current issue article."
         required: true
-        default: "15"
+        default: "0"
       article_cap:
         description: "Max newest/current issue articles to receive AI thumbnails. Default: 15."
         required: true
-        default: "15"
+        default: "0"
 
 jobs:
   ai-thumbnail-backfill:
@@ -47,12 +47,13 @@ jobs:
           OPENAI_IMAGE_COMPRESSION: "85"
 
           AI_ART_SCOPE: current_issue
-          AI_ART_MAX_ARTICLES: ${{ github.event.inputs.article_cap || '15' }}
-          AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
-          AI_THUMBNAIL_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
+          AI_ART_MAX_ARTICLES: ${{ github.event.inputs.article_cap || '0' }}
+          AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '0' }}
+          AI_THUMBNAIL_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '0' }}
 
           REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_ALL_ARTICLE_THUMBNAILS: "1"
+          STRICT_EDITORIAL_GATES: "0"
           FORCE_AI_FOR_DAILY_STORIES: "1"
 
           AI_ART_PACKAGE_BACKFILL: "0"
@@ -60,8 +61,7 @@ jobs:
 
           AI_UPDATE_LINKED_CARDS: "1"
           AI_CARD_UPDATE_SCOPE: front_pages
-          AI_ART_PROMPT_MODEL: gpt-5.4
-
+          AI_ART_PROMPT_MODEL: gpt-5.5
           # Reuse existing GPT Image thumbnails on reruns; new articles still generate thumbnails.
           AI_REGENERATE_AI_THUMBNAILS: "0"
         run: |

@@ -428,7 +428,7 @@ if (!hasHomepageTargets) {
   };
 
   const fetchJson = (url) =>
-    fetch(url, { cache: 'default' }).then((response) => {
+    fetch(url, { cache: 'no-store' }).then((response) => {
       if (!response.ok) throw new Error(`Could not load ${url}`);
       return response.json();
     });
@@ -1737,7 +1737,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchOptionalJson(url) {
     try {
-      const response = await fetch(url, { cache: 'default' });
+      const response = await fetch(url, { cache: 'no-store' });
       if (!response.ok) return readCachedJson(url);
 
       const json = await response.json();
@@ -3864,3 +3864,62 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })();
 /* PRESS_CATEGORYLESS_END */
+
+
+/* NEWS_FLOW_UI_IMPROVEMENT_REFRESH_FIX
+   Stabilize refresh/render behavior on the home, press, and archive views.
+   - Clear stale page-leaving classes after browser bfcache restores.
+   - Pick a different active lead panel on reload when the markup includes lead panels.
+*/
+(function pressNewsFlowUiRefreshFix() {
+  const storageKey = 'press:last-active-lead-panel';
+
+  function clearTransitionState() {
+    document.documentElement.classList.add('press-page-ready');
+    document.documentElement.classList.remove('press-page-leaving');
+    document.body.classList.remove('press-page-leaving');
+  }
+
+  function activateRandomLeadPanel() {
+    const panels = Array.from(document.querySelectorAll('[data-press-lead-panel], .lead-panel, .daily-lead-panel'));
+    if (panels.length < 2) return;
+
+    const previous = sessionStorage.getItem(storageKey) || '';
+    const candidates = panels.map((panel, index) => ({
+      panel,
+      id: panel.getAttribute('data-slug') || panel.getAttribute('data-panel-id') || panel.id || String(index)
+    }));
+
+    const pool = candidates.filter((item) => item.id !== previous);
+    const chosen = (pool.length ? pool : candidates)[Math.floor(Math.random() * (pool.length ? pool.length : candidates.length))];
+    if (!chosen) return;
+
+    candidates.forEach((item) => {
+      const active = item === chosen;
+      item.panel.classList.toggle('is-active', active);
+      item.panel.toggleAttribute('hidden', !active && item.panel.hasAttribute('data-press-lead-panel'));
+    });
+
+    document.querySelectorAll('[data-press-lead-trigger], .lead-panel-trigger').forEach((button) => {
+      const target = button.getAttribute('data-slug') || button.getAttribute('data-panel-id') || button.getAttribute('aria-controls') || '';
+      const active = target && target === chosen.id;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
+    sessionStorage.setItem(storageKey, chosen.id);
+  }
+
+  function run() {
+    clearTransitionState();
+    activateRandomLeadPanel();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run, { once: true });
+  } else {
+    run();
+  }
+  window.addEventListener('pageshow', run);
+  window.addEventListener('load', () => setTimeout(run, 80));
+})();

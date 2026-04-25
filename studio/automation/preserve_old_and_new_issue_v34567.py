@@ -735,7 +735,7 @@ def request_payload(client: OpenAI, prompt: str) -> dict[str, Any]:
         for attempt in range(2):
             try:
                 response = client.responses.create(
-                    model=os.getenv("OPENAI_MODEL", "gpt-5.4"),
+                    model=os.getenv("OPENAI_MODEL", "gpt-5.5"),
                     tools=[{"type": tool_type}],
                     input=prompt,
                     max_output_tokens=MAX_OUTPUT_TOKENS,
@@ -1711,19 +1711,15 @@ def build_story_from_payload(payload: dict[str, Any], section_slug: str, section
     thumb_query = str(payload.get("thumbnail_search_hint") or visual_brief or title).strip()
     thumb_alt = str(payload.get("thumbnail_alt") or title).strip()
 
-    thumbnail_url = wiki_thumbnail(thumb_query) or wiki_thumbnail(title)
+    # NEWS_FLOW_UI_IMPROVEMENT: skip database thumbnails; GPT Image backfill supplies article art.
+
+    thumbnail_url = None
+
     thumbnail_caption_html = ""
+
     thumbnail_credit_plain = ""
 
-    if not thumbnail_url:
-        pexels_meta = pexels_thumbnail(thumb_query) or pexels_thumbnail(title)
-        if pexels_meta:
-            thumbnail_url = pexels_meta.get("url") or ""
-            thumb_alt = (pexels_meta.get("alt") or thumb_alt).strip()
-            thumbnail_caption_html = pexels_meta.get("caption_html") or ""
-            thumbnail_credit_plain = pexels_meta.get("credit_plain") or ""
-
-    thumbnail_local = download_image(thumbnail_url, page_slug)
+    thumbnail_local = download_image(None, page_slug)
 
     return Story(
         slug=page_slug,

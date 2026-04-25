@@ -2346,3 +2346,60 @@ html body .article-body blockquote:hover {
   outline: none !important;
   text-shadow: none !important;
 }
+
+
+/* NEWS_FLOW_UI_IMPROVEMENT_REFRESH_FIX
+   Removes the refresh flash on home/press/archive pages and tightens lead-image spacing.
+   This keeps the site feeling instant while retaining the existing static design. */
+html.press-dynamic-page body,
+html.press-page-ready body,
+html.press-page-leaving body,
+body.press-page-leaving {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+html.press-dynamic-page [data-press-reveal],
+html.press-page-ready [data-press-reveal],
+.page-home [data-press-reveal],
+.page-section [data-press-reveal],
+.page-archive [data-press-reveal],
+body[class*="archive"] [data-press-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.press-lead,
+.home-lead,
+.daily-lead,
+.hero-lead,
+.lead-panel,
+.daily-lead-panel {
+  gap: clamp(0.75rem, 1.5vw, 1.35rem);
+}
+
+.press-lead figure,
+.home-lead figure,
+.daily-lead figure,
+.hero-lead figure,
+.lead-panel figure,
+.daily-lead-panel figure {
+  margin: 0;
+}
+
+.press-lead img,
+.home-lead img,
+.daily-lead img,
+.hero-lead img,
+.lead-panel img,
+.daily-lead-panel img,
+.main-screen img:first-of-type {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: min(58vh, 560px);
+  object-fit: cover;
+}

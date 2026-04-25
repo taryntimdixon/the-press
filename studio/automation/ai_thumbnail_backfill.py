@@ -81,14 +81,14 @@ if OPENAI_IMAGE_FORMAT == "jpg":
     OPENAI_IMAGE_FORMAT = "jpeg"
 OPENAI_IMAGE_COMPRESSION = env_int("OPENAI_IMAGE_COMPRESSION", 85, minimum=0, maximum=100)
 
-# 0 means unlimited. Daily default is 15: one thumbnail for each new article.
+# 0 means unlimited. Daily default is 0: no cap; thumbnail every current-issue article.
 AI_TOTAL_IMAGE_MAX_GENERATIONS = env_int(
     "AI_TOTAL_IMAGE_MAX_GENERATIONS",
-    env_int("AI_THUMBNAIL_MAX_GENERATIONS", 15, minimum=0),
+    env_int("AI_THUMBNAIL_MAX_GENERATIONS", 0, minimum=0),
     minimum=0,
 )
 AI_ART_SCOPE = os.getenv("AI_ART_SCOPE", "current_issue").strip().lower() or "current_issue"
-AI_ART_MAX_ARTICLES = env_int("AI_ART_MAX_ARTICLES", 15, minimum=0)
+AI_ART_MAX_ARTICLES = env_int("AI_ART_MAX_ARTICLES", 0, minimum=0)
 AI_UPDATE_LINKED_CARDS = env_bool("AI_UPDATE_LINKED_CARDS", True)
 AI_CARD_UPDATE_SCOPE = os.getenv("AI_CARD_UPDATE_SCOPE", "front_pages").strip().lower() or "front_pages"
 
