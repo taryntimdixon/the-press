@@ -15,8 +15,7 @@ on:
         description: "Max newest articles to receive AI thumbnails. Default: 15."
         required: true
         default: "0"
-  schedule:
-    - cron: "5 12 * * *"
+  
 
 jobs:
   preserve-and-append:
