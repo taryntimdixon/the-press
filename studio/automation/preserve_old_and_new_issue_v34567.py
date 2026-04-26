@@ -547,6 +547,7 @@ def editorial_quality_issues(
 ) -> tuple[list[str], dict[str, Any]]:
     title = str(payload.get("title") or "").strip()
     dek = str(payload.get("dek") or "").strip()
+    body_html = str(payload.get("body_html") or "")
     keywords = payload.get("keywords") if isinstance(payload.get("keywords"), list) else []
     payload_terms = text_terms(title, dek, " ".join(str(k) for k in keywords))
     payload_visual_terms = visual_terms(payload)
