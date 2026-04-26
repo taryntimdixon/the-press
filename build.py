@@ -612,48 +612,219 @@ def render_section(section: dict) -> str:
 
 
 def render_authors() -> str:
-    cards = []
-    for author in AUTHORS:
-        author_stories = [STORY_BY_FILE[file] for file in author.get("stories", []) if file in STORY_BY_FILE]
-        story_links = "\n".join(
-            f'<li><a href="{h(story["filename"])}">{h(story["title"])}</a><span>{h(story["publishedLabel"])}</span></li>'
-            for story in author_stories
-        )
-        cards.append(
-            f"""
-<article class="staff-card" id="{h(author['slug'])}">
-  <div class="staff-card__header">
-    <div class="author-chip author-chip--large">{h(initials(author['name']))}</div>
-    <div>
-      <h2>{h(author['name'])}</h2>
-      <p class="staff-card__role">{h(author['role'])}</p>
+    main = """
+<main class="page page-pledge__main">
+
+<section class="pledge-hero">
+  <div class="pledge-hero__copy">
+    <p class="pledge-kicker">AI Newsroom Pledge</p>
+    <h1>
+      <span>AI-generated journalism,</span>
+      <span>disclosed upfront.</span>
+    </h1>
+    <p class="pledge-hero__dek">
+      The Press uses Intelligent AI to draft articles, organize research, and help turn source material
+      into readable stories. A human editor reviews the work before publication. The source trail stays visible.
+      <strong>Read at your own risk. Form your own conclusions.</strong>
+    </p>
+    <div class="pledge-hero__actions" aria-label="Pledge links">
+      <a class="pledge-btn pledge-btn--primary" href="standards.html">Read our standards</a>
+      <a class="pledge-btn pledge-btn--ghost" href="corrections.html">Check corrections</a>
     </div>
   </div>
-  <p>{h(author['bio'])}</p>
-  <p class="staff-card__topics">Coverage: {h(', '.join(author.get('topics', [])))}</p>
-  <ul class="staff-card__stories">
-    {story_links}
-  </ul>
-</article>
-""".strip()
-        )
-    main = f"""
-<main class="page">
-  <section class="page-hero page-hero--with-art">
-    <div>
-      <p class="eyebrow">Authors</p>
-      <h1>Named desks and reporting beats</h1>
-      <p class="section-copy">The site is now wired for named staff bylines, grouped coverage areas, and reusable author cards generated from the master edition file.</p>
+
+  <aside class="pledge-card" aria-label="AI disclosure summary">
+    <p class="pledge-card__label">Disclosure</p>
+    <div class="pledge-seal" aria-hidden="true">
+      <div class="pledge-seal__ring">
+        <span class="pledge-seal__eyebrow">AI</span>
+        <strong>The Press</strong>
+        <span class="pledge-seal__subline">Newsroom</span>
+      </div>
+      <div class="pledge-seal__chips">
+        <span>Written with AI</span>
+        <span>Human reviewed</span>
+        <span>Source heavy</span>
+      </div>
     </div>
-    <img class="page-art" src="assets/team-authors.svg" alt="The Press staff artwork" />
-  </section>
-  <section class="staff-grid">
-    {' '.join(cards)}
-  </section>
+    <p>
+      No hidden ghostwriter. No fake staff card. No mystery box pretending to be a newsroom because apparently
+      that is where the internet has decided to spend its retirement.
+    </p>
+  </aside>
+
+  <ul class="pledge-stats" role="list">
+    <li>
+      <strong>AI-drafted</strong>
+      <span>Stories begin with Intelligent AI, not a fake human byline.</span>
+    </li>
+    <li>
+      <strong>Editor-gated</strong>
+      <span>A human review pass decides what ships and what gets killed.</span>
+    </li>
+    <li>
+      <strong>Source-heavy</strong>
+      <span>Articles are built to be checked, challenged, and corrected.</span>
+    </li>
+  </ul>
+</section>
+
+<section class="pledge-statement">
+  <p class="pledge-kicker">The Pledge</p>
+  <h2>We will tell you how this paper is made before asking you to trust it.</h2>
+  <div class="pledge-prose">
+    <p>
+      The Press is built around AI-generated drafts and human editorial judgment. That is not a shameful footnote.
+      It is the central fact of the publication. The machine helps with speed, structure, synthesis, and first drafts.
+      The editor is responsible for what appears on the page.
+    </p>
+    <p>
+      AI can write clean sentences while being confidently wrong, which is a charming little nightmare humanity invented
+      and then connected to every workplace. So our standard is simple: no claim should stand unless it can be traced
+      back to a source, a record, a dataset, a direct statement, or a clearly labeled inference.
+    </p>
+    <p>
+      We are not asking you to believe the article because the prose sounds polished. We are asking you to inspect the
+      evidence, follow the links, compare the claims, and decide for yourself.
+    </p>
+  </div>
+</section>
+
+<section class="pledge-workflow" aria-labelledby="workflow-title">
+  <div class="pledge-section-head">
+    <p class="pledge-kicker">Behind the Scenes</p>
+    <h2 id="workflow-title">What happens before an article goes live.</h2>
+    <p>The glossy page is the end of the process. The work underneath is less glamorous and much more important.</p>
+  </div>
+
+  <ol class="pledge-workflow__list" role="list">
+    <li class="pledge-step">
+      <span>01</span>
+      <h3>Story radar</h3>
+      <p>We look for subjects where the public record has moved: official releases, data, filings, studies, transcripts, and credible reporting.</p>
+    </li>
+    <li class="pledge-step">
+      <span>02</span>
+      <h3>Source bundle</h3>
+      <p>The article starts with receipts. The draft should be tied to documents the editor and reader can open, not vibes in a trench coat.</p>
+    </li>
+    <li class="pledge-step">
+      <span>03</span>
+      <h3>AI draft</h3>
+      <p>Intelligent AI turns the source bundle into a structured draft, with the byline and AI disclosure treated as part of the story, not an afterthought.</p>
+    </li>
+    <li class="pledge-step">
+      <span>04</span>
+      <h3>Claim audit</h3>
+      <p>Names, dates, numbers, causal claims, and quotes are checked against the source trail. Unsupported certainty gets cut.</p>
+    </li>
+    <li class="pledge-step">
+      <span>05</span>
+      <h3>Human edit</h3>
+      <p>The editor reads for accuracy, tone, overreach, missing context, and the classic AI disease of sounding smarter than it has earned.</p>
+    </li>
+    <li class="pledge-step">
+      <span>06</span>
+      <h3>Publish with receipts</h3>
+      <p>Stories keep source notes, credits, and context close to the article so readers can audit the work instead of worshiping the output.</p>
+    </li>
+    <li class="pledge-step">
+      <span>07</span>
+      <h3>Correct in public</h3>
+      <p>When something is wrong, it belongs on the corrections page with a date, a plain explanation, and no theatrical fog machine.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="pledge-receipts" aria-labelledby="receipts-title">
+  <div>
+    <p class="pledge-kicker">Receipts, Not Mysticism</p>
+    <h2 id="receipts-title">The source trail is part of the product.</h2>
+  </div>
+  <div class="pledge-receipts__grid">
+    <article>
+      <h3>Primary records first</h3>
+      <p>Government documents, datasets, court records, transcripts, official statements, and original research carry more weight than commentary.</p>
+    </article>
+    <article>
+      <h3>Links readers can follow</h3>
+      <p>The goal is not to sound authoritative. The goal is to make the authority checkable by someone who does not work here.</p>
+    </article>
+    <article>
+      <h3>Clear uncertainty</h3>
+      <p>When the evidence is partial, developing, disputed, or messy, the story should say that instead of cosplaying as a crystal ball.</p>
+    </article>
+  </div>
+</section>
+
+<section class="pledge-promises" aria-labelledby="promises-title">
+  <div class="pledge-section-head">
+    <p class="pledge-kicker">The Fine Print, Out Loud</p>
+    <h2 id="promises-title">What we will do, and what we will not pretend.</h2>
+  </div>
+
+  <div class="pledge-promises__grid">
+    <article class="pledge-promise pledge-promise--yes">
+      <h3>We will</h3>
+      <ul role="list">
+        <li>Disclose AI authorship clearly on the AI Newsroom page and in publication language.</li>
+        <li>Build articles around sources that can be inspected.</li>
+        <li>Keep a human editor responsible for the final published page.</li>
+        <li>Separate verified facts from analysis, interpretation, and uncertainty.</li>
+        <li>Correct meaningful errors publicly and plainly.</li>
+      </ul>
+    </article>
+
+    <article class="pledge-promise pledge-promise--no">
+      <h3>We will not</h3>
+      <ul role="list">
+        <li>Invent quotes, sources, experts, documents, statistics, or anonymous whispers from nowhere.</li>
+        <li>Pretend a model is a person with lived reporting experience.</li>
+        <li>Hide the use of AI behind soft little euphemisms built by committee gremlins.</li>
+        <li>Publish a claim just because the sentence sounds confident.</li>
+        <li>Ask you to trust the machine. Check the machine.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="pledge-warning" aria-labelledby="warning-title">
+  <p class="pledge-warning__stamp">Reader Advisory</p>
+  <h2 id="warning-title">Read at your own risk. Form your own conclusions.</h2>
+  <p>
+    We can review, source, edit, label, and correct. We cannot think for you, and honestly that would be a terrible
+    product feature. Treat every article as an argument with evidence attached. Open the sources. Compare the record.
+    Notice what is missing. Push back when the story overreaches.
+  </p>
+  <p>
+    A free press needs skeptical readers. An AI-generated press needs even more skeptical readers. That is not a bug.
+    That is the deal.
+  </p>
+  <div class="pledge-warning__actions">
+    <a class="pledge-btn pledge-btn--primary" href="standards.html">Standards</a>
+    <a class="pledge-btn pledge-btn--ghost" href="corrections.html">Corrections</a>
+    <a class="pledge-btn pledge-btn--ghost" href="contact.html">Contact the editor</a>
+  </div>
+</section>
+
+<section class="pledge-sign">
+  <p>Signed on behalf of a publication that would rather disclose the machine than sell you a fake human halo.</p>
+  <strong>The Editor, The Press</strong>
+  <span>April 2026</span>
+</section>
+
 </main>
 """.strip()
-    return layout(f"Authors — {SITE['name']}", "Meet the staff desks and bylines behind The Press.", "authors.html", "page-authors", main, current_aux="authors.html", jsonld=jsonld_org())
 
+    return layout(
+        f"AI Newsroom Pledge — {SITE['name']}",
+        "How The Press uses Intelligent AI, human editorial review, heavy sourcing, corrections, and reader skepticism.",
+        "authors.html",
+        "page-authors page-pledge",
+        main,
+        current_aux="authors.html",
+        jsonld=jsonld_org(),
+    )
 
 def render_story(story: dict) -> str:
     aside_html = read_fragment(story["asideFile"])
