@@ -18,6 +18,11 @@ import requests
 from bs4 import BeautifulSoup
 from openai import OpenAI
 
+from topic_radar import (
+    assignment_prompt_block,
+    build_issue_plan,
+    topic_radar_enabled,
+)
 ROOT = Path(__file__).resolve().parents[2]
 ASSETS_DAILY = ROOT / "assets" / "daily"
 DAILY_DIR = ROOT / "daily"
@@ -214,6 +219,33 @@ TITLE_CLICHE_PATTERNS = [
     r"^.+\s+tests\s+.+",
     r"^.+\s+shows\s+how\s+.+",
 ]
+
+HEADLINE_CERTAINTY_PATTERNS = [
+    r"\bproves?\b",
+    r"\bfinally\b",
+    r"\bonce and for all\b",
+    r"\bthe truth about\b",
+    r"\bwhat everyone gets wrong\b",
+    r"^the real reason\b",
+    r"\beverything\b.*\bchanged\b",
+    r"\bwill never\b",
+    r"\bis doomed\b",
+    r"\bhas already won\b",
+    r"\bis over\b",
+]
+HEADLINE_CERTAINTY_GATE = env_bool("HEADLINE_CERTAINTY_GATE", True)
+MAX_AVG_SENTENCE_WORDS = env_int("MAX_AVG_SENTENCE_WORDS", 24, minimum=14, maximum=40)
+MAX_LONG_SENTENCE_SHARE = env_float("MAX_LONG_SENTENCE_SHARE", 0.22, minimum=0.05, maximum=0.80)
+READER_VOICE_GUIDE = """
+Write for curious people from age 10 to 99 without talking down to anyone.
+Make the article fun to keep reading: vivid, concrete, occasionally surprising, and human-scale.
+Be creative in structure, examples, scene-setting, and analogies — never creative with facts.
+Stay unbiased: separate evidence from interpretation, include serious uncertainty, and avoid pretending one source or one explanation settles the whole story.
+Explain specialized terms the first time they appear. Do not assume prior knowledge of politics, science, economics, AI, law, medicine, or any other field.
+Use plain language first, then add depth. Short paragraphs are welcome. If a sentence needs three clauses, it probably needs a rewrite.
+Headlines and deks should be concrete and curious, not smug or all-knowing. Avoid definitive frames like proving, finally explaining, revealing the real truth, or declaring that everything changed.
+The article can be thought-provoking and substantive, but nobody should feel pushed out because the writing is showing off.
+"""
 
 STOPWORDS = {
     "about", "after", "again", "against", "america", "american", "americas", "among", "before", "behind",
@@ -521,6 +553,21 @@ def editorial_quality_issues(
     payload_title_rhythm = title_rhythm_signature(title)
     issues: list[str] = []
     title_lower = title.lower().replace("’", "'")
+    if HEADLINE_CERTAINTY_GATE:
+        for pattern in HEADLINE_CERTAINTY_PATTERNS:
+            if re.search(pattern, title_lower):
+                issues.append("headline sounds too definitive/all-knowing; rewrite with curiosity, concrete evidence, and room for uncertainty")
+                break
+
+    body_text = strip_html_text(body_html)
+    sentences = [s for s in re.split(r"(?<=[.!?])\s+", body_text) if len(s.split()) >= 6]
+    if sentences:
+        sentence_lengths = [len(s.split()) for s in sentences]
+        avg_sentence_words = sum(sentence_lengths) / max(1, len(sentence_lengths))
+        long_sentence_share = sum(1 for count in sentence_lengths if count > 34) / max(1, len(sentence_lengths))
+        if avg_sentence_words > MAX_AVG_SENTENCE_WORDS or long_sentence_share > MAX_LONG_SENTENCE_SHARE:
+            issues.append("article voice is getting too dense; split long sentences, explain terms plainly, and make the story easier for non-specialists to keep reading")
+
 
     if TITLE_STYLE_GATE:
         opener_one = title_opener(title, 1)
@@ -752,10 +799,16 @@ def request_payload(client: OpenAI, prompt: str) -> dict[str, Any]:
 
 
 
-def generation_prompt(section_name: str, date_label: str, recent_context: str, visual_assignment: str) -> str:
+def generation_prompt(section_name: str, date_label: str, recent_context: str, visual_assignment: str, assignment: dict[str, Any] | None = None) -> str:
     guidance = SECTION_GUIDANCE.get(section_name, f"Cover {section_name} with depth, humility, and strong sourcing.")
     banned_visuals = "; ".join(VISUAL_CLICHE_BANS)
     title_openers = ", ".join(sorted(TITLE_OPENERS_TO_AVOID))
+    reader_voice = READER_VOICE_GUIDE.strip()
+    topic_requirement = (
+        "- You are assigned the Topic Radar story above. Do not choose a different topic unless live research proves it is false, stale, unsafe, or impossible to source."
+        if assignment
+        else ("- Choose a genuinely current, newsworthy topic for the " + section_name + " desk.")
+    )
     return f"""
 You are the newsroom engine for The Press.
 
@@ -784,8 +837,11 @@ Return JSON only. No markdown fences. Use exactly this shape:
   "source_notes_html": "<ol><li><a href='https://example.com'>Source label</a> — one short note about what it supports</li></ol>"
 }}
 
+Reader voice and headline stance:
+{reader_voice}
+
 Hard requirements:
-- Choose a genuinely current, newsworthy topic for the {section_name} desk.
+{topic_requirement}
 - Do not choose any topic too close to the recent archive memory or another story in this same issue. If a same broad event is unavoidable, the article must have a materially new factual peg, a different institution/geography/human group, and a different thesis.
 - Make the mix feel like a real newspaper, not a playlist of the same four news obsessions. Seek range across local/global, institutional/human, data/culture, science/policy, money/labor, courts/communities, and daily-life consequences.
 - Give the headline a concrete subject and fresh syntax. Avoid starting titles with these overused openers unless absolutely essential: {title_openers}.
@@ -880,6 +936,7 @@ def call_model(
     recent_memory: list[dict[str, Any]] | None = None,
     current_issue: list[dict[str, Any]] | None = None,
     issue_index: int = 0,
+    assignment: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     recent_memory = recent_memory or []
     current_issue = current_issue or []
@@ -887,6 +944,8 @@ def call_model(
     visual_assignment = visual_archetype_for(issue_index, section_name)
     recent_context = brief_recent_context(recent_memory, section_name, current_issue)
 
+    if assignment:
+        recent_context = f"{assignment_prompt_block(assignment)}\n\n{recent_context}"
     def lock_visual(payload: dict[str, Any]) -> dict[str, Any]:
         payload["visual_archetype"] = visual_assignment
 
@@ -929,7 +988,8 @@ def call_model(
                 date_label,
                 recent_context,
                 visual_assignment,
-            ),
+            assignment,
+                ),
         )
     )
 
@@ -952,8 +1012,23 @@ def call_model(
             payload
         )
 
-        hard_repair_issues = required_issues + base_issues
-        blocking_editorial_issues = editorial_issues if STRICT_EDITORIAL_GATES else []
+        reader_voice_issues = [
+
+            issue
+
+            for issue in editorial_issues
+
+            if issue.startswith("headline sounds too definitive")
+
+            or issue.startswith("article voice is getting too dense")
+
+        ]
+
+        hard_repair_issues = required_issues + base_issues + reader_voice_issues
+
+        remaining_editorial_issues = [issue for issue in editorial_issues if issue not in reader_voice_issues]
+
+        blocking_editorial_issues = remaining_editorial_issues if STRICT_EDITORIAL_GATES else []
         repair_issues = hard_repair_issues + blocking_editorial_issues
 
         if not repair_issues:
@@ -1754,9 +1829,43 @@ def main() -> int:
     stories: list[Story] = []
     selected_sections = pick_sections(story_count)
     recent_memory = load_recent_story_memory()
+    story_goal = len(selected_sections)
+    topic_plan: list[dict[str, Any]] = []
+    if topic_radar_enabled():
+        topic_plan = build_issue_plan(
+            client=client,
+            story_count=story_goal,
+            date_label=published_label,
+            edition_date=edition_date,
+            recent_memory=recent_memory,
+            allowed_sections=SECTIONS,
+            root=ROOT,
+        )
+
+    if topic_plan:
+        selected_assignments = topic_plan
+    else:
+        selected_assignments = [
+            {
+                "section_slug": section_slug,
+                "section_name": section_name,
+                "title": "",
+                "bucket": "SECTION_ROTATION",
+                "why_now": "",
+                "core_question": "",
+                "angle": "",
+                "source_urls": [],
+            }
+            for section_slug, section_name in selected_sections
+        ]
+
     current_issue_memory: list[dict[str, Any]] = []
 
-    for issue_index, (section_slug, section_name) in enumerate(selected_sections):
+    for issue_index, assignment in enumerate(selected_assignments):
+        fallback_section_slug, fallback_section_name = selected_sections[issue_index % len(selected_sections)]
+        section_slug = str(assignment.get("section_slug") or fallback_section_slug)
+        section_name = str(assignment.get("section_name") or fallback_section_name)
+        assignment_for_prompt = assignment if topic_plan else None
         payload = call_model(
             client,
             section_name,
@@ -1764,6 +1873,7 @@ def main() -> int:
             recent_memory=recent_memory,
             current_issue=current_issue_memory,
             issue_index=issue_index,
+            assignment=assignment_for_prompt,
         )
         story = build_story_from_payload(
             payload=payload,
@@ -1803,7 +1913,7 @@ def main() -> int:
     write_daily_edition_page(stories, edition_date)
     patch_bylines_in_js()
     patch_styles()
-    save_section_cursor(len(selected_sections))
+    save_section_cursor(len(selected_assignments))
 
     print(f"Generated {len(stories)} stories for {edition_date}")
     return 0
