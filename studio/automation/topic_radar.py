@@ -52,25 +52,25 @@ TOPIC_BUCKETS: dict[str, str] = {
 # stable while the assignment mix gets much more alive.
 BUCKET_SECTION_DEFAULTS: dict[str, tuple[str, str]] = {
     "WORLD_HEAT": ("world", "World"),
-    "PUBLIC_UPRISING": ("world", "World"),
-    "AI_FRONTIER": ("ai", "AI"),
+    "PUBLIC_UPRISING": ("power", "Power"),
+    "AI_FRONTIER": ("systems", "Systems"),
     "SCIENCE_FEAT": ("science", "Science"),
-    "FOOD_CULTURE_LIFE": ("culture", "Culture"),
+    "FOOD_CULTURE_LIFE": ("life", "Life"),
     "CULTURE_PLATFORM": ("culture", "Culture"),
-    "MONEY_SYSTEM": ("economics", "Economics"),
-    "WEIRD_BUT_REAL": ("niche", "Niche"),
-    "LOCAL_TO_GLOBAL": ("world", "World"),
+    "MONEY_SYSTEM": ("money", "Money"),
+    "WEIRD_BUT_REAL": ("the-weird-file", "The Weird File"),
+    "LOCAL_TO_GLOBAL": ("front-page", "Front Page"),
     "CLIMATE_EXTREMES": ("science", "Science"),
-    "CYBER_SECURITY": ("technology", "Technology"),
+    "CYBER_SECURITY": ("systems", "Systems"),
     "MIGRATION_BORDERS": ("world", "World"),
-    "CITIES_HOUSING_TRANSIT": ("economics", "Economics"),
+    "CITIES_HOUSING_TRANSIT": ("life", "Life"),
     "SPORTS_POWER": ("culture", "Culture"),
-    "RELIGION_IDENTITY": ("culture", "Culture"),
-    "JUSTICE_PUBLIC_SAFETY": ("politics", "Politics"),
-    "ENERGY_INFRASTRUCTURE": ("economics", "Economics"),
-    "CONSUMER_LIFE": ("economics", "Economics"),
-    "HEALTH_SYSTEM_SHOCK": ("health", "Health"),
-    "EDUCATION_YOUTH": ("education", "Education"),
+    "RELIGION_IDENTITY": ("ideas", "Ideas"),
+    "JUSTICE_PUBLIC_SAFETY": ("power", "Power"),
+    "ENERGY_INFRASTRUCTURE": ("systems", "Systems"),
+    "CONSUMER_LIFE": ("life", "Life"),
+    "HEALTH_SYSTEM_SHOCK": ("life", "Life"),
+    "EDUCATION_YOUTH": ("life", "Life"),
     "SPACE_OCEAN_FRONTIER": ("science", "Science"),
     "NATURE_ANIMALS": ("science", "Science"),
 }
@@ -154,9 +154,22 @@ def env_float(name: str, default: float, minimum: float | None = None, maximum: 
     return value
 
 
+def env_bool(name: str, default: bool = False) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() not in {"0", "false", "no", "off"}
+
+
 def topic_radar_enabled() -> bool:
     mode = os.getenv("TOPIC_SELECTION_MODE", "radar").strip().lower()
     return mode not in {"", "0", "false", "off", "section", "sections", "rotation", "old"}
+
+
+def topic_radar_required() -> bool:
+    mode = os.getenv("TOPIC_SELECTION_MODE", "radar").strip().lower()
+    default_required = mode == "radar"
+    return env_bool("TOPIC_RADAR_REQUIRED", default_required)
 
 
 def clean_text(value: Any, max_len: int = 260) -> str:
@@ -298,13 +311,24 @@ def pad_with_section_rotation(
     for idx in range(story_count - len(assignments)):
         slug, name = allowed_sections[(len(assignments) + idx) % len(allowed_sections)]
         fallback = TopicAssignment(
-            title=f"A fresh {name} story with a current factual peg",
+            title=(
+                f"{name} fallback assignment: choose a current story with a named actor, "
+                "place, document, dataset, or event"
+            ),
             bucket="LOCAL_TO_GLOBAL",
             section_slug=slug,
             section_name=name,
             why_now="Fallback assignment used because the radar returned fewer stories than requested.",
-            core_question=f"What is the most important current {name.lower()} story that deserves deeper reporting today?",
-            angle="Find a concrete, sourced, non-repetitive story with real stakes and a human-scale entry point.",
+            core_question=(
+                f"What current {name.lower()} story has the clearest named actor, place, document, "
+                "dataset, institution, event, or object anchor with real stakes?"
+            ),
+            angle=(
+                "Do not use this fallback assignment as the final headline. Avoid headlines that start "
+                "with A, An, or The unless no sharper subject exists. Choose a current, sourced, "
+                "concrete story with real stakes and anchor the headline in a named actor, place, "
+                "document, dataset, institution, event, or object."
+            ),
             source_urls=[],
             press_fit=5.0,
             freshness=5.0,
@@ -317,7 +341,11 @@ def pad_with_section_rotation(
     return assignments[:story_count]
 
 
-def normalize_plan(payload: dict[str, Any], story_count: int, allowed_sections: list[tuple[str, str]]) -> tuple[list[dict[str, Any]], list[TopicAssignment]]:
+def normalize_plan(
+    payload: dict[str, Any],
+    story_count: int,
+    allowed_sections: list[tuple[str, str]],
+) -> tuple[list[dict[str, Any]], list[TopicAssignment], int]:
     raw_candidates = payload.get("candidates") if isinstance(payload, dict) else []
     raw_assignments = payload.get("assignments") if isinstance(payload, dict) else []
     if not isinstance(raw_candidates, list):
@@ -345,8 +373,9 @@ def normalize_plan(payload: dict[str, Any], story_count: int, allowed_sections: 
         if len(assignments) >= story_count:
             break
 
+    usable_assignment_count = len(assignments)
     assignments = pad_with_section_rotation(assignments, story_count, allowed_sections)
-    return normalized_candidates, assignments
+    return normalized_candidates, assignments, usable_assignment_count
 
 
 def issue_mix_rules(story_count: int) -> dict[str, Any]:
@@ -404,11 +433,12 @@ Source standards:
 
 Selection taste:
 - Think like a sharp front-page editor, not a category rotator.
-- Assignment framing should be curious and humble, not all-knowing. Avoid this-proves-everything or real-truth language.
+- Assignment framing should be concrete, curious, and humble, not all-knowing. Avoid this-proves-everything or real-truth language.
 - Include huge global developments, AI/science/technology shocks, uprisings and civic pressure, climate/energy/infrastructure, food/life/culture, and one or two strange but real stories.
 - Do not overfit to any examples. The point is range, surprise, consequence, and sourceability.
 - Avoid a stale run of generic U.S. institutional-process stories unless one is genuinely enormous.
 - Prefer concrete factual pegs from the last {rules['trend_lookback_hours']} hours, but allow slower-moving stories when the stakes are large and the angle is fresh.
+- Assignment titles are planning labels only, not final headlines.
 
 Return JSON only with this exact shape:
 {{
@@ -535,9 +565,28 @@ def build_issue_plan(
         recent_memory=recent_memory,
         allowed_sections=allowed_sections,
     )
+    required = topic_radar_required()
     try:
         payload = request_topic_payload(client, prompt)
-        candidates, assignments = normalize_plan(payload, story_count, allowed_sections)
+        if not isinstance(payload, dict):
+            raise RuntimeError("Topic radar returned a non-object payload")
+        if isinstance(payload, dict) and payload.get("error"):
+            raise RuntimeError(f"Topic radar returned error payload: {clean_text(payload.get('error'), 300)}")
+
+        raw_assignments = payload.get("assignments")
+        if not isinstance(raw_assignments, list) or not raw_assignments:
+            raise RuntimeError("Topic radar returned empty assignments")
+
+        candidates, assignments, usable_assignment_count = normalize_plan(payload, story_count, allowed_sections)
+        if not candidates:
+            raise RuntimeError("Topic radar returned empty candidates")
+        if not assignments or usable_assignment_count <= 0:
+            raise RuntimeError("Topic radar returned an unusable plan")
+        if usable_assignment_count < story_count:
+            raise RuntimeError(
+                f"Topic radar returned only {usable_assignment_count} usable assignments for requested {story_count}"
+            )
+
         write_topic_plan_files(
             root=root,
             edition_date=edition_date,
@@ -547,9 +596,12 @@ def build_issue_plan(
         )
         return [item.to_dict() for item in assignments]
     except Exception as exc:  # pragma: no cover - runtime fallback path
-        print(f"WARNING: Topic radar failed; falling back to section rotation: {exc}")
+        if required:
+            raise RuntimeError(f"Topic radar is required and failed: {exc}") from exc
+
+        print(f"WARNING: Topic radar failed; using emergency lane rotation fallback: {exc}")
         fallback_payload = {"error": str(exc), "candidates": [], "assignments": []}
-        _, assignments = normalize_plan(fallback_payload, story_count, allowed_sections)
+        _, assignments, _ = normalize_plan(fallback_payload, story_count, allowed_sections)
         write_topic_plan_files(
             root=root,
             edition_date=edition_date,
@@ -557,7 +609,7 @@ def build_issue_plan(
             candidates=[],
             assignments=assignments,
         )
-        return []
+        return [item.to_dict() for item in assignments]
 
 
 def assignment_prompt_block(assignment: dict[str, Any] | None) -> str:
@@ -582,7 +634,7 @@ Story assignment locked by Topic Radar:
 - Starter sources:
 {sources}
 
-Do not choose a different topic unless live research proves this assignment is false, stale, unsafe, or impossible to source. If the assignment fails, pivot only to a nearby story in the same bucket and explain the pivot through the article's sourcing, not in meta language.
+Stay on this assignment unless live research proves it is false, stale, unsafe, or impossible to source. If the assignment fails, pivot only to a nearby story in the same bucket and show that pivot through sourcing, not meta language.
 
-Voice reminder: the final article should be fun, clear, humane, substantive, and unbiased. Make room for uncertainty. Explain specialized terms the first time they appear. Do not make the headline or thesis sound like the newsroom has solved the whole subject.
+Voice reminder: the final article should be fun, clear, humane, substantive, and unbiased. Make room for uncertainty. Explain specialized terms the first time they appear. Keep headlines concrete, sourced, and curious. Do not make the headline or thesis sound like the newsroom has solved the whole subject.
 """.strip()

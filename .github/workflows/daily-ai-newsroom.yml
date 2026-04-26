@@ -66,17 +66,21 @@ jobs:
           MAX_OUTPUT_TOKENS: "24000"
           MAX_STORY_COUNT: "30"
           STRICT_QUALITY_GATE: "0"
-          STRICT_EDITORIAL_GATES: "0"
+          STRICT_EDITORIAL_GATES: "1"
 
           RECENT_TOPIC_LOOKBACK: "120"
           RECENT_TOPIC_SIMILARITY_LIMIT: "0.34"
           ISSUE_TOPIC_SIMILARITY_LIMIT: "0.26"
           VISUAL_CONCEPT_SIMILARITY_LIMIT: "0.32"
-          TITLE_RHYTHM_SIMILARITY_LIMIT: "0.64"
+          TITLE_RHYTHM_SIMILARITY_LIMIT: "0.50"
           TITLE_STYLE_GATE: "1"
+          MAX_SAME_FIRST_WORD_PER_ISSUE: "2"
+          MAX_DETERMINER_OPENERS_PER_ISSUE: "2"
 
           # Topic Radar: assignment planning before article generation.
+          # Required by default in radar mode; errors/empty plans raise unless TOPIC_RADAR_REQUIRED is disabled.
           TOPIC_SELECTION_MODE: "radar"
+          TOPIC_RADAR_REQUIRED: "1"
           TOPIC_RADAR_MODEL: gpt-5.5
           TOPIC_RADAR_CANDIDATE_MULTIPLIER: "3"
           TREND_LOOKBACK_HOURS: "48"
@@ -137,16 +141,18 @@ jobs:
 
             Current rules:
             - 15 new long-form stories by default
+            - future issue assignment uses detoxed broad newsroom lanes (Front Page, World, Power, Money, Science, Life, Ideas, Culture, Systems, The Weird File)
             - each article is repaired toward the 2,500+ word quality standard
             - each article must include 20+ distinct live HTTPS source URLs
             - generates one high-quality GPT Image 2 thumbnail per new article
             - reuses existing GPT Image thumbnails on reruns
-            - topic radar creates a reviewable assignment plan before article writing
+            - topic radar is required by default and must produce a usable plan before article writing
             - reader voice and headline humility checks are included
-            - repairs and warns on near-duplicate topics, formulaic headlines, and repeated thumbnail clichés
+            - headline repetition gates block repeated openers and formulaic headline patterns
+            - repairs and warns on near-duplicate topics and repeated thumbnail clichés
             - does not generate article galleries/photos
             - targets only the newest articles listed in daily-latest.json
-            - does not backfill or rewrite the historical website
+            - does not backfill or rewrite historical articles or historical site content
 
             Review the generated thumbnails before merging.
           commit-message: "Append daily issue with GPT Image 2 thumbnails"

@@ -28,40 +28,30 @@ ASSETS_DAILY = ROOT / "assets" / "daily"
 DAILY_DIR = ROOT / "daily"
 
 SECTIONS: list[tuple[str, str]] = [
-    # Mirrors the public nav so every desk can receive daily attention.
-    ("politics", "Politics"),
-    ("culture", "Culture"),
-    ("technology", "Technology"),
-    ("economics", "Economics"),
-    ("education", "Education"),
-    ("health", "Health"),
-    ("philosophy", "Philosophy"),
-    ("science", "Science"),
+    # Future issue assignment lanes (detoxed from legacy category rotation).
+    ("front-page", "Front Page"),
     ("world", "World"),
-    ("opinion", "Opinion"),
-    ("ai", "AI"),
-    ("geopolitics", "Geopolitics"),
-    ("film", "Film"),
-    ("pop-culture", "Pop Culture"),
-    ("niche", "Niche"),
+    ("power", "Power"),
+    ("money", "Money"),
+    ("science", "Science"),
+    ("life", "Life"),
+    ("ideas", "Ideas"),
+    ("culture", "Culture"),
+    ("systems", "Systems"),
+    ("the-weird-file", "The Weird File"),
 ]
 
 SECTION_GUIDANCE: dict[str, str] = {
-    "Politics": "Report power, public administration, elections, courts, and democratic procedure with primary documents whenever possible.",
-    "Culture": "Cover culture as institutions, labor, audiences, money, taste, and public meaning — not just celebrity chatter.",
-    "Technology": "Explain infrastructure, markets, policy, energy, security, chips, software, and the real-world machinery behind digital life.",
-    "Economics": "Translate macro indicators into household budgets, wages, rent, prices, firms, labor markets, and policy choices.",
-    "Education": "Cover schools, colleges, attendance, learning, finance, labor, students, families, and the capacity of public systems.",
-    "Health": "Use a public-health lens: surveillance, vaccination, evidence, risk, prevention, medical systems, and policy; prioritize CDC, WHO, FDA, peer-reviewed, and official data where relevant.",
-    "Philosophy": "Write a sourced ideas essay with a clear thesis, counterarguments, ethical stakes, and concrete examples. It may be opinionated, but public claims must be evidence-anchored.",
-    "Science": "Report evidence, uncertainty, methodology, institutions, engineering limits, and what would change the conclusion.",
-    "World": "Connect local events to alliances, borders, migration, trade, security, humanitarian systems, and regional institutions.",
-    "Opinion": "Write an AI editorial essay: argue a sharp thesis, steelman the best opposing case, and ground every factual claim in sources rather than vibes.",
-    "AI": "Cover AI as technology, labor, power, safety, law, infrastructure, business, education, science, and public institutions.",
-    "Geopolitics": "Emphasize state interests, alliances, deterrence, logistics, economic pressure, geography, and institutional constraints.",
-    "Film": "Cover film as art and industry: studios, theaters, labor, distribution, technology, audiences, awards, and criticism.",
-    "Pop Culture": "Treat pop culture as a serious signal of audience behavior, platform economics, identity, taste, and media power.",
-    "Niche": "Find a specific undercovered subculture, industry, hobby, dataset, community, or odd institution and make it legible without condescension.",
+    "Front Page": "Choose one of the day's strongest, most consequential stories, regardless of old category habits.",
+    "World": "Cover global developments, conflict, diplomacy, migration, climate stress, borders, alliances, humanitarian systems, and regional institutions.",
+    "Power": "Cover courts, elections, public administration, law, corporate power, labor power, civic pressure, rights, enforcement, and public accountability.",
+    "Money": "Cover prices, wages, housing, budgets, debt, markets, supply chains, business models, and household economic consequences.",
+    "Science": "Cover research, medicine, climate, space, engineering, oceans, evidence, methods, uncertainty, and what would change the conclusion.",
+    "Life": "Cover food, health, families, schools, consumer behavior, work, cities, rituals, routines, daily systems, and how policy reaches people.",
+    "Ideas": "Run essays with a thesis, counterargument, evidence, ethical stakes, and concrete examples. Opinionated claims still need sourcing.",
+    "Culture": "Cover entertainment, media, art, audience behavior, institutions, taste, sports as culture, creative labor, platform economics, and public meaning.",
+    "Systems": "Cover infrastructure, technology, energy, security, logistics, platforms, software, data centers, grids, water, shipping, and machinery behind modern life.",
+    "The Weird File": "Cover strange but real stories, odd institutions, subcultures, unusual data, weird markets, overlooked communities, and surprising human behavior without condescension.",
 }
 
 
@@ -209,6 +199,30 @@ TITLE_OPENERS_TO_AVOID = {
     "washington",
 }
 
+BANNED_FORMULA_PATTERNS = [
+    r"\bhas\s+become\b",
+    r"\bhave\s+become\b",
+    r"\bis\s+becoming\b",
+    r"\bare\s+becoming\b",
+    r"\bwas\s+becoming\b",
+    r"\bwere\s+becoming\b",
+    r"\bbecame\b",
+    r"\bturns\s+into\b",
+    r"\bturn\s+into\b",
+    r"\bturns\s+on\b",
+    r"\bturn\s+on\b",
+    r"\bputs\s+into\s+focus\b",
+    r"\bput\s+into\s+focus\b",
+    r"\blands\s+inside\b",
+    r"\bland\s+inside\b",
+    r"\bwalks\s+onto\b",
+    r"\bwalk\s+onto\b",
+    r"\bis\s+not\s+just\b",
+    r"\bare\s+not\s+just\b",
+    r"\bhas\s+to\s+survive\b",
+    r"\bhave\s+to\s+survive\b",
+]
+
 TITLE_CLICHE_PATTERNS = [
     r"^america(’s|'s)?\b",
     r"^why\b",
@@ -218,7 +232,29 @@ TITLE_CLICHE_PATTERNS = [
     r"^.+\s+is\s+reshaping\s+.+",
     r"^.+\s+tests\s+.+",
     r"^.+\s+shows\s+how\s+.+",
+    *BANNED_FORMULA_PATTERNS,
 ]
+
+HEADLINE_SHAPES = [
+    "named actor + vivid verb + concrete stakes",
+    "place + observed change + why it matters",
+    "number or data point + human consequence",
+    "institution + conflict + unresolved question",
+    "object or detail + larger system",
+    "short declarative headline under 9 words",
+    "direct contrast using two clauses",
+    "verb-led headline",
+    "document or dataset-led headline",
+    "person or community-led headline",
+    "unexpected noun + precise verb",
+    "scene-setting headline with no determiner opener",
+    "rare question headline, only when genuinely sharper",
+    "rare colon headline, only when genuinely sharper",
+]
+
+MAX_SAME_FIRST_WORD_PER_ISSUE = env_int("MAX_SAME_FIRST_WORD_PER_ISSUE", 2, minimum=1, maximum=5)
+MAX_DETERMINER_OPENERS_PER_ISSUE = env_int("MAX_DETERMINER_OPENERS_PER_ISSUE", 2, minimum=0, maximum=5)
+DETERMINER_OPENERS = {"a", "an", "the"}
 
 HEADLINE_CERTAINTY_PATTERNS = [
     r"\bproves?\b",
@@ -435,9 +471,71 @@ def title_rhythm_signature(title: str) -> set[str]:
         signature.add("formula:shows-how")
     if re.search(r"\bsays?\s+about\b", title.lower()):
         signature.add("formula:says-about")
+    if re.search(r"\bhas\s+become\b|\bhave\s+become\b|\bbecame\b", title.lower()):
+        signature.add("formula:has-become")
+    if re.search(r"\bis\s+becoming\b|\bare\s+becoming\b|\bwas\s+becoming\b|\bwere\s+becoming\b", title.lower()):
+        signature.add("formula:becoming")
+    if re.search(r"\bturns\s+into\b|\bturn\s+into\b", title.lower()):
+        signature.add("formula:turns-into")
+    if re.search(r"\bturns\s+on\b|\bturn\s+on\b", title.lower()):
+        signature.add("formula:turns-on")
+    if re.search(r"\bis\s+not\s+just\b|\bare\s+not\s+just\b", title.lower()):
+        signature.add("formula:not-just")
+    if re.search(r"\bputs\s+into\s+focus\b|\bput\s+into\s+focus\b", title.lower()):
+        signature.add("formula:into-focus")
+    if re.search(r"\blands\s+inside\b|\bland\s+inside\b", title.lower()):
+        signature.add("formula:lands-inside")
+    if re.search(r"\bwalks\s+onto\b|\bwalk\s+onto\b", title.lower()):
+        signature.add("formula:walks-onto")
     if re.match(r"^[a-z][a-z.-]+['’]s\b", title.lower()):
         signature.add("possessive-opener")
     return signature
+
+
+def first_word(title: str) -> str:
+    normalized = title.lower().replace("’", "'")
+    match = re.search(r"[a-z0-9][a-z0-9'.-]*", normalized)
+    if not match:
+        return ""
+    return match.group(0).strip("'.-")
+
+
+def issue_first_word_count(current_issue: list[dict[str, Any]], word: str) -> int:
+    if not word:
+        return 0
+    return sum(1 for item in current_issue if first_word(str(item.get("title") or "")) == word)
+
+
+def issue_determiner_opener_count(current_issue: list[dict[str, Any]]) -> int:
+    return sum(1 for item in current_issue if first_word(str(item.get("title") or "")) in DETERMINER_OPENERS)
+
+
+def headline_formula_families(title: str) -> set[str]:
+    families: set[str] = set()
+    lower = title.lower().replace("’", "'")
+    if re.search(r"\bhas\s+become\b|\bhave\s+become\b|\bbecame\b", lower):
+        families.add("formula:has-become")
+    if re.search(r"\bis\s+becoming\b|\bare\s+becoming\b|\bwas\s+becoming\b|\bwere\s+becoming\b", lower):
+        families.add("formula:becoming")
+    if re.search(r"\bturns\s+into\b|\bturn\s+into\b", lower):
+        families.add("formula:turns-into")
+    if re.search(r"\bturns\s+on\b|\bturn\s+on\b", lower):
+        families.add("formula:turns-on")
+    if re.search(r"\bis\s+not\s+just\b|\bare\s+not\s+just\b", lower):
+        families.add("formula:not-just")
+    if re.search(r"\bputs\s+into\s+focus\b|\bput\s+into\s+focus\b", lower):
+        families.add("formula:into-focus")
+    if re.search(r"\blands\s+inside\b|\bland\s+inside\b", lower):
+        families.add("formula:lands-inside")
+    if re.search(r"\bwalks\s+onto\b|\bwalk\s+onto\b", lower):
+        families.add("formula:walks-onto")
+    return families
+
+
+def headline_shape_for(issue_index: int) -> str:
+    if not HEADLINE_SHAPES:
+        return "named actor + vivid verb + concrete stakes"
+    return HEADLINE_SHAPES[issue_index % len(HEADLINE_SHAPES)]
 
 
 def required_payload_issues(payload: dict[str, Any]) -> list[str]:
@@ -554,6 +652,7 @@ def editorial_quality_issues(
     payload_title_rhythm = title_rhythm_signature(title)
     issues: list[str] = []
     title_lower = title.lower().replace("’", "'")
+    opener = first_word(title)
     if HEADLINE_CERTAINTY_GATE:
         for pattern in HEADLINE_CERTAINTY_PATTERNS:
             if re.search(pattern, title_lower):
@@ -586,6 +685,30 @@ def editorial_quality_issues(
             if re.search(pattern, title_lower):
                 issues.append(f"title matches an overused Press headline pattern: {pattern}")
                 break
+
+    if TITLE_STYLE_GATE and opener in DETERMINER_OPENERS:
+        determiner_count = issue_determiner_opener_count(current_issue)
+        if determiner_count >= MAX_DETERMINER_OPENERS_PER_ISSUE:
+            issues.append(
+                "title starts with A/An/The but this issue already hit the determiner-opener cap; rewrite with a sharper subject"
+            )
+
+    if TITLE_STYLE_GATE and opener:
+        first_word_count = issue_first_word_count(current_issue, opener)
+        if first_word_count >= MAX_SAME_FIRST_WORD_PER_ISSUE:
+            issues.append(
+                f"title repeats first-word opener '{opener}' beyond allowed issue cap ({MAX_SAME_FIRST_WORD_PER_ISSUE})"
+            )
+
+    if TITLE_STYLE_GATE:
+        current_families: set[str] = set()
+        for item in current_issue:
+            current_families |= headline_formula_families(str(item.get("title") or ""))
+        repeated_families = headline_formula_families(title) & current_families
+        if repeated_families:
+            issues.append(
+                "title repeats formulaic syntax already used in this issue: " + ", ".join(sorted(repeated_families))
+            )
 
     def best_term_match(items: list[dict[str, Any]], base_terms: set[str], term_fn: Any) -> tuple[float, str]:
         best_score = 0.0
@@ -800,15 +923,29 @@ def request_payload(client: OpenAI, prompt: str) -> dict[str, Any]:
 
 
 
-def generation_prompt(section_name: str, date_label: str, recent_context: str, visual_assignment: str, assignment: dict[str, Any] | None = None) -> str:
+def generation_prompt(
+    section_name: str,
+    date_label: str,
+    recent_context: str,
+    visual_assignment: str,
+    headline_shape: str,
+    current_issue: list[dict[str, Any]],
+    assignment: dict[str, Any] | None = None,
+) -> str:
     guidance = SECTION_GUIDANCE.get(section_name, f"Cover {section_name} with depth, humility, and strong sourcing.")
     banned_visuals = "; ".join(VISUAL_CLICHE_BANS)
     title_openers = ", ".join(sorted(TITLE_OPENERS_TO_AVOID))
     reader_voice = READER_VOICE_GUIDE.strip()
     topic_requirement = (
-        "- You are assigned the Topic Radar story above. Do not choose a different topic unless live research proves it is false, stale, unsafe, or impossible to source."
+        "- You are assigned the Topic Radar story above. Stay on this assignment unless live reporting proves it is false, stale, unsafe, or impossible to source."
         if assignment
         else ("- Choose a genuinely current, newsworthy topic for the " + section_name + " desk.")
+    )
+    determiner_count = issue_determiner_opener_count(current_issue)
+    determiner_note = (
+        f"- Do not start with A, An, or The because this issue already has {determiner_count} determiner-led headlines."
+        if determiner_count >= MAX_DETERMINER_OPENERS_PER_ISSUE
+        else f"- Keep determiner-led headlines rare; the per-issue cap is {MAX_DETERMINER_OPENERS_PER_ISSUE}."
     )
     return f"""
 You are the newsroom engine for The Press.
@@ -823,7 +960,10 @@ Editorial variety brief:
 Assigned visual archetype for this article:
 {visual_assignment}
 
-First research widely, then write. Gather a broad source map before drafting: primary documents, official datasets, credible news reports, local reporting where useful, academic or technical sources when relevant, explainers from authoritative institutions, and at least a few sources that complicate or challenge the main thesis.
+Required headline shape for this article:
+{headline_shape}
+
+Research widely, then write. Gather a broad source map before drafting: primary documents, official datasets, credible news reports, local reporting where useful, academic or technical sources when relevant, explainers from authoritative institutions, and at least a few sources that complicate or challenge the main thesis.
 
 Return JSON only. No markdown fences. Use exactly this shape:
 {{
@@ -846,6 +986,12 @@ Hard requirements:
 - Do not choose any topic too close to the recent archive memory or another story in this same issue. If a same broad event is unavoidable, the article must have a materially new factual peg, a different institution/geography/human group, and a different thesis.
 - Make the mix feel like a real newspaper, not a playlist of the same four news obsessions. Seek range across local/global, institutional/human, data/culture, science/policy, money/labor, courts/communities, and daily-life consequences.
 - Give the headline a concrete subject and fresh syntax. Avoid starting titles with these overused openers unless absolutely essential: {title_openers}.
+- Do not reuse the same headline syntax as another story in this issue; vary sentence construction and rhythm.
+- Avoid these headline formulas: has become, have become, is becoming, are becoming, was becoming, were becoming, became, turns into, turn into, turns on, turn on, puts into focus, put into focus, lands inside, land inside, walks onto, walk onto, is not just, are not just, has to survive, have to survive.
+- Use a named actor, place, institution, document, dataset, number, event, or concrete object when possible.
+- Never use the assignment or fallback title as the final headline.
+- Required headline shape: {headline_shape}.
+{determiner_note}
 - Avoid stock headline formulas: "Why X is...", "What X says about...", "X is reshaping Y", "X tests Y", "X shows how Y", and other seminar-room titles. No corny portentous headers.
 - Prefer titles with a precise noun, vivid verb, and clear stakes. The title should sound edited by a sharp human editor, not templated.
 - body_html must be at least {ARTICLE_TARGET_WORDS} words. Do not pad; add reporting depth, context, counterevidence, implications, and uncertainty.
@@ -864,7 +1010,7 @@ Hard requirements:
 - Only use maps when the story truly requires geography, and never default to red/blue political maps or floating state silhouettes.
 - Only use data centers, server racks, scales, court buildings, vaccines, rockets, capsules, or glowing AI brains when they are unavoidable and visually handled in a fresh, concrete way.
 - thumbnail_search_hint should be a short Wikimedia Commons-friendly search phrase for a literal fallback image, not a cliché.
-- For Opinion and Philosophy, write an argument with a clear point of view, but keep the factual scaffolding sourced and include a strong counterargument.
+- For the Ideas lane, write an argument with a clear point of view, keep factual scaffolding sourced, and include a strong counterargument.
 """.strip()
 
 def verification_prompt(payload: dict[str, Any], section_name: str, date_label: str, recent_context: str, visual_assignment: str) -> str:
@@ -883,6 +1029,8 @@ Use live web research to fact-check the draft below. Fix unsupported or stale cl
 
 Also preserve the variety standards: do not drift back to the same recent topic, do not use a templated country-first headline, and do not use banned thumbnail clichés. The visual_archetype field must exactly equal "{visual_assignment}". The visual_brief must be specific and must avoid: {banned_visuals}.
 
+Keep the headline concrete, sourced, and curious rather than sweeping or all-knowing.
+
 Return the same JSON shape only. No markdown fences.
 
 Draft JSON:
@@ -897,8 +1045,11 @@ def repair_prompt(
     metrics: dict[str, Any],
     recent_context: str,
     visual_assignment: str,
+    headline_shape: str,
+    current_issue: list[dict[str, Any]],
 ) -> str:
     banned_visuals = "; ".join(VISUAL_CLICHE_BANS)
+    determiner_count = issue_determiner_opener_count(current_issue)
     return f"""
 The Press quality gate rejected this {section_name} draft.
 
@@ -911,7 +1062,7 @@ Current metrics:
 Editorial variety brief:
 {recent_context}
 
-Repair the article by doing more live research, expanding the analysis, improving fact-checking, changing the topic or framing when required, and fixing the source list. Do not merely add a pile of links; every source must support the article. Keep the writing original, polished, and less templated.
+Repair the article by doing more live research, expanding the analysis, improving fact-checking, changing the topic or framing when required, and fixing the source list. Do not merely add links; each source must directly support claims in the story. Keep the writing original, polished, concrete, and less templated.
 
 Required final standards:
 - At least {ARTICLE_TARGET_WORDS} words in body_html.
@@ -919,7 +1070,13 @@ Required final standards:
 - At least {MIN_UNIQUE_SOURCE_DOMAINS} unique source domains.
 - No unsupported facts.
 - A fresh topic or materially new angle compared with the recent archive memory and this same issue.
-- A stronger, less formulaic title that does not open with the usual country/institution template unless essential.
+- A stronger, less formulaic title that is concrete, sourced, and does not open with the usual country/institution template unless essential.
+- Required headline shape for this story: {headline_shape}.
+- Do not reuse the same headline syntax as another story in this issue.
+- Avoid these headline formulas: has become, have become, is becoming, are becoming, was becoming, were becoming, became, turns into, turn into, turns on, turn on, puts into focus, put into focus, lands inside, land inside, walks onto, walk onto, is not just, are not just, has to survive, have to survive.
+- Never use the assignment or fallback title as the final headline.
+- Use a named actor, place, institution, document, dataset, number, event, or concrete object when possible.
+- Do not start with A, An, or The if {MAX_DETERMINER_OPENERS_PER_ISSUE} current-issue headlines already do. Current count: {determiner_count}.
 - visual_archetype exactly equals: {visual_assignment}
 - visual_brief follows that archetype and avoids these visual clichés: {banned_visuals}
 - Return the exact JSON shape only. No markdown fences.
@@ -943,6 +1100,7 @@ def call_model(
     current_issue = current_issue or []
 
     visual_assignment = visual_archetype_for(issue_index, section_name)
+    headline_shape = headline_shape_for(issue_index)
     recent_context = brief_recent_context(recent_memory, section_name, current_issue)
 
     if assignment:
@@ -989,7 +1147,9 @@ def call_model(
                 date_label,
                 recent_context,
                 visual_assignment,
-            assignment,
+                headline_shape,
+                current_issue,
+                assignment,
                 ),
         )
     )
@@ -1061,6 +1221,8 @@ def call_model(
                     metrics,
                     recent_context,
                     visual_assignment,
+                    headline_shape,
+                    current_issue,
                 ),
             )
         )
@@ -1231,6 +1393,90 @@ def download_image(url: str | None, page_slug: str) -> str:
 def story_word_count(body_html: str) -> int:
     text = BeautifulSoup(body_html, "html.parser").get_text(" ", strip=True)
     return len(text.split())
+
+
+def issue_headline_audit_failures(headlines: list[str]) -> list[str]:
+    failures: list[str] = []
+    normalized = [title.strip() for title in headlines if str(title or "").strip()]
+
+    determiner_titles = [title for title in normalized if first_word(title) in DETERMINER_OPENERS]
+    if len(determiner_titles) > MAX_DETERMINER_OPENERS_PER_ISSUE:
+        failures.append(
+            "determiner opener cap exceeded "
+            f"({len(determiner_titles)} > {MAX_DETERMINER_OPENERS_PER_ISSUE}): "
+            + " | ".join(determiner_titles)
+        )
+
+    first_word_counts: Counter[str] = Counter()
+    for title in normalized:
+        word = first_word(title)
+        if word:
+            first_word_counts[word] += 1
+    repeated = [f"{word}={count}" for word, count in sorted(first_word_counts.items()) if count > MAX_SAME_FIRST_WORD_PER_ISSUE]
+    if repeated:
+        failures.append(
+            "first-word opener cap exceeded "
+            f"(max {MAX_SAME_FIRST_WORD_PER_ISSUE}): " + ", ".join(repeated)
+        )
+
+    family_counts: Counter[str] = Counter()
+    banned_titles: list[str] = []
+    for title in normalized:
+        families = headline_formula_families(title)
+        lower = title.lower().replace("’", "'")
+        matched_patterns = [pattern for pattern in BANNED_FORMULA_PATTERNS if re.search(pattern, lower)]
+        if families or matched_patterns:
+            details = sorted(set(families) | set(matched_patterns))
+            banned_titles.append(f"{title} -> {', '.join(details)}")
+        for family in families:
+            family_counts[family] += 1
+
+    if banned_titles:
+        failures.append("banned headline formulas detected: " + " | ".join(banned_titles))
+
+    repeated_families = [f"{family}={count}" for family, count in sorted(family_counts.items()) if count > 1]
+    if repeated_families:
+        failures.append("same banned formula family repeated across issue: " + ", ".join(repeated_families))
+
+    return failures
+
+
+def audit_issue_headlines(stories: list[Story]) -> None:
+    failures = issue_headline_audit_failures([story.title for story in stories])
+    if not failures:
+        return
+
+    message = "Final issue headline audit failed:\n- " + "\n- ".join(failures)
+    if STRICT_EDITORIAL_GATES:
+        raise RuntimeError(message)
+    print("WARNING: " + message)
+
+
+def enforce_issue_headline_audit(stories: list[Story]) -> None:
+    """Backward-compatible alias for older call sites."""
+    audit_issue_headlines(stories)
+
+
+def run_headline_audit_self_test() -> None:
+    sample = [
+        "A city budget has become a housing trap",
+        "An agency is becoming the loudest voice",
+        "The council lands inside a transit crisis",
+        "Markets is not just a scoreboard anymore",
+        "Markets reprice the weekly grocery run",
+    ]
+    failures = issue_headline_audit_failures(sample)
+    checks = {
+        "determiner opener cap": any("determiner opener cap exceeded" in failure for failure in failures),
+        "first-word opener cap": any("first-word opener cap exceeded" in failure for failure in failures),
+        "has become": any("formula:has-become" in failure for failure in failures),
+        "is becoming": any("formula:becoming" in failure for failure in failures),
+        "lands inside": any("formula:lands-inside" in failure for failure in failures),
+        "is not just": any("formula:not-just" in failure for failure in failures),
+    }
+    missing = [name for name, ok in checks.items() if not ok]
+    if missing:
+        raise RuntimeError("Headline audit self-test failed: missing checks for " + ", ".join(missing))
 
 
 
@@ -1826,6 +2072,7 @@ def main() -> int:
 
     ASSETS_DAILY.mkdir(parents=True, exist_ok=True)
     DAILY_DIR.mkdir(parents=True, exist_ok=True)
+    run_headline_audit_self_test()
 
     stories: list[Story] = []
     selected_sections = pick_sections(story_count)
@@ -1899,6 +2146,8 @@ def main() -> int:
 
     if not stories:
         raise RuntimeError("No articles generated; preserving existing site files")
+
+    audit_issue_headlines(stories)
 
     for story in stories:
         page_path = DAILY_DIR / f"{story.slug}.html"
