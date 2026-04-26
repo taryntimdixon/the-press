@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-25T21:14:29.490837+00:00",
+  "generated_at": "2026-04-26T05:25:32.384583+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,128 +9,128 @@
   },
   "home": {
     "hero": [
-      "2026-04-25-the-complaint-window-is-moving-inside-the-agency",
-      "2026-04-25-the-voice-track-has-become-a-labor-contract",
-      "2026-04-25-a-47-day-clock-lands-on-the-web-s-trust-desk",
-      "2026-04-25-the-harvest-wage-fight-has-reached-the-produce-cooler"
+      "2026-04-26-a-spending-cap-table-waits-for-the-justices",
+      "2026-04-26-a-321-million-health-fund-pulls-the-writers-room-into-focus",
+      "2026-04-26-toll-tags-caught-a-gps-backup-in-their-lane",
+      "2026-04-26-a-grocery-card-has-become-a-state-budget-line"
     ],
     "secondary": [
-      "2026-04-25-the-first-bell-now-rings-at-the-phone-pouch",
-      "2026-04-25-the-cheese-was-aged-the-warning-still-had-to-catch-up",
-      "2026-04-25-a-headband-should-not-own-the-quietest-room"
+      "2026-04-26-the-premium-sheet-is-becoming-a-school-finance-document",
+      "2026-04-26-a-muddy-cup-has-a-poison-center-problem",
+      "2026-04-26-build-the-room-before-the-exit"
     ],
     "most_read": [
-      "2026-04-25-the-atlantic-current-warning-is-becoming-an-instrument-test",
-      "2026-04-25-chadian-boots-put-haiti-s-crisis-on-a-wider-ledger",
-      "2026-04-25-the-brand-checklist-should-not-erase-the-boss",
-      "2026-04-25-a-batch-record-met-an-ai-agent-fda-asked-who-checked-it",
-      "2026-04-25-syunik-s-42-kilometers-move-onto-washington-s-infrastructure-desk"
+      "2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time",
+      "2026-04-26-a-service-notice-reaches-the-closed-crossing",
+      "2026-04-26-first-fix-the-hospital-bill-then-talk-about-collection",
+      "2026-04-26-the-ai-lesson-has-to-survive-the-training-floor",
+      "2026-04-26-a-retired-runway-reopens-greenland-s-arctic-bargain"
     ],
     "editors_picks": [
-      "2026-04-25-the-animation-peg-bar-enters-california-s-subsidy-file",
-      "2026-04-25-the-studio-archive-is-now-a-merger-docket",
-      "2026-04-25-a-violin-bow-now-has-to-prove-its-tree",
-      "2026-04-24-the-postmark-is-no-longer-the-whole-story"
+      "2026-04-26-a-rewrite-fee-lands-inside-hollywood-s-health-plan",
+      "2026-04-26-a-toothy-keychain-walks-onto-the-studio-lot",
+      "2026-04-26-the-inspection-lane-has-become-the-walking-horse-fight",
+      "2026-04-25-the-complaint-window-is-moving-inside-the-agency"
     ],
     "latest": [
-      "2026-04-25-the-complaint-window-is-moving-inside-the-agency",
-      "2026-04-25-the-voice-track-has-become-a-labor-contract",
-      "2026-04-25-a-47-day-clock-lands-on-the-web-s-trust-desk",
-      "2026-04-25-the-harvest-wage-fight-has-reached-the-produce-cooler",
-      "2026-04-25-the-first-bell-now-rings-at-the-phone-pouch",
-      "2026-04-25-the-cheese-was-aged-the-warning-still-had-to-catch-up",
-      "2026-04-25-a-headband-should-not-own-the-quietest-room",
-      "2026-04-25-the-atlantic-current-warning-is-becoming-an-instrument-test",
-      "2026-04-25-chadian-boots-put-haiti-s-crisis-on-a-wider-ledger",
-      "2026-04-25-the-brand-checklist-should-not-erase-the-boss",
-      "2026-04-25-a-batch-record-met-an-ai-agent-fda-asked-who-checked-it",
-      "2026-04-25-syunik-s-42-kilometers-move-onto-washington-s-infrastructure-desk"
+      "2026-04-26-a-spending-cap-table-waits-for-the-justices",
+      "2026-04-26-a-321-million-health-fund-pulls-the-writers-room-into-focus",
+      "2026-04-26-toll-tags-caught-a-gps-backup-in-their-lane",
+      "2026-04-26-a-grocery-card-has-become-a-state-budget-line",
+      "2026-04-26-the-premium-sheet-is-becoming-a-school-finance-document",
+      "2026-04-26-a-muddy-cup-has-a-poison-center-problem",
+      "2026-04-26-build-the-room-before-the-exit",
+      "2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time",
+      "2026-04-26-a-service-notice-reaches-the-closed-crossing",
+      "2026-04-26-first-fix-the-hospital-bill-then-talk-about-collection",
+      "2026-04-26-the-ai-lesson-has-to-survive-the-training-floor",
+      "2026-04-26-a-retired-runway-reopens-greenland-s-arctic-bargain"
     ],
     "daily": [
-      "2026-04-25-the-complaint-window-is-moving-inside-the-agency",
-      "2026-04-25-the-voice-track-has-become-a-labor-contract",
-      "2026-04-25-a-47-day-clock-lands-on-the-web-s-trust-desk",
-      "2026-04-25-the-harvest-wage-fight-has-reached-the-produce-cooler",
-      "2026-04-25-the-first-bell-now-rings-at-the-phone-pouch",
-      "2026-04-25-the-cheese-was-aged-the-warning-still-had-to-catch-up",
-      "2026-04-25-a-headband-should-not-own-the-quietest-room",
-      "2026-04-25-the-atlantic-current-warning-is-becoming-an-instrument-test",
-      "2026-04-25-chadian-boots-put-haiti-s-crisis-on-a-wider-ledger",
-      "2026-04-25-the-brand-checklist-should-not-erase-the-boss"
+      "2026-04-26-a-spending-cap-table-waits-for-the-justices",
+      "2026-04-26-a-321-million-health-fund-pulls-the-writers-room-into-focus",
+      "2026-04-26-toll-tags-caught-a-gps-backup-in-their-lane",
+      "2026-04-26-a-grocery-card-has-become-a-state-budget-line",
+      "2026-04-26-the-premium-sheet-is-becoming-a-school-finance-document",
+      "2026-04-26-a-muddy-cup-has-a-poison-center-problem",
+      "2026-04-26-build-the-room-before-the-exit",
+      "2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time",
+      "2026-04-26-a-service-notice-reaches-the-closed-crossing",
+      "2026-04-26-first-fix-the-hospital-bill-then-talk-about-collection"
     ],
     "breaking": [
-      "2026-04-25-the-complaint-window-is-moving-inside-the-agency",
-      "2026-04-25-the-voice-track-has-become-a-labor-contract",
-      "2026-04-25-a-47-day-clock-lands-on-the-web-s-trust-desk",
-      "2026-04-25-the-harvest-wage-fight-has-reached-the-produce-cooler",
-      "2026-04-25-the-first-bell-now-rings-at-the-phone-pouch",
-      "2026-04-25-the-cheese-was-aged-the-warning-still-had-to-catch-up",
-      "2026-04-25-a-headband-should-not-own-the-quietest-room",
-      "2026-04-25-the-atlantic-current-warning-is-becoming-an-instrument-test",
-      "2026-04-25-chadian-boots-put-haiti-s-crisis-on-a-wider-ledger",
-      "2026-04-25-the-brand-checklist-should-not-erase-the-boss",
-      "2026-04-25-a-batch-record-met-an-ai-agent-fda-asked-who-checked-it",
-      "2026-04-25-syunik-s-42-kilometers-move-onto-washington-s-infrastructure-desk"
+      "2026-04-26-a-spending-cap-table-waits-for-the-justices",
+      "2026-04-26-a-321-million-health-fund-pulls-the-writers-room-into-focus",
+      "2026-04-26-toll-tags-caught-a-gps-backup-in-their-lane",
+      "2026-04-26-a-grocery-card-has-become-a-state-budget-line",
+      "2026-04-26-the-premium-sheet-is-becoming-a-school-finance-document",
+      "2026-04-26-a-muddy-cup-has-a-poison-center-problem",
+      "2026-04-26-build-the-room-before-the-exit",
+      "2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time",
+      "2026-04-26-a-service-notice-reaches-the-closed-crossing",
+      "2026-04-26-first-fix-the-hospital-bill-then-talk-about-collection",
+      "2026-04-26-the-ai-lesson-has-to-survive-the-training-floor",
+      "2026-04-26-a-retired-runway-reopens-greenland-s-arctic-bargain"
     ],
     "desk_pulse": [
       {
-        "count": 28,
-        "latest_ts": 1777144860.0,
-        "story_id": "2026-04-25-the-atlantic-current-warning-is-becoming-an-instrument-test",
-        "section": "Science"
-      },
-      {
-        "count": 28,
-        "latest_ts": 1777144860.0,
-        "story_id": "2026-04-25-a-batch-record-met-an-ai-agent-fda-asked-who-checked-it",
+        "count": 26,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-the-ai-lesson-has-to-survive-the-training-floor",
         "section": "AI"
       },
       {
-        "count": 27,
-        "latest_ts": 1777144860.0,
-        "story_id": "2026-04-25-the-complaint-window-is-moving-inside-the-agency",
+        "count": 25,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-a-spending-cap-table-waits-for-the-justices",
         "section": "Politics"
       },
       {
-        "count": 27,
-        "latest_ts": 1777144860.0,
-        "story_id": "2026-04-25-the-harvest-wage-fight-has-reached-the-produce-cooler",
+        "count": 25,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-a-grocery-card-has-become-a-state-budget-line",
         "section": "Economics"
       },
       {
-        "count": 27,
-        "latest_ts": 1777144860.0,
-        "story_id": "2026-04-25-a-violin-bow-now-has-to-prove-its-tree",
+        "count": 25,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time",
+        "section": "Science"
+      },
+      {
+        "count": 25,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-the-inspection-lane-has-become-the-walking-horse-fight",
         "section": "Niche"
       },
       {
         "count": 24,
-        "latest_ts": 1777144860.0,
-        "story_id": "2026-04-25-chadian-boots-put-haiti-s-crisis-on-a-wider-ledger",
-        "section": "World"
-      },
-      {
-        "count": 24,
-        "latest_ts": 1777144860.0,
-        "story_id": "2026-04-25-syunik-s-42-kilometers-move-onto-washington-s-infrastructure-desk",
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-a-retired-runway-reopens-greenland-s-arctic-bargain",
         "section": "Geopolitics"
       },
       {
         "count": 23,
-        "latest_ts": 1777144860.0,
-        "story_id": "2026-04-25-a-47-day-clock-lands-on-the-web-s-trust-desk",
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-toll-tags-caught-a-gps-backup-in-their-lane",
         "section": "Technology"
       },
       {
-        "count": 21,
-        "latest_ts": 1777144860.0,
-        "story_id": "2026-04-25-the-animation-peg-bar-enters-california-s-subsidy-file",
+        "count": 23,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-a-service-notice-reaches-the-closed-crossing",
+        "section": "World"
+      },
+      {
+        "count": 22,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-a-rewrite-fee-lands-inside-hollywood-s-health-plan",
         "section": "Film"
       },
       {
-        "count": 21,
-        "latest_ts": 1777144860.0,
-        "story_id": "2026-04-25-the-studio-archive-is-now-a-merger-docket",
+        "count": 22,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-a-toothy-keychain-walks-onto-the-studio-lot",
         "section": "Pop Culture"
       }
     ]
