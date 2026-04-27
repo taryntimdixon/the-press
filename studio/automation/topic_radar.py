@@ -185,16 +185,58 @@ def source_domain(url: str) -> str:
     return host[4:] if host.startswith("www.") else host
 
 
-def extract_json(text: str) -> dict[str, Any]:
+def extract_json(text: str, repair_attempt: bool = False) -> dict[str, Any]:
+    """Extract JSON from model response, fixing common formatting issues.
+    
+    Args:
+        text: Raw model response that may contain JSON with formatting issues.
+        repair_attempt: If True, this is a repair retry and we should be stricter.
+        
+    Returns:
+        Parsed JSON object as dict.
+        
+    Raises:
+        json.JSONDecodeError: If JSON cannot be parsed after cleanup attempts.
+        ValueError: If no JSON object found or other structural issues.
+    """
     cleaned = (text or "").strip()
+    if not cleaned:
+        raise ValueError("Response is empty")
+    
+    # Remove markdown code fences if present
     if cleaned.startswith("```"):
         cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned)
         cleaned = re.sub(r"\s*```$", "", cleaned)
+        cleaned = cleaned.strip()
+    
+    # Find the outermost JSON object boundaries
     start = cleaned.find("{")
     end = cleaned.rfind("}")
-    if start != -1 and end != -1 and end > start:
-        cleaned = cleaned[start : end + 1]
-    return json.loads(cleaned)
+    
+    if start == -1 or end == -1 or end <= start:
+        raise ValueError("No JSON object ('{' ... '}') found in response")
+    
+    # Extract just the JSON object
+    cleaned = cleaned[start : end + 1]
+    
+    # Remove trailing commas before closing braces/brackets
+    # This regex handles: ,"};  ,"]:  ,}  ,]  etc.
+    cleaned = re.sub(r",\s*([}\]])", r"\1", cleaned)
+    
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError as exc:
+        # Provide context for debugging without exposing raw response
+        error_msg = f"JSON parse error at position {exc.pos}: {exc.msg}"
+        if len(cleaned) > 500:
+            snippet = f"...{cleaned[max(0, exc.pos-100):min(len(cleaned), exc.pos+100)]}..."
+        else:
+            snippet = cleaned
+        raise json.JSONDecodeError(
+            f"{error_msg}\nSnippet: {snippet}",
+            exc.doc,
+            exc.pos
+        ) from exc
 
 
 def topic_terms(*values: Any) -> set[str]:
@@ -474,6 +516,22 @@ Return JSON only with this exact shape:
 
 
 def request_topic_payload(client: Any, prompt: str) -> dict[str, Any]:
+    """Request and parse topic radar JSON payload from the model.
+    
+    Attempts to parse the response with the improved extract_json() function.
+    If JSON parsing fails, makes a repair request asking the model to return
+    valid JSON only, then retries parsing.
+    
+    Args:
+        client: OpenAI client with responses API.
+        prompt: The editorial assignment prompt.
+        
+    Returns:
+        Parsed Topic Radar JSON payload as dict.
+        
+    Raises:
+        Exception: If all attempts fail (API errors or unfixable JSON).
+    """
     tool_candidates = [
         os.getenv("OPENAI_WEB_SEARCH_TOOL", "").strip(),
         "web_search",
@@ -486,8 +544,10 @@ def request_topic_payload(client: Any, prompt: str) -> dict[str, Any]:
 
     model = os.getenv("TOPIC_RADAR_MODEL") or os.getenv("OPENAI_MODEL", "gpt-5.5")
     max_tokens = env_int("TOPIC_RADAR_MAX_OUTPUT_TOKENS", 9000, minimum=3000, maximum=24000)
+    last_response_text = ""
     last_error: Exception | None = None
 
+    # Try to get a valid response from the model
     for tool_type in ordered_tools:
         for attempt in range(2):
             try:
@@ -497,25 +557,57 @@ def request_topic_payload(client: Any, prompt: str) -> dict[str, Any]:
                     input=prompt,
                     max_output_tokens=max_tokens,
                 )
-                return extract_json(getattr(response, "output_text", "") or "")
-            except Exception as exc:  # pragma: no cover - runtime retry path
+                last_response_text = getattr(response, "output_text", "") or ""
+                return extract_json(last_response_text)
+            except (json.JSONDecodeError, ValueError) as json_exc:
+                # JSON parsing error: save it but try repair
+                last_error = json_exc
+                break  # Don't retry network, go straight to repair
+            except Exception as exc:  # pragma: no cover - API/network error
                 last_error = exc
                 if attempt == 1:
                     break
                 time.sleep(2 * (attempt + 1))
 
-    # Last chance without the explicit web-search tool. Useful if the tool name
-    # changes but the model can still comply with built-in browsing behavior.
-    try:
-        response = client.responses.create(
-            model=model,
-            input=prompt,
-            max_output_tokens=max_tokens,
-        )
-        return extract_json(getattr(response, "output_text", "") or "")
-    except Exception as exc:  # pragma: no cover - runtime fallback path
-        last_error = exc
+    # Last chance without the explicit web-search tool
+    if not last_response_text:
+        try:
+            response = client.responses.create(
+                model=model,
+                input=prompt,
+                max_output_tokens=max_tokens,
+            )
+            last_response_text = getattr(response, "output_text", "") or ""
+            return extract_json(last_response_text)
+        except (json.JSONDecodeError, ValueError) as json_exc:
+            last_error = json_exc
+        except Exception as exc:  # pragma: no cover - runtime fallback path
+            last_error = exc
 
+    # If we got a response but it had JSON issues, try repair
+    if last_response_text and isinstance(last_error, (json.JSONDecodeError, ValueError)):
+        repair_prompt = f"""Your previous response had JSON formatting issues. 
+Please return ONLY valid JSON, with no markdown code fences, no commentary, and no extra text.
+Preserve all the original fields and meaning.
+
+Previous response (for context):
+{last_response_text[:1500]}
+
+Now return ONLY the corrected JSON:"""
+        
+        try:
+            repair_response = client.responses.create(
+                model=model,
+                input=repair_prompt,
+                max_output_tokens=max_tokens,
+            )
+            repair_text = getattr(repair_response, "output_text", "") or ""
+            return extract_json(repair_text, repair_attempt=True)
+        except Exception as repair_exc:  # pragma: no cover - repair attempt failed
+            # If repair also fails, raise the original JSON error with context
+            raise last_error from repair_exc
+
+    # No response received and no repair opportunity
     assert last_error is not None
     raise last_error
 
