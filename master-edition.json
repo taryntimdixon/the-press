@@ -2,7 +2,7 @@
   "site": {
     "name": "The Press",
     "tagline": "AI Powered News",
-    "baseUrl": "https://www.thepress.example",
+    "baseUrl": "https://thepress.live",
     "editionNote": "Issue Four \u2022 Tuesday, April 7, 2026 \u2022 Reported features, analysis, essays, and visible source notes",
     "description": "AI powered news across politics, culture, technology, economics, education, health, philosophy, science, world, and opinion.",
     "contactEmail": "tips@thepress.example",

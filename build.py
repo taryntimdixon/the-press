@@ -7,6 +7,7 @@ from email.utils import format_datetime
 import html
 import json
 import math
+import os
 import re
 
 SITE_DIR = Path(__file__).resolve().parent
@@ -21,6 +22,33 @@ STORIES = sorted(DATA["stories"], key=lambda item: item["publishedIso"], reverse
 SECTION_BY_SLUG = {section["slug"]: section for section in SECTIONS}
 AUTHOR_BY_SLUG = {author["slug"]: author for author in AUTHORS}
 STORY_BY_FILE = {story["filename"]: story for story in STORIES}
+
+
+def parse_iso_datetime(value: object) -> datetime | None:
+    try:
+        return datetime.fromisoformat(str(value))
+    except (TypeError, ValueError):
+        return None
+
+
+def latest_story_datetime() -> datetime:
+    dates = [
+        parsed
+        for story in STORIES
+        for key in ("updatedIso", "publishedIso")
+        if (parsed := parse_iso_datetime(story.get(key)))
+    ]
+    return max(dates) if dates else datetime.now().astimezone()
+
+
+BUILD_REFERENCE_DT = latest_story_datetime()
+
+
+def env_flag(name: str, default: bool = False) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() not in {"", "0", "false", "no", "off"}
 
 
 def h(value: object) -> str:
@@ -73,22 +101,65 @@ def read_fragment(rel_path: str) -> str:
   return fragment_path.read_text(encoding="utf-8")
 
 
+def search_index_row(story: dict) -> dict:
+    return {
+        "title": story["title"],
+        "section": story["section"],
+        "type": story["type"],
+        "dek": story["dek"],
+        "url": story["filename"],
+        "author": story["author"],
+        "published": story["publishedLabel"],
+        "keywords": story.get("keywords", []),
+    }
+
+
+def normalize_search_item(item: dict) -> dict:
+    row = dict(item)
+    row["title"] = item.get("title") or item.get("headline") or ""
+    row["section"] = item.get("section") or "News"
+    row["type"] = item.get("type") or "Report"
+    row["dek"] = item.get("dek") or item.get("summary") or ""
+    row["url"] = item.get("url") or item.get("filename") or "#"
+    row["author"] = item.get("author") or "Intelligent AI"
+    row["published"] = item.get("published") or item.get("publishedLabel") or ""
+    row["keywords"] = item.get("keywords") if isinstance(item.get("keywords"), list) else []
+    return row
+
+
+def richer_existing_search_index() -> list[dict]:
+    candidates = []
+    for filename in ("search-index.json", "content-index.json"):
+        for base in (DATA_DIR, SITE_DIR):
+            path = base / filename
+            if path not in candidates and path.exists():
+                candidates.append(path)
+
+    for path in candidates:
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        rows = payload.get("stories") if isinstance(payload, dict) else payload
+        if not isinstance(rows, list) or len(rows) <= len(STORIES):
+            continue
+        normalized = [normalize_search_item(item) for item in rows if isinstance(item, dict)]
+        normalized = [item for item in normalized if item["title"] and item["url"] != "#"]
+        if normalized:
+            return normalized
+    return []
+
+
 def search_index() -> list[dict]:
-    items = []
-    for story in STORIES:
-        items.append(
-            {
-                "title": story["title"],
-                "section": story["section"],
-                "type": story["type"],
-                "dek": story["dek"],
-                "url": story["filename"],
-                "author": story["author"],
-                "published": story["publishedLabel"],
-                "keywords": story.get("keywords", []),
-            }
-        )
-    return items
+    master_items = [search_index_row(story) for story in STORIES]
+    existing_items = richer_existing_search_index()
+    if not existing_items:
+        return master_items
+
+    merged = {item["url"]: item for item in existing_items}
+    for item in master_items:
+        merged[item["url"]] = {**item, **merged.get(item["url"], {})}
+    return list(merged.values())
 
 
 def edition_export() -> list[dict]:
@@ -1078,7 +1149,7 @@ def render_feed() -> str:
 </item>
 """.strip()
         )
-    build_date = format_datetime(datetime.now().astimezone())
+    build_date = format_datetime(BUILD_REFERENCE_DT)
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
@@ -1097,7 +1168,9 @@ def render_sitemap() -> str:
     urls += [story["filename"] for story in STORIES]
     urlset = []
     for path in urls:
-        lastmod = datetime.now().date().isoformat()
+        story = STORY_BY_FILE.get(path)
+        modified = parse_iso_datetime(story.get("updatedIso") or story.get("publishedIso")) if story else None
+        lastmod = (modified or BUILD_REFERENCE_DT).date().isoformat()
         urlset.append(f"<url><loc>{html.escape(absolute_url(path))}</loc><lastmod>{lastmod}</lastmod></url>")
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -1111,6 +1184,12 @@ def write_file(path: Path, content: str) -> None:
 
 
 def build() -> None:
+    if richer_existing_search_index() and not env_flag("PRESS_ALLOW_LEGACY_MASTER_BUILD"):
+        raise SystemExit(
+            "Refusing to run the legacy master-edition build over the richer live site index. "
+            "Run tools/build_press_ecosystem.py for current live indexes, or set "
+            "PRESS_ALLOW_LEGACY_MASTER_BUILD=1 if you intentionally want the older master-only rebuild."
+        )
     write_file(SITE_DIR / "index.html", render_homepage())
     write_file(SITE_DIR / "archive.html", render_archive())
     write_file(SITE_DIR / "authors.html", render_authors())

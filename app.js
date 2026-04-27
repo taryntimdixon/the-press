@@ -428,7 +428,7 @@ if (!hasHomepageTargets) {
   };
 
   const fetchJson = (url) =>
-    fetch(url, { cache: 'no-store' }).then((response) => {
+    fetch(url, { cache: 'no-cache' }).then((response) => {
       if (!response.ok) throw new Error(`Could not load ${url}`);
       return response.json();
     });

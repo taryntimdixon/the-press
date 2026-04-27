@@ -4,13 +4,17 @@ on:
   workflow_dispatch:
     inputs:
       image_cap:
-        description: "Max NEW AI thumbnails this run. 15 = one thumbnail for each current issue article."
+        description: "Max NEW AI thumbnails this run. Default: 15, one thumbnail for each current issue article."
         required: true
-        default: "0"
+        default: "15"
       article_cap:
         description: "Max newest/current issue articles to receive AI thumbnails. Default: 15."
         required: true
-        default: "0"
+        default: "15"
+
+concurrency:
+  group: ai-thumbnail-backfill-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   ai-thumbnail-backfill:
@@ -47,9 +51,9 @@ jobs:
           OPENAI_IMAGE_COMPRESSION: "85"
 
           AI_ART_SCOPE: current_issue
-          AI_ART_MAX_ARTICLES: ${{ github.event.inputs.article_cap || '0' }}
-          AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '0' }}
-          AI_THUMBNAIL_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '0' }}
+          AI_ART_MAX_ARTICLES: ${{ github.event.inputs.article_cap || '15' }}
+          AI_TOTAL_IMAGE_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
+          AI_THUMBNAIL_MAX_GENERATIONS: ${{ github.event.inputs.image_cap || '15' }}
 
           REPLACE_SVG_ARTICLE_THUMBNAILS: "1"
           FORCE_AI_FOR_ALL_ARTICLE_THUMBNAILS: "1"

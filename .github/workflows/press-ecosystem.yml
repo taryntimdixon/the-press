@@ -16,6 +16,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: press-ecosystem-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-ecosystem:
     runs-on: ubuntu-latest
