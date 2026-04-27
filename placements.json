@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-27T13:48:52.674686+00:00",
+  "generated_at": "2026-04-27T17:06:42.398060+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,81 +9,105 @@
   },
   "home": {
     "hero": [
-      "2026-04-27-hormuz-offer-leaves-gas-pumps-waiting-on-mine-crews-and-insurance-desks",
-      "2026-04-27-odesa-s-port-sirens-now-reach-nuclear-desks-across-europe",
-      "2026-04-27-senayan-s-domestic-worker-law-has-4-2-million-front-doors-to-reach",
-      "2026-04-27-zeldin-s-climate-repeal-turns-epa-s-2009-file-into-an-evidence-test"
+      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
+      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight"
     ],
     "secondary": [
-      "2026-04-27-locked-pouches-pull-the-attention-economy-into-homeroom",
-      "2026-04-27-richmond-reprices-the-cloud",
-      "2026-04-27-white-house-beehive-gives-king-charles-a-softer-door-into-a-hard-alliance"
+      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
+      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
+      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
     ],
     "most_read": [
-      "2026-04-27-juneau-s-voter-list-puts-doj-s-database-push-on-trial",
-      "2026-04-27-noaa-s-84-4-reef-dataset-sends-managers-back-into-the-water",
-      "2026-04-27-mozambique-s-outdoor-classes-ask-what-access-really-counts",
-      "2026-04-27-cnmc-reopens-iberia-s-blackout-ledger",
-      "2026-04-27-sanriku-s-one-week-warning-clock-runs-out-in-sendai"
+      "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
+      "2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy",
+      "2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume",
+      "2026-04-27-cape-cod-s-blue-blood-quota-retreat-leaves-a-crab-test-unsettled",
+      "2026-04-27-npt-s-glass-booths-hear-a-battered-bargain-in-new-york"
     ],
     "editors_picks": [
-      "2026-04-27-can-ticketmaster-s-1-72-verdict-move-a-25-billion-concert-machine",
-      "2026-04-27-sony-s-ace-turns-table-tennis-into-a-physics-exam",
-      "2026-04-27-venice-s-qr-code-asks-who-gets-to-stay",
-      "2026-04-26-a-spending-cap-table-waits-for-the-justices"
+      "2026-04-27-32bj-s-4-50-raise-puts-new-york-s-lobby-math-on-the-desk",
+      "2026-04-27-nebraska-s-candy-waiver-puts-snap-at-the-checkout-test",
+      "2026-04-27-fcc-s-april-22-notice-puts-the-kids-tv-rating-icon-on-the-couch",
+      "2026-04-27-hormuz-offer-leaves-gas-pumps-waiting-on-mine-crews-and-insurance-desks"
     ],
     "latest": [
-      "2026-04-27-hormuz-offer-leaves-gas-pumps-waiting-on-mine-crews-and-insurance-desks",
-      "2026-04-27-odesa-s-port-sirens-now-reach-nuclear-desks-across-europe",
-      "2026-04-27-senayan-s-domestic-worker-law-has-4-2-million-front-doors-to-reach",
-      "2026-04-27-zeldin-s-climate-repeal-turns-epa-s-2009-file-into-an-evidence-test",
-      "2026-04-27-locked-pouches-pull-the-attention-economy-into-homeroom",
-      "2026-04-27-richmond-reprices-the-cloud",
-      "2026-04-27-white-house-beehive-gives-king-charles-a-softer-door-into-a-hard-alliance",
-      "2026-04-27-juneau-s-voter-list-puts-doj-s-database-push-on-trial",
-      "2026-04-27-noaa-s-84-4-reef-dataset-sends-managers-back-into-the-water",
-      "2026-04-27-mozambique-s-outdoor-classes-ask-what-access-really-counts",
-      "2026-04-27-cnmc-reopens-iberia-s-blackout-ledger",
-      "2026-04-27-sanriku-s-one-week-warning-clock-runs-out-in-sendai"
+      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
+      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
+      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
+      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
+      "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
+      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line",
+      "2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy",
+      "2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume",
+      "2026-04-27-cape-cod-s-blue-blood-quota-retreat-leaves-a-crab-test-unsettled",
+      "2026-04-27-npt-s-glass-booths-hear-a-battered-bargain-in-new-york"
     ],
     "daily": [
-      "2026-04-27-hormuz-offer-leaves-gas-pumps-waiting-on-mine-crews-and-insurance-desks",
-      "2026-04-27-odesa-s-port-sirens-now-reach-nuclear-desks-across-europe",
-      "2026-04-27-senayan-s-domestic-worker-law-has-4-2-million-front-doors-to-reach",
-      "2026-04-27-zeldin-s-climate-repeal-turns-epa-s-2009-file-into-an-evidence-test",
-      "2026-04-27-locked-pouches-pull-the-attention-economy-into-homeroom",
-      "2026-04-27-richmond-reprices-the-cloud",
-      "2026-04-27-white-house-beehive-gives-king-charles-a-softer-door-into-a-hard-alliance",
-      "2026-04-27-juneau-s-voter-list-puts-doj-s-database-push-on-trial",
-      "2026-04-27-noaa-s-84-4-reef-dataset-sends-managers-back-into-the-water",
-      "2026-04-27-mozambique-s-outdoor-classes-ask-what-access-really-counts"
+      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
+      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
+      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
+      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
+      "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
+      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line",
+      "2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy",
+      "2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume"
     ],
     "breaking": [
-      "2026-04-27-hormuz-offer-leaves-gas-pumps-waiting-on-mine-crews-and-insurance-desks",
-      "2026-04-27-odesa-s-port-sirens-now-reach-nuclear-desks-across-europe",
-      "2026-04-27-senayan-s-domestic-worker-law-has-4-2-million-front-doors-to-reach",
-      "2026-04-27-zeldin-s-climate-repeal-turns-epa-s-2009-file-into-an-evidence-test",
-      "2026-04-27-locked-pouches-pull-the-attention-economy-into-homeroom",
-      "2026-04-27-richmond-reprices-the-cloud",
-      "2026-04-27-white-house-beehive-gives-king-charles-a-softer-door-into-a-hard-alliance",
-      "2026-04-27-juneau-s-voter-list-puts-doj-s-database-push-on-trial",
-      "2026-04-27-noaa-s-84-4-reef-dataset-sends-managers-back-into-the-water",
-      "2026-04-27-mozambique-s-outdoor-classes-ask-what-access-really-counts",
-      "2026-04-27-cnmc-reopens-iberia-s-blackout-ledger",
-      "2026-04-27-sanriku-s-one-week-warning-clock-runs-out-in-sendai"
+      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
+      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
+      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
+      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
+      "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
+      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line",
+      "2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy",
+      "2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume",
+      "2026-04-27-cape-cod-s-blue-blood-quota-retreat-leaves-a-crab-test-unsettled",
+      "2026-04-27-npt-s-glass-booths-hear-a-battered-bargain-in-new-york"
     ],
     "desk_pulse": [
+      {
+        "count": 27,
+        "latest_ts": 1777297980.0,
+        "story_id": "2026-04-27-npt-s-glass-booths-hear-a-battered-bargain-in-new-york",
+        "section": "World"
+      },
+      {
+        "count": 15,
+        "latest_ts": 1777297980.0,
+        "story_id": "2026-04-27-fcc-s-april-22-notice-puts-the-kids-tv-rating-icon-on-the-couch",
+        "section": "Culture"
+      },
+      {
+        "count": 3,
+        "latest_ts": 1777297980.0,
+        "story_id": "2026-04-27-32bj-s-4-50-raise-puts-new-york-s-lobby-math-on-the-desk",
+        "section": "Money"
+      },
+      {
+        "count": 3,
+        "latest_ts": 1777297980.0,
+        "story_id": "2026-04-27-nebraska-s-candy-waiver-puts-snap-at-the-checkout-test",
+        "section": "Life"
+      },
+      {
+        "count": 2,
+        "latest_ts": 1777297980.0,
+        "story_id": "2026-04-27-cape-cod-s-blue-blood-quota-retreat-leaves-a-crab-test-unsettled",
+        "section": "The Weird File"
+      },
       {
         "count": 25,
         "latest_ts": 1777288860.0,
         "story_id": "2026-04-27-sony-s-ace-turns-table-tennis-into-a-physics-exam",
         "section": "Science"
-      },
-      {
-        "count": 23,
-        "latest_ts": 1777288860.0,
-        "story_id": "2026-04-27-odesa-s-port-sirens-now-reach-nuclear-desks-across-europe",
-        "section": "World"
       },
       {
         "count": 3,
@@ -108,30 +132,6 @@
         "latest_ts": 1777288860.0,
         "story_id": "2026-04-27-cnmc-reopens-iberia-s-blackout-ledger",
         "section": "Systems"
-      },
-      {
-        "count": 22,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-a-spending-cap-table-waits-for-the-justices",
-        "section": "Politics"
-      },
-      {
-        "count": 22,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-toll-tags-caught-a-gps-backup-in-their-lane",
-        "section": "Technology"
-      },
-      {
-        "count": 22,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-a-grocery-card-has-become-a-state-budget-line",
-        "section": "Economics"
-      },
-      {
-        "count": 22,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-the-ai-lesson-has-to-survive-the-training-floor",
-        "section": "AI"
       }
     ]
   }
