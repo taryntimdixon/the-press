@@ -1562,7 +1562,7 @@ function pressRefreshHomepageStoryBlocks(stories) {
   );
 
   pressRenderHomepageSecondaryStories(
-    pressPickStorySet(recent.filter((story) => !used.has(story.url)), 3, used, true)
+    pressPickStorySet(recent.filter((story) => !used.has(story.url)), 4, used, true)
   );
 
   pressRenderHomepageRiverStories(
@@ -1937,19 +1937,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     hero.forEach((story) => remember(story, usedClusters, usedUrls));
 
-    const secondary = resolvePlacementList(placementFile?.home?.secondary, byId, 3);
-    const secondaryFinal = secondary.length
-      ? secondary
-      : pickStories(clusterFresh, 3, {
-          usedClusters,
-          usedUrls,
-          uniqueSections: true,
-        });
+    const secondaryTarget = 4;
+    const secondary = resolvePlacementList(placementFile?.home?.secondary, byId, secondaryTarget).slice(0, secondaryTarget);
+    const secondaryFinal = secondary.slice();
 
     secondaryFinal.forEach((story) => remember(story, usedClusters, usedUrls));
 
-    const latest = uniqueByCluster(all).slice(0, 12);
-    const daily = all.filter((story) => story.isDaily).slice(0, 10);
+    if (secondaryFinal.length < secondaryTarget) {
+      secondaryFinal.push(...pickStories(clusterFresh, secondaryTarget - secondaryFinal.length, {
+          usedClusters,
+          usedUrls,
+          uniqueSections: true,
+        }));
+    }
+
+    const latest = uniqueByCluster(all).slice(0, 15);
+    const daily = all.filter((story) => story.isDaily).slice(0, 15);
     const railUsed = new Set([...hero, ...secondaryFinal].map((story) => story.clusterId));
     const railPool = clusterFresh.filter((story) => !railUsed.has(story.clusterId));
 
@@ -1973,7 +1976,7 @@ document.addEventListener("DOMContentLoaded", () => {
       mostRead: mostReadFinal,
       editorsPicks: editorsFinal,
       latest,
-      daily: daily.length >= 5 ? daily : latest.slice(0, 10),
+      daily: daily.length >= 5 ? daily : latest.slice(0, 15),
       breaking,
       deskPulse,
       updatedLabel: latest[0]?.published || 'Updated recently',
@@ -3912,3 +3915,785 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('pageshow', run);
   window.addEventListener('load', () => setTimeout(run, 80));
 })();
+
+/* PRESS_FUTURE_NEWSROOM_START
+   A progressive "living newsroom" layer for the static front page.
+   It adds a cinematic live deck, topic radar, and command-palette search.
+*/
+(function pressFutureNewsroom() {
+  'use strict';
+
+  const DATA_URLS = [
+    'content-index.json',
+    'live-index.json',
+    'daily-latest.json',
+    'search-index.json',
+    'edition.json'
+  ];
+
+  const SECTION_COLORS = {
+    Politics: '#ff665c',
+    Culture: '#f6c85f',
+    Technology: '#5dd6ff',
+    Economics: '#73e2a7',
+    Education: '#b38cff',
+    Health: '#ff8fb3',
+    Philosophy: '#f4f0e8',
+    Science: '#9bf06d',
+    World: '#7aa2ff',
+    Opinion: '#ffb86b',
+    AI: '#68f4d4',
+    Film: '#f08cff',
+    Geopolitics: '#8fb4ff',
+    Niche: '#ffd36e',
+    'Pop Culture': '#ff7fbf'
+  };
+
+  const STOP_WORDS = new Set([
+    'the', 'and', 'for', 'that', 'with', 'from', 'this', 'into', 'over', 'under', 'after', 'before', 'will',
+    'have', 'has', 'are', 'was', 'were', 'not', 'now', 'new', 'why', 'how', 'what', 'when', 'where', 'who',
+    'its', 'their', 'they', 'them', 'than', 'then', 'still', 'about', 'could', 'would', 'should', 'your',
+    'our', 'out', 'off', 'more', 'less', 'again', 'only', 'most', 'just', 'can'
+  ]);
+
+  const HERO_STORAGE_KEY = 'press-future-newsroom-hero-url';
+
+  let futureState = null;
+  let commandOpen = false;
+  let activeFilter = 'All';
+  let selectedIndex = 0;
+  let currentRefreshHeroUrl = '';
+
+  function ready(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
+    } else {
+      callback();
+    }
+  }
+
+  ready(function initFutureNewsroom() {
+    document.documentElement.classList.add('press-future-newsroom');
+    installCommandPalette();
+    bindGlobalCommands();
+
+    hydrate().then(function onHydrated(state) {
+      if (!state.stories.length) return;
+      futureState = state;
+      renderFutureHomepage(state);
+      renderCommandResults('');
+      document.documentElement.classList.add('press-future-ready');
+    }).catch(function onError(error) {
+      console.warn('[The Press] Future newsroom layer could not initialize:', error);
+    });
+
+    window.addEventListener('press:ecosystem-ready', function onEcosystemReady(event) {
+      const stories = event.detail?.model?.all || event.detail?.stories || [];
+      if (!Array.isArray(stories) || !stories.length) return;
+      futureState = buildState(stories.map(normalizeStory).filter(Boolean));
+      renderFutureHomepage(futureState);
+      renderCommandResults('');
+      document.documentElement.classList.add('press-future-ready');
+    });
+  });
+
+  async function hydrate() {
+    const payloads = await Promise.all(DATA_URLS.map(fetchOptionalJson));
+    const embedded = readEmbeddedSearchJson();
+    const stories = mergeStories(payloads.concat([embedded]).flatMap(extractStories));
+    return buildState(stories);
+  }
+
+  async function fetchOptionalJson(url) {
+    try {
+      const response = await fetch(url, { cache: 'no-store' });
+      if (!response.ok) return null;
+      return response.json();
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function readEmbeddedSearchJson() {
+    const node = document.getElementById('press-search-data');
+    if (!node) return null;
+    try {
+      return JSON.parse(node.textContent || '[]');
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function extractStories(payload) {
+    if (!payload) return [];
+    if (Array.isArray(payload)) return payload.map(normalizeStory).filter(Boolean);
+    if (Array.isArray(payload.stories)) return payload.stories.map(normalizeStory).filter(Boolean);
+    if (Array.isArray(payload.articles)) return payload.articles.map(normalizeStory).filter(Boolean);
+    if (Array.isArray(payload.items)) return payload.items.map(normalizeStory).filter(Boolean);
+    return [];
+  }
+
+  function normalizeStory(item) {
+    if (!item || typeof item !== 'object') return null;
+
+    const title = clean(item.title || item.headline || item.name);
+    const url = clean(item.url || item.href || item.link || item.filename || item.permalink);
+    if (!title || !url || url === '#') return null;
+
+    const section = titleCase(clean(item.section || item.desk || item.category || inferSection(url) || 'News'));
+    const type = clean(item.type || item.kind || item.story_type || (url.includes('/daily/') || url.startsWith('daily/') ? 'Daily Issue' : 'Report'));
+    const dek = clean(item.dek || item.summary || item.description || item.excerpt);
+    const published = clean(item.published || item.publishedLabel || item.displayDate || item.date);
+    const publishedIso = clean(item.publishedIso || item.published_iso || item.publishedAt || item.published_at);
+    const image = clean(item.image || item.imageUrl || item.image_url || item.thumbnail || item.photo);
+    const imageAlt = clean(item.imageAlt || item.image_alt || item.thumbnail_alt || item.thumbnailAlt || item.alt || title);
+    const keywords = Array.isArray(item.keywords) ? item.keywords.filter(Boolean).map(String) : [];
+    const sortValue = parseStoryDate(publishedIso || published || url);
+
+    return {
+      title,
+      url: normalizeUrl(url),
+      section,
+      sectionSlug: slugify(section),
+      type,
+      dek,
+      published,
+      publishedIso,
+      image: normalizeUrl(image),
+      imageAlt,
+      keywords,
+      sortValue,
+      clusterId: clean(item.cluster_id || item.clusterId || item.story_id || item.storyId || slugify(title)),
+      readTime: clean(item.read_time || item.readTime),
+      scoreText: [title, section, type, dek, keywords.join(' ')].join(' ').toLowerCase()
+    };
+  }
+
+  function mergeStories(stories) {
+    const byUrl = new Map();
+    stories.filter(Boolean).forEach(function remember(story) {
+      const key = normalizeUrl(story.url).replace(/^\.\//, '');
+      const previous = byUrl.get(key);
+      if (!previous) {
+        byUrl.set(key, story);
+        return;
+      }
+
+      byUrl.set(key, {
+        ...previous,
+        ...story,
+        dek: story.dek && story.dek.length > (previous.dek || '').length ? story.dek : previous.dek,
+        image: story.image || previous.image,
+        imageAlt: story.imageAlt || previous.imageAlt,
+        keywords: Array.from(new Set([...(previous.keywords || []), ...(story.keywords || [])])),
+        sortValue: Math.max(previous.sortValue || 0, story.sortValue || 0)
+      });
+    });
+
+    return Array.from(byUrl.values()).sort(function byFreshness(a, b) {
+      return (b.sortValue || 0) - (a.sortValue || 0) || a.title.localeCompare(b.title);
+    });
+  }
+
+  function buildState(stories) {
+    const latest = stories.slice(0, 36);
+    const hero = pickRefreshHero(latest, stories);
+    const bySection = new Map();
+    const keywordCounts = new Map();
+
+    stories.forEach(function collect(story) {
+      const section = story.section || 'News';
+      const bucket = bySection.get(section) || [];
+      bucket.push(story);
+      bySection.set(section, bucket);
+
+      const terms = story.keywords.length ? story.keywords : extractTerms(story.title + ' ' + story.dek);
+      terms.slice(0, 7).forEach(function countKeyword(term) {
+        const key = titleCase(term).slice(0, 34);
+        if (key.length < 3) return;
+        keywordCounts.set(key, (keywordCounts.get(key) || 0) + 1);
+      });
+    });
+
+    const topics = Array.from(bySection.entries()).map(function toTopic(entry) {
+      const section = entry[0];
+      const items = entry[1].sort(function byDate(a, b) { return (b.sortValue || 0) - (a.sortValue || 0); });
+      return {
+        section,
+        color: SECTION_COLORS[section] || '#f4f0e8',
+        count: items.length,
+        latest: items[0],
+        signal: topicSignal(items)
+      };
+    }).sort(function byCount(a, b) {
+      return b.count - a.count || a.section.localeCompare(b.section);
+    });
+
+    const keywords = Array.from(keywordCounts.entries())
+      .map(function toKeyword(entry) { return { label: entry[0], count: entry[1] }; })
+      .sort(function byCount(a, b) { return b.count - a.count || a.label.localeCompare(b.label); })
+      .slice(0, 12);
+
+    return {
+      stories,
+      latest,
+      hero,
+      topics,
+      keywords,
+      storyCount: stories.length,
+      deskCount: topics.length,
+      latestLabel: hero ? (hero.published || formatDate(hero.sortValue)) : '',
+      imageCount: stories.filter(function hasImage(story) { return story.image; }).length
+    };
+  }
+
+  function pickRefreshHero(latest, stories) {
+    const source = latest.length ? latest : stories;
+    const imageCandidates = source.filter(function hasUsableImage(story) {
+      return story && story.url && story.image;
+    });
+    const candidates = (imageCandidates.length >= 2 ? imageCandidates : source)
+      .filter(function hasUrl(story) { return story && story.url; });
+
+    if (!candidates.length) return source[0] || null;
+
+    if (currentRefreshHeroUrl) {
+      const alreadyChosen = candidates.find(function sameHero(story) {
+        return story.url === currentRefreshHeroUrl;
+      });
+      if (alreadyChosen) return alreadyChosen;
+    }
+
+    const previousUrl = readSessionValue(HERO_STORAGE_KEY);
+    const previousIndex = candidates.findIndex(function findPrevious(story) {
+      return story.url === previousUrl;
+    });
+    const nextIndex = previousIndex >= 0 ? (previousIndex + 1) % candidates.length : 0;
+    const hero = candidates[nextIndex] || candidates[0];
+
+    currentRefreshHeroUrl = hero.url;
+    writeSessionValue(HERO_STORAGE_KEY, hero.url);
+
+    return hero;
+  }
+
+  function readSessionValue(key) {
+    try {
+      return sessionStorage.getItem(key) || '';
+    } catch (_) {
+      return '';
+    }
+  }
+
+  function writeSessionValue(key, value) {
+    try {
+      sessionStorage.setItem(key, value);
+    } catch (_) {}
+  }
+
+  function renderFutureHomepage(state) {
+    if (!document.body.classList.contains('page-home')) return;
+    renderStudioDeck(state);
+    renderTopicRadar(state);
+    enhanceLeadPanel();
+  }
+
+  function renderStudioDeck(state) {
+    const homeHero = document.querySelector('.home-hero');
+    if (!homeHero || !state.hero) return;
+
+    let deck = document.querySelector('.press-future-studio');
+    if (!deck) {
+      deck = document.createElement('section');
+      deck.className = 'press-future-studio';
+      deck.setAttribute('aria-label', 'Live newsroom command deck');
+      homeHero.insertAdjacentElement('beforebegin', deck);
+    }
+
+    const hero = state.hero;
+    const hot = state.latest.filter(function different(story) { return story.url !== hero.url; }).slice(0, 6);
+    const topTopics = state.topics.slice(0, 6);
+
+    deck.innerHTML = `
+      <div class="press-future-studio__inner">
+        <article class="press-future-lead" data-story-url="${escapeAttr(hero.url)}">
+          <div class="press-future-lead__body">
+            <p class="press-future-kicker">Live editorial feature / ${escapeHtml(hero.section)} / ${escapeHtml(freshness(hero))}</p>
+            <h2><a href="${escapeAttr(hero.url)}">${escapeHtml(hero.title)}</a></h2>
+            <p class="press-future-lead__dek">${escapeHtml(shorten(hero.dek, 260))}</p>
+            <div class="press-future-meta-row" aria-label="Edition metrics">
+              <span>Rotates on refresh</span>
+              <span>Thumbnail lead</span>
+              <span>${escapeHtml(freshness(hero))}</span>
+            </div>
+            <div class="press-future-actions">
+              <a class="button press-future-button" href="${escapeAttr(hero.url)}">Read lead</a>
+              <button class="press-future-button press-future-button--ghost" type="button" data-future-command-open>Open command center</button>
+            </div>
+          </div>
+          <a class="press-future-lead__media" href="${escapeAttr(hero.url)}">
+            ${hero.image ? `<img alt="${escapeAttr(hero.imageAlt || hero.title)}" decoding="async" loading="eager" src="${escapeAttr(hero.image)}">` : `<span>${escapeHtml(hero.section)}</span>`}
+          </a>
+        </article>
+
+        <aside class="press-signal-board" aria-label="Edition intelligence">
+          <div class="press-signal-board__header">
+            <p class="press-future-kicker">Edition intelligence</p>
+            <h3>More stories in view</h3>
+          </div>
+          <div class="press-signal-board__visuals">
+            ${hot.map(function railCard(story, index) {
+              return `
+                <a href="${escapeAttr(story.url)}" class="press-rail-card${index === 0 ? ' press-rail-card--feature' : ''}">
+                  <span class="press-rail-card__media">
+                    ${story.image ? `<img alt="${escapeAttr(story.imageAlt || story.title)}" decoding="async" loading="lazy" src="${escapeAttr(story.image)}">` : `<span>${escapeHtml(story.section)}</span>`}
+                  </span>
+                  <span class="press-rail-card__body">
+                    <em>${escapeHtml(story.section)} / ${escapeHtml(freshness(story))}</em>
+                    <strong>${escapeHtml(story.title)}</strong>
+                  </span>
+                </a>
+              `;
+            }).join('')}
+          </div>
+          <div class="press-signal-board__topics">
+            ${topTopics.map(function topicChip(topic) {
+              return `<button type="button" class="press-topic-chip" data-future-topic="${escapeAttr(topic.section)}" style="--topic-color:${escapeAttr(topic.color)}"><span>${escapeHtml(topic.section)}</span></button>`;
+            }).join('')}
+          </div>
+          <div class="press-signal-board__queue">
+            <p class="press-signal-board__label">Next in the file</p>
+            ${hot.slice(0, 3).map(function queueItem(story, index) {
+              return `
+                <a href="${escapeAttr(story.url)}" class="press-queue-item">
+                  ${story.image ? `<img class="press-queue-item__thumb" alt="${escapeAttr(story.imageAlt || story.title)}" decoding="async" loading="lazy" src="${escapeAttr(story.image)}">` : `<span class="press-queue-item__number">${String(index + 1).padStart(2, '0')}</span>`}
+                  <span class="press-queue-item__text">
+                    <strong>${escapeHtml(story.title)}</strong>
+                    <em>${escapeHtml(story.section)}</em>
+                  </span>
+                </a>
+              `;
+            }).join('')}
+          </div>
+        </aside>
+      </div>
+    `;
+
+    deck.querySelectorAll('[data-future-topic]').forEach(function bindTopic(button) {
+      button.addEventListener('click', function onTopicClick() {
+        openCommand(button.getAttribute('data-future-topic') || '');
+      });
+    });
+  }
+
+  function renderTopicRadar(state) {
+    const homeGrid = document.querySelector('.home-grid');
+    const homeHero = document.querySelector('.home-hero');
+    if (!homeHero && !homeGrid) return;
+
+    let radar = document.querySelector('.press-topic-radar');
+    if (!radar) {
+      radar = document.createElement('section');
+      radar.className = 'press-topic-radar';
+      radar.setAttribute('aria-label', 'Topic radar');
+      (homeGrid || homeHero).insertAdjacentElement('beforebegin', radar);
+    }
+
+    const topics = state.topics.slice(0, 10);
+    const visualStories = state.latest
+      .filter(function hasImage(story) { return story.image; })
+      .concat(state.latest.filter(function noImage(story) { return !story.image; }))
+      .slice(0, 18);
+
+    radar.innerHTML = `
+      <div class="press-topic-radar__inner">
+        <div class="press-topic-radar__copy">
+          <p class="press-future-kicker">Visual edition</p>
+          <h2>See the stories, not just the sections.</h2>
+          <p>Latest articles now lead with their thumbnails, with quiet desk shortcuts for jumping into the command center.</p>
+          <div class="press-radar-keywords">
+            ${topics.slice(0, 8).map(function topicButton(topic) {
+              return `<button type="button" data-future-topic="${escapeAttr(topic.section)}">${escapeHtml(topic.section)} <span>${escapeHtml(topic.count)}</span></button>`;
+            }).join('')}
+          </div>
+        </div>
+
+        <div class="press-article-wall" aria-label="Latest article thumbnails">
+          ${visualStories.map(function articleTile(story) {
+            return `
+              <article class="press-visual-story" data-section="${escapeAttr(story.section)}">
+                <a class="press-visual-story__media" href="${escapeAttr(story.url)}">
+                  ${story.image ? `<img alt="${escapeAttr(story.imageAlt || story.title)}" decoding="async" loading="lazy" src="${escapeAttr(story.image)}">` : `<span>${escapeHtml(story.section)}</span>`}
+                </a>
+                <div class="press-visual-story__body">
+                  <p class="press-future-kicker">${escapeHtml(story.section)} / ${escapeHtml(freshness(story))}</p>
+                  <h3><a href="${escapeAttr(story.url)}">${escapeHtml(story.title)}</a></h3>
+                  <p>${escapeHtml(shorten(story.dek, 118))}</p>
+                </div>
+              </article>
+            `;
+          }).join('')}
+          <a class="press-visual-archive-link" href="archive.html">Open the full archive</a>
+        </div>
+      </div>
+    `;
+
+    radar.querySelectorAll('[data-future-topic]').forEach(function bindTopic(button) {
+      button.addEventListener('click', function onTopicClick() {
+        openCommand(button.getAttribute('data-future-topic') || '');
+      });
+    });
+
+    radar.querySelectorAll('[data-future-keyword]').forEach(function bindKeyword(button) {
+      button.addEventListener('click', function onKeywordClick() {
+        openCommand(button.getAttribute('data-future-keyword') || '');
+      });
+    });
+  }
+
+  function enhanceLeadPanel() {
+    document.querySelectorAll('.lead-panel').forEach(function enhance(panel) {
+      if (panel.querySelector('.press-live-badge')) return;
+      const body = panel.querySelector('.lead-panel__body > div') || panel.querySelector('.lead-panel__body');
+      if (!body) return;
+      body.insertAdjacentHTML('afterbegin', '<div class="press-live-badge"><span></span> Live editorial slot</div>');
+    });
+  }
+
+  function installCommandPalette() {
+    if (document.querySelector('.press-command')) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'press-command';
+    overlay.hidden = true;
+    overlay.innerHTML = `
+      <div class="press-command__scrim" data-command-close></div>
+      <section class="press-command__panel" role="dialog" aria-modal="true" aria-labelledby="press-command-title">
+        <div class="press-command__top">
+          <p class="press-future-kicker" id="press-command-title">Command center</p>
+          <button type="button" class="press-command__close" data-command-close aria-label="Close command center">Close</button>
+        </div>
+        <div class="press-command__search">
+          <input data-command-input type="search" autocomplete="off" placeholder="Search the live edition">
+        </div>
+        <div class="press-command__filters" data-command-filters></div>
+        <div class="press-command__body">
+          <div class="press-command__results" data-command-results></div>
+          <aside class="press-command__preview" data-command-preview></aside>
+        </div>
+      </section>
+    `;
+
+    document.body.appendChild(overlay);
+
+    overlay.querySelectorAll('[data-command-close]').forEach(function bindClose(button) {
+      button.addEventListener('click', closeCommand);
+    });
+
+    const input = overlay.querySelector('[data-command-input]');
+    input.addEventListener('input', function onInput() {
+      selectedIndex = 0;
+      renderCommandResults(input.value);
+    });
+
+    input.addEventListener('keydown', function onKeydown(event) {
+      const links = Array.from(overlay.querySelectorAll('[data-command-result]'));
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        selectedIndex = Math.min(selectedIndex + 1, Math.max(links.length - 1, 0));
+        syncCommandSelection();
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        selectedIndex = Math.max(selectedIndex - 1, 0);
+        syncCommandSelection();
+      } else if (event.key === 'Enter' && links[selectedIndex]) {
+        event.preventDefault();
+        links[selectedIndex].click();
+      } else if (event.key === 'Escape') {
+        closeCommand();
+      }
+    });
+  }
+
+  function bindGlobalCommands() {
+    document.addEventListener('click', function interceptSearch(event) {
+      const opener = event.target.closest('[data-future-command-open], [data-search-open], .search-trigger');
+      if (!opener) return;
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      openCommand('');
+    }, true);
+
+    document.addEventListener('keydown', function onGlobalKeydown(event) {
+      const target = event.target;
+      const typing = target && /input|textarea|select/i.test(target.tagName || '');
+
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        openCommand('');
+        return;
+      }
+
+      if (!typing && event.key === '/') {
+        event.preventDefault();
+        openCommand('');
+        return;
+      }
+
+      if (event.key === 'Escape' && commandOpen) {
+        closeCommand();
+      }
+    });
+  }
+
+  function openCommand(seed) {
+    const overlay = document.querySelector('.press-command');
+    const input = overlay?.querySelector('[data-command-input]');
+    if (!overlay || !input) return;
+
+    commandOpen = true;
+    overlay.hidden = false;
+    document.documentElement.classList.add('press-command-open');
+    buildCommandFilters();
+
+    if (seed) {
+      input.value = seed;
+      activeFilter = 'All';
+    }
+
+    selectedIndex = 0;
+    renderCommandResults(input.value);
+    window.setTimeout(function focusInput() {
+      input.focus();
+      input.select();
+    }, 20);
+  }
+
+  function closeCommand() {
+    const overlay = document.querySelector('.press-command');
+    if (!overlay) return;
+    commandOpen = false;
+    overlay.hidden = true;
+    document.documentElement.classList.remove('press-command-open');
+  }
+
+  function buildCommandFilters() {
+    const filters = document.querySelector('[data-command-filters]');
+    if (!filters || !futureState) return;
+
+    const sections = ['All'].concat(futureState.topics.slice(0, 8).map(function topicName(topic) { return topic.section; }));
+    filters.innerHTML = sections.map(function filter(label) {
+      const active = label === activeFilter ? ' is-active' : '';
+      return `<button type="button" class="press-command-filter${active}" data-command-filter="${escapeAttr(label)}">${escapeHtml(label)}</button>`;
+    }).join('');
+
+    filters.querySelectorAll('[data-command-filter]').forEach(function bind(button) {
+      button.addEventListener('click', function onFilterClick() {
+        activeFilter = button.getAttribute('data-command-filter') || 'All';
+        selectedIndex = 0;
+        buildCommandFilters();
+        const input = document.querySelector('[data-command-input]');
+        renderCommandResults(input?.value || '');
+      });
+    });
+  }
+
+  function renderCommandResults(query) {
+    const resultsBox = document.querySelector('[data-command-results]');
+    const preview = document.querySelector('[data-command-preview]');
+    if (!resultsBox || !preview) return;
+
+    const state = futureState;
+    if (!state) {
+      resultsBox.innerHTML = '<div class="press-command-empty">Loading the live edition...</div>';
+      preview.innerHTML = '';
+      return;
+    }
+
+    const results = rankStories(state.stories, query || '', activeFilter).slice(0, 12);
+
+    if (!results.length) {
+      resultsBox.innerHTML = '<div class="press-command-empty">No matching stories yet.</div>';
+      preview.innerHTML = '';
+      return;
+    }
+
+    resultsBox.innerHTML = results.map(function resultItem(story, index) {
+      return `
+        <a class="press-command-result${index === selectedIndex ? ' is-selected' : ''}" href="${escapeAttr(story.url)}" data-command-result data-index="${index}">
+          <span>${escapeHtml(story.section)}</span>
+          <strong>${escapeHtml(story.title)}</strong>
+          <em>${escapeHtml(freshness(story))}</em>
+        </a>
+      `;
+    }).join('');
+
+    resultsBox.querySelectorAll('[data-command-result]').forEach(function bindResult(link) {
+      link.addEventListener('mouseenter', function onHover() {
+        selectedIndex = Number(link.getAttribute('data-index') || 0);
+        syncCommandSelection();
+      });
+    });
+
+    syncCommandSelection();
+  }
+
+  function syncCommandSelection() {
+    const links = Array.from(document.querySelectorAll('[data-command-result]'));
+    const preview = document.querySelector('[data-command-preview]');
+    links.forEach(function mark(link, index) {
+      link.classList.toggle('is-selected', index === selectedIndex);
+    });
+
+    if (!preview || !futureState || !links[selectedIndex]) return;
+    const href = links[selectedIndex].getAttribute('href');
+    const story = futureState.stories.find(function byHref(item) { return item.url === href; });
+    if (!story) return;
+
+    preview.innerHTML = `
+      ${story.image ? `<img alt="${escapeAttr(story.imageAlt || story.title)}" src="${escapeAttr(story.image)}" decoding="async" loading="lazy">` : ''}
+      <p class="press-future-kicker">${escapeHtml(story.section)} / ${escapeHtml(story.type)}</p>
+      <h3>${escapeHtml(story.title)}</h3>
+      <p>${escapeHtml(shorten(story.dek, 220))}</p>
+      <div class="press-command__meta">
+        <span>${escapeHtml(story.published || formatDate(story.sortValue))}</span>
+        <span>${escapeHtml(freshness(story))}</span>
+      </div>
+    `;
+  }
+
+  function rankStories(stories, query, filter) {
+    const q = clean(query).toLowerCase();
+    const terms = q.split(/\s+/).filter(Boolean);
+
+    return stories.map(function score(story) {
+      if (filter && filter !== 'All' && story.section !== filter) return null;
+
+      let points = story.sortValue ? story.sortValue / 1e10 : 0;
+      if (!terms.length) return { story, points };
+
+      terms.forEach(function scoreTerm(term) {
+        if (story.title.toLowerCase().includes(term)) points += 120;
+        if (story.section.toLowerCase().includes(term)) points += 80;
+        if (story.type.toLowerCase().includes(term)) points += 50;
+        if ((story.dek || '').toLowerCase().includes(term)) points += 32;
+        if ((story.keywords || []).join(' ').toLowerCase().includes(term)) points += 60;
+        if (story.scoreText.includes(term)) points += 10;
+      });
+
+      return { story, points };
+    }).filter(Boolean).sort(function byScore(a, b) {
+      return b.points - a.points;
+    }).map(function unwrap(item) {
+      return item.story;
+    });
+  }
+
+  function radarPoint(index, total) {
+    const angle = (-90 + (360 / Math.max(total, 1)) * index) * Math.PI / 180;
+    return {
+      x: Math.round(50 + Math.cos(angle) * 38),
+      y: Math.round(50 + Math.sin(angle) * 34)
+    };
+  }
+
+  function topicSignal(items) {
+    if (!items.length) return 'quiet';
+    const newest = items[0]?.sortValue || 0;
+    const ageHours = newest ? (Date.now() - newest) / 36e5 : 9999;
+    if (items.length >= 30 || ageHours < 12) return 'surging';
+    if (items.length >= 12 || ageHours < 48) return 'active';
+    return 'steady';
+  }
+
+  function extractTerms(text) {
+    return clean(text).toLowerCase().split(/[^a-z0-9]+/).filter(function term(word) {
+      return word.length > 3 && !STOP_WORDS.has(word);
+    });
+  }
+
+  function inferSection(url) {
+    const file = String(url || '').split('/').pop() || '';
+    const match = file.match(/^([a-z]+)-/i);
+    if (!match) return '';
+    const raw = match[1].replace(/ai/i, 'AI');
+    return titleCase(raw);
+  }
+
+  function parseStoryDate(value) {
+    const raw = String(value || '');
+    const isoMatch = raw.match(/\d{4}-\d{2}-\d{2}(?:T[^\s]+)?/);
+    if (isoMatch) {
+      const parsed = Date.parse(isoMatch[0]);
+      if (!Number.isNaN(parsed)) return parsed;
+    }
+
+    const parsed = Date.parse(raw.replace(/•/g, ' '));
+    if (!Number.isNaN(parsed)) return parsed;
+
+    return 0;
+  }
+
+  function freshness(story) {
+    if (!story?.sortValue) return 'in archive';
+    const hours = Math.max(0, (Date.now() - story.sortValue) / 36e5);
+    if (hours < 1) return 'just now';
+    if (hours < 24) return `${Math.floor(hours)}h ago`;
+    if (hours < 72) return `${Math.floor(hours / 24)}d ago`;
+    return 'archive';
+  }
+
+  function formatDate(value) {
+    if (!value) return '';
+    try {
+      return new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(value));
+    } catch (_) {
+      return '';
+    }
+  }
+
+  function normalizeUrl(url) {
+    const value = clean(url);
+    if (!value) return '';
+    if (/^(https?:|mailto:|tel:|#)/i.test(value) || value.startsWith('/')) return value;
+    return value.replace(/^\.\//, '');
+  }
+
+  function clean(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function shorten(value, max) {
+    const text = clean(value);
+    if (text.length <= max) return text;
+    return text.slice(0, Math.max(0, max - 1)).trim().replace(/[,\s]+$/, '') + '...';
+  }
+
+  function titleCase(value) {
+    const text = clean(value).replace(/[-_]+/g, ' ');
+    if (!text) return '';
+    if (/^ai$/i.test(text)) return 'AI';
+    return text.split(' ').map(function titleWord(word) {
+      return /^ai$/i.test(word) ? 'AI' : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }).join(' ');
+  }
+
+  function slugify(value) {
+    return clean(value).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
+  function escapeHtml(value) {
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function escapeAttr(value) {
+    return escapeHtml(value).replace(/`/g, '&#96;');
+  }
+})();
+/* PRESS_FUTURE_NEWSROOM_END */
