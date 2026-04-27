@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-27T02:02:25.561846+00:00",
+  "generated_at": "2026-04-27T13:48:52.674686+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,70 +9,106 @@
   },
   "home": {
     "hero": [
-      "2026-04-26-a-spending-cap-table-waits-for-the-justices",
-      "2026-04-26-a-321-million-health-fund-pulls-the-writers-room-into-focus",
-      "2026-04-26-toll-tags-caught-a-gps-backup-in-their-lane",
-      "2026-04-26-a-grocery-card-has-become-a-state-budget-line"
+      "2026-04-27-hormuz-offer-leaves-gas-pumps-waiting-on-mine-crews-and-insurance-desks",
+      "2026-04-27-odesa-s-port-sirens-now-reach-nuclear-desks-across-europe",
+      "2026-04-27-senayan-s-domestic-worker-law-has-4-2-million-front-doors-to-reach",
+      "2026-04-27-zeldin-s-climate-repeal-turns-epa-s-2009-file-into-an-evidence-test"
     ],
     "secondary": [
-      "2026-04-26-the-premium-sheet-is-becoming-a-school-finance-document",
-      "2026-04-26-a-muddy-cup-has-a-poison-center-problem",
-      "2026-04-26-build-the-room-before-the-exit"
+      "2026-04-27-locked-pouches-pull-the-attention-economy-into-homeroom",
+      "2026-04-27-richmond-reprices-the-cloud",
+      "2026-04-27-white-house-beehive-gives-king-charles-a-softer-door-into-a-hard-alliance"
     ],
     "most_read": [
-      "2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time",
-      "2026-04-26-a-service-notice-reaches-the-closed-crossing",
-      "2026-04-26-first-fix-the-hospital-bill-then-talk-about-collection",
-      "2026-04-26-the-ai-lesson-has-to-survive-the-training-floor",
-      "2026-04-26-a-retired-runway-reopens-greenland-s-arctic-bargain"
+      "2026-04-27-juneau-s-voter-list-puts-doj-s-database-push-on-trial",
+      "2026-04-27-noaa-s-84-4-reef-dataset-sends-managers-back-into-the-water",
+      "2026-04-27-mozambique-s-outdoor-classes-ask-what-access-really-counts",
+      "2026-04-27-cnmc-reopens-iberia-s-blackout-ledger",
+      "2026-04-27-sanriku-s-one-week-warning-clock-runs-out-in-sendai"
     ],
     "editors_picks": [
-      "2026-04-26-a-rewrite-fee-lands-inside-hollywood-s-health-plan",
-      "2026-04-26-a-toothy-keychain-walks-onto-the-studio-lot",
-      "2026-04-26-the-inspection-lane-has-become-the-walking-horse-fight",
-      "2026-04-25-the-complaint-window-is-moving-inside-the-agency"
+      "2026-04-27-can-ticketmaster-s-1-72-verdict-move-a-25-billion-concert-machine",
+      "2026-04-27-sony-s-ace-turns-table-tennis-into-a-physics-exam",
+      "2026-04-27-venice-s-qr-code-asks-who-gets-to-stay",
+      "2026-04-26-a-spending-cap-table-waits-for-the-justices"
     ],
     "latest": [
-      "2026-04-26-a-spending-cap-table-waits-for-the-justices",
-      "2026-04-26-a-321-million-health-fund-pulls-the-writers-room-into-focus",
-      "2026-04-26-toll-tags-caught-a-gps-backup-in-their-lane",
-      "2026-04-26-a-grocery-card-has-become-a-state-budget-line",
-      "2026-04-26-the-premium-sheet-is-becoming-a-school-finance-document",
-      "2026-04-26-a-muddy-cup-has-a-poison-center-problem",
-      "2026-04-26-build-the-room-before-the-exit",
-      "2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time",
-      "2026-04-26-a-service-notice-reaches-the-closed-crossing",
-      "2026-04-26-first-fix-the-hospital-bill-then-talk-about-collection",
-      "2026-04-26-the-ai-lesson-has-to-survive-the-training-floor",
-      "2026-04-26-a-retired-runway-reopens-greenland-s-arctic-bargain"
+      "2026-04-27-hormuz-offer-leaves-gas-pumps-waiting-on-mine-crews-and-insurance-desks",
+      "2026-04-27-odesa-s-port-sirens-now-reach-nuclear-desks-across-europe",
+      "2026-04-27-senayan-s-domestic-worker-law-has-4-2-million-front-doors-to-reach",
+      "2026-04-27-zeldin-s-climate-repeal-turns-epa-s-2009-file-into-an-evidence-test",
+      "2026-04-27-locked-pouches-pull-the-attention-economy-into-homeroom",
+      "2026-04-27-richmond-reprices-the-cloud",
+      "2026-04-27-white-house-beehive-gives-king-charles-a-softer-door-into-a-hard-alliance",
+      "2026-04-27-juneau-s-voter-list-puts-doj-s-database-push-on-trial",
+      "2026-04-27-noaa-s-84-4-reef-dataset-sends-managers-back-into-the-water",
+      "2026-04-27-mozambique-s-outdoor-classes-ask-what-access-really-counts",
+      "2026-04-27-cnmc-reopens-iberia-s-blackout-ledger",
+      "2026-04-27-sanriku-s-one-week-warning-clock-runs-out-in-sendai"
     ],
     "daily": [
-      "2026-04-26-a-spending-cap-table-waits-for-the-justices",
-      "2026-04-26-a-321-million-health-fund-pulls-the-writers-room-into-focus",
-      "2026-04-26-toll-tags-caught-a-gps-backup-in-their-lane",
-      "2026-04-26-a-grocery-card-has-become-a-state-budget-line",
-      "2026-04-26-the-premium-sheet-is-becoming-a-school-finance-document",
-      "2026-04-26-a-muddy-cup-has-a-poison-center-problem",
-      "2026-04-26-build-the-room-before-the-exit",
-      "2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time",
-      "2026-04-26-a-service-notice-reaches-the-closed-crossing",
-      "2026-04-26-first-fix-the-hospital-bill-then-talk-about-collection"
+      "2026-04-27-hormuz-offer-leaves-gas-pumps-waiting-on-mine-crews-and-insurance-desks",
+      "2026-04-27-odesa-s-port-sirens-now-reach-nuclear-desks-across-europe",
+      "2026-04-27-senayan-s-domestic-worker-law-has-4-2-million-front-doors-to-reach",
+      "2026-04-27-zeldin-s-climate-repeal-turns-epa-s-2009-file-into-an-evidence-test",
+      "2026-04-27-locked-pouches-pull-the-attention-economy-into-homeroom",
+      "2026-04-27-richmond-reprices-the-cloud",
+      "2026-04-27-white-house-beehive-gives-king-charles-a-softer-door-into-a-hard-alliance",
+      "2026-04-27-juneau-s-voter-list-puts-doj-s-database-push-on-trial",
+      "2026-04-27-noaa-s-84-4-reef-dataset-sends-managers-back-into-the-water",
+      "2026-04-27-mozambique-s-outdoor-classes-ask-what-access-really-counts"
     ],
     "breaking": [
-      "2026-04-26-a-spending-cap-table-waits-for-the-justices",
-      "2026-04-26-a-321-million-health-fund-pulls-the-writers-room-into-focus",
-      "2026-04-26-toll-tags-caught-a-gps-backup-in-their-lane",
-      "2026-04-26-a-grocery-card-has-become-a-state-budget-line",
-      "2026-04-26-the-premium-sheet-is-becoming-a-school-finance-document",
-      "2026-04-26-a-muddy-cup-has-a-poison-center-problem",
-      "2026-04-26-build-the-room-before-the-exit",
-      "2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time",
-      "2026-04-26-a-service-notice-reaches-the-closed-crossing",
-      "2026-04-26-first-fix-the-hospital-bill-then-talk-about-collection",
-      "2026-04-26-the-ai-lesson-has-to-survive-the-training-floor",
-      "2026-04-26-a-retired-runway-reopens-greenland-s-arctic-bargain"
+      "2026-04-27-hormuz-offer-leaves-gas-pumps-waiting-on-mine-crews-and-insurance-desks",
+      "2026-04-27-odesa-s-port-sirens-now-reach-nuclear-desks-across-europe",
+      "2026-04-27-senayan-s-domestic-worker-law-has-4-2-million-front-doors-to-reach",
+      "2026-04-27-zeldin-s-climate-repeal-turns-epa-s-2009-file-into-an-evidence-test",
+      "2026-04-27-locked-pouches-pull-the-attention-economy-into-homeroom",
+      "2026-04-27-richmond-reprices-the-cloud",
+      "2026-04-27-white-house-beehive-gives-king-charles-a-softer-door-into-a-hard-alliance",
+      "2026-04-27-juneau-s-voter-list-puts-doj-s-database-push-on-trial",
+      "2026-04-27-noaa-s-84-4-reef-dataset-sends-managers-back-into-the-water",
+      "2026-04-27-mozambique-s-outdoor-classes-ask-what-access-really-counts",
+      "2026-04-27-cnmc-reopens-iberia-s-blackout-ledger",
+      "2026-04-27-sanriku-s-one-week-warning-clock-runs-out-in-sendai"
     ],
     "desk_pulse": [
+      {
+        "count": 25,
+        "latest_ts": 1777288860.0,
+        "story_id": "2026-04-27-sony-s-ace-turns-table-tennis-into-a-physics-exam",
+        "section": "Science"
+      },
+      {
+        "count": 23,
+        "latest_ts": 1777288860.0,
+        "story_id": "2026-04-27-odesa-s-port-sirens-now-reach-nuclear-desks-across-europe",
+        "section": "World"
+      },
+      {
+        "count": 3,
+        "latest_ts": 1777288860.0,
+        "story_id": "2026-04-27-sanriku-s-one-week-warning-clock-runs-out-in-sendai",
+        "section": "Front Page"
+      },
+      {
+        "count": 3,
+        "latest_ts": 1777288860.0,
+        "story_id": "2026-04-27-can-ticketmaster-s-1-72-verdict-move-a-25-billion-concert-machine",
+        "section": "Power"
+      },
+      {
+        "count": 3,
+        "latest_ts": 1777288860.0,
+        "story_id": "2026-04-27-venice-s-qr-code-asks-who-gets-to-stay",
+        "section": "Ideas"
+      },
+      {
+        "count": 2,
+        "latest_ts": 1777288860.0,
+        "story_id": "2026-04-27-cnmc-reopens-iberia-s-blackout-ledger",
+        "section": "Systems"
+      },
       {
         "count": 22,
         "latest_ts": 1777173720.0,
@@ -94,44 +130,8 @@
       {
         "count": 22,
         "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time",
-        "section": "Science"
-      },
-      {
-        "count": 22,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-a-service-notice-reaches-the-closed-crossing",
-        "section": "World"
-      },
-      {
-        "count": 22,
-        "latest_ts": 1777173720.0,
         "story_id": "2026-04-26-the-ai-lesson-has-to-survive-the-training-floor",
         "section": "AI"
-      },
-      {
-        "count": 22,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-a-retired-runway-reopens-greenland-s-arctic-bargain",
-        "section": "Geopolitics"
-      },
-      {
-        "count": 22,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-a-rewrite-fee-lands-inside-hollywood-s-health-plan",
-        "section": "Film"
-      },
-      {
-        "count": 22,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-a-toothy-keychain-walks-onto-the-studio-lot",
-        "section": "Pop Culture"
-      },
-      {
-        "count": 22,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-the-inspection-lane-has-become-the-walking-horse-fight",
-        "section": "Niche"
       }
     ]
   }
