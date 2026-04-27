@@ -7,10 +7,12 @@ from email.utils import format_datetime
 import html
 import json
 import math
+import re
 
-SITE_DIR = Path(__file__).resolve().parents[1]
+SITE_DIR = Path(__file__).resolve().parent
 STUDIO_DIR = SITE_DIR / "studio"
-DATA = json.loads((STUDIO_DIR / "master-edition.json").read_text(encoding="utf-8"))
+DATA_DIR = STUDIO_DIR if (STUDIO_DIR / "master-edition.json").exists() else SITE_DIR
+DATA = json.loads((DATA_DIR / "master-edition.json").read_text(encoding="utf-8"))
 
 SITE = DATA["site"]
 SECTIONS = DATA["sections"]
@@ -38,8 +40,37 @@ def initials(name: str) -> str:
     return "".join(part[0] for part in parts[:2]).upper() or "TP"
 
 
+def extract_story_fragment(page_html: str, rel_path: str) -> str:
+  if "content/asides/" in rel_path:
+    pattern = re.compile(
+      r'<aside class="article-aside">\s*<div class="sticky-stack">\s*(?P<content>.*?)\s*</div>\s*</aside>',
+      re.S,
+    )
+  elif "content/bodies/" in rel_path:
+    pattern = re.compile(
+      r'<div class="article-body">\s*(?P<content>.*?)\s*</div>\s*</div>\s*</article>',
+      re.S,
+    )
+  else:
+    raise FileNotFoundError(rel_path)
+
+  match = pattern.search(page_html)
+  if not match:
+    raise FileNotFoundError(rel_path)
+  return match.group("content").strip()
+
+
 def read_fragment(rel_path: str) -> str:
-    return (STUDIO_DIR / rel_path).read_text(encoding="utf-8")
+  fragment_path = DATA_DIR / rel_path
+  if fragment_path.exists():
+    return fragment_path.read_text(encoding="utf-8")
+
+  fallback_page = SITE_DIR / Path(rel_path).name
+  if fallback_page.exists():
+    page_html = fallback_page.read_text(encoding="utf-8")
+    return extract_story_fragment(page_html, rel_path)
+
+  return fragment_path.read_text(encoding="utf-8")
 
 
 def search_index() -> list[dict]:
@@ -249,6 +280,149 @@ def gallery_block(story: dict) -> str:
 </section>
 '''.strip()
 
+
+
+def social_embed_platform_label(platform: str) -> str:
+    value = (platform or "").strip().lower()
+    labels = {
+        "x": "X",
+        "twitter": "X",
+        "bluesky": "Bluesky",
+        "bsky": "Bluesky",
+        "threads": "Threads",
+        "instagram": "Instagram",
+        "ig": "Instagram",
+        "tiktok": "TikTok",
+        "linkedin": "LinkedIn",
+        "facebook": "Facebook",
+        "fb": "Facebook",
+        "youtube": "YouTube",
+    }
+    return labels.get(value, platform.strip().title() if platform else "Social")
+
+
+def social_embed_placement_matches(post: dict, placement: str) -> bool:
+    raw = str(post.get("placement") or "both").strip().lower()
+    aliases = {
+        "side": "rail",
+        "sidebar": "rail",
+        "rail": "rail",
+        "right": "rail",
+        "bottom": "bottom",
+        "footer": "bottom",
+        "end": "bottom",
+        "both": "both",
+        "all": "both",
+    }
+    normalized = aliases.get(raw, raw)
+    if placement == "rail":
+        return normalized in {"rail", "both"}
+    if placement == "bottom":
+        return normalized in {"bottom", "both"}
+    return True
+
+
+def social_embed_scripts(posts: list[dict]) -> str:
+    needs_x = False
+    needs_bluesky = False
+    needs_tiktok = False
+
+    for post in posts:
+        platform = str(post.get("platform") or "").lower()
+        url = str(post.get("url") or "").lower()
+        embed_html = str(post.get("embedHtml") or post.get("html") or "")
+        embed_lower = embed_html.lower()
+
+        # X URL-only cards are converted to a real tweet embed below, so load the widget.
+        if platform in {"x", "twitter"} or "twitter-tweet" in embed_lower:
+            if "platform.twitter.com/widgets.js" not in embed_lower:
+                needs_x = True
+        # Other platforms load widgets only when the editor supplies actual embed HTML.
+        if (embed_html and platform in {"bluesky", "bsky"}) or "bluesky-embed" in embed_lower:
+            if "embed.bsky.app/static/embed.js" not in embed_lower:
+                needs_bluesky = True
+        if (embed_html and platform == "tiktok") or "tiktok-embed" in embed_lower:
+            if "tiktok.com/embed.js" not in embed_lower:
+                needs_tiktok = True
+
+    scripts = []
+    if needs_x:
+        scripts.append('<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>')
+    if needs_bluesky:
+        scripts.append('<script async src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script>')
+    if needs_tiktok:
+        scripts.append('<script async src="https://www.tiktok.com/embed.js"></script>')
+    return "\n".join(scripts)
+
+
+def social_embed_card(post: dict) -> str:
+    platform_raw = str(post.get("platform") or "").strip()
+    platform = social_embed_platform_label(platform_raw)
+    platform_key = platform_raw.lower()
+    label = str(post.get("label") or post.get("title") or "Public conversation").strip()
+    author = str(post.get("author") or "").strip()
+    handle = str(post.get("handle") or "").strip()
+    date = str(post.get("date") or "").strip()
+    url = str(post.get("url") or "").strip()
+    note = str(post.get("note") or post.get("dek") or post.get("summary") or "").strip()
+    embed_html = str(post.get("embedHtml") or post.get("html") or "").strip()
+
+    meta_bits = [bit for bit in [author, handle, date] if bit]
+    meta_html = f'<p class="social-embed-card__meta">{h(" • ".join(meta_bits))}</p>' if meta_bits else ""
+    note_html = f'<p class="social-embed-card__note">{h(note)}</p>' if note else ""
+    link_html = f'<a class="social-embed-card__link" href="{h(url)}" target="_blank" rel="noopener noreferrer">View original post</a>' if url else ""
+
+    if embed_html:
+        body_html = f'<div class="social-embed-card__embed">{embed_html}</div>'
+    elif url and platform_key in {"x", "twitter"}:
+        body_html = f'<div class="social-embed-card__embed"><blockquote class="twitter-tweet" data-dnt="true"><a href="{h(url)}"></a></blockquote></div>'
+    else:
+        body_html = f"""
+        <div class="social-embed-card__fallback">
+            {note_html}
+            {link_html}
+        </div>
+        """.strip()
+
+    return f"""
+<article class="social-embed-card">
+    <div class="social-embed-card__label-row">
+        <span class="social-embed-card__platform">{h(platform)}</span>
+        <span class="social-embed-card__label">{h(label)}</span>
+    </div>
+    {meta_html}
+    {body_html}
+</article>
+""".strip()
+
+
+def social_embeds_block(story: dict, placement: str = "rail") -> str:
+    posts = story.get("socialEmbeds") or story.get("socialPosts") or []
+    if not isinstance(posts, list):
+        return ""
+
+    selected = [post for post in posts if isinstance(post, dict) and social_embed_placement_matches(post, placement)]
+    if not selected:
+        return ""
+
+    selected = selected[:6]
+    title = story.get("socialEmbedsTitle") or "Public conversation"
+    intro = story.get("socialEmbedsIntro") or "Curated posts selected for context. Inclusion is not endorsement."
+    modifier = "social-embed-panel--rail" if placement == "rail" else "social-embed-panel--bottom"
+    cards_html = "\n".join(social_embed_card(post) for post in selected)
+    scripts_html = social_embed_scripts(selected)
+
+    return f"""
+<section class="social-embed-panel {modifier}" aria-label="{h(title)}">
+    <p class="social-embed-panel__eyebrow">Social context</p>
+    <h2 class="social-embed-panel__title">{h(title)}</h2>
+    <p class="social-embed-panel__intro">{h(intro)}</p>
+    <div class="social-post-stack">
+        {cards_html}
+    </div>
+</section>
+{scripts_html}
+""".strip()
 
 def header(current_section: str = "", current_aux: str = "") -> str:
     utility_links = []
@@ -831,6 +1005,8 @@ def render_story(story: dict) -> str:
     body_html = read_fragment(story["bodyFile"])
     gallery_html = gallery_block(story)
     related_html = related_block(story)
+    social_rail_html = social_embeds_block(story, "rail")
+    social_bottom_html = social_embeds_block(story, "bottom")
     main = f"""
 <main class="page page-article">
   <article class="article">
@@ -854,11 +1030,13 @@ def render_story(story: dict) -> str:
       <aside class="article-aside">
         <div class="sticky-stack">
           {aside_html}
+          {social_rail_html}
         </div>
       </aside>
       <div class="article-body">
         {body_html}
         {gallery_html}
+        {social_bottom_html}
         {related_html}
       </div>
     </div>

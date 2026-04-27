@@ -3325,3 +3325,130 @@ body.page-pledge {
   }
 }
 /* PRESS_AI_NEWSROOM_PLEDGE_END */
+
+/* Phase-one curated social embeds */
+.social-embed-panel{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:1rem;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.social-embed-panel--bottom{
+  display:none;
+  margin-top:1.6rem;
+}
+
+.social-embed-panel__eyebrow{
+  margin:0 0 .35rem;
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:.72rem;
+  font-weight:700;
+}
+
+.social-embed-panel__title{
+  margin:0 0 .35rem;
+  font-family:var(--serif);
+  font-size:1.45rem;
+  line-height:1.05;
+}
+
+.social-embed-panel__intro{
+  margin:0 0 .85rem;
+  color:var(--muted);
+  font-size:.92rem;
+  line-height:1.45;
+}
+
+.social-post-stack{
+  display:grid;
+  gap:.85rem;
+}
+
+.social-embed-card{
+  border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  background:var(--surface-2);
+  padding:.85rem;
+  overflow:hidden;
+}
+
+.social-embed-card__label-row{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  flex-wrap:wrap;
+  margin-bottom:.45rem;
+}
+
+.social-embed-card__platform{
+  display:inline-flex;
+  align-items:center;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:.18rem .5rem;
+  background:var(--surface);
+  color:var(--accent);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.social-embed-card__label{
+  color:var(--ink);
+  font-size:.82rem;
+  font-weight:700;
+}
+
+.social-embed-card__meta,
+.social-embed-card__note{
+  margin:.25rem 0 .55rem;
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.45;
+}
+
+.social-embed-card__link{
+  display:inline-flex;
+  align-items:center;
+  margin-top:.2rem;
+  color:var(--accent);
+  font-weight:700;
+  font-size:.92rem;
+  text-decoration:none;
+}
+
+.social-embed-card__link:hover{
+  text-decoration:underline;
+}
+
+.social-embed-card__embed{
+  max-width:100%;
+  overflow:hidden;
+}
+
+.social-embed-card__embed iframe,
+.social-embed-card__embed blockquote,
+.social-embed-card__embed .twitter-tweet,
+.social-embed-card__embed .bluesky-embed,
+.social-embed-card__embed .tiktok-embed{
+  max-width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+}
+
+@media (max-width: 1120px){
+  .social-embed-panel--rail{display:none;}
+  .social-embed-panel--bottom{display:block;}
+}
+
+@media (max-width: 700px){
+  .social-embed-panel,
+  .social-embed-card{padding:.85rem;}
+}
+
