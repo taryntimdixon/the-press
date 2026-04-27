@@ -1464,6 +1464,7 @@ def run_headline_audit_self_test() -> None:
         "The council lands inside a transit crisis",
         "Markets is not just a scoreboard anymore",
         "Markets reprice the weekly grocery run",
+        "Markets brace for a new borrowing shock",
     ]
     failures = issue_headline_audit_failures(sample)
     checks = {
