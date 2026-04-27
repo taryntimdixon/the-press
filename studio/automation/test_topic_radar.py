@@ -3,12 +3,14 @@
 
 import json
 import sys
+from tempfile import TemporaryDirectory
 from pathlib import Path
+from unittest.mock import patch
 
 # Add parent to path so we can import topic_radar
 sys.path.insert(0, str(Path(__file__).parent))
 
-from topic_radar import extract_json
+from topic_radar import build_issue_plan, extract_json
 
 
 def test_raw_json():
@@ -158,6 +160,87 @@ def test_invalid_json_raises():
         print("✓ Invalid JSON raises helpful JSONDecodeError")
 
 
+def _allowed_sections() -> list[tuple[str, str]]:
+    return [
+        ("world", "World"),
+        ("science", "Science"),
+        ("culture", "Culture"),
+    ]
+
+
+def _candidate(title: str) -> dict:
+    return {
+        "title": title,
+        "bucket": "AI_FRONTIER",
+        "section_slug": "science",
+        "section_name": "Science",
+        "why_now": "Fresh, high-signal development with clear stakes.",
+        "core_question": "What changed and why does it matter now?",
+        "angle": "Lead with concrete actors and measurable implications.",
+        "source_urls": ["https://example.com/story"],
+        "score": 4.2,
+    }
+
+
+def _run_build_issue_plan(payload: dict) -> list[dict]:
+    with TemporaryDirectory() as tmp:
+        with patch("topic_radar.topic_radar_enabled", return_value=True), patch(
+            "topic_radar.topic_radar_required", return_value=True
+        ), patch("topic_radar.request_topic_payload", return_value=payload):
+            return build_issue_plan(
+                client=object(),
+                story_count=1,
+                date_label="2026-04-27",
+                edition_date="2026-04-27",
+                recent_memory=[],
+                allowed_sections=_allowed_sections(),
+                root=Path(tmp),
+            )
+
+
+def test_build_issue_plan_with_assignments():
+    """Topic radar should accept payloads with normal assignments."""
+    payload = {
+        "assignments": [_candidate("Assignment Story")],
+        "candidates": [_candidate("Candidate Backup")],
+    }
+    plan = _run_build_issue_plan(payload)
+    assert len(plan) == 1
+    assert plan[0]["title"] == "Assignment Story"
+    print("✓ build_issue_plan accepts payload with assignments")
+
+
+def test_build_issue_plan_with_empty_assignments_and_candidates():
+    """Topic radar should derive assignments from candidates when assignments are empty."""
+    payload = {
+        "assignments": [],
+        "candidates": [_candidate("Candidate Derived Story")],
+    }
+    plan = _run_build_issue_plan(payload)
+    assert len(plan) == 1
+    assert plan[0]["title"] == "Candidate Derived Story"
+    print("✓ build_issue_plan accepts empty assignments with candidates")
+
+
+def test_build_issue_plan_with_candidates_only():
+    """Topic radar should derive assignments from candidates when assignments are missing."""
+    payload = {"candidates": [_candidate("Candidates Only Story")]}
+    plan = _run_build_issue_plan(payload)
+    assert len(plan) == 1
+    assert plan[0]["title"] == "Candidates Only Story"
+    print("✓ build_issue_plan accepts candidates-only payload")
+
+
+def test_build_issue_plan_fails_with_neither_assignments_nor_candidates():
+    """Topic radar should still fail when both assignments and candidates are empty."""
+    try:
+        _run_build_issue_plan({"assignments": [], "candidates": []})
+        assert False, "Should have raised RuntimeError"
+    except RuntimeError as e:
+        assert "neither assignments nor candidates" in str(e).lower()
+        print("✓ build_issue_plan fails when neither assignments nor candidates exist")
+
+
 def main():
     """Run all tests."""
     print("Running Topic Radar JSON parsing tests...\n")
@@ -171,6 +254,10 @@ def main():
     test_empty_response_raises()
     test_no_json_object_raises()
     test_invalid_json_raises()
+    test_build_issue_plan_with_assignments()
+    test_build_issue_plan_with_empty_assignments_and_candidates()
+    test_build_issue_plan_with_candidates_only()
+    test_build_issue_plan_fails_with_neither_assignments_nor_candidates()
     
     print("\n✅ All tests passed!")
 

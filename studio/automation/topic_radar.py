@@ -666,8 +666,14 @@ def build_issue_plan(
             raise RuntimeError(f"Topic radar returned error payload: {clean_text(payload.get('error'), 300)}")
 
         raw_assignments = payload.get("assignments")
-        if not isinstance(raw_assignments, list) or not raw_assignments:
-            raise RuntimeError("Topic radar returned empty assignments")
+        raw_candidates = payload.get("candidates")
+
+        if not isinstance(raw_assignments, list):
+            raw_assignments = []
+        if not isinstance(raw_candidates, list):
+            raw_candidates = []
+        if not raw_assignments and not raw_candidates:
+            raise RuntimeError("Topic radar returned neither assignments nor candidates")
 
         candidates, assignments, usable_assignment_count = normalize_plan(payload, story_count, allowed_sections)
         if not candidates:
