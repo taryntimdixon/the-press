@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-26T05:25:32.384583+00:00",
+  "generated_at": "2026-04-27T02:02:25.561846+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -74,52 +74,46 @@
     ],
     "desk_pulse": [
       {
-        "count": 26,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-the-ai-lesson-has-to-survive-the-training-floor",
-        "section": "AI"
-      },
-      {
-        "count": 25,
+        "count": 22,
         "latest_ts": 1777173720.0,
         "story_id": "2026-04-26-a-spending-cap-table-waits-for-the-justices",
         "section": "Politics"
       },
       {
-        "count": 25,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-a-grocery-card-has-become-a-state-budget-line",
-        "section": "Economics"
-      },
-      {
-        "count": 25,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time",
-        "section": "Science"
-      },
-      {
-        "count": 25,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-the-inspection-lane-has-become-the-walking-horse-fight",
-        "section": "Niche"
-      },
-      {
-        "count": 24,
-        "latest_ts": 1777173720.0,
-        "story_id": "2026-04-26-a-retired-runway-reopens-greenland-s-arctic-bargain",
-        "section": "Geopolitics"
-      },
-      {
-        "count": 23,
+        "count": 22,
         "latest_ts": 1777173720.0,
         "story_id": "2026-04-26-toll-tags-caught-a-gps-backup-in-their-lane",
         "section": "Technology"
       },
       {
-        "count": 23,
+        "count": 22,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-a-grocery-card-has-become-a-state-budget-line",
+        "section": "Economics"
+      },
+      {
+        "count": 22,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time",
+        "section": "Science"
+      },
+      {
+        "count": 22,
         "latest_ts": 1777173720.0,
         "story_id": "2026-04-26-a-service-notice-reaches-the-closed-crossing",
         "section": "World"
+      },
+      {
+        "count": 22,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-the-ai-lesson-has-to-survive-the-training-floor",
+        "section": "AI"
+      },
+      {
+        "count": 22,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-a-retired-runway-reopens-greenland-s-arctic-bargain",
+        "section": "Geopolitics"
       },
       {
         "count": 22,
@@ -132,6 +126,12 @@
         "latest_ts": 1777173720.0,
         "story_id": "2026-04-26-a-toothy-keychain-walks-onto-the-studio-lot",
         "section": "Pop Culture"
+      },
+      {
+        "count": 22,
+        "latest_ts": 1777173720.0,
+        "story_id": "2026-04-26-the-inspection-lane-has-become-the-walking-horse-fight",
+        "section": "Niche"
       }
     ]
   }
