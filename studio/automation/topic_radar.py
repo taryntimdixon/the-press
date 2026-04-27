@@ -349,7 +349,6 @@ def pad_with_section_rotation(
 ) -> list[TopicAssignment]:
     if len(assignments) >= story_count:
         return assignments[:story_count]
-    existing_terms = [topic_terms(item.title, item.angle, item.why_now) for item in assignments]
     for idx in range(story_count - len(assignments)):
         slug, name = allowed_sections[(len(assignments) + idx) % len(allowed_sections)]
         fallback = TopicAssignment(
@@ -376,10 +375,7 @@ def pad_with_section_rotation(
             freshness=5.0,
             score=3.0,
         )
-        terms = topic_terms(fallback.title, fallback.angle)
-        if all(jaccard(terms, existing) < 0.30 for existing in existing_terms):
-            assignments.append(fallback)
-            existing_terms.append(terms)
+        assignments.append(fallback)
     return assignments[:story_count]
 
 
@@ -651,6 +647,7 @@ def build_issue_plan(
         return []
 
     story_count = max(1, story_count)
+    strict_story_count = env_bool("TOPIC_RADAR_STRICT_STORY_COUNT", False)
     prompt = build_topic_radar_prompt(
         story_count=story_count,
         date_label=date_label,
@@ -681,8 +678,15 @@ def build_issue_plan(
         if not assignments or usable_assignment_count <= 0:
             raise RuntimeError("Topic radar returned an unusable plan")
         if usable_assignment_count < story_count:
-            raise RuntimeError(
-                f"Topic radar returned only {usable_assignment_count} usable assignments for requested {story_count}"
+            message = (
+                "Topic radar returned only "
+                f"{usable_assignment_count} usable assignments for requested {story_count}"
+            )
+            if strict_story_count:
+                raise RuntimeError(message)
+            print(
+                "WARNING: "
+                f"{message}; padding the remainder with section-rotation fallback assignments."
             )
 
         write_topic_plan_files(

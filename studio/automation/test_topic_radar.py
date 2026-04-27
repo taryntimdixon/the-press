@@ -3,8 +3,10 @@
 
 import json
 import sys
+from io import StringIO
 from tempfile import TemporaryDirectory
 from pathlib import Path
+from contextlib import redirect_stdout
 from unittest.mock import patch
 
 # Add parent to path so we can import topic_radar
@@ -182,14 +184,17 @@ def _candidate(title: str) -> dict:
     }
 
 
-def _run_build_issue_plan(payload: dict) -> list[dict]:
+def _run_build_issue_plan(payload: dict, story_count: int = 1, strict_story_count: bool = False) -> list[dict]:
     with TemporaryDirectory() as tmp:
-        with patch("topic_radar.topic_radar_enabled", return_value=True), patch(
-            "topic_radar.topic_radar_required", return_value=True
-        ), patch("topic_radar.request_topic_payload", return_value=payload):
+        env = {"TOPIC_RADAR_STRICT_STORY_COUNT": "1" if strict_story_count else "0"}
+        with patch.dict("os.environ", env, clear=False), patch(
+            "topic_radar.topic_radar_enabled", return_value=True
+        ), patch("topic_radar.topic_radar_required", return_value=True), patch(
+            "topic_radar.request_topic_payload", return_value=payload
+        ):
             return build_issue_plan(
                 client=object(),
-                story_count=1,
+                story_count=story_count,
                 date_label="2026-04-27",
                 edition_date="2026-04-27",
                 recent_memory=[],
@@ -241,6 +246,52 @@ def test_build_issue_plan_fails_with_neither_assignments_nor_candidates():
         print("✓ build_issue_plan fails when neither assignments nor candidates exist")
 
 
+def test_build_issue_plan_partial_assignments_warns_and_pads():
+    """Partial usable radar plans should warn and pad missing slots."""
+    payload = {
+        "assignments": [_candidate("Only One Usable Assignment")],
+        "candidates": [_candidate("Candidate Backup")],
+    }
+    output = StringIO()
+    with redirect_stdout(output):
+        plan = _run_build_issue_plan(payload, story_count=3, strict_story_count=False)
+
+    assert len(plan) == 3
+    assert plan[0]["title"] == "Only One Usable Assignment"
+    assert "warning: topic radar returned only 1 usable assignments" in output.getvalue().lower()
+    assert "fallback assignment" in plan[1]["title"].lower()
+    assert "fallback assignment" in plan[2]["title"].lower()
+    print("✓ build_issue_plan warns and pads when partial assignments are usable")
+
+
+def test_build_issue_plan_fails_with_zero_usable_assignments():
+    """Zero usable assignments should still fail even if candidate payload exists."""
+    payload = {
+        "assignments": [{"bucket": "AI_FRONTIER", "section_slug": "science"}],
+        "candidates": [_candidate("Valid Candidate")],
+    }
+    try:
+        _run_build_issue_plan(payload, story_count=2, strict_story_count=False)
+        assert False, "Should have raised RuntimeError"
+    except RuntimeError as e:
+        assert "unusable plan" in str(e).lower()
+        print("✓ build_issue_plan fails when usable assignment count is zero")
+
+
+def test_build_issue_plan_strict_mode_fails_on_partial_assignments():
+    """Strict mode should preserve hard-fail behavior on partial usable assignments."""
+    payload = {
+        "assignments": [_candidate("Strict Mode Assignment")],
+        "candidates": [_candidate("Candidate Backup")],
+    }
+    try:
+        _run_build_issue_plan(payload, story_count=3, strict_story_count=True)
+        assert False, "Should have raised RuntimeError"
+    except RuntimeError as e:
+        assert "returned only 1 usable assignments" in str(e).lower()
+        print("✓ strict story-count mode fails on partial usable assignments")
+
+
 def main():
     """Run all tests."""
     print("Running Topic Radar JSON parsing tests...\n")
@@ -258,6 +309,9 @@ def main():
     test_build_issue_plan_with_empty_assignments_and_candidates()
     test_build_issue_plan_with_candidates_only()
     test_build_issue_plan_fails_with_neither_assignments_nor_candidates()
+    test_build_issue_plan_partial_assignments_warns_and_pads()
+    test_build_issue_plan_fails_with_zero_usable_assignments()
+    test_build_issue_plan_strict_mode_fails_on_partial_assignments()
     
     print("\n✅ All tests passed!")
 
