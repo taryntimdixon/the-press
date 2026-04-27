@@ -675,12 +675,14 @@ def build_issue_plan(
         candidates, assignments, usable_assignment_count = normalize_plan(payload, story_count, allowed_sections)
         if not candidates:
             raise RuntimeError("Topic radar returned empty candidates")
-        if not assignments or usable_assignment_count <= 0:
-            raise RuntimeError("Topic radar returned an unusable plan")
+        if usable_assignment_count <= 0:
+            raise RuntimeError("Topic radar returned no usable assignments")
+        if not assignments:
+            raise RuntimeError("Topic radar returned an empty normalized plan")
         if usable_assignment_count < story_count:
             message = (
                 "Topic radar returned only "
-                f"{usable_assignment_count} usable assignments for requested {story_count}"
+                f"{usable_assignment_count} usable assignments for {story_count} requested stories"
             )
             if strict_story_count:
                 raise RuntimeError(message)

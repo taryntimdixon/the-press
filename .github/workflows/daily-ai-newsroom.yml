@@ -84,6 +84,7 @@ jobs:
           # Required by default in radar mode; errors/empty plans raise unless TOPIC_RADAR_REQUIRED is disabled.
           TOPIC_SELECTION_MODE: "radar"
           TOPIC_RADAR_REQUIRED: "1"
+          TOPIC_RADAR_STRICT_STORY_COUNT: "0"
           TOPIC_RADAR_MODEL: gpt-5.5
           TOPIC_RADAR_CANDIDATE_MULTIPLIER: "3"
           TREND_LOOKBACK_HOURS: "48"

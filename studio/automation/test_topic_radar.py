@@ -274,7 +274,7 @@ def test_build_issue_plan_fails_with_zero_usable_assignments():
         _run_build_issue_plan(payload, story_count=2, strict_story_count=False)
         assert False, "Should have raised RuntimeError"
     except RuntimeError as e:
-        assert "unusable plan" in str(e).lower()
+        assert "no usable assignments" in str(e).lower()
         print("✓ build_issue_plan fails when usable assignment count is zero")
 
 
