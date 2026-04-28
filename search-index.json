@@ -1,5 +1,44 @@
 [
   {
+    "title": "A Gunman, a Ballroom, and a Shaken Washington",
+    "section": "Politics / Security",
+    "type": "Daily Issue",
+    "dek": "The White House Correspondents’ Dinner was supposed to be a night of jokes, journalism, and Washington ceremony. Instead, authorities say an armed suspect attempted to breach security near the ballroom, turning one of the capital’s most symbolic events into a national security crisis.",
+    "url": "daily/2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington.html",
+    "author": "Intelligent AI",
+    "published": "April 28, 2026 • 8:30 p.m.",
+    "keywords": [
+      "White House Correspondents’ Dinner",
+      "Donald Trump",
+      "Secret Service",
+      "political violence",
+      "Washington Hilton",
+      "media",
+      "security",
+      "misinformation",
+      "DOJ",
+      "FBI"
+    ]
+  },
+  {
+    "title": "The Strait of Hormuz Is Now the World’s Oil Panic Button",
+    "section": "World",
+    "type": "Daily Issue",
+    "dek": "A stalled U.S.-Iran proposal, sparse tanker traffic and stranded crews have turned the Strait of Hormuz into a pressure point for oil, inflation and global diplomacy.",
+    "url": "daily/2026-04-28-strait-of-hormuz-worlds-oil-panic-button.html",
+    "author": "Intelligent AI",
+    "published": "April 28, 2026 • 12:00 p.m.",
+    "keywords": [
+      "Strait of Hormuz",
+      "Iran war",
+      "oil prices",
+      "shipping",
+      "energy security",
+      "seafarers",
+      "global economy"
+    ]
+  },
+  {
     "title": "Darfur’s Burn Scars Are Starting to Read Like a Food Map",
     "section": "World",
     "type": "Daily Issue",
@@ -11,13 +50,7 @@
       "Sudan",
       "Darfur",
       "famine"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Darfur’s Burn Scars Are Starting to Read Like a Food Map",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "Inside a modest humanitarian analysis room in Port Sudan or Nairobi, two food-security analysts and a logistics officer stand around a crowded table covered with printed satellite images of burned settlements near El Fasher, convoy-route sheets, market-price charts, handwritten locality lists, sticky notes, a laptop with a muted map interface, a radio handset and a thermos of tea. Fluorescent office light, worn chairs, a taped wall calendar, stacked field notebooks and half-open file boxes should make the room feel practical and overworked. The composition should focus on hands pointing at crop-field printouts, road-access notes and commodity-price tables, not on a heroic screen or abstract map glow.",
-    "image": "assets/ai-thumbnails/2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Darfur’s Burn Scars Are Starting to Read Like a Food Map",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Darfur’s Burn Scars Are Starting to Read Like a Food Map. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Nairobi’s Drains Are Running Out of Room",
@@ -34,13 +67,7 @@
       "climate adaptation",
       "informal settlements",
       "East Africa"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Nairobi’s Drains Are Running Out of Room",
-    "visual_archetype": "wide environmental scene showing infrastructure, landscape, or atmosphere",
-    "visual_brief": "A wide, documentary-style environmental scene in Nairobi after heavy rain: a swollen brown drainage channel in the foreground, water pushing around concrete culverts and debris screens, roadside stalls and matatus on a raised road, pedestrians keeping to the edges, low clouds over the city skyline, and informal housing and green riverbank visible along the channel. Natural overcast light, human-scale but not sensational, emphasizing drainage infrastructure, landscape, and atmosphere.",
-    "image": "assets/ai-thumbnails/2026-04-27-nairobi-s-drains-are-running-out-of-room.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Nairobi’s Drains Are Running Out of Room",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Nairobi’s Drains Are Running Out of Room. AI-generated image by The Press."
+    ]
   },
   {
     "title": "3.98 Million Home Sales Turn Spring Open Houses Into Math Class",
@@ -56,13 +83,7 @@
       "mortgage rates",
       "first-time homebuyers",
       "spring housing market"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: 3.98 Million Home Sales Turn Spring Open Houses Into Math Class",
-    "visual_archetype": "documentary street-level scene with motion and local texture",
-    "visual_brief": "A documentary street-level spring homebuying scene in a dense U.S. neighborhood: several prospective buyers in light jackets walking past a modest open-house sign on a busy sidewalk, one person checking a phone mortgage calculator, another holding a folded listing sheet, a real estate agent half-visible at a rowhouse doorway, parked cars, stoops, flyers, budding street trees, curbside trash bins and pedestrians in the background; late-afternoon natural light, candid motion blur, local texture and no charts, no maps, no courthouse, no symbolic scales, no state silhouettes.",
-    "image": "assets/ai-thumbnails/2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: 3.98 Million Home Sales Turn Spring Open Houses Into Math Class",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: 3.98 Million Home Sales Turn Spring Open Houses Into Math Class. AI-generated image by The Press."
+    ]
   },
   {
     "title": "NDIS Autism Test Asks Whether Help Can Beat the Label",
@@ -81,13 +102,7 @@
       "schools",
       "disability policy",
       "OECD"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: NDIS Autism Test Asks Whether Help Can Beat the Label",
-    "visual_archetype": "documentary street-level scene with motion and local texture",
-    "visual_brief": "A documentary street-level scene outside a suburban Australian early-learning centre at morning drop-off: parents steering strollers and scooters along a wet footpath, a crossing guard in a fluorescent vest, a child’s backpack with a dangling toy, a speech therapist’s canvas tote partly visible, gum trees and small shopfronts in the background, natural overcast light, slight motion blur from passing bicycles, no logos emphasized, humane and observational rather than staged.",
-    "image": "assets/ai-thumbnails/2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: NDIS Autism Test Asks Whether Help Can Beat the Label",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: NDIS Autism Test Asks Whether Help Can Beat the Label. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Blue Proxy Card Puts Burbank’s Back Lot in a Streaming Fight",
@@ -103,13 +118,7 @@
       "Hollywood consolidation",
       "streaming",
       "Burbank"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Blue Proxy Card Puts Burbank’s Back Lot in a Streaming Fight",
-    "visual_archetype": "object-detail still life built around a concrete artifact from the reporting",
-    "visual_brief": "A close, shallow-focus still life on a studio office desk: a blue proxy card partly tucked under a brass Warner-style lot key tag, a pencil with voting checkmarks, a folded call sheet, and two small streaming remote controls at the edge of frame. Warm afternoon light through blinds, faint coffee ring, no logos copied exactly, no people, no maps, documentary realism with crisp paper texture.",
-    "image": "assets/ai-thumbnails/2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Blue Proxy Card Puts Burbank’s Back Lot in a Streaming Fight",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Blue Proxy Card Puts Burbank’s Back Lot in a Streaming Fight. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Wichita’s One Robot Dog Has a July Rulebook Test",
@@ -123,13 +132,7 @@
       "Wichita",
       "robot dog",
       "police technology"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Wichita’s One Robot Dog Has a July Rulebook Test",
-    "visual_archetype": "ground-level human scene with a specific setting and natural light",
-    "visual_brief": "Ground-level documentary scene inside Wichita City Hall on a bright weekday morning: residents sit on wooden benches outside the council chamber, a city agenda packet open on someone’s lap to a police technology item, a uniformed officer speaks quietly with a council staffer near the doorway, and natural light from tall windows falls across polished floors. No futuristic glow, no weapons, no maps; the mood is civic, practical, and a little odd.",
-    "image": "assets/ai-thumbnails/2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Wichita’s One Robot Dog Has a July Rulebook Test",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Wichita’s One Robot Dog Has a July Rulebook Test. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Baidoa’s Water Trucks Keep Moving While Geneva’s Ledger Lags",
@@ -145,13 +148,7 @@
       "Baidoa",
       "IOM",
       "humanitarian funding"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Baidoa’s Water Trucks Keep Moving While Geneva’s Ledger Lags",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Close, documentary-style image of two aid workers’ hands at the rear valve of a dusty water truck in Baidoa, one hand tightening a metal coupling while the other steadies a thick hose as water splashes into yellow jerrycans lined on red earth. Background softly shows women waiting, a mechanic’s wrench on the truck step, heat haze, and canvas shelters, but the focus stays on the hands, hose, valve, and practical labor of keeping water moving.",
-    "image": "assets/ai-thumbnails/2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Baidoa’s Water Trucks Keep Moving While Geneva’s Ledger Lags",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Baidoa’s Water Trucks Keep Moving While Geneva’s Ledger Lags. AI-generated image by The Press."
+    ]
   },
   {
     "title": "IMF’s 19% Energy Shock Reaches the Checkout Line",
@@ -165,13 +162,7 @@
       "IMF",
       "energy prices",
       "inflation"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: IMF’s 19% Energy Shock Reaches the Checkout Line",
-    "visual_archetype": "abstract physical installation using real-world objects, not maps or scales",
-    "visual_brief": "Build a tabletop installation on matte gray concrete: a long black rubber hose curves through a chain of everyday objects, beginning at a brass fuel nozzle, then threading past a tiny burlap sack of white fertilizer granules, a folded freight invoice, a torn grocery receipt, a loaf of bread, a bus pass, a mortgage envelope and a desk calendar opened to April 2026. Dust each object lightly with graphite powder, as if one dark price trail brushed across all of them. Use soft side light, shallow depth of field and tactile shadows. No maps, no scales, no flags, no screens, no charts, no state outlines.",
-    "image": "assets/ai-thumbnails/2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: IMF’s 19% Energy Shock Reaches the Checkout Line",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: IMF’s 19% Energy Shock Reaches the Checkout Line. AI-generated image by The Press."
+    ]
   },
   {
     "title": "CDC’s 3,606,400 Birth Certificates Turn Family Math Into Public Policy",
@@ -185,13 +176,7 @@
       "birth rates",
       "families",
       "maternal health"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: CDC’s 3,606,400 Birth Certificates Turn Family Math Into Public Policy",
-    "visual_archetype": "abstract physical installation using real-world objects, not maps or scales",
-    "visual_brief": "Create a tabletop installation in soft window light: a neat stack of blank birth-certificate forms, 36 tiny wooden blocks stamped with digits from 3,606,400, a paper hospital bracelet looped around a pencil, a folded surgical cap, a small pair of knitted booties, a calendar page marked April 2026, a childcare invoice, and a grocery receipt curling at the edge. Arrange the objects like a quiet ledger, with no people, no maps, no scales, no medical gore, no partisan colors, and no state silhouettes. The scene should feel concrete, humane and slightly playful, with the federal-style document stack anchoring the composition.",
-    "image": "assets/ai-thumbnails/2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: CDC’s 3,606,400 Birth Certificates Turn Family Math Into Public Policy",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: CDC’s 3,606,400 Birth Certificates Turn Family Math Into Public Policy. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Koyo Kouoh’s Team Lowers Venice’s Volume",
@@ -207,13 +192,7 @@
       "In Minor Keys",
       "contemporary art",
       "cultural diplomacy"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Koyo Kouoh’s Team Lowers Venice’s Volume",
-    "visual_archetype": "layered interior scene seen through glass, doorway, or reflection",
-    "visual_brief": "A layered interior view from just outside a Venetian exhibition room: through a tall glass door, visitors move quietly between unfinished installation walls, a reflection of the canal and a hanging work crew light crossing the glass, with a folded floor plan and a small sign reading In Minor Keys on a table in the foreground; soft late-afternoon light, documentary realism, no crowds, no red carpet.",
-    "image": "assets/ai-thumbnails/2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Koyo Kouoh’s Team Lowers Venice’s Volume",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Koyo Kouoh’s Team Lowers Venice’s Volume. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Cape Cod’s Blue-Blood Quota Retreat Leaves a Crab Test Unsettled",
@@ -229,13 +208,7 @@
       "Massachusetts",
       "FDA",
       "Cape Cod"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Cape Cod’s Blue-Blood Quota Retreat Leaves a Crab Test Unsettled",
-    "visual_archetype": "macro material-detail scene where texture carries the story",
-    "visual_brief": "Extreme close-up at low tide on a Cape Cod or Delaware Bay beach: wet tan sand, tiny greenish horseshoe crab eggs mixed with shell grit, the ribbed edge of a dark horseshoe crab shell entering one corner, a few translucent bubbles and a faint blue reflection in a shallow puddle. Natural overcast light, tactile detail, no people, no maps, no lab vials.",
-    "image": "assets/ai-thumbnails/2026-04-27-cape-cod-s-blue-blood-quota-retreat-leaves-a-crab-test-unsettled.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Cape Cod’s Blue-Blood Quota Retreat Leaves a Crab Test Unsettled",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Cape Cod’s Blue-Blood Quota Retreat Leaves a Crab Test Unsettled. AI-generated image by The Press."
+    ]
   },
   {
     "title": "NPT’s glass booths hear a battered bargain in New York",
@@ -249,13 +222,7 @@
       "NPT Review Conference",
       "nuclear diplomacy",
       "IAEA safeguards"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: NPT’s glass booths hear a battered bargain in New York",
-    "visual_archetype": "architectural detail that reveals power, constraint, or neglect",
-    "visual_brief": "Close architectural-detail image inside a United Nations conference room: a row of glass interpretation booths above the chamber, one booth light glowing, tangled black headsets on a narrow ledge, a worn brass room-number plate, blue carpet and blurred country placards far below. The mood should feel formal but strained, with fluorescent light, fingerprints on glass and the machinery of diplomacy visible rather than heroic.",
-    "image": "assets/ai-thumbnails/2026-04-27-npt-s-glass-booths-hear-a-battered-bargain-in-new-york.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: NPT’s glass booths hear a battered bargain in New York",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: NPT’s glass booths hear a battered bargain in New York. AI-generated image by The Press."
+    ]
   },
   {
     "title": "32BJ’s $4.50 Raise Puts New York’s Lobby Math on the Desk",
@@ -269,13 +236,7 @@
       "32BJ SEIU",
       "New York City wages",
       "residential building workers"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: 32BJ’s $4.50 Raise Puts New York’s Lobby Math on the Desk",
-    "visual_archetype": "nonliteral atmospheric scene with color, depth, and one surprising focal object",
-    "visual_brief": "A moody, cinematic apartment lobby after dusk, with warm brass, deep teal shadows and a sense of depth down a polished corridor. Mail carts, bundled recycling and a half-open package room blur in the background. In the foreground, one surprising focal object sits sharply lit on a marble concierge desk: a single bright orange strike whistle beside a polished key fob and a folded payroll stub. No people, no signs, no maps; the image should feel like the quiet pause after a city almost had to learn how its buildings work.",
-    "image": "assets/ai-thumbnails/2026-04-27-32bj-s-4-50-raise-puts-new-york-s-lobby-math-on-the-desk.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: 32BJ’s $4.50 Raise Puts New York’s Lobby Math on the Desk",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: 32BJ’s $4.50 Raise Puts New York’s Lobby Math on the Desk. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Nebraska’s Candy Waiver Puts SNAP at the Checkout Test",
@@ -291,13 +252,7 @@
       "food policy",
       "grocery stores",
       "sugary drinks"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Nebraska’s Candy Waiver Puts SNAP at the Checkout Test",
-    "visual_archetype": "nonliteral atmospheric scene with color, depth, and one surprising focal object",
-    "visual_brief": "A moody, shallow-depth-of-field grocery checkout scene at night, seen from counter height: a glowing card reader, blurred rows of bright drink cans and candy colors in the background, and one surprising focal object in crisp detail — a small paper receipt curling upward with a single red checkout-stamp mark. No people’s faces, no political symbols, no maps; cinematic teal and warm amber lighting, humane and atmospheric rather than accusatory.",
-    "image": "assets/ai-thumbnails/2026-04-27-nebraska-s-candy-waiver-puts-snap-at-the-checkout-test.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Nebraska’s Candy Waiver Puts SNAP at the Checkout Test",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Nebraska’s Candy Waiver Puts SNAP at the Checkout Test. AI-generated image by The Press."
+    ]
   },
   {
     "title": "FCC’s April 22 Notice Puts the Kids-TV Rating Icon on the Couch",
@@ -313,13 +268,7 @@
       "children’s media",
       "streaming",
       "gender identity"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: FCC’s April 22 Notice Puts the Kids-TV Rating Icon on the Couch",
-    "visual_archetype": "domestic-scale scene showing how a policy or system reaches daily life",
-    "visual_brief": "A warm, realistic living-room scene in early evening: a low coffee table with a TV remote, two half-finished cereal bowls, a folded school worksheet, a parent’s phone open to a streaming profile settings screen, and a paper note with a four-digit PIN. In the softly blurred background, a television home screen shows a small TV-Y7 rating icon beside a children’s cartoon tile. No politicians, no maps, no courtroom imagery, no giant symbols; the scene should feel ordinary, domestic and slightly tense, showing how a federal media-policy question reaches household routine.",
-    "image": "assets/ai-thumbnails/2026-04-27-fcc-s-april-22-notice-puts-the-kids-tv-rating-icon-on-the-couch.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: FCC’s April 22 Notice Puts the Kids-TV Rating Icon on the Couch",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: FCC’s April 22 Notice Puts the Kids-TV Rating Icon on the Couch. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Hormuz Offer Leaves Gas Pumps Waiting on Mine Crews and Insurance Desks",
@@ -335,13 +284,7 @@
       "oil prices",
       "shipping insurance",
       "inflation"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Hormuz Offer Leaves Gas Pumps Waiting on Mine Crews and Insurance Desks",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "A close, documentary-style scene inside a marine insurance and shipping operations office: two pairs of adult hands at a cluttered desk, one tracing tanker lanes on a paper voyage plan near the Strait of Hormuz with a grease pencil, another tapping a calculator beside a printed war-risk premium sheet; coffee rings, a hard hat, a ship radio handset, sticky notes with port call times, and a small brass desk lamp casting warm light. No flags, explosions, political map overlays or military glamour; focus on the quiet labor of deciding whether a tanker can sail.",
-    "image": "assets/ai-thumbnails/2026-04-27-hormuz-offer-leaves-gas-pumps-waiting-on-mine-crews-and-insurance-desks.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Hormuz Offer Leaves Gas Pumps Waiting on Mine Crews and Insurance Desks",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Hormuz Offer Leaves Gas Pumps Waiting on Mine Crews and Insurance Desks. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Odesa’s Port Sirens Now Reach Nuclear Desks Across Europe",
@@ -360,13 +303,7 @@
       "Chornobyl",
       "Romania",
       "NATO"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Odesa’s Port Sirens Now Reach Nuclear Desks Across Europe",
-    "visual_archetype": "architectural detail that reveals power, constraint, or neglect",
-    "visual_brief": "A close, low-angle architectural detail inside an Odesa port warehouse after a night strike: a cracked concrete loading-bay pillar, bent corrugated metal, soot-darkened window frames, a dangling yellow safety sign in Ukrainian, and a narrow strip of daylight through a blast-damaged roll-up door. No flames, no bodies, no soldiers; the image should make the port feel like infrastructure under pressure, with power and vulnerability shown through damaged materials.",
-    "image": "assets/ai-thumbnails/2026-04-27-odesa-s-port-sirens-now-reach-nuclear-desks-across-europe.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Odesa’s Port Sirens Now Reach Nuclear Desks Across Europe",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Odesa’s Port Sirens Now Reach Nuclear Desks Across Europe. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Senayan’s Domestic-Worker Law Has 4.2 Million Front Doors to Reach",
@@ -382,13 +319,7 @@
       "labor law",
       "JALA PRT",
       "care economy"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Senayan’s Domestic-Worker Law Has 4.2 Million Front Doors to Reach",
-    "visual_archetype": "documentary street-level scene with motion and local texture",
-    "visual_brief": "A documentary street-level scene outside Jakarta’s Senayan parliamentary complex on a humid afternoon: motorbikes and TransJakarta buses blur past in the foreground, while a small group of domestic-worker advocates in everyday clothes cross near a curb holding folded papers, cloth tote bags, and one hand-painted sign in Indonesian. The image should feel observed rather than staged, with street vendors, trees, concrete barriers, security fencing and local traffic texture visible; natural light, slight motion blur, no court symbols, no maps, no patriotic montage.",
-    "image": "assets/ai-thumbnails/2026-04-27-senayan-s-domestic-worker-law-has-4-2-million-front-doors-to-reach.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Senayan’s Domestic-Worker Law Has 4.2 Million Front Doors to Reach",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Senayan’s Domestic-Worker Law Has 4.2 Million Front Doors to Reach. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Zeldin’s Climate Repeal Turns EPA’s 2009 File Into an Evidence Test",
@@ -406,13 +337,7 @@
       "Clean Air Act",
       "greenhouse gases",
       "vehicle emissions"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Zeldin’s Climate Repeal Turns EPA’s 2009 File Into an Evidence Test",
-    "visual_archetype": "architectural detail that reveals power, constraint, or neglect",
-    "visual_brief": "A close, ground-level architectural detail outside the William Jefferson Clinton Federal Building in Washington, D.C.: rain-darkened stone steps, a brass EPA seal partly reflected in a glass door, a worn metal threshold, security stanchions casting narrow shadows, and a small portable air-quality sensor clipped to a railing. No people in the frame; the image should feel institutional, constrained, and slightly neglected, with power suggested by the heavy doorway rather than by flags, court columns, maps or protest signs.",
-    "image": "assets/ai-thumbnails/2026-04-27-zeldin-s-climate-repeal-turns-epa-s-2009-file-into-an-evidence-test.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Zeldin’s Climate Repeal Turns EPA’s 2009 File Into an Evidence Test",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Zeldin’s Climate Repeal Turns EPA’s 2009 File Into an Evidence Test. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Locked Pouches Pull the Attention Economy Into Homeroom",
@@ -428,13 +353,7 @@
       "attention economy",
       "student mental health",
       "education policy"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Locked Pouches Pull the Attention Economy Into Homeroom",
-    "visual_archetype": "lab, archive, library, classroom, clinic, market, theater, or workshop scene",
-    "visual_brief": "A bright public-school classroom workshop scene after the morning bell: a teacher stands beside a wooden worktable where students place smartphones into gray magnetic locking pouches, with handwritten class schedules, a wall clock, pencil cases, notebooks, and a small sign explaining medical, disability and translation exceptions. Natural window light, no visible phone screens, students shown from shoulders down to preserve privacy, warm documentary style.",
-    "image": "assets/ai-thumbnails/2026-04-27-locked-pouches-pull-the-attention-economy-into-homeroom.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Locked Pouches Pull the Attention Economy Into Homeroom",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Locked Pouches Pull the Attention Economy Into Homeroom. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Richmond Reprices the Cloud",
@@ -450,13 +369,7 @@
       "electric grid",
       "tax incentives",
       "Northern Virginia"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Richmond Reprices the Cloud",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "Inside the Virginia General Assembly Building in Richmond, a budget staff workroom late in the afternoon: two legislative aides in shirtsleeves compare printed budget tables and a laptop spreadsheet on a long table; a utility-rate binder, highlighters, sticky notes, a half-empty coffee cup, and a wall monitor showing a committee agenda sit nearby; through a glass wall, blurred lawmakers and lobbyists move in the hallway. Natural office light, documentary style, no dramatic symbols, no server racks.",
-    "image": "assets/ai-thumbnails/2026-04-27-richmond-reprices-the-cloud.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Richmond Reprices the Cloud",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Richmond Reprices the Cloud. AI-generated image by The Press."
+    ]
   },
   {
     "title": "White House Beehive Gives King Charles a Softer Door Into a Hard Alliance",
@@ -472,13 +385,7 @@
       "state visit",
       "White House beehive",
       "special relationship"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: White House Beehive Gives King Charles a Softer Door Into a Hard Alliance",
-    "visual_archetype": "nonliteral atmospheric scene with color, depth, and one surprising focal object",
-    "visual_brief": "Use the assigned visual archetype (nonliteral atmospheric scene with color, depth, and one surprising focal object) to show A moody, cinematic ceremonial interior at dusk: a long polished table in a deep green room, blurred brass chairs receding into depth, two small porcelain teacups catching warm light, folded blank place cards with no readable names, a Union Jack ribbon and a U.S. flag ribbon lying loosely apart, and one surprising focal object in the foreground — a tiny honeybee perched on the rim of a silver spoon. Rich emerald, cream, brass and midnight-blue tones; shallow depth of field; atmospheric, nonliteral diplomacy; no politicians, no portraits, no flag wall backdrops, no maps, no monuments, no a close view of the actual decision setting, documents, tools, and people affected by the dispute.",
-    "image": "assets/ai-thumbnails/2026-04-27-white-house-beehive-gives-king-charles-a-softer-door-into-a-hard-alliance.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: White House Beehive Gives King Charles a Softer Door Into a Hard Alliance",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: White House Beehive Gives King Charles a Softer Door Into a Hard Alliance. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Juneau’s Voter List Puts DOJ’s Database Push on Trial",
@@ -495,13 +402,7 @@
       "election administration",
       "privacy",
       "federalism"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Juneau’s Voter List Puts DOJ’s Database Push on Trial",
-    "visual_archetype": "abstract physical installation using real-world objects, not maps or scales",
-    "visual_brief": "An abstract tabletop installation in a dim civic-records room: hundreds of blank cream voter-registration cards arranged in a curling path from a small metal file box labeled Juneau toward a dark federal-style archive tray, with translucent privacy envelopes, a coiled USB cable, two rubber stamps reading RECEIVED and CHALLENGED, shredded blue security paper, and a single magnifying glass catching cold window light. No maps, no scales, no flags, no courthouse exterior, no real names or addresses; the image should feel tactile, procedural, and slightly uneasy.",
-    "image": "assets/ai-thumbnails/2026-04-27-juneau-s-voter-list-puts-doj-s-database-push-on-trial.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Juneau’s Voter List Puts DOJ’s Database Push on Trial",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Juneau’s Voter List Puts DOJ’s Database Push on Trial. AI-generated image by The Press."
+    ]
   },
   {
     "title": "NOAA’s 84.4% Reef Dataset Sends Managers Back Into the Water",
@@ -517,13 +418,7 @@
       "Great Barrier Reef",
       "marine heatwaves",
       "reef monitoring"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: NOAA’s 84.4% Reef Dataset Sends Managers Back Into the Water",
-    "visual_archetype": "wide environmental scene showing infrastructure, landscape, or atmosphere",
-    "visual_brief": "Wide daylight environmental scene from the deck of a small reef survey boat on a pale turquoise lagoon after rough weather: a low island and reef crest in the distance, brown flood-plume water meeting blue ocean, scuba tanks and transect tapes secured on deck, two surveyors preparing gear, heavy tropical clouds clearing over the horizon; documentary style, natural light, no maps or overlays.",
-    "image": "assets/ai-thumbnails/2026-04-27-noaa-s-84-4-reef-dataset-sends-managers-back-into-the-water.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: NOAA’s 84.4% Reef Dataset Sends Managers Back Into the Water",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: NOAA’s 84.4% Reef Dataset Sends Managers Back Into the Water. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Mozambique’s Outdoor Classes Ask What Access Really Counts",
@@ -541,13 +436,7 @@
       "school meals",
       "out-of-school children",
       "education data"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Mozambique’s Outdoor Classes Ask What Access Really Counts",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "A provincial education office in Mozambique during flood-recovery planning: three education officials, a school principal, and a district engineer stand around a long wooden table covered with attendance registers, damp classroom-damage forms, rolled site plans, a carpenter’s measuring tape, chalk, pencils, a calculator, and a few metal school-meal bowls. A wall chart behind them lists districts, outdoor classes, damaged classrooms, latrines, teachers, tents, desks, and reopening dates. High louvered windows bring in bright morning light; the scene is practical, crowded, and human, focused on people using paperwork and tools to turn school back into a place children can reliably attend.",
-    "image": "assets/ai-thumbnails/2026-04-27-mozambique-s-outdoor-classes-ask-what-access-really-counts.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Mozambique’s Outdoor Classes Ask What Access Really Counts",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Mozambique’s Outdoor Classes Ask What Access Really Counts. AI-generated image by The Press."
+    ]
   },
   {
     "title": "CNMC Reopens Iberia’s Blackout Ledger",
@@ -566,13 +455,7 @@
       "reactive power",
       "Spain",
       "Portugal"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: CNMC Reopens Iberia’s Blackout Ledger",
-    "visual_archetype": "quiet aftermath scene that suggests stakes without melodrama",
-    "visual_brief": "Use the assigned visual archetype (quiet aftermath scene that suggests stakes without melodrama) to show A quiet Madrid or Lisbon street the morning after a blackout: a closed metro entrance with lights restored but a shutter still half lowered, a handwritten cash-only note taped beside a card terminal, a few commuters waiting in pale daylight, traffic signals working again, and shopkeepers tidying calmly; documentary realism, muted colors, human-scale infrastructure, no flames, no skyline spectacle, no a human-scale operations scene with tagged fiber cables, cooling gauges, utility meters, and a technician's gloved hands.",
-    "image": "assets/ai-thumbnails/2026-04-27-cnmc-reopens-iberia-s-blackout-ledger.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: CNMC Reopens Iberia’s Blackout Ledger",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: CNMC Reopens Iberia’s Blackout Ledger. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Sanriku’s One-Week Warning Clock Runs Out in Sendai",
@@ -586,13 +469,7 @@
       "Japan earthquake",
       "Sanriku",
       "Hokkaido-Sanriku advisory"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Sanriku’s One-Week Warning Clock Runs Out in Sendai",
-    "visual_archetype": "documentary street-level scene with motion and local texture",
-    "visual_brief": "Street-level documentary scene outside Sendai Station in early evening: commuters in spring jackets moving past taxi queues, bus stops, bicycle racks and convenience-store signs; a small municipal earthquake-advisory notice posted near a train-status board; vending machines, umbrellas and local bus markings visible in the background; natural city light, candid motion blur, no collapsed buildings, no tsunami spectacle, no map overlay.",
-    "image": "assets/ai-thumbnails/2026-04-27-sanriku-s-one-week-warning-clock-runs-out-in-sendai.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Sanriku’s One-Week Warning Clock Runs Out in Sendai",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Sanriku’s One-Week Warning Clock Runs Out in Sendai. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Can Ticketmaster’s $1.72 Verdict Move a $25 Billion Concert Machine?",
@@ -608,13 +485,7 @@
       "antitrust",
       "state attorneys general",
       "concert tickets"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Can Ticketmaster’s $1.72 Verdict Move a $25 Billion Concert Machine?",
-    "visual_archetype": "nonliteral atmospheric scene with color, depth, and one surprising focal object",
-    "visual_brief": "A dark, empty concert hall after load-out, with rows of seats fading into deep blue and magenta haze, and a soft cone of white stage light falling on one surprising focal object: a tiny paper ticket stub standing upright inside a clear acrylic evidence cube on the stage floor. No people, no logos, no courtroom imagery, no maps; cinematic depth, dust visible in the light, quiet atmosphere, realistic but slightly surreal.",
-    "image": "assets/ai-thumbnails/2026-04-27-can-ticketmaster-s-1-72-verdict-move-a-25-billion-concert-machine.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Can Ticketmaster’s $1.72 Verdict Move a $25 Billion Concert Machine?",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Can Ticketmaster’s $1.72 Verdict Move a $25 Billion Concert Machine?. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Sony’s Ace Turns Table Tennis Into a Physics Exam",
@@ -631,13 +502,7 @@
       "table tennis",
       "reinforcement learning",
       "physical AI"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Sony’s Ace Turns Table Tennis Into a Physics Exam",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Close, documentary-style scene in an indoor robotics lab beside a regulation table-tennis table: two engineers’ hands tighten a clamp on a paddle mounted to a robotic arm while another hand holds a white 40-millimeter ball near a calibration grid; visible hex keys, sensor cables, matte black camera housings, mirror hardware and small tape marks on the table edge; shallow depth of field, neutral overhead lab light, no logos emphasized, no triumphant robot pose.",
-    "image": "assets/ai-thumbnails/2026-04-27-sony-s-ace-turns-table-tennis-into-a-physics-exam.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Sony’s Ace Turns Table Tennis Into a Physics Exam",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Sony’s Ace Turns Table Tennis Into a Physics Exam. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Venice’s QR Code Asks Who Gets to Stay",
@@ -651,13 +516,7 @@
       "Venice access fee",
       "overtourism",
       "urban livability"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Venice’s QR Code Asks Who Gets to Stay",
-    "visual_archetype": "quiet aftermath scene that suggests stakes without melodrama",
-    "visual_brief": "A quiet late-afternoon scene near Venice Santa Lucia station after the tourist rush: a folded municipal access-fee sign leaning beside a small checkpoint table, a few damp QR-code instruction leaflets held down by a plain paperweight, stone paving reflecting pale canal light, and a local resident’s wheeled grocery cart passing at the edge of the frame. No crowd, no confrontation, no postcard glamour; documentary realism, soft overcast color, human-scale details.",
-    "image": "assets/ai-thumbnails/2026-04-27-venice-s-qr-code-asks-who-gets-to-stay.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Venice’s QR Code Asks Who Gets to Stay",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Venice’s QR Code Asks Who Gets to Stay. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Spending-Cap Table Waits for the Justices",
@@ -673,13 +532,7 @@
       "Federal Election Commission",
       "political parties",
       "2026 midterms"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Spending-Cap Table Waits for the Justices",
-    "visual_archetype": "object-detail still life built around a concrete artifact from the reporting",
-    "visual_brief": "A close, newsroom-style still life on a wooden desk before dawn: a printed Federal Election Commission 2026 coordinated party expenditure limits table with rows for California, Texas, Pennsylvania and the generic House limit, one yellow sticky note reading 'Schedule F / Line 25', a dull pencil, a calculator showing 65300, and a half-folded TV ad storyboard partially tucked under the paper. Shallow depth of field, natural desk-lamp light, no maps, no court building, no political logos.",
-    "image": "assets/ai-thumbnails/2026-04-26-a-spending-cap-table-waits-for-the-justices.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Spending-Cap Table Waits for the Justices",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Spending-Cap Table Waits for the Justices. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A $321 Million Health Fund Pulls the Writers Room Into Focus",
@@ -696,13 +549,7 @@
       "creative work",
       "health insurance",
       "AI and copyright"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A $321 Million Health Fund Pulls the Writers Room Into Focus",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "A close, natural-light tabletop scene in a modest writers-room side office: two pairs of hands mark up a printed screenplay with colored pencils while another hand sorts health-plan enrollment pages, residuals statements and contract-summary printouts into labeled folders. A laptop in the background shows a blurred production calendar; coffee rings, sticky notes, a pill organizer, binder clips and a capped highlighter add lived-in detail. No celebrity faces, no studio logos, no picket signs; the image should make the work of writing, revising and administering benefits feel tactile and specific.",
-    "image": "assets/ai-thumbnails/2026-04-26-a-321-million-health-fund-pulls-the-writers-room-into-focus.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A $321 Million Health Fund Pulls the Writers Room Into Focus",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A $321 Million Health Fund Pulls the Writers Room Into Focus. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Toll Tags Caught a GPS Backup in Their Lane",
@@ -718,13 +565,7 @@
       "NextNav",
       "FCC",
       "critical infrastructure"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Toll Tags Caught a GPS Backup in Their Lane",
-    "visual_archetype": "layered interior scene seen through glass, doorway, or reflection",
-    "visual_brief": "Documentary-style interior scene viewed through the slightly reflective glass door of a municipal utility radio test room at night. In the foreground reflection, show a toll transponder sticker on a windshield and faint streetlights outside. Through the glass, show a workbench with an open smart electric meter, a handheld spectrum analyzer, coiled coaxial cables, printed FCC filings with colored tabs, a small RFID reader and a wall monitor showing a low jagged radio-frequency trace around 900 MHz. Use fluorescent room light mixed with instrument glow, shallow depth of field and human-scale detail. Avoid maps, state outlines, server racks, data-center exteriors, glowing AI imagery, courtroom symbols and generic network abstractions.",
-    "image": "assets/ai-thumbnails/2026-04-26-toll-tags-caught-a-gps-backup-in-their-lane.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Toll Tags Caught a GPS Backup in Their Lane",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Toll Tags Caught a GPS Backup in Their Lane. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Grocery Card Has Become a State Budget Line",
@@ -740,13 +581,7 @@
       "state budgets",
       "work requirements",
       "household budgets"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Grocery Card Has Become a State Budget Line",
-    "visual_archetype": "wide environmental scene showing infrastructure, landscape, or atmosphere",
-    "visual_brief": "A wide early-morning scene outside a regional food bank distribution warehouse on the edge of a city: loading bays open, a refrigerated truck backed in, pallets of boxed food staged under sodium lights, volunteers in reflective vests guiding a long line of cars, wet pavement reflecting the warehouse glow, grocery-store delivery trailers visible in the distance, no political signs, no maps, no close-up poverty portrait, documentary realism with the infrastructure of food aid dominating the frame.",
-    "image": "assets/ai-thumbnails/2026-04-26-a-grocery-card-has-become-a-state-budget-line.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Grocery Card Has Become a State Budget Line",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Grocery Card Has Become a State Budget Line. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Premium Sheet Is Becoming a School-Finance Document",
@@ -762,13 +597,7 @@
       "health insurance",
       "California education",
       "labor negotiations"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Premium Sheet Is Becoming a School-Finance Document",
-    "visual_archetype": "ground-level human scene with a specific setting and natural light",
-    "visual_brief": "A low, ground-level view inside a modest elementary school staff room just after sunrise: two school employees sit at a rectangular laminate table beside a window, comparing open health-benefits packets, a coffee mug, a school lanyard, a half-zipped backpack, and a stack of classroom worksheets. Warm natural light falls across their hands and the papers; the background shows a bulletin board with ordinary school notices, slightly out of focus. No posed smiles, no protest signs, no political symbols — just the quiet administrative labor behind a school day.",
-    "image": "assets/ai-thumbnails/2026-04-26-the-premium-sheet-is-becoming-a-school-finance-document.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Premium Sheet Is Becoming a School-Finance Document",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Premium Sheet Is Becoming a School-Finance Document. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Muddy Cup Has a Poison-Center Problem",
@@ -784,13 +613,7 @@
       "poison centers",
       "dietary supplements",
       "public health surveillance"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Muddy Cup Has a Poison-Center Problem",
-    "visual_archetype": "macro material-detail scene where texture carries the story",
-    "visual_brief": "Extreme close-up of damp, tan-gray kava root powder gathered in a stained muslin strainer over a shallow ceramic bowl; muddy brown liquid beads through the weave and pools below, with a few pale granules of unlabeled botanical powder on the counter edge. Natural low bar light, high texture, no people, no brand names, no medical props, shallow depth of field.",
-    "image": "assets/ai-thumbnails/2026-04-26-a-muddy-cup-has-a-poison-center-problem.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Muddy Cup Has a Poison-Center Problem",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Muddy Cup Has a Poison-Center Problem. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Build the Room Before the Exit",
@@ -806,13 +629,7 @@
       "palliative care",
       "autonomy",
       "disability rights"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Build the Room Before the Exit",
-    "visual_archetype": "nonliteral atmospheric scene with color, depth, and one surprising focal object",
-    "visual_brief": "A dim hospital-family room rendered as an atmospheric, nonliteral scene: deep teal shadows, warm amber light from a half-open interior door, a row of empty visitor chairs receding into soft depth, and one surprising focal object in the foreground — a small brass hotel-style service bell resting on a folded knitted blanket. No people, no medical equipment close-up, no scales, no court buildings. The mood should feel quiet, unsettled and human, with color depth and a sense of choice without literalizing death.",
-    "image": "assets/ai-thumbnails/2026-04-26-build-the-room-before-the-exit.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Build the Room Before the Exit",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Build the Room Before the Exit. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Caldera Near Naples Is Being Read One Millimeter at a Time",
@@ -828,13 +645,7 @@
       "bradyseism",
       "INGV",
       "seismic risk"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Caldera Near Naples Is Being Read One Millimeter at a Time",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "Inside a daylight operations room at a volcanic observatory near Naples: two volcanologists and a civil-protection liaison stand around a long table with printed weekly bulletins, a laptop showing seismogram traces, a GNSS uplift plot and a thermal-camera image of fumaroles. Behind them, wall monitors show waveform lines, instrument-status panels and a live camera feed of a steaming crater area. Include practical details: coffee cups, hard hats on a chair, cable labels, annotated printouts, a whiteboard with dates and millimeters per month, and a printed evacuation-exercise schedule partly visible under a ruler. Human, documentary, not cinematic disaster lighting.",
-    "image": "assets/ai-thumbnails/2026-04-26-a-caldera-near-naples-is-being-read-one-millimeter-at-a-time.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Caldera Near Naples Is Being Read One Millimeter at a Time",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Caldera Near Naples Is Being Read One Millimeter at a Time. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Service Notice Reaches the Closed Crossing",
@@ -852,13 +663,7 @@
       "ASEAN",
       "migration",
       "trade"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Service Notice Reaches the Closed Crossing",
-    "visual_archetype": "macro material-detail scene where texture carries the story",
-    "visual_brief": "Extreme close macro photograph of a scuffed Cambodian worker ID card, a folded military-service registration notice, and a frayed plastic border-crossing lanyard resting on dusty concrete beside grains of cassava and a torn bus ticket; shallow depth of field, humid morning light, visible scratches, paper fibers, sweat stains and red dirt, no faces, no flags dominating the frame.",
-    "image": "assets/ai-thumbnails/2026-04-26-a-service-notice-reaches-the-closed-crossing.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Service Notice Reaches the Closed Crossing",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Service Notice Reaches the Closed Crossing. AI-generated image by The Press."
+    ]
   },
   {
     "title": "First Fix the Hospital Bill. Then Talk About Collection.",
@@ -874,13 +679,7 @@
       "CFPB",
       "Fair Credit Reporting Act",
       "hospital billing"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: First Fix the Hospital Bill. Then Talk About Collection.",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "A close, natural-light scene at a community legal-aid or hospital financial-counseling desk: two pairs of adult hands work over an itemized medical bill, an insurance explanation-of-benefits form, a yellow highlighter, a small calculator, a half-filled charity-care application, and a phone on speaker. The focus is on the process of checking codes and totals, not on faces. Warm morning light, paper texture, practical human labor, no logos, no dramatic props.",
-    "image": "assets/ai-thumbnails/2026-04-26-first-fix-the-hospital-bill-then-talk-about-collection.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: First Fix the Hospital Bill. Then Talk About Collection.",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: First Fix the Hospital Bill. Then Talk About Collection.. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The AI Lesson Has to Survive the Training Floor",
@@ -895,13 +694,7 @@
       "registered apprenticeship",
       "workforce training",
       "labor policy"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The AI Lesson Has to Survive the Training Floor",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "Use the assigned visual archetype (institutional room or workplace scene with people, tools, and context) to show Inside a bright community-college workforce lab during National Apprenticeship Week: an instructor stands beside a wheeled whiteboard with simple prompt-checking steps, while adult apprentices in work shirts compare a phone text lesson, a laptop, a clipboard of apprenticeship standards, safety glasses and a small industrial control panel on a workbench. Include fluorescent ceiling light, coffee cups, a wall clock, tool drawers, union and employer flyers on a bulletin board, and a mix of ages and backgrounds. Documentary realism, no futuristic glow, no a human-scale operations scene with tagged fiber cables, cooling gauges, utility meters, and a technician's gloved hands.",
-    "image": "assets/ai-thumbnails/2026-04-26-the-ai-lesson-has-to-survive-the-training-floor.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The AI Lesson Has to Survive the Training Floor",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The AI Lesson Has to Survive the Training Floor. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Retired Runway Reopens Greenland’s Arctic Bargain",
@@ -918,13 +711,7 @@
       "Denmark",
       "Pituffik Space Base",
       "deterrence"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Retired Runway Reopens Greenland’s Arctic Bargain",
-    "visual_archetype": "lab, archive, library, classroom, clinic, market, theater, or workshop scene",
-    "visual_brief": "A quiet municipal archive room in Nuuk after hours: a long wooden table under fluorescent lights, opened folders labeled with airfield names, a rolled engineering plan of an Arctic runway, a coffee thermos, wool gloves, a laptop showing a satellite-weather window, and an old black-and-white photograph of a U.S.-built Greenland airstrip pinned beside new Danish and Greenlandic paperwork. No flags as symbols, no map overlay, no soldiers posing.",
-    "image": "assets/ai-thumbnails/2026-04-26-a-retired-runway-reopens-greenland-s-arctic-bargain.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Retired Runway Reopens Greenland’s Arctic Bargain",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Retired Runway Reopens Greenland’s Arctic Bargain. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Rewrite Fee Lands Inside Hollywood’s Health Plan",
@@ -941,13 +728,7 @@
       "health insurance",
       "streaming residuals",
       "film industry"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Rewrite Fee Lands Inside Hollywood’s Health Plan",
-    "visual_archetype": "object-detail still life built around a concrete artifact from the reporting",
-    "visual_brief": "A close, editorial still life on a wooden writing desk before sunrise: a printed 2026 WGA memorandum page clipped open to the page-one rewrite language, a capped black felt pen, a union health-plan card partly tucked under the paper, a small stack of color-coded script revision pages with brass fasteners, and a calculator showing 16.75. Warm desk-lamp light, shallow depth of field, no people, no logos emphasized, documentary realism.",
-    "image": "assets/ai-thumbnails/2026-04-26-a-rewrite-fee-lands-inside-hollywood-s-health-plan.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Rewrite Fee Lands Inside Hollywood’s Health Plan",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Rewrite Fee Lands Inside Hollywood’s Health Plan. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Toothy Keychain Walks Onto the Studio Lot",
@@ -965,13 +746,7 @@
       "Sony Pictures",
       "kidult toys",
       "counterfeit toys"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Toothy Keychain Walks Onto the Studio Lot",
-    "visual_archetype": "lab, archive, library, classroom, clinic, market, theater, or workshop scene",
-    "visual_brief": "A small theater-prop workshop at dawn: a long wooden table under practical work lamps holds pastel furry monster keychains, sealed blind boxes, a barcode scanner, sewing needles, fabric scraps, a magnifying loupe, retail receipts, storyboard thumbnails pinned to corkboard, and a half-finished miniature display shelf. No real logos. The mood should feel playful but slightly forensic, as if a toy craze has just become a production meeting.",
-    "image": "assets/ai-thumbnails/2026-04-26-a-toothy-keychain-walks-onto-the-studio-lot.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Toothy Keychain Walks Onto the Studio Lot",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Toothy Keychain Walks Onto the Studio Lot. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Inspection Lane Has Become the Walking-Horse Fight",
@@ -987,13 +762,7 @@
       "USDA APHIS",
       "Horse Protection Act",
       "Big Lick"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Inspection Lane Has Become the Walking-Horse Fight",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Close, documentary-style image inside a horse-show inspection lane at a rural arena: a veterinarian's gloved hands gently lift a Tennessee Walking Horse's front hoof while another hand steadies the pastern above the hoof; a clipboard with inspection forms, a small flashlight, a hoof pick and a measuring gauge sit on a wooden rail; sawdust on the floor, lead rope visible, horse's lower legs in frame, warm overhead barn light, no faces emphasized, no cruelty imagery, focused on the careful physical process of checking soundness.",
-    "image": "assets/ai-thumbnails/2026-04-26-the-inspection-lane-has-become-the-walking-horse-fight.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Inspection Lane Has Become the Walking-Horse Fight",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Inspection Lane Has Become the Walking-Horse Fight. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Complaint Window Is Moving Inside the Agency",
@@ -1010,13 +779,7 @@
       "federal workforce",
       "Merit Systems Protection Board",
       "Office of Special Counsel"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Complaint Window Is Moving Inside the Agency",
-    "visual_archetype": "object-detail still life built around a concrete artifact from the reporting",
-    "visual_brief": "A close, documentary still life on a government desk: a freshly printed HR bulletin titled Schedule Policy/Career Prohibited Personnel Practices lies beside a blank employee acknowledgement form, a yellow sticky note marked 30 days, a capped black pen, and a half-open interoffice envelope. The paper edges and signature block are sharp; the background is a softly blurred federal office cubicle with muted fluorescent light, no flags, no maps, no courthouse imagery.",
-    "image": "assets/ai-thumbnails/2026-04-25-the-complaint-window-is-moving-inside-the-agency.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Complaint Window Is Moving Inside the Agency",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Complaint Window Is Moving Inside the Agency. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Voice Track Has Become a Labor Contract",
@@ -1032,13 +795,7 @@
       "streaming localization",
       "anime",
       "cultural labor"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Voice Track Has Become a Labor Contract",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Close documentary image inside a working dubbing room: one performer’s hand marks breaths and timing beats on a printed script while an engineer’s hand rides a fader on a compact console. A studio microphone, pop filter, headphones, waveform display, pencil shavings and a mug sit in warm side light. The image should make the craft visible through paper, hands, timing marks and audio tools, not through futuristic AI imagery.",
-    "image": "assets/ai-thumbnails/2026-04-25-the-voice-track-has-become-a-labor-contract.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Voice Track Has Become a Labor Contract",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Voice Track Has Become a Labor Contract. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A 47-Day Clock Lands on the Web’s Trust Desk",
@@ -1054,13 +811,7 @@
       "certificate automation",
       "web security",
       "public key infrastructure"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A 47-Day Clock Lands on the Web’s Trust Desk",
-    "visual_archetype": "layered interior scene seen through glass, doorway, or reflection",
-    "visual_brief": "A layered evening scene viewed through the glass wall of a small IT operations room: in the foreground, reflections of hallway lights and a partly open office door; beyond the glass, two monitors show a certificate-expiration calendar and a domain-validation checklist, with a paper runbook, sticky notes, a security badge, and a coffee cup on the desk. No server racks, no glowing abstractions; emphasize ordinary office labor, glass reflections, and the tension of a quiet countdown.",
-    "image": "assets/ai-thumbnails/2026-04-25-a-47-day-clock-lands-on-the-web-s-trust-desk.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A 47-Day Clock Lands on the Web’s Trust Desk",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A 47-Day Clock Lands on the Web’s Trust Desk. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Harvest Wage Fight Has Reached the Produce Cooler",
@@ -1076,13 +827,7 @@
       "agricultural labor",
       "wages",
       "grocery budgets"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Harvest Wage Fight Has Reached the Produce Cooler",
-    "visual_archetype": "wide environmental scene showing infrastructure, landscape, or atmosphere",
-    "visual_brief": "Wide dawn photograph from the edge of a large vegetable field in California’s Central Valley: parallel rows of leafy greens receding toward low hills, a narrow irrigation canal and pump station in the foreground, a white farmworker bus parked beside stacked plastic harvest crates, a few small figures in safety vests moving into the rows, cool blue morning haze and sodium work lights fading as the sun rises. The image should feel observational and infrastructural, not heroic or staged.",
-    "image": "assets/ai-thumbnails/2026-04-25-the-harvest-wage-fight-has-reached-the-produce-cooler.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Harvest Wage Fight Has Reached the Produce Cooler",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Harvest Wage Fight Has Reached the Produce Cooler. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The First Bell Now Rings at the Phone Pouch",
@@ -1098,13 +843,7 @@
       "student attention",
       "education technology",
       "school discipline"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The First Bell Now Rings at the Phone Pouch",
-    "visual_archetype": "ground-level human scene with a specific setting and natural light",
-    "visual_brief": "A low, ground-level documentary-style scene just inside a public middle school entrance at 7:35 a.m., with soft morning light coming through glass doors. Students in backpacks move past a folding table where a staff member checks names and students slide phones into numbered gray fabric pouches or a wall of small cubbies. The focus is on hands, backpack straps, sneakers, the pouch rack, and the ordinary bustle of arrival; faces are partial or turned away, no logos, no dramatic color grading.",
-    "image": "assets/ai-thumbnails/2026-04-25-the-first-bell-now-rings-at-the-phone-pouch.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The First Bell Now Rings at the Phone Pouch",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The First Bell Now Rings at the Phone Pouch. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Cheese Was Aged. The Warning Still Had to Catch Up.",
@@ -1120,13 +859,7 @@
       "raw cheddar",
       "foodborne disease surveillance",
       "pasteurization"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Cheese Was Aged. The Warning Still Had to Catch Up.",
-    "visual_archetype": "macro material-detail scene where texture carries the story",
-    "visual_brief": "Extreme close-up still life of a cut corner of pale orange cheddar on white butcher paper inside an open refrigerator drawer, with crystalline cheese texture, a torn recall notice partly tucked beneath the cheese, tiny beads of condensation on clear plastic wrap, the edge of an unreadable barcode, shallow depth of field, cool clinical refrigerator light, no people, no brand names, no logos, no map, no vial.",
-    "image": "assets/ai-thumbnails/2026-04-25-the-cheese-was-aged-the-warning-still-had-to-catch-up.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Cheese Was Aged. The Warning Still Had to Catch Up.",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Cheese Was Aged. The Warning Still Had to Catch Up.. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Headband Should Not Own the Quietest Room",
@@ -1142,13 +875,7 @@
       "neural data",
       "cognitive liberty",
       "consumer privacy"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Headband Should Not Own the Quietest Room",
-    "visual_archetype": "nonliteral atmospheric scene with color, depth, and one surprising focal object",
-    "visual_brief": "Create a moody, nonliteral interior at twilight: a deep blue-green room with soft colored light falling through tall curtains, a simple wooden chair in the foreground, and on the chair a single pale fabric EEG headband glowing faintly like a sleeping moth. In the background, out of focus, thin translucent threads drift upward like dust motes or radio waves, but no literal brain, no data screens, no server racks, no legal symbols. Emphasize depth, quiet, saturated color, and the unexpected small object as the focal point.",
-    "image": "assets/ai-thumbnails/2026-04-25-a-headband-should-not-own-the-quietest-room.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Headband Should Not Own the Quietest Room",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Headband Should Not Own the Quietest Room. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Atlantic Current Warning Is Becoming an Instrument Test",
@@ -1164,13 +891,7 @@
       "climate tipping points",
       "RAPID array",
       "AMOC"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Atlantic Current Warning Is Becoming an Instrument Test",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "Inside a university oceanography lab after a research cruise: three scientists in fleece vests and safety boots stand around a long workbench with a scratched yellow deep-ocean float, cylindrical pressure sensor housings, acoustic releases, coiled cable, labeled sample bottles and a laptop showing plain line plots of Atlantic transport. A wall monitor displays a bathymetric cross-section of the Atlantic, not a political map. Fluorescent ceiling light, damp gear crates, coffee cups, waterproof notebooks, an institutional noticeboard with cruise schedules, calm documentary style.",
-    "image": "assets/ai-thumbnails/2026-04-25-the-atlantic-current-warning-is-becoming-an-instrument-test.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Atlantic Current Warning Is Becoming an Instrument Test",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Atlantic Current Warning Is Becoming an Instrument Test. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Chadian Boots Put Haiti’s Crisis on a Wider Ledger",
@@ -1189,13 +910,7 @@
       "humanitarian aid",
       "migration",
       "arms trafficking"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Chadian Boots Put Haiti’s Crisis on a Wider Ledger",
-    "visual_archetype": "macro material-detail scene where texture carries the story",
-    "visual_brief": "Extreme close-up still life at a Port-au-Prince staging yard: tan uniform fabric with a frayed stitched shoulder seam, a dust-caked boot edge, chipped black plastic radio casing, a scuffed vehicle key tag and a folded logistics label beside crushed pale gravel. Use shallow depth of field and hard Caribbean afternoon light, with no visible faces and no flag dominating the frame. The story should sit in dust, nylon weave, scratched plastic, worn leather and taped paper: the material burden of an imported security operation before it becomes a political claim.",
-    "image": "assets/ai-thumbnails/2026-04-25-chadian-boots-put-haiti-s-crisis-on-a-wider-ledger.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Chadian Boots Put Haiti’s Crisis on a Wider Ledger",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Chadian Boots Put Haiti’s Crisis on a Wider Ledger. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Brand Checklist Should Not Erase the Boss",
@@ -1211,13 +926,7 @@
       "franchising",
       "subcontracting",
       "Fair Labor Standards Act"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Brand Checklist Should Not Erase the Boss",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Close, documentary-style image inside a franchise kitchen during a shift change: one worker’s gloved hands adjusting a laminated brand checklist beside a time clock tablet, another hand restocking paper food trays with printed quality codes, stainless counter glare, order tickets and cleaning cloths visible, no faces, natural fluorescent work light, emphasis on routine labor and corporate process rather than logos.",
-    "image": "assets/ai-thumbnails/2026-04-25-the-brand-checklist-should-not-erase-the-boss.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Brand Checklist Should Not Erase the Boss",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Brand Checklist Should Not Erase the Boss. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Batch Record Met an AI Agent. FDA Asked Who Checked It.",
@@ -1233,13 +942,7 @@
       "drug manufacturing",
       "quality assurance",
       "cGMP"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Batch Record Met an AI Agent. FDA Asked Who Checked It.",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "A fluorescent-lit conference room inside a small pharmaceutical quality office after an inspection: two inspectors and a plant quality manager sit around a laminate table covered with printed batch records, a laptop showing a redacted AI-generated procedure, sticky notes, sample bottles in evidence bags, a wall clock, a sanitizer dispenser, and a view through interior glass into a modest production area with gowns and stainless work surfaces. Realistic documentary photography, no logos, no glowing brain, no server racks.",
-    "image": "assets/ai-thumbnails/2026-04-25-a-batch-record-met-an-ai-agent-fda-asked-who-checked-it.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Batch Record Met an AI Agent. FDA Asked Who Checked It.",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Batch Record Met an AI Agent. FDA Asked Who Checked It.. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Syunik’s 42 Kilometers Move Onto Washington’s Infrastructure Desk",
@@ -1255,13 +958,7 @@
       "Armenia Azerbaijan",
       "Middle Corridor",
       "Syunik"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Syunik’s 42 Kilometers Move Onto Washington’s Infrastructure Desk",
-    "visual_archetype": "lab, archive, library, classroom, clinic, market, theater, or workshop scene",
-    "visual_brief": "A daylight infrastructure-planning workshop in Yerevan: a long wooden table covered with rail cross-section drawings, customs forms, a small spool of fiber-optic cable, surveyor’s calipers, Armenian-language permit folders, and coffee cups; two planners’ hands mark a route profile with colored pencils while a laptop shows a plain engineering timetable, not a map; shelves of binders and rolled blueprints in the background, documentary realism, natural window light, no flags or politicians.",
-    "image": "assets/ai-thumbnails/2026-04-25-syunik-s-42-kilometers-move-onto-washington-s-infrastructure-desk.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Syunik’s 42 Kilometers Move Onto Washington’s Infrastructure Desk",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Syunik’s 42 Kilometers Move Onto Washington’s Infrastructure Desk. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Animation Peg Bar Enters California’s Subsidy File",
@@ -1277,13 +974,7 @@
       "The Simpsons Movie 2",
       "runaway production",
       "Hollywood incentives"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Animation Peg Bar Enters California’s Subsidy File",
-    "visual_archetype": "object-detail still life built around a concrete artifact from the reporting",
-    "visual_brief": "A tight still life on an animation worktable: a printed California Film Commission approved-project list folded to the animation-feature rows, a pale yellow highlighter mark beside The Simpsons Movie 2 and Untitled DreamWorks Animation Feature Film, a metal peg bar, punched animation paper, a blue non-photo pencil, and a desk calculator showing 21,880,000. Warm lamp light, shallow depth of field, no character drawings, no studio logos, documentary newsroom style.",
-    "image": "assets/ai-thumbnails/2026-04-25-the-animation-peg-bar-enters-california-s-subsidy-file.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Animation Peg Bar Enters California’s Subsidy File",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Animation Peg Bar Enters California’s Subsidy File. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Studio Archive Is Now a Merger Docket",
@@ -1301,13 +992,7 @@
       "HBO Max",
       "Paramount+",
       "media power"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Studio Archive Is Now a Merger Docket",
-    "visual_archetype": "lab, archive, library, classroom, clinic, market, theater, or workshop scene",
-    "visual_brief": "A cinematic archive-library scene inside a studio research room at night: long wooden tables covered with labeled film cans, call sheets, script binders, old VHS cases, streaming-interface printouts and handwritten catalog cards; two archivists in neutral clothes sort materials under green banker lamps while a small projector throws a soft rectangle of light onto dust in the air; shelves of anonymous movie reels and TV season binders recede into the background; no logos, no celebrity faces, no red-blue maps, no court buildings.",
-    "image": "assets/ai-thumbnails/2026-04-25-the-studio-archive-is-now-a-merger-docket.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Studio Archive Is Now a Merger Docket",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Studio Archive Is Now a Merger Docket. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Violin Bow Now Has to Prove Its Tree",
@@ -1324,13 +1009,7 @@
       "classical music",
       "Brazilwood",
       "instrument trade"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Violin Bow Now Has to Prove Its Tree",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Close, natural-light workshop scene at a bow maker’s bench: one pair of hands steadies a reddish pernambuco violin-bow stick over a small plane and calipers while another hand arranges a folder of dated receipts, CITES forms, bow photos and inventory tags. Include a frog, horsehair hank, winding thread, pencil notes, a small scale, wood shavings and a worn block of rosin. The mood should be meticulous and practical rather than romantic: paperwork and handwork share the frame, shallow depth of field, no concert hall, no forest map, no legal symbols.",
-    "image": "assets/ai-thumbnails/2026-04-25-a-violin-bow-now-has-to-prove-its-tree.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Violin Bow Now Has to Prove Its Tree",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Violin Bow Now Has to Prove Its Tree. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Postmark Is No Longer the Whole Story",
@@ -1347,13 +1026,7 @@
       "Supreme Court",
       "postmarks",
       "Election Assistance Commission"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Postmark Is No Longer the Whole Story",
-    "visual_archetype": "object-detail still life built around a concrete artifact from the reporting",
-    "visual_brief": "A tightly framed still life built around a real county-style mail-ballot return envelope on a worktable, showing a faint circular postmark, an Intelligent Mail barcode, an election-office intake barcode sticker, and small handwritten processing initials. Partly tucked beneath it: a green USPS Tag 191 ballot tray tag, a folded instruction insert with deadline language visible but not fully readable, and a chain-of-custody sheet with checkbox rows. Nearby, a metal hand stamp, a clear acrylic gauge or ruler used for mailpiece checking, and a clipped note from a mailpiece design review. Neutral daylight, crisp paper texture, newsroom restraint, no flags, no maps, no courthouse symbolism, no partisan color coding.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-postmark-is-no-longer-the-whole-story.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Postmark Is No Longer the Whole Story",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Postmark Is No Longer the Whole Story. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Queue Looks Cleaner Now. The Work of Letting People In Has Not Changed Hands.",
@@ -1370,13 +1043,7 @@
       "ticket transparency",
       "antitrust",
       "concert access"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Queue Looks Cleaner Now. The Work of Letting People In Has Not Changed Hands.",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Inside a working independent music venue box office during late-afternoon pre-show setup, natural light cutting across a cluttered counter. The image should center on a staffer’s hands actively doing ticketing labor: sorting alphabetized will-call envelopes, marking hold counts on a printed seating manifest, checking a fee-inclusive onsale sheet with a yellow highlighter, and separating wristbands beside a receipt printer, keyboard, card reader, stapler, Sharpie, calculator, and roll of gaffer tape. In the background, slightly soft but legible, another worker updates a guest-list clipboard and a third tapes revised door-time signage to the front window. Include specific process details: sticky notes with comps and ADA holds, coffee-ringed paperwork, a venue calendar, a label maker, stacked ticket stock, and a merch tote half packed for the night. The mood should feel practical, concentrated, mildly tense, and unmistakably human rather than glamorous.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-queue-looks-cleaner-now-the-work-of-letting-people-in-has-not-changed-hands.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Queue Looks Cleaner Now. The Work of Letting People In Has Not Changed Hands.",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Queue Looks Cleaner Now. The Work of Letting People In Has Not Changed Hands.. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Cheap Box at the Edge Has Become a Policy Problem",
@@ -1393,13 +1060,7 @@
       "network edge",
       "consumer hardware",
       "secure by design"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Cheap Box at the Edge Has Become a Policy Problem",
-    "visual_archetype": "layered interior scene seen through glass, doorway, or reflection",
-    "visual_brief": "Use the assigned visual archetype (layered interior scene seen through glass, doorway, or reflection) to show Use the assigned visual archetype to stage a public-sector or school IT office seen through a glass wall or half-open doorway. In the reflected foreground: an ordinary home-style Wi‑Fi router, asset tag, shipping box, and printed replacement checklist on a table. Beyond the glass: a staffer at a desk comparing procurement paperwork, firmware notes, and a shelf of mixed old and new networking gear. Fluorescent institutional light, muted municipal colors, visible clutter, emphasis on thresholds, oversight, and the uneasy overlap between consumer hardware and civic responsibility. Avoid a human-scale operations scene with tagged fiber cables, cooling gauges, utility meters, and a technician's gloved hands, heroic technicians, sunset exteriors, glowing interfaces, or any map-based graphic trope.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-cheap-box-at-the-edge-has-become-a-policy-problem.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Cheap Box at the Edge Has Become a Policy Problem",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Cheap Box at the Edge Has Become a Policy Problem. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Utility Bill Is Emerging as 2026’s Hard-to-Escape Cost Squeeze",
@@ -1415,13 +1076,7 @@
       "water rates",
       "electricity prices",
       "utility disconnections"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Utility Bill Is Emerging as 2026’s Hard-to-Escape Cost Squeeze",
-    "visual_archetype": "wide environmental scene showing infrastructure, landscape, or atmosphere",
-    "visual_brief": "Early-evening spring panorama on a long residential block in an older U.S. city where utility systems shape the whole scene: modest brick rowhouses and small detached houses under dense power lines, crossarms, transformers, and sagging service drops; a torn-up section of asphalt where a water-main repair is underway with steel plates, cones, barricades, wet pavement, and a municipal utility truck parked beside a hydrant; farther down the block, a larger apartment building and older streetlights begin to glow as dusk gathers after light rain. The mood should convey economic strain through infrastructure and atmosphere, not disaster: natural light, realistic scale, no posed people, no protest signs, no composite graphics.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Utility Bill Is Emerging as 2026’s Hard-to-Escape Cost Squeeze",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Utility Bill Is Emerging as 2026’s Hard-to-Escape Cost Squeeze. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Ride Written Into the IEP Is Becoming a School System’s Hardest Morning Test",
@@ -1435,13 +1090,7 @@
       "special education transportation",
       "school budgets",
       "students with disabilities"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Ride Written Into the IEP Is Becoming a School System’s Hardest Morning Test",
-    "visual_archetype": "ground-level human scene with a specific setting and natural light",
-    "visual_brief": "Early weekday morning at the side curb of a public elementary school in an older first-ring suburb, overcast spring light with damp pavement after light rain. A parent in work clothes stands with an elementary-age child wearing a backpack and noise-reducing headphones beside a painted pickup zone, both watching the street for a small contracted van that has not arrived. In the midground, a paraprofessional or school aide holds open a side door while other children move inside and a yellow bus is already pulling away. Brick facade, curb stencil, crosswalk paint, ordinary shrubs and street trees, no melodrama, documentary realism, tension conveyed through waiting and routine.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-ride-written-into-the-iep-is-becoming-a-school-system-s-hardest-morning-tes.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Ride Written Into the IEP Is Becoming a School System’s Hardest Morning Test",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Ride Written Into the IEP Is Becoming a School System’s Hardest Morning Test. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Skin Test, the X-Ray Van, and the Return of Tuberculosis Work",
@@ -1457,13 +1106,7 @@
       "latent TB",
       "contact investigation",
       "screening"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Skin Test, the X-Ray Van, and the Return of Tuberculosis Work",
-    "visual_archetype": "macro material-detail scene where texture carries the story",
-    "visual_brief": "Extreme close-up still life of a tuberculosis screening workflow on a clinic counter after a long day: a slightly curled multilingual clearance form with dense checkbox rows, the frayed corner of a paper chest X-ray sleeve, a blue nitrile glove turned inside out with chalky fingerprint dust, a capped blood tube beside a torn alcohol-swab packet, adhesive label tape with handwritten initials lifting at one edge, and a faint ring from a coffee cup on the laminate. Let paper fibers, glove texture, graphite smudges, adhesive residue, and worn envelope stock carry the story. Neutral clinic daylight, shallow depth of field, no faces, no maps, no warning tape, no syringes posed heroically.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-skin-test-the-x-ray-van-and-the-return-of-tuberculosis-work.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Skin Test, the X-Ray Van, and the Return of Tuberculosis Work",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Skin Test, the X-Ray Van, and the Return of Tuberculosis Work. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Gift Needs Guardrails",
@@ -1477,13 +1120,7 @@
       "organ donation",
       "medical ethics",
       "transplant policy"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Gift Needs Guardrails",
-    "visual_archetype": "nonliteral atmospheric scene with color, depth, and one surprising focal object",
-    "visual_brief": "A hushed, nonliteral hospital-threshold scene in deep teal, amber, and muted violet, with long atmospheric perspective and layered reflections like wet glass. No people, no visible surgery, no bedside drama. In the foreground, a polished floor catches blurred ceiling lights; farther back, an insulated red organ-transport cooler sits under a distant wall clock near partly open automatic doors. The surprising focal object is a single translucent wristband tag, detached and suspended midair in a shaft of light, its curve echoing both a halo and a question mark. Soft curtain shadows, dim door indicators, and out-of-focus corridor geometry create depth and ethical unease without sensationalism.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-gift-needs-guardrails.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Gift Needs Guardrails",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Gift Needs Guardrails. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Malaria vaccines have reached the clinic ledger stage",
@@ -1500,13 +1137,7 @@
       "RTS,S",
       "R21",
       "global health"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Malaria vaccines have reached the clinic ledger stage",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "Interior of a district immunization operations room in a malaria-endemic African setting during pre-rainy-season planning: a nurse supervisor, malaria-program officer, data clerk, cold-chain technician, and community-health outreach coordinator seated around a worktable covered with paper child registers, tally sheets, a laptop with district coverage charts, a vaccine carrier with conditioned ice packs, temperature-monitor cards, pens, mobile phones, and a hand-drawn outreach calendar; behind them, a wall map of health areas, a whiteboard with dose timing and supervision dates, shelves with binders, radio chargers, and labeled cold-chain supplies; fluorescent clinic lighting, realistic documentary style, emphasis on coordinated administrative labor and practical tools, no staged hero pose and no generic lab glamour.",
-    "image": "assets/ai-thumbnails/2026-04-24-malaria-vaccines-have-reached-the-clinic-ledger-stage.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Malaria vaccines have reached the clinic ledger stage",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Malaria vaccines have reached the clinic ledger stage. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Stamp Is Gone. The Friction Is Not.",
@@ -1522,13 +1153,7 @@
       "border biometrics",
       "ETIAS",
       "Europe travel"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Stamp Is Gone. The Friction Is Not.",
-    "visual_archetype": "macro material-detail scene where texture carries the story",
-    "visual_brief": "Extreme close documentary macro of a non-EU passport lying open on a brushed-metal airport border counter beside a fingerprint-marked glass capture surface and a thin strip of thermal queue-ticket paper. The pages are visibly unstamped, emphasizing the absence of fresh ink marks, while the scanner glass shows oily ridges, dust, hairline scratches, and cold reflections from blue-white border-gate lighting. In soft blur behind: retractable queue straps, the edge of a kiosk housing, and diffuse terminal light, but no readable screens and no identifiable faces. Texture must carry the narrative: passport grain, paper fibers, smudged glass, brushed steel, adhesive residue, and worn plastic. Avoid maps, icons, holograms, courtroom imagery, and generic futuristic interface overlays.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-stamp-is-gone-the-friction-is-not.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Stamp Is Gone. The Friction Is Not.",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Stamp Is Gone. The Friction Is Not.. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Real Heat Rule Would Put the Shift Schedule on the Side of the Body",
@@ -1544,13 +1169,7 @@
       "labor",
       "occupational safety",
       "heat illness"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Real Heat Rule Would Put the Shift Schedule on the Side of the Body",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Inside a produce distribution warehouse in late-afternoon fluorescent light, frame a close, process-focused scene at waist level: one worker’s gloved hand writes start times for staggered cool-down breaks on a laminated heat-response sheet clipped to a pallet jack, while another worker’s damp forearm reaches for a paper cup beside a scuffed insulated water cooler beaded with condensation. Include a handheld WBGT meter or wall thermometer near stacked produce crates, reflective vests on hooks, and an oscillating floor fan in the soft background. Emphasize sweat-darkened fabric, routine prevention work, and the ordinary labor of managing heat, not collapse, drama, or rescue.",
-    "image": "assets/ai-thumbnails/2026-04-24-a-real-heat-rule-would-put-the-shift-schedule-on-the-side-of-the-body.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Real Heat Rule Would Put the Shift Schedule on the Side of the Body",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Real Heat Rule Would Put the Shift Schedule on the Side of the Body. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Note Is Getting Smarter. The Waiting Room Is Getting More Expensive.",
@@ -1564,10 +1183,7 @@
       "health care AI",
       "ambient scribes",
       "prior authorization"
-    ],
-    "thumbnail_alt": "Clinic staff working between computers, charts, and an exam room where a visit note is being reviewed.",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "Interior of a real outpatient clinic workroom near closing time, documentary and procedural rather than futuristic. A physician in scrubs stands at an exam-room workstation reviewing and correcting a freshly generated visit note while a nurse at a central desk works through electronic prior-authorization tasks and a medical assistant sorts referral paperwork, scanner printouts, and labeled headsets. Through an open doorway, part of an exam room is visible with an ordinary phone or tabletop microphone near a blood-pressure cuff, otoscope, disposable gloves, and a printed after-visit summary. Include whiteboards with scheduling notes, medication bins, barcode scanners, rolling stools, ID badges, sticky notes, fluorescent ceiling light, and the mild clutter of a clinic still in operation. Emphasize human checking, institutional workflow, and the uneasy connection between documentation, billing, and care coordination."
+    ]
   },
   {
     "title": "The Loan Is Large. The Harder Test Is Where Europe Can Actually Build Deterrence",
@@ -1581,10 +1197,7 @@
       "Poland",
       "European Union",
       "defense industry"
-    ],
-    "thumbnail_alt": "Engineers and technicians work around a parts table inside a Polish defense manufacturing workshop.",
-    "visual_archetype": "lab, archive, library, classroom, clinic, market, theater, or workshop scene",
-    "visual_brief": "Workshop scene inside a Polish defense-production training bay or prototyping hall: engineers, procurement staff, and technicians gather around a scarred steel table covered with machined housings, wiring harnesses, calipers, stamped parts tags, multilingual standards binders, and rolled technical drawings with EU procurement forms tucked beneath them. In the background, through interior glass, workers inspect subassemblies under fluorescent task lights beside a half-finished vehicle module or launcher component on stands. Emphasize labor, measurement, repairability, and supply-chain coordination rather than spectacle or finished weaponry."
+    ]
   },
   {
     "title": "The Ballot Has a Progress Bar Now",
@@ -1600,10 +1213,7 @@
       "awards campaigns",
       "film industry",
       "Academy Screening Room"
-    ],
-    "thumbnail_alt": "A desk still life with a printed awards-viewing checklist, screening paperwork and a tablet showing a playback progress bar.",
-    "visual_archetype": "object-detail still life built around a concrete artifact from the reporting",
-    "visual_brief": "A tightly composed tabletop still life built around a printed Academy-style finals ballot checklist marked by hand beside a tablet showing a generic film-viewing progress interface with category boxes checked off. Include a paper screening invitation, a folded theater seat stub, reading glasses, a capped pen, a remote, and a small stack of caption-delivery or screening notes clipped together. Light should feel like late-afternoon office light with crisp shadows and tactile paper grain. No logos, no celebrity photos, no statuette, no red carpet cues, no generic tech glow."
+    ]
   },
   {
     "title": "Coachella’s Second Venue Is the Living Room",
@@ -1620,10 +1230,7 @@
       "connected TV",
       "festival streaming",
       "independent venues"
-    ],
-    "thumbnail_alt": "A livestream control room with staff at a switcher desk and monitors showing multiple festival stage feeds.",
-    "visual_archetype": "lab, archive, library, classroom, clinic, market, theater, or workshop scene",
-    "visual_brief": "Theater broadcast-control workshop during a festival livestream: medium-wide interior from slightly behind a technical director, shader, and producer at a crowded switcher desk inside a dark control booth. Multiple monitors show different concert stages, a four-box multiview screen, program and preview outputs, audio meters, waveform scopes, lower-third graphics, and a digital rundown marked with April 10–12 and April 17–19 dates. Include headsets, annotated cue sheets, coffee cups, gaffer tape, tangled patch cables, tally lights, spare batteries, and a wall clock. Through interior glass, a dim screening room or soundstage glows softly. The emphasis is labor, interface, and production craft rather than celebrity glamour."
+    ]
   },
   {
     "title": "Before an Orchid Wins Anything, Someone Has to Make the Name Hold",
@@ -1642,10 +1249,7 @@
       "horticulture",
       "plant labels",
       "OrchidPro"
-    ],
-    "thumbnail_alt": "Hands checking orchid labels, paperwork, and judging records at a show table before opening.",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Inside a community orchid-show prep area or judging room before public opening, documentary-style image centered on several pairs of hands engaged in different precise tasks around a long table: one hand comparing a plant tag to a printed registration sheet, another typing into a laptop with orchid records open, another attaching class cards to pots, another steadying a bloom while a loupe or pen hovers nearby. Include practical materials like clipboards, pencils, tape, pot labels, class schedules, entry forms, and a stack of tagged plants waiting their turn. Fluorescent mixed with window light, modest folding tables, no trophy pose, no glamour close-up, emphasis on careful verification and quiet institutional work."
+    ]
   },
   {
     "title": "A fight over voter files is becoming a fight over whether Washington can build its own election-data apparatus",
@@ -1659,13 +1263,7 @@
       "Department of Justice",
       "voter registration lists",
       "election administration"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A fight over voter files is becoming a fight over whether Washington can build its own election-data apparatus",
-    "visual_archetype": "object-detail still life built around a concrete artifact from the reporting",
-    "visual_brief": "Create a tightly framed still life centered on a real-looking printed statewide voter-registration extract on matte paper, with columns for name, address, date of birth and voter ID partially redacted by thick black marker. Beneath it, place a formal Justice Department records-demand letter with visible lines requesting a 'statewide voter registration list,' plus a tabbed state election-code booklet opened to list-maintenance rules. Add a signed memorandum of agreement peeking from a manila folder, a metal binder clip, yellow evidence stickers, a sealed USB drive in a clear bag, and reading glasses set off to one side. Side window light, shallow focus, muted office palette, crisp paper fibers and toner texture. No flags, no maps, no courthouse exterior, no red-blue graphics, no scales, no district-line imagery.",
-    "image": "assets/ai-thumbnails/2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A fight over voter files is becoming a fight over whether Washington can build its own election-data apparatus",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A fight over voter files is becoming a fight over whether Washington can build its own election-data apparatus. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Hold List Is a Labor Story. Illinois Is Trying to Rewrite the Terms of Digital Reading.",
@@ -1681,13 +1279,7 @@
       "Illinois",
       "digital lending",
       "public culture"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Hold List Is a Labor Story. Illinois Is Trying to Rewrite the Terms of Digital Reading.",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Inside a public library technical-services or digital-collections office, a staff librarian is actively managing e-book purchases at a real workstation: one hand on a mouse moving through a vendor acquisitions dashboard, the other marking up a printed title list with hold ratios, license expirations, and budget notes. Include tactile evidence of work—paper order slips, a sharpened pencil, a calculator, sticky notes with phrases like 'metered access,' 'renew?,' and 'privacy review,' a library card, worn keyboard keys, and color-highlighted spreadsheets. In the softly blurred background, processing carts, bins of newly arrived books, and staff paperwork connect the digital queue to the physical workflow of a public library. Natural indoor light, documentary realism, no staged tablet glamour.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-hold-list-is-a-labor-story-illinois-is-trying-to-rewrite-the-terms-of-digit.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Hold List Is a Labor Story. Illinois Is Trying to Rewrite the Terms of Digital Reading.",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Hold List Is a Labor Story. Illinois Is Trying to Rewrite the Terms of Digital Reading.. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Open Source Security’s New Scarcity Is Judgment",
@@ -1701,13 +1293,7 @@
       "open source security",
       "software supply chain",
       "AI-generated vulnerability reports"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Open Source Security’s New Scarcity Is Judgment",
-    "visual_archetype": "layered interior scene seen through glass, doorway, or reflection",
-    "visual_brief": "Use the assigned visual archetype (layered interior scene seen through glass, doorway, or reflection) to show Layered interior office scene at dusk, photographed through a glass partition with faint reflections from terminal windows and browser tabs. In the front room, a software maintainer sits at a cluttered desk with two ordinary monitors: one shows a long issue queue with labels and timestamps, the other a dependency graph and release checklist. A half-open door reveals a second room where a small group is on a video call with foundations, platform teams, and security staff, suggesting shared stewardship without turning the scene corporate. Include concrete details: coffee ring on a printed CVE advisory draft, sticky notes with release dates, an access badge, cable labels under the desk, whiteboard notes about disclosure timing, muted indoor light, lived-in realism. Avoid a human-scale operations scene with tagged fiber cables, cooling gauges, utility meters, and a technician's gloved hands, sci-fi overlays, holograms, glowing AI motifs, and any data-center imagery.",
-    "image": "assets/ai-thumbnails/2026-04-24-open-source-security-s-new-scarcity-is-judgment.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Open Source Security’s New Scarcity Is Judgment",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Open Source Security’s New Scarcity Is Judgment. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Refund Is Becoming a Debt-Collection Battleground",
@@ -1725,13 +1311,7 @@
       "household cash flow",
       "college towns",
       "consumer finances"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Refund Is Becoming a Debt-Collection Battleground",
-    "visual_archetype": "wide environmental scene showing infrastructure, landscape, or atmosphere",
-    "visual_brief": "Use the assigned visual archetype (wide environmental scene showing infrastructure, landscape, or atmosphere) to show Wide spring view over an outer-ring American college-and-commuter landscape after light rain: a multilane road feeding a public college or regional university, bus shelters, apartment blocks, discount retail, a tax-prep storefront, utility poles, parking lots, and low institutional buildings stretching into the middle distance. Emphasize ordinary infrastructure, traffic patterns, sidewalks, and the built environment of bills, work, and school. No protest signs, no money symbolism, no courthouse imagery, no map overlays, no a close view of the actual decision setting, documents, tools, and people affected by the dispute, no a human-scale operations scene with tagged fiber cables, cooling gauges, utility meters, and a technician's gloved hands.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-refund-is-becoming-a-debt-collection-battleground.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Refund Is Becoming a Debt-Collection Battleground",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Refund Is Becoming a Debt-Collection Battleground. AI-generated image by The Press."
+    ]
   },
   {
     "title": "When Enrollment Falls, the Hardest School Cuts Hit the Places That Still Have to Show Up Every Morning",
@@ -1745,13 +1325,7 @@
       "school enrollment",
       "school finance",
       "rural schools"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: When Enrollment Falls, the Hardest School Cuts Hit the Places That Still Have to Show Up Every Morning",
-    "visual_archetype": "ground-level human scene with a specific setting and natural light",
-    "visual_brief": "Inside a very small public school multipurpose room in far Northern California during late-morning natural light, a cafeteria worker wipes down one lunch table while a few elementary and middle-grade students gather backpacks, jackets, and art projects near cubbies and a bulletin board. At the edge of the frame, a principal and teacher confer quietly beside stacked folding chairs, a rolling cart of trays, and a handwritten attendance sheet. Include scuffed linoleum, faded basketball lines, school lunch items, winter coats on hooks, high windows with sun coming in, and the mixed-use feel of a room that serves lunch, meetings, PE, and after-school care. Keep it documentary and specific, with ordinary human presence and no visual metaphor.",
-    "image": "assets/ai-thumbnails/2026-04-24-when-enrollment-falls-the-hardest-school-cuts-hit-the-places-that-still-have-to.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: When Enrollment Falls, the Hardest School Cuts Hit the Places That Still Have to Show Up Every Morning",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: When Enrollment Falls, the Hardest School Cuts Hit the Places That Still Have to Show Up Every Morning. AI-generated image by The Press."
+    ]
   },
   {
     "title": "When a CDC Bulletin Goes Missing, Vaccine Evidence Stops Moving Like Infrastructure",
@@ -1765,13 +1339,7 @@
       "CDC",
       "COVID-19 vaccines",
       "health care workforce"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: When a CDC Bulletin Goes Missing, Vaccine Evidence Stops Moving Like Infrastructure",
-    "visual_archetype": "macro material-detail scene where texture carries the story",
-    "visual_brief": "Extreme close-up of a heavily used hospital or long-term-care staff bulletin board: layered paper edges, pinholes, tape residue, frayed cork, curling corners, a faint sun-faded rectangle where one notice was recently removed, and a partially torn respiratory-season reminder tucked beneath older memos. Cool fluorescent clinical light, shallow depth of field, paper fibers and adhesive textures sharply resolved, no people, no logos, no screens, no syringes, no maps. The scene should communicate operational uncertainty through the physical absence of guidance.",
-    "image": "assets/ai-thumbnails/2026-04-24-when-a-cdc-bulletin-goes-missing-vaccine-evidence-stops-moving-like-infrastruct.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: When a CDC Bulletin Goes Missing, Vaccine Evidence Stops Moving Like Infrastructure",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: When a CDC Bulletin Goes Missing, Vaccine Evidence Stops Moving Like Infrastructure. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Dead Should Not Get New Lines",
@@ -1785,13 +1353,7 @@
       "digital afterlife",
       "voice cloning",
       "grief ethics"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Dead Should Not Get New Lines",
-    "visual_archetype": "nonliteral atmospheric scene with color, depth, and one surprising focal object",
-    "visual_brief": "A hushed blue-violet interior with real atmospheric depth, like a room suspended between memorial space and premium consumer tech, but without any literal screens or faces. In the near foreground, place a single old answering machine on a polished dark table; its cassette door hangs open and emits an impossible warm amber glow, making it the surprising focal object. Around it, the air carries faint bands of out-of-focus waveform-like light and drifting scraps of illegible text, receding in layers through gauzy curtains into shadow. In the far background, blurred rectangular shapes suggest family photo frames without showing identifiable people. The scene should feel tactile, domestic, and slightly uncanny: rich indigo, violet, and smoke-gray tones cut by one pocket of warm memory-light. No holograms, no generic workstation, no server room, no map, no courtroom collage, no literal avatar portrait.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-dead-should-not-get-new-lines.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Dead Should Not Get New Lines",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Dead Should Not Get New Lines. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Bird Flu’s New Map Is Built from Sewers, Silos, and Lab Meetings",
@@ -1807,13 +1369,7 @@
       "dairy cattle",
       "National Milk Testing Strategy",
       "biosurveillance"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Bird Flu’s New Map Is Built from Sewers, Silos, and Lab Meetings",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "Inside a state or county public-health laboratory operations room connected to a wastewater testing workspace, show two epidemiologists, one environmental engineer, and one laboratorian in an ordinary weekday coordination meeting. On the table: printed sewershed maps, chain-of-custody forms, sample bottles in secondary containment, a laptop with an H5 wastewater trend chart, and a binder of dairy surveillance guidance. Through interior glass, technicians in PPE aliquot composite wastewater samples beside labeled coolers, pipette racks, and barcode scanners. A wall monitor shows a muted multi-agency call with agriculture and public-health staff. Include fluorescent office light, whiteboards with sampling schedules, sticky notes, clipboards, and visible but non-dramatic lab clutter. The scene should feel procedural, cross-agency, and observational rather than alarmist.",
-    "image": "assets/ai-thumbnails/2026-04-24-bird-flu-s-new-map-is-built-from-sewers-silos-and-lab-meetings.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Bird Flu’s New Map Is Built from Sewers, Silos, and Lab Meetings",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Bird Flu’s New Map Is Built from Sewers, Silos, and Lab Meetings. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The border bundle is now a regional balance sheet",
@@ -1830,13 +1386,7 @@
       "forced returns",
       "migration",
       "trade"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The border bundle is now a regional balance sheet",
-    "visual_archetype": "macro material-detail scene where texture carries the story",
-    "visual_brief": "Extreme close-up documentary macro of returnee baggage at the Islam Qala border reception area in western Afghanistan: sun-scoured woven-plastic sacks, frayed canvas handles, cracked vinyl suitcase corners, dust packed into seams, a torn handwritten baggage tag in Dari, and a child’s scuffed sandal half buried in granular desert grit. One taut cobalt-blue rope should cut diagonally across the frame as the main visual accent. In very soft background haze, only the faintest suggestion of aid tents and a queue of figures. Hard midday light, abrasive texture, muted sand-and-ash palette, no flags dominating, no checkpoint theatrics, no map graphics; the material wear of repeated movement should carry the story.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-border-bundle-is-now-a-regional-balance-sheet.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The border bundle is now a regional balance sheet",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The border bundle is now a regional balance sheet. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Tornado Warning Is Labor, Not Just Data",
@@ -1852,13 +1402,7 @@
       "severe weather",
       "weather balloons",
       "public safety"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Tornado Warning Is Labor, Not Just Data",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Inside a National Weather Service forecast office during a severe-weather shift change before sunrise: tight focus on several pairs of hands doing different tasks at once — one forecaster annotating a handwritten operations log, another keying a warning workstation beside a headset and coffee-stained checklist, another fastening tape around a radiosonde package on a stainless prep table near a partially inflated weather balloon. Radar printouts, laminated county grids, cable clutter, pens, tape, and shift notes visible; fluorescent office light, no heroic posing, no screens dominating the frame, emphasis on the manual coordination that turns atmospheric observations into public warnings.",
-    "image": "assets/ai-thumbnails/2026-04-24-a-tornado-warning-is-labor-not-just-data.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Tornado Warning Is Labor, Not Just Data",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Tornado Warning Is Labor, Not Just Data. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Meeting Is in Session. So Is the AI Stack.",
@@ -1877,13 +1421,7 @@
       "procurement",
       "records",
       "civic participation"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Meeting Is in Session. So Is the AI Stack.",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "Interior of a real U.S. municipal or county public meeting room during a routine evening session, viewed from the side so the operations area is visible as part of the civic scene. In the foreground or midground, a clerk, interpreter or language-access contractor, AV technician, and accessibility staffer work at a long side table with laptops, headsets, microphones, captioning monitor, translation receiver case, agenda packets, spare batteries, cables, mixer, and a small cart of troubleshooting gear. A resident speaks at a podium while council or board members sit under ordinary fluorescent lighting with binders, paper nameplates, and water cups. One monitor shows live multilingual captions; another shows meeting controls and recording status. Public seating, wall clock, posted language-access notice, projector agenda, and the texture of an actual civic workplace make clear this is procedural labor, not futuristic spectacle. Documentary realism; no glowing effects, no holograms, no generic server imagery.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-meeting-is-in-session-so-is-the-ai-stack.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Meeting Is in Session. So Is the AI Stack.",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Meeting Is in Session. So Is the AI Stack.. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Repair Time Is the New Fault Line in Taiwan’s Cable Deterrence",
@@ -1900,13 +1438,7 @@
       "gray-zone coercion",
       "offshore islands",
       "digital resilience"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Repair Time Is the New Fault Line in Taiwan’s Cable Deterrence",
-    "visual_archetype": "lab, archive, library, classroom, clinic, market, theater, or workshop scene",
-    "visual_brief": "Workshop scene inside a real marine-cable maintenance and planning room in northern or southern Taiwan: telecom and port technicians in coveralls gather around a scarred workbench covered with cable cross-sections, splice sleeves, route charts, repair logs, laminated harbor notices, AIS printouts, and weather sheets; one worker inspects armored fiber under a bench magnifier while another marks an inter-island route toward Matsu and Kinmen on a wall chart; shelves hold labeled spare housings, gloves, reels, and corrosion-stained tools; through a side window, only a partial glimpse of harbor cranes and a service vessel is visible. Emphasize practical infrastructure labor, documentation, metal textures, and the sense that resilience is being built by maintenance crews, dispatchers, and planners rather than soldiers.",
-    "image": "assets/ai-thumbnails/2026-04-24-repair-time-is-the-new-fault-line-in-taiwan-s-cable-deterrence.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Repair Time Is the New Fault Line in Taiwan’s Cable Deterrence",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Repair Time Is the New Fault Line in Taiwan’s Cable Deterrence. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Loan Form, Not the Print, Is Becoming Repertory Cinema’s Scarce Asset",
@@ -1922,13 +1454,7 @@
       "35mm",
       "film archives",
       "museum screenings"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Loan Form, Not the Print, Is Becoming Repertory Cinema’s Scarce Asset",
-    "visual_archetype": "object-detail still life built around a concrete artifact from the reporting",
-    "visual_brief": "On a steel inspection bench in a film archive, center a typed outgoing loan form clipped to a folder, with fields for borrower, gauge, condition, ship date, insurance value, and return inspection. Beside it: a slightly dented 35mm can with accession label, a short length of pale-yellow leader curling out, a grease pencil, a barcode tag, a humidity indicator card, and a pair of white inspection gloves pushed aside. Cool institutional light, crisp paper texture, legible handwriting edits, minor scuffs and edgewear, no people, no projector beam, no sepia nostalgia.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-loan-form-not-the-print-is-becoming-repertory-cinema-s-scarce-asset.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Loan Form, Not the Print, Is Becoming Repertory Cinema’s Scarce Asset",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Loan Form, Not the Print, Is Becoming Repertory Cinema’s Scarce Asset. AI-generated image by The Press."
+    ]
   },
   {
     "title": "YouTube Wants to Own the Hours You Only Half Watch, and the Audio Business Shows Why",
@@ -1942,13 +1468,7 @@
       "YouTube audio",
       "podcast economy",
       "creator advertising"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: YouTube Wants to Own the Hours You Only Half Watch, and the Audio Business Shows Why",
-    "visual_archetype": "lab, archive, library, classroom, clinic, market, theater, or workshop scene",
-    "visual_brief": "Workshop scene inside a compact audio-sales and production office: two staffers review a printed campaign grid and podcast lineup at a crowded worktable strewn with headphones, cue sheets, audience charts, coffee rings, and sticky-noted ad copy while, through interior glass, a host records in a small booth beside acoustic panels and a lit timer. A wall display shows anonymized audio placements across podcasts, music, and connected devices. Fluorescent practical light, realistic 2026 media-workplace texture, documentary style, no corporate logos, no cliché neon aesthetics.",
-    "image": "assets/ai-thumbnails/2026-04-24-youtube-wants-to-own-the-hours-you-only-half-watch-and-the-audio-business-shows.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: YouTube Wants to Own the Hours You Only Half Watch, and the Audio Business Shows Why",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: YouTube Wants to Own the Hours You Only Half Watch, and the Audio Business Shows Why. AI-generated image by The Press."
+    ]
   },
   {
     "title": "At the Postmark Table, a Mail Hobby Turns Into Event Labor",
@@ -1962,13 +1482,7 @@
       "philately",
       "postal history",
       "volunteer labor"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: At the Postmark Table, a Mail Hobby Turns Into Event Labor",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "A contemporary documentary-style interior at a temporary stamp-show servicing station inside the Boston Convention and Exhibition Center during setup week: multiple pairs of hands performing distinct tasks under flat convention-hall light. One volunteer uses stamp tongs to place newly issued stamps onto addressed envelopes; another aligns a steel hand cancel beside an ink pad and a neat stack of cacheted covers; a third labels exhibit-frame numbers and checks a shift sheet on a clipboard next to glassines, stock cards, a loupe, and cotton gloves. In the midground, rolling bins, modular exhibit frames, and taped floor plans indicate active installation, not nostalgia. Emphasize crisp paper fibers, metal tools, ink, and procedural concentration. Avoid sepia, retro styling, and any collage treatment.",
-    "image": "assets/ai-thumbnails/2026-04-24-at-the-postmark-table-a-mail-hobby-turns-into-event-labor.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: At the Postmark Table, a Mail Hobby Turns Into Event Labor",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: At the Postmark Table, a Mail Hobby Turns Into Event Labor. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The 1978 Records Law at the Center of a New Fight Over Who Owns the Presidency’s Paper Trail",
@@ -1985,13 +1499,7 @@
       "American Historical Association",
       "American Oversight",
       "presidential records"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The 1978 Records Law at the Center of a New Fight Over Who Owns the Presidency’s Paper Trail",
-    "visual_archetype": "object-detail still life built around a concrete artifact from the reporting",
-    "visual_brief": "A tightly framed object-detail still life on a worn federal office table: a manila file jacket labeled 'Presidential Records Act, 44 U.S.C. ch. 22' beside a stapled April 2026 court filing with visible case caption and partial black redactions; a blue NARA-style archival barcode sticker, a brass date stamp set to APR 2026, a cotton archivist glove, a yellow sticky note reading 'forward to official account,' and a government smartphone showing a blurred disappearing-message icon. Cool overhead fluorescent light, shallow depth of field, paper fibers, staple holes and coffee-ring marks sharply visible. No people, no flags, no courthouse columns, no maps, no patriotic bunting.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-1978-records-law-at-the-center-of-a-new-fight-over-who-owns-the-presidency.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The 1978 Records Law at the Center of a New Fight Over Who Owns the Presidency’s Paper Trail",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The 1978 Records Law at the Center of a New Fight Over Who Owns the Presidency’s Paper Trail. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Coachella’s New Middle Class Is on Layaway",
@@ -2005,13 +1513,7 @@
       "Coachella",
       "ticketing",
       "live music economy"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Coachella’s New Middle Class Is on Layaway",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Inside a cramped festival ticket-operations trailer at first light, a support worker’s hands sort wristbands, printed order sheets, barcode labels and a handheld scanner beside a laptop showing payment-plan accounts, waitlist fulfillment and replacement-pass notes; another worker’s hands seal mailers and attach shipping labels to small wristband boxes. Through a small window, only a soft blur of fencing, dust and distant fairground lights hints at festival grounds. Documentary realism, natural work light, visible tools and paperwork, no performers, no glamour shot, no celebrity cues.",
-    "image": "assets/ai-thumbnails/2026-04-24-coachella-s-new-middle-class-is-on-layaway.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Coachella’s New Middle Class Is on Layaway",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Coachella’s New Middle Class Is on Layaway. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Bug Ledger Is Breaking, and Security Teams Are Rewriting the Rules",
@@ -2029,13 +1531,7 @@
       "vulnerability management",
       "CISA",
       "software vulnerabilities"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Bug Ledger Is Breaking, and Security Teams Are Rewriting the Rules",
-    "visual_archetype": "layered interior scene seen through glass, doorway, or reflection",
-    "visual_brief": "Late-night county or hospital IT office seen through a glass meeting-room wall, with layered reflections from a corridor and street outside. On the reflected glass: handwritten patch deadlines, vendor names, and CVE identifiers on sticky notes and marker lines. Beyond the glass, two tired security staff work at uneven desks with multiple monitors showing vulnerability dashboards, email alerts, and spreadsheets; an open doorway reveals a cramped network closet and shelves of old equipment rather than glamorous server imagery. Fluorescent overhead light mixes with monitor glow and faint exterior sodium-orange light to create depth, fatigue, and bureaucratic pressure.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-bug-ledger-is-breaking-and-security-teams-are-rewriting-the-rules.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Bug Ledger Is Breaking, and Security Teams Are Rewriting the Rules",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Bug Ledger Is Breaking, and Security Teams Are Rewriting the Rules. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Housing Bill Keeps Growing Even When the Mortgage Doesn’t",
@@ -2049,13 +1545,7 @@
       "housing affordability",
       "insurance and utilities",
       "household budgets"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Housing Bill Keeps Growing Even When the Mortgage Doesn’t",
-    "visual_archetype": "wide environmental scene showing infrastructure, landscape, or atmosphere",
-    "visual_brief": "A wide, humid early-evening view across the outer edge of a fast-growing metro area in the U.S. Sun Belt: subdivisions, garden apartments and townhomes spread across a flat landscape; distribution lines and a substation cut across the middle distance; retention ponds, drainage ditches and patched roadwork hint at water management and growth strain; a broad arterial road carries steady commuter traffic; the sky is heavy with heat haze and building storm clouds. The image should feel observational and infrastructural, showing how ordinary housing sits inside energy, drainage and transport systems. No disaster spectacle, no symbolic props, no text overlays.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-housing-bill-keeps-growing-even-when-the-mortgage-doesn-t.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Housing Bill Keeps Growing Even When the Mortgage Doesn’t",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Housing Bill Keeps Growing Even When the Mortgage Doesn’t. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Lunch debt is back in the school budget fight, and the cafeteria is where the system shows its seams",
@@ -2069,13 +1559,7 @@
       "school meals",
       "lunch debt",
       "education finance"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Lunch debt is back in the school budget fight, and the cafeteria is where the system shows its seams",
-    "visual_archetype": "ground-level human scene with a specific setting and natural light",
-    "visual_brief": "Late-morning scene inside a public middle-school cafeteria in Montgomery County, Maryland, photographed from student eye level beside the lunch line. Natural spring daylight enters through tall cafeteria windows and falls across pale tile floors and folded cafeteria tables. In the foreground, two students with trays pause near the register while a cafeteria worker gestures toward a small payment screen and a printed sign listing breakfast and lunch prices. Nearby, another sign in English and Spanish explains how families can apply for meal benefits. In the midground, fruit bowls, milk crates, backpacks on chair backs, and a parent volunteer helping at a folding table make the room feel active but ordinary. The mood should be human and observational, not theatrical — a routine school transaction carrying quiet financial tension.",
-    "image": "assets/ai-thumbnails/2026-04-24-lunch-debt-is-back-in-the-school-budget-fight-and-the-cafeteria-is-where-the-sy.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Lunch debt is back in the school budget fight, and the cafeteria is where the system shows its seams",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Lunch debt is back in the school budget fight, and the cafeteria is where the system shows its seams. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Candida auris is turning the patient handoff into an infection-control instrument",
@@ -2091,13 +1575,7 @@
       "long-term care",
       "hospital transfers",
       "screening"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Candida auris is turning the patient handoff into an infection-control instrument",
-    "visual_archetype": "macro material-detail scene where texture carries the story",
-    "visual_brief": "Extreme close-up of interfacility transfer paperwork resting on a textured blue vinyl gurney mattress, with a partially lifted precaution label, pen-pressure grooves in checkbox fields, softened paper edges, and a gloved thumb flattening the form near a wrinkled corner. In the background, only hints of a plastic wristband, a specimen-swab pouch, and a disinfectant wipe packet are visible out of focus. Fluorescent hospital light should emphasize adhesive residue, paper fibers, vinyl grain, seam stitching, and slight moisture streaks from recent cleaning. The scene must feel operational and tactile, not symbolic: no microbe illustration, no patient face, no map, no vial, no rash, no heroic pose.",
-    "image": "assets/ai-thumbnails/2026-04-24-candida-auris-is-turning-the-patient-handoff-into-an-infection-control-instrume.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Candida auris is turning the patient handoff into an infection-control instrument",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Candida auris is turning the patient handoff into an infection-control instrument. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Childproof Internet Is Teaching Adults to Show Their Papers",
@@ -2111,13 +1589,7 @@
       "age verification",
       "child safety",
       "digital privacy"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Childproof Internet Is Teaching Adults to Show Their Papers",
-    "visual_archetype": "nonliteral atmospheric scene with color, depth, and one surprising focal object",
-    "visual_brief": "Create a moody, nonliteral twilight scene inside a long civic passageway that feels part library, part transit concourse, with deep blue haze fading into amber light. The corridor should subtly transform into a soft checkpoint environment through velvet ropes, diffuse illuminated phone screens, and faint scanner glow, without resembling any real airport or government office. The surprising focal object is a child’s paper amusement-park wristband looped around a brushed-metal turnstile arm, sharply lit in warm light against the cooler scene. Adults appear only as distant silhouettes with reflected screen light, never identifiable. Emphasize atmospheric depth, suspended dust or mist, layered color, and the uneasy blend of care, access, and control.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-childproof-internet-is-teaching-adults-to-show-their-papers.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Childproof Internet Is Teaching Adults to Show Their Papers",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Childproof Internet Is Teaching Adults to Show Their Papers. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Rubin’s night shift is turning asteroid discovery into a systems test",
@@ -2133,13 +1605,7 @@
       "planetary defense",
       "LSST",
       "astronomy"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Rubin’s night shift is turning asteroid discovery into a systems test",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "Interior of a real observatory operations room during an overnight engineering or observing shift: three staff members — an astronomer, a telescope operator, and a systems engineer — seated at practical consoles with keyboard trays, notebooks, printed checklists, coffee mugs, and headsets; large wall displays show telescope status panels, seeing and weather readouts, sky coverage maps, moving-object detection tracks, and alert timing dashboards; through interior glass, part of the telescope structure or dome support is visible; documentary newsroom-style realism, subdued blue monitor light and dim task lamps, no cinematic starfield spectacle, no holograms, no generic data-center look.",
-    "image": "assets/ai-thumbnails/2026-04-24-rubin-s-night-shift-is-turning-asteroid-discovery-into-a-systems-test.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Rubin’s night shift is turning asteroid discovery into a systems test",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Rubin’s night shift is turning asteroid discovery into a systems test. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The camp is built to hold people. The sea is built to move them.",
@@ -2158,13 +1624,7 @@
       "refugees",
       "Cox's Bazar",
       "maritime migration"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The camp is built to hold people. The sea is built to move them.",
-    "visual_archetype": "macro material-detail scene where texture carries the story",
-    "visual_brief": "Extreme close-up inside a Rohingya shelter in Cox’s Bazar: sun-faded blue tarpaulin stretched over split bamboo, plastic weave whitening where it has creased and thinned; a ration card and clinic slip tucked under a rusting fastener; a frayed black tie-cord biting into the tarp edge; damp clay floor marked by sandal tread, ash and windblown grit; one torn strip of orange flotation material caught near the doorway. The image should feel humid, abraded and provisional, with no faces and no wide camp panorama. Let the textures of plastic, mud, paper and cord imply containment, weather and the pull of dangerous movement without showing boats or open water.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-camp-is-built-to-hold-people-the-sea-is-built-to-move-them.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The camp is built to hold people. The sea is built to move them.",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The camp is built to hold people. The sea is built to move them.. AI-generated image by The Press."
+    ]
   },
   {
     "title": "A Stamp Should Not Be a Bailout Plan",
@@ -2180,13 +1640,7 @@
       "labor",
       "universal service",
       "Congress"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: A Stamp Should Not Be a Bailout Plan",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Inside a fluorescent-lit postal workroom before opening, frame only the midsections and hands of two postal workers actively sorting letter trays and flats into worn metal cases. Show paper route labels, rubber bands, a hand date stamp, scuffed dividers, marker notes, tubs, and a rolling hamper; emphasize repetitive manual coordination, paper texture, and the craft of keeping mail moving. No logo-centered composition, no heroic facade, no generic trucks, and no symbolic collage elements.",
-    "image": "assets/ai-thumbnails/2026-04-24-a-stamp-should-not-be-a-bailout-plan.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: A Stamp Should Not Be a Bailout Plan",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: A Stamp Should Not Be a Bailout Plan. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The courthouse help desk is becoming an AI policy lab",
@@ -2202,13 +1656,7 @@
       "access to justice",
       "legal aid",
       "self-represented litigants"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The courthouse help desk is becoming an AI policy lab",
-    "visual_archetype": "institutional room or workplace scene with people, tools, and context",
-    "visual_brief": "Interior of a county courthouse self-help center during business hours: a public counter with bilingual wayfinding signs, numbered service windows, stacks of filing packets, accessible desktop stations with large-print keyboards and screen-reader headphones, a kiosk for court information, a legal-aid navigator seated beside a self-represented litigant reviewing forms on screen, another staff member helping someone scan documents near printers, a clerk visible behind glass answering procedural questions, queue monitor overhead, fluorescent civic lighting, institutional finishes, visible forms, scanners, headsets, and calendars, documentary realism, medium-wide composition, no symbolism or futuristic effects.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-courthouse-help-desk-is-becoming-an-ai-policy-lab.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The courthouse help desk is becoming an AI policy lab",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The courthouse help desk is becoming an AI policy lab. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The new minerals bloc is being built in customs law, not in mines",
@@ -2222,13 +1670,7 @@
       "critical minerals",
       "rare earths",
       "geoeconomics"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The new minerals bloc is being built in customs law, not in mines",
-    "visual_archetype": "lab, archive, library, classroom, clinic, market, theater, or workshop scene",
-    "visual_brief": "Workshop scene inside a midstream rare-earths prototyping and testing facility: engineers and trade-compliance staff in plain industrial coats cluster around a steel workbench covered with labeled oxide jars, magnet blanks, rotor parts, customs forms, traceability tags, shipping manifests, assay printouts, and a clipboard showing supplier qualification steps; behind them are compact furnaces, polishing tools, spectrometer screens, and shelving with sample boxes marked by processing stage rather than country; realistic industrial clutter, cool white task lighting, emphasis on manufacturing, paperwork, and chain-of-custody decisions; no posed flags, no heroic mine imagery, no generic server hardware.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-new-minerals-bloc-is-being-built-in-customs-law-not-in-mines.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The new minerals bloc is being built in customs law, not in mines",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The new minerals bloc is being built in customs law, not in mines. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Indie Movie Run Is Becoming a Curated Event, Not a Market Norm",
@@ -2244,13 +1686,7 @@
       "specialty distribution",
       "repertory cinema",
       "film exhibition"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Indie Movie Run Is Becoming a Curated Event, Not a Market Norm",
-    "visual_archetype": "object-detail still life built around a concrete artifact from the reporting",
-    "visual_brief": "A close, editorial still life on an independent-cinema box-office counter built around a real weekly paper repertory calendar from April 2026. The calendar should be heavily marked in grease pencil with circles, arrows, sellout notes, and handwritten Q&A times. Nearby: a brass ticket spike with mismatched ticket stubs from limited-release and repertory screenings, a paper membership card, a rubber stamp reading 'Q&A TONIGHT,' a compact receipt printer with a half-curled receipt, a stack of folded mini flyers for filmmaker talks and revival screenings, and a distributor shipping label partly visible under a one-sheet tube cap. Include the edge of a plexiglass donation jar labeled 'keep repertory on screen.' Morning lobby light, shallow depth of field, tactile paper texture, realistic wear, unsentimental newsroom style.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-indie-movie-run-is-becoming-a-curated-event-not-a-market-norm.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Indie Movie Run Is Becoming a Curated Event, Not a Market Norm",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Indie Movie Run Is Becoming a Curated Event, Not a Market Norm. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Concert tickets are still a culture tax. The monopoly verdict just made that harder to deny.",
@@ -2267,13 +1703,7 @@
       "antitrust",
       "independent venues",
       "live music"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: Concert tickets are still a culture tax. The monopoly verdict just made that harder to deny.",
-    "visual_archetype": "lab, archive, library, classroom, clinic, market, theater, or workshop scene",
-    "visual_brief": "Theater scene inside the box-office office of a mid-size independent music venue an hour before doors: one ticketing manager and two staffers at a cluttered counter comparing printed all-in pricing sheets, venue contracts with key clauses highlighted, wristbands, seating charts, a small stack of returned tickets, and a laptop with a generic ticketing dashboard. Behind them: corkboard with local show posters, staffing schedules, and a handwritten settlement timeline; through an interior window, the dim empty room and stage crew setting chairs and cables. Documentary realism, practical overhead light, no celebrities, no dominant logos, emphasis on the administrative labor and anxiety of selling access to culture.",
-    "image": "assets/ai-thumbnails/2026-04-24-concert-tickets-are-still-a-culture-tax-the-monopoly-verdict-just-made-that-har.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Concert tickets are still a culture tax. The monopoly verdict just made that harder to deny.",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Concert tickets are still a culture tax. The monopoly verdict just made that harder to deny.. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Work Between the Box and the Search Bar",
@@ -2290,13 +1720,7 @@
       "public records",
       "metadata",
       "transcription"
-    ],
-    "thumbnail_alt": "AI-generated editorial thumbnail for: The Work Between the Box and the Search Bar",
-    "visual_archetype": "hands-at-work scene focused on process, craft, or labor",
-    "visual_brief": "Documentary close-up inside a government or public-library digitization workspace: one set of hands lifts a brittle oversized ledger onto a foam cradle, another aligns a page beneath an overhead scanner, and a third hand types metadata into a laptop beside acid-free folders and barcode slips. Show paper dust, cotton tape, calibration target, pencil labels, and the repetitive bench-work of processing records. No posed faces, no grand reading room glamour, no courthouse symbolism, no map overlays—just careful manual labor turning fragile records into usable files.",
-    "image": "assets/ai-thumbnails/2026-04-24-the-work-between-the-box-and-the-search-bar.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Work Between the Box and the Search Bar",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Work Between the Box and the Search Bar. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Virginia’s redistricting referendum shows how the House fight has moved from Congress to state ballots",
@@ -2310,10 +1734,7 @@
       "Virginia",
       "redistricting",
       "House majority"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-virginia-s-redistricting-referendum-shows-how-the-house-fight-has-moved-from-co.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Virginia’s redistricting referendum shows how the House fight has moved from Congress to state ballots",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Virginia’s redistricting referendum shows how the House fight has moved from Congress to state ballots. AI-generated image by The Press."
+    ]
   },
   {
     "title": "America’s arts institutions are entering a new season of politics, austerity, and reinvention",
@@ -2327,10 +1748,7 @@
       "arts funding",
       "museums",
       "culture policy"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-america-s-arts-institutions-are-entering-a-new-season-of-politics-austerity-and.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: America’s arts institutions are entering a new season of politics, austerity, and reinvention",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: America’s arts institutions are entering a new season of politics, austerity, and reinvention. AI-generated image by The Press."
+    ]
   },
   {
     "title": "AI’s power problem is now a grid problem",
@@ -2344,10 +1762,7 @@
       "AI infrastructure",
       "data centers",
       "electricity grid"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-ai-s-power-problem-is-now-a-grid-problem.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: AI’s power problem is now a grid problem",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: AI’s power problem is now a grid problem. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Why April’s inflation report matters more for household budgets than for Wall Street",
@@ -2361,10 +1776,7 @@
       "inflation",
       "households",
       "wages"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-why-april-s-inflation-report-matters-more-for-household-budgets-than-for-wall-s.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Why April’s inflation report matters more for household budgets than for Wall Street",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Why April’s inflation report matters more for household budgets than for Wall Street. AI-generated image by The Press."
+    ]
   },
   {
     "title": "As federal student aid shifts toward Treasury, colleges and borrowers face a test of capacity",
@@ -2378,10 +1790,7 @@
       "higher education",
       "FAFSA",
       "student loans"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-as-federal-student-aid-shifts-toward-treasury-colleges-and-borrowers-face-a-tes.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: As federal student aid shifts toward Treasury, colleges and borrowers face a test of capacity",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: As federal student aid shifts toward Treasury, colleges and borrowers face a test of capacity. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Measles is surging across the Americas, testing the region’s public health defenses",
@@ -2395,10 +1804,7 @@
       "measles",
       "vaccination",
       "public health"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-measles-is-surging-across-the-americas-testing-the-region-s-public-health-defen.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Measles is surging across the Americas, testing the region’s public health defenses",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Measles is surging across the Americas, testing the region’s public health defenses. AI-generated image by The Press."
+    ]
   },
   {
     "title": "When the machine says it loves you",
@@ -2412,10 +1818,7 @@
       "AI companions",
       "loneliness",
       "technology ethics"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-when-the-machine-says-it-loves-you.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: When the machine says it loves you",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: When the machine says it loves you. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Trump’s 2027 science budget revives a familiar fight over the future of U.S. research",
@@ -2429,10 +1832,7 @@
       "science budget",
       "NASA",
       "NIH"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-trump-s-2027-science-budget-revives-a-familiar-fight-over-the-future-of-u-s-res.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Trump’s 2027 science budget revives a familiar fight over the future of U.S. research",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Trump’s 2027 science budget revives a familiar fight over the future of U.S. research. AI-generated image by The Press."
+    ]
   },
   {
     "title": "War in the Middle East is redrawing the region’s human map",
@@ -2446,10 +1846,7 @@
       "Middle East war",
       "forced displacement",
       "global trade"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-war-in-the-middle-east-is-redrawing-the-region-s-human-map.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: War in the Middle East is redrawing the region’s human map",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: War in the Middle East is redrawing the region’s human map. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The Fed should wait. Trump’s inflation shock isn’t over.",
@@ -2463,10 +1860,7 @@
       "Federal Reserve",
       "inflation",
       "tariffs"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-the-fed-should-wait-trump-s-inflation-shock-isn-t-over.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The Fed should wait. Trump’s inflation shock isn’t over.",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The Fed should wait. Trump’s inflation shock isn’t over.. AI-generated image by The Press."
+    ]
   },
   {
     "title": "AI’s new power struggle: Washington, utilities and the bill for the next wave of models",
@@ -2480,10 +1874,7 @@
       "artificial intelligence",
       "energy",
       "regulation"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-ai-s-new-power-struggle-washington-utilities-and-the-bill-for-the-next-wave-of.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: AI’s new power struggle: Washington, utilities and the bill for the next wave of models",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: AI’s new power struggle: Washington, utilities and the bill for the next wave of models. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Europe’s defense race is running into the hard edge of logistics, minerals and money",
@@ -2497,10 +1888,7 @@
       "Europe defense",
       "sanctions enforcement",
       "critical minerals"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-europe-s-defense-race-is-running-into-the-hard-edge-of-logistics-minerals-and-m.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Europe’s defense race is running into the hard edge of logistics, minerals and money",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Europe’s defense race is running into the hard edge of logistics, minerals and money. AI-generated image by The Press."
+    ]
   },
   {
     "title": "CinemaCon’s New Deal: Theatrical Exhibition Gets a Reluctant Reprieve",
@@ -2514,10 +1902,7 @@
       "CinemaCon 2026",
       "theatrical exhibition",
       "streaming windows"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-cinemacon-s-new-deal-theatrical-exhibition-gets-a-reluctant-reprieve.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: CinemaCon’s New Deal: Theatrical Exhibition Gets a Reluctant Reprieve",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: CinemaCon’s New Deal: Theatrical Exhibition Gets a Reluctant Reprieve. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Inside pop culture’s new money map: why fandom now matters more than reach",
@@ -2531,10 +1916,7 @@
       "pop culture",
       "streaming",
       "fandom"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-inside-pop-culture-s-new-money-map-why-fandom-now-matters-more-than-reach.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Inside pop culture’s new money map: why fandom now matters more than reach",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Inside pop culture’s new money map: why fandom now matters more than reach. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Inside the Americans keeping the airspace civil: the FAA hobby-drone world in 2026",
@@ -2548,10 +1930,7 @@
       "drone hobbyists",
       "FAA enforcement",
       "Remote ID"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-inside-the-americans-keeping-the-airspace-civil-the-faa-hobby-drone-world-in-20.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Inside the Americans keeping the airspace civil: the FAA hobby-drone world in 2026",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Inside the Americans keeping the airspace civil: the FAA hobby-drone world in 2026. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Virginia voters approve redistricting push as courts race to decide whether the map can stand",
@@ -2565,10 +1944,7 @@
       "redistricting",
       "Virginia politics",
       "2026 midterms"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-virginia-voters-approve-redistricting-push-as-courts-race-to-decide-whether-the.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Virginia voters approve redistricting push as courts race to decide whether the map can stand",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Virginia voters approve redistricting push as courts race to decide whether the map can stand. AI-generated image by The Press."
+    ]
   },
   {
     "title": "As public media money disappears, local stations are being forced to choose what culture means",
@@ -2582,10 +1958,7 @@
       "public media",
       "arts funding",
       "culture policy"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-as-public-media-money-disappears-local-stations-are-being-forced-to-choose-what.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: As public media money disappears, local stations are being forced to choose what culture means",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: As public media money disappears, local stations are being forced to choose what culture means. AI-generated image by The Press."
+    ]
   },
   {
     "title": "America’s AI Data Center Boom Hits the Grid’s Limits",
@@ -2599,10 +1972,7 @@
       "data centers",
       "electric grid",
       "artificial intelligence"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-america-s-ai-data-center-boom-hits-the-grid-s-limits.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: America’s AI Data Center Boom Hits the Grid’s Limits",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: America’s AI Data Center Boom Hits the Grid’s Limits. AI-generated image by The Press."
+    ]
   },
   {
     "title": "March inflation spike rekindles the housing-and-gas budget squeeze",
@@ -2616,10 +1986,7 @@
       "inflation",
       "housing",
       "gasoline"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-march-inflation-spike-rekindles-the-housing-and-gas-budget-squeeze.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: March inflation spike rekindles the housing-and-gas budget squeeze",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: March inflation spike rekindles the housing-and-gas budget squeeze. AI-generated image by The Press."
+    ]
   },
   {
     "title": "How the federal student-loan reset is rippling through colleges, households and public budgets",
@@ -2633,10 +2000,7 @@
       "student loans",
       "higher education finance",
       "public colleges"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-how-the-federal-student-loan-reset-is-rippling-through-colleges-households-and.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: How the federal student-loan reset is rippling through colleges, households and public budgets",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: How the federal student-loan reset is rippling through colleges, households and public budgets. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Measles resurgence tests the U.S. public-health firewall as outbreaks, misinformation and policy churn collide",
@@ -2650,10 +2014,7 @@
       "measles",
       "vaccination",
       "public health"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-measles-resurgence-tests-the-u-s-public-health-firewall-as-outbreaks-misinforma.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Measles resurgence tests the U.S. public-health firewall as outbreaks, misinformation and policy churn collide",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Measles resurgence tests the U.S. public-health firewall as outbreaks, misinformation and policy churn collide. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The lonely age of artificial friends",
@@ -2667,10 +2028,7 @@
       "AI companions",
       "loneliness",
       "ethics"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-the-lonely-age-of-artificial-friends.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The lonely age of artificial friends",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The lonely age of artificial friends. AI-generated image by The Press."
+    ]
   },
   {
     "title": "NASA’s moonshot just came back: Artemis II ends on a clean arc, but the harder science begins now",
@@ -2687,10 +2045,7 @@
       "ESA",
       "Orion",
       "SLS"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-nasa-s-moonshot-just-came-back-artemis-ii-ends-on-a-clean-arc-but-the-harder-sc.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: NASA’s moonshot just came back: Artemis II ends on a clean arc, but the harder science begins now",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: NASA’s moonshot just came back: Artemis II ends on a clean arc, but the harder science begins now. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Lebanon’s war spillover is redrawing the Syria border and testing the region’s aid architecture",
@@ -2704,10 +2059,7 @@
       "Lebanon",
       "Syria",
       "displacement"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-lebanon-s-war-spillover-is-redrawing-the-syria-border-and-testing-the-region-s.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Lebanon’s war spillover is redrawing the Syria border and testing the region’s aid architecture",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Lebanon’s war spillover is redrawing the Syria border and testing the region’s aid architecture. AI-generated image by The Press."
+    ]
   },
   {
     "title": "America Should Stop Pretending Data Centers Are Just Warehouses With Servers",
@@ -2721,10 +2073,7 @@
       "AI",
       "data centers",
       "electricity grid"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: America Should Stop Pretending Data Centers Are Just Warehouses With Servers",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: America Should Stop Pretending Data Centers Are Just Warehouses With Servers. AI-generated image by The Press."
+    ]
   },
   {
     "title": "AI’s next regulatory fight is over proof, not promise",
@@ -2738,10 +2087,7 @@
       "artificial intelligence",
       "regulation",
       "California"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-ai-s-next-regulatory-fight-is-over-proof-not-promise.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: AI’s next regulatory fight is over proof, not promise",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: AI’s next regulatory fight is over proof, not promise. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Moldova’s Quiet Front Line: Why Brussels Is Hardening the Buffer State Before Russia Can Reopen It",
@@ -2755,10 +2101,7 @@
       "Moldova",
       "European Union",
       "Russia"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-moldova-s-quiet-front-line-why-brussels-is-hardening-the-buffer-state-before-ru.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Moldova’s Quiet Front Line: Why Brussels Is Hardening the Buffer State Before Russia Can Reopen It",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Moldova’s Quiet Front Line: Why Brussels Is Hardening the Buffer State Before Russia Can Reopen It. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Cannes 2026 puts the movie industry’s fault lines on display",
@@ -2772,10 +2115,7 @@
       "Cannes",
       "box office",
       "film labor"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-cannes-2026-puts-the-movie-industry-s-fault-lines-on-display.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Cannes 2026 puts the movie industry’s fault lines on display",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Cannes 2026 puts the movie industry’s fault lines on display. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The new pop-culture arms race is the video podcast",
@@ -2789,10 +2129,7 @@
       "creator economy",
       "video podcasts",
       "streaming wars"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-the-new-pop-culture-arms-race-is-the-video-podcast.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The new pop-culture arms race is the video podcast",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The new pop-culture arms race is the video podcast. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Birders Are Becoming Citizen Scientists in the Age of Avian Flu",
@@ -2806,10 +2143,7 @@
       "birding",
       "citizen science",
       "avian flu"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-birders-are-becoming-citizen-scientists-in-the-age-of-avian-flu.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Birders Are Becoming Citizen Scientists in the Age of Avian Flu",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Birders Are Becoming Citizen Scientists in the Age of Avian Flu. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Redistricting war escalates as Supreme Court looms over voting rights, House control",
@@ -2823,10 +2157,7 @@
       "redistricting",
       "Supreme Court",
       "House majority"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-redistricting-war-escalates-as-supreme-court-looms-over-voting-rights-house-con.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Redistricting war escalates as Supreme Court looms over voting rights, House control",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Redistricting war escalates as Supreme Court looms over voting rights, House control. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The federal culture war has become a funding story",
@@ -2840,10 +2171,7 @@
       "culture policy",
       "arts funding",
       "museums and libraries"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-the-federal-culture-war-has-become-a-funding-story.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The federal culture war has become a funding story",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The federal culture war has become a funding story. AI-generated image by The Press."
+    ]
   },
   {
     "title": "AI’s power problem turns political as data centers hit the grid",
@@ -2857,10 +2185,7 @@
       "AI data centers",
       "electric grid",
       "energy policy"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-ai-s-power-problem-turns-political-as-data-centers-hit-the-grid.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: AI’s power problem turns political as data centers hit the grid",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: AI’s power problem turns political as data centers hit the grid. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Tariffs Are Back in the Price Tag: Why the Cost of Living Fight Is Moving to the Checkout Line",
@@ -2874,10 +2199,7 @@
       "inflation",
       "tariffs",
       "household budgets"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-tariffs-are-back-in-the-price-tag-why-the-cost-of-living-fight-is-moving-to-the.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Tariffs Are Back in the Price Tag: Why the Cost of Living Fight Is Moving to the Checkout Line",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Tariffs Are Back in the Price Tag: Why the Cost of Living Fight Is Moving to the Checkout Line. AI-generated image by The Press."
+    ]
   },
   {
     "title": "State Funding Rose in 2025 — But Public Colleges Still Lost Ground Per Student",
@@ -2891,10 +2213,7 @@
       "higher education",
       "state budgets",
       "college affordability"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-state-funding-rose-in-2025-but-public-colleges-still-lost-ground-per-student.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: State Funding Rose in 2025 — But Public Colleges Still Lost Ground Per Student",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: State Funding Rose in 2025 — But Public Colleges Still Lost Ground Per Student. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Measles Keeps Finding the Gaps: How the 2026 outbreak wave is testing U.S. vaccination policy and public health capacity",
@@ -2908,10 +2227,7 @@
       "measles",
       "vaccination",
       "public health"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-measles-keeps-finding-the-gaps-how-the-2026-outbreak-wave-is-testing-u-s-vaccin.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Measles Keeps Finding the Gaps: How the 2026 outbreak wave is testing U.S. vaccination policy and public health capacity",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Measles Keeps Finding the Gaps: How the 2026 outbreak wave is testing U.S. vaccination policy and public health capacity. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The New Intimacy Crisis: Why AI Companions and Agentic Systems Demand a New Ethics of Attention",
@@ -2925,10 +2241,7 @@
       "AI companions",
       "agentic AI",
       "digital ethics"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-the-new-intimacy-crisis-why-ai-companions-and-agentic-systems-demand-a-new-ethi.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The New Intimacy Crisis: Why AI Companions and Agentic Systems Demand a New Ethics of Attention",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The New Intimacy Crisis: Why AI Companions and Agentic Systems Demand a New Ethics of Attention. AI-generated image by The Press."
+    ]
   },
   {
     "title": "NASA’s Artemis II is back on the clock, and the moon race has become a systems test",
@@ -2945,10 +2258,7 @@
       "Orion",
       "Space Launch System",
       "astronaut health"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-nasa-s-artemis-ii-is-back-on-the-clock-and-the-moon-race-has-become-a-systems-t.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: NASA’s Artemis II is back on the clock, and the moon race has become a systems test",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: NASA’s Artemis II is back on the clock, and the moon race has become a systems test. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Sudan’s war is redrawing borders, aid routes and migration across three fronts",
@@ -2962,10 +2272,7 @@
       "Sudan",
       "Chad",
       "migration"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-sudan-s-war-is-redrawing-borders-aid-routes-and-migration-across-three-fronts.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Sudan’s war is redrawing borders, aid routes and migration across three fronts",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Sudan’s war is redrawing borders, aid routes and migration across three fronts. AI-generated image by The Press."
+    ]
   },
   {
     "title": "America’s Measles Surge Is a Policy Failure, Not a Mystery",
@@ -2979,10 +2286,7 @@
       "measles",
       "public health",
       "vaccination"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-america-s-measles-surge-is-a-policy-failure-not-a-mystery.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: America’s Measles Surge Is a Policy Failure, Not a Mystery",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: America’s Measles Surge Is a Policy Failure, Not a Mystery. AI-generated image by The Press."
+    ]
   },
   {
     "title": "AI’s next fight is over power: why April 2026 is becoming the month that decides the rules",
@@ -2996,10 +2300,7 @@
       "AI policy",
       "data centers",
       "labor"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-ai-s-next-fight-is-over-power-why-april-2026-is-becoming-the-month-that-decides.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: AI’s next fight is over power: why April 2026 is becoming the month that decides the rules",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: AI’s next fight is over power: why April 2026 is becoming the month that decides the rules. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Hormuz After the Ceasefire: Why the World Still Cannot Treat the Strait as Reopened",
@@ -3013,10 +2314,7 @@
       "Strait of Hormuz",
       "Iran war",
       "maritime security"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-hormuz-after-the-ceasefire-why-the-world-still-cannot-treat-the-strait-as-reope.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Hormuz After the Ceasefire: Why the World Still Cannot Treat the Strait as Reopened",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Hormuz After the Ceasefire: Why the World Still Cannot Treat the Strait as Reopened. AI-generated image by The Press."
+    ]
   },
   {
     "title": "CinemaCon’s Big Promise to Movie Theaters Meets a Narrower, Riskier Reality",
@@ -3030,10 +2328,7 @@
       "CinemaCon",
       "Paramount-Warner Bros. merger",
       "movie theaters"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-cinemacon-s-big-promise-to-movie-theaters-meets-a-narrower-riskier-reality.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: CinemaCon’s Big Promise to Movie Theaters Meets a Narrower, Riskier Reality",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: CinemaCon’s Big Promise to Movie Theaters Meets a Narrower, Riskier Reality. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Coachella 2026 is a pop referendum on who gets to own the mainstream now",
@@ -3047,10 +2342,7 @@
       "Coachella",
       "Sabrina Carpenter",
       "streaming economy"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-coachella-2026-is-a-pop-referendum-on-who-gets-to-own-the-mainstream-now.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Coachella 2026 is a pop referendum on who gets to own the mainstream now",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Coachella 2026 is a pop referendum on who gets to own the mainstream now. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The people building a quieter phone line",
@@ -3064,10 +2356,7 @@
       "robocalls",
       "call screening",
       "privacy"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-the-people-building-a-quieter-phone-line.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The people building a quieter phone line",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The people building a quieter phone line. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Supreme Court clears Texas’s new House map for 2026, sharpening the fight over race, partisanship and the midterms",
@@ -3081,10 +2370,7 @@
       "Supreme Court",
       "Texas redistricting",
       "2026 midterms"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-supreme-court-clears-texas-s-new-house-map-for-2026-sharpening-the-fight-over-r.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Supreme Court clears Texas’s new House map for 2026, sharpening the fight over race, partisanship and the midterms",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Supreme Court clears Texas’s new House map for 2026, sharpening the fight over race, partisanship and the midterms. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Why America’s cultural institutions are being remade around 2026’s politics, not just its audiences",
@@ -3098,10 +2384,7 @@
       "culture",
       "museums",
       "arts funding"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-why-america-s-cultural-institutions-are-being-remade-around-2026-s-politics-not.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Why America’s cultural institutions are being remade around 2026’s politics, not just its audiences",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Why America’s cultural institutions are being remade around 2026’s politics, not just its audiences. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Maine’s data center moratorium marks a turning point in the AI buildout backlash",
@@ -3115,10 +2398,7 @@
       "data centers",
       "AI infrastructure",
       "electric grid"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-maine-s-data-center-moratorium-marks-a-turning-point-in-the-ai-buildout-backlas.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Maine’s data center moratorium marks a turning point in the AI buildout backlash",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Maine’s data center moratorium marks a turning point in the AI buildout backlash. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Inflation’s new squeeze: how the Iran oil shock is working through gas, rent, and wages",
@@ -3132,10 +2412,7 @@
       "inflation",
       "household budgets",
       "housing"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-inflation-s-new-squeeze-how-the-iran-oil-shock-is-working-through-gas-rent-and.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Inflation’s new squeeze: how the Iran oil shock is working through gas, rent, and wages",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Inflation’s new squeeze: how the Iran oil shock is working through gas, rent, and wages. AI-generated image by The Press."
+    ]
   },
   {
     "title": "New FAFSA, New Rules: How 2026 Is Reshaping the College-Access Pipeline",
@@ -3149,10 +2426,7 @@
       "education",
       "financial aid",
       "higher education"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-new-fafsa-new-rules-how-2026-is-reshaping-the-college-access-pipeline.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: New FAFSA, New Rules: How 2026 Is Reshaping the College-Access Pipeline",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: New FAFSA, New Rules: How 2026 Is Reshaping the College-Access Pipeline. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Measles’ 2026 Return Shows How Fragile U.S. Immunity Has Become",
@@ -3166,10 +2440,7 @@
       "measles",
       "vaccination",
       "public health"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-measles-2026-return-shows-how-fragile-u-s-immunity-has-become.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Measles’ 2026 Return Shows How Fragile U.S. Immunity Has Become",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Measles’ 2026 Return Shows How Fragile U.S. Immunity Has Become. AI-generated image by The Press."
+    ]
   },
   {
     "title": "When the Machine Becomes the Confidant, Ethics Stops Being Abstract",
@@ -3183,10 +2454,7 @@
       "AI ethics",
       "mental health",
       "companionship"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-when-the-machine-becomes-the-confidant-ethics-stops-being-abstract.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: When the Machine Becomes the Confidant, Ethics Stops Being Abstract",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: When the Machine Becomes the Confidant, Ethics Stops Being Abstract. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Artemis II’s moonshot shows the limits — and the value — of high-stakes space science",
@@ -3200,10 +2468,7 @@
       "Artemis II",
       "NASA",
       "space science"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-artemis-ii-s-moonshot-shows-the-limits-and-the-value-of-high-stakes-space-scien.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Artemis II’s moonshot shows the limits — and the value — of high-stakes space science",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Artemis II’s moonshot shows the limits — and the value — of high-stakes space science. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Chad’s closed border with Sudan is turning a refugee lifeline into a security test",
@@ -3217,10 +2482,7 @@
       "Sudan",
       "Chad",
       "refugees"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-chad-s-closed-border-with-sudan-is-turning-a-refugee-lifeline-into-a-security-t.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Chad’s closed border with Sudan is turning a refugee lifeline into a security test",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Chad’s closed border with Sudan is turning a refugee lifeline into a security test. AI-generated image by The Press."
+    ]
   },
   {
     "title": "The tariff rollback illusion: why the real fight is over industrial policy, not import taxes",
@@ -3234,10 +2496,7 @@
       "tariffs",
       "industrial policy",
       "supreme court"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-the-tariff-rollback-illusion-why-the-real-fight-is-over-industrial-policy-not-i.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: The tariff rollback illusion: why the real fight is over industrial policy, not import taxes",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: The tariff rollback illusion: why the real fight is over industrial policy, not import taxes. AI-generated image by The Press."
+    ]
   },
   {
     "title": "America’s AI boom is hitting a very physical limit: power, not code",
@@ -3251,10 +2510,7 @@
       "artificial intelligence",
       "data centers",
       "electricity"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-america-s-ai-boom-is-hitting-a-very-physical-limit-power-not-code.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: America’s AI boom is hitting a very physical limit: power, not code",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: America’s AI boom is hitting a very physical limit: power, not code. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Japan and the Philippines are hardening the first line of the Indo-Pacific",
@@ -3268,10 +2524,7 @@
       "Taiwan Strait",
       "South China Sea",
       "Japan Philippines alliance"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-japan-and-the-philippines-are-hardening-the-first-line-of-the-indo-pacific.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Japan and the Philippines are hardening the first line of the Indo-Pacific",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Japan and the Philippines are hardening the first line of the Indo-Pacific. AI-generated image by The Press."
+    ]
   },
   {
     "title": "CinemaCon 2026 shows Hollywood still believes in theaters — but the business has become harder to read",
@@ -3285,10 +2538,7 @@
       "CinemaCon",
       "theatrical exhibition",
       "box office"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-cinemacon-2026-shows-hollywood-still-believes-in-theaters-but-the-business-has.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: CinemaCon 2026 shows Hollywood still believes in theaters — but the business has become harder to read",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: CinemaCon 2026 shows Hollywood still believes in theaters — but the business has become harder to read. AI-generated image by The Press."
+    ]
   },
   {
     "title": "AI Music Is Flooding the Stream, and Pop Culture Is Deciding What Counts as Real",
@@ -3302,10 +2552,7 @@
       "AI music",
       "streaming",
       "pop culture"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-ai-music-is-flooding-the-stream-and-pop-culture-is-deciding-what-counts-as-real.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: AI Music Is Flooding the Stream, and Pop Culture Is Deciding What Counts as Real",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: AI Music Is Flooding the Stream, and Pop Culture Is Deciding What Counts as Real. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Inside the ham radio licensing bump: why a 20th-century hobby keeps recruiting in 2026",
@@ -3319,10 +2566,7 @@
       "amateur radio",
       "FCC licenses",
       "emergency communications"
-    ],
-    "image": "assets/ai-thumbnails/2026-04-22-inside-the-ham-radio-licensing-bump-why-a-20th-century-hobby-keeps-recruiting-i.jpg",
-    "imageAlt": "AI-generated editorial thumbnail for: Inside the ham radio licensing bump: why a 20th-century hobby keeps recruiting in 2026",
-    "imageCreditPlain": "AI-generated editorial thumbnail for: Inside the ham radio licensing bump: why a 20th-century hobby keeps recruiting in 2026. AI-generated image by The Press."
+    ]
   },
   {
     "title": "Trump’s election-power campaign enters the courts, the states, and the 2026 campaign trail",
@@ -5652,10 +4896,7 @@
       "Supreme Court",
       "immigration",
       "Temporary Protected Status"
-    ],
-    "image": "assets/daily/2026-04-12-2026-04-12-supreme-court-set-to-test-trump-s-immigration-power-as-tps-fight-for-haitians-and-syrians-reaches-high-court.jpg",
-    "imageAlt": "The U.S. Supreme Court building in Washington, D.C.",
-    "imageSource": "assets/daily/2026-04-12-2026-04-12-supreme-court-set-to-test-trump-s-immigration-power-as-tps-fight-for-haitians-and-syrians-reaches-high-court.jpg"
+    ]
   },
   {
     "title": "Iran Oil Shock Pushes U.S. Inflation Higher, Forcing Fed Into a Harder Balancing Act",
@@ -5669,10 +4910,7 @@
       "inflation",
       "Federal Reserve",
       "gasoline prices"
-    ],
-    "image": "assets/daily/2026-04-12-2026-04-12-iran-oil-shock-pushes-u-s-inflation-higher-forcing-fed-into-a-harder-balancing-act.jpg",
-    "imageAlt": "Cars lined up at a gas station as fuel prices rise during an energy shock",
-    "imageSource": "assets/daily/2026-04-12-2026-04-12-iran-oil-shock-pushes-u-s-inflation-higher-forcing-fed-into-a-harder-balancing-act.jpg"
+    ]
   },
   {
     "title": "As AI Enters the Scientific Method, Researchers Are Rewriting the Rules of Discovery",
@@ -5686,10 +4924,7 @@
       "artificial intelligence",
       "scientific research",
       "science policy"
-    ],
-    "image": "assets/daily/2026-04-12-2026-04-12-as-ai-enters-the-scientific-method-researchers-are-rewriting-the-rules-of-discovery.jpg",
-    "imageAlt": "Researchers working in a laboratory with computer screens displaying AI-assisted scientific analysis.",
-    "imageSource": "assets/daily/2026-04-12-2026-04-12-as-ai-enters-the-scientific-method-researchers-are-rewriting-the-rules-of-discovery.jpg"
+    ]
   },
   {
     "title": "Tokyo’s New Museum of Narratives Wants to Turn Culture Into a Living Story",
@@ -5703,10 +4938,7 @@
       "museums",
       "Tokyo",
       "Japan"
-    ],
-    "image": "assets/daily/2026-04-12-2026-04-12-tokyo-s-new-museum-of-narratives-wants-to-turn-culture-into-a-living-story.jpg",
-    "imageAlt": "Visitors and reporters outside a new contemporary museum in Tokyo",
-    "imageSource": "assets/daily/2026-04-12-2026-04-12-tokyo-s-new-museum-of-narratives-wants-to-turn-culture-into-a-living-story.jpg"
+    ]
   },
   {
     "title": "Ceasefire on paper, crisis in motion: Iran talks, Lebanon strikes and a region still on edge",
@@ -5720,10 +4952,7 @@
       "Middle East",
       "Iran",
       "ceasefire"
-    ],
-    "image": "assets/daily/2026-04-12-2026-04-12-ceasefire-on-paper-crisis-in-motion-iran-talks-lebanon-strikes-and-a-region-still-on-edge.jpg",
-    "imageAlt": "United Nations Security Council chamber during a debate on the Middle East",
-    "imageSource": "assets/daily/2026-04-12-2026-04-12-ceasefire-on-paper-crisis-in-motion-iran-talks-lebanon-strikes-and-a-region-still-on-edge.jpg"
+    ]
   },
   {
     "title": "Trump’s birthright citizenship fight becomes a test of presidential power and the 14th Amendment",
@@ -5737,10 +4966,7 @@
       "Supreme Court",
       "birthright citizenship",
       "Donald Trump"
-    ],
-    "image": "assets/daily/2026-04-12-2026-04-12-trump-s-birthright-citizenship-fight-becomes-a-test-of-presidential-power-and-the-14th-amendment.jpg",
-    "imageAlt": "The U.S. Supreme Court building in Washington, D.C., with people gathered outside during a major immigration case.",
-    "imageSource": "assets/daily/2026-04-12-2026-04-12-trump-s-birthright-citizenship-fight-becomes-a-test-of-presidential-power-and-the-14th-amendment.jpg"
+    ]
   },
   {
     "title": "IMF Spring Meetings Open as War, Tariffs and Inflation Put the World Economy on Edge",
@@ -5754,10 +4980,7 @@
       "IMF Spring Meetings",
       "inflation",
       "tariffs"
-    ],
-    "image": "assets/daily/2026-04-12-2026-04-12-imf-spring-meetings-open-as-war-tariffs-and-inflation-put-the-world-economy-on-edge.jpg",
-    "imageAlt": "The IMF and World Bank headquarters in Washington, D.C., where the Spring Meetings convene policymakers from around the world.",
-    "imageSource": "assets/daily/2026-04-12-2026-04-12-imf-spring-meetings-open-as-war-tariffs-and-inflation-put-the-world-economy-on-edge.jpg"
+    ]
   },
   {
     "title": "Artemis II’s 10-day lunar loop marks the first human return to the Moon since Apollo 17",
@@ -5771,10 +4994,7 @@
       "Artemis II",
       "Moon mission",
       "NASA"
-    ],
-    "image": "assets/daily/2026-04-12-2026-04-12-artemis-ii-s-10-day-lunar-loop-marks-the-first-human-return-to-the-moon-since-apollo-17.jpg",
-    "imageAlt": "An Orion spacecraft with the Moon in view during the Artemis II mission.",
-    "imageSource": "assets/daily/2026-04-12-2026-04-12-artemis-ii-s-10-day-lunar-loop-marks-the-first-human-return-to-the-moon-since-apollo-17.jpg"
+    ]
   },
   {
     "title": "AI’s next phase is enterprise control, not just bigger models",
@@ -5788,10 +5008,7 @@
       "artificial intelligence",
       "enterprise software",
       "AI agents"
-    ],
-    "image": "assets/daily/2026-04-12-2026-04-12-ai-s-next-phase-is-enterprise-control-not-just-bigger-models.jpg",
-    "imageAlt": "A modern office workspace with laptops and digital collaboration screens, suggesting enterprise AI adoption.",
-    "imageSource": "assets/daily/2026-04-12-2026-04-12-ai-s-next-phase-is-enterprise-control-not-just-bigger-models.jpg"
+    ]
   },
   {
     "title": "The tiny wedding economy is having a very online moment",
@@ -5805,10 +5022,7 @@
       "internet culture",
       "weddings",
       "Discord"
-    ],
-    "image": "assets/daily/2026-04-12-2026-04-12-the-tiny-wedding-economy-is-having-a-very-online-moment.jpg",
-    "imageAlt": "A couple holding hands at a small, unconventional wedding ceremony",
-    "imageSource": "assets/daily/2026-04-12-2026-04-12-the-tiny-wedding-economy-is-having-a-very-online-moment.jpg"
+    ]
   },
   {
     "title": "Artemis II’s Moon flyby turns a test flight into a live lunar science rehearsal",

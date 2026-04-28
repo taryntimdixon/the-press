@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-28T08:08:59.052869+00:00",
+  "generated_at": "2026-04-28T17:11:38.041959+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,30 +9,31 @@
   },
   "home": {
     "hero": [
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
       "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
-      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
-      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight"
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label"
     ],
     "secondary": [
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
-      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
+      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
+      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test"
     ],
     "most_read": [
       "2026-04-27-nairobi-s-drains-are-running-out-of-room",
       "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
+      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line",
       "2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy",
-      "2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume",
-      "2026-04-27-cape-cod-s-blue-blood-quota-retreat-leaves-a-crab-test-unsettled"
+      "2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume"
     ],
     "editors_picks": [
+      "2026-04-27-cape-cod-s-blue-blood-quota-retreat-leaves-a-crab-test-unsettled",
       "2026-04-27-npt-s-glass-booths-hear-a-battered-bargain-in-new-york",
       "2026-04-27-32bj-s-4-50-raise-puts-new-york-s-lobby-math-on-the-desk",
-      "2026-04-27-nebraska-s-candy-waiver-puts-snap-at-the-checkout-test",
-      "2026-04-27-fcc-s-april-22-notice-puts-the-kids-tv-rating-icon-on-the-couch"
+      "2026-04-27-nebraska-s-candy-waiver-puts-snap-at-the-checkout-test"
     ],
     "latest": [
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
       "2026-04-27-nairobi-s-drains-are-running-out-of-room",
@@ -43,10 +44,10 @@
       "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
       "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line",
       "2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy",
-      "2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume",
-      "2026-04-27-cape-cod-s-blue-blood-quota-retreat-leaves-a-crab-test-unsettled"
+      "2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume"
     ],
     "daily": [
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
       "2026-04-27-nairobi-s-drains-are-running-out-of-room",
@@ -55,10 +56,10 @@
       "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
       "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
       "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
-      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line",
-      "2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy"
+      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
     ],
     "breaking": [
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
       "2026-04-27-nairobi-s-drains-are-running-out-of-room",
@@ -69,10 +70,15 @@
       "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
       "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line",
       "2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy",
-      "2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume",
-      "2026-04-27-cape-cod-s-blue-blood-quota-retreat-leaves-a-crab-test-unsettled"
+      "2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume"
     ],
     "desk_pulse": [
+      {
+        "count": 1,
+        "latest_ts": 1777422600.0,
+        "story_id": "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
+        "section": "Politics / Security"
+      },
       {
         "count": 28,
         "latest_ts": 1777392000.0,
@@ -126,12 +132,6 @@
         "latest_ts": 1777288860.0,
         "story_id": "2026-04-27-venice-s-qr-code-asks-who-gets-to-stay",
         "section": "Ideas"
-      },
-      {
-        "count": 2,
-        "latest_ts": 1777288860.0,
-        "story_id": "2026-04-27-cnmc-reopens-iberia-s-blackout-ledger",
-        "section": "Systems"
       }
     ]
   }

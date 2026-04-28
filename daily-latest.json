@@ -2,6 +2,33 @@
   "edition_date": "2026-04-28",
   "articles": [
     {
+      "title": "A Gunman, a Ballroom, and a Shaken Washington",
+      "summary": "The White House Correspondents’ Dinner was supposed to be a night of jokes, journalism, and Washington ceremony. Instead, authorities say an armed suspect attempted to breach security near the ballroom, turning one of the capital’s most symbolic events into a national security crisis.",
+      "url": "daily/2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington.html",
+      "section": "Politics / Security",
+      "image": "assets/ai-thumbnails/whcd-shaken-washington.png",
+      "image_credit": "whcd-shaken-washington.png",
+      "published": "April 28, 2026 • 8:30 p.m.",
+      "published_iso": "2026-04-28T20:30:00-04:00",
+      "keywords": [
+        "White House Correspondents’ Dinner",
+        "Donald Trump",
+        "Secret Service",
+        "political violence",
+        "Washington Hilton",
+        "media",
+        "security",
+        "misinformation",
+        "DOJ",
+        "FBI"
+      ],
+      "thumbnail_alt": "A tense security scene outside a formal Washington hotel ballroom after an alleged armed breach attempt",
+      "visual_archetype": "documentary security incident scene in an urban event setting",
+      "visual_brief": "A documentary nighttime exterior at a major Washington hotel entrance with police and federal vehicles, a distant cordoned checkpoint, attendees being moved away by security staff, flashing but controlled emergency light, no visible weapons discharge, no graphic injury, and no logos emphasized.",
+      "imageAlt": "A tense security scene outside a formal Washington hotel ballroom after an alleged armed breach attempt",
+      "imageCreditPlain": "Image provided for this article package."
+    },
+    {
       "title": "The Strait of Hormuz Is Now the World’s Oil Panic Button",
       "summary": "A stalled U.S.-Iran proposal, sparse tanker traffic and stranded crews have turned the Strait of Hormuz into a pressure point for oil, inflation and global diplomacy.",
       "url": "daily/2026-04-28-strait-of-hormuz-worlds-oil-panic-button.html",
