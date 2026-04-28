@@ -1,7 +1,40 @@
 {
-  "generated_at": "2026-04-27T17:06:42.398060+00:00",
-  "story_count": 364,
+  "generated_at": "2026-04-28T08:08:59.052869+00:00",
+  "story_count": 365,
   "stories": [
+    {
+      "story_id": "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
+      "cluster_id": "world-strait-hormuz-worlds-oil-panic-button",
+      "title": "The Strait of Hormuz Is Now the World’s Oil Panic Button",
+      "section": "World",
+      "section_slug": "world",
+      "type": "Daily Issue",
+      "dek": "A stalled U.S.-Iran proposal, sparse tanker traffic and stranded crews have turned the Strait of Hormuz into a pressure point for oil, inflation and global diplomacy.",
+      "url": "daily/2026-04-28-strait-of-hormuz-worlds-oil-panic-button.html",
+      "author": "Intelligent AI",
+      "published": "April 28, 2026 • 12:00 p.m.",
+      "published_iso": "2026-04-28T16:00:00+00:00",
+      "updated": "April 28, 2026 • 12:00 p.m. UTC",
+      "updated_iso": "2026-04-28T12:00:00+00:00",
+      "image": "assets/ai-thumbnails/2026-04-28-strait-of-hormuz-worlds-oil-panic-button.jpg",
+      "image_alt": "Photorealistic editorial thumbnail showing oil tankers moving through a narrow maritime channel at sunset.",
+      "keywords": [
+        "Strait of Hormuz",
+        "Iran war",
+        "oil prices",
+        "shipping",
+        "energy security",
+        "seafarers",
+        "global economy"
+      ],
+      "read_time": "",
+      "word_count": "",
+      "status": "published",
+      "priority": 0,
+      "hero_eligible": true,
+      "source": "daily-latest",
+      "is_daily": true
+    },
     {
       "story_id": "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
       "cluster_id": "world-darfurs-burn-scars-starting-read-like",

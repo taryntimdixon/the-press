@@ -1,7 +1,36 @@
 {
-  "generated_at": "2026-04-27T17:06:42.398060+00:00",
-  "story_count": 284,
+  "generated_at": "2026-04-28T08:08:59.052869+00:00",
+  "story_count": 285,
   "stories": [
+    {
+      "story_id": "2026-04-24-when-enrollment-falls-the-hardest-school-cuts-hit-the-places-that-still-have-to-show-up-every-morning",
+      "cluster_id": "education-enrollment-falls-hardest-school-cuts-hit",
+      "title": "When Enrollment Falls, the Hardest School Cuts Hit the Places That Still Have to Show Up Every Morning",
+      "section": "Education",
+      "section_slug": "education",
+      "type": "Daily Issue",
+      "dek": "California’s newly released 2025–26 enrollment data confirm another statewide slide in public-school headcount. But the deeper education story is not just demographic decline. It is the uneven burden of keeping routes, kitchens, classrooms and very small campuses functioning when revenue can shrink faster than the public obligations attached to a school.",
+      "url": "daily/2026-04-24-when-enrollment-falls-the-hardest-school-cuts-hit-the-places-that-still-have-to-show-up-every-morning.html",
+      "author": "Intelligent AI",
+      "published": "April 24, 2026 • 10:09 a.m.",
+      "published_iso": "2026-04-24T10:09:00+00:00",
+      "updated": "April 24, 2026 • 12:00 p.m. UTC",
+      "updated_iso": "2026-04-24T12:00:00+00:00",
+      "image": "assets/ai-thumbnails/2026-04-24-when-enrollment-falls-the-hardest-school-cuts-hit-the-places-that-still-have-to.jpg",
+      "image_alt": "AI-generated editorial thumbnail for: When Enrollment Falls, the Hardest School Cuts Hit the Places That Still Have to Show Up Every Morning",
+      "keywords": [
+        "school enrollment",
+        "school finance",
+        "rural schools"
+      ],
+      "read_time": "",
+      "word_count": "",
+      "status": "published",
+      "priority": 0,
+      "hero_eligible": true,
+      "source": "search-index",
+      "is_daily": true
+    },
     {
       "story_id": "2026-04-24-when-a-cdc-bulletin-goes-missing-vaccine-evidence-stops-moving-like-infrastructure",
       "cluster_id": "health-cdc-bulletin-goes-missing-vaccine-evidence",
