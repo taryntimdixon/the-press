@@ -1,6 +1,30 @@
 {
-  "edition_date": "2026-04-26",
+  "edition_date": "2026-04-28",
   "articles": [
+    {
+      "title": "The Strait of Hormuz Is Now the World’s Oil Panic Button",
+      "summary": "A stalled U.S.-Iran proposal, sparse tanker traffic and stranded crews have turned the Strait of Hormuz into a pressure point for oil, inflation and global diplomacy.",
+      "url": "daily/2026-04-28-strait-of-hormuz-worlds-oil-panic-button.html",
+      "section": "World",
+      "image": "assets/ai-thumbnails/2026-04-28-strait-of-hormuz-worlds-oil-panic-button.jpg",
+      "image_credit": "AI-generated editorial thumbnail for: The Strait of Hormuz Is Now the World’s Oil Panic Button. AI-generated image by The Press.",
+      "published": "April 28, 2026 • 12:00 p.m.",
+      "published_iso": "2026-04-28T12:00:00-04:00",
+      "keywords": [
+        "Strait of Hormuz",
+        "Iran war",
+        "oil prices",
+        "shipping",
+        "energy security",
+        "seafarers",
+        "global economy"
+      ],
+      "thumbnail_alt": "Photorealistic editorial thumbnail showing oil tankers moving through a narrow maritime channel at sunset.",
+      "visual_archetype": "Photorealistic maritime news thumbnail",
+      "visual_brief": "A photorealistic wide aerial seascape at sunrise or sunset: oil tankers move through a narrow blue channel bordered by rugged desert mountains, with warm amber clouds and distant cargo ships on the horizon. No text, no logos, no flags, no explosions; the image should feel realistic, tense and global without looking sensational.",
+      "imageAlt": "Photorealistic editorial thumbnail showing oil tankers moving through a narrow maritime channel at sunset.",
+      "imageCreditPlain": "AI-generated image by The Press."
+    },
     {
       "title": "A Spending-Cap Table Waits for the Justices",
       "summary": "The 2026 campaign-finance fight is not only about super PACs or billionaires. A small FEC chart — $65,300 for most House races, $4,071,800 for a California Senate race — could decide how closely party committees and candidates may work together before the midterms.",
