@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Standalone Preview: Musk, Altman, and OpenAI Court Battle</title>
+  <style>
+    :root {
+      --bg: #f5f3ee;
+      --ink: #1f2328;
+      --muted: #5c6670;
+      --card: #ffffff;
+      --line: #d6dbe1;
+      --accent: #133a63;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background: radial-gradient(circle at 20% 0%, #ffffff 0%, var(--bg) 45%);
+      line-height: 1.6;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 320px 1fr;
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    h1 { margin: 0 0 8px; font-size: 34px; line-height: 1.2; }
+    h2 { margin-top: 32px; }
+    a { color: var(--accent); }
+    .hero {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+      margin: 14px 0;
+      border: 1px solid var(--line);
+    }
+    @media (max-width: 900px) {
+      .wrap { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <aside class="panel" id="aside">Loading aside...</aside>
+    <article class="panel">
+      <p class="meta">Technology - Analysis</p>
+      <h1>Musk, Altman, and OpenAI Are in Court. The Real Fight Is Over Control.</h1>
+      <p class="meta">Julian Mercado - April 29, 2026 - 10:15 a.m. EDT</p>
+      <img class="hero" src="assets/technology-musk-altman-openai-court-battle-thumbnail.jpg" alt="Article thumbnail">
+      <div id="body">Loading body...</div>
+    </article>
+  </main>
+
+  <script>
+    async function loadFragment(path, id) {
+      const res = await fetch(path);
+      const html = await res.text();
+      document.getElementById(id).innerHTML = html;
+    }
+    loadFragment('content/asides/technology-musk-altman-openai-court-battle.html', 'aside');
+    loadFragment('content/bodies/technology-musk-altman-openai-court-battle.html', 'body');
+  </script>
+</body>
+</html>
