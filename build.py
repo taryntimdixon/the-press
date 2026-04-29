@@ -42,6 +42,10 @@ def latest_story_datetime() -> datetime:
 
 
 BUILD_REFERENCE_DT = latest_story_datetime()
+try:
+  STYLESHEET_VERSION = str(int((SITE_DIR / "styles.css").stat().st_mtime))
+except OSError:
+  STYLESHEET_VERSION = "1"
 
 
 def env_flag(name: str, default: bool = False) -> bool:
@@ -685,7 +689,7 @@ def page_head(title: str, description: str, canonical: str, jsonld: str = "", ex
   <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/icon-192.png" sizes="192x192" type="image/png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v={h(STYLESHEET_VERSION)}" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="alternate" type="application/rss+xml" title="{h(SITE['name'])} feed" href="feed.xml" />
   {jsonld}
