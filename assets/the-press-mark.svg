@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">The Press TP mark</title>
-  <desc id="desc">A compact TP monogram for The Press.</desc>
-  <rect x="36" y="36" width="440" height="440" rx="74" fill="#1f1f1b"/>
-  <rect x="56" y="56" width="400" height="400" rx="58" fill="none" stroke="#f4f0e8" stroke-width="12" opacity=".78"/>
-  <text x="256" y="311" text-anchor="middle" font-family="'Playfair Display', Georgia, 'Times New Roman', serif" font-size="188" font-weight="800" letter-spacing="-18" fill="#f4f0e8">TP</text>
-  <line x1="151" y1="353" x2="361" y2="353" stroke="#9d3a2d" stroke-width="14" stroke-linecap="round"/>
-</svg>
