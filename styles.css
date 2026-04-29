@@ -5320,3 +5320,28 @@ body.page-home .home-grid__aside{
   }
 }
 /* PRESS_FUTURE_NEWSROOM_END */
+
+/* OpenAI court battle article width repair */
+.page-openai-court-battle .article-shell{
+  grid-template-columns:minmax(250px,300px) minmax(0,calc(var(--content) - 300px - 1.6rem));
+}
+
+.page-openai-court-battle .article-body{
+  padding-inline:clamp(1.25rem,2vw,2rem);
+}
+
+.page-openai-court-battle .article-body p,
+.page-openai-court-battle .article-body li{
+  max-width:none;
+}
+
+@media (max-width:1120px){
+  .page-openai-court-battle .article-shell{
+    grid-template-columns:1fr;
+  }
+
+  .page-openai-court-battle .article-body p,
+  .page-openai-court-battle .article-body li{
+    max-width:70ch;
+  }
+}
