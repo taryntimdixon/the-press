@@ -150,6 +150,81 @@ def richer_existing_search_index() -> list[dict]:
     return []
 
 
+def gallery_story_rows() -> list[dict]:
+    rows: list[dict] = []
+    candidates = []
+    for filename in ("content-index.json", "search-index.json"):
+        for base in (DATA_DIR, SITE_DIR):
+            path = base / filename
+            if path not in candidates and path.exists():
+                candidates.append(path)
+
+    for path in candidates:
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        items = payload.get("stories") if isinstance(payload, dict) else payload
+        if not isinstance(items, list):
+            continue
+
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            filename = item.get("url") or item.get("filename")
+            image = item.get("image") or ""
+            if not filename or not image:
+                continue
+            if not (SITE_DIR / str(filename)).exists():
+                continue
+            rows.append(
+                {
+                    "filename": str(filename),
+                    "image": str(image),
+                    "imageAlt": str(item.get("image_alt") or item.get("imageAlt") or item.get("title") or "Story thumbnail"),
+                    "title": str(item.get("title") or "Story"),
+                    "section": str(item.get("section") or "News"),
+                    "type": str(item.get("type") or "Report"),
+                    "publishedIso": str(item.get("published_iso") or item.get("publishedIso") or ""),
+                    "updatedIso": str(item.get("updated_iso") or item.get("updatedIso") or ""),
+                    "imageWidth": item.get("imageWidth") or item.get("image_width"),
+                    "imageHeight": item.get("imageHeight") or item.get("image_height"),
+                }
+            )
+
+    if not rows:
+        rows = [
+            {
+                "filename": story["filename"],
+                "image": story["image"],
+                "imageAlt": story["imageAlt"],
+                "title": story["title"],
+                "section": story["section"],
+                "type": story["type"],
+                "publishedIso": story.get("publishedIso", ""),
+                "updatedIso": story.get("updatedIso", ""),
+                "imageWidth": story.get("imageWidth"),
+                "imageHeight": story.get("imageHeight"),
+            }
+            for story in STORIES
+            if story.get("image")
+        ]
+
+    # Keep one entry per article URL and preserve the newest thumbnail-backed stories first.
+    unique_rows: dict[str, dict] = {}
+    for row in rows:
+        unique_rows[row["filename"]] = row
+
+    def sort_key(item: dict) -> datetime:
+        return (
+            parse_iso_datetime(item.get("publishedIso"))
+            or parse_iso_datetime(item.get("updatedIso"))
+            or datetime.min
+        )
+
+    return sorted(unique_rows.values(), key=sort_key, reverse=True)
+
+
 def search_index() -> list[dict]:
     master_items = [search_index_row(story) for story in STORIES]
     existing_items = richer_existing_search_index()
@@ -822,17 +897,15 @@ def render_archive() -> str:
 
 
 def render_gallery() -> str:
+    gallery_rows = gallery_story_rows()
     tiles = "\n".join(
         f"""
-<a class="gallery-tile" href="{h(story['filename'])}">
+<a class="gallery-tile" href="{h(story['filename'])}" aria-label="{h(story['title'])}">
   <img class="gallery-tile__image" src="{h(story['image'])}" alt="{h(story['imageAlt'])}" loading="lazy" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
-  <div class="gallery-tile__overlay">
-    <p class="gallery-tile__meta">{h(story['section'])} • {h(story['type'])}</p>
-    <h2 class="gallery-tile__title">{h(story['title'])}</h2>
-  </div>
+  <span class="sr-only">{h(story['section'])} {h(story['type'])}: {h(story['title'])}</span>
 </a>
 """.strip()
-        for story in STORIES
+        for story in gallery_rows
     )
     main = f"""
 <main class="page">
