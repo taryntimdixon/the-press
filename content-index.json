@@ -1,32 +1,30 @@
 {
-  "generated_at": "2026-04-29T12:28:39.448870+00:00",
+  "generated_at": "2026-04-29T13:11:30.866976+00:00",
   "story_count": 367,
   "stories": [
     {
       "story_id": "technology-musk-altman-openai-court-battle",
-      "cluster_id": "technology-trial-openais-soul",
+      "cluster_id": "technology-trial-openais-soul-openai-elon-musk",
       "title": "The Trial Over OpenAI’s Soul",
       "section": "Technology",
       "section_slug": "technology",
       "type": "Analysis",
       "dek": "Elon Musk says OpenAI betrayed its nonprofit mission. OpenAI says Musk wanted control and lost. The court battle is really about whether the most powerful AI company in the world can still claim to serve humanity after becoming one of the richest corporate prizes in technology.",
       "url": "technology-musk-altman-openai-court-battle.html",
-      "author": "Julian Mercado",
+      "author": "Intelligent AI",
       "published": "April 29, 2026 • 10:15 a.m. EDT",
       "published_iso": "2026-04-29T14:15:00+00:00",
-      "updated": "April 29, 2026 • 12:05 p.m. EDT",
-      "updated_iso": "2026-04-29T16:05:00+00:00",
+      "updated": "",
+      "updated_iso": "",
       "image": "assets/technology-musk-altman-openai-court-battle-thumbnail.jpg",
-      "image_alt": "AI-generated editorial composite showing Elon Musk and Sam Altman facing each other with the OpenAI logo between them.",
+      "image_alt": "The Trial Over OpenAI’s Soul",
       "keywords": [
         "OpenAI",
         "Elon Musk",
         "Sam Altman",
-        "AI governance",
-        "nonprofit",
-        "court case",
         "Microsoft",
         "artificial intelligence",
+        "AI governance",
         "charitable trust",
         "technology law"
       ],
@@ -35,7 +33,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "edition",
+      "source": "search-index",
       "is_daily": false
     },
     {

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480" role="img" aria-labelledby="title desc">
+  <title id="title">Photo Workflow</title>
+  <desc id="desc">Abstract editorial illustration for Photo Workflow</desc>
+  <rect width="720" height="480" fill="#f4f0e8" />
+  <rect x="36" y="36" width="648" height="408" rx="24" fill="#fffdf9" stroke="#1f1f1b" stroke-width="2" />
+  <circle cx="233" cy="103" r="48" fill="#a63b2e" opacity=".12" />
+  <circle cx="513" cy="243" r="72" fill="#a63b2e" opacity=".10" />
+  <path d="M120 156h300M120 204h456M120 252h410M120 300h330" stroke="#1f1f1b" stroke-width="12" stroke-linecap="round" opacity=".82"/>
+  <rect x="462" y="108" width="140" height="188" rx="16" fill="none" stroke="#a63b2e" stroke-width="12"/>
+  <path d="M498 156h68M498 196h68M498 236h44" stroke="#a63b2e" stroke-width="10" stroke-linecap="round"/>
+  <text x="120" y="392" font-family="Georgia, serif" font-size="34" fill="#1f1f1b">Photo Workflow</text>
+</svg>
