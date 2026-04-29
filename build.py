@@ -525,12 +525,10 @@ def header(current_section: str = "", current_aux: str = "") -> str:
 def footer() -> str:
     newsroom_links = """
 <li><a href="archive.html">Archive</a></li>
-<li><a href="authors.html">Authors</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="authors.html">AI Newsroom</a></li>
 <li><a href="about.html">About</a></li>
-<li><a href="standards.html">Standards</a></li>
-<li><a href="corrections.html">Corrections</a></li>
 <li><a href="photo-workflow.html">Photo workflow</a></li>
-<li><a href="contact.html">Contact</a></li>
 """.strip()
     return f"""
 <footer class="site-footer">
@@ -538,7 +536,7 @@ def footer() -> str:
     <section class="footer-brand">
       <a class="masthead masthead--footer" href="index.html">{h(SITE['name'])}</a>
       <p class="footer-copy">{h(SITE['tagline'])}</p>
-      <p class="footer-copy footer-copy--small">Visible AI use, visible standards, visible source notes.</p>
+      <p class="footer-copy footer-copy--small">Visible AI use and visible source notes.</p>
     </section>
     <section>
       <h2 class="footer-heading">Newsroom</h2>
@@ -609,9 +607,6 @@ def jsonld_org() -> str:
         "url": SITE["baseUrl"],
         "logo": absolute_url("assets/favicon.svg"),
         "slogan": SITE["tagline"],
-        "publishingPrinciples": absolute_url("standards.html"),
-        "correctionsPolicy": absolute_url("corrections.html"),
-        "ethicsPolicy": absolute_url("standards.html"),
         "diversityPolicy": absolute_url("about.html"),
     }
     return f'<script type="application/ld+json">{json.dumps(obj, ensure_ascii=False)}</script>'
@@ -645,9 +640,6 @@ def jsonld_article(story: dict) -> str:
             "name": SITE["name"],
             "url": SITE["baseUrl"],
             "logo": {"@type": "ImageObject", "url": absolute_url("assets/favicon.svg")},
-            "ethicsPolicy": absolute_url("standards.html"),
-            "correctionsPolicy": absolute_url("corrections.html"),
-            "publishingPrinciples": absolute_url("standards.html"),
         },
     }
     return f'<script type="application/ld+json">{json.dumps(obj, ensure_ascii=False)}</script>'
@@ -829,6 +821,42 @@ def render_archive() -> str:
     return layout(f"Archive — {SITE['name']}", "The full archive of The Press.", "archive.html", "page-archive", main, current_aux="archive.html", jsonld=jsonld_org())
 
 
+def render_gallery() -> str:
+    tiles = "\n".join(
+        f"""
+<a class="gallery-tile" href="{h(story['filename'])}">
+  <img class="gallery-tile__image" src="{h(story['image'])}" alt="{h(story['imageAlt'])}" loading="lazy" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
+  <div class="gallery-tile__overlay">
+    <p class="gallery-tile__meta">{h(story['section'])} • {h(story['type'])}</p>
+    <h2 class="gallery-tile__title">{h(story['title'])}</h2>
+  </div>
+</a>
+""".strip()
+        for story in STORIES
+    )
+    main = f"""
+<main class="page">
+  <section class="gallery-hero">
+    <p class="eyebrow">Visual archive</p>
+    <h1>Gallery</h1>
+    <p>A visual wall of every story thumbnail in The Press. Click any image to open the full article.</p>
+  </section>
+  <section class="gallery-grid">
+    {tiles}
+  </section>
+</main>
+""".strip()
+    return layout(
+        f"Gallery — {SITE['name']}",
+        "A visual gallery of every story thumbnail in The Press.",
+        "gallery.html",
+        "page-gallery",
+        main,
+        current_aux="gallery.html",
+        jsonld=jsonld_org(),
+    )
+
+
 def render_section(section: dict) -> str:
     stories = section_stories(section["slug"])
     if not stories:
@@ -873,8 +901,8 @@ def render_authors() -> str:
       <strong>Read at your own risk. Form your own conclusions.</strong>
     </p>
     <div class="pledge-hero__actions" aria-label="Pledge links">
-      <a class="pledge-btn pledge-btn--primary" href="standards.html">Read our standards</a>
-      <a class="pledge-btn pledge-btn--ghost" href="corrections.html">Check corrections</a>
+      <a class="pledge-btn pledge-btn--primary" href="archive.html">Read the latest stories</a>
+      <a class="pledge-btn pledge-btn--ghost" href="gallery.html">Open gallery</a>
     </div>
   </div>
 
@@ -1046,9 +1074,9 @@ def render_authors() -> str:
     That is the deal.
   </p>
   <div class="pledge-warning__actions">
-    <a class="pledge-btn pledge-btn--primary" href="standards.html">Standards</a>
-    <a class="pledge-btn pledge-btn--ghost" href="corrections.html">Corrections</a>
-    <a class="pledge-btn pledge-btn--ghost" href="contact.html">Contact the editor</a>
+    <a class="pledge-btn pledge-btn--primary" href="archive.html">Archive</a>
+    <a class="pledge-btn pledge-btn--ghost" href="gallery.html">Gallery</a>
+    <a class="pledge-btn pledge-btn--ghost" href="index.html">Front page</a>
   </div>
 </section>
 
@@ -1063,7 +1091,7 @@ def render_authors() -> str:
 
     return layout(
         f"AI Newsroom Pledge — {SITE['name']}",
-        "How The Press uses Intelligent AI, human editorial review, heavy sourcing, corrections, and reader skepticism.",
+      "How The Press uses Intelligent AI, human editorial review, heavy sourcing, and reader skepticism.",
         "authors.html",
         "page-authors page-pledge",
         main,
@@ -1164,7 +1192,7 @@ def render_feed() -> str:
 
 
 def render_sitemap() -> str:
-    urls = ['index.html', 'archive.html', 'authors.html', 'about.html', 'standards.html', 'corrections.html', 'contact.html', 'photo-workflow.html', '404.html']
+    urls = ['index.html', 'archive.html', 'gallery.html', 'authors.html', 'about.html', 'photo-workflow.html', '404.html']
     urls += [story["filename"] for story in STORIES]
     urlset = []
     for path in urls:
@@ -1192,6 +1220,7 @@ def build() -> None:
         )
     write_file(SITE_DIR / "index.html", render_homepage())
     write_file(SITE_DIR / "archive.html", render_archive())
+    write_file(SITE_DIR / "gallery.html", render_gallery())
     write_file(SITE_DIR / "authors.html", render_authors())
     for section in SECTIONS:
         write_file(SITE_DIR / section["filename"], render_section(section))

@@ -14,20 +14,12 @@
         "href": "archive.html"
       },
       {
-        "label": "Authors",
+        "label": "Gallery",
+        "href": "gallery.html"
+      },
+      {
+        "label": "AI Newsroom",
         "href": "authors.html"
-      },
-      {
-        "label": "Standards",
-        "href": "standards.html"
-      },
-      {
-        "label": "Corrections",
-        "href": "corrections.html"
-      },
-      {
-        "label": "Contact",
-        "href": "contact.html"
       }
     ]
   },
