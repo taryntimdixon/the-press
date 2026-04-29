@@ -888,7 +888,7 @@ button{cursor:pointer}
 .gallery-tile {
   position: relative;
   display: block;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 16px;
   background: #111;
@@ -910,10 +910,11 @@ button{cursor:pointer}
 .gallery-tile__image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transform: scale(1);
   transition: transform 220ms ease;
+  background: #0f0f0f;
 }
 
 .gallery-tile:hover .gallery-tile__image,

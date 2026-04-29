@@ -63,6 +63,26 @@ def absolute_url(path: str) -> str:
     return SITE["baseUrl"].rstrip("/") + "/" + path.lstrip("/")
 
 
+def preferred_image_path(image_path: str) -> str:
+  rel = Path(image_path)
+  if not image_path:
+    return image_path
+  if rel.is_absolute():
+    return image_path
+  source = SITE_DIR / rel
+  if not source.exists():
+    return image_path
+
+  # Prefer lossless/local higher-fidelity variants if they exist for the same stem.
+  preferred_exts = (".png", ".webp", ".jpg", ".jpeg", ".avif")
+  stem = source.with_suffix("")
+  for ext in preferred_exts:
+    candidate = stem.with_suffix(ext)
+    if candidate.exists():
+      return str(rel.with_suffix(ext))
+  return image_path
+
+
 def initials(name: str) -> str:
     parts = [part for part in name.split() if part]
     return "".join(part[0] for part in parts[:2]).upper() or "TP"
@@ -180,7 +200,7 @@ def gallery_story_rows() -> list[dict]:
             rows.append(
                 {
                     "filename": str(filename),
-                    "image": str(image),
+                "image": preferred_image_path(str(image)),
                     "imageAlt": str(item.get("image_alt") or item.get("imageAlt") or item.get("title") or "Story thumbnail"),
                     "title": str(item.get("title") or "Story"),
                     "section": str(item.get("section") or "News"),
@@ -196,7 +216,7 @@ def gallery_story_rows() -> list[dict]:
         rows = [
             {
                 "filename": story["filename"],
-                "image": story["image"],
+              "image": preferred_image_path(story["image"]),
                 "imageAlt": story["imageAlt"],
                 "title": story["title"],
                 "section": story["section"],
