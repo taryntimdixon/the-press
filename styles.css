@@ -5323,6 +5323,8 @@ body.page-home .home-grid__aside{
 
 /* OpenAI court battle article width repair */
 .page-openai-court-battle .article-shell{
+  max-width:var(--content);
+  width:100%;
   grid-template-columns:minmax(250px,300px) minmax(0,calc(var(--content) - 300px - 1.6rem));
 }
 
