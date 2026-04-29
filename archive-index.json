@@ -1,7 +1,36 @@
 {
-  "generated_at": "2026-04-28T17:12:04.324939+00:00",
-  "story_count": 286,
+  "generated_at": "2026-04-29T10:51:58.496027+00:00",
+  "story_count": 287,
   "stories": [
+    {
+      "story_id": "2026-04-24-open-source-security-s-new-scarcity-is-judgment",
+      "cluster_id": "technology-open-source-securitys-scarcity-judgment-security",
+      "title": "Open Source Security’s New Scarcity Is Judgment",
+      "section": "Technology",
+      "section_slug": "technology",
+      "type": "Daily Issue",
+      "dek": "A March 17 funding push from the Linux Foundation and major AI firms, Europe’s emerging rules for open-source software stewards, and platform moves to harden build pipelines all point to the same 2026 shift: finding flaws is getting cheaper. Deciding what is real, urgent, and safe to fix is becoming the bottleneck.",
+      "url": "daily/2026-04-24-open-source-security-s-new-scarcity-is-judgment.html",
+      "author": "Intelligent AI",
+      "published": "April 24, 2026 • 10:09 a.m.",
+      "published_iso": "2026-04-24T10:09:00+00:00",
+      "updated": "April 24, 2026 • 12:00 p.m. UTC",
+      "updated_iso": "2026-04-24T12:00:00+00:00",
+      "image": "",
+      "image_alt": "Open Source Security’s New Scarcity Is Judgment",
+      "keywords": [
+        "open source security",
+        "software supply chain",
+        "AI-generated vulnerability reports"
+      ],
+      "read_time": "",
+      "word_count": "",
+      "status": "published",
+      "priority": 0,
+      "hero_eligible": true,
+      "source": "search-index",
+      "is_daily": true
+    },
     {
       "story_id": "2026-04-24-the-refund-is-becoming-a-debt-collection-battleground",
       "cluster_id": "economics-refund-becoming-debt-collection-battleground-student",
