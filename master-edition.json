@@ -39,6 +39,7 @@
       "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html"
     ],
     "secondary": [
+      "technology-musk-altman-openai-court-battle.html",
       "technology-ai-needs-electricity-steel-and-time.html",
       "health-bird-flu-changed-farm-policy-before-it-changed-human-medicine.html",
       "economics-shelter-is-still-the-inflation-story-people-live-inside.html"
@@ -255,6 +256,7 @@
         "manufacturing"
       ],
       "stories": [
+        "technology-musk-altman-openai-court-battle.html",
         "technology-ai-needs-electricity-steel-and-time.html"
       ]
     },
@@ -306,6 +308,47 @@
     }
   ],
   "stories": [
+    {
+      "slug": "technology-musk-altman-openai-court-battle",
+      "filename": "technology-musk-altman-openai-court-battle.html",
+      "title": "Musk, Altman, and OpenAI Are in Court. The Real Fight Is Over Control.",
+      "section": "Technology",
+      "sectionSlug": "technology",
+      "type": "Analysis",
+      "author": "Julian Mercado",
+      "authorSlug": "julian-mercado",
+      "authorRole": "Technology & Industry Correspondent",
+      "publishedLabel": "April 29, 2026 - 10:15 a.m. EDT",
+      "updatedLabel": "April 29, 2026 - 12:05 p.m. EDT",
+      "publishedIso": "2026-04-29T10:15:00-04:00",
+      "updatedIso": "2026-04-29T12:05:00-04:00",
+      "wordCount": "934 words",
+      "wordCountNumber": 934,
+      "readTime": "5 min read",
+      "dek": "The lawsuit is not only a founder feud. It is a legal test of how AI labs govern mission promises after they become capital-intensive infrastructure companies.",
+      "image": "assets/technology-musk-altman-openai-court-battle-thumbnail.jpg",
+      "imageAlt": "A courtroom silhouette over code and corporate logos representing the OpenAI governance dispute",
+      "imageCaptionHtml": "AI-generated editorial composite illustrating coverage of the Musk, Altman, and OpenAI court dispute. This is not a real photograph.",
+      "imageCreditPlain": "AI-generated editorial composite illustrating coverage of the Musk, Altman, and OpenAI court dispute. This is not a real photograph.",
+      "keywords": [
+        "OpenAI",
+        "Elon Musk",
+        "Sam Altman",
+        "AI governance",
+        "nonprofit",
+        "court case"
+      ],
+      "asideFile": "content/asides/technology-musk-altman-openai-court-battle.html",
+      "bodyFile": "content/bodies/technology-musk-altman-openai-court-battle.html",
+      "excerpt": "The legal battle between Musk and OpenAI leadership could set a precedent for how AI labs balance founding mission claims with later commercial governance.",
+      "related": [
+        "technology-ai-needs-electricity-steel-and-time.html",
+        "philosophy-the-missing-word-in-the-ai-debate-is-judgment.html",
+        "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html"
+      ],
+      "imageWidth": 1600,
+      "imageHeight": 1200
+    },
     {
       "slug": "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself",
       "filename": "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html",
