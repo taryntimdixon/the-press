@@ -1,4 +1,4 @@
-# Musk, Altman, and OpenAI Are in Court. The Real Fight Is Over Control.
+# The Trial Over OpenAI’s Soul
 
 **Section:** Technology  
 **Type:** Analysis  
