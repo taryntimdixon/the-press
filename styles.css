@@ -5453,29 +5453,39 @@ body.page-home .home-grid__aside{
 }
 /* PRESS_FUTURE_NEWSROOM_END */
 
-/* OpenAI court battle article width repair */
-.page-openai-court-battle .article-shell{
-  max-width:var(--content);
-  width:100%;
-  grid-template-columns:minmax(250px,300px) minmax(0,calc(var(--content) - 300px - 1.6rem));
+/* Feature article width repair */
+.page-article .article{
+  width:min(calc(100% - 2rem), var(--content));
 }
 
-.page-openai-court-battle .article-body{
+.page-article .article > .article-shell{
+  display:grid !important;
+  max-width:var(--content);
+  width:100%;
+  grid-template-columns:minmax(220px,280px) minmax(0,1fr) !important;
+  column-gap:clamp(1.25rem,2vw,2rem);
+}
+
+.page-article .article > .article-shell > .article-body{
+  width:100%;
+  max-width:none !important;
   padding-inline:clamp(1.25rem,2vw,2rem);
 }
 
-.page-openai-court-battle .article-body p,
-.page-openai-court-battle .article-body li{
+.page-article .article > .article-shell > .article-body p,
+.page-article .article > .article-shell > .article-body li,
+.page-article .article > .article-shell > .article-body blockquote{
   max-width:none;
 }
 
 @media (max-width:1120px){
-  .page-openai-court-battle .article-shell{
-    grid-template-columns:1fr;
+  .page-article .article > .article-shell{
+    grid-template-columns:1fr !important;
   }
 
-  .page-openai-court-battle .article-body p,
-  .page-openai-court-battle .article-body li{
-    max-width:70ch;
+  .page-article .article > .article-shell > .article-body p,
+  .page-article .article > .article-shell > .article-body li,
+  .page-article .article > .article-shell > .article-body blockquote{
+    max-width:78ch;
   }
 }
