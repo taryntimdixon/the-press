@@ -380,6 +380,7 @@
       node.textContent = new Date().getFullYear();
     });
 
+    ensureMastheadTagline();
     setupMenu();
     setupSearch();
     setupReadingProgress();
@@ -496,6 +497,24 @@ if (!hasHomepageTargets) {
     });
     window.addEventListener('resize', () => {
       if (window.innerWidth > 700) setMenu(false);
+    });
+  }
+
+  function ensureMastheadTagline() {
+    const wraps = document.querySelectorAll('.masthead-wrap');
+    if (!wraps.length) return;
+
+    wraps.forEach((wrap) => {
+      const existing = wrap.querySelector('.masthead-tagline');
+      if (existing) {
+        existing.textContent = 'AI writes. Humans decide.';
+        return;
+      }
+
+      const tagline = document.createElement('p');
+      tagline.className = 'masthead-tagline';
+      tagline.textContent = 'AI writes. Humans decide.';
+      wrap.appendChild(tagline);
     });
   }
 
