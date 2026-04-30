@@ -5689,6 +5689,44 @@ body.page-home .home-grid__aside{
     min-height:0;
   }
 
+
+/* LIVE FRONT PAGE HEADLINE SAFETY
+   Ensure headline/dek text stays in body panel and does not overlap media. */
+body.page-home .press-future-lead,
+body.page-home .press-live-top-lead__card {
+  position: relative;
+  isolation: isolate;
+}
+
+body.page-home .press-future-lead__media,
+body.page-home .press-live-top-lead__media {
+  position: relative;
+  z-index: 1;
+}
+
+body.page-home .press-future-lead__body,
+body.page-home .press-live-top-lead__body {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+body.page-home .press-future-lead__body h1,
+body.page-home .press-future-lead__body h2,
+body.page-home .press-future-lead__body h3,
+body.page-home .press-future-lead__body p,
+body.page-home .press-live-top-lead__body h1,
+body.page-home .press-live-top-lead__body h2,
+body.page-home .press-live-top-lead__body h3,
+body.page-home .press-live-top-lead__body p {
+  position: static !important;
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+}
   .press-future-lead__media img{
     height:auto;
     min-height:0;
