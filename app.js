@@ -380,7 +380,8 @@
       node.textContent = new Date().getFullYear();
     });
 
-    ensureMastheadTagline();
+    ensureHeaderControls();
+    ensureMastheadTicker();
     setupMenu();
     setupSearch();
     setupReadingProgress();
@@ -402,6 +403,7 @@
 
     loadStoryIndex().then((stories) => {
       enhanceBreakingStrip(stories);
+      renderMastheadTicker(stories);
       injectEditionRadar(stories);
       pressRefreshHomepageStoryBlocks(stories);
       renderSectionPage(stories);
@@ -500,22 +502,106 @@ if (!hasHomepageTargets) {
     });
   }
 
-  function ensureMastheadTagline() {
-    const wraps = document.querySelectorAll('.masthead-wrap');
-    if (!wraps.length) return;
+  function ensureHeaderControls() {
+    const siteHeader = document.querySelector('[data-site-header]');
+    const mastheadRow = siteHeader?.querySelector('.masthead-row');
 
-    wraps.forEach((wrap) => {
-      const existing = wrap.querySelector('.masthead-tagline');
-      if (existing) {
-        existing.textContent = 'AI writes. Humans decide.';
-        return;
-      }
+    if (!siteHeader || !mastheadRow) return;
 
-      const tagline = document.createElement('p');
-      tagline.className = 'masthead-tagline';
-      tagline.textContent = 'AI writes. Humans decide.';
-      wrap.appendChild(tagline);
-    });
+    let actions = mastheadRow.querySelector('.masthead-actions');
+    const utilityNav = mastheadRow.querySelector('.utility-nav') || siteHeader.querySelector('.utility-nav');
+
+    if (!actions) {
+      actions = document.createElement('div');
+      actions.className = 'masthead-actions';
+      mastheadRow.appendChild(actions);
+    }
+
+    if (utilityNav && utilityNav.parentElement !== actions) {
+      actions.appendChild(utilityNav);
+    }
+
+    let controls = actions.querySelector('.header-controls');
+
+    if (!controls) {
+      controls = document.createElement('div');
+      controls.className = 'header-controls';
+      actions.appendChild(controls);
+    }
+
+    const themeToggle = siteHeader.querySelector('[data-theme-toggle]') || document.createElement('button');
+    themeToggle.classList.add('theme-toggle');
+    themeToggle.type = 'button';
+    themeToggle.setAttribute('data-theme-toggle', '');
+    themeToggle.setAttribute('title', 'Toggle dark/light mode');
+    if (!themeToggle.textContent.trim()) themeToggle.textContent = '☀︎';
+
+    const searchButton = siteHeader.querySelector('[data-search-open]') || document.createElement('button');
+    searchButton.classList.add('search-trigger');
+    searchButton.type = 'button';
+    searchButton.setAttribute('data-search-open', '');
+    searchButton.textContent = 'Search';
+
+    const menuButton = siteHeader.querySelector('[data-menu-toggle]');
+
+    controls.appendChild(themeToggle);
+    controls.appendChild(searchButton);
+
+    if (menuButton && menuButton.parentElement !== controls) {
+      controls.appendChild(menuButton);
+    }
+
+    siteHeader.querySelectorAll('[data-reader-mode-toggle]').forEach((button) => button.remove());
+    siteHeader.querySelector('.topbar')?.remove();
+  }
+
+  function ensureMastheadTicker() {
+    const siteHeader = document.querySelector('[data-site-header]');
+    const mastheadRow = siteHeader?.querySelector('.masthead-row');
+    const wrap = mastheadRow?.querySelector('.masthead-wrap');
+
+    if (!siteHeader || !mastheadRow || !wrap) return;
+
+    siteHeader.querySelectorAll('.masthead-tagline').forEach((tagline) => tagline.remove());
+
+    let ticker = mastheadRow.querySelector('.masthead-ticker');
+
+    if (!ticker) {
+      ticker = wrap.querySelector('.masthead-ticker') || document.createElement('div');
+      ticker.className = 'masthead-ticker';
+      ticker.setAttribute('aria-label', 'Latest headlines');
+      ticker.innerHTML = '<div class="masthead-ticker__items" data-masthead-ticker></div>';
+    }
+
+    if (ticker.parentElement !== mastheadRow) {
+      mastheadRow.appendChild(ticker);
+    }
+  }
+
+  function renderMastheadTicker(stories) {
+    const itemsBox = document.querySelector('[data-masthead-ticker]');
+    if (!itemsBox || !Array.isArray(stories) || !stories.length) return;
+
+    const seen = new Set();
+    const headlines = stories
+      .filter((story) => story?.title && story?.url)
+      .filter((story) => {
+        const key = `${story.title}|${story.url}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      })
+      .slice(0, 14);
+
+    if (!headlines.length) return;
+
+    const links = headlines
+      .map((story) => `<a href="${escapeAttribute(story.url)}"><span>${escapeHtml(story.section || 'News')}</span>${escapeHtml(story.title)}</a>`)
+      .join('');
+    const charBudget = headlines.reduce((sum, story) => sum + Math.min(110, story.title.length), 0);
+
+    itemsBox.style.setProperty('--masthead-ticker-duration', `${Math.max(70, Math.min(150, Math.round(charBudget / 7)))}s`);
+    itemsBox.innerHTML = `<div class="masthead-ticker__track">${links}${links}</div>`;
   }
 
   function normalizeVisibleBylines(root) {
@@ -2560,9 +2646,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function installReadingModes() {
-    applyStoredMode();
-
     const topbar = document.querySelector('.topbar__actions');
+
+    if (!topbar) {
+      setMode('standard');
+      try {
+        localStorage.removeItem(MODE_KEY);
+      } catch (_) {}
+      return;
+    }
+
+    applyStoredMode();
 
     if (!topbar || document.querySelector('[data-reader-mode-toggle]')) return;
 

@@ -601,21 +601,22 @@ def header(current_section: str = "", current_aux: str = "") -> str:
         utility_links.append(f'<a class="utility-link" href="{h(link["href"])}"{current}>{h(link["label"])}</a>')
     return f"""
 <header class="site-header" data-site-header>
-  <div class="topbar">
-    <div class="topbar__inner">
-      <p class="edition-note">{h(SITE['editionNote'])}</p>
-      <div class="topbar__actions">
-        <button class="search-trigger" type="button" data-search-open>Search</button>
-      </div>
-    </div>
-  </div>
   <div class="masthead-row">
     <div class="masthead-wrap">
       <a class="masthead masthead-with-logo" href="index.html" aria-label="The Press home"><img class="masthead-logo" src="assets/the-press-logo.svg" alt="The Press logo" decoding="async" /></a>
     </div>
-    <nav class="utility-nav" aria-label="Utility navigation">
-      {' '.join(utility_links)}
-    </nav>
+    <div class="masthead-actions">
+      <nav class="utility-nav" aria-label="Utility navigation">
+        {' '.join(utility_links)}
+      </nav>
+      <div class="header-controls">
+        <button aria-label="Toggle dark mode" class="theme-toggle" data-theme-toggle title="Toggle dark/light mode" type="button">☀︎</button>
+        <button class="search-trigger" type="button" data-search-open>Search</button>
+      </div>
+    </div>
+    <div class="masthead-ticker" aria-label="Latest headlines">
+      <div class="masthead-ticker__items" data-masthead-ticker></div>
+    </div>
   </div>
 </header>
 """.strip()
