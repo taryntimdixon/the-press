@@ -6253,3 +6253,8 @@ html[data-theme="dark"] .edition-radar__desks span{
     max-width:78ch;
   }
 }
+
+/* The homepage live deck already has story cards and the queue; hide the redundant topic-chip row. */
+body.page-home .press-signal-board__topics{
+  display:none !important;
+}

@@ -860,12 +860,7 @@ if (!hasHomepageTargets) {
     };
     leadButtons.forEach((btn) => btn.addEventListener('click', () => setLead(btn.dataset.target)));
 
-    const weightedOrder = [0, 0, 0, 1, 1, 2, 3];
-    const key = new Date().toISOString().slice(0, 10).split('-').join('');
-    let hash = 0;
-    for (const char of key) hash = ((hash * 31) + char.charCodeAt(0)) >>> 0;
-    const chosen = weightedOrder[hash % weightedOrder.length];
-    const chosenButton = leadButtons[chosen];
+    const chosenButton = leadButtons.find((button) => button.classList.contains('is-active')) || leadButtons[0];
     if (chosenButton) setLead(chosenButton.dataset.target);
   }
 
@@ -1462,26 +1457,12 @@ function pressSetupLeadPanels() {
     btn.addEventListener('click', () => setLead(btn.dataset.target));
   });
 
-  const previous = Number(sessionStorage.getItem('press-last-lead-index') ?? -1);
-  let chosen = Math.floor(Math.random() * leadButtons.length);
-  if (leadButtons.length > 1 && chosen === previous) {
-    chosen = (chosen + 1) % leadButtons.length;
-  }
-  sessionStorage.setItem('press-last-lead-index', String(chosen));
-
-  const chosenButton = leadButtons[chosen];
+  const chosenButton = leadButtons.find((button) => button.classList.contains('is-active')) || leadButtons[0];
   if (chosenButton) setLead(chosenButton.dataset.target);
 }
 
 function pressShuffleArray(items) {
-  const copy = Array.isArray(items) ? items.slice() : [];
-
-  for (let i = copy.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-
-  return copy;
+  return Array.isArray(items) ? items.slice() : [];
 }
 
 function pressPickStorySet(source, count, used, uniqueSections = false) {
@@ -3985,18 +3966,16 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove('press-page-leaving');
   }
 
-  function activateRandomLeadPanel() {
+  function syncActiveLeadPanel() {
     const panels = Array.from(document.querySelectorAll('[data-press-lead-panel], .lead-panel, .daily-lead-panel'));
     if (panels.length < 2) return;
 
-    const previous = sessionStorage.getItem(storageKey) || '';
     const candidates = panels.map((panel, index) => ({
       panel,
       id: panel.getAttribute('data-slug') || panel.getAttribute('data-panel-id') || panel.id || String(index)
     }));
 
-    const pool = candidates.filter((item) => item.id !== previous);
-    const chosen = (pool.length ? pool : candidates)[Math.floor(Math.random() * (pool.length ? pool.length : candidates.length))];
+    const chosen = candidates.find((item) => item.panel.classList.contains('is-active')) || candidates[0];
     if (!chosen) return;
 
     candidates.forEach((item) => {
@@ -4017,7 +3996,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function run() {
     clearTransitionState();
-    activateRandomLeadPanel();
+    syncActiveLeadPanel();
   }
 
   if (document.readyState === 'loading') {
@@ -4026,7 +4005,7 @@ document.addEventListener("DOMContentLoaded", () => {
     run();
   }
   window.addEventListener('pageshow', run);
-  window.addEventListener('load', () => setTimeout(run, 80));
+  window.addEventListener('load', run);
 })();
 
 /* PRESS_FUTURE_NEWSROOM_START
@@ -4062,14 +4041,14 @@ document.addEventListener("DOMContentLoaded", () => {
     'Pop Culture': '#ff7fbf'
   };
 
+  const HERO_STORAGE_KEY = 'press-future-newsroom-hero-url';
+
   const STOP_WORDS = new Set([
     'the', 'and', 'for', 'that', 'with', 'from', 'this', 'into', 'over', 'under', 'after', 'before', 'will',
     'have', 'has', 'are', 'was', 'were', 'not', 'now', 'new', 'why', 'how', 'what', 'when', 'where', 'who',
     'its', 'their', 'they', 'them', 'than', 'then', 'still', 'about', 'could', 'would', 'should', 'your',
     'our', 'out', 'off', 'more', 'less', 'again', 'only', 'most', 'just', 'can'
   ]);
-
-  const HERO_STORAGE_KEY = 'press-future-newsroom-hero-url';
 
   let futureState = null;
   let commandOpen = false;
@@ -4270,6 +4249,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!candidates.length) return source[0] || null;
 
+    const preselectedUrl = normalizeUrl(window.__PRESS_PRESELECTED_HERO_URL__ || '');
+    if (preselectedUrl) {
+      const preselected = candidates.find(function samePreselectedHero(story) {
+        return story.url === preselectedUrl;
+      });
+      if (preselected) {
+        currentRefreshHeroUrl = preselected.url;
+        writeSessionValue(HERO_STORAGE_KEY, preselected.url);
+        return preselected;
+      }
+    }
+
     if (currentRefreshHeroUrl) {
       const alreadyChosen = candidates.find(function sameHero(story) {
         return story.url === currentRefreshHeroUrl;
@@ -4306,6 +4297,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderFutureHomepage(state) {
     if (!document.body.classList.contains('page-home')) return;
+    const preselectedUrl = normalizeUrl(window.__PRESS_PRESELECTED_HERO_URL__ || '');
+    const currentLeadUrl = normalizeUrl(document.querySelector('.press-future-lead[data-story-url]')?.getAttribute('data-story-url') || '');
+    if (preselectedUrl && currentLeadUrl === preselectedUrl) {
+      renderTopicRadar(state);
+      enhanceLeadPanel();
+      return;
+    }
     renderStudioDeck(state);
     renderTopicRadar(state);
     enhanceLeadPanel();
@@ -4325,7 +4323,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const hero = state.hero;
     const hot = state.latest.filter(function different(story) { return story.url !== hero.url; }).slice(0, 6);
-    const topTopics = state.topics.slice(0, 6);
 
     deck.innerHTML = `
       <div class="press-future-studio__inner">
@@ -4369,11 +4366,6 @@ document.addEventListener("DOMContentLoaded", () => {
               `;
             }).join('')}
           </div>
-          <div class="press-signal-board__topics">
-            ${topTopics.map(function topicChip(topic) {
-              return `<button type="button" class="press-topic-chip" data-future-topic="${escapeAttr(topic.section)}" style="--topic-color:${escapeAttr(topic.color)}"><span>${escapeHtml(topic.section)}</span></button>`;
-            }).join('')}
-          </div>
           <div class="press-signal-board__queue">
             <p class="press-signal-board__label">Next in the file</p>
             ${hot.slice(0, 3).map(function queueItem(story, index) {
@@ -4391,12 +4383,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </aside>
       </div>
     `;
-
-    deck.querySelectorAll('[data-future-topic]').forEach(function bindTopic(button) {
-      button.addEventListener('click', function onTopicClick() {
-        openCommand(button.getAttribute('data-future-topic') || '');
-      });
-    });
   }
 
   function renderTopicRadar(state) {
