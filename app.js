@@ -395,6 +395,8 @@
     relabelUtilityNav();
     injectReadAloudControls();
     prettifySourceLinks(document);
+    addInlineSourceMarkers(document);
+    setupArticleTrustTools();
     extendSectionNavigation();
     setupDarkMode();
     injectShareButtons();
@@ -742,6 +744,190 @@ if (!hasHomepageTargets) {
 
     stop.addEventListener('click', stopSpeech);
     window.addEventListener('beforeunload', stopSpeech);
+  }
+
+  function setupArticleTrustTools() {
+    const article = document.querySelector('body.page-article .article, body.page-article .article-shell, .page-article .article, .page-article .article-shell');
+    const body = article?.querySelector('.article-body, [data-article-body]');
+    if (!article || !body) return;
+
+    injectArticleDisclosure(article);
+    setupArticleSourceDrawer(article);
+  }
+
+  function injectArticleDisclosure(article) {
+    if (article.querySelector('[data-article-trust-card]')) return;
+
+    const disclosure = document.createElement('section');
+    disclosure.className = 'article-trust-card';
+    disclosure.setAttribute('data-article-trust-card', '');
+    disclosure.setAttribute('aria-label', 'Editorial and AI disclosure');
+    disclosure.innerHTML = `
+      <div class="article-trust-card__copy">
+        <p class="article-trust-card__kicker">Editorial note</p>
+        <p class="article-trust-card__text">Written by Intelligent AI and checked through The Press editorial workflow for sourcing, clarity, and corrections. Inline markers connect claims to the source notes.</p>
+        <div class="article-trust-card__badges" aria-label="Story review status">
+          <span>AI assisted</span>
+          <span>Human reviewed</span>
+        </div>
+      </div>
+      <button class="article-trust-card__button" type="button" data-source-drawer-open>Source drawer</button>
+    `;
+
+    const meta = article.querySelector('.article-meta');
+    if (meta) {
+      meta.insertAdjacentElement('afterend', disclosure);
+    } else {
+      (article.querySelector('.article-hero') || article).appendChild(disclosure);
+    }
+  }
+
+  function setupArticleSourceDrawer(article) {
+    if (document.querySelector('[data-article-source-drawer]')) {
+      bindArticleSourceButtons();
+      return;
+    }
+
+    const sources = collectArticleSources(article);
+    const sourceItems = sources.length
+      ? sources.map((source, index) => `
+          <li${source.href ? ` data-source-drawer-url="${escapeAttribute(source.href)}"` : ''}>
+            <span class="article-source-drawer__number">${index + 1}</span>
+            <div>
+              ${source.href ? `<a href="${escapeAttribute(source.href)}" rel="noopener noreferrer" data-source-drawer-link>${escapeHtml(source.label)}</a>` : `<strong>${escapeHtml(source.label)}</strong>`}
+              ${source.detail ? `<p>${escapeHtml(source.detail)}</p>` : ''}
+            </div>
+          </li>
+        `).join('')
+      : '<li><span class="article-source-drawer__number">1</span><div><strong>Source notes</strong><p>No source list was found on this story yet.</p></div></li>';
+
+    const drawer = document.createElement('aside');
+    drawer.className = 'article-source-drawer';
+    drawer.setAttribute('data-article-source-drawer', '');
+    drawer.setAttribute('aria-label', 'Article source drawer');
+    drawer.setAttribute('aria-modal', 'true');
+    drawer.setAttribute('role', 'dialog');
+    drawer.hidden = true;
+    drawer.innerHTML = `
+      <button class="article-source-drawer__scrim" type="button" data-source-drawer-close aria-label="Close source drawer"></button>
+      <div class="article-source-drawer__panel" role="document">
+        <div class="article-source-drawer__header">
+          <div>
+            <p class="article-source-drawer__kicker">Source trail</p>
+            <h2>How this story is backed up</h2>
+          </div>
+          <button class="article-source-drawer__close" type="button" data-source-drawer-close aria-label="Close source drawer">Close</button>
+        </div>
+        <p class="article-source-drawer__intro">These are the source notes attached to the article. The numbered markers in the story point back to this record.</p>
+        <ol class="article-source-drawer__list">
+          ${sourceItems}
+        </ol>
+      </div>
+    `;
+
+    document.body.appendChild(drawer);
+    bindArticleSourceButtons();
+  }
+
+  function collectArticleSources(article) {
+    const selectors = [
+      '#source-notes .source-list li',
+      '#source-notes li',
+      '.article-sources li',
+      '.source-notes li',
+      '.source-list li',
+    ];
+    const seen = new Set();
+    const items = [];
+
+    selectors.forEach((selector) => {
+      article.querySelectorAll(selector).forEach((item) => {
+        if (seen.has(item)) return;
+        seen.add(item);
+
+        const primaryLink = Array.from(item.querySelectorAll('a[href]')).find((link) => {
+          const href = link.getAttribute('href') || '';
+          return /^https?:\/\//i.test(href);
+        }) || item.querySelector('a[href]');
+        const sourceName = collapseWhitespace(item.querySelector('strong')?.textContent || '');
+        const linkText = collapseWhitespace(primaryLink?.textContent || '');
+        const fullText = collapseWhitespace(item.textContent || '');
+        const label = sourceName || linkText || `Source ${items.length + 1}`;
+        let detail = sourceName && linkText ? linkText : fullText;
+
+        if (!detail || detail === label) {
+          detail = fullText.replace(label, '');
+        }
+        detail = collapseWhitespace(detail.replace(/^[,.:;\-\s]+/, '').replace(/\.$/, ''));
+
+        items.push({
+          label,
+          detail,
+          href: primaryLink?.getAttribute('href') || '',
+        });
+      });
+    });
+
+    return items;
+  }
+
+  function bindArticleSourceButtons() {
+    const drawer = document.querySelector('[data-article-source-drawer]');
+    if (!drawer) return;
+
+    let lastSourceDrawerFocus = null;
+
+    const closeDrawer = () => {
+      drawer.hidden = true;
+      document.documentElement.classList.remove('source-drawer-open');
+      if (lastSourceDrawerFocus && typeof lastSourceDrawerFocus.focus === 'function') {
+        lastSourceDrawerFocus.focus({ preventScroll: true });
+      }
+    };
+
+    const openDrawer = () => {
+      lastSourceDrawerFocus = document.activeElement;
+      drawer.hidden = false;
+      document.documentElement.classList.add('source-drawer-open');
+      drawer.querySelector('.article-source-drawer__close')?.focus({ preventScroll: true });
+    };
+
+    document.querySelectorAll('[data-source-drawer-open]').forEach((button) => {
+      if (button.dataset.sourceDrawerBound === 'true') return;
+      button.dataset.sourceDrawerBound = 'true';
+      button.addEventListener('click', openDrawer);
+    });
+
+    drawer.querySelectorAll('[data-source-drawer-close]').forEach((button) => {
+      if (button.dataset.sourceDrawerBound === 'true') return;
+      button.dataset.sourceDrawerBound = 'true';
+      button.addEventListener('click', closeDrawer);
+    });
+
+    if (drawer.dataset.sourceLinkBound !== 'true') {
+      drawer.dataset.sourceLinkBound = 'true';
+      drawer.addEventListener('click', (event) => {
+        const target = event.target instanceof Element ? event.target : null;
+        const sourceItem = target?.closest('[data-source-drawer-url]');
+        const link = target?.closest('[data-source-drawer-link]') || sourceItem?.querySelector('[data-source-drawer-link]');
+        if (!link || !drawer.contains(link)) return;
+
+        const href = link.getAttribute('href') || '';
+        const plainClick = event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+        if (!plainClick || !href || href.startsWith('#') || /^(mailto|tel|javascript):/i.test(href)) return;
+
+        event.preventDefault();
+        closeDrawer();
+        window.location.assign(link.href);
+      });
+    }
+
+    if (drawer.dataset.escapeBound !== 'true') {
+      drawer.dataset.escapeBound = 'true';
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !drawer.hidden) closeDrawer();
+      });
+    }
   }
 
   function bindThumbnailFallbacks(root) {
@@ -1104,7 +1290,7 @@ function enhanceBreakingStrip(stories) {
   }
 
   function prettifySourceLinks(root) {
-    root.querySelectorAll('.source-notes a, .source-list a, .article-source-notes a, .generated-story .source-notes a').forEach((a) => {
+    root.querySelectorAll('.source-notes a, .source-list a, .article-sources a, .article-source-notes a, .generated-story .source-notes a').forEach((a) => {
       const raw = collapseWhitespace(a.textContent || '');
       const href = a.getAttribute('href') || '';
       if (!raw || !/^https?:\/\//i.test(raw)) return;
@@ -1113,6 +1299,70 @@ function enhanceBreakingStrip(stories) {
         a.textContent = humanSourceLabel(url.hostname, url.pathname);
       } catch (_) {}
     });
+  }
+
+  function addInlineSourceMarkers(root) {
+    const page = root.body || document.body;
+    if (!page?.classList?.contains('page-article')) return;
+
+    const article = root.querySelector('body.page-article .article, body.page-article .article-shell, .page-article .article, .page-article .article-shell');
+    const body = article?.querySelector('.article-body, [data-article-body]');
+    if (!article || !body || body.querySelector('.source-ref')) return;
+
+    const sources = collectArticleSourcesForMarkers(article);
+    if (!sources.length) return;
+
+    const paragraphs = Array.from(body.querySelectorAll('p'))
+      .filter((paragraph) => {
+        if (paragraph.closest('.article-sources, #source-notes, .source-notes, .related-block, .share-row')) return false;
+        if (paragraph.querySelector('.source-ref')) return false;
+        return collapseWhitespace(paragraph.textContent || '').length >= 90;
+      });
+
+    if (!paragraphs.length) return;
+
+    sources.forEach((source, index) => {
+      const targetIndex = Math.min(
+        paragraphs.length - 1,
+        Math.floor((index * paragraphs.length) / Math.max(sources.length, 1))
+      );
+      const target = paragraphs[targetIndex];
+      const sup = document.createElement('sup');
+      const link = document.createElement('a');
+
+      sup.className = 'source-ref source-ref--auto';
+      link.href = `#${source.id}`;
+      link.textContent = `[${index + 1}]`;
+      link.setAttribute('aria-label', `Source ${index + 1}`);
+      sup.appendChild(link);
+      target.appendChild(sup);
+    });
+  }
+
+  function collectArticleSourcesForMarkers(article) {
+    const selectors = [
+      '#source-notes .source-list li',
+      '#source-notes li',
+      '.article-sources li',
+      '.source-notes li',
+      '.source-list li',
+    ];
+    const seen = new Set();
+    const sources = [];
+
+    selectors.forEach((selector) => {
+      article.querySelectorAll(selector).forEach((item) => {
+        if (seen.has(item)) return;
+        seen.add(item);
+        if (!collapseWhitespace(item.textContent || '')) return;
+
+        const index = sources.length + 1;
+        if (!item.id) item.id = `source-${index}`;
+        sources.push({ id: item.id });
+      });
+    });
+
+    return sources;
   }
 
   function humanSourceLabel(hostname, pathname) {
@@ -1296,6 +1546,7 @@ function enhanceBreakingStrip(stories) {
     const meta = document.querySelector('.article-meta');
     if (!body || !meta) return;
     if (meta.querySelector('[data-reading-time]')) return;
+    if (/\b\d+\s+min\s+read\b/i.test(meta.textContent || '')) return;
     const words = (body.textContent || '').trim().split(/\s+/).length;
     const mins = Math.max(1, Math.round(words / 230));
     const badge = document.createElement('span');

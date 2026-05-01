@@ -46,6 +46,10 @@ try:
   STYLESHEET_VERSION = str(int((SITE_DIR / "styles.css").stat().st_mtime))
 except OSError:
   STYLESHEET_VERSION = "1"
+try:
+  APP_VERSION = str(int((SITE_DIR / "app.js").stat().st_mtime))
+except OSError:
+  APP_VERSION = "1"
 
 
 def env_flag(name: str, default: bool = False) -> bool:
@@ -758,7 +762,7 @@ def layout(title: str, description: str, canonical: str, body_class: str, main_h
   {header(current_section=current_section, current_aux=current_aux)}
   {main_html}
   {footer()}
-  <script src="app.js" defer></script>
+  <script src="app.js?v={h(APP_VERSION)}" defer></script>
 </body>
 </html>
 """.strip() + "\n"
