@@ -512,7 +512,8 @@ def build_placements(stories: list[Story]) -> dict[str, Any]:
     )
 
     secondary = pick(cluster_pool, 3, used, unique_sections=True)
-    latest = freshest_per_cluster(stories)[:12]
+    hero_ids = {s.story_id for s in hero}
+    latest = [s for s in freshest_per_cluster(stories) if s.story_id not in hero_ids][:15]
     daily = [s for s in stories if s.is_daily][:10] or latest[:10]
 
     most_read = pick(

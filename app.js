@@ -2411,7 +2411,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }));
     }
 
-    const latest = uniqueByCluster(all).slice(0, 15);
+    const latestPool = uniqueByCluster(all);
+    const latest = latestPool.slice(0, 15);
+    const heroUrls = new Set(hero.map((story) => story.url));
+    const recencyTicker = latestPool.filter((story) => !heroUrls.has(story.url)).slice(0, 15);
     const daily = all.filter((story) => story.isDaily).slice(0, 15);
     const railUsed = new Set([...hero, ...secondaryFinal].map((story) => story.clusterId));
     const railPool = clusterFresh.filter((story) => !railUsed.has(story.clusterId));
@@ -2436,6 +2439,7 @@ document.addEventListener("DOMContentLoaded", () => {
       mostRead: mostReadFinal,
       editorsPicks: editorsFinal,
       latest,
+      recencyTicker,
       daily: daily.length >= 5 ? daily : latest.slice(0, 15),
       breaking,
       deskPulse,
@@ -2644,7 +2648,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderDeskPulse(model);
     renderCatchUp(model);
     renderHero(model.hero);
-    renderSecondary(model.secondary);
+    renderSecondary(model.recencyTicker || model.latest, model.hero);
     renderRail('.rail--most-read .link-list', model.mostRead, {
       ranked: true,
       reason: 'Trending because it is fresh, prominent, and part of an active topic cluster.',
@@ -2863,7 +2867,53 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function renderSecondary(stories) {
+  function recencyTickerCard(story, duplicate = false) {
+    const tabAttr = duplicate ? ' tabindex="-1"' : '';
+    const imageHtml = story.image ? `
+      <span class="home-recency-card__media">
+        <img alt="${escapeAttr(story.imageAlt || story.title)}" decoding="async" loading="lazy" src="${escapeAttr(story.image)}" />
+      </span>
+    ` : '<span class="home-recency-card__media home-recency-card__media--empty"></span>';
+
+    return `
+      <a class="home-recency-card" href="${escapeAttr(story.url)}" aria-label="${escapeAttr(story.title)}"${tabAttr}>
+        ${imageHtml}
+        <span class="home-recency-card__body">
+          <span class="home-recency-card__kicker">${escapeHtml(story.section)} • ${escapeHtml(story.type)}</span>
+          <strong>${escapeHtml(story.title)}</strong>
+          <span class="home-recency-card__meta">${escapeHtml(story.published || freshnessLabel(story))}</span>
+        </span>
+      </a>
+    `;
+  }
+
+  function removeHeroStories(stories, heroStories, limit = 15) {
+    if (!Array.isArray(stories)) return [];
+    const heroUrls = new Set((heroStories || []).map((story) => story?.url).filter(Boolean));
+    return stories.filter((story) => !heroUrls.has(story.url)).slice(0, limit);
+  }
+
+  function renderSecondary(stories, heroStories = []) {
+    const ticker = document.querySelector('[data-home-recency-ticker]');
+    const latest = removeHeroStories(stories, heroStories);
+
+    if (ticker && latest.length) {
+      const duration = Math.max(86, Math.min(150, latest.length * 8));
+      ticker.style.setProperty('--home-recency-duration', `${duration}s`);
+      ticker.innerHTML = `
+        <div class="home-recency-ticker__track">
+          <div class="home-recency-ticker__set">
+            ${latest.map((story) => recencyTickerCard(story)).join('')}
+          </div>
+          <div class="home-recency-ticker__set" aria-hidden="true">
+            ${latest.map((story) => recencyTickerCard(story, true)).join('')}
+          </div>
+        </div>
+      `;
+      bindImageFallbacks(ticker);
+      return;
+    }
+
     const grid = document.querySelector('.home-grid__main .cards-grid.cards-grid--three');
 
     if (!grid || !stories?.length) return;

@@ -138,6 +138,59 @@ def homepage_lead_stories() -> list[dict]:
     return final[:HOME_HERO_TARGET]
 
 
+def homepage_recency_stories(hero_stories: list[dict], limit: int = 15) -> list[dict]:
+    hero_files = {str(story.get("filename") or "") for story in hero_stories}
+    final: list[dict] = []
+    seen: set[str] = set(hero_files)
+
+    for story in homepage_recency_pool():
+        add_unique_story(final, seen, story)
+        if len(final) >= limit:
+            break
+
+    return final
+
+
+def homepage_recency_pool() -> list[dict]:
+    index_path = SITE_DIR / "content-index.json"
+    if not index_path.exists():
+        return STORIES
+
+    try:
+        payload = json.loads(index_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return STORIES
+
+    index_stories = payload.get("stories")
+    if not isinstance(index_stories, list):
+        return STORIES
+
+    pool: list[dict] = []
+    seen: set[str] = set()
+    for item in index_stories:
+        if not isinstance(item, dict):
+            continue
+        filename = str(item.get("filename") or item.get("url") or "")
+        if not filename or filename in seen:
+            continue
+        seen.add(filename)
+        canonical = STORY_BY_FILE.get(filename)
+        if canonical:
+            pool.append(canonical)
+            continue
+        pool.append({
+            "filename": filename,
+            "title": item.get("title") or "Untitled story",
+            "section": item.get("section") or "News",
+            "type": item.get("type") or "Story",
+            "publishedLabel": item.get("published") or item.get("publishedLabel") or "Recently published",
+            "image": item.get("image") or "",
+            "imageAlt": item.get("imageAlt") or item.get("title") or "Story thumbnail",
+        })
+
+    return pool or STORIES
+
+
 def initials(name: str) -> str:
     parts = [part for part in name.split() if part]
     return "".join(part[0] for part in parts[:2]).upper() or "TP"
@@ -457,6 +510,29 @@ def story_card(story: dict, extra_class: str = "", archive: bool = False) -> str
     <p class="story-card__meta">By {h(story['author'])} • {h(story['publishedLabel'])} • {h(story['readTime'])}</p>
   </div>
 </article>
+""".strip()
+
+
+def recency_ticker_item(story: dict, duplicate: bool = False) -> str:
+    tab_attr = ' tabindex="-1"' if duplicate else ""
+    media_html = (
+        f"""
+  <span class="home-recency-card__media">
+    <img src="{h(story.get('image'))}" alt="{h(story.get('imageAlt') or story.get('title') or 'Story thumbnail')}" loading="lazy" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
+  </span>
+""".rstrip()
+        if story.get("image")
+        else '  <span class="home-recency-card__media home-recency-card__media--empty"></span>'
+    )
+    return f"""
+<a class="home-recency-card" href="{h(story.get('filename'))}" aria-label="{h(story.get('title'))}"{tab_attr}>
+{media_html}
+  <span class="home-recency-card__body">
+    <span class="home-recency-card__kicker">{h(story.get('section'))} • {h(story.get('type'))}</span>
+    <strong>{h(story.get('title'))}</strong>
+    <span class="home-recency-card__meta">{h(story.get('publishedLabel'))}</span>
+  </span>
+</a>
 """.strip()
 
 
@@ -886,7 +962,8 @@ def layout(title: str, description: str, canonical: str, body_class: str, main_h
 def render_homepage() -> str:
     lead_panels = []
     lead_buttons = []
-    for idx, story in enumerate(homepage_lead_stories()):
+    lead_stories = homepage_lead_stories()
+    for idx, story in enumerate(lead_stories):
         active = " is-active" if idx == 0 else ""
         panel_width = f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ""
         panel_height = f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ""
@@ -931,7 +1008,9 @@ def render_homepage() -> str:
         lead_buttons.append(
             f'<button class="lead-nav__button{" is-active" if idx == 0 else ""}" type="button" data-lead-button data-target="lead-{idx}" aria-pressed="{str(idx == 0).lower()}"{side_slot}>{thumb}<span class="lead-nav__kicker">{h(story["section"])}</span><strong>{h(story["title"])}</strong></button>'
         )
-    secondary_cards = "\n".join(story_card(STORY_BY_FILE[file]) for file in DATA["homepage"]["secondary"] if file in STORY_BY_FILE)
+    recency_stories = homepage_recency_stories(lead_stories)
+    recency_cards = "\n".join(recency_ticker_item(story) for story in recency_stories)
+    recency_cards_duplicate = "\n".join(recency_ticker_item(story, duplicate=True) for story in recency_stories)
     most_read_html = "\n".join(ranked_list_item(STORY_BY_FILE[file], rank + 1) for rank, file in enumerate(DATA["homepage"]["mostRead"]) if file in STORY_BY_FILE)
     editors_html = "\n".join(simple_list_item(STORY_BY_FILE[file]) for file in DATA["homepage"]["editorsPicks"] if file in STORY_BY_FILE)
     latest_html = "\n".join(river_item(story) for story in STORIES[:8])
@@ -958,8 +1037,15 @@ def render_homepage() -> str:
         <h2 class="section-heading">More from the edition</h2>
         <a class="section-link" href="archive.html">Open archive</a>
       </div>
-      <div class="cards-grid cards-grid--three">
-        {secondary_cards}
+      <div class="home-recency-ticker" data-home-recency-ticker aria-label="The 15 newest stories that are not already in the hero">
+        <div class="home-recency-ticker__track">
+          <div class="home-recency-ticker__set">
+            {recency_cards}
+          </div>
+          <div class="home-recency-ticker__set" aria-hidden="true">
+            {recency_cards_duplicate}
+          </div>
+        </div>
       </div>
     </div>
     <aside class="home-grid__aside">
