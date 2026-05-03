@@ -143,6 +143,21 @@ def initials(name: str) -> str:
     return "".join(part[0] for part in parts[:2]).upper() or "TP"
 
 
+def strip_generated_body_extras(fragment: str) -> str:
+  markers = (
+    '<section id="related-stories"',
+    '<section class="related-block"',
+    '<section class="ai-article-gallery"',
+    '<section class="social-embed-panel',
+  )
+  end = len(fragment)
+  for marker in markers:
+    idx = fragment.find(marker)
+    if idx != -1:
+      end = min(end, idx)
+  return fragment[:end].strip()
+
+
 def extract_story_fragment(page_html: str, rel_path: str) -> str:
   if "content/asides/" in rel_path:
     pattern = re.compile(
@@ -160,7 +175,10 @@ def extract_story_fragment(page_html: str, rel_path: str) -> str:
   match = pattern.search(page_html)
   if not match:
     raise FileNotFoundError(rel_path)
-  return match.group("content").strip()
+  content = match.group("content").strip()
+  if "content/bodies/" in rel_path:
+    return strip_generated_body_extras(content)
+  return content
 
 
 def read_fragment(rel_path: str) -> str:
@@ -240,7 +258,7 @@ def thumbnail_source_index() -> list[dict]:
 
 def merge_search_row(primary: dict, fallback: dict) -> dict:
     merged = {**fallback, **primary}
-    for field in ("image", "imageAlt", "imageWidth", "imageHeight", "publishedIso", "updatedIso"):
+    for field in ("image", "imageAlt", "imageWidth", "imageHeight", "publishedIso", "updatedIso", "keywords"):
         if not merged.get(field) and fallback.get(field):
             merged[field] = fallback[field]
     return merged
@@ -777,6 +795,8 @@ def search_overlay(search_data: list[dict]) -> str:
 
 def page_head(title: str, description: str, canonical: str, jsonld: str = "", extra_links: str = "") -> str:
     canonical_url = absolute_url(canonical)
+    head_extras = "\n".join(f"  {block}" for block in (jsonld, extra_links) if block)
+    extras_html = f"\n{head_extras}" if head_extras else ""
     return f"""
 <head>
   <meta charset="utf-8" />
@@ -793,9 +813,7 @@ def page_head(title: str, description: str, canonical: str, jsonld: str = "", ex
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="stylesheet" href="styles.css?v={h(STYLESHEET_VERSION)}" />
   <link rel="manifest" href="site.webmanifest" />
-  <link rel="alternate" type="application/rss+xml" title="{h(SITE['name'])} feed" href="feed.xml" />
-  {jsonld}
-  {extra_links}
+  <link rel="alternate" type="application/rss+xml" title="{h(SITE['name'])} feed" href="feed.xml" />{extras_html}
 </head>
 """.strip()
 
@@ -1322,6 +1340,9 @@ def render_story(story: dict) -> str:
     related_html = related_block(story)
     social_rail_html = social_embeds_block(story, "rail")
     social_bottom_html = social_embeds_block(story, "bottom")
+    aside_extra_html = f"\n          {social_rail_html}" if social_rail_html else ""
+    body_extras = "\n        ".join(block for block in (gallery_html, social_bottom_html, related_html) if block)
+    body_extra_html = f"\n        {body_extras}" if body_extras else ""
     hero_image = story.get("heroImage") or story["image"]
     hero_image_width = story.get("heroImageWidth") or story.get("imageWidth")
     hero_image_height = story.get("heroImageHeight") or story.get("imageHeight")
@@ -1347,15 +1368,11 @@ def render_story(story: dict) -> str:
     <div class="article-shell">
       <aside class="article-aside">
         <div class="sticky-stack">
-          {aside_html}
-          {social_rail_html}
+          {aside_html}{aside_extra_html}
         </div>
       </aside>
       <div class="article-body">
-        {body_html}
-        {gallery_html}
-        {social_bottom_html}
-        {related_html}
+        {body_html}{body_extra_html}
       </div>
     </div>
   </article>

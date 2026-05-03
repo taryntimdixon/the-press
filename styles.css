@@ -6888,7 +6888,8 @@ body.page-article:has(.press-social-feature) .article > .article-shell > .articl
   display:none !important;
 }
 body.page-article:has(.press-social-feature) .article > .article-shell > .article-body,
-.article-body.atla-feature-body{
+.article-body.atla-feature-body,
+.article-body.defense-ai-feature-body{
   max-width:none !important;
   width:100%;
   padding:0 !important;
@@ -6952,15 +6953,22 @@ body.page-article:has(.press-social-feature) .article > .article-shell > .articl
 .article-body.atla-feature-body .press-social-content li,
 .article-body.atla-feature-body .press-social-content blockquote,
 .article-body.atla-feature-body .press-social-sources p,
-.article-body.atla-feature-body .press-social-sources li{
+.article-body.atla-feature-body .press-social-sources li,
+.article-body.defense-ai-feature-body .press-social-content p,
+.article-body.defense-ai-feature-body .press-social-content li,
+.article-body.defense-ai-feature-body .press-social-content blockquote,
+.article-body.defense-ai-feature-body .press-social-sources p,
+.article-body.defense-ai-feature-body .press-social-sources li{
   max-width:none;
 }
-.atla-feature-body .source-ref a{
+.atla-feature-body .source-ref a,
+.defense-ai-feature-body .source-ref a{
   color:var(--accent);
   font-weight:800;
   text-decoration:none;
 }
-.atla-feature-body .source-ref a:hover{text-decoration:underline;}
+.atla-feature-body .source-ref a:hover,
+.defense-ai-feature-body .source-ref a:hover{text-decoration:underline;}
 .atla-source-list li{margin:.55rem 0;}
 .press-static-post{
   position:relative;
@@ -7335,6 +7343,24 @@ body.page-article:has(.press-social-feature) .article > .article-shell > .articl
 @media (max-width:1180px){.press-static-post__media--real img{aspect-ratio:16/9;}}
 /* ATLA_NO_FAKE_SOCIAL_IMAGES_END */
 
+/* DEFENSE_AI_SOCIAL_FEATURE_START */
+.defense-ai-social-feature[data-source-count]::before{
+  content:"Defense AI public record • " attr(data-source-count) " source notes";
+}
+
+.press-static-post--questions{
+  --rail-art-a:#27324b;
+  --rail-art-b:#7f4c5f;
+  --rail-art-c:#d8b75f;
+}
+
+@media (min-width:1181px){
+  .defense-ai-social-feature .press-social-row{
+    grid-template-columns:minmax(190px,250px) minmax(0,820px) minmax(190px,250px);
+  }
+}
+/* DEFENSE_AI_SOCIAL_FEATURE_END */
+
 @media (max-width:760px){
   body.page-article:has(.press-social-feature){
     overflow-x:hidden;
@@ -7345,11 +7371,27 @@ body.page-article:has(.press-social-feature) .article > .article-shell > .articl
   body.page-article:has(.press-social-feature) .article-shell,
   body.page-article:has(.press-social-feature) .article-body,
   body.page-article:has(.press-social-feature) .atla-feature-body,
+  body.page-article:has(.press-social-feature) .defense-ai-feature-body,
+  body.page-article:has(.press-social-feature) .press-social-feature,
+  body.page-article:has(.press-social-feature) .press-social-row,
+  body.page-article:has(.press-social-feature) .press-social-side,
+  body.page-article:has(.press-social-feature) .press-social-content,
+  body.page-article:has(.press-social-feature) .press-social-sources,
+  body.page-article:has(.press-social-feature) .source-notes,
   body.page-article:has(.press-social-feature) .hero-figure,
   body.page-article:has(.press-social-feature) .article-trust-card,
   body.page-article:has(.press-social-feature) .listen-controls{
     min-width:0;
     max-width:100%;
+  }
+
+  body.page-article:has(.press-social-feature) .press-social-feature,
+  body.page-article:has(.press-social-feature) .press-social-row,
+  body.page-article:has(.press-social-feature) .press-social-side,
+  body.page-article:has(.press-social-feature) .press-social-content,
+  body.page-article:has(.press-social-feature) .press-social-sources,
+  body.page-article:has(.press-social-feature) .source-notes{
+    width:100%;
   }
 
   body.page-article:has(.press-social-feature) .article{
@@ -7362,6 +7404,13 @@ body.page-article:has(.press-social-feature) .article > .article-shell > .articl
   body.page-article:has(.press-social-feature) .press-social-content,
   body.page-article:has(.press-social-feature) .press-static-post{
     overflow-wrap:anywhere;
+  }
+
+  body.page-article:has(.press-social-feature) .press-social-feature[data-source-count]::before{
+    width:100%;
+    white-space:normal;
+    line-height:1.25;
+    border-radius:16px;
   }
 
   body.page-article:has(.press-social-feature) .listen-button{

@@ -1,7 +1,36 @@
 {
-  "generated_at": "2026-05-03T08:13:28.009914+00:00",
-  "story_count": 288,
+  "generated_at": "2026-05-03T18:49:09.869160+00:00",
+  "story_count": 289,
   "stories": [
+    {
+      "story_id": "2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus",
+      "cluster_id": "politics-fight-voter-files-becoming-whether-washington",
+      "title": "A fight over voter files is becoming a fight over whether Washington can build its own election-data apparatus",
+      "section": "Politics",
+      "section_slug": "politics",
+      "type": "Daily Issue",
+      "dek": "A new lawsuit filed on April 21 reframes the Justice Department’s state-by-state demands for voter-registration records as something larger: a battle over whether federal election enforcement can evolve, through litigation and data-sharing agreements, into a national system for collecting, comparing and acting on sensitive voter information.",
+      "url": "daily/2026-04-24-a-fight-over-voter-files-is-becoming-a-fight-over-whether-washington-can-build-its-own-election-data-apparatus.html",
+      "author": "Intelligent AI",
+      "published": "April 24, 2026 • 10:09 a.m.",
+      "published_iso": "2026-04-24T10:09:00+00:00",
+      "updated": "April 24, 2026 • 12:00 p.m. UTC",
+      "updated_iso": "2026-04-24T12:00:00+00:00",
+      "image": "",
+      "image_alt": "A fight over voter files is becoming a fight over whether Washington can build its own election-data apparatus",
+      "keywords": [
+        "Department of Justice",
+        "voter registration lists",
+        "election administration"
+      ],
+      "read_time": "",
+      "word_count": "",
+      "status": "published",
+      "priority": 0,
+      "hero_eligible": true,
+      "source": "search-index",
+      "is_daily": true
+    },
     {
       "story_id": "2026-04-24-the-hold-list-is-a-labor-story-illinois-is-trying-to-rewrite-the-terms-of-digital-reading",
       "cluster_id": "culture-hold-list-labor-story-illinois-trying",

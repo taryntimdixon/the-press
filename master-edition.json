@@ -256,6 +256,7 @@
         "manufacturing"
       ],
       "stories": [
+        "technology-pentagon-ai-classified-networks.html",
         "technology-musk-altman-openai-court-battle.html",
         "technology-ai-needs-electricity-steel-and-time.html"
       ]
@@ -308,6 +309,60 @@
     }
   ],
   "stories": [
+    {
+      "slug": "technology-pentagon-ai-classified-networks",
+      "filename": "technology-pentagon-ai-classified-networks.html",
+      "title": "The Pentagon Just Let Big AI Into the Classified Room",
+      "section": "Technology",
+      "sectionSlug": "technology",
+      "type": "Report",
+      "author": "Julian Mercado",
+      "authorSlug": "julian-mercado",
+      "authorRole": "Technology & Industry Correspondent",
+      "publishedLabel": "May 3, 2026 • 4:30 p.m. EDT",
+      "updatedLabel": "May 3, 2026 • 4:30 p.m. EDT",
+      "publishedIso": "2026-05-03T16:30:00-04:00",
+      "updatedIso": "2026-05-03T16:30:00-04:00",
+      "wordCount": "4,700+ words",
+      "wordCountNumber": 4700,
+      "readTime": "23 min read",
+      "dek": "The Pentagon's classified-network AI agreements are not a chatbot story. They are the moment frontier models, cloud infrastructure, and defense power began moving into the same secured room — with Anthropic's empty chair revealing the fight over who controls the guardrails.",
+      "image": "assets/technology-pentagon-ai-classified-networks-thumbnail.jpg",
+      "imageAlt": "AI-generated photorealistic aerial image of the Pentagon complex in daylight, with Washington, D.C. visible in the background.",
+      "imageCaptionHtml": "AI-generated photorealistic editorial image for The Press showing a clean aerial view of the Pentagon. This is not a documentary Pentagon photograph.",
+      "imageCreditPlain": "AI-generated photorealistic editorial image. Not a documentary Pentagon photograph.",
+      "imageAiGenerated": true,
+      "imageAiCaption": "This thumbnail is an AI-generated photorealistic editorial image, not a documentary photograph or a real social-media screenshot.",
+      "imageCaption": "The Pentagon's classified-network AI agreements move frontier models and defense infrastructure into secured rooms.",
+      "keywords": [
+        "artificial intelligence",
+        "Pentagon",
+        "Department of War",
+        "classified networks",
+        "OpenAI",
+        "Google",
+        "Oracle",
+        "Anthropic",
+        "military AI",
+        "GenAI.mil"
+      ],
+      "asideFile": "content/asides/technology-pentagon-ai-classified-networks.html",
+      "bodyFile": "content/bodies/technology-pentagon-ai-classified-networks.html",
+      "excerpt": "The Pentagon opened classified networks to frontier AI companies, turning model access, cloud infrastructure, and guardrails into a national-security fight.",
+      "related": [
+        "technology-musk-altman-openai-court-battle.html",
+        "technology-ai-needs-electricity-steel-and-time.html",
+        "philosophy-the-missing-word-in-the-ai-debate-is-judgment.html"
+      ],
+      "imageWidth": 1600,
+      "imageHeight": 900,
+      "socialRailPattern": {
+        "className": "press-social-feature defense-ai-social-feature",
+        "cardsInBody": 32,
+        "sourceCount": 39,
+        "notes": "Cards are linked source and public-context cards with local editorial illustrations. No fake social screenshots, fake usernames, or invented public reaction."
+      }
+    },
     {
       "slug": "food-atla-noho-closing",
       "filename": "food-atla-noho-closing.html",
