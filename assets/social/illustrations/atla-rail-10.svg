@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">AI editorial illustration: Historic, creative, compact</title>
+  <desc id="desc">A generated editorial illustration summarizing Downtown texture for the Atla source rail. This is not a social-media screenshot.</desc>
+  
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2f4ed"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#336b65"/><stop offset="1" stop-color="#c16b52"/></linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#1c2330" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="800" height="500" rx="42" fill="url(#bg)"/>
+  <circle cx="92" cy="88" r="62" fill="#e8c071" opacity=".35"/>
+  <circle cx="705" cy="78" r="38" fill="#c16b52" opacity=".18"/>
+  <path d="M40 398 C190 348 260 432 420 382 S640 314 760 376" fill="none" stroke="#336b65" stroke-opacity=".16" stroke-width="18" stroke-linecap="round"/>
+  <rect x="48" y="42" width="208" height="34" rx="17" fill="#ffffff" opacity=".76"/>
+  <text x="68" y="65" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" fill="#336b65">AI editorial illustration</text>
+  <text x="52" y="434" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="900" fill="#336b65">10</text>
+  <text x="104" y="430" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="900" fill="#336b65">DOWNTOWN TEXTURE</text>
+  <text x="104" y="465" text-anchor="start" font-family="Georgia, Times New Roman, serif" font-size="30" font-weight="900" fill="#202637">Historic, creative, compact</text>
+  <g filter="url(#soft)"><rect x="232" y="116" width="330" height="218" rx="24" fill="#fff"/><path d="M280 150h86v58h-86zM396 150h114v58H396zM280 238h118v56H280zM428 238h82v56h-82z" fill="#336b65" opacity=".2"/><path d="M250 224h296M382 132v184" stroke="#336b65" stroke-width="12" opacity=".4"/><circle cx="382" cy="224" r="24" fill="#e8c071"/><path d="M382 224l78-72" stroke="#c16b52" stroke-width="9" stroke-linecap="round"/></g>
+</svg>

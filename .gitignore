@@ -16,3 +16,4 @@ venv/
 *.patch
 *.diff
 .bak-*/
+tmp/

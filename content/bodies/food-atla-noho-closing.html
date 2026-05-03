@@ -1,6 +1,6 @@
 <section class="article-body atla-feature-body">
 <div class="atla-editor-note">
-<strong>Reader note:</strong> The side rail follows the public record around Atla’s closing: official posts, restaurant reports, guide entries, critic notes, neighborhood context, and diner memory. Each card gives the gist quickly and links to the original source.
+<strong>Reader note:</strong> The side rail follows the public record around Atla’s closing: official posts, restaurant reports, guide entries, critic notes, neighborhood context, and diner memory. Each card gives the gist quickly and links to the original source. When a real screenshot is not available, the card uses an AI-generated editorial illustration, not a social-media screenshot.
 </div>
 <div class="press-social-feature atla-social-feature" data-social-card-count="52" data-source-count="51">
 <div class="press-social-row press-social-row--1" data-section="the-last-month-at-atla">
@@ -883,7 +883,35 @@
 </div>
 <script>
 (function() {
-  function attachOptionalScreenshot(card) {
+  function railCardTitle(card) {
+    var title = card.querySelector('.press-static-post__visual strong');
+    return title ? title.textContent.trim() : 'source rail card';
+  }
+  function attachRailIllustration(card, index) {
+    if (card.querySelector('.press-static-post__media')) return;
+    var visual = card.querySelector('.press-static-post__visual');
+    if (!visual) return;
+    var number = String(index + 1).padStart(2, '0');
+    var fig = document.createElement('figure');
+    fig.className = 'press-static-post__media press-static-post__media--illustration';
+    var img = document.createElement('img');
+    img.src = 'assets/social/illustrations/atla-rail-' + number + '.svg';
+    img.alt = 'AI-generated editorial illustration for ' + railCardTitle(card) + '; not a social-media screenshot.';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.onerror = function() {
+      fig.remove();
+      card.classList.remove('press-static-post--with-illustration');
+      card.classList.add('press-static-post--text-only');
+    };
+    fig.appendChild(img);
+    var cap = document.createElement('figcaption');
+    cap.textContent = 'AI-generated editorial illustration, not a social screenshot.';
+    fig.appendChild(cap);
+    card.insertBefore(fig, visual);
+    card.classList.add('press-static-post--with-illustration');
+  }
+  function attachOptionalScreenshot(card, index) {
     var src = card.getAttribute('data-screenshot');
     if (!src) return;
     var img = new Image();
@@ -901,10 +929,19 @@
       if (visual) card.insertBefore(fig, visual);
       card.classList.add('press-static-post--with-real-image');
     };
-    img.onerror = function() { card.classList.add('press-static-post--text-only'); };
+    img.onerror = function() {
+      card.classList.add('press-static-post--text-only');
+      attachRailIllustration(card, index);
+    };
     img.src = src;
   }
-  document.querySelectorAll('.press-static-post[data-screenshot]').forEach(attachOptionalScreenshot);
+  Array.prototype.slice.call(document.querySelectorAll('.press-static-post')).forEach(function(card, index) {
+    if (card.hasAttribute('data-screenshot')) {
+      attachOptionalScreenshot(card, index);
+    } else {
+      attachRailIllustration(card, index);
+    }
+  });
 })();
 </script>
 </section>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">AI editorial illustration: A restaurant with a paper trail</title>
+  <desc id="desc">A generated editorial illustration summarizing Address + archive for the Atla source rail. This is not a social-media screenshot.</desc>
+  
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2f0e8"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#405877"/><stop offset="1" stop-color="#b86650"/></linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#1c2330" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="800" height="500" rx="42" fill="url(#bg)"/>
+  <circle cx="92" cy="88" r="62" fill="#e7c169" opacity=".35"/>
+  <circle cx="705" cy="78" r="38" fill="#b86650" opacity=".18"/>
+  <path d="M40 398 C190 348 260 432 420 382 S640 314 760 376" fill="none" stroke="#405877" stroke-opacity=".16" stroke-width="18" stroke-linecap="round"/>
+  <rect x="48" y="42" width="208" height="34" rx="17" fill="#ffffff" opacity=".76"/>
+  <text x="68" y="65" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" fill="#405877">AI editorial illustration</text>
+  <text x="52" y="434" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="900" fill="#405877">40</text>
+  <text x="104" y="430" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="900" fill="#405877">ADDRESS + ARCHIVE</text>
+  <text x="104" y="465" text-anchor="start" font-family="Georgia, Times New Roman, serif" font-size="30" font-weight="900" fill="#202637">A restaurant with a paper trail</text>
+  <g filter="url(#soft)"><rect x="252" y="128" width="280" height="190" rx="22" fill="#fff"/><rect x="284" y="104" width="186" height="66" rx="18" fill="#e7c169"/><path d="M294 198h196M294 238h154M294 278h118" stroke="#405877" stroke-width="11" stroke-linecap="round" opacity=".62"/><circle cx="506" cy="152" r="28" fill="#b86650"/></g>
+</svg>

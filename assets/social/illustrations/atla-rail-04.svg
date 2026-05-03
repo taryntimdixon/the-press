@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">AI editorial illustration: Final service: May 31</title>
+  <desc id="desc">A generated editorial illustration summarizing The news peg for the Atla source rail. This is not a social-media screenshot.</desc>
+  
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7efe4"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#254078"/><stop offset="1" stop-color="#a54843"/></linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#1c2330" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="800" height="500" rx="42" fill="url(#bg)"/>
+  <circle cx="124" cy="88" r="62" fill="#edc967" opacity=".35"/>
+  <circle cx="705" cy="78" r="38" fill="#a54843" opacity=".18"/>
+  <path d="M40 398 C190 348 260 432 420 382 S640 314 760 376" fill="none" stroke="#254078" stroke-opacity=".16" stroke-width="18" stroke-linecap="round"/>
+  <rect x="48" y="42" width="208" height="34" rx="17" fill="#ffffff" opacity=".76"/>
+  <text x="68" y="65" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" fill="#254078">AI editorial illustration</text>
+  <text x="52" y="434" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="900" fill="#254078">04</text>
+  <text x="104" y="430" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="900" fill="#254078">THE NEWS PEG</text>
+  <text x="104" y="465" text-anchor="start" font-family="Georgia, Times New Roman, serif" font-size="30" font-weight="900" fill="#202637">Final service: May 31</text>
+  <g filter="url(#soft)"><rect x="272" y="112" width="250" height="210" rx="26" fill="#fff"/><rect x="272" y="112" width="250" height="62" rx="26" fill="url(#band)"/><text x="397" y="159" text-anchor="middle" font-family="Inter, Arial" font-size="24" font-weight="900" fill="#fff">MAY 31</text><circle cx="397" cy="239" r="62" fill="#edc967"/><path d="M362 239h70M397 204v70" stroke="#254078" stroke-width="9" stroke-linecap="round"/><rect x="320" y="294" width="154" height="14" rx="7" fill="#a54843" opacity=".45"/></g>
+</svg>

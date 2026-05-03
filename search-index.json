@@ -12795,6 +12795,20 @@
     "updatedLabel": "May 3, 2026 • 9:00 a.m. EDT",
     "wordCount": "5900+ words",
     "readTime": "25 min read",
-    "imageCredit": "AI-generated photorealistic editorial image. Not a documentary restaurant photograph."
+    "imageCredit": "AI-generated photorealistic editorial image. Not a documentary restaurant photograph.",
+    "story_id": "food-atla-noho-closing",
+    "cluster_id": "culture-last-month-atla-enrique-olvera-noho",
+    "section_slug": "culture",
+    "published_iso": "2026-05-03T13:00:00+00:00",
+    "updated": "May 3, 2026 • 9:00 a.m. EDT",
+    "updated_iso": "2026-05-03T13:00:00+00:00",
+    "image_alt": "The Last Month at Atla",
+    "read_time": "25 min read",
+    "word_count": "5900+ words",
+    "status": "published",
+    "priority": 0,
+    "hero_eligible": true,
+    "source": "search-index",
+    "is_daily": false
   }
 ]
