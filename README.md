@@ -24,6 +24,13 @@ This folder turns the static site into a repeatable publishing workflow.
 python studio/build.py
 ```
 
+## Homepage hero standard
+
+- The homepage hero is a permanent 7-story system: 1 center lead plus 3 side cards on the left and 3 on the right.
+- Fresh image-ready stories automatically seed the hero before manual `homepage.leadOrder` or `placements.json` entries, so a newly published story with a thumbnail can appear without hand-editing the hero list.
+- Manual hero lists still guide the remaining rotation, but they no longer block new stories from entering the hero.
+- Keep every hero candidate supplied with a real local `image`, `imageAlt`, and dimensions when possible; the build and app preserve 16:9 side thumbnails so new cards do not squeeze older ones.
+
 ## What gets rebuilt
 
 - `index.html`

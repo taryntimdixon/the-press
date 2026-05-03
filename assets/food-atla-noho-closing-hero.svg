@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Editorial illustration for Atla closing feature</title>
+  <desc id="desc">A warm editorial illustration of a downtown restaurant corner, tortillas, water, and flame motifs.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbf4e8"/>
+      <stop offset="0.55" stop-color="#f2ded0"/>
+      <stop offset="1" stop-color="#e8c094"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#7b3325"/>
+      <stop offset="1" stop-color="#e9a14b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1280" cy="130" r="260" fill="#fff7e8" opacity="0.52"/>
+  <circle cx="190" cy="750" r="330" fill="#7b3325" opacity="0.08"/>
+  <rect x="210" y="220" width="880" height="520" rx="38" fill="#fffdf8" stroke="#d8c4af" stroke-width="8"/>
+  <rect x="270" y="290" width="250" height="260" rx="18" fill="#2f2b25" opacity="0.9"/>
+  <rect x="560" y="290" width="410" height="260" rx="18" fill="#f4e3cc" stroke="#d8c4af" stroke-width="5"/>
+  <rect x="210" y="635" width="880" height="105" rx="0" fill="#7b3325" opacity="0.92"/>
+  <text x="285" y="702" font-family="Georgia, serif" font-size="64" font-weight="700" fill="#fff8ed">ATLA</text>
+  <text x="498" y="702" font-family="Georgia, serif" font-size="34" fill="#fff8ed" opacity="0.9">NoHo • Final Month</text>
+  <g transform="translate(1160 250)">
+    <circle cx="140" cy="140" r="128" fill="#fffaf0" stroke="#d1b48d" stroke-width="8"/>
+    <circle cx="140" cy="140" r="96" fill="#f3d3a0" opacity="0.9"/>
+    <path d="M135 35 C165 88 100 100 138 148 C170 188 105 197 119 246 C75 215 76 168 101 136 C125 105 106 74 135 35Z" fill="url(#flame)"/>
+    <path d="M200 77 C252 149 218 235 142 262 C186 211 164 183 196 150 C226 117 195 102 200 77Z" fill="#5d8796" opacity="0.72"/>
+  </g>
+  <g fill="none" stroke="#7b3325" stroke-width="5" opacity="0.55">
+    <path d="M320 805 C450 745 560 820 710 775 S960 735 1130 810"/>
+    <path d="M305 840 C470 800 555 865 735 830 S990 790 1180 850"/>
+  </g>
+</svg>

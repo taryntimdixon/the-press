@@ -24,11 +24,15 @@
     ]
   },
   "homepage": {
+    "heroSlots": 7,
     "leadOrder": [
       "article.html",
+      "food-atla-noho-closing.html",
       "science-artemis-ii-proved-the-moon-is-an-engineering-project-again.html",
       "world-europes-defense-turn-is-now-a-budget-supply-chain-and-time-problem.html",
-      "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html"
+      "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html",
+      "technology-musk-altman-openai-court-battle.html",
+      "health-measles-is-not-a-childhood-memory-anymore.html"
     ],
     "secondary": [
       "technology-musk-altman-openai-court-battle.html",
@@ -45,6 +49,7 @@
       "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html"
     ],
     "editorsPicks": [
+      "food-atla-noho-closing.html",
       "technology-musk-altman-openai-court-battle.html",
       "science-artemis-ii-proved-the-moon-is-an-engineering-project-again.html",
       "philosophy-the-missing-word-in-the-ai-debate-is-judgment.html",
@@ -205,7 +210,8 @@
       ],
       "stories": [
         "culture-streaming-grew-up-and-became-tv-again.html",
-        "culture-the-crowd-came-back-the-old-economics-did-not.html"
+        "culture-the-crowd-came-back-the-old-economics-did-not.html",
+        "food-atla-noho-closing.html"
       ]
     },
     {
@@ -302,6 +308,61 @@
     }
   ],
   "stories": [
+    {
+      "slug": "food-atla-noho-closing",
+      "filename": "food-atla-noho-closing.html",
+      "title": "The Last Month at Atla",
+      "section": "Culture",
+      "sectionSlug": "culture",
+      "type": "Food Feature",
+      "author": "Nia Calder",
+      "authorSlug": "nia-calder",
+      "authorRole": "Culture Correspondent",
+      "publishedLabel": "May 3, 2026 • 9:00 a.m. EDT",
+      "updatedLabel": "May 3, 2026 • 9:00 a.m. EDT",
+      "publishedIso": "2026-05-03T09:00:00-04:00",
+      "updatedIso": "2026-05-03T09:00:00-04:00",
+      "wordCount": "5900+ words",
+      "wordCountNumber": 5900,
+      "readTime": "25 min read",
+      "dek": "Enrique Olvera’s Atla is closing in NoHo, but the Lafayette Street room is not going dark. The restaurant’s final month is a story about all-day dining, modern Mexican cooking, and the strange tenderness of eating a place before it becomes history.",
+      "image": "assets/food-atla-noho-closing-thumbnail.jpg",
+      "heroImage": "assets/food-atla-noho-closing-thumbnail.png",
+      "heroImageWidth": 1600,
+      "heroImageHeight": 900,
+      "imageAlt": "AI-generated photorealistic editorial image of a warm NoHo restaurant facade with the headline “Atla’s Last Service” and closing date May 31.",
+      "imageCaptionHtml": "AI-generated photorealistic editorial image for The Press showing Atla’s final month in NoHo. This is not a documentary restaurant photograph or a real photograph of the Atla storefront.",
+      "imageCreditPlain": "AI-generated photorealistic editorial image. Not a documentary restaurant photograph.",
+      "imageAiGenerated": true,
+      "imageCaption": "Atla’s NoHo chapter is ending on May 31, while Enrique Olvera’s team prepares another restaurant in the same Lafayette Street space.",
+      "keywords": [
+        "Atla",
+        "Enrique Olvera",
+        "NoHo",
+        "Mexican restaurants",
+        "New York restaurants",
+        "Casamata",
+        "Cosme",
+        "all-day dining",
+        "restaurant closings"
+      ],
+      "asideFile": "content/asides/food-atla-noho-closing.html",
+      "bodyFile": "content/bodies/food-atla-noho-closing.html",
+      "excerpt": "Atla is going out with a date, a menu of greatest hits, and a promise that the room will not stay dark for long.",
+      "related": [
+        "culture-streaming-grew-up-and-became-tv-again.html",
+        "culture-the-crowd-came-back-the-old-economics-did-not.html",
+        "economics-the-consumer-has-not-quit-the-economy-still-feels-cautious.html"
+      ],
+      "imageWidth": 1600,
+      "imageHeight": 900,
+      "imageAiCaption": "This thumbnail is an AI-generated photorealistic editorial image, not a documentary photograph or a real social-media screenshot.",
+      "socialRailPattern": {
+        "className": "press-social-feature",
+        "cardsInBody": 40,
+        "notes": "Cards marked composite are transparent reader-mood placeholders meant to be replaced by real screenshots when available."
+      }
+    },
     {
       "slug": "technology-musk-altman-openai-court-battle",
       "filename": "technology-musk-altman-openai-court-battle.html",

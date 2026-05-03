@@ -22,6 +22,8 @@ STORIES = sorted(DATA["stories"], key=lambda item: item["publishedIso"], reverse
 SECTION_BY_SLUG = {section["slug"]: section for section in SECTIONS}
 AUTHOR_BY_SLUG = {author["slug"]: author for author in AUTHORS}
 STORY_BY_FILE = {story["filename"]: story for story in STORIES}
+HOME_HERO_TARGET = int(DATA.get("homepage", {}).get("heroSlots", 7) or 7)
+HOME_HERO_AUTO_SEED = min(2, HOME_HERO_TARGET)
 
 
 def parse_iso_datetime(value: object) -> datetime | None:
@@ -91,6 +93,51 @@ def preferred_image_path(image_path: str) -> str:
   return image_path
 
 
+def story_has_hero_image(story: dict) -> bool:
+    return bool(story.get("image") and story.get("filename"))
+
+
+def story_is_hero_eligible(story: dict) -> bool:
+    return story.get("heroEligible", True) is not False and story_has_hero_image(story)
+
+
+def add_unique_story(target: list[dict], seen: set[str], story: dict | None) -> None:
+    if not story:
+        return
+    filename = str(story.get("filename") or "")
+    if not filename or filename in seen:
+        return
+    seen.add(filename)
+    target.append(story)
+
+
+def homepage_lead_stories() -> list[dict]:
+    """Build the reusable hero set.
+
+    The newest image-ready stories seed the hero first so a freshly published
+    article does not require hand-editing homepage lead lists just to appear.
+    Manual leadOrder entries still shape the rest of the rotation.
+    """
+
+    final: list[dict] = []
+    seen: set[str] = set()
+    homepage = DATA.get("homepage", {})
+
+    for story in [story for story in STORIES if story_is_hero_eligible(story)][:HOME_HERO_AUTO_SEED]:
+        add_unique_story(final, seen, story)
+
+    for filename in homepage.get("leadOrder", []):
+        add_unique_story(final, seen, STORY_BY_FILE.get(filename))
+
+    for story in [story for story in STORIES if story_is_hero_eligible(story)]:
+        add_unique_story(final, seen, story)
+
+    for story in STORIES:
+        add_unique_story(final, seen, story)
+
+    return final[:HOME_HERO_TARGET]
+
+
 def initials(name: str) -> str:
     parts = [part for part in name.split() if part]
     return "".join(part[0] for part in parts[:2]).upper() or "TP"
@@ -138,6 +185,12 @@ def search_index_row(story: dict) -> dict:
         "url": story["filename"],
         "author": story["author"],
         "published": story["publishedLabel"],
+        "publishedIso": story.get("publishedIso", ""),
+        "updatedIso": story.get("updatedIso", ""),
+        "image": story.get("image", ""),
+        "imageAlt": story.get("imageAlt") or story.get("title") or "Story thumbnail",
+        "imageWidth": story.get("imageWidth"),
+        "imageHeight": story.get("imageHeight"),
         "keywords": story.get("keywords", []),
     }
 
@@ -151,8 +204,46 @@ def normalize_search_item(item: dict) -> dict:
     row["url"] = item.get("url") or item.get("filename") or "#"
     row["author"] = item.get("author") or "Intelligent AI"
     row["published"] = item.get("published") or item.get("publishedLabel") or ""
+    row["publishedIso"] = item.get("publishedIso") or item.get("published_iso") or ""
+    row["updatedIso"] = item.get("updatedIso") or item.get("updated_iso") or ""
+    row["image"] = item.get("image") or item.get("imageUrl") or item.get("image_url") or item.get("thumbnail") or ""
+    row["imageAlt"] = item.get("imageAlt") or item.get("image_alt") or item.get("alt") or row["title"] or "Story thumbnail"
+    row["imageWidth"] = item.get("imageWidth") or item.get("image_width")
+    row["imageHeight"] = item.get("imageHeight") or item.get("image_height")
     row["keywords"] = item.get("keywords") if isinstance(item.get("keywords"), list) else []
     return row
+
+
+def thumbnail_source_index() -> list[dict]:
+    rows: list[dict] = []
+    candidates = []
+    for filename in ("live-index.json", "content-index.json", "edition.json"):
+        for base in (DATA_DIR, SITE_DIR):
+            path = base / filename
+            if path not in candidates and path.exists():
+                candidates.append(path)
+
+    for path in candidates:
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        items = payload.get("stories") if isinstance(payload, dict) else payload
+        if not isinstance(items, list):
+            items = payload.get("articles") if isinstance(payload, dict) else []
+        if not isinstance(items, list):
+            continue
+        rows.extend(normalize_search_item(item) for item in items if isinstance(item, dict))
+
+    return [row for row in rows if row["title"] and row["url"] != "#"]
+
+
+def merge_search_row(primary: dict, fallback: dict) -> dict:
+    merged = {**fallback, **primary}
+    for field in ("image", "imageAlt", "imageWidth", "imageHeight", "publishedIso", "updatedIso"):
+        if not merged.get(field) and fallback.get(field):
+            merged[field] = fallback[field]
+    return merged
 
 
 def richer_existing_search_index() -> list[dict]:
@@ -180,6 +271,27 @@ def richer_existing_search_index() -> list[dict]:
 
 def gallery_story_rows() -> list[dict]:
     rows: list[dict] = []
+
+    for story in STORIES:
+        image = str(story.get("image") or "")
+        filename = str(story.get("filename") or "")
+        if not image or not filename:
+            continue
+        rows.append(
+            {
+                "filename": filename,
+                "image": preferred_image_path(image),
+                "imageAlt": str(story.get("imageAlt") or story.get("title") or "Story thumbnail"),
+                "title": str(story.get("title") or "Story"),
+                "section": str(story.get("section") or "News"),
+                "type": str(story.get("type") or "Report"),
+                "publishedIso": str(story.get("publishedIso") or ""),
+                "updatedIso": str(story.get("updatedIso") or ""),
+                "imageWidth": story.get("imageWidth"),
+                "imageHeight": story.get("imageHeight"),
+            }
+        )
+
     candidates = []
     for filename in ("content-index.json", "search-index.json"):
         for base in (DATA_DIR, SITE_DIR):
@@ -208,7 +320,7 @@ def gallery_story_rows() -> list[dict]:
             rows.append(
                 {
                     "filename": str(filename),
-                "image": preferred_image_path(str(image)),
+                    "image": preferred_image_path(str(image)),
                     "imageAlt": str(item.get("image_alt") or item.get("imageAlt") or item.get("title") or "Story thumbnail"),
                     "title": str(item.get("title") or "Story"),
                     "section": str(item.get("section") or "News"),
@@ -220,28 +332,10 @@ def gallery_story_rows() -> list[dict]:
                 }
             )
 
-    if not rows:
-        rows = [
-            {
-                "filename": story["filename"],
-              "image": preferred_image_path(story["image"]),
-                "imageAlt": story["imageAlt"],
-                "title": story["title"],
-                "section": story["section"],
-                "type": story["type"],
-                "publishedIso": story.get("publishedIso", ""),
-                "updatedIso": story.get("updatedIso", ""),
-                "imageWidth": story.get("imageWidth"),
-                "imageHeight": story.get("imageHeight"),
-            }
-            for story in STORIES
-            if story.get("image")
-        ]
-
     # Keep one entry per article URL and preserve the newest thumbnail-backed stories first.
     unique_rows: dict[str, dict] = {}
     for row in rows:
-        unique_rows[row["filename"]] = row
+        unique_rows.setdefault(row["filename"], row)
 
     def sort_key(item: dict) -> datetime:
         return (
@@ -260,8 +354,11 @@ def search_index() -> list[dict]:
         return master_items
 
     merged = {item["url"]: item for item in existing_items}
-    for item in master_items:
-        merged[item["url"]] = {**item, **merged.get(item["url"], {})}
+    for item in thumbnail_source_index() + master_items:
+        if item["url"] in merged:
+            merged[item["url"]] = merge_search_row(merged[item["url"]], item)
+        else:
+            merged[item["url"]] = item
     return list(merged.values())
 
 
@@ -771,14 +868,20 @@ def layout(title: str, description: str, canonical: str, body_class: str, main_h
 def render_homepage() -> str:
     lead_panels = []
     lead_buttons = []
-    for idx, filename in enumerate(DATA["homepage"]["leadOrder"]):
-        story = STORY_BY_FILE[filename]
+    for idx, story in enumerate(homepage_lead_stories()):
         active = " is-active" if idx == 0 else ""
+        panel_width = f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ""
+        panel_height = f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ""
+        panel_media = (
+            f'<img src="{h(story["image"])}" alt="{h(story.get("imageAlt") or story.get("title") or "Story thumbnail")}" loading="eager" decoding="async"{panel_width}{panel_height} />'
+            if story.get("image")
+            else f'<div class="press-image-fallback"><span>{h(story.get("section") or "Story")}</span></div>'
+        )
         lead_panels.append(
             f"""
 <div class="lead-panel{active}" data-lead-panel id="lead-{idx}">
   <div class="lead-panel__media">
-    <img src="{h(story['image'])}" alt="{h(story['imageAlt'])}" loading="eager" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
+    {panel_media}
   </div>
   <div class="lead-panel__body">
     <div>
@@ -795,8 +898,20 @@ def render_homepage() -> str:
 </div>
 """.strip()
         )
+        thumb_width = f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ""
+        thumb_height = f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ""
+        thumb = (
+            f'<span class="lead-nav__thumb" aria-hidden="true"><img src="{h(story["image"])}" alt="" loading="lazy" decoding="async"{thumb_width}{thumb_height} /></span>'
+            if story.get("image")
+            else f'<span class="lead-nav__thumb lead-nav__thumb--fallback" aria-hidden="true"><span>{h(story["section"])}</span></span>'
+        )
+        side_slot = ""
+        if 1 <= idx <= 3:
+            side_slot = f' data-side-slot="left-{idx}"'
+        elif 4 <= idx <= 6:
+            side_slot = f' data-side-slot="right-{idx - 3}"'
         lead_buttons.append(
-            f'<button class="lead-nav__button{" is-active" if idx == 0 else ""}" type="button" data-lead-button data-target="lead-{idx}" aria-pressed="{str(idx == 0).lower()}"><span>{h(story["section"])}</span><strong>{h(story["title"])}</strong></button>'
+            f'<button class="lead-nav__button{" is-active" if idx == 0 else ""}" type="button" data-lead-button data-target="lead-{idx}" aria-pressed="{str(idx == 0).lower()}"{side_slot}>{thumb}<span class="lead-nav__kicker">{h(story["section"])}</span><strong>{h(story["title"])}</strong></button>'
         )
     secondary_cards = "\n".join(story_card(STORY_BY_FILE[file]) for file in DATA["homepage"]["secondary"] if file in STORY_BY_FILE)
     most_read_html = "\n".join(ranked_list_item(STORY_BY_FILE[file], rank + 1) for rank, file in enumerate(DATA["homepage"]["mostRead"]) if file in STORY_BY_FILE)
@@ -808,9 +923,8 @@ def render_homepage() -> str:
     <div class="home-hero__intro">
       <p class="eyebrow">Front page</p>
       <h1>{h(SITE['name'])}</h1>
-      <p class="section-copy">{h(SITE['description'])}</p>
     </div>
-    <div class="lead-switcher">
+    <div class="lead-switcher" data-press-hero-layout="split-rail" data-press-hero-slots="{HOME_HERO_TARGET}">
       <div class="lead-switcher__panels">
         {' '.join(lead_panels)}
       </div>
@@ -1208,6 +1322,9 @@ def render_story(story: dict) -> str:
     related_html = related_block(story)
     social_rail_html = social_embeds_block(story, "rail")
     social_bottom_html = social_embeds_block(story, "bottom")
+    hero_image = story.get("heroImage") or story["image"]
+    hero_image_width = story.get("heroImageWidth") or story.get("imageWidth")
+    hero_image_height = story.get("heroImageHeight") or story.get("imageHeight")
     main = f"""
 <main class="page page-article">
   <article class="article">
@@ -1223,7 +1340,7 @@ def render_story(story: dict) -> str:
         <span>{h(story['readTime'])}</span>
       </div>
       <figure class="hero-figure">
-        <img src="{h(story['image'])}" alt="{h(story['imageAlt'])}" loading="eager" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
+        <img src="{h(hero_image)}" alt="{h(story['imageAlt'])}" loading="eager" decoding="async"{f' width="{hero_image_width}"' if hero_image_width else ''}{f' height="{hero_image_height}"' if hero_image_height else ''} />
         <figcaption>{story['imageCaptionHtml']}</figcaption>
       </figure>
     </header>

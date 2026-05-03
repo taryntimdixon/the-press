@@ -390,6 +390,7 @@
     setupNewsletterForms();
     normalizeVisibleBylines(document);
     makeCardsClickable();
+    makePressSocialCardsClickable(document);
     bindThumbnailFallbacks(document);
     rewriteAuthorsPage();
     relabelUtilityNav();
@@ -407,7 +408,9 @@
       enhanceBreakingStrip(stories);
       renderMastheadTicker(stories);
       injectEditionRadar(stories);
-      pressRefreshHomepageStoryBlocks(stories);
+      if (!document.body.classList.contains('page-home')) {
+        pressRefreshHomepageStoryBlocks(stories);
+      }
       renderSectionPage(stories);
       renderDynamicCategoryPages(stories);
       const hasHomepageTargets =
@@ -672,6 +675,47 @@ if (!hasHomepageTargets) {
     });
   }
 
+  function makePressSocialCardsClickable(root = document) {
+    root.querySelectorAll('.press-static-post').forEach((card) => {
+      if (card.dataset.pressSocialClickBound === 'true') return;
+      const link = card.querySelector('a[href]');
+      if (!link) return;
+
+      card.dataset.pressSocialClickBound = 'true';
+      card.classList.add('press-static-post--clickable');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'link');
+
+      const labelParts = [
+        card.querySelector('.press-static-post__name')?.textContent,
+        card.querySelector('.press-static-post__visual strong')?.textContent,
+        link.textContent,
+      ].map((text) => collapseWhitespace(text || '')).filter(Boolean);
+      if (labelParts.length) {
+        card.setAttribute('aria-label', labelParts.join(': '));
+      }
+
+      link.setAttribute('rel', 'noopener noreferrer');
+      link.removeAttribute('target');
+
+      const openSource = () => {
+        window.location.href = link.href;
+      };
+
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('a, button, input, textarea, select, label')) return;
+        openSource();
+      });
+
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openSource();
+        }
+      });
+    });
+  }
+
   function relabelUtilityNav() {
     document.querySelectorAll('a[href="authors.html"]').forEach((link) => {
       if (/authors/i.test(link.textContent || '')) {
@@ -697,7 +741,10 @@ if (!hasHomepageTargets) {
       <span class="listen-status" data-listen-status>Ready to read aloud</span>
     `;
     const meta = hero.querySelector('.article-meta');
-    if (meta) meta.insertAdjacentElement('afterend', wrapper); else hero.appendChild(wrapper);
+    const figure = hero.querySelector('.hero-figure');
+    if (figure) figure.insertAdjacentElement('afterend', wrapper);
+    else if (meta) meta.insertAdjacentElement('afterend', wrapper);
+    else hero.appendChild(wrapper);
 
     const play = wrapper.querySelector('[data-listen-play]');
     const pause = wrapper.querySelector('[data-listen-pause]');
@@ -774,8 +821,11 @@ if (!hasHomepageTargets) {
       <button class="article-trust-card__button" type="button" data-source-drawer-open>Source drawer</button>
     `;
 
+    const figure = article.querySelector('.article-hero .hero-figure');
     const meta = article.querySelector('.article-meta');
-    if (meta) {
+    if (figure) {
+      figure.insertAdjacentElement('afterend', disclosure);
+    } else if (meta) {
       meta.insertAdjacentElement('afterend', disclosure);
     } else {
       (article.querySelector('.article-hero') || article).appendChild(disclosure);
@@ -1590,6 +1640,14 @@ function pressNormalizeSectionLabel(value) {
     .trim();
 }
 
+function pressNormalizeRotationUrl(value) {
+  return String(value || '')
+    .trim()
+    .replace(/^https?:\/\/[^/]+\//i, '')
+    .replace(/^\.\//, '')
+    .replace(/[?#].*$/, '');
+}
+
 function pressSortValue(story) {
   const direct = Number(story && story.sortValue);
   if (Number.isFinite(direct)) return direct;
@@ -1700,6 +1758,12 @@ function pressSetupLeadPanels() {
     leadPanels.forEach((panel) => {
       panel.classList.toggle('is-active', panel.id === targetId);
     });
+
+    if (window.PressHeroStandard?.layoutLeadNav) {
+      window.PressHeroStandard.layoutLeadNav();
+    } else {
+      pressLayoutLeadNav();
+    }
   };
 
   leadButtons.forEach((btn) => {
@@ -1712,8 +1776,44 @@ function pressSetupLeadPanels() {
   if (chosenButton) setLead(chosenButton.dataset.target);
 }
 
+function pressLayoutLeadNav(navBox = document.querySelector('.lead-nav')) {
+  if (!navBox) return;
+
+  const buttons = Array.from(navBox.querySelectorAll('[data-lead-button]'));
+  const sideButtons = buttons.filter((button) => !button.classList.contains('is-active')).slice(0, 6);
+  const slots = ['left-1', 'left-2', 'left-3', 'right-1', 'right-2', 'right-3'];
+
+  buttons.forEach((button) => {
+    button.removeAttribute('data-side-slot');
+  });
+
+  sideButtons.forEach((button, index) => {
+    button.setAttribute('data-side-slot', slots[index]);
+  });
+
+  navBox.dataset.sideLayout = 'split';
+}
+
 function pressShuffleArray(items) {
   return Array.isArray(items) ? items.slice() : [];
+}
+
+function pressRotateFromLastHero(source) {
+  const candidates = Array.isArray(source) ? source.slice() : [];
+  if (candidates.length < 2) return candidates;
+
+  let previousUrl = '';
+  try {
+    previousUrl = sessionStorage.getItem('press-future-newsroom-hero-url') || '';
+  } catch (_) {}
+
+  const previousKey = pressNormalizeRotationUrl(previousUrl);
+  const previousIndex = previousKey
+    ? candidates.findIndex((story) => pressNormalizeRotationUrl(story && story.url) === previousKey)
+    : -1;
+  const startIndex = previousIndex >= 0 ? (previousIndex + 1) % candidates.length : 0;
+
+  return candidates.slice(startIndex).concat(candidates.slice(0, startIndex));
 }
 
 function pressPickStorySet(source, count, used, uniqueSections = false) {
@@ -1771,6 +1871,22 @@ function pressRenderLeadPanel(story, index) {
   `;
 }
 
+function pressRenderLeadNavThumb(story) {
+  if (story?.image) {
+    return `
+      <span class="lead-nav__thumb" aria-hidden="true">
+        <img src="${pressEscapeAttribute(story.image)}" alt="" loading="lazy" decoding="async" />
+      </span>
+    `;
+  }
+
+  return `
+    <span class="lead-nav__thumb lead-nav__thumb--fallback" aria-hidden="true">
+      <span>${pressEscapeHtml(story?.section || 'Story')}</span>
+    </span>
+  `;
+}
+
 function pressRenderHomepageLeadStories(stories) {
   const panelBox = document.querySelector('.lead-switcher__panels');
   const navBox = document.querySelector('.lead-nav');
@@ -1780,7 +1896,8 @@ function pressRenderHomepageLeadStories(stories) {
   panelBox.innerHTML = stories.map((story, index) => pressRenderLeadPanel(story, index)).join('');
   navBox.innerHTML = stories.map((story, index) => `
     <button class="lead-nav__button${index === 0 ? ' is-active' : ''}" type="button" data-lead-button data-target="lead-${index}" aria-pressed="${String(index === 0)}">
-      <span>${pressEscapeHtml(story.section || 'Front Page')}</span>
+      ${pressRenderLeadNavThumb(story)}
+      <span class="lead-nav__kicker">${pressEscapeHtml(story.section || 'Front Page')}</span>
       <strong>${pressEscapeHtml(story.title || '')}</strong>
     </button>
   `).join('');
@@ -1893,10 +2010,16 @@ function pressRefreshHomepageStoryBlocks(stories) {
   const used = new Set();
 
   const leadPool = recent.filter((story) => story.image);
-
-  pressRenderHomepageLeadStories(
-    pressPickStorySet(leadPool.length ? leadPool : recent, 4, used, true)
+  const leadSource = leadPool.length ? leadPool : recent;
+  const heroCount = window.PressHeroStandard?.heroSlotCount || 7;
+  const leadStories = pressPickStorySet(
+    pressRotateFromLastHero(leadSource),
+    heroCount,
+    used,
+    true
   );
+
+  pressRenderHomepageLeadStories(leadStories);
 
   pressRenderHomepageSecondaryStories(
     pressPickStorySet(recent.filter((story) => !used.has(story.url)), 4, used, true)
@@ -1943,6 +2066,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const MODE_KEY = 'press-reader-mode';
   const FRESH_HOURS = 72;
   const LIVE_DAYS = 14;
+  const HERO_TARGET = 7;
+  const HERO_AUTO_SEED = 2;
+  const HERO_ROTATION_KEY = 'press-future-newsroom-hero-url';
   const FETCH_TARGETS = {
     placements: 'placements.json',
     live: 'live-index.json',
@@ -2012,11 +2138,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       renderEverything(state);
 
-      // Existing app.js also refreshes some slots asynchronously.
-      // These passes make this engine the final source of truth.
-      window.setTimeout(() => renderEverything(state), 300);
-      window.setTimeout(() => renderEverything(state), 1200);
-
       window.dispatchEvent(new CustomEvent('press:ecosystem-ready', { detail: state }));
     }).catch((error) => {
       document.documentElement.classList.remove('press-ecosystem-booting');
@@ -2028,33 +2149,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ecosystemPromise) return ecosystemPromise;
 
     ecosystemPromise = (async () => {
-      const [placementsRaw, liveRaw, contentRaw] = await Promise.all([
+      const [placementsRaw, liveRaw, contentRaw, dailyRaw, editionRaw, searchRaw, embeddedRaw] = await Promise.all([
         fetchOptionalJson(FETCH_TARGETS.placements),
         fetchOptionalJson(FETCH_TARGETS.live),
         fetchOptionalJson(FETCH_TARGETS.content),
+        fetchOptionalJson(FETCH_TARGETS.daily),
+        fetchOptionalJson(FETCH_TARGETS.edition),
+        fetchOptionalJson(FETCH_TARGETS.search),
+        Promise.resolve(readEmbeddedSearchJson()),
       ]);
 
-      let sourceStories = mergeStories([
+      const sourceStories = mergeStories([
         extractStories(contentRaw, 'content-index'),
         extractStories(liveRaw, 'live-index'),
+        extractStories(dailyRaw, 'daily-latest'),
+        extractStories(editionRaw, 'edition'),
+        extractStories(searchRaw, 'search-index'),
+        extractStories(embeddedRaw, 'embedded-search'),
       ]);
-
-      if (sourceStories.length < 8) {
-        const [dailyRaw, editionRaw, searchRaw, embeddedRaw] = await Promise.all([
-          fetchOptionalJson(FETCH_TARGETS.daily),
-          fetchOptionalJson(FETCH_TARGETS.edition),
-          fetchOptionalJson(FETCH_TARGETS.search),
-          Promise.resolve(readEmbeddedSearchJson()),
-        ]);
-
-        sourceStories = mergeStories([
-          sourceStories,
-          extractStories(dailyRaw, 'daily-latest'),
-          extractStories(editionRaw, 'edition'),
-          extractStories(searchRaw, 'search-index'),
-          extractStories(embeddedRaw, 'embedded-search'),
-        ]);
-      }
 
       const stories = sourceStories
         .filter((story) => story.title && story.url)
@@ -2257,20 +2369,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const usedClusters = new Set();
     const usedUrls = new Set();
 
-    const resolvedHero = resolvePlacementList(placementFile?.home?.hero, byId, 4);
-    const hero = resolvedHero.length
-      ? resolvedHero
-      : pickStories(clusterFresh.filter((story) => story.heroEligible && story.image), 4, {
-          usedClusters,
-          usedUrls,
-          uniqueSections: true,
-        })
-          .concat(pickStories(clusterFresh, 4, {
-            usedClusters,
-            usedUrls,
-            uniqueSections: true,
-          }))
-          .slice(0, 4);
+    const heroTarget = Math.max(7, Number(placementFile?.home?.hero_slots || placementFile?.home?.heroSlots || HERO_TARGET) || HERO_TARGET);
+    const autoHero = pickStories(clusterFresh.filter((story) => story.heroEligible && story.image), Math.min(HERO_AUTO_SEED, heroTarget), {
+      usedClusters: new Set(),
+      usedUrls: new Set(),
+      uniqueSections: false,
+    });
+    const heroUsedClusters = new Set(autoHero.map((story) => story.clusterId));
+    const heroUsedUrls = new Set(autoHero.map((story) => story.url));
+    const resolvedHero = resolvePlacementList(placementFile?.home?.hero, byId, heroTarget)
+      .filter((story) => story && !heroUsedUrls.has(story.url) && !heroUsedClusters.has(story.clusterId));
+    resolvedHero.forEach((story) => remember(story, heroUsedClusters, heroUsedUrls));
+    const heroBase = autoHero
+      .concat(resolvedHero)
+      .concat(pickStories(clusterFresh.filter((story) => story.heroEligible && story.image), heroTarget - autoHero.length - resolvedHero.length, {
+        usedClusters: heroUsedClusters,
+        usedUrls: heroUsedUrls,
+        uniqueSections: true,
+      }))
+      .concat(pickStories(clusterFresh, heroTarget, {
+        usedClusters: heroUsedClusters,
+        usedUrls: heroUsedUrls,
+        uniqueSections: true,
+      }))
+      .slice(0, heroTarget);
+    const hero = rotateHeroListFromStoredHero(heroBase);
 
     hero.forEach((story) => remember(story, usedClusters, usedUrls));
 
@@ -2412,6 +2535,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function rotateHeroListFromStoredHero(stories) {
+    const items = uniqueByUrl(Array.isArray(stories) ? stories : []);
+    if (items.length < 2) return items;
+
+    let previousUrl = '';
+    try {
+      previousUrl = sessionStorage.getItem(HERO_ROTATION_KEY) || '';
+    } catch (_) {}
+
+    const previousKey = normalizeUrlKey(previousUrl);
+    const previousIndex = previousKey
+      ? items.findIndex((story) => normalizeUrlKey(story.url) === previousKey)
+      : -1;
+
+    if (previousIndex < 0) return items;
+
+    return items.slice(previousIndex + 1).concat(items.slice(0, previousIndex + 1));
+  }
+
   function scoreSort(stories, mode = 'placement') {
     return stories.slice().sort((a, b) => storyScore(b, mode) - storyScore(a, mode));
   }
@@ -2523,11 +2665,7 @@ document.addEventListener("DOMContentLoaded", () => {
       h1.textContent = 'Live Front Page';
     }
 
-    const copy = document.querySelector('.home-hero__intro .section-copy');
-
-    if (copy) {
-      copy.textContent = `A cleaner live edition: ${model.liveCount} active stories, ${model.deskPulse.length} desks in motion, and automatic article replenishment across the homepage.`;
-    }
+    document.querySelector('.home-hero__intro .section-copy')?.remove();
   }
 
   function renderDeskPulse(model) {
@@ -2602,17 +2740,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const navBox = document.querySelector('.lead-nav');
 
     if (!panelBox || !navBox || !stories?.length) return;
+    rememberVisibleHero(stories[0]);
 
     panelBox.innerHTML = stories.map((story, index) => leadPanel(story, index)).join('');
 
     navBox.innerHTML = stories.map((story, index) => `
       <button aria-pressed="${index === 0}" class="lead-nav__button${index === 0 ? ' is-active' : ''}" data-lead-button data-target="lead-${index}" type="button">
-        <span>${escapeHtml(story.section)}</span>
+        ${leadNavThumbnail(story)}
+        <span class="lead-nav__kicker">${escapeHtml(story.section)}</span>
         <strong>${escapeHtml(story.title)}</strong>
       </button>
     `).join('');
 
     bindLeadSwitcher(navBox, panelBox);
+  }
+
+  function rememberVisibleHero(story) {
+    if (!story?.url) return;
+    try {
+      sessionStorage.setItem(HERO_ROTATION_KEY, story.url);
+    } catch (_) {}
   }
 
   function leadPanel(story, index) {
@@ -2649,7 +2796,50 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
+  function leadNavThumbnail(story) {
+    if (story?.image) {
+      return `
+        <span class="lead-nav__thumb" aria-hidden="true">
+          <img src="${escapeAttr(story.image)}" alt="" loading="lazy" decoding="async" />
+        </span>
+      `;
+    }
+
+    return `
+      <span class="lead-nav__thumb lead-nav__thumb--fallback" aria-hidden="true">
+        <span>${escapeHtml(story?.section || 'Story')}</span>
+      </span>
+    `;
+  }
+
+  function layoutLeadSideSlots(navBox) {
+    if (!navBox) return;
+
+    if (window.PressHeroStandard?.layoutLeadNav) {
+      window.PressHeroStandard.layoutLeadNav(navBox);
+      return;
+    }
+
+    const buttons = Array.from(navBox.querySelectorAll('[data-lead-button]'));
+    const sideButtons = buttons.filter((button) => !button.classList.contains('is-active')).slice(0, 6);
+    const slots = ['left-1', 'left-2', 'left-3', 'right-1', 'right-2', 'right-3'];
+
+    buttons.forEach((button) => {
+      button.removeAttribute('data-side-slot');
+    });
+
+    sideButtons.forEach((button, index) => {
+      button.setAttribute('data-side-slot', slots[index]);
+    });
+  }
+
   function bindLeadSwitcher(navBox, panelBox) {
+    layoutLeadSideSlots(navBox);
+
+    if (typeof pressLayoutLeadNav === 'function') {
+      pressLayoutLeadNav(navBox);
+    }
+
     navBox.querySelectorAll('[data-lead-button]').forEach((button) => {
       button.addEventListener('click', () => {
         const target = button.dataset.target;
@@ -2663,6 +2853,12 @@ document.addEventListener("DOMContentLoaded", () => {
         panelBox.querySelectorAll('[data-lead-panel]').forEach((panel) => {
           panel.classList.toggle('is-active', panel.id === target);
         });
+
+        layoutLeadSideSlots(navBox);
+
+        if (typeof pressLayoutLeadNav === 'function') {
+          pressLayoutLeadNav(navBox);
+        }
       });
     });
   }
@@ -4500,18 +4696,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!candidates.length) return source[0] || null;
 
-    const preselectedUrl = normalizeUrl(window.__PRESS_PRESELECTED_HERO_URL__ || '');
-    if (preselectedUrl) {
-      const preselected = candidates.find(function samePreselectedHero(story) {
-        return story.url === preselectedUrl;
-      });
-      if (preselected) {
-        currentRefreshHeroUrl = preselected.url;
-        writeSessionValue(HERO_STORAGE_KEY, preselected.url);
-        return preselected;
-      }
-    }
-
     if (currentRefreshHeroUrl) {
       const alreadyChosen = candidates.find(function sameHero(story) {
         return story.url === currentRefreshHeroUrl;
@@ -4525,9 +4709,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     const nextIndex = previousIndex >= 0 ? (previousIndex + 1) % candidates.length : 0;
     const hero = candidates[nextIndex] || candidates[0];
-
-    currentRefreshHeroUrl = hero.url;
-    writeSessionValue(HERO_STORAGE_KEY, hero.url);
 
     return hero;
   }
@@ -4548,16 +4729,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderFutureHomepage(state) {
     if (!document.body.classList.contains('page-home')) return;
-    const preselectedUrl = normalizeUrl(window.__PRESS_PRESELECTED_HERO_URL__ || '');
-    const currentLeadUrl = normalizeUrl(document.querySelector('.press-future-lead[data-story-url]')?.getAttribute('data-story-url') || '');
-    if (preselectedUrl && currentLeadUrl === preselectedUrl) {
-      renderTopicRadar(state);
-      enhanceLeadPanel();
-      return;
-    }
-    renderStudioDeck(state);
-    renderTopicRadar(state);
-    enhanceLeadPanel();
+    // The homepage already has a server-rendered hero plus the ecosystem rotation pass.
+    // Avoid inserting another above-the-fold layer after load; it causes a visible lag.
   }
 
   function renderStudioDeck(state) {
@@ -5047,3 +5220,92 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })();
 /* PRESS_FUTURE_NEWSROOM_END */
+
+/* PRESS_HOMEPAGE_HERO_STANDARD_START
+   One permanent contract for the homepage hero:
+   1 center lead, 3 side stories on the left, 3 on the right.
+   Any renderer that replaces the hero nav is normalized back to this shape.
+*/
+(function pressHomepageHeroStandard() {
+  'use strict';
+
+  const HERO_SLOT_COUNT = 7;
+  const SIDE_SLOTS = ['left-1', 'left-2', 'left-3', 'right-1', 'right-2', 'right-3'];
+
+  function layoutLeadNav(navBox) {
+    const nav = navBox || document.querySelector('.lead-nav');
+    if (!nav || nav.dataset.pressHeroApplying === 'true') return;
+
+    nav.dataset.pressHeroApplying = 'true';
+
+    try {
+      const buttons = Array.from(nav.querySelectorAll('[data-lead-button]'));
+      const sideButtons = buttons
+        .filter((button) => !button.classList.contains('is-active'))
+        .slice(0, SIDE_SLOTS.length);
+
+      buttons.forEach((button) => {
+        button.removeAttribute('data-side-slot');
+      });
+
+      sideButtons.forEach((button, index) => {
+        button.setAttribute('data-side-slot', SIDE_SLOTS[index]);
+      });
+
+      nav.dataset.sideLayout = 'split';
+      nav.closest('.lead-switcher')?.setAttribute('data-press-hero-layout', 'split-rail');
+      nav.closest('.lead-switcher')?.setAttribute('data-press-hero-slots', String(HERO_SLOT_COUNT));
+    } finally {
+      delete nav.dataset.pressHeroApplying;
+    }
+  }
+
+  function installObserver(nav) {
+    if (!nav || nav.dataset.pressHeroStandardBound === 'true') return;
+
+    nav.dataset.pressHeroStandardBound = 'true';
+    let queued = false;
+
+    const schedule = () => {
+      if (nav.dataset.pressHeroApplying === 'true' || queued) return;
+      queued = true;
+      window.requestAnimationFrame(() => {
+        queued = false;
+        layoutLeadNav(nav);
+      });
+    };
+
+    const observer = new MutationObserver(schedule);
+    observer.observe(nav, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class', 'aria-pressed'],
+    });
+  }
+
+  function run() {
+    document.querySelectorAll('.lead-nav').forEach((nav) => {
+      installObserver(nav);
+      layoutLeadNav(nav);
+    });
+  }
+
+  window.PressHeroStandard = {
+    heroSlotCount: HERO_SLOT_COUNT,
+    sideSlots: SIDE_SLOTS.slice(),
+    layoutLeadNav,
+    run,
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run, { once: true });
+  } else {
+    run();
+  }
+
+  window.addEventListener('pageshow', run);
+  window.addEventListener('load', run);
+  window.addEventListener('press:ecosystem-ready', run);
+})();
+/* PRESS_HOMEPAGE_HERO_STANDARD_END */

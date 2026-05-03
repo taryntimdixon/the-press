@@ -8,10 +8,14 @@
     "rails": "freshness-weighted fallback if manual analytics are unavailable"
   },
   "home": {
+    "hero_slots": 7,
     "hero": [
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
+      "food-atla-noho-closing",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
       "technology-musk-altman-openai-court-battle",
+      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
       "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class"
     ],
     "secondary": [
