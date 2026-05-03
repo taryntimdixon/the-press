@@ -1011,8 +1011,6 @@ def render_homepage() -> str:
     recency_stories = homepage_recency_stories(lead_stories)
     recency_cards = "\n".join(recency_ticker_item(story) for story in recency_stories)
     recency_cards_duplicate = "\n".join(recency_ticker_item(story, duplicate=True) for story in recency_stories)
-    most_read_html = "\n".join(ranked_list_item(STORY_BY_FILE[file], rank + 1) for rank, file in enumerate(DATA["homepage"]["mostRead"]) if file in STORY_BY_FILE)
-    editors_html = "\n".join(simple_list_item(STORY_BY_FILE[file]) for file in DATA["homepage"]["editorsPicks"] if file in STORY_BY_FILE)
     latest_html = "\n".join(river_item(story) for story in STORIES[:8])
     main = f"""
 <main class="page">
@@ -1048,24 +1046,6 @@ def render_homepage() -> str:
         </div>
       </div>
     </div>
-    <aside class="home-grid__aside">
-      <section class="rail rail--most-read">
-        <div class="section-heading-row">
-          <h2 class="section-heading">Most Read</h2>
-        </div>
-        <ul class="link-list">
-          {most_read_html}
-        </ul>
-      </section>
-      <section class="rail rail--editors">
-        <div class="section-heading-row">
-          <h2 class="section-heading">Editors’ Picks</h2>
-        </div>
-        <ul class="link-list">
-          {editors_html}
-        </ul>
-      </section>
-    </aside>
   </section>
 
   <section class="latest-section">

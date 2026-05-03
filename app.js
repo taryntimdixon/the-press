@@ -2649,14 +2649,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCatchUp(model);
     renderHero(model.hero);
     renderSecondary(model.recencyTicker || model.latest, model.hero);
-    renderRail('.rail--most-read .link-list', model.mostRead, {
-      ranked: true,
-      reason: 'Trending because it is fresh, prominent, and part of an active topic cluster.',
-    });
-    renderRail('.rail--editors .link-list', model.editorsPicks, {
-      ranked: false,
-      reason: 'Chosen as a section-diverse editor-style pick with lasting context.',
-    });
     renderDailySection(model.daily);
     renderLatestRiver(model.latest);
     renderDeskDirectory(model.all);
