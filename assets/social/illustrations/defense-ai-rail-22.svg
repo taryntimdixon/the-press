@@ -1,26 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-<title id="title">Defense AI Rail 22</title>
-<desc id="desc">Abstract editorial illustration for a source rail card about AI and classified military networks. Not a social media screenshot.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title-22 desc-22">
+<title id="title-22">No-weapons pledge removed</title>
+<desc id="desc-22">A policy page shows an erased no-weapons pledge and a rewritten responsibility clause. Editorial illustration only; not a social media screenshot.</desc>
 <defs>
-<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101827"/><stop offset="0.55" stop-color="#182b4d"/><stop offset="1" stop-color="#06121f"/></linearGradient>
-<radialGradient id="r" cx="50%" cy="48%" r="55%"><stop offset="0" stop-color="#8fd7ff" stop-opacity="0.62"/><stop offset="1" stop-color="#8fd7ff" stop-opacity="0"/></radialGradient>
+  <linearGradient id="bg-22" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1b2d"/><stop offset="0.58" stop-color="#263e52"/><stop offset="1" stop-color="#050914"/></linearGradient>
+  <radialGradient id="glow-22" cx="66%" cy="32%" r="58%"><stop offset="0" stop-color="#f97316" stop-opacity="0.42"/><stop offset="1" stop-color="#f97316" stop-opacity="0"/></radialGradient>
+  <pattern id="grid-22" width="52" height="52" patternUnits="userSpaceOnUse"><path d="M52 0H0V52" fill="none" stroke="#ffffff" stroke-opacity="0.055" stroke-width="2"/></pattern>
+  <filter id="soft-22" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.32"/></filter>
 </defs>
-<rect width="1200" height="760" fill="url(#g)"/>
-<rect width="1200" height="760" fill="url(#r)"/>
-<g opacity="0.58" stroke="#d7ecff" stroke-width="5" fill="none">
-<path d="M145 585 C310 420 315 295 455 260 C620 219 690 355 848 284 C930 247 984 170 1076 130"/>
-<path d="M145 615 L330 615 L330 520 L520 520 L520 380 L755 380 L755 260 L1035 260"/>
-<circle cx="330" cy="615" r="15" fill="#d7ecff"/><circle cx="520" cy="520" r="15" fill="#d7ecff"/><circle cx="755" cy="380" r="15" fill="#d7ecff"/><circle cx="1035" cy="260" r="15" fill="#d7ecff"/>
+<rect width="1200" height="760" fill="url(#bg-22)"/>
+<rect width="1200" height="760" fill="url(#glow-22)"/>
+<rect width="1200" height="760" fill="url(#grid-22)"/>
+<path d="M-80 620C130 515 242 638 422 518C605 396 704 412 844 302C973 201 1082 178 1280 242" fill="none" stroke="#ffffff" stroke-opacity="0.11" stroke-width="32"/>
+<g filter="url(#soft-22)">
+  <rect x="280" y="130" width="640" height="430" rx="34" fill="#f8fbff" fill-opacity="0.93" stroke="#f97316" stroke-width="6"/>
+  <text x="340" y="205" font-family="Inter, Arial" font-size="31" font-weight="900" fill="#172033">AI Principles</text>
+  <path d="M340 270h410" stroke="#172033" stroke-opacity="0.35" stroke-width="8"/><path d="M338 268C420 284 560 248 750 274" stroke="#ef4444" stroke-width="12" stroke-linecap="round" opacity="0.72"/>
+  <text x="340" y="326" font-family="Inter, Arial" font-size="24" font-weight="800" fill="#172033" opacity="0.8">responsible innovation</text>
+  <path d="M670 395l170-105" stroke="#93e5ab" stroke-width="18" stroke-linecap="round"/><polygon points="842,284 892,248 875,309" fill="#93e5ab"/>
+  <g><rect x="326" y="442" width="196" height="34" rx="17" fill="#ffffff" fill-opacity="0.12" stroke="#f97316" stroke-opacity="0.35"/><text x="340" y="465" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#f97316">pledge removed</text></g>
 </g>
-<g opacity="0.22" fill="#ffffff">
-<rect x="110" y="105" width="220" height="48" rx="24"/>
-<rect x="110" y="170" width="360" height="24" rx="12"/>
-<rect x="110" y="210" width="295" height="24" rx="12"/>
+<g transform="translate(72 610)">
+  <rect x="0" y="0" width="760" height="92" rx="28" fill="#08111f" fill-opacity="0.74" stroke="#f97316" stroke-opacity="0.45" filter="url(#soft-22)"/>
+  <text x="28" y="35" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" fill="#f97316" text-anchor="start">PRINCIPLES SHIFT</text>
+  <text x="28" y="68" font-family="Georgia, serif" font-size="30" font-weight="850" fill="#f8fbff" text-anchor="start">No-weapons pledge removed</text>
 </g>
-<g transform="translate(678 500)">
-<rect x="0" y="0" width="320" height="120" rx="18" fill="#07111f" opacity="0.72" stroke="#9bdfff" stroke-width="4"/>
-<text x="28" y="48" font-family="Georgia, serif" font-size="28" fill="#e9f7ff">EDITORIAL ART</text>
-<text x="28" y="87" font-family="Arial, sans-serif" font-size="19" fill="#a9c7da">not a platform screenshot</text>
+<g transform="translate(1018 624)">
+  <circle cx="52" cy="52" r="52" fill="#ffffff" fill-opacity="0.11" stroke="#93e5ab" stroke-opacity="0.6"/>
+  <text x="52" y="65" font-family="Georgia, serif" font-size="42" font-weight="900" fill="#ffffff" text-anchor="middle">22</text>
 </g>
-<text x="112" y="675" font-family="Georgia, serif" font-size="70" fill="#f7fbff" opacity="0.96">22</text>
 </svg>

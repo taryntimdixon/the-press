@@ -1,26 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-<title id="title">Defense AI Rail 03</title>
-<desc id="desc">Abstract editorial illustration for a source rail card about AI and classified military networks. Not a social media screenshot.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title-03 desc-03">
+<title id="title-03">Deals for classified systems</title>
+<desc id="desc-03">A reporting desk studies a classified decision map with caution markers. Editorial illustration only; not a social media screenshot.</desc>
 <defs>
-<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101827"/><stop offset="0.55" stop-color="#182b4d"/><stop offset="1" stop-color="#06121f"/></linearGradient>
-<radialGradient id="r" cx="50%" cy="48%" r="55%"><stop offset="0" stop-color="#8fd7ff" stop-opacity="0.62"/><stop offset="1" stop-color="#8fd7ff" stop-opacity="0"/></radialGradient>
+  <linearGradient id="bg-03" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101927"/><stop offset="0.58" stop-color="#273c48"/><stop offset="1" stop-color="#050914"/></linearGradient>
+  <radialGradient id="glow-03" cx="66%" cy="32%" r="58%"><stop offset="0" stop-color="#ffb454" stop-opacity="0.42"/><stop offset="1" stop-color="#ffb454" stop-opacity="0"/></radialGradient>
+  <pattern id="grid-03" width="52" height="52" patternUnits="userSpaceOnUse"><path d="M52 0H0V52" fill="none" stroke="#ffffff" stroke-opacity="0.055" stroke-width="2"/></pattern>
+  <filter id="soft-03" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.32"/></filter>
 </defs>
-<rect width="1200" height="760" fill="url(#g)"/>
-<rect width="1200" height="760" fill="url(#r)"/>
-<g opacity="0.58" stroke="#d7ecff" stroke-width="5" fill="none">
-<path d="M145 585 C310 420 315 295 455 260 C620 219 690 355 848 284 C930 247 984 170 1076 130"/>
-<path d="M145 615 L330 615 L330 520 L520 520 L520 380 L755 380 L755 260 L1035 260"/>
-<circle cx="330" cy="615" r="15" fill="#d7ecff"/><circle cx="520" cy="520" r="15" fill="#d7ecff"/><circle cx="755" cy="380" r="15" fill="#d7ecff"/><circle cx="1035" cy="260" r="15" fill="#d7ecff"/>
+<rect width="1200" height="760" fill="url(#bg-03)"/>
+<rect width="1200" height="760" fill="url(#glow-03)"/>
+<rect width="1200" height="760" fill="url(#grid-03)"/>
+<path d="M-80 620C130 515 242 638 422 518C605 396 704 412 844 302C973 201 1082 178 1280 242" fill="none" stroke="#ffffff" stroke-opacity="0.11" stroke-width="32"/>
+<g filter="url(#soft-03)">
+  <rect x="210" y="150" width="780" height="410" rx="38" fill="#07111f" fill-opacity="0.78" stroke="#ffb454" stroke-width="6"/>
+  <path d="M260 470C370 338 457 452 560 318C650 202 760 306 925 210" fill="none" stroke="#91e6c7" stroke-width="9" stroke-linecap="round"/>
+  <path d="M278 270h635M278 360h635M375 190v325M562 190v325M750 190v325" stroke="#fff" stroke-opacity="0.11" stroke-width="3"/>
+  <polygon points="685,262 744,365 626,365" fill="#f59e0b" fill-opacity="0.95"/><text x="685" y="343" font-family="Inter, Arial" font-size="64" font-weight="900" text-anchor="middle" fill="#1b1320">!</text>
+  <circle cx="420" cy="412" r="44" fill="#ffb454" fill-opacity="0.5" stroke="#fff" stroke-opacity="0.5"/><circle cx="880" cy="246" r="36" fill="#91e6c7" fill-opacity="0.55"/>
+  <g><rect x="230" y="180" width="112" height="34" rx="17" fill="#ffffff" fill-opacity="0.12" stroke="#ffb454" stroke-opacity="0.35"/><text x="244" y="203" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#ffb454">privacy</text></g>
+<g><rect x="230" y="224" width="136" height="34" rx="17" fill="#ffffff" fill-opacity="0.12" stroke="#91e6c7" stroke-opacity="0.35"/><text x="244" y="247" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#91e6c7">targeting</text></g>
+<g><rect x="230" y="268" width="82" height="34" rx="17" fill="#ffffff" fill-opacity="0.12" stroke="#ffb454" stroke-opacity="0.35"/><text x="244" y="291" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#ffb454">risk</text></g>
 </g>
-<g opacity="0.22" fill="#ffffff">
-<rect x="110" y="105" width="220" height="48" rx="24"/>
-<rect x="110" y="170" width="360" height="24" rx="12"/>
-<rect x="110" y="210" width="295" height="24" rx="12"/>
+<g transform="translate(72 610)">
+  <rect x="0" y="0" width="760" height="92" rx="28" fill="#08111f" fill-opacity="0.74" stroke="#ffb454" stroke-opacity="0.45" filter="url(#soft-03)"/>
+  <text x="28" y="35" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" fill="#ffb454" text-anchor="start">CLASSIFIED SYSTEMS</text>
+  <text x="28" y="68" font-family="Georgia, serif" font-size="30" font-weight="850" fill="#f8fbff" text-anchor="start">Deals for classified systems</text>
 </g>
-<g transform="translate(678 500)">
-<rect x="0" y="0" width="320" height="120" rx="18" fill="#07111f" opacity="0.72" stroke="#9bdfff" stroke-width="4"/>
-<text x="28" y="48" font-family="Georgia, serif" font-size="28" fill="#e9f7ff">EDITORIAL ART</text>
-<text x="28" y="87" font-family="Arial, sans-serif" font-size="19" fill="#a9c7da">not a platform screenshot</text>
+<g transform="translate(1018 624)">
+  <circle cx="52" cy="52" r="52" fill="#ffffff" fill-opacity="0.11" stroke="#91e6c7" stroke-opacity="0.6"/>
+  <text x="52" y="65" font-family="Georgia, serif" font-size="42" font-weight="900" fill="#ffffff" text-anchor="middle">03</text>
 </g>
-<text x="112" y="675" font-family="Georgia, serif" font-size="70" fill="#f7fbff" opacity="0.96">03</text>
 </svg>

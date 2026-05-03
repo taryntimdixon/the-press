@@ -1,26 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-<title id="title">Defense AI Rail 12</title>
-<desc id="desc">Abstract editorial illustration for a source rail card about AI and classified military networks. Not a social media screenshot.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title-12 desc-12">
+<title id="title-12">Grok at IL5</title>
+<desc id="desc-12">A controlled unclassified IL5 corridor expands the GenAI.mil platform before IL6 and IL7. Editorial illustration only; not a social media screenshot.</desc>
 <defs>
-<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101827"/><stop offset="0.55" stop-color="#182b4d"/><stop offset="1" stop-color="#06121f"/></linearGradient>
-<radialGradient id="r" cx="50%" cy="48%" r="55%"><stop offset="0" stop-color="#8fd7ff" stop-opacity="0.62"/><stop offset="1" stop-color="#8fd7ff" stop-opacity="0"/></radialGradient>
+  <linearGradient id="bg-12" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#121726"/><stop offset="0.58" stop-color="#243f5f"/><stop offset="1" stop-color="#050914"/></linearGradient>
+  <radialGradient id="glow-12" cx="66%" cy="32%" r="58%"><stop offset="0" stop-color="#f36f45" stop-opacity="0.42"/><stop offset="1" stop-color="#f36f45" stop-opacity="0"/></radialGradient>
+  <pattern id="grid-12" width="52" height="52" patternUnits="userSpaceOnUse"><path d="M52 0H0V52" fill="none" stroke="#ffffff" stroke-opacity="0.055" stroke-width="2"/></pattern>
+  <filter id="soft-12" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.32"/></filter>
 </defs>
-<rect width="1200" height="760" fill="url(#g)"/>
-<rect width="1200" height="760" fill="url(#r)"/>
-<g opacity="0.58" stroke="#d7ecff" stroke-width="5" fill="none">
-<path d="M145 585 C310 420 315 295 455 260 C620 219 690 355 848 284 C930 247 984 170 1076 130"/>
-<path d="M145 615 L330 615 L330 520 L520 520 L520 380 L755 380 L755 260 L1035 260"/>
-<circle cx="330" cy="615" r="15" fill="#d7ecff"/><circle cx="520" cy="520" r="15" fill="#d7ecff"/><circle cx="755" cy="380" r="15" fill="#d7ecff"/><circle cx="1035" cy="260" r="15" fill="#d7ecff"/>
+<rect width="1200" height="760" fill="url(#bg-12)"/>
+<rect width="1200" height="760" fill="url(#glow-12)"/>
+<rect width="1200" height="760" fill="url(#grid-12)"/>
+<path d="M-80 620C130 515 242 638 422 518C605 396 704 412 844 302C973 201 1082 178 1280 242" fill="none" stroke="#ffffff" stroke-opacity="0.11" stroke-width="32"/>
+<g filter="url(#soft-12)">
+  <path d="M190 500h820l-115-300H305z" fill="#08111f" fill-opacity="0.76" stroke="#f36f45" stroke-width="6"/>
+  <path d="M420 500l55-300M780 500l-55-300M190 500l115-300M1010 500L895 200" stroke="#fff" stroke-opacity="0.18" stroke-width="5"/>
+  <rect x="508" y="255" width="184" height="128" rx="26" fill="#87d8ff" fill-opacity="0.16" stroke="#87d8ff" stroke-width="5"/>
+  <text x="600" y="336" font-family="Inter, Arial" font-size="60" font-weight="900" fill="#fff" text-anchor="middle">IL5</text>
+  <path d="M552 164l48 48 48-48M552 212l48-48 48 48" stroke="#f36f45" stroke-width="11" stroke-linecap="round"/>
+  <g><rect x="262" y="156" width="304" height="34" rx="17" fill="#ffffff" fill-opacity="0.12" stroke="#87d8ff" stroke-opacity="0.35"/><text x="276" y="179" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#87d8ff">controlled unclassified</text></g>
 </g>
-<g opacity="0.22" fill="#ffffff">
-<rect x="110" y="105" width="220" height="48" rx="24"/>
-<rect x="110" y="170" width="360" height="24" rx="12"/>
-<rect x="110" y="210" width="295" height="24" rx="12"/>
+<g transform="translate(72 610)">
+  <rect x="0" y="0" width="760" height="92" rx="28" fill="#08111f" fill-opacity="0.74" stroke="#f36f45" stroke-opacity="0.45" filter="url(#soft-12)"/>
+  <text x="28" y="35" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" fill="#f36f45" text-anchor="start">EARLIER BUILDOUT</text>
+  <text x="28" y="68" font-family="Georgia, serif" font-size="30" font-weight="850" fill="#f8fbff" text-anchor="start">Grok at IL5</text>
 </g>
-<g transform="translate(678 500)">
-<rect x="0" y="0" width="320" height="120" rx="18" fill="#07111f" opacity="0.72" stroke="#9bdfff" stroke-width="4"/>
-<text x="28" y="48" font-family="Georgia, serif" font-size="28" fill="#e9f7ff">EDITORIAL ART</text>
-<text x="28" y="87" font-family="Arial, sans-serif" font-size="19" fill="#a9c7da">not a platform screenshot</text>
+<g transform="translate(1018 624)">
+  <circle cx="52" cy="52" r="52" fill="#ffffff" fill-opacity="0.11" stroke="#87d8ff" stroke-opacity="0.6"/>
+  <text x="52" y="65" font-family="Georgia, serif" font-size="42" font-weight="900" fill="#ffffff" text-anchor="middle">12</text>
 </g>
-<text x="112" y="675" font-family="Georgia, serif" font-size="70" fill="#f7fbff" opacity="0.96">12</text>
 </svg>

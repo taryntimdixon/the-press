@@ -1,26 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-<title id="title">Defense AI Rail 04</title>
-<desc id="desc">Abstract editorial illustration for a source rail card about AI and classified military networks. Not a social media screenshot.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title-04 desc-04">
+<title id="title-04">Oracle joins the list</title>
+<desc id="desc-04">A cloud database stack locks into a classified network ring as the eighth company. Editorial illustration only; not a social media screenshot.</desc>
 <defs>
-<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101827"/><stop offset="0.55" stop-color="#182b4d"/><stop offset="1" stop-color="#06121f"/></linearGradient>
-<radialGradient id="r" cx="50%" cy="48%" r="55%"><stop offset="0" stop-color="#8fd7ff" stop-opacity="0.62"/><stop offset="1" stop-color="#8fd7ff" stop-opacity="0"/></radialGradient>
+  <linearGradient id="bg-04" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#121726"/><stop offset="0.58" stop-color="#243f5f"/><stop offset="1" stop-color="#050914"/></linearGradient>
+  <radialGradient id="glow-04" cx="66%" cy="32%" r="58%"><stop offset="0" stop-color="#f36f45" stop-opacity="0.42"/><stop offset="1" stop-color="#f36f45" stop-opacity="0"/></radialGradient>
+  <pattern id="grid-04" width="52" height="52" patternUnits="userSpaceOnUse"><path d="M52 0H0V52" fill="none" stroke="#ffffff" stroke-opacity="0.055" stroke-width="2"/></pattern>
+  <filter id="soft-04" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.32"/></filter>
 </defs>
-<rect width="1200" height="760" fill="url(#g)"/>
-<rect width="1200" height="760" fill="url(#r)"/>
-<g opacity="0.58" stroke="#d7ecff" stroke-width="5" fill="none">
-<path d="M145 585 C310 420 315 295 455 260 C620 219 690 355 848 284 C930 247 984 170 1076 130"/>
-<path d="M145 615 L330 615 L330 520 L520 520 L520 380 L755 380 L755 260 L1035 260"/>
-<circle cx="330" cy="615" r="15" fill="#d7ecff"/><circle cx="520" cy="520" r="15" fill="#d7ecff"/><circle cx="755" cy="380" r="15" fill="#d7ecff"/><circle cx="1035" cy="260" r="15" fill="#d7ecff"/>
+<rect width="1200" height="760" fill="url(#bg-04)"/>
+<rect width="1200" height="760" fill="url(#glow-04)"/>
+<rect width="1200" height="760" fill="url(#grid-04)"/>
+<path d="M-80 620C130 515 242 638 422 518C605 396 704 412 844 302C973 201 1082 178 1280 242" fill="none" stroke="#ffffff" stroke-opacity="0.11" stroke-width="32"/>
+<g filter="url(#soft-04)">
+  <path d="M408 318c24-92 138-126 210-68 43-76 164-70 210 10 79 7 137 60 137 132 0 77-66 139-152 139H383c-94 0-170-62-170-139 0-69 61-126 142-136 12-16 30-30 53-38z" fill="#fff" fill-opacity="0.13" stroke="#f36f45" stroke-width="7"/>
+  <ellipse cx="610" cy="315" rx="145" ry="38" fill="#87d8ff" fill-opacity="0.26" stroke="#fff" stroke-opacity="0.38"/><path d="M465 315v60c0 22 65 40 145 40s145-18 145-40v-60" fill="none" stroke="#fff" stroke-opacity="0.35" stroke-width="4"/>
+<ellipse cx="610" cy="389" rx="145" ry="38" fill="#f36f45" fill-opacity="0.26" stroke="#fff" stroke-opacity="0.38"/><path d="M465 389v60c0 22 65 40 145 40s145-18 145-40v-60" fill="none" stroke="#fff" stroke-opacity="0.35" stroke-width="4"/>
+<ellipse cx="610" cy="463" rx="145" ry="38" fill="#f36f45" fill-opacity="0.26" stroke="#fff" stroke-opacity="0.38"/><path d="M465 463v60c0 22 65 40 145 40s145-18 145-40v-60" fill="none" stroke="#fff" stroke-opacity="0.35" stroke-width="4"/>
+  <rect x="775" y="350" width="118" height="110" rx="20" fill="#08111f" stroke="#87d8ff" stroke-width="6"/><path d="M803 350v-34c0-52 64-52 64 0v34" fill="none" stroke="#87d8ff" stroke-width="10"/><circle cx="834" cy="406" r="10" fill="#87d8ff"/>
+  <g><rect x="218" y="166" width="88" height="34" rx="17" fill="#ffffff" fill-opacity="0.12" stroke="#f36f45" stroke-opacity="0.35"/><text x="232" y="189" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#f36f45">cloud</text></g>
+<g><rect x="218" y="210" width="172" height="34" rx="17" fill="#ffffff" fill-opacity="0.12" stroke="#87d8ff" stroke-opacity="0.35"/><text x="232" y="233" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#87d8ff">data control</text></g>
+<g><rect x="218" y="254" width="148" height="34" rx="17" fill="#ffffff" fill-opacity="0.12" stroke="#f36f45" stroke-opacity="0.35"/><text x="232" y="277" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#f36f45">no lock-in</text></g>
 </g>
-<g opacity="0.22" fill="#ffffff">
-<rect x="110" y="105" width="220" height="48" rx="24"/>
-<rect x="110" y="170" width="360" height="24" rx="12"/>
-<rect x="110" y="210" width="295" height="24" rx="12"/>
+<g transform="translate(72 610)">
+  <rect x="0" y="0" width="760" height="92" rx="28" fill="#08111f" fill-opacity="0.74" stroke="#f36f45" stroke-opacity="0.45" filter="url(#soft-04)"/>
+  <text x="28" y="35" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" fill="#f36f45" text-anchor="start">ORACLE ADDED</text>
+  <text x="28" y="68" font-family="Georgia, serif" font-size="30" font-weight="850" fill="#f8fbff" text-anchor="start">Oracle joins the list</text>
 </g>
-<g transform="translate(678 500)">
-<rect x="0" y="0" width="320" height="120" rx="18" fill="#07111f" opacity="0.72" stroke="#9bdfff" stroke-width="4"/>
-<text x="28" y="48" font-family="Georgia, serif" font-size="28" fill="#e9f7ff">EDITORIAL ART</text>
-<text x="28" y="87" font-family="Arial, sans-serif" font-size="19" fill="#a9c7da">not a platform screenshot</text>
+<g transform="translate(1018 624)">
+  <circle cx="52" cy="52" r="52" fill="#ffffff" fill-opacity="0.11" stroke="#87d8ff" stroke-opacity="0.6"/>
+  <text x="52" y="65" font-family="Georgia, serif" font-size="42" font-weight="900" fill="#ffffff" text-anchor="middle">04</text>
 </g>
-<text x="112" y="675" font-family="Georgia, serif" font-size="70" fill="#f7fbff" opacity="0.96">04</text>
 </svg>
