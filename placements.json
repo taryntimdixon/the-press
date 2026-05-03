@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-30T17:20:02.891245+00:00",
+  "generated_at": "2026-05-03T07:32:14.016341+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -8,14 +8,10 @@
     "rails": "freshness-weighted fallback if manual analytics are unavailable"
   },
   "home": {
-    "hero_slots": 7,
     "hero": [
-      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "food-atla-noho-closing",
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
-      "technology-musk-altman-openai-court-battle",
-      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
       "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class"
     ],
     "secondary": [
@@ -31,12 +27,13 @@
       "2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy"
     ],
     "editors_picks": [
+      "technology-musk-altman-openai-court-battle",
       "2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume",
       "2026-04-27-cape-cod-s-blue-blood-quota-retreat-leaves-a-crab-test-unsettled",
-      "2026-04-27-npt-s-glass-booths-hear-a-battered-bargain-in-new-york",
-      "2026-04-27-32bj-s-4-50-raise-puts-new-york-s-lobby-math-on-the-desk"
+      "2026-04-27-npt-s-glass-booths-hear-a-battered-bargain-in-new-york"
     ],
     "latest": [
+      "food-atla-noho-closing",
       "technology-musk-altman-openai-court-battle",
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
@@ -47,8 +44,7 @@
       "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
       "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
       "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
-      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line",
-      "2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy"
+      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
     ],
     "daily": [
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
@@ -63,6 +59,7 @@
       "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
     ],
     "breaking": [
+      "food-atla-noho-closing",
       "technology-musk-altman-openai-court-battle",
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
@@ -73,12 +70,17 @@
       "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
       "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
       "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
-      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line",
-      "2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy"
+      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
     ],
     "desk_pulse": [
       {
-        "count": 20,
+        "count": 16,
+        "latest_ts": 1777813200.0,
+        "story_id": "food-atla-noho-closing",
+        "section": "Culture"
+      },
+      {
+        "count": 14,
         "latest_ts": 1777472100.0,
         "story_id": "technology-musk-altman-openai-court-battle",
         "section": "Technology"
@@ -90,16 +92,10 @@
         "section": "Politics / Security"
       },
       {
-        "count": 25,
+        "count": 19,
         "latest_ts": 1777392000.0,
         "story_id": "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
         "section": "World"
-      },
-      {
-        "count": 15,
-        "latest_ts": 1777297980.0,
-        "story_id": "2026-04-27-fcc-s-april-22-notice-puts-the-kids-tv-rating-icon-on-the-couch",
-        "section": "Culture"
       },
       {
         "count": 3,
@@ -120,7 +116,7 @@
         "section": "The Weird File"
       },
       {
-        "count": 22,
+        "count": 16,
         "latest_ts": 1777288860.0,
         "story_id": "2026-04-27-sony-s-ace-turns-table-tennis-into-a-physics-exam",
         "section": "Science"

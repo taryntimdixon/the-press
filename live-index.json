@@ -1,7 +1,42 @@
 {
-  "generated_at": "2026-04-30T17:20:02.891245+00:00",
+  "generated_at": "2026-05-03T07:32:14.016341+00:00",
   "story_count": 80,
   "stories": [
+    {
+      "story_id": "food-atla-noho-closing",
+      "cluster_id": "culture-last-month-atla-enrique-olvera-noho",
+      "title": "The Last Month at Atla",
+      "section": "Culture",
+      "section_slug": "culture",
+      "type": "Food Feature",
+      "dek": "Enrique Olvera’s Atla is closing in NoHo, but the Lafayette Street room is not going dark. The restaurant’s final month is a story about all-day dining, modern Mexican cooking, and the strange tenderness of eating a place before it becomes history.",
+      "url": "food-atla-noho-closing.html",
+      "author": "Nia Calder",
+      "published": "May 3, 2026 • 9:00 a.m. EDT",
+      "published_iso": "2026-05-03T13:00:00+00:00",
+      "updated": "May 3, 2026 • 9:00 a.m. EDT",
+      "updated_iso": "2026-05-03T13:00:00+00:00",
+      "image": "assets/food-atla-noho-closing-thumbnail.jpg",
+      "image_alt": "The Last Month at Atla",
+      "keywords": [
+        "Atla",
+        "Enrique Olvera",
+        "NoHo",
+        "Mexican restaurants",
+        "New York restaurants",
+        "Casamata",
+        "Cosme",
+        "all-day dining",
+        "restaurant closings"
+      ],
+      "read_time": "25 min read",
+      "word_count": "5900+ words",
+      "status": "published",
+      "priority": 0,
+      "hero_eligible": true,
+      "source": "search-index",
+      "is_daily": false
+    },
     {
       "story_id": "technology-musk-altman-openai-court-battle",
       "cluster_id": "technology-trial-openais-soul-openai-elon-musk",
@@ -14,8 +49,8 @@
       "author": "Intelligent AI",
       "published": "April 29, 2026 • 10:15 a.m. EDT",
       "published_iso": "2026-04-29T14:15:00+00:00",
-      "updated": "",
-      "updated_iso": "",
+      "updated": "April 29, 2026 • 12:05 p.m. EDT",
+      "updated_iso": "2026-04-29T16:05:00+00:00",
       "image": "assets/technology-musk-altman-openai-court-battle-thumbnail.jpg",
       "image_alt": "The Trial Over OpenAI’s Soul",
       "keywords": [
@@ -51,7 +86,7 @@
       "updated": "April 28, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-28T12:00:00+00:00",
       "image": "assets/ai-thumbnails/whcd-shaken-washington.png",
-      "image_alt": "A tense security scene outside a formal Washington hotel ballroom after an alleged armed breach attempt",
+      "image_alt": "A Gunman, a Ballroom, and a Shaken Washington",
       "keywords": [
         "White House Correspondents’ Dinner",
         "Donald Trump",
@@ -69,7 +104,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "daily-latest",
+      "source": "search-index",
       "is_daily": true
     },
     {
@@ -87,7 +122,7 @@
       "updated": "April 28, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-28T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-28-strait-of-hormuz-worlds-oil-panic-button.jpg",
-      "image_alt": "Photorealistic editorial thumbnail showing oil tankers moving through a narrow maritime channel at sunset.",
+      "image_alt": "The Strait of Hormuz Is Now the World’s Oil Panic Button",
       "keywords": [
         "Strait of Hormuz",
         "Iran war",
@@ -102,7 +137,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "daily-latest",
+      "source": "search-index",
       "is_daily": true
     },
     {
@@ -2463,37 +2498,6 @@
         "Department of Justice",
         "voter registration lists",
         "election administration"
-      ],
-      "read_time": "",
-      "word_count": "",
-      "status": "published",
-      "priority": 0,
-      "hero_eligible": true,
-      "source": "search-index",
-      "is_daily": true
-    },
-    {
-      "story_id": "2026-04-24-the-hold-list-is-a-labor-story-illinois-is-trying-to-rewrite-the-terms-of-digital-reading",
-      "cluster_id": "culture-hold-list-labor-story-illinois-trying",
-      "title": "The Hold List Is a Labor Story. Illinois Is Trying to Rewrite the Terms of Digital Reading.",
-      "section": "Culture",
-      "section_slug": "culture",
-      "type": "Daily Issue",
-      "dek": "A live bill in Springfield has turned library e-books back into a legislative fight. But the deeper culture story is not just price. It is the hidden work of buying, timing, replacing, comparing, and protecting digital books that libraries do not truly own, even as readers increasingly treat the app as a branch.",
-      "url": "daily/2026-04-24-the-hold-list-is-a-labor-story-illinois-is-trying-to-rewrite-the-terms-of-digital-reading.html",
-      "author": "Intelligent AI",
-      "published": "April 24, 2026 • 10:09 a.m.",
-      "published_iso": "2026-04-24T10:09:00+00:00",
-      "updated": "April 24, 2026 • 12:00 p.m. UTC",
-      "updated_iso": "2026-04-24T12:00:00+00:00",
-      "image": "",
-      "image_alt": "The Hold List Is a Labor Story. Illinois Is Trying to Rewrite the Terms of Digital Reading.",
-      "keywords": [
-        "libraries",
-        "ebooks",
-        "Illinois",
-        "digital lending",
-        "public culture"
       ],
       "read_time": "",
       "word_count": "",
