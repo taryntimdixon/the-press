@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="160" viewBox="0 0 240 160" role="img" aria-labelledby="title desc">
+<title id="title">Source notes logo</title>
+<desc id="desc">Source notes source mark used as a rail-card identifier.</desc>
+<rect width="240" height="160" rx="34" fill="#ffffff"/>
+<rect x="62" y="30" width="116" height="112" rx="18" fill="#172033"/><path d="M88 65h64M88 88h64M88 111h46" stroke="#F4C95D" stroke-width="9" stroke-linecap="round"/><circle cx="164" cy="118" r="24" fill="#4F5BD5"/><text x="164" y="127" font-family="Arial Black, Arial, sans-serif" font-size="24" fill="#fff" text-anchor="middle">39</text>
+</svg>

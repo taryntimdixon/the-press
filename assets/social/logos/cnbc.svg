@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="160" viewBox="0 0 240 160" role="img" aria-labelledby="title desc">
+<title id="title">CNBC logo</title>
+<desc id="desc">CNBC source mark used as a rail-card identifier.</desc>
+<rect width="240" height="160" rx="34" fill="#ffffff"/>
+<g transform="translate(120 62)"><path d="M0-34C-17-30-29-18-32 0h64C29-18 17-30 0-34z" fill="#7A3E9D"/><path d="M-35-21C-50-10-56 8-48 25l47-32C-10-22-22-27-35-21z" fill="#0073CF"/><path d="M35-21C50-10 56 8 48 25L1-7C10-22 22-27 35-21z" fill="#00A651"/><path d="M-48 27C-43 44-29 54-10 55L-2-5z" fill="#FCAF17"/><path d="M48 27C43 44 29 54 10 55L2-5z" fill="#F37021"/><path d="M0-34C9-30 16-20 18-7H-18C-16-20-9-30 0-34z" fill="#E31B23"/></g><text x="120" y="135" font-family="Arial Black, Arial, sans-serif" font-size="34" font-weight="900" fill="#111827" text-anchor="middle">CNBC</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="160" viewBox="0 0 240 160" role="img" aria-labelledby="title desc">
+<title id="title">Timeline logo</title>
+<desc id="desc">Timeline source mark used as a rail-card identifier.</desc>
+<rect width="240" height="160" rx="34" fill="#ffffff"/>
+<circle cx="120" cy="80" r="58" fill="#4F5BD5"/><path d="M120 44v39l31 20" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/><circle cx="120" cy="80" r="8" fill="#fff"/>
+</svg>

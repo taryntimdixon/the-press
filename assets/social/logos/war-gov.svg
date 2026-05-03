@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="160" viewBox="0 0 240 160" role="img" aria-labelledby="title desc">
+<title id="title">War.gov logo</title>
+<desc id="desc">War.gov source mark used as a rail-card identifier.</desc>
+<rect width="240" height="160" rx="34" fill="#ffffff"/>
+<path d="M120 20l66 28v44c0 39-27 62-66 80-39-18-66-41-66-80V48z" fill="#243B63"/><path d="M120 34l48 20v36c0 27-18 45-48 60-30-15-48-33-48-60V54z" fill="#F4C95D" opacity=".92"/><text x="120" y="85" font-family="Arial Black, Arial, sans-serif" font-size="34" font-weight="900" fill="#172033" text-anchor="middle">WAR</text><text x="120" y="118" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#172033" text-anchor="middle">.gov</text>
+</svg>

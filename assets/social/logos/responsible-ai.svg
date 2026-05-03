@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="160" viewBox="0 0 240 160" role="img" aria-labelledby="title desc">
+<title id="title">Responsible AI Toolkit logo</title>
+<desc id="desc">Responsible AI Toolkit source mark used as a rail-card identifier.</desc>
+<rect width="240" height="160" rx="34" fill="#ffffff"/>
+<rect x="46" y="34" width="148" height="94" rx="24" fill="#243B63"/><path d="M78 84l24 24 60-62" fill="none" stroke="#F4C95D" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><text x="120" y="146" font-family="Arial, sans-serif" font-size="23" font-weight="900" fill="#172033" text-anchor="middle">Responsible AI</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="160" viewBox="0 0 240 160" role="img" aria-labelledby="title desc">
+<title id="title">GenAI.mil logo</title>
+<desc id="desc">GenAI.mil source mark used as a rail-card identifier.</desc>
+<rect width="240" height="160" rx="34" fill="#ffffff"/>
+<rect x="45" y="38" width="150" height="84" rx="24" fill="#172033"/><circle cx="78" cy="80" r="18" fill="#79D0FF"/><path d="M102 80h62M133 50v60" stroke="#F4C95D" stroke-width="9" stroke-linecap="round"/><text x="120" y="143" font-family="Arial, sans-serif" font-size="26" font-weight="900" fill="#172033" text-anchor="middle">GenAI.mil</text>
+</svg>
