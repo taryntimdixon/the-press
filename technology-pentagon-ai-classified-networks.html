@@ -482,7 +482,7 @@
 
     var img = document.createElement('img');
     img.src = src;
-    img.alt = 'AI-generated editorial illustration for ' + railCardTitle(card) + '; not a social-media screenshot.';
+    img.alt = 'Editorial illustration for ' + railCardTitle(card) + '.';
     img.loading = 'lazy';
     img.decoding = 'async';
     img.onerror = function() {
@@ -492,10 +492,6 @@
     };
 
     fig.appendChild(img);
-
-    var cap = document.createElement('figcaption');
-    cap.textContent = 'AI-generated editorial illustration, not a social screenshot.';
-    fig.appendChild(cap);
 
     card.insertBefore(fig, visual);
     card.classList.add('press-static-post--with-illustration');
