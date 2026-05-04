@@ -72,6 +72,7 @@
 
         const railId = (card.getAttribute('data-rail-card') || '').toLowerCase();
         if (!railId) return;
+        const illustrationVersion = 'unique-20260504';
 
         const heading = card.querySelector('h3');
         const title = heading ? heading.textContent.trim() : `rail card ${railId.toUpperCase()}`;
@@ -79,7 +80,7 @@
         figure.className = 'press-static-post__media press-static-post__media--illustration poker-rail-card__media';
 
         const image = document.createElement('img');
-        image.src = `assets/social/illustrations/sports-texas-holdem-prime-time-moment-back-${railId}.svg`;
+        image.src = `assets/social/illustrations/sports-texas-holdem-prime-time-moment-back-${railId}.svg?v=${illustrationVersion}`;
         image.alt = `Editorial source illustration for ${title}.`;
         image.loading = 'lazy';
         image.decoding = 'async';
