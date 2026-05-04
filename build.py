@@ -54,6 +54,13 @@ except OSError:
   APP_VERSION = "1"
 
 
+def asset_version(rel_path: str) -> str:
+    try:
+        return str(int((SITE_DIR / rel_path).stat().st_mtime))
+    except OSError:
+        return "1"
+
+
 def env_flag(name: str, default: bool = False) -> bool:
     raw = os.getenv(name)
     if raw is None:
@@ -940,20 +947,36 @@ def jsonld_article(story: dict) -> str:
     return f'<script type="application/ld+json">{json.dumps(obj, ensure_ascii=False)}</script>'
 
 
-def layout(title: str, description: str, canonical: str, body_class: str, main_html: str, current_section: str = "", current_aux: str = "", jsonld: str = "", include_progress: bool = False) -> str:
+def layout(
+    title: str,
+    description: str,
+    canonical: str,
+    body_class: str,
+    main_html: str,
+    current_section: str = "",
+    current_aux: str = "",
+    jsonld: str = "",
+    include_progress: bool = False,
+    extra_links: str = "",
+    extra_scripts: str = "",
+) -> str:
     progress = """
 <div class="reading-progress"><div class="reading-progress__bar" data-reading-progress></div></div>
 """.strip() if include_progress else ""
+    scripts = [f'<script src="app.js?v={h(APP_VERSION)}" defer></script>']
+    if extra_scripts:
+        scripts.append(extra_scripts)
+    scripts_html = "\n  ".join(scripts)
+    progress_html = f"  {progress}\n" if progress else ""
     return f"""<!doctype html>
 <html lang="en">
-{page_head(title, description, canonical, jsonld)}
+{page_head(title, description, canonical, jsonld, extra_links=extra_links)}
 <body class="{h(body_class)}">
   {search_overlay(search_index())}
-  {progress}
-  {header(current_section=current_section, current_aux=current_aux)}
+{progress_html}  {header(current_section=current_section, current_aux=current_aux)}
   {main_html}
   {footer()}
-  <script src="app.js?v={h(APP_VERSION)}" defer></script>
+{scripts_html}
 </body>
 </html>
 """.strip() + "\n"
@@ -1412,6 +1435,19 @@ def render_story(story: dict) -> str:
     hero_image = story.get("heroImage") or story["image"]
     hero_image_width = story.get("heroImageWidth") or story.get("imageWidth")
     hero_image_height = story.get("heroImageHeight") or story.get("imageHeight")
+    static_interactive = story.get("staticInteractive") if isinstance(story.get("staticInteractive"), dict) else {}
+    static_css = str(static_interactive.get("css") or "").strip()
+    static_js = str(static_interactive.get("js") or "").strip()
+    extra_links = (
+        f'<link rel="stylesheet" href="{h(static_css)}?v={h(asset_version(static_css))}" />'
+        if static_css
+        else ""
+    )
+    extra_scripts = (
+        f'<script src="{h(static_js)}?v={h(asset_version(static_js))}" defer></script>'
+        if static_js
+        else ""
+    )
     main = f"""
 <main class="page page-article">
   <article class="article">
@@ -1444,7 +1480,18 @@ def render_story(story: dict) -> str:
   </article>
 </main>
 """.strip()
-    return layout(f"{story['title']} — {SITE['name']}", story["dek"], story["filename"], "page-article", main, current_section=story["sectionSlug"], jsonld=jsonld_article(story), include_progress=True)
+    return layout(
+        f"{story['title']} — {SITE['name']}",
+        story["dek"],
+        story["filename"],
+        "page-article",
+        main,
+        current_section=story["sectionSlug"],
+        jsonld=jsonld_article(story),
+        include_progress=True,
+        extra_links=extra_links,
+        extra_scripts=extra_scripts,
+    )
 
 
 def render_404() -> str:

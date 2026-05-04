@@ -1,0 +1,418 @@
+[
+  {
+    "id": "wsop-2026-schedule-news",
+    "title": "The World Series of Poker Reveals Full Summer 2026 Series Schedule",
+    "publisher": "World Series of Poker",
+    "url": "https://www.wsop.com/news/the-world-series-of-poker-reveals-full-summer-2026-series-schedule/",
+    "type": "official schedule",
+    "usedFor": "2026 dates, 100 bracelet events, Main Event date, 2025 record context"
+  },
+  {
+    "id": "wsop-2026-tournament-page",
+    "title": "2026 57th Annual World Series of Poker Tournament Schedule",
+    "publisher": "World Series of Poker",
+    "url": "https://www.wsop.com/tournaments/2026-57th-annual-world-series-of-poker/",
+    "type": "official schedule",
+    "usedFor": "event schedule cross-check"
+  },
+  {
+    "id": "wsop-espn-agreement",
+    "title": "The World Series of Poker Signs Multi-Year Agreement with ESPN to Air Final Table Live",
+    "publisher": "World Series of Poker",
+    "url": "https://www.wsop.com/news/the-world-series-of-poker-signs-multi-year-agreement-with-espn-to-air-final-table-live/",
+    "type": "official broadcast announcement",
+    "usedFor": "ESPN return, Aug. 3\u20135 final table, WSOP quote, 2025 series records"
+  },
+  {
+    "id": "espn-pressroom-wsop",
+    "title": "ESPN and World Series of Poker Reach Multi-Year Agreement to Bring Main Event Back to ESPN Beginning This Summer",
+    "publisher": "ESPN Press Room",
+    "url": "https://espnpressroom.com/us/press-releases/2026/03/espn-and-world-series-of-poker-reach-multi-year-agreement-to-bring-main-event-back-to-espn-beginning-this-summer/",
+    "type": "official broadcast announcement",
+    "usedFor": "100+ hours of coverage, ESPN App, final-table window"
+  },
+  {
+    "id": "espn-wsop-return-story",
+    "title": "World Series of Poker Returning to ESPN Beginning July 2",
+    "publisher": "ESPN",
+    "url": "https://www.espn.com/poker/story/_/id/48312536/world-series-poker-returning-espn-beginning-july-2",
+    "type": "news story",
+    "usedFor": "broadcast context and 2025 champion context"
+  },
+  {
+    "id": "pokernews-espn-return",
+    "title": "2026 WSOP Main Event Final Table Takes Place August 3-5",
+    "publisher": "PokerNews",
+    "url": "https://www.pokernews.com/news/2026/03/the-wsop-main-event-is-back-on-espn-50893.htm",
+    "type": "poker trade news",
+    "usedFor": "20-day break, coverage structure, final-table schedule"
+  },
+  {
+    "id": "pokernews-2026-main-event-guide",
+    "title": "2026 WSOP Main Event Guide",
+    "publisher": "PokerNews",
+    "url": "https://www.pokernews.com/tours/wsop/2026-wsop/2026-wsop-main-event.htm",
+    "type": "event guide",
+    "usedFor": "Main Event logistics cross-check"
+  },
+  {
+    "id": "cardplayer-espn-2026",
+    "title": "ESPN to Broadcast World Series of Poker Main Event Live in August",
+    "publisher": "CardPlayer",
+    "url": "https://www.cardplayer.com/poker-news/1643222-espn-to-broadcast-world-series-of-poker-main-event-live-in-august",
+    "type": "poker trade news",
+    "usedFor": "broadcast agreement cross-check"
+  },
+  {
+    "id": "reviewjournal-espn-final-table",
+    "title": "WSOP Main Event Returns to ESPN, Final Table Dates Set",
+    "publisher": "Las Vegas Review-Journal",
+    "url": "https://www.reviewjournal.com/sports/poker/wsop-main-event-returns-to-espn-final-table-dates-set-3729850/",
+    "type": "local news",
+    "usedFor": "Las Vegas and final-table schedule context"
+  },
+  {
+    "id": "pokerfuse-2026-guide",
+    "title": "WSOP 2026: The Ultimate Player Guide",
+    "publisher": "PokerFuse",
+    "url": "https://pokerfuse.com/live-poker/wsop/wsop-2026/",
+    "type": "player guide",
+    "usedFor": "2026 event overview and Main Event guide"
+  },
+  {
+    "id": "pokeratlas-2026-series",
+    "title": "2026 WSOP World Series of Poker Series Listing",
+    "publisher": "PokerAtlas",
+    "url": "https://www.pokeratlas.com/poker-tournament-series/2026-wsop-world-series-of-poker-world-series-of-poker-las-vegas-2026",
+    "type": "schedule listing",
+    "usedFor": "schedule cross-check"
+  },
+  {
+    "id": "wsop-2025-mizrachi",
+    "title": "Michael Mizrachi Wins the 2025 World Series of Poker Main Event Title and Achieves Poker Immortality",
+    "publisher": "World Series of Poker",
+    "url": "https://www.wsop.com/news/michael-mizrachi-wins-the-2025-world-series-of-poker-main-event-title-and-achieves-poker-immortality/",
+    "type": "official result",
+    "usedFor": "2025 champion, prize, field and legacy context"
+  },
+  {
+    "id": "espn-2025-mizrachi",
+    "title": "Michael Mizrachi Wins 2025 World Series of Poker Main Event",
+    "publisher": "ESPN",
+    "url": "https://www.espn.com/espn/betting/story/_/id/45757909/michael-mizrachi-wins-2025-world-series-poker-main-event",
+    "type": "news story",
+    "usedFor": "$10 million prize, 9,735-player field, prize-pool cross-check"
+  },
+  {
+    "id": "pokernews-2025-main-event-results",
+    "title": "Event #81: $10,000 WSOP Main Event World Championship",
+    "publisher": "PokerNews",
+    "url": "https://www.pokernews.com/tours/wsop/2025-wsop/event-81-10000-wsop-main-event/",
+    "type": "results page",
+    "usedFor": "2025 final table payout list"
+  },
+  {
+    "id": "pgt-2025-mizrachi",
+    "title": "Michael Mizrachi Wins 2025 WSOP Main Event for $10 Million",
+    "publisher": "PokerGO Tour",
+    "url": "https://www.pgt.com/news/michael-mizrachi-wins-2025-wsop-main-event-for-10-million",
+    "type": "news story",
+    "usedFor": "Mizrachi result cross-check"
+  },
+  {
+    "id": "wsop-2024-record",
+    "title": "World Series of Poker Main Event Sets Attendance Record for Second Consecutive Year",
+    "publisher": "World Series of Poker",
+    "url": "https://www.wsop.com/news/world-series-of-poker-main-event-sets-attendance-record-for-second-consecutive-year/",
+    "type": "official result",
+    "usedFor": "2024 record field context"
+  },
+  {
+    "id": "caesars-2024-tamayo",
+    "title": "Jonathan Tamayo Wins Poker\u2019s Biggest Prize, Takes Home 2024 WSOP Main Event Title",
+    "publisher": "Caesars Entertainment Newsroom",
+    "url": "https://newsroom.caesars.com/press-releases/press-release-details/2024/JONATHAN-TAMAYO-WINS-POKERS-BIGGEST-PRIZE-TAKES-HOME-2024-WORLD-SERIES-OF-POKER-MAIN-EVENT-TITLE/default.aspx",
+    "type": "official result",
+    "usedFor": "2024 winner, entry count, prize pool"
+  },
+  {
+    "id": "pokernews-2024-tamayo",
+    "title": "Jonathan Tamayo Wins 2024 WSOP Main Event",
+    "publisher": "PokerNews",
+    "url": "https://www.pokernews.com/news/2024/07/jonathan-tamayo-wins-2024-wsop-main-event-46600.htm",
+    "type": "news story",
+    "usedFor": "2024 result context"
+  },
+  {
+    "id": "caesars-2023-weinman",
+    "title": "Daniel Weinman Cements Himself in History as the 2023 Champion of the Largest WSOP Main Event Ever",
+    "publisher": "Caesars Entertainment Newsroom",
+    "url": "https://newsroom.caesars.com/press-releases/press-release-details/2023/A-CHAMPION-IS-CROWNED-DANIEL-WEINMAN-CEMENTS-HIMSELF-IN-HISTORY-AS-THE-2023-CHAMPION-OF-THE-LARGEST-WORLD-SERIES-OF-POKER-MAIN-EVENT-EVER/default.aspx",
+    "type": "official result",
+    "usedFor": "2023 winner, field, prize pool"
+  },
+  {
+    "id": "pokernews-2023-weinman",
+    "title": "Daniel Weinman Wins 2023 WSOP Main Event",
+    "publisher": "PokerNews",
+    "url": "https://www.pokernews.com/news/2023/07/daniel-weinman-wins-2023-wsop-main-event-44142.htm",
+    "type": "news story",
+    "usedFor": "2023 result cross-check"
+  },
+  {
+    "id": "pokernews-2022-jorstad",
+    "title": "Espen J\u00f8rstad Wins 2022 WSOP Main Event",
+    "publisher": "PokerNews",
+    "url": "https://www.pokernews.com/news/2022/07/espen-jorstad-wins-2022-wsop-main-event-41698.htm",
+    "type": "news story",
+    "usedFor": "recent Main Event history"
+  },
+  {
+    "id": "cardplayer-2006-jamie-gold",
+    "title": "Jamie Gold Captures 2006 World Series Championship",
+    "publisher": "CardPlayer",
+    "url": "https://www.cardplayer.com/cardplayer-poker-magazines/65597-jamie-gold-19-17/articles/15631-jamie-gold-captures-2006-world-series-championship",
+    "type": "archive story",
+    "usedFor": "historical Main Event record context"
+  },
+  {
+    "id": "pokernews-jamie-gold-context",
+    "title": "Win a WSOP Main Event Seat with Jamie Gold",
+    "publisher": "PokerNews",
+    "url": "https://www.pokernews.com/news/2025/06/win-wsop-main-event-seat-jamie-gold-48940.htm",
+    "type": "news feature",
+    "usedFor": "Jamie Gold/Moneymaker-era context"
+  },
+  {
+    "id": "wsop-about",
+    "title": "About the World Series of Poker",
+    "publisher": "World Series of Poker",
+    "url": "https://www.wsop.com/about/",
+    "type": "official background",
+    "usedFor": "WSOP/Main Event background and prestige"
+  },
+  {
+    "id": "wsop-history",
+    "title": "World Series of Poker History",
+    "publisher": "World Series of Poker",
+    "url": "https://www.wsop.com/about/world-series-of-poker/",
+    "type": "official background",
+    "usedFor": "WSOP history"
+  },
+  {
+    "id": "wsop-moneymaker-profile",
+    "title": "Christopher Moneymaker Player Profile",
+    "publisher": "World Series of Poker",
+    "url": "https://www.wsop.com/players/christopher-moneymaker/",
+    "type": "official player profile",
+    "usedFor": "2003 Main Event story and Moneymaker legacy"
+  },
+  {
+    "id": "espn-moneymaker-legacy",
+    "title": "The Life and Legacy of Chris Moneymaker, 15 Years After the Win that Changed Poker",
+    "publisher": "ESPN",
+    "url": "https://www.espn.com/poker/story/_/id/23594337/world-series-poker-life-legacy-chris-moneymaker-15-years-2003-wsop-main-event-win-changed-world-poker",
+    "type": "feature",
+    "usedFor": "poker boom narrative"
+  },
+  {
+    "id": "espn-30for30-moneymaker",
+    "title": "Sparking the Poker Boom: The Story of Chris Moneymaker\u2019s 2003 WSOP Main Event Win",
+    "publisher": "ESPN",
+    "url": "https://www.espn.com/poker/story/_/id/25052766/sparking-poker-boom-story-chris-moneymaker-2003-world-series-poker-main-event",
+    "type": "feature",
+    "usedFor": "Moneymaker/televised poker boom context"
+  },
+  {
+    "id": "pokerstars-moneymaker-big20",
+    "title": "PokerStars Big 20: Chris Moneymaker Wins WSOP, Sparks Poker Boom",
+    "publisher": "PokerStars",
+    "url": "https://www.pokerstars.com/poker/learn/news/pokerstars-big-20-2003-chris-moneymaker-wins-wsop-sparks-poker-boom/",
+    "type": "operator feature",
+    "usedFor": "online satellite and Moneymaker context"
+  },
+  {
+    "id": "cardplayer-magic-moneymaker",
+    "title": "The Magic of Moneymaker",
+    "publisher": "CardPlayer",
+    "url": "https://www.cardplayer.com/cardplayer-poker-magazines/65734-poorya-nazari-22-3/articles/18171-the-magic-of-moneymaker",
+    "type": "archive feature",
+    "usedFor": "poker boom/satellite context"
+  },
+  {
+    "id": "wpt-about",
+    "title": "World Poker Tour About Us",
+    "publisher": "World Poker Tour",
+    "url": "https://www.worldpokertour.com/about-us",
+    "type": "official background",
+    "usedFor": "televised poker and hole-card presentation context"
+  },
+  {
+    "id": "casino-org-hole-card-cam",
+    "title": "How the Hole Card Cam Changed Poker",
+    "publisher": "Casino.org",
+    "url": "https://www.casino.org/blog/hole-card-cam/",
+    "type": "industry explainer",
+    "usedFor": "hole-card camera history"
+  },
+  {
+    "id": "pokergo-home",
+    "title": "PokerGO Official Site",
+    "publisher": "PokerGO",
+    "url": "https://www.pokergo.com/",
+    "type": "platform background",
+    "usedFor": "streaming-era context"
+  },
+  {
+    "id": "wsop-cbs-agreement",
+    "title": "World Series of Poker Reaches New Multi-Year Broadcast Agreement with CBS Sports",
+    "publisher": "World Series of Poker",
+    "url": "https://www.wsop.com/news/world-series-of-poker-reaches-new-multi-year-broadcast-agreement-with-cbs-sports/",
+    "type": "official broadcast history",
+    "usedFor": "CBS/PokerGO era context"
+  },
+  {
+    "id": "caesars-pokergo-cbs",
+    "title": "PokerGO Reaches New Multi-Year Television Agreement with CBS Sports",
+    "publisher": "Caesars Entertainment Investor Relations",
+    "url": "https://investor.caesars.com/news-releases/news-release-details/pokergor-reaches-new-multi-year-television-agreement-cbs-sports",
+    "type": "official broadcast history",
+    "usedFor": "CBS/PokerGO era cross-check"
+  },
+  {
+    "id": "cardplayer-cbs-home",
+    "title": "CBS Announced as the New Television Home for World Series of Poker in 2021",
+    "publisher": "CardPlayer",
+    "url": "https://www.cardplayer.com/poker-news/25835-cbs-announced-as-the-new-television-home-for-world-series-of-poker-in-2021",
+    "type": "poker trade news",
+    "usedFor": "broadcast-rights context"
+  },
+  {
+    "id": "caesars-close-wsop-sale",
+    "title": "Caesars Entertainment Closes Sale of World Series of Poker Brand to NSUS Group for US$500 Million",
+    "publisher": "Caesars Entertainment Newsroom",
+    "url": "https://newsroom.caesars.com/press-releases/press-release-details/2024/Caesars-Entertainment-Closes-Sale-of-World-Series-of-Poker-Brand-to-NSUS-Group-for-US500-million/default.aspx",
+    "type": "official transaction release",
+    "usedFor": "WSOP brand sale"
+  },
+  {
+    "id": "caesars-agrees-wsop-sale",
+    "title": "Caesars Entertainment Agrees to Sell World Series of Poker Brand to NSUS Group for US$500 Million",
+    "publisher": "Caesars Entertainment Newsroom",
+    "url": "https://newsroom.caesars.com/press-releases/press-release-details/2024/Caesars-Entertainment-Agrees-to-Sell-World-Series-of-Poker-Brand-to-NSUS-Group-for-US500-million/default.aspx",
+    "type": "official transaction release",
+    "usedFor": "20-year Las Vegas hosting right"
+  },
+  {
+    "id": "pokernews-ggpoker-buys-wsop",
+    "title": "GGPoker Parent Company Buys World Series of Poker for $500 Million",
+    "publisher": "PokerNews",
+    "url": "https://www.pokernews.com/news/2024/08/ggpoker-buys-world-series-of-poker-for-500-million-46689.htm",
+    "type": "poker trade news",
+    "usedFor": "ownership context"
+  },
+  {
+    "id": "nevada-independent-wsop-sale",
+    "title": "Caesars Sells World Series of Poker Brand for $500 Million",
+    "publisher": "The Nevada Independent",
+    "url": "https://thenevadaindependent.com/article/caesars-sells-world-series-of-poker-brand-for-500-million",
+    "type": "local news",
+    "usedFor": "ownership/Las Vegas context"
+  },
+  {
+    "id": "pokerorg-wsop-rule-change",
+    "title": "WSOP Makes Major Rule Change After Cheating Controversy",
+    "publisher": "Poker.org",
+    "url": "https://www.poker.org/latest-news/wsop-makes-major-rule-change-after-cheating-controversy-acY695R2GYZD/",
+    "type": "poker trade news",
+    "usedFor": "device/coaching/RTA rule context"
+  },
+  {
+    "id": "casino-org-ai-coaching-ban",
+    "title": "World Series of Poker Bans AI Help, Coaching During Play",
+    "publisher": "Casino.org",
+    "url": "https://www.casino.org/news/world-series-of-poker-bans-a-i-help-coaching-during-play/",
+    "type": "industry news",
+    "usedFor": "AI/coaching restrictions"
+  },
+  {
+    "id": "reviewjournal-rule-changes",
+    "title": "WSOP Makes Rule Changes Following Last Year\u2019s Main Event Controversy",
+    "publisher": "Las Vegas Review-Journal",
+    "url": "https://www.reviewjournal.com/sports/poker/wsop-makes-rule-changes-following-last-years-main-event-controversy-3377393/",
+    "type": "local news",
+    "usedFor": "rule-change context"
+  },
+  {
+    "id": "pokerorg-2026-rule-change",
+    "title": "WSOP Announces Rule Change to Prevent Repeat of Major 2025 Controversy",
+    "publisher": "Poker.org",
+    "url": "https://www.poker.org/latest-news/wsop-announces-rule-change-to-prevent-repeat-of-major-2025-controversy-aXaEv2j3gjU4",
+    "type": "poker trade news",
+    "usedFor": "2026 integrity update"
+  },
+  {
+    "id": "pa-msiga",
+    "title": "Governor Shapiro Signs Multi-State Internet Gaming Agreement",
+    "publisher": "Pennsylvania Gaming Control Board",
+    "url": "https://gamingcontrolboard.pa.gov/news-and-transparency/press-release/governor-shapiro-signs-multi-state-internet-gaming-agreement",
+    "type": "regulator release",
+    "usedFor": "U.S. online poker liquidity context"
+  },
+  {
+    "id": "michigan-fanduel-multistate",
+    "title": "MGCB Greenlights FanDuel for Multi-State Poker with Michigan Players",
+    "publisher": "Michigan Gaming Control Board",
+    "url": "https://www.michigan.gov/mgcb/news/2026/04/01/mgcb-greenlights-fanduel-for-multi-state-poker-with-michigan-players",
+    "type": "regulator release",
+    "usedFor": "multi-state online poker context"
+  },
+  {
+    "id": "pokerstars-fanduel-note",
+    "title": "PokerStars and FanDuel North America Platform Note",
+    "publisher": "PokerStars",
+    "url": "https://www.pokerstars.com/poker/learn/news/pokerstars-fanduel/",
+    "type": "operator note",
+    "usedFor": "FanDuel/PokerStars platform transition context"
+  },
+  {
+    "id": "bettingusa-interstate-poker",
+    "title": "Interstate Online Poker: Multi-State Internet Gaming Agreement Explainer",
+    "publisher": "BettingUSA",
+    "url": "https://www.bettingusa.com/poker/interstate/",
+    "type": "industry explainer",
+    "usedFor": "online poker liquidity explainer"
+  },
+  {
+    "id": "fbi-black-friday",
+    "title": "Manhattan U.S. Attorney Charges Principals of Three Largest Internet Poker Companies",
+    "publisher": "FBI",
+    "url": "https://www.fbi.gov/newyork/press-releases/2011/manhattan-u.s.-attorney-charges-principals-of-three-largest-internet-poker-companies-with-bank-fraud-illegal-gambling-offenses-and-laundering-billions-in-illegal-gambling-proceeds",
+    "type": "government release",
+    "usedFor": "Black Friday context"
+  },
+  {
+    "id": "doj-pokerstars-fulltilt-settlement",
+    "title": "Manhattan U.S. Attorney Announces Settlement with PokerStars and Full Tilt Poker",
+    "publisher": "U.S. Department of Justice",
+    "url": "https://www.justice.gov/archive/usao/nys/pressreleases/July12/pokersettlement.html",
+    "type": "government release",
+    "usedFor": "post-Black Friday settlement context"
+  },
+  {
+    "id": "press-repo-readme",
+    "title": "The Press Studio README",
+    "publisher": "GitHub / The Press",
+    "url": "https://github.com/taryntimdixon/The-Press",
+    "type": "repo workflow",
+    "usedFor": "publishing workflow and file placement"
+  },
+  {
+    "id": "press-social-rail-standard",
+    "title": "Social Rail Standard for Future Articles",
+    "publisher": "GitHub / The Press",
+    "url": "https://github.com/taryntimdixon/The-Press/blob/main/SOCIAL_RAIL_STANDARD_FOR_FUTURE_ARTICLES.md",
+    "type": "repo editorial standard",
+    "usedFor": "rail card rules and image policy"
+  }
+]

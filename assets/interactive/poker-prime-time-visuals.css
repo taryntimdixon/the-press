@@ -1,0 +1,89 @@
+/* Static interactive visual modules for sports-texas-holdem-prime-time-moment-back */
+.poker-prime-time-feature {
+  --rail-art-a: #0b5a49;
+  --rail-art-b: #b93535;
+  --rail-art-c: #e3c166;
+}
+.poker-prime-time-feature[data-source-count]::before {
+  content: "Poker prime-time source rail • " attr(data-social-card-count) " cards • " attr(data-source-count) " source notes";
+}
+.poker-rail-card {
+  display: block;
+}
+.poker-rail-card h3 {
+  margin: .55rem 0 .5rem;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.02rem, 1.2vw, 1.24rem);
+  line-height: 1.08;
+}
+.poker-rail-card .press-static-post__kicker {
+  display: block;
+  color: #0b5a49;
+  font-weight: 900;
+}
+.poker-rail-card__media img {
+  aspect-ratio: 16 / 9;
+}
+.press-source-notes {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 2px);
+  padding: clamp(1.15rem, 2vw, 1.8rem);
+  box-shadow: var(--shadow);
+}
+.press-source-notes li {
+  margin: .58rem 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.poker-static-visuals {
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 24px;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  margin: 2rem 0;
+  background: linear-gradient(180deg, rgba(10,35,32,.9), rgba(4,9,14,.95));
+  color: #f6f3e8;
+  box-shadow: 0 24px 60px rgba(0,0,0,.28);
+}
+.poker-static-visuals h2,
+.poker-static-visuals h3 { color: inherit; }
+.poker-visual-header .eyebrow,
+.poker-static-post__kicker { letter-spacing: .08em; text-transform: uppercase; font-size: .72rem; opacity: .78; }
+.poker-timeline-controls,
+.poker-stat-grid { display: grid; gap: .65rem; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 1rem 0; }
+.poker-timeline-controls button,
+.poker-stat-grid button {
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 16px;
+  padding: .9rem;
+  background: rgba(255,255,255,.07);
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.poker-timeline-controls button.is-active,
+.poker-stat-grid button.is-active { outline: 2px solid rgba(255,255,255,.8); background: rgba(255,255,255,.14); }
+.poker-timeline-controls button:focus-visible,
+.poker-stat-grid button:focus-visible,
+.poker-explainer-deck summary:focus-visible,
+.poker-rail-card a:focus-visible {
+  outline: 3px solid #f0c75e;
+  outline-offset: 3px;
+}
+.poker-timeline-panels section { display: none; border-left: 3px solid rgba(255,255,255,.65); padding-left: 1rem; }
+.poker-timeline-panels section.is-active { display: block; }
+.poker-stat-grid strong { display: block; font-size: clamp(1.6rem, 5vw, 2.4rem); line-height: 1; margin: .25rem 0; }
+.poker-stat-grid em { font-style: normal; opacity: .75; }
+.poker-explainer-deck details {
+  border-top: 1px solid rgba(255,255,255,.18);
+  padding: .9rem 0;
+}
+.poker-explainer-deck summary { cursor: pointer; font-weight: 700; }
+.poker-rail-card .press-static-post__source { font-size: .78rem; opacity: .82; }
+@media (max-width: 780px) {
+  .poker-timeline-controls,
+  .poker-stat-grid { grid-template-columns: 1fr; }
+}

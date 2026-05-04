@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Sports desk artwork</title>
+  <desc id="desc">Editorial illustration of a televised poker table under studio lights for the Sports section.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#071418"/>
+      <stop offset=".55" stop-color="#0b3f39"/>
+      <stop offset="1" stop-color="#151821"/>
+    </linearGradient>
+    <radialGradient id="light" cx="50%" cy="16%" r="58%">
+      <stop offset="0" stop-color="#f3d47b" stop-opacity=".65"/>
+      <stop offset="1" stop-color="#f3d47b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#light)"/>
+  <ellipse cx="600" cy="405" rx="430" ry="170" fill="#0f6a51" stroke="#ead7a7" stroke-width="10"/>
+  <ellipse cx="600" cy="405" rx="310" ry="104" fill="#0a463b" opacity=".88"/>
+  <g fill="#f5efe2" stroke="#d8cba8" stroke-width="3">
+    <rect x="520" y="335" width="86" height="126" rx="10" transform="rotate(-8 563 398)"/>
+    <rect x="616" y="335" width="86" height="126" rx="10" transform="rotate(8 659 398)"/>
+  </g>
+  <g>
+    <circle cx="306" cy="396" r="36" fill="#c84a40"/>
+    <circle cx="349" cy="379" r="36" fill="#224e7a"/>
+    <circle cx="392" cy="404" r="36" fill="#e8bd5f"/>
+    <circle cx="850" cy="385" r="36" fill="#224e7a"/>
+    <circle cx="892" cy="407" r="36" fill="#c84a40"/>
+    <circle cx="936" cy="386" r="36" fill="#e8bd5f"/>
+  </g>
+  <text x="82" y="116" fill="#fff8e7" font-family="Georgia, serif" font-size="68" font-weight="700">Sports</text>
+  <text x="84" y="164" fill="#ead7a7" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4">THE PRESS</text>
+</svg>

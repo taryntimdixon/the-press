@@ -1,7 +1,43 @@
 {
-  "generated_at": "2026-05-03T23:56:41.345828+00:00",
+  "generated_at": "2026-05-04T03:52:56.321598+00:00",
   "story_count": 80,
   "stories": [
+    {
+      "story_id": "sports-texas-holdem-prime-time-moment-back",
+      "cluster_id": "sports-texas-holdem-gets-prime-time-moment",
+      "title": "Texas Hold’em Gets Its Prime-Time Moment Back",
+      "section": "Sports",
+      "section_slug": "sports",
+      "type": "Feature",
+      "dek": "With the WSOP Main Event returning to ESPN for a three-night final table, poker is trying to turn its biggest tournament back into must-watch TV.",
+      "url": "sports-texas-holdem-prime-time-moment-back.html",
+      "author": "The Press",
+      "published": "May 4, 2026 • 10:00 a.m. EDT",
+      "published_iso": "2026-05-04T14:00:00+00:00",
+      "updated": "May 4, 2026 • 10:00 a.m. EDT",
+      "updated_iso": "2026-05-04T14:00:00+00:00",
+      "image": "assets/sports-texas-holdem-prime-time-thumbnail.png",
+      "image_alt": "AI-generated photorealistic editorial image of an empty televised poker final table under blue broadcast lights with chips and face-down cards in the foreground.",
+      "keywords": [
+        "poker",
+        "Texas Hold’em",
+        "World Series of Poker",
+        "WSOP",
+        "ESPN",
+        "Main Event",
+        "No-Limit Hold’em",
+        "sports media",
+        "online poker",
+        "poker integrity"
+      ],
+      "read_time": "20 min read",
+      "word_count": "3,962 words",
+      "status": "published",
+      "priority": 0,
+      "hero_eligible": true,
+      "source": "search-index",
+      "is_daily": false
+    },
     {
       "story_id": "technology-pentagon-ai-classified-networks",
       "cluster_id": "technology-pentagon-just-let-big-classified-room",
@@ -53,7 +89,7 @@
       "updated": "May 3, 2026 • 9:00 a.m. EDT",
       "updated_iso": "2026-05-03T13:00:00+00:00",
       "image": "assets/food-atla-noho-closing-thumbnail.jpg",
-      "image_alt": "The Last Month at Atla",
+      "image_alt": "AI-generated photorealistic editorial image of a warm NoHo restaurant facade with the headline “Atla’s Last Service” and closing date May 31.",
       "keywords": [
         "Atla",
         "Enrique Olvera",
@@ -82,13 +118,13 @@
       "type": "Analysis",
       "dek": "Elon Musk says OpenAI betrayed its nonprofit mission. OpenAI says Musk wanted control and lost. The court battle is really about whether the most powerful AI company in the world can still claim to serve humanity after becoming one of the richest corporate prizes in technology.",
       "url": "technology-musk-altman-openai-court-battle.html",
-      "author": "Intelligent AI",
+      "author": "Julian Mercado",
       "published": "April 29, 2026 • 10:15 a.m. EDT",
       "published_iso": "2026-04-29T14:15:00+00:00",
       "updated": "April 29, 2026 • 12:05 p.m. EDT",
       "updated_iso": "2026-04-29T16:05:00+00:00",
       "image": "assets/technology-musk-altman-openai-court-battle-thumbnail.jpg",
-      "image_alt": "The Trial Over OpenAI’s Soul",
+      "image_alt": "AI-generated editorial composite showing Elon Musk and Sam Altman facing each other with the OpenAI logo between them.",
       "keywords": [
         "OpenAI",
         "Elon Musk",
@@ -122,7 +158,7 @@
       "updated": "April 28, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-28T12:00:00+00:00",
       "image": "assets/ai-thumbnails/whcd-shaken-washington.png",
-      "image_alt": "A Gunman, a Ballroom, and a Shaken Washington",
+      "image_alt": "A tense security scene outside a formal Washington hotel ballroom after an alleged armed breach attempt",
       "keywords": [
         "White House Correspondents’ Dinner",
         "Donald Trump",
@@ -158,7 +194,7 @@
       "updated": "April 28, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-28T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-28-strait-of-hormuz-worlds-oil-panic-button.jpg",
-      "image_alt": "The Strait of Hormuz Is Now the World’s Oil Panic Button",
+      "image_alt": "Photorealistic editorial thumbnail showing oil tankers moving through a narrow maritime channel at sunset.",
       "keywords": [
         "Strait of Hormuz",
         "Iran war",
@@ -191,7 +227,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map.jpg",
-      "image_alt": "Darfur’s Burn Scars Are Starting to Read Like a Food Map",
+      "image_alt": "AI-generated editorial thumbnail for: Darfur’s Burn Scars Are Starting to Read Like a Food Map",
       "keywords": [
         "Sudan",
         "Darfur",
@@ -220,7 +256,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-nairobi-s-drains-are-running-out-of-room.jpg",
-      "image_alt": "Nairobi’s Drains Are Running Out of Room",
+      "image_alt": "AI-generated editorial thumbnail for: Nairobi’s Drains Are Running Out of Room",
       "keywords": [
         "Kenya floods",
         "Nairobi",
@@ -252,7 +288,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class.jpg",
-      "image_alt": "3.98 Million Home Sales Turn Spring Open Houses Into Math Class",
+      "image_alt": "AI-generated editorial thumbnail for: 3.98 Million Home Sales Turn Spring Open Houses Into Math Class",
       "keywords": [
         "housing affordability",
         "existing-home sales",
@@ -283,7 +319,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label.jpg",
-      "image_alt": "NDIS Autism Test Asks Whether Help Can Beat the Label",
+      "image_alt": "AI-generated editorial thumbnail for: NDIS Autism Test Asks Whether Help Can Beat the Label",
       "keywords": [
         "NDIS",
         "autism",
@@ -317,7 +353,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight.jpg",
-      "image_alt": "Blue Proxy Card Puts Burbank’s Back Lot in a Streaming Fight",
+      "image_alt": "AI-generated editorial thumbnail for: Blue Proxy Card Puts Burbank’s Back Lot in a Streaming Fight",
       "keywords": [
         "Paramount Skydance",
         "Warner Bros. Discovery",
@@ -348,7 +384,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test.jpg",
-      "image_alt": "Wichita’s One Robot Dog Has a July Rulebook Test",
+      "image_alt": "AI-generated editorial thumbnail for: Wichita’s One Robot Dog Has a July Rulebook Test",
       "keywords": [
         "Wichita",
         "robot dog",
@@ -377,7 +413,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags.jpg",
-      "image_alt": "Baidoa’s Water Trucks Keep Moving While Geneva’s Ledger Lags",
+      "image_alt": "AI-generated editorial thumbnail for: Baidoa’s Water Trucks Keep Moving While Geneva’s Ledger Lags",
       "keywords": [
         "Somalia",
         "drought displacement",
@@ -408,7 +444,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line.jpg",
-      "image_alt": "IMF’s 19% Energy Shock Reaches the Checkout Line",
+      "image_alt": "AI-generated editorial thumbnail for: IMF’s 19% Energy Shock Reaches the Checkout Line",
       "keywords": [
         "IMF",
         "energy prices",
@@ -437,7 +473,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy.jpg",
-      "image_alt": "CDC’s 3,606,400 Birth Certificates Turn Family Math Into Public Policy",
+      "image_alt": "AI-generated editorial thumbnail for: CDC’s 3,606,400 Birth Certificates Turn Family Math Into Public Policy",
       "keywords": [
         "birth rates",
         "families",
@@ -466,7 +502,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume.jpg",
-      "image_alt": "Koyo Kouoh’s Team Lowers Venice’s Volume",
+      "image_alt": "AI-generated editorial thumbnail for: Koyo Kouoh’s Team Lowers Venice’s Volume",
       "keywords": [
         "Venice Biennale",
         "Koyo Kouoh",
@@ -497,7 +533,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-cape-cod-s-blue-blood-quota-retreat-leaves-a-crab-test-unsettled.jpg",
-      "image_alt": "Cape Cod’s Blue-Blood Quota Retreat Leaves a Crab Test Unsettled",
+      "image_alt": "AI-generated editorial thumbnail for: Cape Cod’s Blue-Blood Quota Retreat Leaves a Crab Test Unsettled",
       "keywords": [
         "horseshoe crabs",
         "endotoxin testing",
@@ -528,7 +564,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-npt-s-glass-booths-hear-a-battered-bargain-in-new-york.jpg",
-      "image_alt": "NPT’s glass booths hear a battered bargain in New York",
+      "image_alt": "AI-generated editorial thumbnail for: NPT’s glass booths hear a battered bargain in New York",
       "keywords": [
         "NPT Review Conference",
         "nuclear diplomacy",
@@ -557,7 +593,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-32bj-s-4-50-raise-puts-new-york-s-lobby-math-on-the-desk.jpg",
-      "image_alt": "32BJ’s $4.50 Raise Puts New York’s Lobby Math on the Desk",
+      "image_alt": "AI-generated editorial thumbnail for: 32BJ’s $4.50 Raise Puts New York’s Lobby Math on the Desk",
       "keywords": [
         "32BJ SEIU",
         "New York City wages",
@@ -586,7 +622,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-nebraska-s-candy-waiver-puts-snap-at-the-checkout-test.jpg",
-      "image_alt": "Nebraska’s Candy Waiver Puts SNAP at the Checkout Test",
+      "image_alt": "AI-generated editorial thumbnail for: Nebraska’s Candy Waiver Puts SNAP at the Checkout Test",
       "keywords": [
         "SNAP",
         "Nebraska",
@@ -617,7 +653,7 @@
       "updated": "April 27, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-27T12:00:00+00:00",
       "image": "assets/ai-thumbnails/2026-04-27-fcc-s-april-22-notice-puts-the-kids-tv-rating-icon-on-the-couch.jpg",
-      "image_alt": "FCC’s April 22 Notice Puts the Kids-TV Rating Icon on the Couch",
+      "image_alt": "AI-generated editorial thumbnail for: FCC’s April 22 Notice Puts the Kids-TV Rating Icon on the Couch",
       "keywords": [
         "FCC",
         "TV Parental Guidelines",
@@ -2471,40 +2507,6 @@
         "connected TV",
         "festival streaming",
         "independent venues"
-      ],
-      "read_time": "",
-      "word_count": "",
-      "status": "published",
-      "priority": 0,
-      "hero_eligible": true,
-      "source": "search-index",
-      "is_daily": true
-    },
-    {
-      "story_id": "2026-04-24-before-an-orchid-wins-anything-someone-has-to-make-the-name-hold",
-      "cluster_id": "niche-orchid-wins-anything-someone-make-name",
-      "title": "Before an Orchid Wins Anything, Someone Has to Make the Name Hold",
-      "section": "Niche",
-      "section_slug": "niche",
-      "type": "Daily Issue",
-      "dek": "The public sees the bloom and the ribbon. In spring 2026, the more revealing orchid story is the manual, clerical, and judgment-heavy work that happens first: checking labels against databases, sorting classes, clerking ribbon and AOS judging, tracing parentage, and keeping a hobby built on rarity from dissolving into misnaming, rumor, and market fog.",
-      "url": "daily/2026-04-24-before-an-orchid-wins-anything-someone-has-to-make-the-name-hold.html",
-      "author": "Intelligent AI",
-      "published": "April 24, 2026 • 3:54 p.m.",
-      "published_iso": "2026-04-24T15:54:00+00:00",
-      "updated": "April 24, 2026 • 12:00 p.m. UTC",
-      "updated_iso": "2026-04-24T12:00:00+00:00",
-      "image": "",
-      "image_alt": "Before an Orchid Wins Anything, Someone Has to Make the Name Hold",
-      "keywords": [
-        "orchids",
-        "orchid shows",
-        "American Orchid Society",
-        "orchid judging",
-        "clerking",
-        "horticulture",
-        "plant labels",
-        "OrchidPro"
       ],
       "read_time": "",
       "word_count": "",

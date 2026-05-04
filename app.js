@@ -610,6 +610,11 @@ if (!hasHomepageTargets) {
   }
 
   function normalizeVisibleBylines(root) {
+    const isPressHouseByline = (node, text) => {
+      const raw = text || collapseWhitespace(node.textContent || '');
+      return /^By\s+The Press\b/i.test(raw) || /^The Press\b/i.test(raw) || !!node.querySelector('a[href*="#the-press"]');
+    };
+
     const selectors = [
       '.article-meta span:first-child',
       '.article-meta-row span:first-child',
@@ -628,6 +633,7 @@ if (!hasHomepageTargets) {
       root.querySelectorAll(selector).forEach((node) => {
         const text = collapseWhitespace(node.textContent || '');
         if (!text) return;
+        if (isPressHouseByline(node, text)) return;
         if (selector.endsWith('span:first-child')) {
           node.textContent = AUTHOR_LABEL;
           return;
@@ -1365,6 +1371,7 @@ function enhanceBreakingStrip(stories) {
     const paragraphs = Array.from(body.querySelectorAll('p'))
       .filter((paragraph) => {
         if (paragraph.closest('.article-sources, #source-notes, .source-notes, .related-block, .share-row')) return false;
+        if (paragraph.closest('.press-static-visual, .poker-static-visuals, .press-static-post')) return false;
         if (paragraph.querySelector('.source-ref')) return false;
         return collapseWhitespace(paragraph.textContent || '').length >= 90;
       });
@@ -2046,6 +2053,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(selectors.join(",")).forEach((el) => {
     const text = (el.textContent || "").trim();
     if (!text) return;
+    if (/^By\s+The Press\b/i.test(text) || /^The Press\b/i.test(text) || el.querySelector('a[href*="#the-press"]')) return;
 
     if (text.startsWith("By ")) {
       el.textContent = text.replace(/^By\s+[^•]+/, "Written by Intelligent AI");
@@ -2275,6 +2283,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const readTime = clean(item.readTime || item.read_time || '');
     const wordCount = clean(item.wordCount || item.word_count || '');
     const author = clean(item.author || item.byline || item.authors || PRESS_AUTHOR).replace(/^By\s+/i, '');
+    const byline = /^The Press$/i.test(author) ? 'The Press' : PRESS_AUTHOR;
 
     return {
       raw: item,
@@ -2291,7 +2300,7 @@ document.addEventListener("DOMContentLoaded", () => {
       image,
       imageAlt,
       author: author || PRESS_AUTHOR,
-      byline: PRESS_AUTHOR,
+      byline,
       published: publishedLabel || formatDateLabel(sortValue),
       publishedIso: publishedIso || (sortValue ? new Date(sortValue).toISOString() : ''),
       updated: updatedLabel,
@@ -3327,7 +3336,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function metaLine(story) {
-    const parts = [PRESS_AUTHOR];
+    const parts = [story?.byline || PRESS_AUTHOR];
 
     if (story.published) parts.push(story.published);
 

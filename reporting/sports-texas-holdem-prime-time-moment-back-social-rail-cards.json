@@ -1,0 +1,148 @@
+[
+  {
+    "id": "L1",
+    "side": "left",
+    "kicker": "Official / Broadcast",
+    "title": "Poker\u2019s biggest tournament is headed back to ESPN.",
+    "body": "The Main Event begins July 2. The final table returns August 3\u20135 for a three-night live finale.",
+    "sourceIds": [
+      "espn-pressroom-wsop",
+      "wsop-espn-agreement"
+    ],
+    "sourceLabel": "ESPN Press Room + WSOP"
+  },
+  {
+    "id": "R1",
+    "side": "right",
+    "kicker": "Feature Pull",
+    "title": "Texas Hold\u2019em works on TV because the audience knows the secret.",
+    "body": "The player has two cards. The viewer has the story. The suspense lives in the gap between them.",
+    "sourceIds": [
+      "casino-org-hole-card-cam",
+      "wpt-about"
+    ],
+    "sourceLabel": "Hole-card camera context"
+  },
+  {
+    "id": "L2",
+    "side": "left",
+    "kicker": "Stat Card",
+    "title": "100 bracelets. One world championship.",
+    "body": "The 2026 WSOP runs May 26\u2013July 15 at Horseshoe and Paris Las Vegas, with the $10K No-Limit Hold\u2019em Main Event as the centerpiece.",
+    "sourceIds": [
+      "wsop-2026-schedule-news",
+      "wsop-2026-tournament-page"
+    ],
+    "sourceLabel": "WSOP schedule"
+  },
+  {
+    "id": "R2",
+    "side": "right",
+    "kicker": "Business Angle",
+    "title": "The WSOP brand sold for $500 million.",
+    "body": "Caesars closed the WSOP brand sale to NSUS Group in 2024 while retaining the right to host the summer series in Las Vegas for 20 years.",
+    "sourceIds": [
+      "caesars-close-wsop-sale",
+      "caesars-agrees-wsop-sale"
+    ],
+    "sourceLabel": "Caesars transaction releases"
+  },
+  {
+    "id": "L3",
+    "side": "left",
+    "kicker": "Timeline",
+    "title": "Main Event calendar",
+    "body": "July 2: cards in the air. July 13: final table set. August 3\u20135: ESPN finale. Poker gets a cliffhanger again.",
+    "sourceIds": [
+      "pokernews-espn-return",
+      "espn-pressroom-wsop"
+    ],
+    "sourceLabel": "PokerNews + ESPN"
+  },
+  {
+    "id": "R3",
+    "side": "right",
+    "kicker": "Recent Records",
+    "title": "The Main Event is still enormous.",
+    "body": "2023: 10,043 entries. 2024: 10,112 entries. 2025: 9,735 entries. The fields are no longer a nostalgia act.",
+    "sourceIds": [
+      "caesars-2023-weinman",
+      "caesars-2024-tamayo",
+      "espn-2025-mizrachi"
+    ],
+    "sourceLabel": "Recent Main Event results"
+  },
+  {
+    "id": "L4",
+    "side": "left",
+    "kicker": "History",
+    "title": "The dream still has a name: Moneymaker.",
+    "body": "In 2003, Chris Moneymaker turned an online satellite seat into a Main Event title and became poker\u2019s cleanest mass-market myth.",
+    "sourceIds": [
+      "wsop-moneymaker-profile",
+      "espn-moneymaker-legacy",
+      "espn-30for30-moneymaker"
+    ],
+    "sourceLabel": "Moneymaker background"
+  },
+  {
+    "id": "R4",
+    "side": "right",
+    "kicker": "Watch Guide",
+    "title": "The clean viewing path",
+    "body": "Follow Day 1A on July 2, learn the survivors by Day 6, meet the final nine after July 13, then watch the August 3\u20135 finish.",
+    "sourceIds": [
+      "espn-pressroom-wsop",
+      "pokernews-2026-main-event-guide"
+    ],
+    "sourceLabel": "Viewer schedule"
+  },
+  {
+    "id": "L5",
+    "side": "left",
+    "kicker": "Integrity Watch",
+    "title": "The player in the chair has to make the decision.",
+    "body": "No charts, no apps, no AI help, no rail-coaching loopholes. The television product needs trust as much as drama.",
+    "sourceIds": [
+      "pokerorg-wsop-rule-change",
+      "casino-org-ai-coaching-ban",
+      "reviewjournal-rule-changes"
+    ],
+    "sourceLabel": "Rules and integrity coverage"
+  },
+  {
+    "id": "R5",
+    "side": "right",
+    "kicker": "Casual Fan Translation",
+    "title": "A tank is not dead air if the stakes are clear.",
+    "body": "A tank is a long decision. Good poker TV makes it suspense. Bad poker TV makes it feel like someone forgot to edit.",
+    "sourceIds": [
+      "casino-org-hole-card-cam",
+      "espn-pressroom-wsop"
+    ],
+    "sourceLabel": "Broadcast context"
+  },
+  {
+    "id": "L6",
+    "side": "left",
+    "kicker": "Reader Hook",
+    "title": "Poker is not really about cards.",
+    "body": "It is about what people do when they do not know enough \u2014 but still have to choose.",
+    "sourceIds": [
+      "wsop-about"
+    ],
+    "sourceLabel": "WSOP background"
+  },
+  {
+    "id": "R6",
+    "side": "right",
+    "kicker": "Social CTA",
+    "title": "Question for the rail",
+    "body": "Does ESPN\u2019s return make poker feel mainstream again, or is the game too fragmented now for one final table to pull everyone back?",
+    "sourceIds": [
+      "wsop-cbs-agreement",
+      "espn-pressroom-wsop"
+    ],
+    "sourceLabel": "Broadcast rights context"
+  }
+]

@@ -401,6 +401,10 @@ def merge_story(a: Story, b: Story) -> Story:
     merged.word_count = newer.word_count or older.word_count
     merged.priority = max(newer.priority, older.priority)
     merged.hero_eligible = newer.hero_eligible and older.hero_eligible
+    if newer.author == AUTHOR_LABEL and older.author != AUTHOR_LABEL:
+        merged.author = older.author
+    if newer.image_alt == newer.title and older.image_alt and older.image_alt != older.title:
+        merged.image_alt = older.image_alt
 
     return merged
 
@@ -588,7 +592,7 @@ def compact_search(stories: list[Story]) -> list[dict[str, Any]]:
             "type": s.type,
             "dek": s.dek,
             "url": s.url,
-            "author": AUTHOR_LABEL,
+            "author": s.author,
             "published": s.published,
             "keywords": s.keywords,
         }
