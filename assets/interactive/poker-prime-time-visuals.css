@@ -16,7 +16,8 @@
   object-fit: contain !important;
 }
 .poker-prime-time-feature[data-source-count]::before {
-  content: "Poker prime-time source rail • " attr(data-social-card-count) " cards • " attr(data-source-count) " source notes";
+  content: none;
+  display: none;
 }
 .poker-rail-card {
   display: block;
@@ -88,6 +89,11 @@
 .poker-prime-time-feature .poker-static-visuals {
   position: relative;
   z-index: 2;
+}
+.poker-prime-time-feature > .poker-venue-strip {
+  width: min(1120px, calc(100vw - 2rem));
+  margin: 0 auto .35rem;
+  padding: clamp(1rem, 2.25vw, 1.55rem);
 }
 .poker-static-visuals h2,
 .poker-static-visuals h3,
@@ -247,6 +253,9 @@
   margin-top: 1rem;
 }
 .poker-static-visuals > .poker-venue-portal:first-child {
+  margin-top: 0;
+}
+.poker-venue-strip .poker-venue-portal {
   margin-top: 0;
 }
 .poker-venue-portal + .poker-visual-header {
@@ -453,6 +462,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: .45rem;
   min-height: 2.45rem;
   margin-top: .5rem;
   border: 1px solid rgba(227,193,102,.7);
@@ -461,6 +471,40 @@
   color: var(--poker-paper) !important;
   font-weight: 900;
   text-decoration: none;
+}
+.poker-map-icon {
+  position: relative;
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.05rem;
+  border: 1px solid rgba(246,243,232,.8);
+  border-radius: .22rem;
+  background:
+    linear-gradient(90deg, transparent 31%, rgba(246,243,232,.5) 32% 35%, transparent 36% 64%, rgba(246,243,232,.5) 65% 68%, transparent 69%),
+    linear-gradient(135deg, rgba(98,114,223,.65), rgba(15,118,104,.88));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.poker-map-icon span {
+  position: relative;
+  width: .36rem;
+  height: .36rem;
+  border: 2px solid var(--poker-gold);
+  border-radius: 999px 999px 999px 0;
+  transform: rotate(-45deg);
+  background: rgba(5,12,18,.85);
+}
+.poker-map-icon span::after {
+  content: "";
+  position: absolute;
+  inset: .09rem;
+  border-radius: 999px;
+  background: var(--poker-gold);
+}
+.poker-map-icon--kicker {
+  width: 1.2rem;
+  height: 1rem;
 }
 .poker-venue-link:visited,
 .poker-venue-scene:visited {
