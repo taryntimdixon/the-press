@@ -246,6 +246,57 @@
 .poker-venue-portal {
   margin-top: 1rem;
 }
+.poker-static-visuals > .poker-venue-portal:first-child {
+  margin-top: 0;
+}
+.poker-venue-portal + .poker-visual-header {
+  margin-top: 1rem;
+}
+.poker-venue-portal .poker-module-kicker {
+  display: flex;
+  align-items: center;
+  gap: .42rem;
+}
+.poker-venue-earth {
+  position: relative;
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid rgba(184,215,232,.86);
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, transparent 46%, rgba(184,215,232,.9) 47% 53%, transparent 54%),
+    linear-gradient(180deg, transparent 46%, rgba(184,215,232,.68) 47% 53%, transparent 54%),
+    radial-gradient(circle at 34% 32%, rgba(15,118,104,.96), rgba(98,114,223,.72) 64%, rgba(6,9,16,.9));
+  box-shadow: 0 0 18px rgba(98,114,223,.3);
+}
+.poker-venue-earth::before,
+.poker-venue-earth::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(246,243,232,.45);
+  border-radius: 50%;
+}
+.poker-venue-earth::before {
+  inset: .22rem .37rem;
+}
+.poker-venue-earth::after {
+  inset: .37rem .22rem;
+}
+.poker-venue-earth span {
+  width: .28rem;
+  height: .28rem;
+  border-radius: 999px;
+  background: var(--poker-gold);
+  box-shadow: 0 0 10px rgba(227,193,102,.72);
+}
+.poker-venue-earth--pin {
+  width: 1.45rem;
+  height: 1.45rem;
+  margin-bottom: .3rem;
+}
 .poker-venue-portal__layout {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
@@ -363,6 +414,8 @@
   position: absolute;
   left: 50%;
   bottom: 24%;
+  display: grid;
+  justify-items: center;
   transform: translateX(-50%);
   width: min(13rem, 48%);
   border: 1px solid rgba(227,193,102,.78);
