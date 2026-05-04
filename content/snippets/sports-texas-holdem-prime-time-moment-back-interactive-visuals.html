@@ -1,37 +1,231 @@
 
-<section class="press-static-visual poker-static-visuals" aria-label="Static interactive WSOP visual elements">
+<section class="press-static-visual poker-static-visuals" aria-label="WSOP prime-time lab">
   <div class="poker-visual-header">
-    <p class="eyebrow">Static interactive package</p>
-    <h2>Three visual ways to make the story move without making the site heavy</h2>
-    <p>These modules use local HTML, CSS, and a tiny JavaScript enhancer. They still read cleanly without JavaScript.</p>
+    <p class="eyebrow">Prime-time lab</p>
+    <h2>The 20-day break turns one tournament into a whole playable TV world</h2>
+    <p>The Main Event has a cast, a clock, a control room, a paper trail, and nine seats waiting for storylines to attach themselves.</p>
   </div>
 
-  <article class="poker-timeline-widget" data-poker-widget="timeline">
-    <h3>WSOP Main Event clock</h3>
-    <div class="poker-timeline-controls" role="tablist" aria-label="Main Event timeline">
-      <button type="button" class="is-active" data-step="start">July 2</button>
-      <button type="button" data-step="final-nine">July 13</button>
-      <button type="button" data-step="finale">August 3–5</button>
+  <div class="poker-lab-grid poker-lab-grid--lead">
+    <article class="poker-lab-module poker-timeline-widget" data-poker-widget="timeline">
+      <div class="poker-module-heading">
+        <p class="poker-module-kicker">Clock</p>
+        <h3>WSOP Main Event pulse</h3>
+      </div>
+      <div class="poker-timeline-controls" role="tablist" aria-label="Main Event timeline">
+        <button type="button" class="is-active" data-step="start">July 2<span>Cards in the air</span></button>
+        <button type="button" data-step="final-nine">July 13<span>Final table set</span></button>
+        <button type="button" data-step="finale">August 3–5<span>ESPN finale</span></button>
+      </div>
+      <div class="poker-timeline-panels">
+        <section data-panel="start" class="is-active"><strong>Cards in the air:</strong> Day 1A opens the $10,000 No-Limit Hold’em World Championship and gives producers the first episode of the season.</section>
+        <section data-panel="final-nine"><strong>The cliffhanger:</strong> The field pauses after the final table is set, creating time for profiles, clips, explainers, and stakes.</section>
+        <section data-panel="finale"><strong>Prime-time finish:</strong> ESPN airs the three-night final table finale from August 3–5, with each surviving stack already carrying a backstory.</section>
+      </div>
+    </article>
+
+    <article class="poker-lab-module poker-stats-strip" data-poker-widget="stats">
+      <div class="poker-module-heading">
+        <p class="poker-module-kicker">Scale</p>
+        <h3>Recent Main Event gravity</h3>
+      </div>
+      <div class="poker-stat-grid">
+        <button type="button" data-stat="2023"><span>2023</span><strong>10,043</strong><em>entries</em></button>
+        <button type="button" data-stat="2024" class="is-active"><span>2024</span><strong>10,112</strong><em>entries</em></button>
+        <button type="button" data-stat="2025"><span>2025</span><strong>9,735</strong><em>entries</em></button>
+      </div>
+      <p class="poker-stat-note" aria-live="polite">2024 set the modern high-water mark; 2025 still delivered the third-largest Main Event field.</p>
+    </article>
+  </div>
+
+  <article class="poker-lab-module poker-venue-portal" data-poker-widget="venue-portal">
+    <div class="poker-module-heading">
+      <p class="poker-module-kicker">Venue portal</p>
+      <h3>Step onto the Strip before the cards are in the air</h3>
     </div>
-    <div class="poker-timeline-panels">
-      <section data-panel="start" class="is-active"><strong>Cards in the air:</strong> Day 1A opens the $10,000 No-Limit Hold’em World Championship.</section>
-      <section data-panel="final-nine"><strong>The cliffhanger:</strong> The field pauses after the final table is set, creating time for profiles, clips, explainers, and stakes.</section>
-      <section data-panel="finale"><strong>Prime-time finish:</strong> ESPN airs the three-night final table finale from August 3–5.</section>
+    <div class="poker-venue-portal__layout">
+      <a class="poker-venue-scene" href="https://www.google.com/maps/@?api=1&amp;map_action=pano&amp;viewpoint=36.1136,-115.1726&amp;heading=94&amp;pitch=0&amp;fov=80" target="_blank" rel="noopener" aria-label="Open Google Maps Street View outside the Horseshoe and Paris Las Vegas venue area">
+        <span class="poker-venue-skyline" aria-hidden="true">
+          <span class="poker-venue-building poker-venue-building--horseshoe"><strong>Horseshoe</strong><small>Las Vegas</small></span>
+          <span class="poker-venue-building poker-venue-building--paris"><strong>Paris</strong><small>Las Vegas</small></span>
+          <span class="poker-venue-road"><span>Las Vegas Blvd</span></span>
+          <span class="poker-venue-pin"><strong>Street View</strong><small>front walk-in</small></span>
+        </span>
+      </a>
+      <div class="poker-venue-copy">
+        <p class="poker-detail-kicker">Horseshoe / Paris Las Vegas</p>
+        <h4>The room has a front door</h4>
+        <p>Instead of only reading the schedule, the reader can jump to the street-level approach outside the venue area and feel where the Main Event is being staged.</p>
+        <a class="poker-venue-link" href="https://www.google.com/maps/@?api=1&amp;map_action=pano&amp;viewpoint=36.1136,-115.1726&amp;heading=94&amp;pitch=0&amp;fov=80" target="_blank" rel="noopener">Open Street View</a>
+      </div>
     </div>
   </article>
 
-  <article class="poker-stats-strip" data-poker-widget="stats">
-    <h3>Recent Main Event scale</h3>
-    <div class="poker-stat-grid">
-      <button type="button" data-stat="2023"><span>2023</span><strong>10,043</strong><em>entries</em></button>
-      <button type="button" data-stat="2024" class="is-active"><span>2024</span><strong>10,112</strong><em>entries</em></button>
-      <button type="button" data-stat="2025"><span>2025</span><strong>9,735</strong><em>entries</em></button>
+  <article class="poker-lab-module poker-seat-map" data-poker-widget="seat-map">
+    <div class="poker-module-heading">
+      <p class="poker-module-kicker">Virtual table</p>
+      <h3>Nine seats, nine ways to make the finale matter</h3>
     </div>
-    <p class="poker-stat-note" aria-live="polite">2024 set the modern high-water mark; 2025 still delivered the third-largest Main Event field.</p>
+    <div class="poker-seat-map__layout">
+      <div class="poker-seat-stage" aria-label="Final table seat map">
+        <div class="poker-table-felt" aria-hidden="true">
+          <span>ESPN</span>
+          <small>final table</small>
+        </div>
+        <button type="button" class="poker-seat poker-seat--1 is-active" data-seat="1" aria-pressed="true"><strong>1</strong><span>Chip lead</span></button>
+        <button type="button" class="poker-seat poker-seat--2" data-seat="2" aria-pressed="false"><strong>2</strong><span>Satellite</span></button>
+        <button type="button" class="poker-seat poker-seat--3" data-seat="3" aria-pressed="false"><strong>3</strong><span>Pro</span></button>
+        <button type="button" class="poker-seat poker-seat--4" data-seat="4" aria-pressed="false"><strong>4</strong><span>Short stack</span></button>
+        <button type="button" class="poker-seat poker-seat--5" data-seat="5" aria-pressed="false"><strong>5</strong><span>Closer</span></button>
+        <button type="button" class="poker-seat poker-seat--6" data-seat="6" aria-pressed="false"><strong>6</strong><span>Wild card</span></button>
+        <button type="button" class="poker-seat poker-seat--7" data-seat="7" aria-pressed="false"><strong>7</strong><span>Online kid</span></button>
+        <button type="button" class="poker-seat poker-seat--8" data-seat="8" aria-pressed="false"><strong>8</strong><span>Veteran</span></button>
+        <button type="button" class="poker-seat poker-seat--9" data-seat="9" aria-pressed="false"><strong>9</strong><span>Rail favorite</span></button>
+      </div>
+      <aside class="poker-seat-detail" aria-live="polite">
+        <p class="poker-detail-kicker">Seat 1</p>
+        <h4>Chip leader</h4>
+        <p>The stack to beat gets framed as both power and burden. Every fold looks disciplined; every call can look like a coronation or a leak.</p>
+        <dl>
+          <div><dt>Pressure</dt><dd>Protect the lead without freezing</dd></div>
+          <div><dt>Broadcast hook</dt><dd>The camera watches patience turn into dominance</dd></div>
+        </dl>
+      </aside>
+    </div>
   </article>
 
-  <article class="poker-explainer-deck" data-poker-widget="explainer">
-    <h3>Casual fan translator</h3>
+  <div class="poker-lab-grid poker-lab-grid--split">
+    <article class="poker-lab-module poker-control-room" data-poker-widget="control-room">
+      <div class="poker-module-heading">
+        <p class="poker-module-kicker">Control room</p>
+        <h3>How a hand becomes television</h3>
+      </div>
+      <div class="poker-control-grid" aria-label="Broadcast storytelling layers">
+        <button type="button" class="is-active" data-control="hole-cards" aria-pressed="true"><span></span>Hole cards</button>
+        <button type="button" data-control="stack-pressure" aria-pressed="false"><span></span>Stack pressure</button>
+        <button type="button" data-control="pay-jump" aria-pressed="false"><span></span>Pay jump</button>
+        <button type="button" data-control="rail" aria-pressed="false"><span></span>Rail cam</button>
+        <button type="button" data-control="integrity" aria-pressed="false"><span></span>Integrity</button>
+        <button type="button" data-control="clip" aria-pressed="false"><span></span>Clip afterlife</button>
+      </div>
+      <div class="poker-control-monitor" aria-live="polite">
+        <p class="poker-monitor-status">ON AIR</p>
+        <h4>Hole-card reveal</h4>
+        <p>The audience sees the secret, so the same bet stops being random motion and starts reading like intent.</p>
+      </div>
+    </article>
+
+    <article class="poker-lab-module poker-pressure-sim" data-poker-widget="pressure-sim">
+      <div class="poker-module-heading">
+        <p class="poker-module-kicker">Pressure meter</p>
+        <h3>Turn a poker spot into drama</h3>
+      </div>
+      <div class="poker-pressure-controls">
+        <fieldset>
+          <legend>Stack</legend>
+          <button type="button" data-pressure="stack" data-value="28" class="is-active" aria-pressed="true">Short</button>
+          <button type="button" data-pressure="stack" data-value="18" aria-pressed="false">Medium</button>
+          <button type="button" data-pressure="stack" data-value="10" aria-pressed="false">Deep</button>
+        </fieldset>
+        <fieldset>
+          <legend>Money</legend>
+          <button type="button" data-pressure="pay" data-value="10" aria-pressed="false">Flat</button>
+          <button type="button" data-pressure="pay" data-value="20" class="is-active" aria-pressed="true">Jump</button>
+          <button type="button" data-pressure="pay" data-value="28" aria-pressed="false">Life-changing</button>
+        </fieldset>
+        <fieldset>
+          <legend>Camera</legend>
+          <button type="button" data-pressure="camera" data-value="8" aria-pressed="false">Quiet</button>
+          <button type="button" data-pressure="camera" data-value="17" class="is-active" aria-pressed="true">Feature</button>
+          <button type="button" data-pressure="camera" data-value="24" aria-pressed="false">Prime-time</button>
+        </fieldset>
+        <fieldset>
+          <legend>Clock</legend>
+          <button type="button" data-pressure="clock" data-value="8" aria-pressed="false">Room</button>
+          <button type="button" data-pressure="clock" data-value="15" class="is-active" aria-pressed="true">Tank</button>
+          <button type="button" data-pressure="clock" data-value="20" aria-pressed="false">Countdown</button>
+        </fieldset>
+      </div>
+      <div class="poker-pressure-readout" aria-live="polite">
+        <div class="poker-pressure-meter" aria-hidden="true"><span style="width: 80%;"></span></div>
+        <p><strong class="poker-pressure-score">80</strong><span>/100 tension</span></p>
+        <p class="poker-pressure-copy">A short stack, a meaningful pay jump, a featured table, and a long tank create the kind of decision ESPN can slow down without losing the room.</p>
+      </div>
+    </article>
+  </div>
+
+  <article class="poker-lab-module poker-ecosystem-map" data-poker-widget="ecosystem-map">
+    <div class="poker-module-heading">
+      <p class="poker-module-kicker">Hierarchy map</p>
+      <h3>The ecosystem around the ESPN return</h3>
+    </div>
+    <div class="poker-map-layout">
+      <div class="poker-map-canvas" aria-label="Poker ecosystem map">
+        <button type="button" class="poker-map-node poker-map-node--brand is-active" data-node="brand" aria-pressed="true"><span>WSOP brand</span><small>new ownership, old prestige</small></button>
+        <button type="button" class="poker-map-node poker-map-node--venue" data-node="venue" aria-pressed="false"><span>Las Vegas room</span><small>the pilgrimage site</small></button>
+        <button type="button" class="poker-map-node poker-map-node--broadcast" data-node="broadcast" aria-pressed="false"><span>ESPN window</span><small>mainstream distribution</small></button>
+        <button type="button" class="poker-map-node poker-map-node--field" data-node="field" aria-pressed="false"><span>10K-ish field</span><small>mass scale</small></button>
+        <button type="button" class="poker-map-node poker-map-node--online" data-node="online" aria-pressed="false"><span>Online pipeline</span><small>more places to dream</small></button>
+        <button type="button" class="poker-map-node poker-map-node--audience" data-node="audience" aria-pressed="false"><span>Casual viewer</span><small>the half-curious fan</small></button>
+      </div>
+      <aside class="poker-map-detail" aria-live="polite">
+        <p class="poker-detail-kicker">WSOP brand</p>
+        <h4>New ownership, old prestige</h4>
+        <p>The brand sale makes the ESPN return feel less like nostalgia and more like a growth move: the title still carries history, but the business around it is being reset.</p>
+        <a href="#source-caesars-close-wsop-sale">Open sale receipt</a>
+      </aside>
+    </div>
+  </article>
+
+  <div class="poker-lab-grid poker-lab-grid--split">
+    <article class="poker-lab-module poker-source-constellation" data-poker-widget="source-constellation">
+      <div class="poker-module-heading">
+        <p class="poker-module-kicker">Receipts board</p>
+        <h3>The story’s source stack</h3>
+      </div>
+      <div class="poker-source-grid" aria-label="Source clusters">
+        <button type="button" class="is-active" data-source-cluster="broadcast" aria-pressed="true">Broadcast deal<span>ESPN, WSOP, PokerNews</span></button>
+        <button type="button" data-source-cluster="scale" aria-pressed="false">Field size<span>2023, 2024, 2025</span></button>
+        <button type="button" data-source-cluster="integrity" aria-pressed="false">Integrity rules<span>devices, coaching, AI</span></button>
+        <button type="button" data-source-cluster="online" aria-pressed="false">Online pipeline<span>PA, MI, shared liquidity</span></button>
+        <button type="button" data-source-cluster="history" aria-pressed="false">Boom memory<span>Moneymaker, WPT, hole-card cam</span></button>
+      </div>
+      <div class="poker-source-detail" aria-live="polite">
+        <p class="poker-detail-kicker">Broadcast deal</p>
+        <h4>The return is documented from both sides</h4>
+        <p>ESPN and WSOP both frame the agreement around the Main Event’s return, 100-plus hours of coverage, and the August final-table window.</p>
+        <div class="poker-source-links">
+          <a href="#source-espn-pressroom-wsop">ESPN receipt</a>
+          <a href="#source-wsop-espn-agreement">WSOP receipt</a>
+          <a href="#source-pokernews-espn-return">PokerNews receipt</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="poker-lab-module poker-clip-builder" data-poker-widget="clip-builder">
+      <div class="poker-module-heading">
+        <p class="poker-module-kicker">Clip engine</p>
+        <h3>Four beats that make a hand travel</h3>
+      </div>
+      <div class="poker-storyboard" aria-label="Television hand storyboard">
+        <button type="button" class="is-active" data-clip="setup" aria-pressed="true"><span>1</span><strong>Setup</strong><em>who needs this pot?</em></button>
+        <button type="button" data-clip="decision" aria-pressed="false"><span>2</span><strong>Decision</strong><em>what can go wrong?</em></button>
+        <button type="button" data-clip="reveal" aria-pressed="false"><span>3</span><strong>Reveal</strong><em>what did we know?</em></button>
+        <button type="button" data-clip="afterlife" aria-pressed="false"><span>4</span><strong>Afterlife</strong><em>why does it spread?</em></button>
+      </div>
+      <div class="poker-clip-detail" aria-live="polite">
+        <p class="poker-detail-kicker">Beat 1</p>
+        <h4>Setup</h4>
+        <p>The viewer needs a clean reason to care before the cards matter: chip lead, survival, revenge, a rail, a country, a mortgage, a second chance.</p>
+      </div>
+    </article>
+  </div>
+
+  <article class="poker-lab-module poker-explainer-deck" data-poker-widget="explainer">
+    <div class="poker-module-heading">
+      <p class="poker-module-kicker">Translator</p>
+      <h3>Terms ESPN can make human fast</h3>
+    </div>
     <details open>
       <summary>What is a tank?</summary>
       <p>A long think before a decision. On television, it works only when the viewer understands the price of being wrong.</p>
@@ -39,6 +233,10 @@
     <details>
       <summary>What is real-time assistance?</summary>
       <p>Outside software or coaching used during play. Study tools are normal away from the table; help during a live hand threatens the fairness of the game.</p>
+    </details>
+    <details>
+      <summary>What is ICM pressure?</summary>
+      <p>A tournament math problem that turns survival into leverage. A chip lost near a pay jump can hurt more than a chip gained helps.</p>
     </details>
     <details>
       <summary>What is the final-table break?</summary>
