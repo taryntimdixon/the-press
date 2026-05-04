@@ -4,6 +4,17 @@
   --rail-art-b: #b93535;
   --rail-art-c: #e3c166;
 }
+.page-article .article-hero .hero-figure {
+  width: min(100%, 640px) !important;
+  margin-inline: auto;
+  overflow: hidden !important;
+}
+.page-article .article-hero .hero-figure img {
+  width: 100%;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+}
 .poker-prime-time-feature[data-source-count]::before {
   content: "Poker prime-time source rail • " attr(data-social-card-count) " cards • " attr(data-source-count) " source notes";
 }
