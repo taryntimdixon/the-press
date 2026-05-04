@@ -49,6 +49,16 @@
   margin: .58rem 0;
   color: var(--muted);
   overflow-wrap: anywhere;
+  scroll-margin-top: 6rem;
+}
+.press-source-notes li:target,
+.press-source-notes li.is-receipt-target {
+  margin-left: -.55rem;
+  padding: .42rem .55rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent-soft) 82%, #fff);
+  color: var(--ink);
 }
 .poker-static-visuals {
   border: 1px solid rgba(255,255,255,.18);
@@ -93,7 +103,21 @@
   padding: .9rem 0;
 }
 .poker-explainer-deck summary { cursor: pointer; font-weight: 700; }
-.poker-rail-card .press-static-post__source { font-size: .78rem; opacity: .82; }
+.poker-rail-card .press-static-post__source {
+  display: grid;
+  gap: .42rem;
+  font-size: .78rem;
+  opacity: .88;
+}
+.poker-rail-card .press-static-post__source > span {
+  color: var(--muted);
+  font-weight: 800;
+}
+.poker-rail-card .press-static-post__source a {
+  min-height: 2.05rem;
+  padding-inline: .62rem;
+  line-height: 1.18;
+}
 @media (max-width: 780px) {
   .poker-timeline-controls,
   .poker-stat-grid { grid-template-columns: 1fr; }

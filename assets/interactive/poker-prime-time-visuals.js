@@ -2,6 +2,71 @@
   function initPokerPrimeTimeVisuals() {
     const feature = document.querySelector('.poker-prime-time-feature');
     if (feature) {
+      const scrollToReceipt = (link) => {
+        const href = link.getAttribute('href') || '';
+        if (!href.startsWith('#source-')) return false;
+
+        const target = document.getElementById(href.slice(1));
+        if (!target) return false;
+
+        document.querySelectorAll('.press-source-notes li.is-receipt-target').forEach((item) => {
+          item.classList.remove('is-receipt-target');
+        });
+        target.classList.add('is-receipt-target');
+
+        const url = new URL(window.location.href);
+        url.hash = target.id;
+        window.history.pushState(null, '', url);
+        const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        target.scrollIntoView({ block: 'start' });
+        window.requestAnimationFrame(() => {
+          document.documentElement.style.scrollBehavior = previousScrollBehavior;
+        });
+        if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+        return true;
+      };
+
+      feature.addEventListener('click', (event) => {
+        if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const target = event.target instanceof Element ? event.target : null;
+        if (!target) return;
+
+        const sourceLink = target.closest('.poker-rail-card .press-static-post__source a[href^="#source-"]');
+        if (sourceLink && feature.contains(sourceLink) && scrollToReceipt(sourceLink)) {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
+        }
+
+        if (target.closest('button, input, textarea, select, label, [contenteditable="true"]')) return;
+
+        const card = target.closest('.poker-rail-card[data-rail-card]');
+        if (!card || !feature.contains(card)) return;
+
+        const firstReceiptLink = card.querySelector('.press-static-post__source a[href^="#source-"]');
+        if (firstReceiptLink && scrollToReceipt(firstReceiptLink)) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      }, true);
+
+      feature.addEventListener('keydown', (event) => {
+        if (!['Enter', ' '].includes(event.key)) return;
+        const target = event.target instanceof Element ? event.target : null;
+        if (!target || target.closest('a, button, input, textarea, select, label, [contenteditable="true"]')) return;
+
+        const card = target.closest('.poker-rail-card[data-rail-card]');
+        if (!card || !feature.contains(card)) return;
+
+        const firstReceiptLink = card.querySelector('.press-static-post__source a[href^="#source-"]');
+        if (firstReceiptLink && scrollToReceipt(firstReceiptLink)) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      }, true);
+
       feature.querySelectorAll('.poker-rail-card[data-rail-card]').forEach((card) => {
         if (card.querySelector('.press-static-post__media')) return;
 
