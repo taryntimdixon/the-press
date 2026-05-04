@@ -144,5 +144,150 @@
       "espn-pressroom-wsop"
     ],
     "sourceLabel": "Broadcast rights context"
+  },
+  {
+    "id": "L7",
+    "side": "left",
+    "kicker": "Explainer Overlay",
+    "title": "Explain the invisible, then get out of the way.",
+    "body": "Stack depth, position, bet size, and hole cards are the broadcast map. The human decision is still the scene.",
+    "sourceIds": [
+      "casino-org-hole-card-cam",
+      "wpt-about"
+    ],
+    "sourceLabel": "Poker TV explanation"
+  },
+  {
+    "id": "R7",
+    "side": "right",
+    "kicker": "Broadcast Note",
+    "title": "A tank needs setup.",
+    "body": "Four minutes of thinking becomes suspense only when viewers know the price of the call before the silence starts.",
+    "sourceIds": [
+      "espn-pressroom-wsop",
+      "pokernews-2026-main-event-guide"
+    ],
+    "sourceLabel": "ESPN schedule and guide"
+  },
+  {
+    "id": "L8",
+    "side": "left",
+    "kicker": "Silence Test",
+    "title": "Dead air or agony?",
+    "body": "The same quiet hand can feel slow or electric. The difference is whether the audience understands the decision.",
+    "sourceIds": [
+      "casino-org-hole-card-cam",
+      "espn-pressroom-wsop"
+    ],
+    "sourceLabel": "Broadcast suspense context"
+  },
+  {
+    "id": "R8",
+    "side": "right",
+    "kicker": "Character Meter",
+    "title": "Final-table names should be known before cards fly.",
+    "body": "The 20-day gap is not just a schedule quirk. It is a chance to turn nine stacks into nine people.",
+    "sourceIds": [
+      "pokernews-espn-return",
+      "espn-pressroom-wsop"
+    ],
+    "sourceLabel": "Final-table pause"
+  },
+  {
+    "id": "L9",
+    "side": "left",
+    "kicker": "Clip Test",
+    "title": "Success is bigger than ratings.",
+    "body": "The signal is whether final-table clips travel beyond poker\u2019s core audience and make casual fans recognize the cast.",
+    "sourceIds": [
+      "espn-pressroom-wsop",
+      "reviewjournal-espn-final-table"
+    ],
+    "sourceLabel": "Mainstream reach"
+  },
+  {
+    "id": "R9",
+    "side": "right",
+    "kicker": "Online Pipeline",
+    "title": "Bigger online player pools feed the WSOP dream.",
+    "body": "Multi-state poker liquidity makes online poker feel more alive, and online poker has always helped sell the Main Event fantasy.",
+    "sourceIds": [
+      "pa-msiga",
+      "michigan-fanduel-multistate",
+      "bettingusa-interstate-poker"
+    ],
+    "sourceLabel": "Online poker liquidity"
+  },
+  {
+    "id": "L10",
+    "side": "left",
+    "kicker": "Rules of the Game",
+    "title": "Two private cards. Five public cards. Infinite trouble.",
+    "body": "Texas Hold\u2019em is simple enough to learn quickly and deep enough to keep surprising people under pressure.",
+    "sourceIds": [
+      "wsop-about",
+      "casino-org-hole-card-cam"
+    ],
+    "sourceLabel": "Hold\u2019em TV basics"
+  },
+  {
+    "id": "R10",
+    "side": "right",
+    "kicker": "Audience Memory",
+    "title": "The shared living-room feeling is the thing to rebuild.",
+    "body": "The Main Event stayed big, but the audience scattered. ESPN gives poker a mainstream room to gather in again.",
+    "sourceIds": [
+      "wsop-cbs-agreement",
+      "espn-pressroom-wsop"
+    ],
+    "sourceLabel": "Broadcast distribution"
+  },
+  {
+    "id": "L11",
+    "side": "left",
+    "kicker": "Media Reality",
+    "title": "No network can recreate 2003. It can make room for surprise.",
+    "body": "The Moneymaker Effect was lightning. The 2026 format is about putting a storm window back over the Main Event.",
+    "sourceIds": [
+      "espn-moneymaker-legacy",
+      "espn-30for30-moneymaker"
+    ],
+    "sourceLabel": "Moneymaker effect"
+  },
+  {
+    "id": "R11",
+    "side": "right",
+    "kicker": "Final Nine",
+    "title": "Three weeks turns chip counts into characters.",
+    "body": "The final-table pause gives ESPN room to show who survived, not just how many chips they bagged.",
+    "sourceIds": [
+      "pokernews-espn-return",
+      "pokernews-2026-main-event-guide"
+    ],
+    "sourceLabel": "Final-table schedule"
+  },
+  {
+    "id": "L12",
+    "side": "left",
+    "kicker": "Final Beat",
+    "title": "The quiet room is the whole promise.",
+    "body": "If the return works, silence at the table will feel like everything is happening at once.",
+    "sourceIds": [
+      "espn-pressroom-wsop",
+      "wsop-espn-agreement"
+    ],
+    "sourceLabel": "ESPN + WSOP agreement"
+  },
+  {
+    "id": "R12",
+    "side": "right",
+    "kicker": "Source Trail",
+    "title": "Every rail card points down to the receipts.",
+    "body": "These are source-linked editorial context cards, not fake screenshots, fake usernames, or invented public reaction.",
+    "sourceIds": [
+      "press-social-rail-standard",
+      "press-repo-readme"
+    ],
+    "sourceLabel": "The Press source policy"
   }
 ]

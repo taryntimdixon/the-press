@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Editorial source illustration for rail card L12</title>
+<desc id="desc">Abstract poker table illustration for the source-linked card titled The quiet room is the whole promise.</desc>
+<defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#18283f"/><stop offset="1" stop-color="#06080f"/></linearGradient></defs>
+<rect width="1200" height="675" fill="url(#g)"/>
+<ellipse cx="600" cy="355" rx="430" ry="190" fill="#0c5a48" stroke="#e7d7a8" stroke-width="10" opacity=".92"/>
+<rect x="475" y="255" width="120" height="170" rx="12" fill="#f4f0e8" transform="rotate(-8 535 340)"/>
+<rect x="605" y="255" width="120" height="170" rx="12" fill="#f4f0e8" transform="rotate(8 665 340)"/>
+<circle cx="335" cy="310" r="42" fill="#ba2d2d"/><circle cx="385" cy="296" r="42" fill="#1f4068"/><circle cx="435" cy="320" r="42" fill="#f0c75e"/>
+<text x="80" y="92" fill="#f7f1df" font-family="Georgia, serif" font-size="38" font-weight="700">Final Beat</text>
+<text x="80" y="575" fill="#f7f1df" font-family="Arial, sans-serif" font-size="48" font-weight="700">L12</text>
+</svg>
