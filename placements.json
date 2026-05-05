@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-04T03:52:56.321598+00:00",
+  "generated_at": "2026-05-05T00:40:34.480344+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -16,18 +16,18 @@
     ],
     "secondary": [
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
-      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
-      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label"
+      "technology-musk-altman-openai-court-battle",
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class"
     ],
     "most_read": [
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
       "2026-04-27-nairobi-s-drains-are-running-out-of-room",
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
       "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
-      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
-      "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags"
+      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test"
     ],
     "editors_picks": [
-      "technology-musk-altman-openai-court-battle",
+      "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
       "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line",
       "2026-04-27-cdc-s-3-606-400-birth-certificates-turn-family-math-into-public-policy",
       "2026-04-27-koyo-kouoh-s-team-lowers-venice-s-volume"
@@ -85,13 +85,13 @@
         "section": "Sports"
       },
       {
-        "count": 13,
+        "count": 12,
         "latest_ts": 1777840200.0,
         "story_id": "technology-pentagon-ai-classified-networks",
         "section": "Technology"
       },
       {
-        "count": 15,
+        "count": 14,
         "latest_ts": 1777813200.0,
         "story_id": "food-atla-noho-closing",
         "section": "Culture"
@@ -103,7 +103,7 @@
         "section": "Politics / Security"
       },
       {
-        "count": 17,
+        "count": 16,
         "latest_ts": 1777392000.0,
         "story_id": "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
         "section": "World"
@@ -127,7 +127,7 @@
         "section": "The Weird File"
       },
       {
-        "count": 14,
+        "count": 13,
         "latest_ts": 1777288860.0,
         "story_id": "2026-04-27-sony-s-ace-turns-table-tennis-into-a-physics-exam",
         "section": "Science"
