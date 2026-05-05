@@ -3,6 +3,7 @@
   --rail-art-a: #0b5a49;
   --rail-art-b: #b93535;
   --rail-art-c: #e3c166;
+  --poker-gold: #e3c166;
 }
 .page-article .article-hero .hero-figure {
   width: min(100%, 640px) !important;
@@ -94,6 +95,39 @@
   width: min(1120px, calc(100vw - 2rem));
   margin: 0 auto .35rem;
   padding: clamp(1rem, 2.25vw, 1.55rem);
+}
+.poker-venue-jump {
+  display: inline-grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: .58rem;
+  align-items: center;
+  width: min(100%, 31rem);
+  margin: 0 0 1rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--line));
+  border-radius: 999px;
+  padding: .52rem .78rem;
+  background: color-mix(in srgb, var(--accent-soft) 72%, #fff);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 10px 26px rgba(17,23,34,.08);
+}
+.poker-venue-jump strong,
+.poker-venue-jump small {
+  display: block;
+}
+.poker-venue-jump strong {
+  font-size: .86rem;
+  line-height: 1.1;
+}
+.poker-venue-jump small {
+  margin-top: .08rem;
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+.poker-venue-jump:hover {
+  color: var(--ink);
 }
 .poker-static-visuals h2,
 .poker-static-visuals h3,
