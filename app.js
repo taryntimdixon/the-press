@@ -5410,6 +5410,7 @@ document.addEventListener("DOMContentLoaded", () => {
     history: 'press-living-reading-history',
     followedTopics: 'press-living-followed-topics',
     readerMode: 'press-living-reader-mode',
+    sourceTrail: 'press-living-source-trail',
   };
 
   const PLACE_LIBRARY = [
@@ -5889,6 +5890,8 @@ document.addEventListener("DOMContentLoaded", () => {
     'Background',
   ];
 
+  const NUMBER_TOKEN_PATTERN = /(^|[^A-Za-z0-9$€£])((?:[$€£]\s?\d[\d,.]*(?:\.\d+)?(?:\s?(?:million|billion|trillion))?)|(?:\d[\d,.]*(?:\.\d+)?\s?(?:%|percent|million|billion|trillion|barrels?|vessels?|tankers?|ships?|crews?|kilometers?|miles?|tons?|gigawatts?|megawatts?|people|families|children|exports?|imports?|capacity|per day)))/gi;
+
   let activeArticleContext = null;
   let lastFocusedElement = null;
 
@@ -5928,14 +5931,31 @@ document.addEventListener("DOMContentLoaded", () => {
       entities: detectEntities(text),
       relatedStories: readEmbeddedStories(),
       key: normalizeUrlKey(window.location.pathname || story.url || story.title),
+      evidence: [],
+      relationships: { nodes: [], links: [] },
     };
+    try {
+      context.evidence = collectEvidenceMoments(context);
+    } catch (_) {
+      context.evidence = [];
+    }
+    try {
+      context.relationships = buildRelationshipWeb(context);
+    } catch (_) {
+      context.relationships = { nodes: context.entities.slice(0, 9), links: [] };
+    }
 
     activeArticleContext = context;
     installArticleDock(context);
     installSocialRailEnhancements(context);
     installReadingMemory(context);
     installArticleAtmosphere(context);
-    wrapEntityMentions(context);
+    try {
+      installArticleIntelligence(context);
+    } catch (_) {}
+    try {
+      wrapEntityMentions(context);
+    } catch (_) {}
 
     window.PressLivingArticle = {
       openPlaceLens: () => openPlaceLens(context),
@@ -5943,6 +5963,7 @@ document.addEventListener("DOMContentLoaded", () => {
       openSourceBoard: () => openSourceBoard(context),
       openTimeline: () => openTimeline(context),
       openEntities: () => openEntityDrawer(context),
+      openRelationships: () => openRelationshipWeb(context),
       context,
     };
   }
@@ -5956,9 +5977,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function installArticleDock(context) {
-    if (document.querySelector('[data-living-article-dock]')) return;
-
-    const dock = document.createElement('section');
+    const existingDock = document.querySelector('[data-living-article-dock]');
+    const dock = existingDock || document.createElement('section');
     dock.className = 'press-living-dock';
     dock.setAttribute('data-living-article-dock', '');
     dock.setAttribute('aria-label', 'Living article tools');
@@ -5973,27 +5993,33 @@ document.addEventListener("DOMContentLoaded", () => {
         <button type="button" data-living-open="sources">Source Board <span>${context.sources.length}</span></button>
         <button type="button" data-living-open="timeline">Timeline <span>${context.beats.length}</span></button>
         <button type="button" data-living-open="entities">Entities <span>${context.entities.length}</span></button>
+        <button type="button" data-living-open="relationships">Actor Web <span>${context.relationships.links.length}</span></button>
+        <button type="button" data-living-action="source-trail">Source Trail</button>
         <button type="button" data-living-action="listen">Listen</button>
         <button type="button" data-living-action="reader-mode">Focus</button>
         <button type="button" data-living-action="follow-topic">${isFollowingTopic(context.story.section) ? 'Following' : 'Follow Topic'}</button>
       </div>
     `;
 
-    const hero = context.hero || context.article;
-    const anchor = hero.querySelector('[data-article-trust-card]')
-      || hero.querySelector('[data-listen-controls]')
-      || hero.querySelector('.hero-figure')
-      || hero.querySelector('.article-meta')
-      || hero.lastElementChild;
+    if (!existingDock) {
+      const hero = context.hero || context.article;
+      const anchor = hero.querySelector('[data-article-trust-card]')
+        || hero.querySelector('[data-listen-controls]')
+        || hero.querySelector('.hero-figure')
+        || hero.querySelector('.article-meta')
+        || hero.lastElementChild;
 
-    if (anchor && anchor.parentElement) {
-      anchor.insertAdjacentElement('afterend', dock);
-    } else {
-      hero.appendChild(dock);
+      if (anchor && anchor.parentElement) {
+        anchor.insertAdjacentElement('afterend', dock);
+      } else {
+        hero.appendChild(dock);
+      }
     }
 
     bindLivingControls(dock, context);
+    applyStoredSourceTrailMode();
     applyStoredReaderMode();
+    updateSourceTrailButton();
     updateReaderButton();
   }
 
@@ -6010,6 +6036,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (target === 'sources') openSourceBoard(context);
         if (target === 'timeline') openTimeline(context);
         if (target === 'entities') openEntityDrawer(context);
+        if (target === 'relationships') openRelationshipWeb(context);
       });
     });
 
@@ -6050,6 +6077,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="press-living-sidecar__actions">
         <button type="button" data-living-open="sources">Source constellation</button>
         <button type="button" data-living-open="places">Map the places</button>
+        <button type="button" data-living-open="relationships">Actor web</button>
         <button type="button" data-living-open="share">Make share card</button>
       </div>
     `;
@@ -6160,6 +6188,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (target === 'sources') openSourceBoard(context);
         if (target === 'timeline') openTimeline(context);
         if (target === 'entities') openEntityDrawer(context);
+        if (target === 'relationships') openRelationshipWeb(context);
+        return;
+      }
+
+      const number = event.target.closest('[data-living-number-chip]');
+      if (number) {
+        event.preventDefault();
+        if (activeArticleContext) openNumberLens(activeArticleContext, number);
         return;
       }
 
@@ -6219,11 +6255,431 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    if (action === 'source-trail') {
+      toggleSourceTrailMode();
+      return;
+    }
+
     if (action === 'follow-topic') {
       toggleFollowTopic(context.story.section);
       const button = document.querySelector('[data-living-action="follow-topic"]');
       if (button) button.textContent = isFollowingTopic(context.story.section) ? 'Following' : 'Follow Topic';
     }
+  }
+
+  function installArticleIntelligence(context) {
+    installEvidenceAnnotations(context);
+    installEvidenceHeatRail(context);
+    installNumberChips(context);
+    applyStoredSourceTrailMode();
+    updateSourceTrailButton();
+  }
+
+  function collectEvidenceMoments(context) {
+    const nodes = collectStoryEvidenceNodes(context.body);
+
+    return nodes.map((node, index) => {
+      const id = ensureLivingNodeId(node, 'living-evidence', index + 1);
+      const text = cleanText(node.textContent || '');
+      const haystack = normalizeText(text);
+      const sourceIds = sourceIdsForNode(node);
+      const numbers = extractNumberTokens(text);
+      const places = context.places.filter((place) => place.names.some((name) => phraseInText(haystack, name))).slice(0, 3);
+      const entities = context.entities.filter((entity) => entity.aliases.some((alias) => phraseInText(haystack, alias))).slice(0, 4);
+      const quoted = node.matches('blockquote') || /[“”"]/.test(text);
+      const score = Math.min(100,
+        (sourceIds.length * 26)
+        + (numbers.length * 16)
+        + (places.length * 13)
+        + (entities.length * 8)
+        + (quoted ? 10 : 0)
+        + Math.min(10, Math.round(text.length / 220))
+      );
+      const type = primaryEvidenceType({ sourceIds, numbers, places, entities, quoted });
+
+      return {
+        id,
+        node,
+        index,
+        score,
+        heat: Math.max(.14, Math.min(1, score / 100)),
+        type,
+        sourceIds,
+        numbers,
+        places,
+        entities,
+        quoted,
+        summary: shorten(text, 150),
+      };
+    }).filter((moment) => moment.score >= 18)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 12)
+      .sort((a, b) => a.index - b.index);
+  }
+
+  function installEvidenceAnnotations(context) {
+    if (context.body.dataset.livingEvidenceAnnotated === 'true') return;
+    context.body.dataset.livingEvidenceAnnotated = 'true';
+
+    context.evidence.forEach((moment) => {
+      moment.node.classList.add('press-evidence-node');
+      moment.node.setAttribute('data-living-evidence-kind', moment.type.toLowerCase());
+      moment.node.style.setProperty('--evidence-heat', moment.heat.toFixed(2));
+
+      if (moment.node.querySelector(':scope > .press-evidence-tags')) return;
+      const tags = document.createElement('span');
+      tags.className = 'press-evidence-tags';
+      tags.setAttribute('aria-label', 'Source trail tags');
+      tags.innerHTML = renderEvidenceTags(moment);
+      moment.node.appendChild(tags);
+    });
+  }
+
+  function installEvidenceHeatRail(context) {
+    if (!context.evidence.length || document.querySelector('[data-living-evidence-rail]')) return;
+
+    const rail = document.createElement('aside');
+    rail.className = 'press-evidence-rail';
+    rail.setAttribute('data-living-evidence-rail', '');
+    rail.setAttribute('aria-label', 'Evidence heat rail');
+    rail.innerHTML = `
+      <div class="press-evidence-rail__head">
+        <span>Evidence</span>
+        <strong>${context.evidence.length}</strong>
+      </div>
+      <div class="press-evidence-rail__track">
+        ${context.evidence.map(renderEvidenceRailButton).join('')}
+      </div>
+    `;
+
+    document.body.appendChild(rail);
+  }
+
+  function installNumberChips(context) {
+    if (context.body.dataset.livingNumbersWrapped === 'true') return;
+    context.body.dataset.livingNumbersWrapped = 'true';
+
+    const walker = document.createTreeWalker(context.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (!node.nodeValue || !NUMBER_TOKEN_PATTERN.test(node.nodeValue)) {
+          NUMBER_TOKEN_PATTERN.lastIndex = 0;
+          return NodeFilter.FILTER_REJECT;
+        }
+        NUMBER_TOKEN_PATTERN.lastIndex = 0;
+        const parent = node.parentElement;
+        if (!parent) return NodeFilter.FILTER_REJECT;
+        if (parent.closest('a, button, sup, script, style, .press-evidence-tags, .press-static-post, .source-list, .source-notes, .article-sources, .related-block, .share-row, [data-living-article-dock], [data-living-drawer]')) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        if (!parent.closest('p, li, blockquote')) return NodeFilter.FILTER_REJECT;
+        if (parent.closest('#source-notes, .source-notes, .article-sources, .related-block, [data-living-drawer]')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      },
+    });
+
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    const state = { total: 0, max: 24 };
+    for (const node of nodes) {
+      if (state.total >= state.max) break;
+      wrapTextNodeWithNumbers(node, context, state);
+    }
+  }
+
+  function wrapTextNodeWithNumbers(textNode, context, state) {
+    const text = textNode.nodeValue;
+    const fragment = document.createDocumentFragment();
+    let cursor = 0;
+    let matched = false;
+    let local = 0;
+    NUMBER_TOKEN_PATTERN.lastIndex = 0;
+
+    for (const match of text.matchAll(NUMBER_TOKEN_PATTERN)) {
+      if (state.total >= state.max || local >= 2) break;
+      const prefix = match[1] || '';
+      const value = cleanNumberLabel(match[2]);
+      if (!value || isDullNumber(value)) continue;
+
+      const start = match.index + prefix.length;
+      const end = start + match[2].length;
+      if (start < cursor) continue;
+
+      fragment.appendChild(document.createTextNode(text.slice(cursor, start)));
+      fragment.appendChild(buildNumberChip(value, text, textNode.parentElement, context, state.total + 1));
+      cursor = end;
+      matched = true;
+      local += 1;
+      state.total += 1;
+    }
+
+    if (!matched) return false;
+    fragment.appendChild(document.createTextNode(text.slice(cursor)));
+    textNode.parentNode.replaceChild(fragment, textNode);
+    return true;
+  }
+
+  function buildNumberChip(value, contextText, parent, context, index) {
+    const owner = parent?.closest('p, li, blockquote') || parent;
+    const id = ensureLivingNodeId(owner, 'living-number', index);
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'press-number-chip';
+    chip.setAttribute('data-living-number-chip', '');
+    chip.setAttribute('data-living-number', value);
+    chip.setAttribute('data-living-number-kind', numberKind(value, contextText));
+    chip.setAttribute('data-living-number-context', shorten(contextText, 190));
+    chip.setAttribute('data-living-number-node', id);
+    chip.setAttribute('aria-label', `Open number lens for ${value}`);
+    chip.textContent = value;
+    return chip;
+  }
+
+  function openRelationshipWeb(context) {
+    const web = context.relationships?.nodes?.length ? context.relationships : buildRelationshipWeb(context);
+    const body = web.nodes.length ? renderRelationshipWeb(web) : `
+      <div class="press-empty-state">
+        <h3>No actor web yet</h3>
+        <p>Add more entity names to the article or the local entity library and this panel will draw relationships from paragraph proximity.</p>
+      </div>
+    `;
+
+    openLivingDrawer('relationships', 'Actor Relationship Web', 'A static relationship map built from entities that appear near each other in this article.', body);
+  }
+
+  function openNumberLens(context, chip) {
+    const value = chip.getAttribute('data-living-number') || chip.textContent || '';
+    const kind = chip.getAttribute('data-living-number-kind') || 'Signal';
+    const nodeId = chip.getAttribute('data-living-number-node') || '';
+    const node = nodeId ? document.getElementById(nodeId) : null;
+    const sourceIds = node ? sourceIdsForNode(node) : [];
+    const nearby = cleanText(chip.getAttribute('data-living-number-context') || node?.textContent || '');
+    const body = `
+      <div class="press-number-lens">
+        <article>
+          <p class="press-living-kicker">${escapeHtml(kind)}</p>
+          <h3>${escapeHtml(value)}</h3>
+          <p>${escapeHtml(numberMeaning(value, kind, nearby))}</p>
+        </article>
+        <section>
+          <h4>Where it appears</h4>
+          <p>${escapeHtml(shorten(nearby, 260))}</p>
+          <div class="press-number-lens__actions">
+            ${nodeId ? `<button type="button" data-living-scroll-target="${escapeAttr(nodeId)}">Jump to paragraph</button>` : ''}
+            ${sourceIds.length ? `<button type="button" data-living-source-id="${escapeAttr(sourceIds[0])}">${sourceIds.length === 1 ? 'Open source' : `${sourceIds.length} sources nearby`}</button>` : ''}
+          </div>
+        </section>
+      </div>
+    `;
+
+    const drawer = openLivingDrawer('number', 'Number Lens', 'A local stat explainer generated from the sentence around the number.', body);
+    drawer.querySelectorAll('[data-living-source-id]').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        highlightSource(button.getAttribute('data-living-source-id'));
+      });
+    });
+  }
+
+  function buildRelationshipWeb(context) {
+    const nodes = context.entities.slice(0, 9);
+    const nodeById = new Map(nodes.map((entity) => [entity.id, entity]));
+    const links = new Map();
+
+    collectStoryEvidenceNodes(context.body).forEach((node, index) => {
+      const id = ensureLivingNodeId(node, 'living-relationship', index + 1);
+      const haystack = normalizeText(node.textContent || '');
+      const present = nodes.filter((entity) => entity.aliases.some((alias) => phraseInText(haystack, alias))).slice(0, 5);
+      for (let i = 0; i < present.length; i += 1) {
+        for (let j = i + 1; j < present.length; j += 1) {
+          const pair = [present[i].id, present[j].id].sort();
+          const key = pair.join('|');
+          const link = links.get(key) || {
+            a: nodeById.get(pair[0]),
+            b: nodeById.get(pair[1]),
+            count: 0,
+            ids: [],
+            summary: '',
+          };
+          link.count += 1;
+          link.ids.push(id);
+          if (!link.summary) link.summary = shorten(cleanText(node.textContent), 155);
+          links.set(key, link);
+        }
+      }
+    });
+
+    if (!links.size && nodes.length > 1) {
+      nodes.slice(1).forEach((entity, index) => {
+        const previous = nodes[index];
+        links.set([previous.id, entity.id].sort().join('|'), {
+          a: previous,
+          b: entity,
+          count: 1,
+          ids: [],
+          summary: 'These actors share the same article frame, even if they do not appear in the same paragraph.',
+        });
+      });
+    }
+
+    return {
+      nodes,
+      links: Array.from(links.values())
+        .filter((link) => link.a && link.b)
+        .sort((a, b) => b.count - a.count || a.a.name.localeCompare(b.a.name))
+        .slice(0, 12),
+    };
+  }
+
+  function renderRelationshipWeb(web) {
+    const positions = relationshipPositions(web.nodes.length);
+    return `
+      <div class="press-relationship-web">
+        <div class="press-relationship-map" aria-label="Actor relationship map">
+          <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none">
+            ${web.links.map((link) => {
+              const a = positions[web.nodes.findIndex((node) => node.id === link.a.id)];
+              const b = positions[web.nodes.findIndex((node) => node.id === link.b.id)];
+              if (!a || !b) return '';
+              const strength = Math.min(1, .25 + link.count * .18);
+              return `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" style="--line-opacity:${strength.toFixed(2)};--stroke-width:${(.6 + (2 * strength)).toFixed(2)}px"></line>`;
+            }).join('')}
+          </svg>
+          ${web.nodes.map((entity, index) => `
+            <button type="button" class="press-relationship-node" data-living-entity-id="${escapeAttr(entity.id)}" style="--x:${positions[index].x}%;--y:${positions[index].y}%">
+              <span>${escapeHtml(entity.type)}</span>
+              <strong>${escapeHtml(entity.name)}</strong>
+            </button>
+          `).join('')}
+        </div>
+        <div class="press-relationship-links">
+          ${web.links.map((link) => `
+            <article>
+              <p class="press-living-kicker">${escapeHtml(link.count > 1 ? `${link.count} shared beats` : 'Shared beat')}</p>
+              <h3>${escapeHtml(link.a.name)} &harr; ${escapeHtml(link.b.name)}</h3>
+              <p>${escapeHtml(link.summary)}</p>
+              ${link.ids[0] ? `<button type="button" data-living-scroll-target="${escapeAttr(link.ids[0])}">Jump to evidence</button>` : ''}
+            </article>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  function collectStoryEvidenceNodes(body) {
+    return Array.from(body.querySelectorAll('p, li, blockquote')).filter((node) => {
+      if (node.closest('#source-notes, .source-notes, .article-sources, .related-block, [data-living-drawer], [data-living-article-dock]')) return false;
+      const text = cleanText(node.textContent || '');
+      return text.length >= 55;
+    });
+  }
+
+  function sourceIdsForNode(node) {
+    return Array.from(node.querySelectorAll('.source-ref a[href^="#"], a.source-label[href^="#"]'))
+      .map((link) => (link.getAttribute('href') || '').replace(/^#/, ''))
+      .filter(Boolean);
+  }
+
+  function ensureLivingNodeId(node, prefix, index = 1) {
+    if (!node) return `${prefix}-${index}`;
+    if (node.id) return node.id;
+
+    const base = `${prefix}-${index}`;
+    let candidate = base;
+    let attempt = 2;
+    while (document.getElementById(candidate)) {
+      candidate = `${base}-${attempt}`;
+      attempt += 1;
+    }
+    node.id = candidate;
+    return candidate;
+  }
+
+  function extractNumberTokens(text) {
+    const values = [];
+    NUMBER_TOKEN_PATTERN.lastIndex = 0;
+    for (const match of String(text || '').matchAll(NUMBER_TOKEN_PATTERN)) {
+      const value = cleanNumberLabel(match[2]);
+      if (value && !isDullNumber(value) && !values.includes(value)) values.push(value);
+    }
+    NUMBER_TOKEN_PATTERN.lastIndex = 0;
+    return values.slice(0, 4);
+  }
+
+  function renderEvidenceTags(moment) {
+    const tags = [];
+    if (moment.sourceIds.length) tags.push(`<button type="button" data-living-source-id="${escapeAttr(moment.sourceIds[0])}">${moment.sourceIds.length} source${moment.sourceIds.length === 1 ? '' : 's'}</button>`);
+    if (moment.numbers.length) tags.push(`<button type="button" data-living-scroll-target="${escapeAttr(moment.id)}">${moment.numbers.length} stat${moment.numbers.length === 1 ? '' : 's'}</button>`);
+    if (moment.places.length) tags.push(`<button type="button" data-living-open="places">${moment.places.length} place${moment.places.length === 1 ? '' : 's'}</button>`);
+    if (moment.entities.length) tags.push(`<button type="button" data-living-open="relationships">${moment.entities.length} actor${moment.entities.length === 1 ? '' : 's'}</button>`);
+    if (moment.quoted) tags.push(`<button type="button" data-living-scroll-target="${escapeAttr(moment.id)}">context</button>`);
+    return tags.join('');
+  }
+
+  function renderEvidenceRailButton(moment) {
+    const height = (1.05 + (2 * moment.heat)).toFixed(2);
+    const ring = (.11 + (.22 * moment.heat)).toFixed(2);
+    const opacity = (.36 + (moment.heat * .64)).toFixed(2);
+    return `
+      <button type="button" data-living-scroll-target="${escapeAttr(moment.id)}" style="--heat-height:${height}rem;--heat-ring:${ring}rem;--heat-opacity:${opacity}" aria-label="${escapeAttr(`${moment.type}: ${moment.summary}`)}">
+        <span></span>
+        <em>${escapeHtml(moment.type)}</em>
+      </button>
+    `;
+  }
+
+  function primaryEvidenceType(moment) {
+    if (moment.sourceIds.length && moment.numbers.length) return 'Proof';
+    if (moment.sourceIds.length) return 'Sources';
+    if (moment.numbers.length) return 'Data';
+    if (moment.places.length) return 'Places';
+    if (moment.entities.length >= 2) return 'Actors';
+    if (moment.quoted) return 'Context';
+    return 'Signal';
+  }
+
+  function relationshipPositions(count) {
+    const total = Math.max(1, count);
+    return Array.from({ length: total }, (_, index) => {
+      const angle = (-90 + (360 / total) * index) * (Math.PI / 180);
+      return {
+        x: Number((50 + Math.cos(angle) * 37).toFixed(2)),
+        y: Number((50 + Math.sin(angle) * 34).toFixed(2)),
+      };
+    });
+  }
+
+  function cleanNumberLabel(value) {
+    return cleanText(value).replace(/\s+%/g, '%').replace(/\s+/g, ' ');
+  }
+
+  function isDullNumber(value) {
+    const text = cleanText(value);
+    if (!text) return true;
+    if (/^\d{4}$/.test(text)) return true;
+    if (/^\d{1,2}$/.test(text) && !/%|[$€£]|percent|million|billion|trillion|barrel|ship|vessel|tank|crew|people|famil|child|export|import|capacity|per day/i.test(text)) return true;
+    return false;
+  }
+
+  function numberKind(value, contextText) {
+    const text = `${value} ${contextText}`.toLowerCase();
+    if (/[$€£]|price|cost|barrel|premium|bill/.test(text)) return 'Price signal';
+    if (/%|percent|share|exports|imports/.test(text)) return 'Share';
+    if (/barrel|tanker|vessel|ship|crew|per day/.test(text)) return 'Flow';
+    if (/million|billion|trillion|people|famil|children/.test(text)) return 'Scale';
+    if (/capacity|gigawatt|megawatt|kilometer|mile|ton/.test(text)) return 'Capacity';
+    return 'Stat';
+  }
+
+  function numberMeaning(value, kind, nearby) {
+    const lower = `${value} ${nearby}`.toLowerCase();
+    if (kind === 'Price signal') return 'This number turns the story into a household or market signal: it shows where a geopolitical or institutional pressure becomes cost.';
+    if (kind === 'Share') return 'This share tells you how much of a larger system depends on the fact in this sentence, which is why the paragraph carries extra weight.';
+    if (kind === 'Flow') return 'This is a movement number: ships, energy, cargo, or capacity. Flow numbers are where the article becomes logistical instead of abstract.';
+    if (kind === 'Scale') return 'This number establishes scale. It helps separate a vivid anecdote from a system large enough to change outcomes.';
+    if (kind === 'Capacity') return 'This is a constraint number. It shows how much room the system has before pressure starts showing up somewhere else.';
+    if (/days|weeks|months/.test(lower)) return 'This number is a clock. It tells you how long the story can stay unstable before the next consequence arrives.';
+    return 'This stat is treated as a signal inside the article: tap back to the paragraph to see what claim it supports.';
   }
 
   function openPlaceLens(context) {
@@ -7000,6 +7456,40 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!button) return;
     const mode = document.documentElement.getAttribute('data-living-reader') || 'standard';
     button.textContent = mode === 'focus' ? 'Wide' : mode === 'wide' ? 'Standard' : 'Focus';
+  }
+
+  function applyStoredSourceTrailMode() {
+    try {
+      setSourceTrailMode(localStorage.getItem(STORAGE.sourceTrail) === 'on');
+    } catch (_) {
+      setSourceTrailMode(false);
+    }
+  }
+
+  function toggleSourceTrailMode() {
+    setSourceTrailMode(document.documentElement.getAttribute('data-living-source-trail') !== 'on');
+  }
+
+  function setSourceTrailMode(enabled) {
+    if (enabled) {
+      document.documentElement.setAttribute('data-living-source-trail', 'on');
+    } else {
+      document.documentElement.removeAttribute('data-living-source-trail');
+    }
+
+    try {
+      localStorage.setItem(STORAGE.sourceTrail, enabled ? 'on' : 'off');
+    } catch (_) {}
+
+    updateSourceTrailButton();
+  }
+
+  function updateSourceTrailButton() {
+    const enabled = document.documentElement.getAttribute('data-living-source-trail') === 'on';
+    document.querySelectorAll('[data-living-action="source-trail"]').forEach((button) => {
+      button.textContent = enabled ? 'Trail On' : 'Source Trail';
+      button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    });
   }
 
   function readFollowedTopics() {
