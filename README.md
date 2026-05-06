@@ -24,6 +24,13 @@ This folder turns the static site into a repeatable publishing workflow.
 python studio/build.py
 ```
 
+## Living article standard
+
+- Every full story should keep `body.page-article`, an `.article` or `.article-shell` wrapper, and an `.article-body` or `[data-article-body]` container.
+- Source notes should live in `#source-notes`, `.source-notes`, or `.article-sources` so the Source Board can group the receipts.
+- Story headings inside the article body become the Timeline; place and entity lenses come from the local dictionaries in `app.js`.
+- `build.py` and the daily automation now include the living kit automatically through `app.js`, so new stories get Place Lens, Share Studio, Source Board, Timeline, Entity Cards, Listen, Focus, Follow Topic, reading memory, and the combined reading-progress/top control without an API.
+
 ## Homepage hero standard
 
 - The homepage hero is a permanent 7-story system: 1 center lead plus 3 side cards on the left and 3 on the right.

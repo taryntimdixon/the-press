@@ -1,3 +1,16 @@
+const PRESS_SITE_ASSET_BASE = (() => {
+  const script = document.currentScript
+    || Array.from(document.scripts).reverse().find((item) => /(?:^|\/)app\.js(?:\?|$)/.test(item.getAttribute('src') || ''));
+  const scriptSrc = script?.getAttribute('src') || 'app.js';
+  return new URL('.', new URL(scriptSrc, window.location.href)).href;
+})();
+
+function pressSiteAssetUrl(path) {
+  const value = String(path || '').trim();
+  if (!value || /^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(value)) return value;
+  return new URL(value, PRESS_SITE_ASSET_BASE).href;
+}
+
 (() => {
 
   const BODY_CLASS = 'page-section';
@@ -436,7 +449,7 @@ if (!hasHomepageTargets) {
   };
 
   const fetchJson = (url) =>
-    fetch(url, { cache: 'no-cache' }).then((response) => {
+    fetch(pressSiteAssetUrl(url), { cache: 'no-cache' }).then((response) => {
       if (!response.ok) throw new Error(`Could not load ${url}`);
       return response.json();
     });
@@ -1320,7 +1333,7 @@ function enhanceBreakingStrip(stories) {
       const url = card.getAttribute('data-story-url');
       if (!url || url === '#') continue;
       try {
-        const response = await fetch(url, { cache: 'force-cache' });
+        const response = await fetch(pressSiteAssetUrl(url), { cache: 'force-cache' });
         if (!response.ok) continue;
         const html = await response.text();
         const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -2194,7 +2207,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchOptionalJson(url) {
     try {
-      const response = await fetch(url, { cache: 'no-store' });
+      const response = await fetch(pressSiteAssetUrl(url), { cache: 'no-store' });
       if (!response.ok) return readCachedJson(url);
 
       const json = await response.json();
@@ -2653,14 +2666,28 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderHomepage(model) {
     if (!document.body.classList.contains('page-home')) return;
 
+    removeHomepagePulsePanels();
     updateHomeIntro(model);
-    renderDeskPulse(model);
-    renderCatchUp(model);
     renderHero(model.hero);
     renderSecondary(model.recencyTicker || model.latest, model.hero);
     renderDailySection(model.daily);
     renderLatestRiver(model.latest);
     renderDeskDirectory(model.all);
+  }
+
+  function removeHomepagePulsePanels() {
+    if (!document.body.classList.contains('page-home')) return;
+
+    document.querySelectorAll([
+      '.press-living-home',
+      '[data-living-home-pulse]',
+      '.desk-pulse',
+      '.press-catchup',
+      '.press-future-studio',
+      '.press-topic-radar'
+    ].join(',')).forEach((node) => {
+      node.remove();
+    });
   }
 
   function updateHomeIntro(model) {
@@ -3742,7 +3769,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchJson(url) {
 
-    const cacheBuster = `${url}${url.includes('?') ? '&' : '?'}restore=${Date.now()}`;
+    const requestUrl = pressSiteAssetUrl(url);
+    const cacheBuster = `${requestUrl}${requestUrl.includes('?') ? '&' : '?'}restore=${Date.now()}`;
 
     const response = await fetch(cacheBuster, { cache: 'no-store' });
 
@@ -4596,7 +4624,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchOptionalJson(url) {
     try {
-      const response = await fetch(url, { cache: 'no-store' });
+      const response = await fetch(pressSiteAssetUrl(url), { cache: 'no-store' });
       if (!response.ok) return null;
       return response.json();
     } catch (_) {
@@ -4780,8 +4808,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderFutureHomepage(state) {
     if (!document.body.classList.contains('page-home')) return;
-    // The homepage already has a server-rendered hero plus the ecosystem rotation pass.
-    // Avoid inserting another above-the-fold layer after load; it causes a visible lag.
+
+    document.querySelectorAll([
+      '.press-living-home',
+      '[data-living-home-pulse]',
+      '.desk-pulse',
+      '.press-catchup',
+      '.press-future-studio',
+      '.press-topic-radar'
+    ].join(',')).forEach(function removePanel(node) {
+      node.remove();
+    });
   }
 
   function renderStudioDeck(state) {
@@ -5360,3 +5397,1883 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('press:ecosystem-ready', run);
 })();
 /* PRESS_HOMEPAGE_HERO_STANDARD_END */
+
+/* PRESS_LIVING_ARTICLE_KIT_START
+   Static-first premium layer: place lens, share studio, source constellation,
+   entity cards, timelines, reader memory, and homepage pulse. No runtime APIs.
+*/
+(function pressLivingArticleKit() {
+  'use strict';
+
+  const STORAGE = {
+    progressPrefix: 'press-living-progress:',
+    history: 'press-living-reading-history',
+    followedTopics: 'press-living-followed-topics',
+    readerMode: 'press-living-reader-mode',
+  };
+
+  const PLACE_LIBRARY = [
+    {
+      id: 'atla-noho',
+      label: 'ATLA NoHo',
+      type: 'Restaurant',
+      address: '372 Lafayette Street, New York, NY',
+      names: ['ATLA NoHo', 'Atla', '372 Lafayette Street', 'Lafayette Street'],
+      lat: 40.72717,
+      lng: -73.99418,
+      note: 'The Lafayette Street room anchors the closing story and the replacement concept that follows it.',
+      scene: 'A NoHo restaurant block where food, design, social memory, and real estate all sit in the same room.',
+    },
+    {
+      id: 'noho',
+      label: 'NoHo, Manhattan',
+      type: 'Neighborhood',
+      address: 'NoHo, New York, NY',
+      names: ['NoHo', 'NoHo NYC'],
+      lat: 40.72755,
+      lng: -73.99482,
+      note: 'The neighborhood is not a backdrop in the Atla feature; it is part of why the room mattered.',
+      scene: 'Cast-iron blocks, downtown dining, foot traffic, and a city that treats restaurant turnover as civic weather.',
+    },
+    {
+      id: 'cosme',
+      label: 'Cosme',
+      type: 'Restaurant',
+      address: '35 E 21st Street, New York, NY',
+      names: ['Cosme'],
+      lat: 40.74058,
+      lng: -73.98913,
+      note: 'Cosme is the higher-gloss sibling that helps explain the Casamata New York universe.',
+      scene: 'A Flatiron dining room where modern Mexican cooking became part of New York power dining.',
+    },
+    {
+      id: 'pujol',
+      label: 'Pujol',
+      type: 'Restaurant',
+      address: 'Tennyson 133, Polanco, Mexico City',
+      names: ['Pujol', 'Mexico City'],
+      lat: 19.43071,
+      lng: -99.19474,
+      note: 'Pujol is the origin point for Enrique Olvera context in several restaurant stories.',
+      scene: 'A Mexico City dining institution whose influence travels through cooks, concepts, and city-to-city adaptations.',
+    },
+    {
+      id: 'venice-los-angeles',
+      label: 'Venice, Los Angeles',
+      type: 'Neighborhood',
+      address: 'Venice, Los Angeles, CA',
+      names: ['Venice', 'Los Angeles', 'L.A.', 'LA'],
+      lat: 33.98505,
+      lng: -118.46948,
+      note: 'The Los Angeles branch gives the Atla story a second-city echo.',
+      scene: 'A beachside restaurant market where Mexico City influence, California dining, and brand expansion meet.',
+    },
+    {
+      id: 'horseshoe-paris-las-vegas',
+      label: 'Horseshoe and Paris Las Vegas',
+      type: 'Venue',
+      address: 'Las Vegas Strip, Las Vegas, NV',
+      names: ['Horseshoe', 'Paris Las Vegas', 'Las Vegas', 'WSOP'],
+      lat: 36.11289,
+      lng: -115.17185,
+      note: 'The WSOP Main Event story lives physically inside the Las Vegas casino corridor.',
+      scene: 'A televised poker room where tournament scale, camera grammar, and crowd pressure become one product.',
+    },
+    {
+      id: 'espn-bristol',
+      label: 'ESPN campus',
+      type: 'Media hub',
+      address: 'Bristol, CT',
+      names: ['ESPN', 'Bristol'],
+      lat: 41.64882,
+      lng: -72.90078,
+      note: 'ESPN matters in sports stories as distribution, memory, and a mainstream viewing room.',
+      scene: 'A broadcast hub where sports become schedules, packages, highlight language, and shared national appointment viewing.',
+    },
+    {
+      id: 'pentagon',
+      label: 'The Pentagon',
+      type: 'Government',
+      address: 'Washington, DC area',
+      names: ['Pentagon', 'Department of War', 'Department of Defense'],
+      lat: 38.87186,
+      lng: -77.05627,
+      note: 'The classified AI story is about models entering secure defense infrastructure.',
+      scene: 'A five-sided bureaucracy where procurement, cloud systems, secrecy, and military judgment converge.',
+    },
+    {
+      id: 'washington-dc',
+      label: 'Washington, DC',
+      type: 'Capital',
+      address: 'Washington, DC',
+      names: ['Washington', 'White House', 'Capitol', 'D.C.', 'DC'],
+      lat: 38.89768,
+      lng: -77.03653,
+      note: 'Many politics, courts, culture, and security stories route through Washington power.',
+      scene: 'A symbolic city where paperwork, law, ceremony, and crisis often share the same stage.',
+    },
+    {
+      id: 'washington-hilton',
+      label: 'Washington Hilton',
+      type: 'Hotel and event venue',
+      address: '1919 Connecticut Avenue NW, Washington, DC',
+      names: ['Washington Hilton', 'Terrace Level', 'Correspondents’ Dinner', 'Correspondents Dinner'],
+      lat: 38.91697,
+      lng: -77.04522,
+      note: 'The ballroom and checkpoint make the security story a question of venue design, memory, and public ritual.',
+      scene: 'A Washington hotel whose ballrooms can become a media room, a security perimeter, and a political symbol at once.',
+    },
+    {
+      id: 'oakland-federal-court',
+      label: 'Oakland federal courthouse area',
+      type: 'Courthouse',
+      address: 'Oakland, CA',
+      names: ['Oakland'],
+      lat: 37.80436,
+      lng: -122.27111,
+      note: 'The OpenAI trial becomes more concrete when the abstract governance fight has a courtroom on the map.',
+      scene: 'A Bay Area courthouse setting where nonprofit promises, capital, and AI power are translated into exhibits and testimony.',
+    },
+    {
+      id: 'nasa-kennedy',
+      label: 'Kennedy Space Center',
+      type: 'Spaceport',
+      address: 'Merritt Island, FL',
+      names: ['Kennedy Space Center', 'Artemis', 'Launch Complex 39B', 'NASA'],
+      lat: 28.62717,
+      lng: -80.62082,
+      note: 'Artemis stories need a physical launch site, not just a space-program acronym.',
+      scene: 'A coastal launch complex where engineering becomes public spectacle and telemetry becomes evidence.',
+    },
+    {
+      id: 'the-hague',
+      label: 'The Hague',
+      type: 'Diplomatic city',
+      address: 'The Hague, Netherlands',
+      names: ['The Hague', 'NATO summit'],
+      lat: 52.0705,
+      lng: 4.3007,
+      note: 'European defense stories often pass through summit language before becoming logistics.',
+      scene: 'A diplomatic city where alliance photographs have to become production lines and movement plans.',
+    },
+    {
+      id: 'strait-hormuz',
+      label: 'Strait of Hormuz',
+      type: 'Maritime chokepoint',
+      address: 'Persian Gulf / Gulf of Oman',
+      names: ['Strait of Hormuz', 'Hormuz'],
+      lat: 26.5667,
+      lng: 56.25,
+      note: 'Energy and war-risk stories become legible when the chokepoint is visible.',
+      scene: 'A narrow waterway where oil, shipping insurance, military signaling, and inflation meet.',
+    },
+    {
+      id: 'el-fasher',
+      label: 'El Fasher, Darfur',
+      type: 'City',
+      address: 'North Darfur, Sudan',
+      names: ['El Fasher', 'Darfur', 'Sudan'],
+      lat: 13.62793,
+      lng: 25.34936,
+      note: 'Darfur stories often turn on routes, burn scars, and the geography of food access.',
+      scene: 'A city and surrounding region where satellite evidence, roads, markets, and survival are bound together.',
+    },
+    {
+      id: 'nairobi',
+      label: 'Nairobi',
+      type: 'City',
+      address: 'Nairobi, Kenya',
+      names: ['Nairobi', 'Kenya'],
+      lat: -1.28639,
+      lng: 36.81722,
+      note: 'Flood and infrastructure stories become sharper when the drainage geography is visible.',
+      scene: 'A fast-growing city where roads, rivers, informal settlements, and rainfall all test the urban system.',
+    },
+    {
+      id: 'burbank',
+      label: 'Burbank studio district',
+      type: 'Media place',
+      address: 'Burbank, CA',
+      names: ['Burbank', 'Warner Bros.', 'Paramount Skydance'],
+      lat: 34.148,
+      lng: -118.337,
+      note: 'Hollywood consolidation stories become less abstract when tied to lots, gates, and workers.',
+      scene: 'A studio city where streaming strategy eventually touches call sheets, back lots, and production labor.',
+    },
+    {
+      id: 'richmond',
+      label: 'Richmond',
+      type: 'City',
+      address: 'Richmond, VA',
+      names: ['Richmond'],
+      lat: 37.54072,
+      lng: -77.43605,
+      note: 'Cloud, power, and state-policy stories often land in local ratepayer math.',
+      scene: 'A capital city where data-center growth can become a public utility argument.',
+    },
+    {
+      id: 'wichita',
+      label: 'Wichita',
+      type: 'City',
+      address: 'Wichita, KS',
+      names: ['Wichita'],
+      lat: 37.68718,
+      lng: -97.33005,
+      note: 'Local governance stories are often clearest when a strange new tool meets a public rulebook.',
+      scene: 'A city hall test case where technology policy becomes an ordinary vote.',
+    },
+    {
+      id: 'odesa',
+      label: 'Odesa',
+      type: 'Port city',
+      address: 'Odesa, Ukraine',
+      names: ['Odesa', 'Odessa'],
+      lat: 46.48253,
+      lng: 30.72331,
+      note: 'Port stories tie war, food, shipping, and nuclear risk to one coastline.',
+      scene: 'A Black Sea port where sirens, grain corridors, and European security overlap.',
+    },
+  ];
+
+  const ENTITY_LIBRARY = [
+    {
+      id: 'atla',
+      name: 'Atla',
+      type: 'Restaurant',
+      aliases: ['Atla', 'ATLA'],
+      summary: 'A NoHo restaurant whose closing turns one room into a story about memory, reinvention, and restaurant culture.',
+      why: 'It gives the article a physical object: not just a business closure, but a place people ate, posted about, and remembered.',
+    },
+    {
+      id: 'enrique-olvera',
+      name: 'Enrique Olvera',
+      type: 'Chef',
+      aliases: ['Enrique Olvera', 'Olvera'],
+      summary: 'The chef and restaurateur behind Pujol, Cosme, Atla, and the wider Casamata universe.',
+      why: 'His reputation connects the local New York closing to a broader city-to-city restaurant system.',
+    },
+    {
+      id: 'casamata',
+      name: 'Casamata',
+      type: 'Hospitality group',
+      aliases: ['Casamata'],
+      summary: 'The restaurant group around Olvera projects including Pujol, Cosme, Atla, and later concepts.',
+      why: 'The group makes the closing read as conversion and succession, not only disappearance.',
+    },
+    {
+      id: 'cosme',
+      name: 'Cosme',
+      type: 'Restaurant',
+      aliases: ['Cosme'],
+      summary: 'A New York restaurant that helps define the higher-end side of the Olvera/Casamata presence.',
+      why: 'It gives readers a sibling reference for Atla and the group portfolio.',
+    },
+    {
+      id: 'pujol',
+      name: 'Pujol',
+      type: 'Restaurant',
+      aliases: ['Pujol'],
+      summary: 'Olvera’s Mexico City flagship and a central reference point for his cooking reputation.',
+      why: 'It explains why a casual downtown restaurant can still carry international culinary gravity.',
+    },
+    {
+      id: 'wsop',
+      name: 'World Series of Poker',
+      type: 'Sports property',
+      aliases: ['World Series of Poker', 'WSOP', 'Main Event'],
+      summary: 'Poker’s most recognizable tournament brand and the anchor of the prime-time sports feature.',
+      why: 'The story depends on the WSOP as both competition and television product.',
+    },
+    {
+      id: 'espn',
+      name: 'ESPN',
+      type: 'Broadcaster',
+      aliases: ['ESPN'],
+      summary: 'The sports network whose distribution can make a poker final table feel mainstream again.',
+      why: 'It turns the tournament into a scheduled shared room, not only a niche stream.',
+    },
+    {
+      id: 'openai',
+      name: 'OpenAI',
+      type: 'AI company',
+      aliases: ['OpenAI'],
+      summary: 'A frontier AI company central to stories about governance, infrastructure, military use, and trust.',
+      why: 'In The Press stories, OpenAI often stands where mission language meets money, power, and deployment.',
+    },
+    {
+      id: 'elon-musk',
+      name: 'Elon Musk',
+      type: 'Executive',
+      aliases: ['Elon Musk', 'Musk'],
+      summary: 'A founder, executive, and litigant whose public conflicts often turn private governance disputes into spectacle.',
+      why: 'In the OpenAI court story, Musk is both messenger and interested competitor.',
+    },
+    {
+      id: 'sam-altman',
+      name: 'Sam Altman',
+      type: 'Executive',
+      aliases: ['Sam Altman', 'Altman'],
+      summary: 'OpenAI’s chief executive and a recurring figure in stories about AI scale, governance, and commercial power.',
+      why: 'He personifies the institutional question of whether mission language can survive market scale.',
+    },
+    {
+      id: 'microsoft',
+      name: 'Microsoft',
+      type: 'Technology company',
+      aliases: ['Microsoft'],
+      summary: 'A cloud and AI giant whose partnership with OpenAI made compute, capital, and distribution inseparable.',
+      why: 'It is the infrastructure and investment layer under several AI stories.',
+    },
+    {
+      id: 'anthropic',
+      name: 'Anthropic',
+      type: 'AI company',
+      aliases: ['Anthropic'],
+      summary: 'An AI company often used as a comparison point in safety, enterprise, and defense AI stories.',
+      why: 'Its presence or absence can reveal where the guardrail argument is moving.',
+    },
+    {
+      id: 'google',
+      name: 'Google',
+      type: 'Technology company',
+      aliases: ['Google'],
+      summary: 'A cloud and AI company that appears in stories about infrastructure, enterprise deployment, and defense contracts.',
+      why: 'It broadens the story beyond one AI vendor into a platform race.',
+    },
+    {
+      id: 'oracle',
+      name: 'Oracle',
+      type: 'Technology company',
+      aliases: ['Oracle'],
+      summary: 'A cloud and database company that appears where AI deployment meets government infrastructure.',
+      why: 'It helps show how AI is becoming a cloud-contract and classified-network story.',
+    },
+    {
+      id: 'pentagon',
+      name: 'The Pentagon',
+      type: 'Institution',
+      aliases: ['Pentagon', 'Department of Defense', 'Department of War'],
+      summary: 'The U.S. military bureaucracy where procurement, classified systems, and AI deployment become policy.',
+      why: 'It makes AI governance tangible: the model is entering rooms where mistakes are not abstract.',
+    },
+    {
+      id: 'nasa',
+      name: 'NASA',
+      type: 'Space agency',
+      aliases: ['NASA', 'Artemis'],
+      summary: 'The U.S. space agency central to Artemis and science-infrastructure stories.',
+      why: 'NASA stories let the site show engineering as a public evidence system, not just launch spectacle.',
+    },
+    {
+      id: 'nato',
+      name: 'NATO',
+      type: 'Alliance',
+      aliases: ['NATO'],
+      summary: 'The military alliance at the center of European defense, readiness, logistics, and procurement stories.',
+      why: 'It turns speeches about security into questions about budgets, factories, roads, and time.',
+    },
+    {
+      id: 'cdc',
+      name: 'CDC',
+      type: 'Public health agency',
+      aliases: ['CDC'],
+      summary: 'The U.S. public health agency that appears in outbreak, vaccine, surveillance, and evidence-chain stories.',
+      why: 'CDC references usually show whether health information is moving like infrastructure.',
+    },
+    {
+      id: 'white-house',
+      name: 'White House',
+      type: 'Institution',
+      aliases: ['White House'],
+      summary: 'The presidential institution that turns ceremony, security, and public communication into national signals.',
+      why: 'In Washington stories, it makes the room larger than the room: security choices become political architecture.',
+    },
+    {
+      id: 'secret-service',
+      name: 'Secret Service',
+      type: 'Federal agency',
+      aliases: ['Secret Service'],
+      summary: 'The federal protective agency responsible for presidential security and high-risk event protocols.',
+      why: 'Its response is the difference between a disrupted event and a much larger constitutional crisis.',
+    },
+    {
+      id: 'department-of-justice',
+      name: 'Department of Justice',
+      type: 'Federal agency',
+      aliases: ['Department of Justice', 'Justice Department', 'DOJ'],
+      summary: 'The federal law-enforcement institution that turns alleged political violence into charges, affidavits, and court process.',
+      why: 'It gives crisis reporting an official evidence trail beyond the immediate scene.',
+    },
+    {
+      id: 'fbi',
+      name: 'FBI',
+      type: 'Federal agency',
+      aliases: ['FBI'],
+      summary: 'The federal investigative agency that appears when threats, affidavits, communications, and motive claims must be sorted into evidence.',
+      why: 'It helps separate a fast-moving public narrative from what investigators can actually document.',
+    },
+    {
+      id: 'donald-trump',
+      name: 'Donald Trump',
+      type: 'Public official',
+      aliases: ['Donald Trump', 'President Trump', 'Trump'],
+      summary: 'The president at the center of security, politics, courts, and institutional-power stories.',
+      why: 'His presence changes an event from local disruption into a national security and political legitimacy story.',
+    },
+    {
+      id: 'iran',
+      name: 'Iran',
+      type: 'State actor',
+      aliases: ['Iran', 'Tehran'],
+      summary: 'A state actor central to Gulf security, energy chokepoints, sanctions, and nuclear diplomacy.',
+      why: 'In Hormuz stories, Iranian decisions can move from negotiation rooms into oil prices, shipping lanes, and household costs.',
+    },
+    {
+      id: 'international-energy-agency',
+      name: 'International Energy Agency',
+      type: 'Energy body',
+      aliases: ['International Energy Agency', 'IEA'],
+      summary: 'An energy-policy organization whose chokepoint data helps turn maritime stress into economic scale.',
+      why: 'Its numbers explain why one narrow waterway can become a global price story.',
+    },
+    {
+      id: 'international-maritime-organization',
+      name: 'International Maritime Organization',
+      type: 'UN agency',
+      aliases: ['International Maritime Organization', 'IMO'],
+      summary: 'The U.N. maritime agency that frames chokepoint crises through vessel safety, crews, and shipping rules.',
+      why: 'It keeps the human labor of seafarers visible inside an oil-market story.',
+    },
+    {
+      id: 'world-food-programme',
+      name: 'World Food Programme',
+      type: 'Humanitarian agency',
+      aliases: ['World Food Programme', 'WFP'],
+      summary: 'A U.N. food agency whose market monitors and emergency operations make hunger measurable in war zones.',
+      why: 'Its data connects prices, routes, access, and famine warnings to what families can actually eat.',
+    },
+    {
+      id: 'rapid-support-forces',
+      name: 'Rapid Support Forces',
+      type: 'Armed group',
+      aliases: ['Rapid Support Forces', 'RSF'],
+      summary: 'A Sudanese paramilitary force central to the Darfur war, siege reporting, displacement, and rights investigations.',
+      why: 'The Darfur food-map story depends on who controls roads, burns villages, and constrains civilian movement.',
+    },
+    {
+      id: 'sudanese-armed-forces',
+      name: 'Sudanese Armed Forces',
+      type: 'Military',
+      aliases: ['Sudanese Armed Forces', 'SAF'],
+      summary: 'Sudan’s military force and one of the principal parties to the country’s war.',
+      why: 'Naming both conflict parties helps the story track responsibility without flattening a complex war into one tactic.',
+    },
+    {
+      id: 'ipc',
+      name: 'Integrated Food Security Phase Classification',
+      type: 'Food-security system',
+      aliases: ['Integrated Food Security Phase Classification', 'IPC'],
+      summary: 'The technical system used to classify acute food insecurity, catastrophe, and famine conditions.',
+      why: 'It explains why famine warnings can be precise, late, disputed, and still morally urgent.',
+    },
+  ];
+
+  const SOURCE_CLUSTER_ORDER = [
+    'Official',
+    'Reporting',
+    'Social',
+    'Guide',
+    'Legal',
+    'Public Data',
+    'Place',
+    'Background',
+  ];
+
+  let activeArticleContext = null;
+  let lastFocusedElement = null;
+
+  function ready(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
+    } else {
+      callback();
+    }
+  }
+
+  ready(function initLivingArticleKit() {
+    bindGlobalLivingActions();
+    initArticlePage();
+    initHomepagePulse();
+  });
+
+  function initArticlePage() {
+    if (!document.body.classList.contains('page-article')) return;
+
+    const article = document.querySelector('.page-article .article') || document.querySelector('.page-article .article-shell');
+    const body = article?.querySelector('.article-body, [data-article-body]') || document.querySelector('.article-body, [data-article-body]');
+    const hero = article?.querySelector('.article-hero') || document.querySelector('.article-hero');
+    if (!article || !body) return;
+
+    const story = getCurrentStoryData(article, hero, body);
+    const text = collectReadableText(article);
+    const context = {
+      article,
+      body,
+      hero,
+      story,
+      text,
+      places: detectPlaces(text, story),
+      sources: collectArticleSources(article),
+      beats: collectTimelineBeats(body),
+      entities: detectEntities(text),
+      relatedStories: readEmbeddedStories(),
+      key: normalizeUrlKey(window.location.pathname || story.url || story.title),
+    };
+
+    activeArticleContext = context;
+    installArticleDock(context);
+    installSocialRailEnhancements(context);
+    installReadingMemory(context);
+    installArticleAtmosphere(context);
+    wrapEntityMentions(context);
+
+    window.PressLivingArticle = {
+      openPlaceLens: () => openPlaceLens(context),
+      openShareStudio: () => openShareStudio(context),
+      openSourceBoard: () => openSourceBoard(context),
+      openTimeline: () => openTimeline(context),
+      openEntities: () => openEntityDrawer(context),
+      context,
+    };
+  }
+
+  function initHomepagePulse() {
+    if (!document.body.classList.contains('page-home')) return;
+
+    document.querySelectorAll('.press-living-home, [data-living-home-pulse]').forEach((node) => {
+      node.remove();
+    });
+  }
+
+  function installArticleDock(context) {
+    if (document.querySelector('[data-living-article-dock]')) return;
+
+    const dock = document.createElement('section');
+    dock.className = 'press-living-dock';
+    dock.setAttribute('data-living-article-dock', '');
+    dock.setAttribute('aria-label', 'Living article tools');
+    dock.innerHTML = `
+      <div class="press-living-dock__intro">
+        <p class="press-living-kicker">Living article kit</p>
+        <strong>No API. Static story, live browser tools.</strong>
+      </div>
+      <div class="press-living-dock__actions">
+        <button type="button" data-living-open="places">Place Lens <span>${context.places.length}</span></button>
+        <button type="button" data-living-open="share">Share Studio</button>
+        <button type="button" data-living-open="sources">Source Board <span>${context.sources.length}</span></button>
+        <button type="button" data-living-open="timeline">Timeline <span>${context.beats.length}</span></button>
+        <button type="button" data-living-open="entities">Entities <span>${context.entities.length}</span></button>
+        <button type="button" data-living-action="listen">Listen</button>
+        <button type="button" data-living-action="reader-mode">Focus</button>
+        <button type="button" data-living-action="follow-topic">${isFollowingTopic(context.story.section) ? 'Following' : 'Follow Topic'}</button>
+      </div>
+    `;
+
+    const hero = context.hero || context.article;
+    const anchor = hero.querySelector('[data-article-trust-card]')
+      || hero.querySelector('[data-listen-controls]')
+      || hero.querySelector('.hero-figure')
+      || hero.querySelector('.article-meta')
+      || hero.lastElementChild;
+
+    if (anchor && anchor.parentElement) {
+      anchor.insertAdjacentElement('afterend', dock);
+    } else {
+      hero.appendChild(dock);
+    }
+
+    bindLivingControls(dock, context);
+    applyStoredReaderMode();
+    updateReaderButton();
+  }
+
+  function bindLivingControls(root, context) {
+    root.querySelectorAll('[data-living-open]').forEach((button) => {
+      if (button.dataset.livingDirectBound === 'true') return;
+      button.dataset.livingDirectBound = 'true';
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const target = button.getAttribute('data-living-open');
+        if (target === 'places') openPlaceLens(context);
+        if (target === 'share') openShareStudio(context);
+        if (target === 'sources') openSourceBoard(context);
+        if (target === 'timeline') openTimeline(context);
+        if (target === 'entities') openEntityDrawer(context);
+      });
+    });
+
+    root.querySelectorAll('[data-living-action]').forEach((button) => {
+      if (button.dataset.livingDirectBound === 'true') return;
+      button.dataset.livingDirectBound = 'true';
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        handleLivingAction(button.getAttribute('data-living-action'));
+      });
+    });
+  }
+
+  function installSocialRailEnhancements(context) {
+    document.querySelectorAll('.press-static-post').forEach((card) => {
+      if (card.querySelector('.press-static-post__receipt-badge')) return;
+      const sourceIds = (card.getAttribute('data-source-ids') || '')
+        .split(/\s+/)
+        .filter(Boolean);
+      const badge = document.createElement('span');
+      badge.className = 'press-static-post__receipt-badge';
+      badge.textContent = sourceIds.length ? `${sourceIds.length} receipts` : 'Source-linked';
+      card.appendChild(badge);
+    });
+
+    if (document.querySelector('.press-social-feature')) return;
+
+    const asideStack = context.article.querySelector('.article-aside .sticky-stack') || context.article.querySelector('.article-aside');
+    if (!asideStack || asideStack.querySelector('[data-living-sidecar]')) return;
+
+    const sidecar = document.createElement('section');
+    sidecar.className = 'info-box press-living-sidecar';
+    sidecar.setAttribute('data-living-sidecar', '');
+    sidecar.innerHTML = `
+      <h2>Story rail</h2>
+      <p>This rail is source-linked and generated from the article on this page. It does not imitate a social platform.</p>
+      <div class="press-living-sidecar__actions">
+        <button type="button" data-living-open="sources">Source constellation</button>
+        <button type="button" data-living-open="places">Map the places</button>
+        <button type="button" data-living-open="share">Make share card</button>
+      </div>
+    `;
+    asideStack.appendChild(sidecar);
+    bindLivingControls(sidecar, context);
+  }
+
+  function installReadingMemory(context) {
+    const saved = readProgress(context.key);
+    if (saved && saved.progress > 8 && saved.progress < 92) {
+      renderResumeCard(context, saved);
+    }
+
+    let queued = false;
+    const save = () => {
+      queued = false;
+      const snapshot = buildProgressSnapshot(context);
+      if (!snapshot) return;
+      writeProgress(context.key, snapshot);
+      rememberReadingItem(snapshot);
+      const progressText = document.querySelector('[data-living-progress-text]');
+      if (progressText) progressText.textContent = `${Math.round(snapshot.progress)}%`;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(save);
+    }, { passive: true });
+
+    window.addEventListener('pagehide', save);
+    save();
+  }
+
+  function installArticleAtmosphere(context) {
+    let beat = document.querySelector('[data-living-current-beat]');
+    if (!beat) {
+      beat = document.createElement('div');
+      beat.className = 'press-current-beat';
+      beat.setAttribute('data-living-current-beat', '');
+      document.body.appendChild(beat);
+    }
+
+    beat.innerHTML = `
+      <button class="press-current-beat__button" type="button" data-living-top aria-label="Back to top">
+        <span class="press-current-beat__kicker">Reading</span>
+        <strong>Opening</strong>
+        <em data-living-progress-text>0%</em>
+        <span class="press-current-beat__top" aria-hidden="true"><b>↑</b> Top</span>
+      </button>
+    `;
+    document.body.classList.add('has-living-current-beat');
+    bindCurrentBeatTop(beat);
+
+    let queued = false;
+    const update = () => {
+      queued = false;
+      updateCurrentBeat(context);
+    };
+
+    window.addEventListener('scroll', () => {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(update);
+    }, { passive: true });
+
+    document.addEventListener('mouseover', (event) => {
+      const ref = event.target.closest('.source-ref a[href^="#source"], a[href^="#source"].source-label');
+      if (!ref) return;
+      highlightSource(ref.getAttribute('href').slice(1), { soft: true });
+    });
+
+    document.addEventListener('mouseout', (event) => {
+      if (!event.target.closest('.source-ref a[href^="#source"], a[href^="#source"].source-label')) return;
+      clearSourceHighlights();
+    });
+
+    update();
+  }
+
+  function bindCurrentBeatTop(widget) {
+    const button = widget.querySelector('[data-living-top]');
+    if (!button || button.dataset.livingTopBound === 'true') return;
+
+    button.dataset.livingTopBound = 'true';
+    button.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: livingPrefersReducedMotion() ? 'auto' : 'smooth',
+      });
+    });
+  }
+
+  function livingPrefersReducedMotion() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  function bindGlobalLivingActions() {
+    document.addEventListener('click', function onLivingClick(event) {
+      const opener = event.target.closest('[data-living-open]');
+      if (opener) {
+        event.preventDefault();
+        const context = activeArticleContext;
+        const target = opener.getAttribute('data-living-open');
+        if (!context) return;
+        if (target === 'places') openPlaceLens(context);
+        if (target === 'share') openShareStudio(context);
+        if (target === 'sources') openSourceBoard(context);
+        if (target === 'timeline') openTimeline(context);
+        if (target === 'entities') openEntityDrawer(context);
+        return;
+      }
+
+      const close = event.target.closest('[data-living-close], [data-living-drawer-scrim]');
+      if (close) {
+        event.preventDefault();
+        closeLivingDrawer(close.closest('[data-living-drawer]'));
+        return;
+      }
+
+      const action = event.target.closest('[data-living-action]');
+      if (action) {
+        event.preventDefault();
+        handleLivingAction(action.getAttribute('data-living-action'));
+        return;
+      }
+
+      const entity = event.target.closest('[data-living-entity-id]');
+      if (entity) {
+        event.preventDefault();
+        if (activeArticleContext) openEntityDrawer(activeArticleContext, entity.getAttribute('data-living-entity-id'));
+        return;
+      }
+
+      const source = event.target.closest('[data-living-source-id]');
+      if (source) {
+        event.preventDefault();
+        highlightSource(source.getAttribute('data-living-source-id'));
+        return;
+      }
+
+      const scrollTarget = event.target.closest('[data-living-scroll-target]');
+      if (scrollTarget) {
+        event.preventDefault();
+        scrollToAnchor(scrollTarget.getAttribute('data-living-scroll-target'));
+      }
+    });
+
+    document.addEventListener('keydown', function onLivingKeydown(event) {
+      if (event.key !== 'Escape') return;
+      document.querySelectorAll('[data-living-drawer]:not([hidden])').forEach(closeLivingDrawer);
+    });
+  }
+
+  function handleLivingAction(action) {
+    const context = activeArticleContext;
+    if (!context) return;
+
+    if (action === 'listen') {
+      const play = document.querySelector('[data-listen-play]');
+      if (play) play.click();
+      return;
+    }
+
+    if (action === 'reader-mode') {
+      cycleReaderMode();
+      return;
+    }
+
+    if (action === 'follow-topic') {
+      toggleFollowTopic(context.story.section);
+      const button = document.querySelector('[data-living-action="follow-topic"]');
+      if (button) button.textContent = isFollowingTopic(context.story.section) ? 'Following' : 'Follow Topic';
+    }
+  }
+
+  function openPlaceLens(context) {
+    const places = context.places;
+    const first = places[0];
+    const body = places.length ? `
+      <div class="press-place-lens">
+        <div class="press-place-lens__map">
+          <iframe title="OpenStreetMap preview for ${escapeAttr(first.label)}" src="${escapeAttr(osmEmbedUrl(first))}" loading="lazy"></iframe>
+        </div>
+        <div class="press-place-lens__cards">
+          ${places.map(renderPlaceCard).join('')}
+        </div>
+      </div>
+    ` : `
+      <div class="press-empty-state">
+        <h3>No mapped places found yet</h3>
+        <p>This article did not match the local place dictionary. Add a place name and coordinates to the static library to make this lens light up.</p>
+      </div>
+    `;
+
+    openLivingDrawer('places', 'Place Lens', 'Mapped places mentioned by the article, with no key or API call.', body);
+  }
+
+  function openShareStudio(context) {
+    const caption = buildShareCaption(context.story);
+    const body = `
+      <div class="press-share-studio">
+        <div class="press-share-studio__canvas-wrap">
+          <canvas width="1080" height="1080" data-living-share-canvas></canvas>
+        </div>
+        <div class="press-share-studio__controls">
+          <div class="press-share-studio__formats" role="group" aria-label="Share card format">
+            <button type="button" class="is-active" data-share-format="square">Square</button>
+            <button type="button" data-share-format="story">Story</button>
+            <button type="button" data-share-format="quote">Quote</button>
+          </div>
+          <label class="press-share-studio__caption">
+            Caption
+            <textarea data-share-caption rows="8">${escapeHtml(caption)}</textarea>
+          </label>
+          <div class="press-share-studio__buttons">
+            <button type="button" data-share-copy>Copy caption</button>
+            <button type="button" data-share-download>Download PNG</button>
+          </div>
+          <p class="press-share-studio__note">Generated in your browser from local article data. No network rendering service.</p>
+        </div>
+      </div>
+    `;
+
+    const drawer = openLivingDrawer('share', 'Article Share Studio', 'Generate square, story, and quote cards locally in the browser.', body);
+    bindShareStudio(context, drawer);
+  }
+
+  function openSourceBoard(context) {
+    const clusters = clusterSources(context.sources);
+    const body = context.sources.length ? `
+      <div class="press-source-constellation">
+        <div class="press-source-constellation__summary">
+          ${SOURCE_CLUSTER_ORDER.filter((name) => clusters[name]?.length).map((name) => `
+            <div>
+              <span>${escapeHtml(name)}</span>
+              <strong>${clusters[name].length}</strong>
+            </div>
+          `).join('')}
+        </div>
+        <div class="press-source-constellation__grid">
+          ${SOURCE_CLUSTER_ORDER.filter((name) => clusters[name]?.length).map((name) => `
+            <section>
+              <h3>${escapeHtml(name)}</h3>
+              <div class="press-source-constellation__items">
+                ${clusters[name].map(renderSourceButton).join('')}
+              </div>
+            </section>
+          `).join('')}
+        </div>
+      </div>
+    ` : `
+      <div class="press-empty-state">
+        <h3>No source notes found</h3>
+        <p>The source board appears once the story has a source list or source notes.</p>
+      </div>
+    `;
+
+    const drawer = openLivingDrawer('sources', 'Source Constellation', 'A local evidence board grouped from the article source notes.', body);
+    drawer.querySelectorAll('[data-living-source-id]').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        highlightSource(button.getAttribute('data-living-source-id'));
+      });
+    });
+  }
+
+  function openTimeline(context) {
+    const body = context.beats.length ? `
+      <div class="press-story-timeline">
+        ${context.beats.map((beat, index) => `
+          <button type="button" data-living-scroll-target="${escapeAttr(beat.id)}">
+            <span>${String(index + 1).padStart(2, '0')}</span>
+            <strong>${escapeHtml(beat.title)}</strong>
+            <em>${escapeHtml(beat.summary)}</em>
+          </button>
+        `).join('')}
+      </div>
+    ` : `
+      <div class="press-empty-state">
+        <h3>No timeline beats yet</h3>
+        <p>Add article section headings and this timeline will turn them into a navigable story path.</p>
+      </div>
+    `;
+
+    const drawer = openLivingDrawer('timeline', 'Story Timeline', 'A scrollable beat map generated from this article.', body);
+    drawer.querySelectorAll('[data-living-scroll-target]').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        scrollToAnchor(button.getAttribute('data-living-scroll-target'));
+      });
+    });
+  }
+
+  function openEntityDrawer(context, activeId = '') {
+    const body = context.entities.length ? `
+      <div class="press-entity-board">
+        ${context.entities.map((entity) => {
+          const related = relatedStoriesForEntity(entity, context.relatedStories, context.story.url);
+          return `
+            <article class="press-entity-card${entity.id === activeId ? ' is-active' : ''}" id="entity-card-${escapeAttr(entity.id)}">
+              <p class="press-living-kicker">${escapeHtml(entity.type)}</p>
+              <h3>${escapeHtml(entity.name)}</h3>
+              <p>${escapeHtml(entity.summary)}</p>
+              <strong>Why it matters here</strong>
+              <p>${escapeHtml(entity.why)}</p>
+              ${related.length ? `<div class="press-entity-card__related">${related.map((story) => `<a href="${escapeAttr(story.url)}">${escapeHtml(story.title)}</a>`).join('')}</div>` : ''}
+            </article>
+          `;
+        }).join('')}
+      </div>
+    ` : `
+      <div class="press-empty-state">
+        <h3>No entity cards matched</h3>
+        <p>Add names to the local entity library and they will appear here with inline article chips.</p>
+      </div>
+    `;
+
+    const drawer = openLivingDrawer('entities', 'Entity Cards', 'People, places, companies, institutions, and ideas detected from the article.', body);
+    if (activeId) {
+      const card = drawer.querySelector(`#entity-card-${cssEscape(activeId)}`);
+      if (card) card.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }
+  }
+
+  function openLivingDrawer(id, title, intro, content) {
+    let drawer = document.querySelector(`[data-living-drawer="${id}"]`);
+    if (!drawer) {
+      drawer = document.createElement('aside');
+      drawer.className = 'press-living-drawer';
+      drawer.setAttribute('data-living-drawer', id);
+      drawer.setAttribute('role', 'dialog');
+      drawer.setAttribute('aria-modal', 'true');
+      drawer.hidden = true;
+      drawer.innerHTML = `
+        <button class="press-living-drawer__scrim" type="button" data-living-drawer-scrim aria-label="Close panel"></button>
+        <div class="press-living-drawer__panel" role="document">
+          <div class="press-living-drawer__header">
+            <div>
+              <p class="press-living-kicker" data-living-drawer-kicker>Living article</p>
+              <h2 data-living-drawer-title></h2>
+              <p data-living-drawer-intro></p>
+            </div>
+            <button class="press-living-drawer__close" type="button" data-living-close>Close</button>
+          </div>
+          <div class="press-living-drawer__body" data-living-drawer-body></div>
+        </div>
+      `;
+      document.body.appendChild(drawer);
+    }
+
+    drawer.querySelector('[data-living-drawer-title]').textContent = title;
+    drawer.querySelector('[data-living-drawer-intro]').textContent = intro;
+    drawer.querySelector('[data-living-drawer-body]').innerHTML = content;
+    drawer.querySelectorAll('[data-living-close], [data-living-drawer-scrim]').forEach((button) => {
+      if (button.dataset.livingCloseBound === 'true') return;
+      button.dataset.livingCloseBound = 'true';
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        closeLivingDrawer(drawer);
+      });
+    });
+
+    lastFocusedElement = document.activeElement;
+    drawer.hidden = false;
+    document.documentElement.classList.add('press-living-drawer-open');
+    drawer.querySelector('[data-living-close]')?.focus({ preventScroll: true });
+    return drawer;
+  }
+
+  function closeLivingDrawer(drawer) {
+    if (!drawer) return;
+    drawer.hidden = true;
+    document.documentElement.classList.remove('press-living-drawer-open');
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus({ preventScroll: true });
+    }
+  }
+
+  function bindShareStudio(context, drawer) {
+    const canvas = drawer.querySelector('[data-living-share-canvas]');
+    const caption = drawer.querySelector('[data-share-caption]');
+    let currentFormat = 'square';
+
+    drawShareCanvas(context, canvas, currentFormat);
+
+    drawer.querySelectorAll('[data-share-format]').forEach((button) => {
+      button.addEventListener('click', () => {
+        currentFormat = button.getAttribute('data-share-format') || 'square';
+        drawer.querySelectorAll('[data-share-format]').forEach((item) => item.classList.toggle('is-active', item === button));
+        drawShareCanvas(context, canvas, currentFormat);
+      });
+    });
+
+    drawer.querySelector('[data-share-copy]')?.addEventListener('click', async (event) => {
+      const button = event.currentTarget;
+      try {
+        await navigator.clipboard.writeText(caption.value);
+        button.textContent = 'Copied';
+        window.setTimeout(() => { button.textContent = 'Copy caption'; }, 1500);
+      } catch (_) {
+        caption.focus();
+        caption.select();
+        let copied = false;
+        try {
+          copied = document.execCommand && document.execCommand('copy');
+        } catch (__) {
+          copied = false;
+        }
+        button.textContent = copied ? 'Copied' : 'Caption selected';
+        window.setTimeout(() => { button.textContent = 'Copy caption'; }, 1800);
+      }
+    });
+
+    drawer.querySelector('[data-share-download]')?.addEventListener('click', () => {
+      const filename = `${slugify(context.story.title || 'the-press-card')}-${currentFormat}.png`;
+      if (canvas.toBlob) {
+        canvas.toBlob((blob) => {
+          if (!blob) return;
+          const url = URL.createObjectURL(blob);
+          triggerDownload(url, filename);
+          window.setTimeout(() => URL.revokeObjectURL(url), 2500);
+        }, 'image/png');
+      } else {
+        triggerDownload(canvas.toDataURL('image/png'), filename);
+      }
+    });
+  }
+
+  async function drawShareCanvas(context, canvas, format) {
+    if (!canvas) return;
+
+    const story = context.story;
+    const isStory = format === 'story';
+    const isQuote = format === 'quote';
+    const width = 1080;
+    const height = isStory ? 1920 : 1080;
+    canvas.width = width;
+    canvas.height = height;
+
+    const ctx = canvas.getContext('2d');
+    const accent = sectionAccent(story.section);
+    const ink = '#1d232d';
+    const paper = '#f7f1e5';
+
+    ctx.fillStyle = paper;
+    ctx.fillRect(0, 0, width, height);
+    drawCardPattern(ctx, width, height, accent);
+
+    const imageSrc = story.image || context.hero?.querySelector('img')?.getAttribute('src') || '';
+    if (imageSrc && !isQuote) {
+      try {
+        const img = await loadImage(new URL(imageSrc, window.location.href).href);
+        const imageHeight = isStory ? 760 : 430;
+        drawImageCover(ctx, img, 0, 0, width, imageHeight);
+        ctx.fillStyle = 'rgba(0,0,0,.34)';
+        ctx.fillRect(0, 0, width, imageHeight);
+      } catch (_) {
+        drawImageFallback(ctx, width, isStory ? 760 : 430, accent);
+      }
+    }
+
+    const margin = 86;
+    const top = isQuote ? 112 : (isStory ? 835 : 500);
+    ctx.fillStyle = isQuote ? accent : '#ffffff';
+    ctx.font = '900 34px Arial, sans-serif';
+    ctx.letterSpacing = '0px';
+    ctx.fillText('THE PRESS', margin, isQuote ? 82 : 68);
+
+    ctx.fillStyle = isQuote ? '#596273' : '#f7f1e5';
+    ctx.font = '700 30px Arial, sans-serif';
+    ctx.fillText(String(story.section || 'News').toUpperCase(), margin, top);
+
+    if (isQuote) {
+      const quote = bestQuote(context);
+      ctx.fillStyle = ink;
+      ctx.font = '900 72px Georgia, serif';
+      wrapCanvasText(ctx, quote, margin, 240, width - margin * 2, 84, 8);
+      ctx.fillStyle = '#667085';
+      ctx.font = '700 30px Arial, sans-serif';
+      wrapCanvasText(ctx, story.title, margin, height - 210, width - margin * 2, 38, 3);
+    } else {
+      ctx.fillStyle = ink;
+      ctx.font = isStory ? '900 86px Georgia, serif' : '900 64px Georgia, serif';
+      const titleBottom = wrapCanvasText(ctx, story.title, margin, top + 86, width - margin * 2, isStory ? 96 : 74, isStory ? 8 : 5);
+      ctx.fillStyle = '#4f5a69';
+      ctx.font = isStory ? '400 38px Georgia, serif' : '400 31px Georgia, serif';
+      wrapCanvasText(ctx, story.dek || '', margin, titleBottom + 42, width - margin * 2, isStory ? 52 : 43, isStory ? 6 : 4);
+    }
+
+    ctx.fillStyle = accent;
+    ctx.fillRect(margin, height - 138, 156, 8);
+    ctx.fillStyle = '#3a4250';
+    ctx.font = '700 28px Arial, sans-serif';
+    ctx.fillText('thepress.live', margin, height - 82);
+    ctx.textAlign = 'right';
+    ctx.fillText(shorten(story.published || story.readTime || 'Static edition', 42), width - margin, height - 82);
+    ctx.textAlign = 'left';
+  }
+
+  function drawCardPattern(ctx, width, height, accent) {
+    ctx.save();
+    ctx.globalAlpha = 0.16;
+    ctx.fillStyle = accent;
+    ctx.beginPath();
+    ctx.arc(width - 140, 170, 260, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 0.1;
+    ctx.fillStyle = '#24706d';
+    ctx.fillRect(0, height - 220, width, 220);
+    ctx.globalAlpha = 0.08;
+    ctx.strokeStyle = '#1d232d';
+    ctx.lineWidth = 3;
+    for (let x = -200; x < width + 300; x += 86) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x + 420, height);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawImageFallback(ctx, width, height, accent) {
+    ctx.save();
+    const gradient = ctx.createLinearGradient(0, 0, width, height);
+    gradient.addColorStop(0, accent);
+    gradient.addColorStop(1, '#25314a');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
+    ctx.fillStyle = 'rgba(255,255,255,.16)';
+    ctx.fillRect(80, 80, width - 160, height - 160);
+    ctx.restore();
+  }
+
+  function loadImage(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+
+  function drawImageCover(ctx, img, x, y, width, height) {
+    const scale = Math.max(width / img.naturalWidth, height / img.naturalHeight);
+    const drawWidth = img.naturalWidth * scale;
+    const drawHeight = img.naturalHeight * scale;
+    ctx.drawImage(img, x + (width - drawWidth) / 2, y + (height - drawHeight) / 2, drawWidth, drawHeight);
+  }
+
+  function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+    const words = String(text || '').split(/\s+/).filter(Boolean);
+    let line = '';
+    let lines = 0;
+    let cursor = y;
+
+    words.forEach((word) => {
+      const test = line ? `${line} ${word}` : word;
+      if (ctx.measureText(test).width > maxWidth && line) {
+        if (lines < maxLines) ctx.fillText(line, x, cursor);
+        cursor += lineHeight;
+        lines += 1;
+        line = word;
+      } else {
+        line = test;
+      }
+    });
+
+    if (line && lines < maxLines) {
+      ctx.fillText(lines === maxLines - 1 && words.length ? shorten(line, 62) : line, x, cursor);
+      cursor += lineHeight;
+    }
+
+    return cursor;
+  }
+
+  function detectPlaces(text, story) {
+    const haystack = normalizeText(`${story.title} ${story.dek} ${(story.keywords || []).join(' ')} ${text}`);
+    const seen = new Set();
+    return PLACE_LIBRARY.filter((place) => {
+      if (seen.has(place.id)) return false;
+      const matched = place.names.some((name) => phraseInText(haystack, name));
+      if (matched) seen.add(place.id);
+      return matched;
+    }).slice(0, 8);
+  }
+
+  function detectEntities(text) {
+    const haystack = normalizeText(text);
+    return ENTITY_LIBRARY.filter((entity) => entity.aliases.some((alias) => phraseInText(haystack, alias))).slice(0, 14);
+  }
+
+  function wrapEntityMentions(context) {
+    if (!context.entities.length || context.body.dataset.livingEntitiesWrapped === 'true') return;
+    context.body.dataset.livingEntitiesWrapped = 'true';
+
+    const entityByAlias = [];
+    context.entities.forEach((entity) => {
+      entity.aliases.forEach((alias) => {
+        entityByAlias.push({ entity, alias });
+      });
+    });
+    entityByAlias.sort((a, b) => b.alias.length - a.alias.length);
+
+    const counts = new Map();
+    let total = 0;
+    const nodes = [];
+    const walker = document.createTreeWalker(context.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        const parent = node.parentElement;
+        if (!parent) return NodeFilter.FILTER_REJECT;
+        if (parent.closest('a, button, sup, script, style, .press-static-post, .source-list, .source-notes, .article-sources, .related-block, .share-row, [data-living-article-dock], [data-living-drawer]')) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        if (!parent.closest('p, li, blockquote')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      },
+    });
+
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    for (const node of nodes) {
+      if (total >= 18) break;
+      for (const item of entityByAlias) {
+        if ((counts.get(item.entity.id) || 0) >= 2) continue;
+        if (wrapTextNodeWithEntity(node, item.entity, item.alias)) {
+          counts.set(item.entity.id, (counts.get(item.entity.id) || 0) + 1);
+          total += 1;
+          break;
+        }
+      }
+    }
+  }
+
+  function wrapTextNodeWithEntity(textNode, entity, alias) {
+    const text = textNode.nodeValue;
+    const pattern = new RegExp(`(^|[^A-Za-z0-9])(${escapeRegExp(alias)})(?=$|[^A-Za-z0-9])`, 'i');
+    const match = text.match(pattern);
+    if (!match) return false;
+
+    const start = match.index + match[1].length;
+    const end = start + match[2].length;
+    const fragment = document.createDocumentFragment();
+    const before = text.slice(0, start);
+    const exact = text.slice(start, end);
+    const after = text.slice(end);
+
+    if (before) fragment.appendChild(document.createTextNode(before));
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'press-entity-chip';
+    chip.setAttribute('data-living-entity-id', entity.id);
+    chip.setAttribute('aria-label', `Open entity card for ${entity.name}`);
+    chip.textContent = exact;
+    fragment.appendChild(chip);
+    if (after) fragment.appendChild(document.createTextNode(after));
+
+    textNode.parentNode.replaceChild(fragment, textNode);
+    return true;
+  }
+
+  function collectArticleSources(article) {
+    const selectors = [
+      '#source-notes .source-list li',
+      '#source-notes li',
+      '.article-sources li',
+      '.source-notes li',
+      '.source-list li',
+    ];
+    const seenNodes = new Set();
+    const seenKeys = new Set();
+    const sources = [];
+
+    selectors.forEach((selector) => {
+      article.querySelectorAll(selector).forEach((item) => {
+        if (seenNodes.has(item)) return;
+        seenNodes.add(item);
+
+        const text = cleanText(item.textContent);
+        if (!text) return;
+        const link = Array.from(item.querySelectorAll('a[href]')).find((candidate) => /^https?:\/\//i.test(candidate.getAttribute('href') || '')) || item.querySelector('a[href]');
+        const href = link?.getAttribute('href') || '';
+        const key = `${href}|${text}`.toLowerCase();
+        if (seenKeys.has(key)) return;
+        seenKeys.add(key);
+
+        if (!item.id) item.id = `source-${sources.length + 1}`;
+        const label = cleanText(link?.textContent || item.querySelector('strong')?.textContent || `Source ${sources.length + 1}`);
+        sources.push({
+          id: item.id,
+          label,
+          detail: cleanText(text.replace(label, '').replace(/^[,.:;\-\s]+/, '')),
+          href,
+          host: hostnameFromUrl(href),
+          cluster: clusterSource({ href, label, detail: text }),
+        });
+      });
+    });
+
+    return sources;
+  }
+
+  function collectTimelineBeats(body) {
+    const headings = Array.from(body.querySelectorAll('h2, h3')).filter((heading) => {
+      if (heading.closest('#source-notes, .source-notes, .article-sources, .related-block, [data-living-drawer]')) return false;
+      return cleanText(heading.textContent).length > 2;
+    });
+
+    if (!headings.length) {
+      return Array.from(body.querySelectorAll('p')).slice(0, 5).map((paragraph, index) => {
+        if (!paragraph.id) paragraph.id = `living-beat-${index + 1}`;
+        return {
+          id: paragraph.id,
+          title: index === 0 ? 'Opening' : `Beat ${index + 1}`,
+          summary: shorten(cleanText(paragraph.textContent), 135),
+        };
+      });
+    }
+
+    return headings.slice(0, 12).map((heading, index) => {
+      if (!heading.id) heading.id = `living-beat-${index + 1}`;
+      return {
+        id: heading.id,
+        title: cleanText(heading.textContent),
+        summary: shorten(cleanText(findNextParagraphText(heading)), 145),
+      };
+    });
+  }
+
+  function findNextParagraphText(heading) {
+    let node = heading.nextElementSibling;
+    while (node && !/^H[23]$/i.test(node.tagName || '')) {
+      if (node.matches?.('p, blockquote, li')) return node.textContent || '';
+      node = node.nextElementSibling;
+    }
+    return '';
+  }
+
+  function clusterSources(sources) {
+    return sources.reduce((clusters, source) => {
+      const cluster = source.cluster || 'Background';
+      if (!clusters[cluster]) clusters[cluster] = [];
+      clusters[cluster].push(source);
+      return clusters;
+    }, {});
+  }
+
+  function clusterSource(source) {
+    const text = `${source.label || ''} ${source.detail || ''}`.toLowerCase();
+    const host = hostnameFromUrl(source.href);
+    if (/instagram|tiktok|x\.com|twitter|youtube|threads|facebook/.test(host)) return 'Social';
+    if (/court|law|docket|supreme|justice|legal/.test(host + ' ' + text)) return 'Legal';
+    if (/\.gov$|nasa\.gov|cdc\.gov|census\.gov|bls\.gov|bea\.gov|noaa\.gov|nih\.gov|imf\.org|worldbank\.org|oecd\.org/.test(host)) return 'Public Data';
+    if (/michelin|infatuation|timeout|resy|opentable|50best|traveler|thrillist|grubstreet|guide|review/.test(host + ' ' + text)) return 'Guide';
+    if (/official|whitehouse|nato\.int|espn|wsop|casamata|eatatla|company|pressroom/.test(host + ' ' + text)) return 'Official';
+    if (/eater|reuters|apnews|latimes|nytimes|washingtonpost|guardian|whatnow|gothamist|bonappetit|newyorker|wired|verge|pokernews|reviewjournal/.test(host)) return 'Reporting';
+    if (/map|place|neighborhood|location|address|venue/.test(text)) return 'Place';
+    return 'Background';
+  }
+
+  function renderPlaceCard(place) {
+    return `
+      <article class="press-place-card">
+        <p class="press-living-kicker">${escapeHtml(place.type)}</p>
+        <h3>${escapeHtml(place.label)}</h3>
+        <p>${escapeHtml(place.scene)}</p>
+        <dl>
+          <div><dt>Address</dt><dd>${escapeHtml(place.address)}</dd></div>
+          <div><dt>Why here</dt><dd>${escapeHtml(place.note)}</dd></div>
+        </dl>
+        <div class="press-place-card__links">
+          <a href="${escapeAttr(googleMapsUrl(place))}" rel="noopener noreferrer" target="_blank">Map</a>
+          <a href="${escapeAttr(streetViewUrl(place))}" rel="noopener noreferrer" target="_blank">Street View</a>
+          <a href="${escapeAttr(osmUrl(place))}" rel="noopener noreferrer" target="_blank">OpenStreetMap</a>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderSourceButton(source) {
+    return `
+      <button type="button" data-living-source-id="${escapeAttr(source.id)}">
+        <span>${escapeHtml(source.host || source.cluster || 'source')}</span>
+        <strong>${escapeHtml(shorten(source.label, 78))}</strong>
+        ${source.detail ? `<em>${escapeHtml(shorten(source.detail, 110))}</em>` : ''}
+      </button>
+    `;
+  }
+
+  function renderHistoryMiniCard(item) {
+    return `
+      <a class="press-living-history-mini" href="${escapeAttr(item.url)}#${escapeAttr(item.anchor || '')}">
+        <strong>${escapeHtml(shorten(item.title, 72))}</strong>
+        <span>${Math.round(item.progress || 0)}% read</span>
+      </a>
+    `;
+  }
+
+  function renderSectionBar(item) {
+    const percent = Math.max(8, Math.min(100, item.count * 8));
+    return `
+      <a href="${escapeAttr(sectionHref(item.section))}">
+        <span>${escapeHtml(item.section)}</span>
+        <strong>${item.count}</strong>
+        <em style="--bar:${percent}%"></em>
+      </a>
+    `;
+  }
+
+  function renderResumeCard(context, saved) {
+    if (document.querySelector('[data-living-resume-card]')) return;
+    const card = document.createElement('div');
+    card.className = 'press-resume-card';
+    card.setAttribute('data-living-resume-card', '');
+    card.innerHTML = `
+      <div>
+        <span>Saved in this browser</span>
+        <strong>Resume at ${Math.round(saved.progress)}%</strong>
+      </div>
+      <button type="button" data-living-resume>Continue</button>
+      <button type="button" data-living-dismiss-resume aria-label="Dismiss resume card">×</button>
+    `;
+
+    card.querySelector('[data-living-resume]').addEventListener('click', () => {
+      if (saved.anchor) scrollToAnchor(saved.anchor);
+      else window.scrollTo({ top: Math.round((document.documentElement.scrollHeight - window.innerHeight) * (saved.progress / 100)), behavior: 'smooth' });
+    });
+
+    card.querySelector('[data-living-dismiss-resume]').addEventListener('click', () => card.remove());
+    (context.hero || context.article).appendChild(card);
+  }
+
+  function highlightSource(id, options = {}) {
+    clearSourceHighlights();
+    if (!id) return;
+    const source = document.getElementById(id);
+    const refs = document.querySelectorAll(`.source-ref a[href="#${cssEscape(id)}"], a.source-label[href="#${cssEscape(id)}"]`);
+    source?.classList.add('is-living-source-highlight');
+    refs.forEach((ref) => ref.classList.add('is-living-source-highlight'));
+    if (source && !options.soft) {
+      source.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      window.setTimeout(clearSourceHighlights, 3600);
+    }
+  }
+
+  function clearSourceHighlights() {
+    document.querySelectorAll('.is-living-source-highlight').forEach((node) => node.classList.remove('is-living-source-highlight'));
+  }
+
+  function updateCurrentBeat(context) {
+    const widget = document.querySelector('[data-living-current-beat]');
+    if (!widget) return;
+    const progress = buildProgressSnapshot(context);
+    const active = currentBeat(context);
+    const title = active?.title || 'Reading';
+    const percent = Math.round(progress?.progress || 0);
+    widget.querySelector('strong').textContent = title;
+    widget.querySelector('em').textContent = `${percent}%`;
+    widget.querySelector('[data-living-top]')?.setAttribute('aria-label', `Back to top. ${percent}% read. Current section: ${title}.`);
+  }
+
+  function currentBeat(context) {
+    const offset = 140;
+    let active = context.beats[0] || null;
+    context.beats.forEach((beat) => {
+      const node = document.getElementById(beat.id);
+      if (node && node.getBoundingClientRect().top <= offset) active = beat;
+    });
+    return active;
+  }
+
+  function buildProgressSnapshot(context) {
+    const rect = context.article.getBoundingClientRect();
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const articleTop = scrollY + rect.top;
+    const articleHeight = Math.max(1, context.article.scrollHeight - window.innerHeight * 0.65);
+    const progress = Math.max(0, Math.min(100, ((scrollY - articleTop) / articleHeight) * 100));
+    const beat = currentBeat(context);
+    return {
+      key: context.key,
+      title: context.story.title,
+      section: context.story.section,
+      url: normalizeArticleUrl(context.story.url || window.location.pathname),
+      image: context.story.image,
+      progress,
+      anchor: beat?.id || '',
+      updatedAt: Date.now(),
+    };
+  }
+
+  function readProgress(key) {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE.progressPrefix + key) || 'null');
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function writeProgress(key, value) {
+    try {
+      localStorage.setItem(STORAGE.progressPrefix + key, JSON.stringify(value));
+    } catch (_) {}
+  }
+
+  function rememberReadingItem(item) {
+    try {
+      const current = readReadingHistory();
+      const next = [item].concat(current.filter((entry) => entry.key !== item.key)).slice(0, 10);
+      localStorage.setItem(STORAGE.history, JSON.stringify(next));
+    } catch (_) {}
+  }
+
+  function readReadingHistory() {
+    try {
+      const items = JSON.parse(localStorage.getItem(STORAGE.history) || '[]');
+      return Array.isArray(items) ? items : [];
+    } catch (_) {
+      return [];
+    }
+  }
+
+  function cycleReaderMode() {
+    const modes = ['standard', 'focus', 'wide'];
+    const current = document.documentElement.getAttribute('data-living-reader') || 'standard';
+    const next = modes[(modes.indexOf(current) + 1) % modes.length] || 'standard';
+    setReaderMode(next);
+    updateReaderButton();
+  }
+
+  function applyStoredReaderMode() {
+    try {
+      setReaderMode(localStorage.getItem(STORAGE.readerMode) || 'standard');
+    } catch (_) {
+      setReaderMode('standard');
+    }
+  }
+
+  function setReaderMode(mode) {
+    document.documentElement.setAttribute('data-living-reader', mode);
+    try {
+      localStorage.setItem(STORAGE.readerMode, mode);
+    } catch (_) {}
+  }
+
+  function updateReaderButton() {
+    const button = document.querySelector('[data-living-action="reader-mode"]');
+    if (!button) return;
+    const mode = document.documentElement.getAttribute('data-living-reader') || 'standard';
+    button.textContent = mode === 'focus' ? 'Wide' : mode === 'wide' ? 'Standard' : 'Focus';
+  }
+
+  function readFollowedTopics() {
+    try {
+      const topics = JSON.parse(localStorage.getItem(STORAGE.followedTopics) || '[]');
+      return Array.isArray(topics) ? topics : [];
+    } catch (_) {
+      return [];
+    }
+  }
+
+  function isFollowingTopic(section) {
+    return readFollowedTopics().includes(section || 'News');
+  }
+
+  function toggleFollowTopic(section) {
+    const label = section || 'News';
+    const current = readFollowedTopics();
+    const next = current.includes(label) ? current.filter((item) => item !== label) : current.concat(label);
+    try {
+      localStorage.setItem(STORAGE.followedTopics, JSON.stringify(next));
+    } catch (_) {}
+  }
+
+  function getCurrentStoryData(article, hero, body) {
+    const embedded = readEmbeddedStories();
+    const currentKey = normalizeUrlKey(window.location.pathname);
+    const match = embedded.find((story) => normalizeUrlKey(story.url) === currentKey || normalizeUrlKey(story.url).endsWith(currentKey));
+    const jsonLd = readArticleJsonLd();
+    const headline = cleanText(hero?.querySelector('.article-headline, h1')?.textContent || article.querySelector('h1')?.textContent || jsonLd.headline || document.title.replace(/\s+—\s+The Press$/i, ''));
+    const dek = cleanText(hero?.querySelector('.article-dek')?.textContent || document.querySelector('meta[name="description"]')?.content || jsonLd.description || match?.dek || '');
+    const section = cleanText(match?.section || jsonLd.articleSection || hero?.querySelector('.eyebrow')?.textContent?.split('•')[0] || 'News');
+    const image = cleanText(match?.image || hero?.querySelector('img')?.getAttribute('src') || jsonLd.image?.url || '');
+
+    return {
+      title: cleanText(match?.title || headline),
+      dek: cleanText(match?.dek || dek),
+      section,
+      type: cleanText(match?.type || hero?.querySelector('.eyebrow')?.textContent?.split('•')[1] || 'Story'),
+      url: cleanText(match?.url || window.location.pathname.split('/').pop() || ''),
+      image,
+      imageAlt: cleanText(match?.imageAlt || match?.image_alt || hero?.querySelector('img')?.alt || headline),
+      published: cleanText(match?.published || match?.publishedLabel || jsonLd.datePublished || ''),
+      keywords: Array.isArray(match?.keywords) ? match.keywords : [],
+      readTime: cleanText(match?.readTime || match?.read_time || ''),
+      bodyText: cleanText(body.textContent || ''),
+    };
+  }
+
+  function readArticleJsonLd() {
+    const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
+    for (const script of scripts) {
+      try {
+        const data = JSON.parse(script.textContent || '{}');
+        const article = Array.isArray(data) ? data.find((item) => /Article$/i.test(item['@type'] || '')) : data;
+        if (article && /Article$/i.test(article['@type'] || '')) return article;
+      } catch (_) {}
+    }
+    return {};
+  }
+
+  function readEmbeddedStories() {
+    const node = document.getElementById('press-search-data');
+    if (!node) return [];
+    try {
+      const data = JSON.parse(node.textContent || '[]');
+      return Array.isArray(data) ? data.map(normalizeStory).filter(Boolean) : [];
+    } catch (_) {
+      return [];
+    }
+  }
+
+  function normalizeStory(item) {
+    if (!item || typeof item !== 'object') return null;
+    const title = cleanText(item.title || item.headline);
+    const url = cleanText(item.url || item.href || item.link);
+    if (!title || !url) return null;
+    return {
+      title,
+      url: normalizeArticleUrl(url),
+      section: cleanText(item.section || item.section_slug || 'News'),
+      type: cleanText(item.type || 'Story'),
+      dek: cleanText(item.dek || item.description || item.summary || ''),
+      image: cleanText(item.image || item.thumbnail || ''),
+      imageAlt: cleanText(item.imageAlt || item.image_alt || title),
+      published: cleanText(item.published || item.publishedLabel || item.date || ''),
+      publishedIso: cleanText(item.publishedIso || item.published_iso || ''),
+      keywords: Array.isArray(item.keywords) ? item.keywords.map(String) : [],
+      readTime: cleanText(item.readTime || item.read_time || ''),
+    };
+  }
+
+  function relatedStoriesForEntity(entity, stories, currentUrl) {
+    const aliases = entity.aliases.map((alias) => alias.toLowerCase());
+    return stories.filter((story) => {
+      if (normalizeUrlKey(story.url) === normalizeUrlKey(currentUrl)) return false;
+      const haystack = normalizeText(`${story.title} ${story.dek} ${(story.keywords || []).join(' ')}`);
+      return aliases.some((alias) => haystack.includes(alias.toLowerCase()));
+    }).slice(0, 4);
+  }
+
+  function summarizeSections(stories) {
+    const counts = new Map();
+    stories.forEach((story) => {
+      const section = cleanText(story.section || 'News').split('/')[0].trim();
+      counts.set(section, (counts.get(section) || 0) + 1);
+    });
+    return Array.from(counts.entries())
+      .map(([section, count]) => ({ section, count }))
+      .sort((a, b) => b.count - a.count || a.section.localeCompare(b.section));
+  }
+
+  function bestQuote(context) {
+    const quote = context.body.querySelector('blockquote')?.textContent;
+    if (quote) return cleanText(quote);
+    const paragraph = Array.from(context.body.querySelectorAll('p'))
+      .map((node) => cleanText(node.textContent))
+      .find((text) => text.length > 90 && text.length < 260);
+    return paragraph || context.story.dek || context.story.title;
+  }
+
+  function buildShareCaption(story) {
+    const url = new URL(story.url || window.location.href, window.location.href).href;
+    return `${story.title}\n\n${story.dek}\n\nRead it on The Press: ${url}`;
+  }
+
+  function collectReadableText(article) {
+    const clone = article.cloneNode(true);
+    clone.querySelectorAll('script, style, nav, .share-row, [data-living-drawer]').forEach((node) => node.remove());
+    return cleanText(clone.textContent || '');
+  }
+
+  function scrollToAnchor(id) {
+    if (!id) return;
+    const target = document.getElementById(id.replace(/^#/, ''));
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function googleMapsUrl(place) {
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${place.lat},${place.lng}`)}`;
+  }
+
+  function streetViewUrl(place) {
+    return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${encodeURIComponent(`${place.lat},${place.lng}`)}`;
+  }
+
+  function osmUrl(place) {
+    return `https://www.openstreetmap.org/?mlat=${place.lat}&mlon=${place.lng}#map=17/${place.lat}/${place.lng}`;
+  }
+
+  function osmEmbedUrl(place) {
+    const delta = 0.006;
+    const bbox = [
+      place.lng - delta,
+      place.lat - delta,
+      place.lng + delta,
+      place.lat + delta,
+    ].join('%2C');
+    return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${place.lat}%2C${place.lng}`;
+  }
+
+  function hostnameFromUrl(url) {
+    try {
+      return new URL(url, window.location.href).hostname.replace(/^www\./, '');
+    } catch (_) {
+      return '';
+    }
+  }
+
+  function normalizeArticleUrl(url) {
+    const value = cleanText(url);
+    if (!value) return window.location.pathname.split('/').pop() || 'index.html';
+    if (/^https?:\/\//i.test(value) || value.startsWith('/') || value.startsWith('../')) return value;
+    return value.replace(/^\.\//, '');
+  }
+
+  function normalizeUrlKey(value) {
+    let raw = String(value || '')
+      .replace(/^https?:\/\/[^/]+/i, '')
+      .replace(/^file:\/\/[^/]+/i, '')
+      .replace(/^.*\/The-Press\//i, '')
+      .replace(/[?#].*$/, '')
+      .replace(/^\/+/, '')
+      .replace(/^\.\.\//, '')
+      .replace(/^\.\//, '');
+
+    if (!raw || raw.endsWith('/')) raw += 'index.html';
+    const parts = raw.split('/').filter(Boolean);
+    if (parts.length >= 2 && parts[parts.length - 2] === 'daily') return parts.slice(-2).join('/');
+    return parts[parts.length - 1] || raw;
+  }
+
+  function sectionHref(section) {
+    const slug = slugify(section);
+    return slug ? `section-${slug}.html` : 'archive.html';
+  }
+
+  function sectionAccent(section) {
+    const accents = {
+      politics: '#b7473f',
+      culture: '#2f6f73',
+      technology: '#4158b7',
+      economics: '#8a6425',
+      education: '#5f579f',
+      health: '#a23f66',
+      philosophy: '#6a4c8f',
+      science: '#22766d',
+      sports: '#2f5f9e',
+      world: '#5c6fb7',
+      opinion: '#9f513b',
+    };
+    return accents[slugify(section)] || '#b7473f';
+  }
+
+  function parseStoryTime(story) {
+    const parsed = Date.parse(story.publishedIso || story.published || '');
+    return Number.isNaN(parsed) ? 0 : parsed;
+  }
+
+  function phraseInText(haystack, phrase) {
+    const normalizedPhrase = normalizeText(phrase);
+    if (!normalizedPhrase) return false;
+    const pattern = new RegExp(`(^|[^a-z0-9])${escapeRegExp(normalizedPhrase).replace(/\s+/g, '\\s+')}(?=$|[^a-z0-9])`, 'i');
+    return pattern.test(haystack);
+  }
+
+  function normalizeText(value) {
+    return cleanText(value).toLowerCase();
+  }
+
+  function cleanText(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function shorten(value, max) {
+    const text = cleanText(value);
+    if (text.length <= max) return text;
+    return text.slice(0, Math.max(0, max - 1)).trim().replace(/[,\s]+$/, '') + '...';
+  }
+
+  function slugify(value) {
+    return cleanText(value).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function escapeAttr(value) {
+    return escapeHtml(value).replace(/`/g, '&#96;');
+  }
+
+  function escapeRegExp(value) {
+    return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function cssEscape(value) {
+    if (window.CSS && typeof window.CSS.escape === 'function') return window.CSS.escape(value);
+    return String(value).replace(/[^a-zA-Z0-9_-]/g, '\\$&');
+  }
+
+  function triggerDownload(url, filename) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+})();
+/* PRESS_LIVING_ARTICLE_KIT_END */

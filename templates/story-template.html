@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Story Headline - The Press</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="One-sentence story deck for search, cards, and the living article kit." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/icon-192.png" sizes="192x192" type="image/png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-article">
+  <header class="site-header">
+    <div class="topbar">
+      <div class="topbar__inner">
+        <p class="edition-note">The Press</p>
+        <a class="topbar__link" href="index.html">Home</a>
+      </div>
+    </div>
+    <div class="masthead-row">
+      <div class="masthead-wrap">
+        <a class="masthead" href="index.html">The Press</a>
+        <p class="masthead-tagline">A digital newspaper built for sourced long-form reporting.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="page page-article">
+    <article class="article">
+      <header class="article-hero">
+        <p class="eyebrow">Section - Story Type</p>
+        <h1 class="article-headline">Story Headline</h1>
+        <p class="article-dek">One clear, vivid deck that says what changed and why it matters.</p>
+        <div class="article-meta">
+          <span>By The Press</span>
+          <span>Published Month 1, 2026</span>
+          <span>Updated Month 1, 2026</span>
+          <span>0000 words</span>
+          <span>00 min read</span>
+        </div>
+        <figure class="hero-figure">
+          <img src="assets/fallback-news.svg" alt="Describe the image in plain language" loading="eager" decoding="async" />
+          <figcaption>Image caption and credit.</figcaption>
+        </figure>
+      </header>
+
+      <div class="article-shell">
+        <aside class="article-aside">
+          <div class="sticky-stack">
+            <section class="info-card">
+              <h2>What to know</h2>
+              <ul class="bullet-list">
+                <li>First important point.</li>
+                <li>Second important point.</li>
+                <li>Third important point.</li>
+              </ul>
+            </section>
+          </div>
+        </aside>
+
+        <div class="article-body" data-article-body>
+          <p>Opening paragraph. Keep normal article paragraphs inside this element so the living article kit can build reading memory, timeline beats, entity cards, source links, and share cards automatically.</p>
+
+          <h2>First Story Beat</h2>
+          <p>Section text. Headings become the local story timeline.</p>
+
+          <h2>Second Story Beat</h2>
+          <p>Section text with source references when needed.<sup class="source-ref"><a href="#source-1">[1]</a></sup></p>
+        </div>
+      </div>
+
+      <section class="article-sources" id="source-notes">
+        <h2>Source notes</h2>
+        <ol class="source-list">
+          <li id="source-1"><a href="https://example.com" rel="noopener noreferrer">Source title</a> - why this source supports the story.</li>
+        </ol>
+      </section>
+    </article>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

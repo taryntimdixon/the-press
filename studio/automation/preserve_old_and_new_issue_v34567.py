@@ -67,6 +67,13 @@ def env_int(name: str, default: int, minimum: int | None = None, maximum: int | 
     return value
 
 
+def asset_version(relative_path: str) -> str:
+    try:
+        return str(int((ROOT / relative_path).stat().st_mtime))
+    except OSError:
+        return str(int(time.time()))
+
+
 def env_float(name: str, default: float, minimum: float | None = None, maximum: float | None = None) -> float:
     try:
         value = float(os.getenv(name, str(default)))
@@ -1524,7 +1531,10 @@ document.addEventListener('DOMContentLoaded', function () {
   <meta name="description" content="{dek}" />
   <meta name="press:visual-archetype" content="{visual_archetype}" />
   <meta name="press:visual-brief" content="{visual_brief}" />
-  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="shortcut icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../assets/icon-192.png" sizes="192x192" type="image/png" />
+  <link rel="stylesheet" href="../styles.css?v={asset_version("styles.css")}" />
 </head>
 <body class="page-article">
   <header class="site-header">
@@ -1571,6 +1581,7 @@ document.addEventListener('DOMContentLoaded', function () {
   </main>
 
   {speaker_js}
+  <script src="../app.js?v={asset_version("app.js")}" defer></script>
 </body>
 </html>
 """
@@ -1609,7 +1620,7 @@ def load_or_minimal_html(path: Path, title: str) -> BeautifulSoup:
   <meta charset="utf-8" />
   <title>{html.escape(title)}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v={asset_version("styles.css")}" />
 </head>
 <body>
   <main></main>
@@ -1836,7 +1847,7 @@ def write_daily_edition_page(stories: list[Story], edition_date: str) -> None:
   <meta charset="utf-8" />
   <title>Latest AI Edition — The Press</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v={asset_version("styles.css")}" />
 </head>
 <body>
   <header class="site-header">
