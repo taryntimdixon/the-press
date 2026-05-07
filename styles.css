@@ -3068,7 +3068,7 @@ html.press-page-leaving body {
 }
 
 .masthead-with-logo .masthead-logo{
-  width:clamp(12rem, 26vw, 20rem);
+  width:clamp(16rem, 34vw, 28rem);
   height:auto;
   color:var(--accent);
   flex-shrink:0;
@@ -3151,7 +3151,7 @@ html.press-page-leaving body {
 
   .masthead .masthead-logo,
   .masthead-with-logo .masthead-logo{
-    width:clamp(9rem, 48vw, 14rem);
+    width:clamp(12rem, 72vw, 20rem);
     height:auto;
   }
 
@@ -3176,7 +3176,7 @@ header.site-header,
 
 .masthead .masthead-logo,
 .masthead-with-logo .masthead-logo {
-  width: clamp(12rem, 26vw, 20rem);
+  width: clamp(16rem, 34vw, 28rem);
   height: auto;
   flex-shrink: 0;
   object-fit: contain;
@@ -3188,7 +3188,7 @@ body {
 
 /* Homepage hard override to prevent cached/older rules from shrinking the main logo. */
 body.page-home .masthead.masthead-with-logo .masthead-logo {
-  width: clamp(21rem, 48vw, 35rem) !important;
+  width: clamp(28rem, 60vw, 44rem) !important;
   height: auto !important;
 }
 
@@ -5520,8 +5520,8 @@ html.press-future-ready body.page-home .press-live-top-lead{
 
 /* Annotation polish: thumbnails first, quieter rails, no dead columns. */
 body.page-home .masthead.masthead-with-logo{
-  margin-left:clamp(1.5rem,5vw,6rem);
-  transform:translateX(calc(clamp(3rem,6vw,5.5rem) - 24px));
+  margin-left:clamp(.5rem,1.5vw,2rem);
+  transform:none;
 }
 
 .press-future-studio__inner{
@@ -8561,97 +8561,6 @@ a.source-label.is-living-source-highlight{
   text-align:left;
 }
 
-.press-evidence-rail{
-  position:fixed;
-  top:24vh;
-  left:max(.75rem,calc((100vw - 1180px) / 2 + .5rem));
-  z-index:1100;
-  display:grid;
-  gap:.55rem;
-  width:3.9rem;
-  border:1px solid color-mix(in srgb,var(--line) 74%,var(--accent));
-  border-radius:999px;
-  padding:.48rem .36rem;
-  background:color-mix(in srgb,var(--surface) 90%,#fff);
-  box-shadow:0 16px 38px rgba(20,26,36,.14);
-}
-
-.press-evidence-rail__head{
-  display:grid;
-  place-items:center;
-  gap:.1rem;
-  padding:.28rem 0 .38rem;
-  border-bottom:1px solid color-mix(in srgb,var(--line) 75%,transparent);
-}
-
-.press-evidence-rail__head span{
-  writing-mode:vertical-rl;
-  transform:rotate(180deg);
-  color:var(--accent);
-  font-size:.56rem;
-  font-weight:900;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-
-.press-evidence-rail__head strong{
-  color:var(--ink);
-  font-family:var(--serif);
-  font-size:1rem;
-  line-height:1;
-}
-
-.press-evidence-rail__track{
-  display:grid;
-  gap:.35rem;
-}
-
-.press-evidence-rail button{
-  appearance:none;
-  display:grid;
-  place-items:center;
-  gap:.12rem;
-  border:0;
-  border-radius:999px;
-  padding:.18rem;
-  background:transparent;
-  color:var(--muted);
-  cursor:pointer;
-  position:relative;
-  z-index:1;
-}
-
-.press-evidence-rail button span{
-  display:block;
-  width:.58rem;
-  height:var(--heat-height);
-  min-height:1.05rem;
-  border-radius:999px;
-  background:linear-gradient(180deg,var(--accent),#24706d,#4158b7);
-  opacity:var(--heat-opacity);
-  box-shadow:0 0 0 var(--heat-ring) color-mix(in srgb,var(--accent) 12%,transparent);
-}
-
-.press-evidence-rail button em{
-  display:block;
-  max-width:3rem;
-  overflow:hidden;
-  color:inherit;
-  font-size:.5rem;
-  font-style:normal;
-  font-weight:900;
-  letter-spacing:.04em;
-  text-overflow:ellipsis;
-  text-transform:uppercase;
-  white-space:nowrap;
-}
-
-.press-evidence-rail button:hover,
-.press-evidence-rail button:focus-visible{
-  color:var(--accent);
-  outline:none;
-}
-
 .press-evidence-node{
   position:relative;
   border-radius:.35rem;
@@ -9298,7 +9207,6 @@ html[data-theme="dark"] .press-place-card,
 html[data-theme="dark"] .press-entity-card,
 html[data-theme="dark"] .press-living-home-card,
 html[data-theme="dark"] .press-current-beat,
-html[data-theme="dark"] .press-evidence-rail,
 html[data-theme="dark"] .press-number-lens article,
 html[data-theme="dark"] .press-number-lens section,
 html[data-theme="dark"] .press-relationship-map,
@@ -9318,7 +9226,6 @@ html[data-theme="dark"] .press-place-card h3,
 html[data-theme="dark"] .press-entity-card h3,
 html[data-theme="dark"] .press-living-home-card h3,
 html[data-theme="dark"] .press-current-beat strong,
-html[data-theme="dark"] .press-evidence-rail__head strong,
 html[data-theme="dark"] .press-number-lens h3,
 html[data-theme="dark"] .press-number-lens h4,
 html[data-theme="dark"] .press-relationship-node strong,
@@ -9367,7 +9274,6 @@ html[data-theme="dark"] .press-share-studio__formats button.is-active{
   :root:not([data-theme="light"]) .press-entity-card,
   :root:not([data-theme="light"]) .press-living-home-card,
   :root:not([data-theme="light"]) .press-current-beat,
-  :root:not([data-theme="light"]) .press-evidence-rail,
   :root:not([data-theme="light"]) .press-number-lens article,
   :root:not([data-theme="light"]) .press-number-lens section,
   :root:not([data-theme="light"]) .press-relationship-map,
@@ -9387,7 +9293,6 @@ html[data-theme="dark"] .press-share-studio__formats button.is-active{
   :root:not([data-theme="light"]) .press-entity-card h3,
   :root:not([data-theme="light"]) .press-living-home-card h3,
   :root:not([data-theme="light"]) .press-current-beat strong,
-  :root:not([data-theme="light"]) .press-evidence-rail__head strong,
   :root:not([data-theme="light"]) .press-number-lens h3,
   :root:not([data-theme="light"]) .press-number-lens h4,
   :root:not([data-theme="light"]) .press-relationship-node strong,
@@ -9485,57 +9390,6 @@ html[data-theme="dark"] .press-share-studio__formats button.is-active{
   }
 
   .press-current-beat{
-    display:none;
-  }
-
-  .press-evidence-rail{
-    align-items:center;
-    bottom:.75rem;
-    display:flex;
-    gap:.5rem;
-    left:.75rem;
-    max-width:calc(100vw - 1.5rem);
-    padding:.38rem .48rem;
-    top:auto;
-    width:min(25rem,calc(100vw - 1.5rem));
-  }
-
-  .press-evidence-rail__head{
-    border-bottom:0;
-    border-right:1px solid color-mix(in srgb,var(--line) 75%,transparent);
-    min-width:3.4rem;
-    padding:.1rem .5rem .1rem 0;
-  }
-
-  .press-evidence-rail__head span{
-    transform:none;
-    writing-mode:horizontal-tb;
-  }
-
-  .press-evidence-rail__track{
-    display:flex;
-    gap:.28rem;
-    overflow-x:auto;
-    overscroll-behavior-x:contain;
-    scrollbar-width:none;
-  }
-
-  .press-evidence-rail__track::-webkit-scrollbar{
-    display:none;
-  }
-
-  .press-evidence-rail button{
-    flex:0 0 auto;
-    padding:.12rem;
-  }
-
-  .press-evidence-rail button span{
-    height:1.55rem;
-    min-height:.9rem;
-    width:.48rem;
-  }
-
-  .press-evidence-rail button em{
     display:none;
   }
 

@@ -514,7 +514,7 @@ def story_card(story: dict, extra_class: str = "", archive: bool = False) -> str
     <p class="eyebrow eyebrow--compact">{h(story['section'])} • {h(story['type'])}</p>
     <h3 class="story-card__title"><a href="{h(story['filename'])}">{h(story['title'])}</a></h3>
     <p class="story-card__dek">{h(story['dek'])}</p>
-    <p class="story-card__meta">By {h(story['author'])} • {h(story['publishedLabel'])} • {h(story['readTime'])}</p>
+    <p class="story-card__meta">Written and Researched by AI • {h(story['publishedLabel'])}</p>
   </div>
 </article>
 """.strip()
@@ -553,7 +553,7 @@ def river_item(story: dict) -> str:
     <p class="eyebrow eyebrow--tiny">{h(story['section'])} • {h(story['type'])}</p>
     <h3><a href="{h(story['filename'])}">{h(story['title'])}</a></h3>
     <p>{h(story['excerpt'])}</p>
-    <p class="river-item__meta">By {h(story['author'])} • {h(story['publishedLabel'])} • {h(story['readTime'])}</p>
+    <p class="river-item__meta">Written and Researched by AI • {h(story['publishedLabel'])}</p>
   </div>
 </article>
 """.strip()
@@ -566,7 +566,7 @@ def ranked_list_item(story: dict, rank: int) -> str:
   <div>
     <p class="eyebrow eyebrow--tiny">{h(story['section'])} • {h(story['type'])}</p>
     <a href="{h(story['filename'])}">{h(story['title'])}</a>
-    <p class="link-list__meta">By {h(story['author'])} • {h(story['publishedLabel'])}</p>
+    <p class="link-list__meta">Written and Researched by AI • {h(story['publishedLabel'])}</p>
   </div>
 </li>
 """.strip()
@@ -578,7 +578,7 @@ def simple_list_item(story: dict) -> str:
   <div>
     <p class="eyebrow eyebrow--tiny">{h(story['section'])} • {h(story['type'])}</p>
     <a href="{h(story['filename'])}">{h(story['title'])}</a>
-    <p class="link-list__meta">By {h(story['author'])} • {h(story['publishedLabel'])}</p>
+    <p class="link-list__meta">Written and Researched by AI • {h(story['publishedLabel'])}</p>
   </div>
 </li>
 """.strip()
@@ -1006,7 +1006,7 @@ def render_homepage() -> str:
       <p class="eyebrow">Front Page • {h(story['section'])} • {h(story['type'])}</p>
       <h2><a href="{h(story['filename'])}">{h(story['title'])}</a></h2>
       <p class="lead-panel__dek">{h(story['dek'])}</p>
-      <p class="lead-panel__meta">By {h(story['author'])} • {h(story['publishedLabel'])} • {h(story['wordCount'])}</p>
+      <p class="lead-panel__meta">Written and Researched by AI • {h(story['publishedLabel'])}</p>
     </div>
     <div class="button-row">
       <a class="button" href="{h(story['filename'])}">Read story</a>
@@ -1456,11 +1456,9 @@ def render_story(story: dict) -> str:
       <h1 class="article-headline">{h(story['title'])}</h1>
       <p class="article-dek">{h(story['dek'])}</p>
       <div class="article-meta">
-        <span>By <a href="authors.html#{h(story['authorSlug'])}">{h(story['author'])}</a></span>
+        <span>Written and Researched by AI</span>
         <span>Published {h(story['publishedLabel'])}</span>
         <span>Updated {h(story['updatedLabel'])}</span>
-        <span>{h(story['wordCount'])}</span>
-        <span>{h(story['readTime'])}</span>
       </div>
       <figure class="hero-figure">
         <img src="{h(hero_image)}" alt="{h(story['imageAlt'])}" loading="eager" decoding="async"{f' width="{hero_image_width}"' if hero_image_width else ''}{f' height="{hero_image_height}"' if hero_image_height else ''} />

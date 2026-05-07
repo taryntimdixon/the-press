@@ -1520,7 +1520,7 @@ document.addEventListener('DOMContentLoaded', function () {
     section = html.escape(story.section_name)
     visual_brief = html.escape(story.visual_brief, quote=True)
     visual_archetype = html.escape(story.visual_archetype, quote=True)
-    meta = html.escape(f"Written by Intelligent AI • {story.published_label} • {story_word_count(story.body_html)} words")
+    meta = html.escape(f"Written and Researched by AI • {story.published_label}")
 
     return f"""<!doctype html>
 <html lang="en">
@@ -1593,7 +1593,7 @@ def daily_card(story: Story) -> str:
     alt = html.escape(story.thumbnail_alt)
     section = html.escape(story.section_name)
     visual_archetype = html.escape(story.visual_archetype, quote=True)
-    meta = html.escape(f"Written by Intelligent AI • {story.published_label}")
+    meta = html.escape(f"Written and Researched by AI • {story.published_label}")
 
     return f"""
 <article class="story-card story-card--daily" data-section="{section}" data-visual-archetype="{visual_archetype}">
@@ -1870,7 +1870,7 @@ def write_daily_edition_page(stories: list[Story], edition_date: str) -> None:
       <p class="eyebrow">Latest AI Edition</p>
       <h1>{html.escape(edition_date)} — {len(stories)} new stories</h1>
       <p class="article-dek">Today’s full set of new long-form stories across the desks included in the daily workflow.</p>
-      <p class="article-meta">Written by Intelligent AI</p>
+      <p class="article-meta">Written and Researched by AI</p>
       <ol>
         {items}
       </ol>
@@ -1904,7 +1904,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!text) return;
 
     if (text.startsWith("By ")) {
-      el.textContent = text.replace(/^By\s+[^•]+/, "Written by Intelligent AI");
+      el.textContent = text.replace(/^By\s+[^•]+/, "Written and Researched by AI");
     }
   });
 });
