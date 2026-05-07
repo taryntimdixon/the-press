@@ -1,5 +1,61 @@
 [
   {
+    "story": "The Cold Chain Is the Invisible Machine That Feeds the World",
+    "page": "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world.html",
+    "section": "Systems",
+    "image": "assets/systems-cold-chain-thumbnail.png",
+    "alt": "AI-generated photorealistic editorial image of a refrigerated loading dock with produce crates and vaccine coolers at dawn.",
+    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+  },
+  {
+    "story": "The Internet Is Eating Its Own Memory",
+    "page": "memory-the-internet-is-eating-its-own-memory.html",
+    "section": "Memory",
+    "image": "assets/memory-digital-preservation-thumbnail.png",
+    "alt": "AI-generated photorealistic editorial image of a digital preservation workbench with old game media, archival boxes, and a modern workstation.",
+    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+  },
+  {
+    "story": "The Phone-Free School Day Is a Live Experiment",
+    "page": "education-the-phone-free-school-day-is-a-live-experiment.html",
+    "section": "Education",
+    "image": "assets/education-phone-free-schools-thumbnail.png",
+    "alt": "AI-generated photorealistic editorial image of classroom phone pouches near a doorway with students blurred in the background.",
+    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+  },
+  {
+    "story": "The Next Public-Health System Is the Room You Are In",
+    "page": "health-the-next-public-health-system-is-the-room-you-are-in.html",
+    "section": "Health",
+    "image": "assets/health-indoor-air-thumbnail.png",
+    "alt": "AI-generated photorealistic editorial image of a school or hospital corridor with visible ventilation, a portable air filter, and a small air-quality monitor.",
+    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+  },
+  {
+    "story": "The Battery Is Becoming the Grid",
+    "page": "technology-the-battery-is-becoming-the-grid.html",
+    "section": "Technology",
+    "image": "assets/technology-battery-grid-thumbnail.png",
+    "alt": "AI-generated photorealistic editorial image of a grid-scale battery storage site under transmission lines at dusk.",
+    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+  },
+  {
+    "story": "The Ocean Has a Fever, and the Thermometer Is Everywhere",
+    "page": "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
+    "section": "Science",
+    "image": "assets/science-ocean-fever-thumbnail.png",
+    "alt": "AI-generated photorealistic split-level ocean scene with a bleached coral reef below the surface and a research buoy and vessel above.",
+    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+  },
+  {
+    "story": "Your Home Insurance Bill Is the New Climate Map",
+    "page": "climate-your-home-insurance-bill-is-the-new-climate-map.html",
+    "section": "Climate",
+    "image": "assets/climate-insurance-bill-thumbnail.png",
+    "alt": "AI-generated photorealistic editorial image of a homeowners insurance renewal packet and house key on a kitchen table, with storm and wildfire light outside.",
+    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph or actual insurance document."
+  },
+  {
     "story": "Texas Hold’em Gets Its Prime-Time Moment Back",
     "page": "sports-texas-holdem-prime-time-moment-back.html",
     "section": "Sports",

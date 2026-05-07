@@ -3,7 +3,7 @@
     "name": "The Press",
     "tagline": "AI Powered News",
     "baseUrl": "https://thepress.live",
-    "editionNote": "Issue Four • Tuesday, April 7, 2026 • Reported features, analysis, essays, and visible source notes",
+    "editionNote": "Issue Five • Thursday, May 7, 2026 • Seven new long-form source-led features with photorealistic AI thumbnails",
     "description": "AI powered news across politics, culture, technology, economics, education, health, philosophy, science, world, and opinion.",
     "contactEmail": "tips@thepress.example",
     "newsletterTitle": "Get the front page without the noise.",
@@ -26,6 +26,13 @@
   "homepage": {
     "heroSlots": 7,
     "leadOrder": [
+      "climate-your-home-insurance-bill-is-the-new-climate-map.html",
+      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
+      "technology-the-battery-is-becoming-the-grid.html",
+      "health-the-next-public-health-system-is-the-room-you-are-in.html",
+      "education-the-phone-free-school-day-is-a-live-experiment.html",
+      "memory-the-internet-is-eating-its-own-memory.html",
+      "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world.html",
       "article.html",
       "food-atla-noho-closing.html",
       "science-artemis-ii-proved-the-moon-is-an-engineering-project-again.html",
@@ -35,12 +42,20 @@
       "health-measles-is-not-a-childhood-memory-anymore.html"
     ],
     "secondary": [
+      "climate-your-home-insurance-bill-is-the-new-climate-map.html",
+      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
+      "technology-the-battery-is-becoming-the-grid.html",
+      "health-the-next-public-health-system-is-the-room-you-are-in.html",
       "technology-musk-altman-openai-court-battle.html",
       "technology-ai-needs-electricity-steel-and-time.html",
       "health-bird-flu-changed-farm-policy-before-it-changed-human-medicine.html",
       "economics-shelter-is-still-the-inflation-story-people-live-inside.html"
     ],
     "mostRead": [
+      "climate-your-home-insurance-bill-is-the-new-climate-map.html",
+      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
+      "technology-the-battery-is-becoming-the-grid.html",
+      "health-the-next-public-health-system-is-the-room-you-are-in.html",
       "technology-musk-altman-openai-court-battle.html",
       "article.html",
       "health-measles-is-not-a-childhood-memory-anymore.html",
@@ -49,6 +64,10 @@
       "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html"
     ],
     "editorsPicks": [
+      "climate-your-home-insurance-bill-is-the-new-climate-map.html",
+      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
+      "technology-the-battery-is-becoming-the-grid.html",
+      "health-the-next-public-health-system-is-the-room-you-are-in.html",
       "food-atla-noho-closing.html",
       "technology-musk-altman-openai-court-battle.html",
       "science-artemis-ii-proved-the-moon-is-an-engineering-project-again.html",
@@ -156,6 +175,33 @@
       "copy": "Arguments anchored in public facts, not hot air.",
       "eyebrow": "Opinion Desk",
       "artwork": "assets/section-opinion.svg"
+    },
+    {
+      "slug": "climate",
+      "name": "Climate",
+      "filename": "section-climate.html",
+      "headline": "Climate",
+      "copy": "Risk, adaptation, insurance, heat, water, and the practical systems that decide what resilience costs.",
+      "eyebrow": "Climate Desk",
+      "artwork": ""
+    },
+    {
+      "slug": "memory",
+      "name": "Memory",
+      "filename": "section-memory.html",
+      "headline": "Memory",
+      "copy": "Digital preservation, archives, games, platforms, libraries, and the recent past before it disappears.",
+      "eyebrow": "Memory Desk",
+      "artwork": ""
+    },
+    {
+      "slug": "systems",
+      "name": "Systems",
+      "filename": "section-systems.html",
+      "headline": "Systems",
+      "copy": "The hidden infrastructures behind food, medicine, power, logistics, risk, and daily life.",
+      "eyebrow": "Systems Desk",
+      "artwork": ""
     }
   ],
   "authors": [
@@ -171,6 +217,7 @@
         "CDC"
       ],
       "stories": [
+        "health-the-next-public-health-system-is-the-room-you-are-in.html",
         "health-bird-flu-changed-farm-policy-before-it-changed-human-medicine.html",
         "health-measles-is-not-a-childhood-memory-anymore.html"
       ]
@@ -187,6 +234,7 @@
         "consumption"
       ],
       "stories": [
+        "climate-your-home-insurance-bill-is-the-new-climate-map.html",
         "economics-shelter-is-still-the-inflation-story-people-live-inside.html",
         "economics-the-consumer-has-not-quit-the-economy-still-feels-cautious.html"
       ]
@@ -218,6 +266,7 @@
         "audiences"
       ],
       "stories": [
+        "memory-the-internet-is-eating-its-own-memory.html",
         "culture-streaming-grew-up-and-became-tv-again.html",
         "culture-the-crowd-came-back-the-old-economics-did-not.html",
         "food-atla-noho-closing.html"
@@ -265,6 +314,7 @@
         "manufacturing"
       ],
       "stories": [
+        "technology-the-battery-is-becoming-the-grid.html",
         "technology-pentagon-ai-classified-networks.html",
         "technology-musk-altman-openai-court-battle.html",
         "technology-ai-needs-electricity-steel-and-time.html"
@@ -282,6 +332,7 @@
         "learning"
       ],
       "stories": [
+        "education-the-phone-free-school-day-is-a-live-experiment.html",
         "education-the-college-comeback-is-real-it-is-also-uneven.html",
         "education-school-recovery-is-now-an-attendance-story.html"
       ]
@@ -298,6 +349,7 @@
         "missions"
       ],
       "stories": [
+        "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
         "science-artemis-ii-proved-the-moon-is-an-engineering-project-again.html"
       ]
     },
@@ -328,11 +380,346 @@
         "sports media"
       ],
       "stories": [
+        "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world.html",
         "sports-texas-holdem-prime-time-moment-back.html"
       ]
     }
   ],
   "stories": [
+    {
+      "slug": "climate-your-home-insurance-bill-is-the-new-climate-map",
+      "filename": "climate-your-home-insurance-bill-is-the-new-climate-map.html",
+      "title": "Your Home Insurance Bill Is the New Climate Map",
+      "section": "Climate",
+      "sectionSlug": "climate",
+      "type": "Feature",
+      "author": "Owen Barrett",
+      "authorSlug": "owen-barrett",
+      "authorRole": "Economics Correspondent",
+      "publishedLabel": "May 7, 2026 • 9:00 a.m. EDT",
+      "updatedLabel": "May 7, 2026 • 9:00 a.m. EDT",
+      "publishedIso": "2026-05-07T09:00:00-04:00",
+      "updatedIso": "2026-05-07T09:00:00-04:00",
+      "wordCount": "3,893 words",
+      "wordCountNumber": 3893,
+      "readTime": "20 min read",
+      "dek": "Wildfire, hurricane, flood, and heat risk are no longer abstract climate charts. They are arriving as premiums, deductibles, cancellations, FAIR Plan growth, and household math.",
+      "image": "assets/climate-insurance-bill-thumbnail.png",
+      "imageAlt": "AI-generated photorealistic editorial image of a homeowners insurance renewal packet and house key on a kitchen table, with storm and wildfire light outside.",
+      "imageCaptionHtml": "AI-generated photorealistic editorial image for The Press. It illustrates homeowners insurance and climate risk; it is not a documentary photograph or an actual insurance document.",
+      "imageCreditPlain": "AI-generated photorealistic editorial image. Not a documentary photograph or actual insurance document.",
+      "imageAiGenerated": true,
+      "imageAiCaption": "This thumbnail is an AI-generated photorealistic editorial image, not a documentary photograph or a real social-media screenshot.",
+      "keywords": [
+        "home insurance",
+        "climate risk",
+        "wildfire",
+        "flood insurance",
+        "FAIR Plan",
+        "premiums",
+        "reinsurance"
+      ],
+      "asideFile": "content/asides/climate-your-home-insurance-bill-is-the-new-climate-map.html",
+      "bodyFile": "content/bodies/climate-your-home-insurance-bill-is-the-new-climate-map.html",
+      "excerpt": "The climate map most families now feel is not colored red or blue. It arrives as an insurance renewal, a roof requirement, a flood premium, or a mortgage conversation.",
+      "related": [],
+      "imageWidth": 1672,
+      "imageHeight": 941,
+      "heroEligible": true,
+      "socialRailPattern": {
+        "className": "press-feature-social-feature climate-your-home-insurance-bill-is-the-new-climate-map-social-feature",
+        "cardsInBody": 32,
+        "sourceCount": 12,
+        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+      }
+    },
+    {
+      "slug": "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
+      "filename": "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
+      "title": "The Ocean Has a Fever, and the Thermometer Is Everywhere",
+      "section": "Science",
+      "sectionSlug": "science",
+      "type": "Explainer",
+      "author": "Mira Sato",
+      "authorSlug": "mira-sato",
+      "authorRole": "Science Correspondent",
+      "publishedLabel": "May 7, 2026 • 10:10 a.m. EDT",
+      "updatedLabel": "May 7, 2026 • 10:10 a.m. EDT",
+      "publishedIso": "2026-05-07T10:10:00-04:00",
+      "updatedIso": "2026-05-07T10:10:00-04:00",
+      "wordCount": "3,621 words",
+      "wordCountNumber": 3621,
+      "readTime": "19 min read",
+      "dek": "Ocean heat used to sound distant. Now it is visible in coral bleaching alerts, marine heat waves, sea-level records, fisheries stress, stronger rain, and a global observing system that keeps taking the planet's temperature.",
+      "image": "assets/science-ocean-fever-thumbnail.png",
+      "imageAlt": "AI-generated photorealistic split-level ocean scene with a bleached coral reef below the surface and a research buoy and vessel above.",
+      "imageCaptionHtml": "AI-generated photorealistic editorial image for The Press showing ocean monitoring and reef stress. It is not a documentary photograph of a specific reef.",
+      "imageCreditPlain": "AI-generated photorealistic editorial image. Not a documentary photograph.",
+      "imageAiGenerated": true,
+      "imageAiCaption": "This thumbnail is an AI-generated photorealistic editorial image, not a documentary photograph or a real social-media screenshot.",
+      "keywords": [
+        "ocean heat",
+        "coral bleaching",
+        "marine heat waves",
+        "Argo",
+        "NOAA",
+        "Copernicus",
+        "WMO",
+        "climate science"
+      ],
+      "asideFile": "content/asides/science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
+      "bodyFile": "content/bodies/science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
+      "excerpt": "The ocean is not just warming in the abstract. It is storing heat, moving it, revealing it through reefs, storms, fisheries, and the instruments drifting through its depths.",
+      "related": [],
+      "imageWidth": 1672,
+      "imageHeight": 941,
+      "heroEligible": true,
+      "socialRailPattern": {
+        "className": "press-feature-social-feature science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere-social-feature",
+        "cardsInBody": 32,
+        "sourceCount": 11,
+        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+      }
+    },
+    {
+      "slug": "technology-the-battery-is-becoming-the-grid",
+      "filename": "technology-the-battery-is-becoming-the-grid.html",
+      "title": "The Battery Is Becoming the Grid",
+      "section": "Technology",
+      "sectionSlug": "technology",
+      "type": "Analysis",
+      "author": "Julian Mercado",
+      "authorSlug": "julian-mercado",
+      "authorRole": "Technology & Industry Correspondent",
+      "publishedLabel": "May 7, 2026 • 11:20 a.m. EDT",
+      "updatedLabel": "May 7, 2026 • 11:20 a.m. EDT",
+      "publishedIso": "2026-05-07T11:20:00-04:00",
+      "updatedIso": "2026-05-07T11:20:00-04:00",
+      "wordCount": "3,512 words",
+      "wordCountNumber": 3512,
+      "readTime": "18 min read",
+      "dek": "Grid batteries, electric cars, lithium supply chains, virtual power plants, and interconnection queues are turning storage from a gadget story into the shock absorber of the power system.",
+      "image": "assets/technology-battery-grid-thumbnail.png",
+      "imageAlt": "AI-generated photorealistic editorial image of a grid-scale battery storage site under transmission lines at dusk.",
+      "imageCaptionHtml": "AI-generated photorealistic editorial image for The Press showing utility-scale battery storage. It is not a documentary photograph of a specific facility.",
+      "imageCreditPlain": "AI-generated photorealistic editorial image. Not a documentary photograph.",
+      "imageAiGenerated": true,
+      "imageAiCaption": "This thumbnail is an AI-generated photorealistic editorial image, not a documentary photograph or a real social-media screenshot.",
+      "keywords": [
+        "battery storage",
+        "grid",
+        "virtual power plants",
+        "EVs",
+        "lithium",
+        "interconnection",
+        "CAISO",
+        "EIA"
+      ],
+      "asideFile": "content/asides/technology-the-battery-is-becoming-the-grid.html",
+      "bodyFile": "content/bodies/technology-the-battery-is-becoming-the-grid.html",
+      "excerpt": "The battery story is no longer only about phones or cars. It is about evening peaks, grid queues, backup power, critical minerals, and who gets paid for flexibility.",
+      "related": [],
+      "imageWidth": 1672,
+      "imageHeight": 941,
+      "heroEligible": true,
+      "socialRailPattern": {
+        "className": "press-feature-social-feature technology-the-battery-is-becoming-the-grid-social-feature",
+        "cardsInBody": 32,
+        "sourceCount": 11,
+        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+      }
+    },
+    {
+      "slug": "health-the-next-public-health-system-is-the-room-you-are-in",
+      "filename": "health-the-next-public-health-system-is-the-room-you-are-in.html",
+      "title": "The Next Public-Health System Is the Room You Are In",
+      "section": "Health",
+      "sectionSlug": "health",
+      "type": "Report",
+      "author": "Ruth Alvarez",
+      "authorSlug": "ruth-alvarez",
+      "authorRole": "Health Correspondent",
+      "publishedLabel": "May 7, 2026 • 12:30 p.m. EDT",
+      "updatedLabel": "May 7, 2026 • 12:30 p.m. EDT",
+      "publishedIso": "2026-05-07T12:30:00-04:00",
+      "updatedIso": "2026-05-07T12:30:00-04:00",
+      "wordCount": "3,214 words",
+      "wordCountNumber": 3214,
+      "readTime": "17 min read",
+      "dek": "Ventilation, filtration, humidity, CO2 monitoring, wildfire smoke, infectious aerosols, and heat are turning buildings into the front line of everyday public health.",
+      "image": "assets/health-indoor-air-thumbnail.png",
+      "imageAlt": "AI-generated photorealistic editorial image of a school or hospital corridor with visible ventilation, a portable air filter, and a small air-quality monitor.",
+      "imageCaptionHtml": "AI-generated photorealistic editorial image for The Press showing indoor-air infrastructure. It is not a documentary photograph of a specific school or hospital.",
+      "imageCreditPlain": "AI-generated photorealistic editorial image. Not a documentary photograph.",
+      "imageAiGenerated": true,
+      "imageAiCaption": "This thumbnail is an AI-generated photorealistic editorial image, not a documentary photograph or a real social-media screenshot.",
+      "keywords": [
+        "indoor air",
+        "ventilation",
+        "filtration",
+        "ASHRAE 241",
+        "CDC",
+        "EPA",
+        "public health",
+        "schools"
+      ],
+      "asideFile": "content/asides/health-the-next-public-health-system-is-the-room-you-are-in.html",
+      "bodyFile": "content/bodies/health-the-next-public-health-system-is-the-room-you-are-in.html",
+      "excerpt": "Public health does not stop at the clinic door. It lives in classrooms, offices, buses, hospitals, apartments, vents, filters, and the invisible air people share.",
+      "related": [],
+      "imageWidth": 1672,
+      "imageHeight": 941,
+      "heroEligible": true,
+      "socialRailPattern": {
+        "className": "press-feature-social-feature health-the-next-public-health-system-is-the-room-you-are-in-social-feature",
+        "cardsInBody": 32,
+        "sourceCount": 10,
+        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+      }
+    },
+    {
+      "slug": "education-the-phone-free-school-day-is-a-live-experiment",
+      "filename": "education-the-phone-free-school-day-is-a-live-experiment.html",
+      "title": "The Phone-Free School Day Is a Live Experiment",
+      "section": "Education",
+      "sectionSlug": "education",
+      "type": "Feature",
+      "author": "Lena Park",
+      "authorSlug": "lena-park",
+      "authorRole": "Education Correspondent",
+      "publishedLabel": "May 7, 2026 • 1:40 p.m. EDT",
+      "updatedLabel": "May 7, 2026 • 1:40 p.m. EDT",
+      "publishedIso": "2026-05-07T13:40:00-04:00",
+      "updatedIso": "2026-05-07T13:40:00-04:00",
+      "wordCount": "3,371 words",
+      "wordCountNumber": 3371,
+      "readTime": "17 min read",
+      "dek": "As states and districts restrict student phones, schools are testing whether attention can be rebuilt by policy, culture, storage pouches, enforcement, and trust.",
+      "image": "assets/education-phone-free-schools-thumbnail.png",
+      "imageAlt": "AI-generated photorealistic editorial image of classroom phone pouches near a doorway with students blurred in the background.",
+      "imageCaptionHtml": "AI-generated photorealistic editorial image for The Press showing a phone-free classroom setup. It is not a documentary photograph of a specific school.",
+      "imageCreditPlain": "AI-generated photorealistic editorial image. Not a documentary photograph.",
+      "imageAiGenerated": true,
+      "imageAiCaption": "This thumbnail is an AI-generated photorealistic editorial image, not a documentary photograph or a real social-media screenshot.",
+      "keywords": [
+        "phones in schools",
+        "student attention",
+        "teen mental health",
+        "social media",
+        "UNESCO",
+        "Pew",
+        "Common Sense Media"
+      ],
+      "asideFile": "content/asides/education-the-phone-free-school-day-is-a-live-experiment.html",
+      "bodyFile": "content/bodies/education-the-phone-free-school-day-is-a-live-experiment.html",
+      "excerpt": "The phone-free school day is not just a ban. It is an experiment in attention, belonging, discipline, emergency anxiety, teacher workload, and what school is for.",
+      "related": [],
+      "imageWidth": 1672,
+      "imageHeight": 941,
+      "heroEligible": true,
+      "socialRailPattern": {
+        "className": "press-feature-social-feature education-the-phone-free-school-day-is-a-live-experiment-social-feature",
+        "cardsInBody": 32,
+        "sourceCount": 10,
+        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+      }
+    },
+    {
+      "slug": "memory-the-internet-is-eating-its-own-memory",
+      "filename": "memory-the-internet-is-eating-its-own-memory.html",
+      "title": "The Internet Is Eating Its Own Memory",
+      "section": "Memory",
+      "sectionSlug": "memory",
+      "type": "Essay",
+      "author": "Nia Calder",
+      "authorSlug": "nia-calder",
+      "authorRole": "Culture Correspondent",
+      "publishedLabel": "May 7, 2026 • 2:50 p.m. EDT",
+      "updatedLabel": "May 7, 2026 • 2:50 p.m. EDT",
+      "publishedIso": "2026-05-07T14:50:00-04:00",
+      "updatedIso": "2026-05-07T14:50:00-04:00",
+      "wordCount": "3,358 words",
+      "wordCountNumber": 3358,
+      "readTime": "17 min read",
+      "dek": "Video games, websites, software, streams, and born-digital culture are disappearing in plain sight, forcing libraries, fans, archivists, companies, and copyright law to decide what the recent past is worth.",
+      "image": "assets/memory-digital-preservation-thumbnail.png",
+      "imageAlt": "AI-generated photorealistic editorial image of a digital preservation workbench with old game media, archival boxes, and a modern workstation.",
+      "imageCaptionHtml": "AI-generated photorealistic editorial image for The Press showing digital preservation work. It uses no real game logos or copyrighted characters.",
+      "imageCreditPlain": "AI-generated photorealistic editorial image. Not a documentary photograph.",
+      "imageAiGenerated": true,
+      "imageAiCaption": "This thumbnail is an AI-generated photorealistic editorial image, not a documentary photograph or a real social-media screenshot.",
+      "keywords": [
+        "video game preservation",
+        "digital preservation",
+        "copyright",
+        "Internet Archive",
+        "GOG",
+        "software preservation",
+        "libraries"
+      ],
+      "asideFile": "content/asides/memory-the-internet-is-eating-its-own-memory.html",
+      "bodyFile": "content/bodies/memory-the-internet-is-eating-its-own-memory.html",
+      "excerpt": "Digital culture feels permanent because it is everywhere. That is the illusion. Games, websites, files, links, and platforms can disappear faster than paper ever did.",
+      "related": [],
+      "imageWidth": 1672,
+      "imageHeight": 941,
+      "heroEligible": true,
+      "socialRailPattern": {
+        "className": "press-feature-social-feature memory-the-internet-is-eating-its-own-memory-social-feature",
+        "cardsInBody": 32,
+        "sourceCount": 11,
+        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+      }
+    },
+    {
+      "slug": "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
+      "filename": "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world.html",
+      "title": "The Cold Chain Is the Invisible Machine That Feeds the World",
+      "section": "Systems",
+      "sectionSlug": "systems",
+      "type": "Deep Dive",
+      "author": "The Press",
+      "authorSlug": "the-press",
+      "authorRole": "Editorial Desk",
+      "publishedLabel": "May 7, 2026 • 4:00 p.m. EDT",
+      "updatedLabel": "May 7, 2026 • 4:00 p.m. EDT",
+      "publishedIso": "2026-05-07T16:00:00-04:00",
+      "updatedIso": "2026-05-07T16:00:00-04:00",
+      "wordCount": "3,283 words",
+      "wordCountNumber": 3283,
+      "readTime": "17 min read",
+      "dek": "Refrigerated trucks, warehouses, vaccines, fish, fruit, insulin, power bills, refrigerants, and wasted food are all part of one hidden system: the cold chain.",
+      "image": "assets/systems-cold-chain-thumbnail.png",
+      "imageAlt": "AI-generated photorealistic editorial image of a refrigerated loading dock with produce crates and vaccine coolers at dawn.",
+      "imageCaptionHtml": "AI-generated photorealistic editorial image for The Press showing cold-chain logistics. It is not a documentary photograph of a specific warehouse.",
+      "imageCreditPlain": "AI-generated photorealistic editorial image. Not a documentary photograph.",
+      "imageAiGenerated": true,
+      "imageAiCaption": "This thumbnail is an AI-generated photorealistic editorial image, not a documentary photograph or a real social-media screenshot.",
+      "keywords": [
+        "cold chain",
+        "food waste",
+        "refrigeration",
+        "vaccines",
+        "logistics",
+        "UNEP",
+        "FAO",
+        "WHO",
+        "UNICEF"
+      ],
+      "asideFile": "content/asides/systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world.html",
+      "bodyFile": "content/bodies/systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world.html",
+      "excerpt": "The cold chain is why strawberries survive a continent, vaccines survive a rural road, and food waste becomes a climate problem instead of only a kitchen problem.",
+      "related": [],
+      "imageWidth": 1672,
+      "imageHeight": 941,
+      "heroEligible": true,
+      "socialRailPattern": {
+        "className": "press-feature-social-feature systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world-social-feature",
+        "cardsInBody": 32,
+        "sourceCount": 10,
+        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+      }
+    },
     {
       "slug": "sports-texas-holdem-prime-time-moment-back",
       "filename": "sports-texas-holdem-prime-time-moment-back.html",
