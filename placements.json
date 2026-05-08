@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-08T00:28:26.625325+00:00",
+  "generated_at": "2026-05-08T10:21:23.129817+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -97,25 +97,25 @@
         "section": "Memory"
       },
       {
-        "count": 6,
+        "count": 4,
         "latest_ts": 1778175600.0,
         "story_id": "education-the-phone-free-school-day-is-a-live-experiment",
         "section": "Education"
       },
       {
-        "count": 6,
+        "count": 4,
         "latest_ts": 1778171400.0,
         "story_id": "health-the-next-public-health-system-is-the-room-you-are-in",
         "section": "Health"
       },
       {
-        "count": 8,
+        "count": 6,
         "latest_ts": 1778167200.0,
         "story_id": "technology-the-battery-is-becoming-the-grid",
         "section": "Technology"
       },
       {
-        "count": 9,
+        "count": 7,
         "latest_ts": 1778163000.0,
         "story_id": "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
         "section": "Science"
@@ -127,7 +127,7 @@
         "section": "Sports"
       },
       {
-        "count": 9,
+        "count": 7,
         "latest_ts": 1777813200.0,
         "story_id": "food-atla-noho-closing",
         "section": "Culture"
