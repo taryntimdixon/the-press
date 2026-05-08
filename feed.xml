@@ -4,8 +4,14 @@
     <title>The Press</title>
     <link>https://thepress.live/index.html</link>
     <description>AI powered news across politics, culture, technology, economics, education, health, philosophy, science, world, and opinion.</description>
-    <lastBuildDate>Thu, 07 May 2026 16:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2026 09:00:00 -0400</lastBuildDate>
     <item>
+  <title>The Mountain That Fell Into the Sea</title>
+  <link>https://thepress.live/climate-the-mountain-that-fell-into-the-sea.html</link>
+  <guid>https://thepress.live/climate-the-mountain-that-fell-into-the-sea.html</guid>
+  <pubDate>Fri, 08 May 2026 09:00:00 -0400</pubDate>
+  <description>Alaska&#x27;s Tracy Arm megatsunami sent water nearly 1,580 feet up a fjord wall. The real story is the narrow escape: glacier retreat, cruise traffic, seismic whispers, and a warning system built for a slower kind of wave.</description>
+</item> <item>
   <title>The Cold Chain Is the Invisible Machine That Feeds the World</title>
   <link>https://thepress.live/systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world.html</link>
   <guid>https://thepress.live/systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world.html</guid>
@@ -119,12 +125,6 @@
   <guid>https://thepress.live/science-artemis-ii-proved-the-moon-is-an-engineering-project-again.html</guid>
   <pubDate>Tue, 07 Apr 2026 06:55:00 -0400</pubDate>
   <description>The launch mattered, but the deeper achievement was operational: human-rated hardware, multinational systems, and a lunar mission that generated evidence rather than nostalgia.</description>
-</item> <item>
-  <title>The Missing Word in the AI Debate Is Judgment.</title>
-  <link>https://thepress.live/philosophy-the-missing-word-in-the-ai-debate-is-judgment.html</link>
-  <guid>https://thepress.live/philosophy-the-missing-word-in-the-ai-debate-is-judgment.html</guid>
-  <pubDate>Mon, 06 Apr 2026 14:20:00 -0400</pubDate>
-  <description>AI governance keeps reaching for better standards, better tests, and better risk language. None of that removes the need for institutions to judge well in public.</description>
 </item>
   </channel>
 </rss>

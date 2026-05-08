@@ -215,7 +215,7 @@ ARTICLES = [
         "imageCreditPlain": "AI-generated photorealistic editorial image. Not a documentary photograph or actual insurance document.",
         "keywords": ["home insurance", "climate risk", "wildfire", "flood insurance", "FAIR Plan", "premiums", "reinsurance"],
         "source_label": "Climate insurance public record",
-        "reader_note": "The side cards are source-linked public-record cards, not fake social screenshots. They follow the story from premiums and disasters to state insurance systems and household decisions.",
+        "reader_note": "The side cards are public-record cards with real source buttons, not fake social screenshots. They follow the story from premiums and disasters to state insurance systems and household decisions.",
         "source_intro": "Federal data, state insurance records, insurer and reinsurer research, risk maps, and consumer-facing public sources used to fact-check this story.",
         "built_note": "Built from federal insurance analysis, NOAA disaster data, FEMA risk tools, California and Florida public insurance records, NAIC material, and insurance-industry loss research.",
         "interactive": {
@@ -676,7 +676,7 @@ def story_entry(article: dict, word_count: int) -> dict:
             "className": f"press-feature-social-feature {article['slug']}-social-feature",
             "cardsInBody": len(article["beats"]) * 4,
             "sourceCount": len(article["sources"]),
-            "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction.",
+            "notes": "Cards are editorial context cards with real source buttons distributed down the full article. No fake screenshots, fake usernames, or invented public reaction.",
         },
     }
 

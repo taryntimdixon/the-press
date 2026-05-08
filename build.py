@@ -319,7 +319,7 @@ def thumbnail_source_index() -> list[dict]:
 def merge_search_row(primary: dict, fallback: dict) -> dict:
     merged = {**fallback, **primary}
     for field in ("image", "imageAlt", "imageWidth", "imageHeight", "publishedIso", "updatedIso", "keywords"):
-        if not merged.get(field) and fallback.get(field):
+        if fallback.get(field):
             merged[field] = fallback[field]
     return merged
 
@@ -1186,7 +1186,7 @@ def render_section(section: dict) -> str:
         cards = '<p class="empty-state">No stories published in this section yet.</p>'
     else:
         cards = "\n".join(story_card(story, archive=True) for story in stories)
-    art = f'<img class="page-art" src="{h(section["artwork"])}" alt="{h(section["headline"])} desk artwork" />' if section.get("artwork") else ""
+    art = f'\n    <img class="page-art" src="{h(section["artwork"])}" alt="{h(section["headline"])} desk artwork" />' if section.get("artwork") else ""
     main = f"""
 <main class="page">
   <section class="section-landing page-hero--with-art">
@@ -1194,8 +1194,7 @@ def render_section(section: dict) -> str:
       <p class="eyebrow">{h(section['eyebrow'])}</p>
       <h1>{h(section['headline'])}</h1>
       <p class="section-copy">{h(section['copy'])}</p>
-    </div>
-    {art}
+    </div>{art}
   </section>
   <section class="cards-section">
     <div class="cards-grid cards-grid--archive">

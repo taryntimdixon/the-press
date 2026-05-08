@@ -3,7 +3,7 @@
     "name": "The Press",
     "tagline": "AI Powered News",
     "baseUrl": "https://thepress.live",
-    "editionNote": "Issue Five • Thursday, May 7, 2026 • Seven new long-form source-led features with photorealistic AI thumbnails",
+    "editionNote": "Issue Five • Friday, May 8, 2026 • New source-led Alaska megatsunami feature with visible source rails",
     "description": "AI powered news across politics, culture, technology, economics, education, health, philosophy, science, world, and opinion.",
     "contactEmail": "tips@thepress.example",
     "newsletterTitle": "Get the front page without the noise.",
@@ -26,6 +26,7 @@
   "homepage": {
     "heroSlots": 7,
     "leadOrder": [
+      "climate-the-mountain-that-fell-into-the-sea.html",
       "climate-your-home-insurance-bill-is-the-new-climate-map.html",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
       "technology-the-battery-is-becoming-the-grid.html",
@@ -42,6 +43,7 @@
       "health-measles-is-not-a-childhood-memory-anymore.html"
     ],
     "secondary": [
+      "climate-the-mountain-that-fell-into-the-sea.html",
       "climate-your-home-insurance-bill-is-the-new-climate-map.html",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
       "technology-the-battery-is-becoming-the-grid.html",
@@ -52,6 +54,7 @@
       "economics-shelter-is-still-the-inflation-story-people-live-inside.html"
     ],
     "mostRead": [
+      "climate-the-mountain-that-fell-into-the-sea.html",
       "climate-your-home-insurance-bill-is-the-new-climate-map.html",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
       "technology-the-battery-is-becoming-the-grid.html",
@@ -64,6 +67,7 @@
       "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html"
     ],
     "editorsPicks": [
+      "climate-the-mountain-that-fell-into-the-sea.html",
       "climate-your-home-insurance-bill-is-the-new-climate-map.html",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
       "technology-the-battery-is-becoming-the-grid.html",
@@ -349,6 +353,7 @@
         "missions"
       ],
       "stories": [
+        "climate-the-mountain-that-fell-into-the-sea.html",
         "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
         "science-artemis-ii-proved-the-moon-is-an-engineering-project-again.html"
       ]
@@ -386,6 +391,58 @@
     }
   ],
   "stories": [
+    {
+      "slug": "climate-the-mountain-that-fell-into-the-sea",
+      "filename": "climate-the-mountain-that-fell-into-the-sea.html",
+      "title": "The Mountain That Fell Into the Sea",
+      "section": "Climate",
+      "sectionSlug": "climate",
+      "type": "Feature",
+      "author": "Mira Sato",
+      "authorSlug": "mira-sato",
+      "authorRole": "Science Correspondent",
+      "publishedLabel": "May 8, 2026 • 9:00 a.m. EDT",
+      "updatedLabel": "May 8, 2026 • 9:00 a.m. EDT",
+      "publishedIso": "2026-05-08T09:00:00-04:00",
+      "updatedIso": "2026-05-08T09:00:00-04:00",
+      "wordCount": "3,308 words",
+      "wordCountNumber": 3308,
+      "readTime": "17 min read",
+      "dek": "Alaska's Tracy Arm megatsunami sent water nearly 1,580 feet up a fjord wall. The real story is the narrow escape: glacier retreat, cruise traffic, seismic whispers, and a warning system built for a slower kind of wave.",
+      "image": "assets/alaska-tracy-arm-megatsunami-thumbnail.jpg",
+      "imageAlt": "AI-generated photorealistic editorial image of a narrow Alaskan fjord at dawn after a landslide-generated megatsunami near blue glacier ice.",
+      "imageCaptionHtml": "AI-generated photorealistic editorial image for The Press. It illustrates the Tracy Arm landslide-tsunami hazard; it is not a documentary photograph of the August 2025 event.",
+      "imageCreditPlain": "AI-generated photorealistic editorial image. Not a documentary photograph.",
+      "imageAiGenerated": true,
+      "imageAiCaption": "This thumbnail is an AI-generated photorealistic editorial image, not a documentary photograph or real event image.",
+      "keywords": [
+        "Tracy Arm",
+        "Alaska megatsunami",
+        "landslide tsunami",
+        "South Sawyer Glacier",
+        "climate risk",
+        "cruise safety",
+        "USGS",
+        "glacier retreat"
+      ],
+      "asideFile": "content/asides/climate-the-mountain-that-fell-into-the-sea.html",
+      "bodyFile": "content/bodies/climate-the-mountain-that-fell-into-the-sea.html",
+      "excerpt": "In Tracy Arm, the mountain moved before the tourist day began. The wave left no death toll, but it left a map of what safety has to become.",
+      "related": [
+        "climate-your-home-insurance-bill-is-the-new-climate-map.html",
+        "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
+        "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world.html"
+      ],
+      "imageWidth": 1672,
+      "imageHeight": 941,
+      "heroEligible": true,
+      "socialRailPattern": {
+        "className": "press-feature-social-feature climate-the-mountain-that-fell-into-the-sea-social-feature",
+        "cardsInBody": 36,
+        "sourceCount": 12,
+        "notes": "Cards are scientific and public-record context cards with real source buttons distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+      }
+    },
     {
       "slug": "climate-your-home-insurance-bill-is-the-new-climate-map",
       "filename": "climate-your-home-insurance-bill-is-the-new-climate-map.html",
@@ -430,7 +487,7 @@
         "className": "press-feature-social-feature climate-your-home-insurance-bill-is-the-new-climate-map-social-feature",
         "cardsInBody": 32,
         "sourceCount": 12,
-        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+        "notes": "Cards are editorial context cards with real source buttons distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
       }
     },
     {
@@ -478,7 +535,7 @@
         "className": "press-feature-social-feature science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere-social-feature",
         "cardsInBody": 32,
         "sourceCount": 11,
-        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+        "notes": "Cards are editorial context cards with real source buttons distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
       }
     },
     {
@@ -526,7 +583,7 @@
         "className": "press-feature-social-feature technology-the-battery-is-becoming-the-grid-social-feature",
         "cardsInBody": 32,
         "sourceCount": 11,
-        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+        "notes": "Cards are editorial context cards with real source buttons distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
       }
     },
     {
@@ -574,7 +631,7 @@
         "className": "press-feature-social-feature health-the-next-public-health-system-is-the-room-you-are-in-social-feature",
         "cardsInBody": 32,
         "sourceCount": 10,
-        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+        "notes": "Cards are editorial context cards with real source buttons distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
       }
     },
     {
@@ -621,7 +678,7 @@
         "className": "press-feature-social-feature education-the-phone-free-school-day-is-a-live-experiment-social-feature",
         "cardsInBody": 32,
         "sourceCount": 10,
-        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+        "notes": "Cards are editorial context cards with real source buttons distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
       }
     },
     {
@@ -668,7 +725,7 @@
         "className": "press-feature-social-feature memory-the-internet-is-eating-its-own-memory-social-feature",
         "cardsInBody": 32,
         "sourceCount": 11,
-        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+        "notes": "Cards are editorial context cards with real source buttons distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
       }
     },
     {
@@ -717,7 +774,7 @@
         "className": "press-feature-social-feature systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world-social-feature",
         "cardsInBody": 32,
         "sourceCount": 10,
-        "notes": "Cards are source-linked editorial context cards distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
+        "notes": "Cards are editorial context cards with real source buttons distributed down the full article. No fake screenshots, fake usernames, or invented public reaction."
       }
     },
     {
@@ -768,7 +825,7 @@
         "className": "press-social-feature poker-prime-time-feature",
         "cardsInBody": 24,
         "sourceCount": 52,
-        "notes": "Cards are text-only/source-linked context cards distributed through the full article to the source notes. No fake screenshots, fake usernames, or invented public reaction. Thumbnail is labeled AI-generated editorial art."
+        "notes": "Cards are text-only context cards with real source buttons distributed through the full article to the source notes. No fake screenshots, fake usernames, or invented public reaction. Thumbnail is labeled AI-generated editorial art."
       },
       "staticInteractive": {
         "snippet": "content/snippets/sports-texas-holdem-prime-time-moment-back-interactive-visuals.html",

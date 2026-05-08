@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-07T11:25:02.517153+00:00",
+  "generated_at": "2026-05-08T00:28:26.625325+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,59 +9,31 @@
   },
   "home": {
     "hero": [
+      "climate-the-mountain-that-fell-into-the-sea",
       "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
       "memory-the-internet-is-eating-its-own-memory",
-      "education-the-phone-free-school-day-is-a-live-experiment",
-      "health-the-next-public-health-system-is-the-room-you-are-in"
+      "education-the-phone-free-school-day-is-a-live-experiment"
     ],
     "secondary": [
+      "health-the-next-public-health-system-is-the-room-you-are-in",
       "technology-the-battery-is-becoming-the-grid",
-      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
-      "climate-your-home-insurance-bill-is-the-new-climate-map"
+      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere"
     ],
     "most_read": [
-      "sports-texas-holdem-prime-time-moment-back",
-      "technology-pentagon-ai-classified-networks",
-      "food-atla-noho-closing",
-      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
-      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button"
-    ],
-    "editors_picks": [
-      "technology-musk-altman-openai-court-battle",
-      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
-      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label"
-    ],
-    "latest": [
-      "technology-the-battery-is-becoming-the-grid",
-      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
       "climate-your-home-insurance-bill-is-the-new-climate-map",
       "sports-texas-holdem-prime-time-moment-back",
       "technology-pentagon-ai-classified-networks",
       "food-atla-noho-closing",
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington"
+    ],
+    "editors_picks": [
       "technology-musk-altman-openai-court-battle",
-      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
-      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
       "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
-      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
-      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
-      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test"
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label"
     ],
-    "daily": [
-      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
-      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
-      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
-      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
-      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
-      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
-      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
-      "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
-      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
-    ],
-    "breaking": [
+    "latest": [
+      "health-the-next-public-health-system-is-the-room-you-are-in",
       "technology-the-battery-is-becoming-the-grid",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
       "climate-your-home-insurance-bill-is-the-new-climate-map",
@@ -77,7 +49,41 @@
       "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
       "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight"
     ],
+    "daily": [
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
+      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
+      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
+      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
+      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
+      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
+      "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
+      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
+    ],
+    "breaking": [
+      "health-the-next-public-health-system-is-the-room-you-are-in",
+      "technology-the-battery-is-becoming-the-grid",
+      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
+      "climate-your-home-insurance-bill-is-the-new-climate-map",
+      "sports-texas-holdem-prime-time-moment-back",
+      "technology-pentagon-ai-classified-networks",
+      "food-atla-noho-closing",
+      "technology-musk-altman-openai-court-battle",
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
+      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
+      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
+      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label"
+    ],
     "desk_pulse": [
+      {
+        "count": 2,
+        "latest_ts": 1778245200.0,
+        "story_id": "climate-the-mountain-that-fell-into-the-sea",
+        "section": "Climate"
+      },
       {
         "count": 3,
         "latest_ts": 1778184000.0,
@@ -113,12 +119,6 @@
         "latest_ts": 1778163000.0,
         "story_id": "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
         "section": "Science"
-      },
-      {
-        "count": 1,
-        "latest_ts": 1778158800.0,
-        "story_id": "climate-your-home-insurance-bill-is-the-new-climate-map",
-        "section": "Climate"
       },
       {
         "count": 1,

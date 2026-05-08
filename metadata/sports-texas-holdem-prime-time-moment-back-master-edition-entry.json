@@ -46,7 +46,7 @@
     "className": "press-social-feature poker-prime-time-feature",
     "cardsInBody": 24,
     "sourceCount": 52,
-    "notes": "Cards are text-only/source-linked context cards distributed through the full article to the source notes. No fake screenshots, fake usernames, or invented public reaction. Thumbnail is labeled AI-generated editorial art."
+    "notes": "Cards are text-only context cards with real source buttons distributed through the full article to the source notes. No fake screenshots, fake usernames, or invented public reaction. Thumbnail is labeled AI-generated editorial art."
   },
   "staticInteractive": {
     "snippet": "content/snippets/sports-texas-holdem-prime-time-moment-back-interactive-visuals.html",

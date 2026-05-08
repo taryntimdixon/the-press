@@ -283,7 +283,7 @@
     "side": "right",
     "kicker": "Source Trail",
     "title": "Every rail card points down to the receipts.",
-    "body": "These are source-linked editorial context cards, not fake screenshots, fake usernames, or invented public reaction.",
+    "body": "These are editorial context cards with real source buttons, not fake screenshots, fake usernames, or invented public reaction.",
     "sourceIds": [
       "press-social-rail-standard",
       "press-repo-readme"

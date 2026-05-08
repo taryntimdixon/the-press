@@ -6028,17 +6028,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function installSocialRailEnhancements(context) {
-    document.querySelectorAll('.press-static-post').forEach((card) => {
-      if (card.querySelector('.press-static-post__receipt-badge')) return;
-      const sourceIds = (card.getAttribute('data-source-ids') || '')
-        .split(/\s+/)
-        .filter(Boolean);
-      const badge = document.createElement('span');
-      badge.className = 'press-static-post__receipt-badge';
-      badge.textContent = sourceIds.length ? `${sourceIds.length} receipts` : 'Source-linked';
-      card.appendChild(badge);
-    });
-
     if (document.querySelector('.press-social-feature')) return;
 
     const asideStack = context.article.querySelector('.article-aside .sticky-stack') || context.article.querySelector('.article-aside');
@@ -6049,7 +6038,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sidecar.setAttribute('data-living-sidecar', '');
     sidecar.innerHTML = `
       <h2>Story rail</h2>
-      <p>This rail is source-linked and generated from the article on this page. It does not imitate a social platform.</p>
+      <p>This rail is generated from the article on this page. It does not imitate a social platform.</p>
       <div class="press-living-sidecar__actions">
         <button type="button" data-living-open="sources">Source constellation</button>
         <button type="button" data-living-open="places">Map the places</button>
@@ -6067,9 +6056,17 @@ document.addEventListener("DOMContentLoaded", () => {
       renderResumeCard(context, saved);
     }
 
-    let queued = false;
-    const save = () => {
-      queued = false;
+    const saveInterval = 900;
+    let saveTimer = 0;
+    let lastSavedAt = 0;
+    const save = (options = {}) => {
+      if (saveTimer) {
+        window.clearTimeout(saveTimer);
+        saveTimer = 0;
+      }
+      const now = Date.now();
+      if (!options.force && now - lastSavedAt < saveInterval) return;
+      lastSavedAt = now;
       const snapshot = buildProgressSnapshot(context);
       if (!snapshot) return;
       writeProgress(context.key, snapshot);
@@ -6078,14 +6075,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (progressText) progressText.textContent = `${Math.round(snapshot.progress)}%`;
     };
 
-    window.addEventListener('scroll', () => {
-      if (queued) return;
-      queued = true;
-      window.requestAnimationFrame(save);
-    }, { passive: true });
+    const scheduleSave = () => {
+      if (saveTimer) return;
+      const elapsed = Date.now() - lastSavedAt;
+      const wait = Math.max(0, saveInterval - elapsed);
+      saveTimer = window.setTimeout(() => {
+        saveTimer = 0;
+        window.requestAnimationFrame(() => save());
+      }, wait);
+    };
 
-    window.addEventListener('pagehide', save);
-    save();
+    window.addEventListener('scroll', scheduleSave, { passive: true });
+
+    window.addEventListener('pagehide', () => save({ force: true }));
+    save({ force: true });
   }
 
   function installArticleAtmosphere(context) {
@@ -7163,6 +7166,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!paragraph.id) paragraph.id = `living-beat-${index + 1}`;
         return {
           id: paragraph.id,
+          node: paragraph,
           title: index === 0 ? 'Opening' : `Beat ${index + 1}`,
           summary: shorten(cleanText(paragraph.textContent), 135),
         };
@@ -7173,6 +7177,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!heading.id) heading.id = `living-beat-${index + 1}`;
       return {
         id: heading.id,
+        node: heading,
         title: cleanText(heading.textContent),
         summary: shorten(cleanText(findNextParagraphText(heading)), 145),
       };
@@ -7302,8 +7307,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateCurrentBeat(context) {
     const widget = document.querySelector('[data-living-current-beat]');
     if (!widget) return;
-    const progress = buildProgressSnapshot(context);
     const active = currentBeat(context);
+    const progress = buildProgressSnapshot(context, active);
     const title = active?.title || 'Reading';
     const percent = Math.round(progress?.progress || 0);
     widget.querySelector('strong').textContent = title;
@@ -7315,19 +7320,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const offset = 140;
     let active = context.beats[0] || null;
     context.beats.forEach((beat) => {
-      const node = document.getElementById(beat.id);
+      const node = beat.node || document.getElementById(beat.id);
       if (node && node.getBoundingClientRect().top <= offset) active = beat;
     });
     return active;
   }
 
-  function buildProgressSnapshot(context) {
+  function buildProgressSnapshot(context, beat = currentBeat(context)) {
     const rect = context.article.getBoundingClientRect();
     const scrollY = window.scrollY || window.pageYOffset || 0;
     const articleTop = scrollY + rect.top;
     const articleHeight = Math.max(1, context.article.scrollHeight - window.innerHeight * 0.65);
     const progress = Math.max(0, Math.min(100, ((scrollY - articleTop) / articleHeight) * 100));
-    const beat = currentBeat(context);
     return {
       key: context.key,
       title: context.story.title,

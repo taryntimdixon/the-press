@@ -7027,7 +7027,7 @@ html[data-theme="dark"] body.page-article .article-source-drawer__list p{
 /* ATLA_SOCIAL_FEATURE_START
    Reusable static-social feature rails for The Press.
    Pattern: .press-social-feature > .press-social-row > left cards / center story / right cards.
-   Use it for future longform stories that need source-linked social context without live embeds.
+   Use it for future longform stories that need source-aware social context without live embeds.
 */
 body.page-article:has(.press-social-feature) .article > .article-shell{
   grid-template-columns:1fr !important;
@@ -7068,6 +7068,9 @@ body.page-article:has(.press-social-feature) .article > .article-shell > .articl
   display:grid;
   gap:1.1rem;
 }
+body.page-article:has(.press-social-feature)::before{
+  display:none;
+}
 .press-social-row{
   display:grid;
   grid-template-columns:minmax(190px,250px) minmax(0,760px) minmax(190px,250px);
@@ -7089,7 +7092,9 @@ body.page-article:has(.press-social-feature) .article > .article-shell > .articl
   border:1px solid var(--line);
   border-radius:calc(var(--radius) + 2px);
   padding:clamp(1.15rem,2vw,1.8rem);
-  box-shadow:var(--shadow);
+  box-shadow:0 10px 24px rgba(24,28,38,.055);
+  backdrop-filter:none;
+  contain:layout paint;
 }
 .press-social-content{grid-area:story;}
 .press-social-sources{
@@ -7132,9 +7137,10 @@ body.page-article:has(.press-social-feature) .article > .article-shell > .articl
   border:1px solid color-mix(in srgb, var(--line) 86%, var(--accent));
   border-radius:18px;
   background:var(--surface);
-  box-shadow:0 14px 34px rgba(24,28,38,.09);
+  box-shadow:0 8px 18px rgba(24,28,38,.055);
   padding:.78rem;
   color:var(--ink);
+  contain:layout paint;
   --rail-art-a:var(--accent);
   --rail-art-b:#a94842;
   --rail-art-c:#e8bc63;
@@ -7448,7 +7454,7 @@ body.page-article:has(.press-social-feature) .article > .article-shell > .articl
    .press-static-post--with-image + .press-static-post__media.
 */
 .press-static-post--with-image{padding:.7rem;}
-.press-static-post__media{margin:.18rem 0 .68rem;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:var(--surface-2);box-shadow:0 10px 24px rgba(24,28,38,.08);}
+.press-static-post__media{margin:.18rem 0 .68rem;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:var(--surface-2);box-shadow:0 5px 12px rgba(24,28,38,.045);}
 .press-static-post__media img{display:block;width:100%;aspect-ratio:4 / 5;object-fit:cover;background:var(--surface-2);}
 .press-static-post__media figcaption{margin:0;padding:.38rem .5rem;border-top:1px solid var(--line);background:color-mix(in srgb,var(--surface) 84%,var(--accent-soft));color:var(--muted);font-size:.64rem;line-height:1.22;}
 .press-static-post--with-image .press-static-post__visual{min-height:auto;padding:.62rem;margin:.2rem 0 .58rem;}
@@ -7470,7 +7476,7 @@ body.page-article:has(.press-social-feature) .article > .article-shell > .articl
 .press-static-post--with-real-image::after,
 .press-static-post--text-only::after{content:none;display:none;}
 .press-static-post--with-real-image{padding:.7rem;}
-.press-static-post__media--real{margin:.18rem 0 .68rem;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:var(--surface-2);box-shadow:0 10px 24px rgba(24,28,38,.08);}
+.press-static-post__media--real{margin:.18rem 0 .68rem;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:var(--surface-2);box-shadow:0 5px 12px rgba(24,28,38,.045);}
 .press-static-post__media--real img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--surface-2);}
 .press-static-post__media--real figcaption{margin:0;padding:.38rem .5rem;border-top:1px solid var(--line);background:color-mix(in srgb,var(--surface) 84%,var(--accent-soft));color:var(--muted);font-size:.64rem;line-height:1.22;}
 .press-static-post__media--illustration{
@@ -7479,7 +7485,7 @@ body.page-article:has(.press-social-feature) .article > .article-shell > .articl
   border-radius:15px;
   overflow:hidden;
   background:var(--surface-2);
-  box-shadow:0 12px 26px rgba(24,28,38,.1);
+  box-shadow:0 5px 12px rgba(24,28,38,.045);
 }
 .press-static-post__media--illustration img{
   display:block;
@@ -7633,6 +7639,26 @@ body.page-article:has(.press-social-feature) .article > .article-shell > .articl
   outline-offset:4px;
 }
 
+body.page-article:has(.press-social-feature) .article-body,
+body.page-article:has(.press-social-feature) .hero-figure,
+body.page-article:has(.press-social-feature) .article-trust-card,
+body.page-article:has(.press-social-feature) .listen-controls,
+body.page-article:has(.press-social-feature) .info-box{
+  backdrop-filter:none !important;
+}
+
+@supports (content-visibility:auto){
+  body.page-article:has(.press-social-feature) .press-social-row{
+    content-visibility:auto;
+    contain-intrinsic-size:auto 760px;
+  }
+
+  body.page-article:has(.press-social-feature) .press-static-post{
+    content-visibility:auto;
+    contain-intrinsic-size:auto 430px;
+  }
+}
+
 body.page-home .home-hero,
 body.page-home .home-grid,
 body.page-home .latest-section,
@@ -7657,6 +7683,11 @@ body.page-article:has(.press-social-feature) .hero-figure img{
   aspect-ratio:auto !important;
   object-fit:contain !important;
   object-position:center center;
+}
+
+body.page-article:has(.climate-the-mountain-that-fell-into-the-sea-social-feature) .hero-figure{
+  width:min(100%, 62rem);
+  margin-inline:auto;
 }
 
 /* Stable homepage editorial scale: keep the no-lag renderer, but restore the larger story presentation. */
@@ -8108,23 +8139,6 @@ body.page-home .lead-nav,
   width:100%;
   border-radius:12px;
   justify-content:center;
-}
-
-.press-static-post__receipt-badge{
-  position:absolute;
-  z-index:3;
-  top:.55rem;
-  right:.55rem;
-  border:1px solid rgba(255,255,255,.7);
-  border-radius:999px;
-  padding:.18rem .44rem;
-  background:color-mix(in srgb,var(--surface) 86%,#fff);
-  color:var(--accent);
-  font-size:.58rem;
-  font-weight:900;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  box-shadow:0 8px 18px rgba(20,26,36,.08);
 }
 
 .press-living-drawer[hidden]{
