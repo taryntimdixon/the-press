@@ -3,7 +3,7 @@
     "name": "The Press",
     "tagline": "AI Powered News",
     "baseUrl": "https://thepress.live",
-    "editionNote": "Issue Five • Friday, May 8, 2026 • New source-led Alaska megatsunami feature with visible source rails",
+    "editionNote": "Issue Five • Friday, May 8, 2026 • New source-led U.S. military power feature with visible rail cards",
     "description": "AI powered news across politics, culture, technology, economics, education, health, philosophy, science, world, and opinion.",
     "contactEmail": "tips@thepress.example",
     "newsletterTitle": "Get the front page without the noise.",
@@ -26,6 +26,7 @@
   "homepage": {
     "heroSlots": 7,
     "leadOrder": [
+      "world-americas-military-year-is-a-map-of-force.html",
       "climate-the-mountain-that-fell-into-the-sea.html",
       "climate-your-home-insurance-bill-is-the-new-climate-map.html",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
@@ -43,6 +44,7 @@
       "health-measles-is-not-a-childhood-memory-anymore.html"
     ],
     "secondary": [
+      "world-americas-military-year-is-a-map-of-force.html",
       "climate-the-mountain-that-fell-into-the-sea.html",
       "climate-your-home-insurance-bill-is-the-new-climate-map.html",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
@@ -54,6 +56,7 @@
       "economics-shelter-is-still-the-inflation-story-people-live-inside.html"
     ],
     "mostRead": [
+      "world-americas-military-year-is-a-map-of-force.html",
       "climate-the-mountain-that-fell-into-the-sea.html",
       "climate-your-home-insurance-bill-is-the-new-climate-map.html",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
@@ -67,6 +70,7 @@
       "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html"
     ],
     "editorsPicks": [
+      "world-americas-military-year-is-a-map-of-force.html",
       "climate-the-mountain-that-fell-into-the-sea.html",
       "climate-your-home-insurance-bill-is-the-new-climate-map.html",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
@@ -303,6 +307,7 @@
         "supply chains"
       ],
       "stories": [
+        "world-americas-military-year-is-a-map-of-force.html",
         "world-europes-defense-turn-is-now-a-budget-supply-chain-and-time-problem.html"
       ]
     },
@@ -391,6 +396,63 @@
     }
   ],
   "stories": [
+    {
+      "slug": "world-americas-military-year-is-a-map-of-force",
+      "filename": "world-americas-military-year-is-a-map-of-force.html",
+      "title": "America's Military Year Is a Map of Force",
+      "section": "World",
+      "sectionSlug": "world",
+      "type": "Analysis",
+      "author": "Samir Haddad",
+      "authorSlug": "samir-haddad",
+      "authorRole": "World Affairs Correspondent",
+      "publishedLabel": "May 8, 2026 • 11:00 a.m. EDT",
+      "updatedLabel": "May 8, 2026 • 11:00 a.m. EDT",
+      "publishedIso": "2026-05-08T11:00:00-04:00",
+      "updatedIso": "2026-05-08T11:00:00-04:00",
+      "wordCount": "3,754 words",
+      "wordCountNumber": 3754,
+      "readTime": "19 min read",
+      "dek": "From the Maduro raid to the Iran war, Hormuz, cartel boat strikes, classified AI and the defense factory floor, 2026 shows how U.S. power now moves through operations, logistics and production.",
+      "image": "assets/article-thumbnails/2026-05-08-americas-military-year-thumbnail.png",
+      "imageAlt": "U.S. carrier deck at blue hour with a stealth aircraft, deck crew, command screens and distant ship lights.",
+      "imageCaptionHtml": "A carrier-deck visual for The Press, illustrating U.S. military logistics, carrier power, command systems and maritime pressure in 2026.",
+      "imageCreditPlain": "The Press editorial visual.",
+      "imageAiGenerated": true,
+      "imageAiCaption": "Carrier-deck editorial visual for the story.",
+      "imageCaption": "America's 2026 military year moved through carrier decks, logistics chains, AI systems, raids, blockades and industrial production.",
+      "keywords": [
+        "United States military",
+        "Operation Epic Fury",
+        "Iran war",
+        "Strait of Hormuz",
+        "Nicolas Maduro",
+        "Operation Southern Spear",
+        "defense industrial base",
+        "military AI",
+        "Golden Dome",
+        "F-47",
+        "Collaborative Combat Aircraft",
+        "Trump foreign policy"
+      ],
+      "asideFile": "content/asides/world-americas-military-year-is-a-map-of-force.html",
+      "bodyFile": "content/bodies/world-americas-military-year-is-a-map-of-force.html",
+      "excerpt": "America's 2026 military story is a map of force: Maduro, Iran, Hormuz, cartel boats, AI, drones, munitions, logistics and the politics that turn tools into strategy.",
+      "related": [
+        "technology-pentagon-ai-classified-networks.html",
+        "world-europes-defense-turn-is-now-a-budget-supply-chain-and-time-problem.html",
+        "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world.html"
+      ],
+      "imageWidth": 1672,
+      "imageHeight": 941,
+      "heroEligible": true,
+      "socialRailPattern": {
+        "className": "press-social-feature press-feature-social-feature america-force-social-feature",
+        "cardsInBody": 18,
+        "sourceCount": 72,
+        "notes": "Cards are linked source and public-record context cards with local photorealistic editorial images where useful. No fake social screenshots, fake usernames, or invented public reaction."
+      }
+    },
     {
       "slug": "climate-the-mountain-that-fell-into-the-sea",
       "filename": "climate-the-mountain-that-fell-into-the-sea.html",

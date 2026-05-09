@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-08T10:21:23.129817+00:00",
+  "generated_at": "2026-05-09T01:34:56.363174+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -9,30 +9,31 @@
   },
   "home": {
     "hero": [
+      "world-americas-military-year-is-a-map-of-force",
       "climate-the-mountain-that-fell-into-the-sea",
       "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
-      "memory-the-internet-is-eating-its-own-memory",
-      "education-the-phone-free-school-day-is-a-live-experiment"
+      "memory-the-internet-is-eating-its-own-memory"
     ],
     "secondary": [
+      "education-the-phone-free-school-day-is-a-live-experiment",
       "health-the-next-public-health-system-is-the-room-you-are-in",
-      "technology-the-battery-is-becoming-the-grid",
-      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere"
+      "technology-the-battery-is-becoming-the-grid"
     ],
     "most_read": [
+      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
       "climate-your-home-insurance-bill-is-the-new-climate-map",
       "sports-texas-holdem-prime-time-moment-back",
       "technology-pentagon-ai-classified-networks",
-      "food-atla-noho-closing",
-      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington"
+      "food-atla-noho-closing"
     ],
     "editors_picks": [
       "technology-musk-altman-openai-court-battle",
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
-      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
-      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label"
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class"
     ],
     "latest": [
+      "education-the-phone-free-school-day-is-a-live-experiment",
       "health-the-next-public-health-system-is-the-room-you-are-in",
       "technology-the-battery-is-becoming-the-grid",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
@@ -46,8 +47,7 @@
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
       "2026-04-27-nairobi-s-drains-are-running-out-of-room",
       "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
-      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
-      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight"
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label"
     ],
     "daily": [
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
@@ -62,6 +62,7 @@
       "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
     ],
     "breaking": [
+      "education-the-phone-free-school-day-is-a-live-experiment",
       "health-the-next-public-health-system-is-the-room-you-are-in",
       "technology-the-battery-is-becoming-the-grid",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
@@ -74,10 +75,15 @@
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
       "2026-04-27-nairobi-s-drains-are-running-out-of-room",
-      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
-      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label"
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class"
     ],
     "desk_pulse": [
+      {
+        "count": 9,
+        "latest_ts": 1778252400.0,
+        "story_id": "world-americas-military-year-is-a-map-of-force",
+        "section": "World"
+      },
       {
         "count": 2,
         "latest_ts": 1778245200.0,
@@ -97,25 +103,25 @@
         "section": "Memory"
       },
       {
-        "count": 4,
+        "count": 3,
         "latest_ts": 1778175600.0,
         "story_id": "education-the-phone-free-school-day-is-a-live-experiment",
         "section": "Education"
       },
       {
-        "count": 4,
+        "count": 3,
         "latest_ts": 1778171400.0,
         "story_id": "health-the-next-public-health-system-is-the-room-you-are-in",
         "section": "Health"
       },
       {
-        "count": 6,
+        "count": 5,
         "latest_ts": 1778167200.0,
         "story_id": "technology-the-battery-is-becoming-the-grid",
         "section": "Technology"
       },
       {
-        "count": 7,
+        "count": 6,
         "latest_ts": 1778163000.0,
         "story_id": "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
         "section": "Science"
@@ -127,16 +133,10 @@
         "section": "Sports"
       },
       {
-        "count": 7,
+        "count": 6,
         "latest_ts": 1777813200.0,
         "story_id": "food-atla-noho-closing",
         "section": "Culture"
-      },
-      {
-        "count": 1,
-        "latest_ts": 1777422600.0,
-        "story_id": "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
-        "section": "Politics / Security"
       }
     ]
   }
