@@ -418,6 +418,7 @@ function pressSiteAssetUrl(path) {
     extendSectionNavigation();
     setupDarkMode();
     injectShareButtons();
+    bindSourceNoteExternalLinks(document);
     applyDailyCardHover();
 
     loadStoryIndex().then((stories) => {
@@ -720,7 +721,7 @@ if (!hasHomepageTargets) {
       link.removeAttribute('target');
 
       const openSource = () => {
-        window.location.href = link.href;
+        window.location.assign(link.href);
       };
 
       card.addEventListener('click', (event) => {
@@ -1369,6 +1370,21 @@ function enhanceBreakingStrip(stories) {
         const url = new URL(href || raw);
         a.textContent = humanSourceLabel(url.hostname, url.pathname);
       } catch (_) {}
+    });
+  }
+
+  function bindSourceNoteExternalLinks(root) {
+    root.querySelectorAll('#source-notes a[href^="http"], .source-notes a[href^="http"], .article-sources a[href^="http"], .source-list a[href^="http"]').forEach((link) => {
+      if (link.dataset.sourceNoteExternalBound === 'true') return;
+      link.dataset.sourceNoteExternalBound = 'true';
+      link.removeAttribute('target');
+      link.setAttribute('rel', 'noopener noreferrer');
+      link.addEventListener('click', (event) => {
+        const plainClick = event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+        if (!plainClick) return;
+        event.preventDefault();
+        window.location.assign(link.href);
+      });
     });
   }
 
@@ -5382,8 +5398,6 @@ document.addEventListener("DOMContentLoaded", () => {
   'use strict';
 
   const STORAGE = {
-    progressPrefix: 'press-living-progress:',
-    history: 'press-living-reading-history',
     followedTopics: 'press-living-followed-topics',
     readerMode: 'press-living-reader-mode',
     sourceTrail: 'press-living-source-trail',
@@ -5610,9 +5624,231 @@ document.addEventListener("DOMContentLoaded", () => {
       note: 'Port stories tie war, food, shipping, and nuclear risk to one coastline.',
       scene: 'A Black Sea port where sirens, grain corridors, and European security overlap.',
     },
+    {
+      id: 'canary-islands',
+      label: 'Canary Islands',
+      type: 'Atlantic archipelago',
+      address: 'Canary Islands, Spain',
+      names: ['Canary Islands', 'Canaries'],
+      lat: 28.2916,
+      lng: -16.6291,
+      note: 'The Arconian seizure made the Atlantic approach visible before the story moved inland.',
+      scene: 'An Atlantic waypoint where maritime enforcement, island geography, and European demand intersect.',
+    },
+    {
+      id: 'antwerp',
+      label: 'Antwerp',
+      type: 'Port city',
+      address: 'Antwerp, Belgium',
+      names: ['Antwerp', 'Port of Antwerp', 'Port of Antwerp-Bruges'],
+      lat: 51.2194,
+      lng: 4.4025,
+      note: 'Antwerp is one of Europe’s central cocaine-trafficking pressure points.',
+      scene: 'A North Sea logistics hub where containers, customs, corruption pressure, and urban violence meet.',
+    },
+    {
+      id: 'rotterdam',
+      label: 'Rotterdam',
+      type: 'Port city',
+      address: 'Rotterdam, Netherlands',
+      names: ['Rotterdam', 'Port of Rotterdam'],
+      lat: 51.9244,
+      lng: 4.4777,
+      note: 'Rotterdam keeps the story anchored in the North Sea port system.',
+      scene: 'A massive port city where legitimate trade volume creates both prosperity and concealment risk.',
+    },
+    {
+      id: 'algeciras',
+      label: 'Algeciras',
+      type: 'Port city',
+      address: 'Algeciras, Spain',
+      names: ['Algeciras'],
+      lat: 36.1408,
+      lng: -5.4562,
+      note: 'The story cites Spain’s earlier 13-tonne banana-shipment seizure at Algeciras.',
+      scene: 'A Strait of Gibraltar port where Spanish enforcement and global cargo lanes overlap.',
+    },
+    {
+      id: 'hamburg',
+      label: 'Hamburg',
+      type: 'Port city',
+      address: 'Hamburg, Germany',
+      names: ['Hamburg', 'Port of Hamburg'],
+      lat: 53.5511,
+      lng: 9.9937,
+      note: 'Hamburg appears in the story as a previous large European seizure point and a reminder that pressure shifts across ports.',
+      scene: 'A major northern port where legitimate cargo volume creates the kind of scale traffickers try to hide inside.',
+    },
+    {
+      id: 'le-havre',
+      label: 'Le Havre',
+      type: 'Port city',
+      address: 'Le Havre, France',
+      names: ['Le Havre'],
+      lat: 49.4944,
+      lng: 0.1079,
+      note: 'Le Havre keeps France inside the broader port-pressure map described by the article.',
+      scene: 'A Channel port where European logistics, customs pressure, and route displacement can meet.',
+    },
+    {
+      id: 'marseille',
+      label: 'Marseille',
+      type: 'Port city',
+      address: 'Marseille, France',
+      names: ['Marseille'],
+      lat: 43.2965,
+      lng: 5.3698,
+      note: 'The article cites Marseille as one of the cities forced to confront cocaine-linked violence and market pressure.',
+      scene: 'A Mediterranean port city where trafficking pressure can spill from maritime routes into urban life.',
+    },
+    {
+      id: 'united-kingdom',
+      label: 'United Kingdom',
+      type: 'Consumer market',
+      address: 'United Kingdom',
+      names: ['United Kingdom', 'UK', 'Britain', 'British', 'England and Wales'],
+      lat: 54.7024,
+      lng: -3.2766,
+      note: 'The UK is central to the article’s consumer, public-health, wastewater and organised-crime lens.',
+      scene: 'A consumer market where the cocaine story leaves ports and becomes mortality data, wastewater signals, street pressure, and ordinary public life.',
+    },
+    {
+      id: 'ecuador',
+      label: 'Ecuador',
+      type: 'Transit country',
+      address: 'Ecuador',
+      names: ['Ecuador', 'Ecuadorian'],
+      lat: -1.8312,
+      lng: -78.1834,
+      note: 'Ecuador appears in the story as part of the source and transit pressure connected to European demand.',
+      scene: 'An Andean-Pacific pressure point where port violence, gangs, politics, and global cocaine demand intersect.',
+    },
+    {
+      id: 'andean-region',
+      label: 'Andean region',
+      type: 'Source region',
+      address: 'Colombia, Peru, Bolivia and Ecuador',
+      names: ['Andean region', 'Andes', 'Colombia', 'Peru', 'Bolivia'],
+      lat: -9.19,
+      lng: -75.0152,
+      note: 'The article connects European demand back to coca cultivation, production pressure, and source-country harm.',
+      scene: 'A broad production geography where cultivation, processing, armed groups, rural pressure, and global demand become one supply chain.',
+    },
   ];
 
   const ENTITY_LIBRARY = [
+    {
+      id: 'arconian',
+      name: 'Arconian',
+      type: 'Seized vessel',
+      aliases: ['Arconian'],
+      summary: 'The Comoros-flagged ship Spanish authorities tied to the May 2026 seizure of about 30 tonnes of cocaine near the Canary Islands.',
+      why: 'It is the article’s news peg: one vessel that makes a much larger European cocaine market visible.',
+    },
+    {
+      id: 'guardia-civil',
+      name: 'Guardia Civil',
+      type: 'Law-enforcement agency',
+      aliases: ['Guardia Civil'],
+      summary: 'Spain’s national police force with military status, central to maritime and drug-trafficking enforcement.',
+      why: 'The Arconian case begins with Spanish enforcement and the intelligence that led to the interdiction.',
+    },
+    {
+      id: 'euda',
+      name: 'European Union Drugs Agency',
+      type: 'Drug-monitoring agency',
+      aliases: ['European Union Drugs Agency', 'EUDA', 'European Drug Agency'],
+      summary: 'The EU agency that tracks drug use, seizures, wastewater, treatment demand, deaths, and market signals.',
+      why: 'Its cocaine and wastewater data make the story more than a single spectacular seizure.',
+    },
+    {
+      id: 'unodc',
+      name: 'United Nations Office on Drugs and Crime',
+      type: 'UN agency',
+      aliases: ['United Nations Office on Drugs and Crime', 'UNODC'],
+      summary: 'The UN agency whose global drug reports track cocaine production, trafficking routes, and market expansion.',
+      why: 'It connects Europe’s demand to production pressure and source-country violence.',
+    },
+    {
+      id: 'europol',
+      name: 'Europol',
+      type: 'Law-enforcement agency',
+      aliases: ['Europol'],
+      summary: 'The EU law-enforcement agency focused on serious and organised crime, including drug trafficking and criminal networks.',
+      why: 'Europol frames cocaine as a logistics, corruption, violence, and organised-crime problem.',
+    },
+    {
+      id: 'eurojust',
+      name: 'Eurojust',
+      type: 'Judicial cooperation agency',
+      aliases: ['Eurojust'],
+      summary: 'The EU agency that supports cross-border judicial cooperation in major crime cases.',
+      why: 'Drug-trafficking investigations do not stop cleanly at national borders; prosecution has to travel too.',
+    },
+    {
+      id: 'european-ports-alliance',
+      name: 'European Ports Alliance',
+      type: 'Port-security initiative',
+      aliases: ['European Ports Alliance', 'Ports Alliance'],
+      summary: 'An EU-backed public-private effort to harden ports against drug trafficking and organised-crime infiltration.',
+      why: 'It shows that Europe sees ports as systems of economic importance and criminal vulnerability.',
+    },
+    {
+      id: 'national-crime-agency',
+      name: 'National Crime Agency',
+      type: 'UK law-enforcement agency',
+      aliases: ['National Crime Agency', 'NCA'],
+      summary: 'The UK agency that assesses and investigates serious and organised crime, including Class A drug markets.',
+      why: 'It gives the British angle an enforcement baseline rather than treating the UK as only a consumer market.',
+    },
+    {
+      id: 'office-national-statistics',
+      name: 'Office for National Statistics',
+      type: 'Statistics agency',
+      aliases: ['Office for National Statistics', 'ONS'],
+      summary: 'The UK statistics office whose death registrations show cocaine appearing in mortality records.',
+      why: 'It makes the consumer-impact side measurable through death-certificate data.',
+    },
+    {
+      id: 'home-office',
+      name: 'UK Home Office',
+      type: 'Government department',
+      aliases: ['Home Office', 'UK Home Office'],
+      summary: 'The UK department whose wastewater and drug-misuse statistics help estimate cocaine demand.',
+      why: 'Its data helps connect street-level use to city-scale consumption patterns.',
+    },
+    {
+      id: 'port-antwerp-bruges',
+      name: 'Port of Antwerp-Bruges',
+      type: 'Port authority',
+      aliases: ['Port of Antwerp-Bruges', 'Port of Antwerp'],
+      summary: 'A major Belgian port authority at the center of Europe’s cocaine-trafficking pressure.',
+      why: 'The article uses Antwerp to show how legitimate logistics infrastructure becomes a trafficking target.',
+    },
+    {
+      id: 'port-rotterdam',
+      name: 'Port of Rotterdam',
+      type: 'Port authority',
+      aliases: ['Port of Rotterdam'],
+      summary: 'One of Europe’s largest ports and a central node in the North Sea logistics system.',
+      why: 'Rotterdam broadens the port story beyond one country and shows the scale of the enforcement problem.',
+    },
+    {
+      id: 'reuters',
+      name: 'Reuters',
+      type: 'News agency',
+      aliases: ['Reuters'],
+      summary: 'The news agency whose reporting supplied the central Arconian seizure account used in the article.',
+      why: 'It anchors the breaking-news claim in a named reporting source rather than social reaction.',
+    },
+    {
+      id: 'el-pais',
+      name: 'El Pais',
+      type: 'News organization',
+      aliases: ['El Pais', 'El País'],
+      summary: 'The Spanish newspaper whose reporting added court, valuation, and destination context around the Arconian case.',
+      why: 'It gives the Spanish legal and enforcement story more local texture.',
+    },
     {
       id: 'atla',
       name: 'Atla',
@@ -5866,10 +6102,12 @@ document.addEventListener("DOMContentLoaded", () => {
     'Background',
   ];
 
-  const NUMBER_TOKEN_PATTERN = /(^|[^A-Za-z0-9$€£])((?:[$€£]\s?\d[\d,.]*(?:\.\d+)?(?:\s?(?:million|billion|trillion))?)|(?:\d[\d,.]*(?:\.\d+)?\s?(?:%|percent|million|billion|trillion|barrels?|vessels?|tankers?|ships?|crews?|kilometers?|miles?|tons?|gigawatts?|megawatts?|people|families|children|exports?|imports?|capacity|per day)))/gi;
+  const NUMBER_TOKEN_PATTERN = /(^|[^A-Za-z0-9$€£])((?:[$€£]\s?\d[\d,.]*(?:\.\d+)?(?:\s?(?:million|billion|trillion))?)|(?:\d[\d,.]*(?:\.\d+)?(?:\s|-)?(?:%|percent|million|billion|trillion|barrels?|vessels?|tankers?|ships?|crews?|kilometers?|miles?|tonnes?|tons?|gigawatts?|megawatts?|people|families|children|exports?|imports?|capacity|per day)))(?=$|[^A-Za-z0-9])/gi;
+  const SOURCE_NOTE_REF_SELECTOR = '.source-ref a[href^="#source"], a[href^="#source"].source-label, a[data-source-id]:not([data-source-external="true"])';
 
   let activeArticleContext = null;
   let lastFocusedElement = null;
+  let lastSourceClickAt = 0;
 
   function ready(callback) {
     if (document.readyState === 'loading') {
@@ -5894,7 +6132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!article || !body) return;
 
     const story = getCurrentStoryData(article, hero, body);
-    const text = collectReadableText(article);
+    const text = collectReadableText(body, hero);
     const context = {
       article,
       body,
@@ -5910,6 +6148,8 @@ document.addEventListener("DOMContentLoaded", () => {
       evidence: [],
       relationships: { nodes: [], links: [] },
     };
+    numberInlineSourceRefs(context);
+    hydrateRailSourceLinks(context);
     try {
       context.evidence = collectEvidenceMoments(context);
     } catch (_) {
@@ -5924,7 +6164,6 @@ document.addEventListener("DOMContentLoaded", () => {
     activeArticleContext = context;
     installArticleDock(context);
     installSocialRailEnhancements(context);
-    installReadingMemory(context);
     installArticleAtmosphere(context);
     try {
       installArticleIntelligence(context);
@@ -6050,47 +6289,6 @@ document.addEventListener("DOMContentLoaded", () => {
     bindLivingControls(sidecar, context);
   }
 
-  function installReadingMemory(context) {
-    const saved = readProgress(context.key);
-    if (saved && saved.progress > 8 && saved.progress < 92) {
-      renderResumeCard(context, saved);
-    }
-
-    const saveInterval = 900;
-    let saveTimer = 0;
-    let lastSavedAt = 0;
-    const save = (options = {}) => {
-      if (saveTimer) {
-        window.clearTimeout(saveTimer);
-        saveTimer = 0;
-      }
-      const now = Date.now();
-      if (!options.force && now - lastSavedAt < saveInterval) return;
-      lastSavedAt = now;
-      const snapshot = buildProgressSnapshot(context);
-      if (!snapshot) return;
-      writeProgress(context.key, snapshot);
-      rememberReadingItem(snapshot);
-      const progressText = document.querySelector('[data-living-progress-text]');
-      if (progressText) progressText.textContent = `${Math.round(snapshot.progress)}%`;
-    };
-
-    const scheduleSave = () => {
-      if (saveTimer) return;
-      const elapsed = Date.now() - lastSavedAt;
-      const wait = Math.max(0, saveInterval - elapsed);
-      saveTimer = window.setTimeout(() => {
-        saveTimer = 0;
-        window.requestAnimationFrame(() => save());
-      }, wait);
-    };
-
-    window.addEventListener('scroll', scheduleSave, { passive: true });
-
-    window.addEventListener('pagehide', () => save({ force: true }));
-    save({ force: true });
-  }
-
   function installArticleAtmosphere(context) {
     let beat = document.querySelector('[data-living-current-beat]');
     if (!beat) {
@@ -6124,13 +6322,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
 
     document.addEventListener('mouseover', (event) => {
-      const ref = event.target.closest('.source-ref a[href^="#source"], a[href^="#source"].source-label');
-      if (!ref) return;
-      highlightSource(ref.getAttribute('href').slice(1), { soft: true });
+      const ref = event.target.closest(SOURCE_NOTE_REF_SELECTOR);
+      const id = sourceAnchorId(ref);
+      if (!id) return;
+      highlightSource(id, { soft: true });
     });
 
     document.addEventListener('mouseout', (event) => {
-      if (!event.target.closest('.source-ref a[href^="#source"], a[href^="#source"].source-label')) return;
+      if (!event.target.closest(SOURCE_NOTE_REF_SELECTOR)) return;
+      if (Date.now() - lastSourceClickAt < 900) return;
       clearSourceHighlights();
     });
 
@@ -6199,9 +6399,20 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      const inlineSource = event.target.closest(SOURCE_NOTE_REF_SELECTOR);
+      const inlineSourceId = sourceAnchorId(inlineSource);
+      if (inlineSourceId) {
+        event.preventDefault();
+        if (history?.replaceState) history.replaceState(null, '', `#${inlineSourceId}`);
+        lastSourceClickAt = Date.now();
+        highlightSource(inlineSourceId);
+        return;
+      }
+
       const source = event.target.closest('[data-living-source-id]');
       if (source) {
         event.preventDefault();
+        lastSourceClickAt = Date.now();
         highlightSource(source.getAttribute('data-living-source-id'));
         return;
       }
@@ -7029,7 +7240,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function detectPlaces(text, story) {
-    const haystack = normalizeText(`${story.title} ${story.dek} ${(story.keywords || []).join(' ')} ${text}`);
+    const storyText = story.matchedCurrentStory ? `${story.title} ${story.dek} ${(story.keywords || []).join(' ')}` : `${story.title} ${story.dek}`;
+    const haystack = normalizeText(`${storyText} ${text}`);
     const seen = new Set();
     return PLACE_LIBRARY.filter((place) => {
       if (seen.has(place.id)) return false;
@@ -7155,6 +7367,49 @@ document.addEventListener("DOMContentLoaded", () => {
     return sources;
   }
 
+  function numberInlineSourceRefs(context) {
+    if (!context?.body || !context.sources?.length) return;
+    const sourceNumbers = new Map();
+    context.sources.forEach((source, index) => {
+      sourceNumbers.set(source.id, {
+        label: source.label,
+        number: index + 1,
+      });
+    });
+
+    context.body.querySelectorAll('.source-ref a[href^="#source"]').forEach((link) => {
+      const id = (link.getAttribute('href') || '').slice(1);
+      const source = sourceNumbers.get(id);
+      if (!source) return;
+      link.textContent = `[${source.number}]`;
+      link.dataset.sourceNumber = String(source.number);
+      link.setAttribute('aria-label', `Source ${source.number}: ${source.label || 'source note'}`);
+      link.title = `Source ${source.number}${source.label ? `: ${source.label}` : ''}`;
+    });
+  }
+
+  function hydrateRailSourceLinks(context) {
+    if (!context?.body || !context.sources?.length) return;
+    const sourcesById = new Map();
+    context.sources.forEach((source) => {
+      if (!source?.href || !/^https?:\/\//i.test(source.href)) return;
+      sourcesById.set(source.id, source);
+      sourcesById.set(source.id.replace(/^source-/, ''), source);
+    });
+
+    context.body.querySelectorAll('.press-static-post__source a[data-source-id]').forEach((link) => {
+      const sourceKey = link.getAttribute('data-source-id') || '';
+      const source = sourcesById.get(sourceKey) || sourcesById.get(`source-${sourceKey}`);
+      if (!source?.href) return;
+      link.setAttribute('href', source.href);
+      link.removeAttribute('target');
+      link.setAttribute('rel', 'noopener noreferrer');
+      link.setAttribute('data-source-external', 'true');
+      link.setAttribute('aria-label', `Open external source: ${source.label || cleanText(link.textContent) || 'source'}`);
+      link.title = source.label ? `Open ${source.label}` : 'Open external source';
+    });
+  }
+
   function collectTimelineBeats(body) {
     const headings = Array.from(body.querySelectorAll('h2, h3')).filter((heading) => {
       if (heading.closest('#source-notes, .source-notes, .article-sources, .related-block, [data-living-drawer]')) return false;
@@ -7244,15 +7499,6 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  function renderHistoryMiniCard(item) {
-    return `
-      <a class="press-living-history-mini" href="${escapeAttr(item.url)}#${escapeAttr(item.anchor || '')}">
-        <strong>${escapeHtml(shorten(item.title, 72))}</strong>
-        <span>${Math.round(item.progress || 0)}% read</span>
-      </a>
-    `;
-  }
-
   function renderSectionBar(item) {
     const percent = Math.max(8, Math.min(100, item.count * 8));
     return `
@@ -7264,40 +7510,29 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  function renderResumeCard(context, saved) {
-    if (document.querySelector('[data-living-resume-card]')) return;
-    const card = document.createElement('div');
-    card.className = 'press-resume-card';
-    card.setAttribute('data-living-resume-card', '');
-    card.innerHTML = `
-      <div>
-        <span>Saved in this browser</span>
-        <strong>Resume at ${Math.round(saved.progress)}%</strong>
-      </div>
-      <button type="button" data-living-resume>Continue</button>
-      <button type="button" data-living-dismiss-resume aria-label="Dismiss resume card">×</button>
-    `;
-
-    card.querySelector('[data-living-resume]').addEventListener('click', () => {
-      if (saved.anchor) scrollToAnchor(saved.anchor);
-      else window.scrollTo({ top: Math.round((document.documentElement.scrollHeight - window.innerHeight) * (saved.progress / 100)), behavior: 'smooth' });
-    });
-
-    card.querySelector('[data-living-dismiss-resume]').addEventListener('click', () => card.remove());
-    (context.hero || context.article).appendChild(card);
-  }
-
   function highlightSource(id, options = {}) {
     clearSourceHighlights();
     if (!id) return;
     const source = document.getElementById(id);
-    const refs = document.querySelectorAll(`.source-ref a[href="#${cssEscape(id)}"], a.source-label[href="#${cssEscape(id)}"]`);
+    const sourceKey = id.replace(/^source-/, '');
+    const refs = document.querySelectorAll(`.source-ref a[href="#${cssEscape(id)}"], a.source-label[href="#${cssEscape(id)}"], a[data-source-id="${cssEscape(sourceKey)}"], a[data-source-id="${cssEscape(id)}"]`);
     source?.classList.add('is-living-source-highlight');
     refs.forEach((ref) => ref.classList.add('is-living-source-highlight'));
     if (source && !options.soft) {
       source.scrollIntoView({ behavior: 'smooth', block: 'center' });
       window.setTimeout(clearSourceHighlights, 3600);
     }
+  }
+
+  function sourceAnchorId(link) {
+    if (!link) return '';
+    if (link.matches?.('[data-source-external="true"]')) return '';
+    const href = link.getAttribute('href') || '';
+    if (href.startsWith('#source')) return href.slice(1);
+    if (/^https?:\/\//i.test(href)) return '';
+    const sourceId = link.getAttribute('data-source-id') || '';
+    if (!sourceId) return '';
+    return sourceId.startsWith('source-') ? sourceId : `source-${sourceId}`;
   }
 
   function clearSourceHighlights() {
@@ -7342,37 +7577,6 @@ document.addEventListener("DOMContentLoaded", () => {
       anchor: beat?.id || '',
       updatedAt: Date.now(),
     };
-  }
-
-  function readProgress(key) {
-    try {
-      return JSON.parse(localStorage.getItem(STORAGE.progressPrefix + key) || 'null');
-    } catch (_) {
-      return null;
-    }
-  }
-
-  function writeProgress(key, value) {
-    try {
-      localStorage.setItem(STORAGE.progressPrefix + key, JSON.stringify(value));
-    } catch (_) {}
-  }
-
-  function rememberReadingItem(item) {
-    try {
-      const current = readReadingHistory();
-      const next = [item].concat(current.filter((entry) => entry.key !== item.key)).slice(0, 10);
-      localStorage.setItem(STORAGE.history, JSON.stringify(next));
-    } catch (_) {}
-  }
-
-  function readReadingHistory() {
-    try {
-      const items = JSON.parse(localStorage.getItem(STORAGE.history) || '[]');
-      return Array.isArray(items) ? items : [];
-    } catch (_) {
-      return [];
-    }
   }
 
   function cycleReaderMode() {
@@ -7483,6 +7687,7 @@ document.addEventListener("DOMContentLoaded", () => {
       keywords: Array.isArray(match?.keywords) ? match.keywords : [],
       readTime: cleanText(match?.readTime || match?.read_time || ''),
       bodyText: cleanText(body.textContent || ''),
+      matchedCurrentStory: Boolean(match),
     };
   }
 
@@ -7563,10 +7768,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${story.title}\n\n${story.dek}\n\nRead it on The Press: ${url}`;
   }
 
-  function collectReadableText(article) {
-    const clone = article.cloneNode(true);
-    clone.querySelectorAll('script, style, nav, .share-row, [data-living-drawer]').forEach((node) => node.remove());
-    return cleanText(clone.textContent || '');
+  function collectReadableText(root, hero) {
+    const clone = root.cloneNode(true);
+    clone.querySelectorAll('script, style, nav, .share-row, [data-living-drawer], .related-block, #related-stories, .story-card--related, .article-sources, #source-notes, .source-notes, .source-list').forEach((node) => node.remove());
+    const heroText = hero ? cleanText(hero.textContent || '') : '';
+    return cleanText(`${heroText} ${clone.textContent || ''}`);
   }
 
   function scrollToAnchor(id) {
