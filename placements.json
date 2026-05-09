@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-09T17:40:14.706009+00:00",
+  "generated_at": "2026-05-09T22:17:19.820748+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -79,7 +79,7 @@
     ],
     "desk_pulse": [
       {
-        "count": 10,
+        "count": 9,
         "latest_ts": 1778341500.0,
         "story_id": "world-europes-cocaine-boom-is-hiding-in-plain-sight",
         "section": "World"
@@ -103,25 +103,25 @@
         "section": "Memory"
       },
       {
-        "count": 3,
+        "count": 2,
         "latest_ts": 1778175600.0,
         "story_id": "education-the-phone-free-school-day-is-a-live-experiment",
         "section": "Education"
       },
       {
-        "count": 3,
+        "count": 2,
         "latest_ts": 1778171400.0,
         "story_id": "health-the-next-public-health-system-is-the-room-you-are-in",
         "section": "Health"
       },
       {
-        "count": 5,
+        "count": 4,
         "latest_ts": 1778167200.0,
         "story_id": "technology-the-battery-is-becoming-the-grid",
         "section": "Technology"
       },
       {
-        "count": 6,
+        "count": 5,
         "latest_ts": 1778163000.0,
         "story_id": "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
         "section": "Science"
@@ -133,7 +133,7 @@
         "section": "Sports"
       },
       {
-        "count": 6,
+        "count": 5,
         "latest_ts": 1777813200.0,
         "story_id": "food-atla-noho-closing",
         "section": "Culture"
