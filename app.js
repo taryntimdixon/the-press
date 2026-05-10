@@ -1614,12 +1614,12 @@ function enhanceBreakingStrip(stories) {
     const intent = buildShareIntents(context);
     return `
       <div class="share-row__buttons">
-        <a class="share-btn share-btn--instagram" href="${escapeAttribute(intent.instagram)}" target="_blank" rel="noopener noreferrer" data-share-platform="instagram" data-share-app-fallback aria-label="Share on Instagram" title="Instagram">${sharePlatformIcon('instagram')}<span class="sr-only">Instagram</span></a>
-        <a class="share-btn share-btn--x" href="${escapeAttribute(intent.x)}" target="_blank" rel="noopener noreferrer" data-share-platform="x" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
-        <a class="share-btn share-btn--facebook" href="${escapeAttribute(intent.facebook)}" target="_blank" rel="noopener noreferrer" data-share-platform="facebook" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
-        <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(intent.whatsapp)}" target="_blank" rel="noopener noreferrer" data-share-platform="whatsapp" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
-        <a class="share-btn share-btn--messenger" href="${escapeAttribute(intent.messenger)}" target="_blank" rel="noopener noreferrer" data-share-platform="messenger" data-share-app-fallback aria-label="Share on Messenger" title="Messenger">${sharePlatformIcon('messenger')}<span class="sr-only">Messenger</span></a>
-        <a class="share-btn share-btn--discord" href="${escapeAttribute(intent.discord)}" target="_blank" rel="noopener noreferrer" data-share-platform="discord" data-share-app-fallback aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></a>
+        <a class="share-btn share-btn--instagram" href="${escapeAttribute(intent.instagram)}" rel="noopener noreferrer" data-share-platform="instagram" data-share-app-fallback aria-label="Share on Instagram" title="Instagram">${sharePlatformIcon('instagram')}<span class="sr-only">Instagram</span></a>
+        <a class="share-btn share-btn--x" href="${escapeAttribute(intent.x)}" rel="noopener noreferrer" data-share-platform="x" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
+        <a class="share-btn share-btn--facebook" href="${escapeAttribute(intent.facebook)}" rel="noopener noreferrer" data-share-platform="facebook" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
+        <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(intent.whatsapp)}" rel="noopener noreferrer" data-share-platform="whatsapp" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
+        <a class="share-btn share-btn--messenger" href="${escapeAttribute(intent.messenger)}" rel="noopener noreferrer" data-share-platform="messenger" data-share-app-fallback aria-label="Share on Messenger" title="Messenger">${sharePlatformIcon('messenger')}<span class="sr-only">Messenger</span></a>
+        <a class="share-btn share-btn--discord" href="${escapeAttribute(intent.discord)}" rel="noopener noreferrer" data-share-platform="discord" data-share-app-fallback aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></a>
       </div>
     `;
   }
@@ -1642,35 +1642,41 @@ function enhanceBreakingStrip(stories) {
     const encodedTitle = encodeURIComponent(context.title);
     const encodedText = encodeURIComponent(`${context.title} ${context.url}`);
     return {
-      instagram: 'https://www.instagram.com/direct/inbox/',
+      instagram: `https://www.instagram.com/direct/inbox/?share_text=${encodedText}`,
       x: `https://x.com/intent/post?text=${encodedTitle}&url=${encodedUrl}`,
-      facebook: `https://m.facebook.com/sharer.php?u=${encodedUrl}`,
-      whatsapp: `https://wa.me/?text=${encodedText}`,
-      messenger: 'https://www.messenger.com/',
-      discord: 'https://discord.com/channels/@me',
+      facebook: `https://m.facebook.com/?share_text=${encodedText}`,
+      whatsapp: `https://web.whatsapp.com/send?text=${encodedText}`,
+      messenger: `https://www.messenger.com/?share_text=${encodedText}`,
+      discord: `https://discord.com/channels/@me?share_text=${encodedText}`,
     };
   }
 
   function bindShareRow(row, context) {
     row.querySelectorAll('[data-share-platform]').forEach((control) => {
-      control.addEventListener('click', (event) => {
+      control.addEventListener('click', async (event) => {
         if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
-        if (control.matches('[data-share-app-fallback]')) {
-          copyShareUrl(context.url);
-        }
+        if (!control.href || !control.matches('[data-share-app-fallback]')) return;
+        event.preventDefault();
+        await copyShareText(context);
+        window.location.assign(control.href);
       });
     });
   }
 
-  async function copyShareUrl(url) {
+  async function copyShareText(context) {
+    const text = `${context.title} ${context.url}`;
     try {
       if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(url);
+        await navigator.clipboard.writeText(text);
       } else {
-        fallbackCopyText(url);
+        fallbackCopyText(text);
       }
     } catch (_) {
-      // Some browsers block clipboard writes on local pages; the platform still opens.
+      try {
+        fallbackCopyText(text);
+      } catch (__) {
+        // Some browsers block clipboard writes on local pages; the platform still opens.
+      }
     }
   }
 
