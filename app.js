@@ -2865,13 +2865,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateHomeIntro(model) {
-    const h1 = document.querySelector('.home-hero__intro h1');
+    const intro = document.querySelector('.home-hero__intro');
+    if (!intro) return;
 
-    if (h1) {
-      h1.textContent = 'Live Front Page';
-    }
-
-    document.querySelector('.home-hero__intro .section-copy')?.remove();
+    intro.querySelectorAll(':scope > .eyebrow, :scope > h1, :scope > .section-copy').forEach((node) => {
+      node.remove();
+    });
   }
 
   function renderDeskPulse(model) {

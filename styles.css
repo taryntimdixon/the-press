@@ -7783,8 +7783,35 @@ body.page-home .home-hero{
   gap:.9rem;
 }
 
+body.page-home .page{
+  padding-top:.85rem;
+}
+
+body.page-home .home-hero{
+  gap:.55rem;
+}
+
+body.page-home .home-hero__intro{
+  padding-top:0;
+  min-height:0;
+}
+
+body.page-home .home-hero__intro > .eyebrow,
+body.page-home .home-hero__intro > h1,
+body.page-home .home-hero__intro > .section-copy{
+  display:none!important;
+}
+
 body.page-home .home-hero__intro .section-copy{
   display:none;
+}
+
+body.page-home .share-row--site{
+  margin-top:0;
+}
+
+body.page-home .home-grid{
+  margin-top:1rem;
 }
 
 body.page-home .lead-switcher{
