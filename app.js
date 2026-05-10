@@ -1658,10 +1658,6 @@ function enhanceBreakingStrip(stories) {
         if (control.matches('[data-share-app-fallback]')) {
           copyShareUrl(context.url);
         }
-        if (control.href) {
-          event.preventDefault();
-          window.location.assign(control.href);
-        }
       });
     });
   }
