@@ -1644,8 +1644,8 @@ function enhanceBreakingStrip(stories) {
     return {
       instagram: 'https://www.instagram.com/direct/inbox/',
       x: `https://x.com/intent/post?text=${encodedTitle}&url=${encodedUrl}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-      whatsapp: `https://api.whatsapp.com/send?text=${encodedText}`,
+      facebook: `https://m.facebook.com/sharer.php?u=${encodedUrl}`,
+      whatsapp: `https://wa.me/?text=${encodedText}`,
       messenger: 'https://www.messenger.com/',
       discord: 'https://discord.com/channels/@me',
     };
