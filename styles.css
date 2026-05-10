@@ -1436,13 +1436,15 @@ body,
 /* ── Share button row ───────────────────────────────────────────────── */
 .share-row{
   display:flex;
+  flex-direction:column;
   align-items:center;
-  justify-content:flex-start;
+  justify-content:center;
   margin:1rem 0 0;
   padding:0;
   border:0;
   background:transparent;
   box-shadow:none;
+  text-align:center;
 }
 .share-row--site{
   justify-content:center;
@@ -1454,10 +1456,11 @@ body,
 }
 .share-row__buttons{
   display:flex;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
   align-items:center;
-  justify-content:inherit;
+  justify-content:center;
   gap:.5rem;
+  width:100%;
   min-width:0;
 }
 .share-row__status{
@@ -1537,11 +1540,32 @@ body,
     margin-top:.8rem;
   }
   .share-row__buttons{
-    justify-content:inherit;
+    gap:.42rem;
+    justify-content:center;
   }
   .share-btn{
-    flex:0 0 2.55rem;
-    min-width:2.55rem;
+    flex:0 0 2.35rem;
+    width:2.35rem;
+    height:2.35rem;
+    min-width:2.35rem;
+    min-height:2.35rem;
+  }
+  .share-btn__icon,
+  .share-btn__icon svg{
+    width:1.12rem;
+    height:1.12rem;
+  }
+}
+@media (max-width: 380px){
+  .share-row__buttons{
+    gap:.34rem;
+  }
+  .share-btn{
+    flex-basis:2.18rem;
+    width:2.18rem;
+    height:2.18rem;
+    min-width:2.18rem;
+    min-height:2.18rem;
   }
 }
 
