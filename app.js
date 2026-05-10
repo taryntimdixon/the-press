@@ -1618,6 +1618,7 @@ function enhanceBreakingStrip(stories) {
         <a class="share-btn share-btn--x" href="${escapeAttribute(intent.x)}" rel="noopener noreferrer" data-share-platform="x" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
         <a class="share-btn share-btn--facebook" href="${escapeAttribute(intent.facebook)}" rel="noopener noreferrer" data-share-platform="facebook" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
         <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(intent.whatsapp)}" rel="noopener noreferrer" data-share-platform="whatsapp" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
+        <a class="share-btn share-btn--sms" href="${escapeAttribute(intent.sms)}" rel="noopener noreferrer" data-share-platform="sms" aria-label="Share by text message" title="Messages">${sharePlatformIcon('sms')}<span class="sr-only">Messages</span></a>
         <a class="share-btn share-btn--messenger" href="${escapeAttribute(intent.messenger)}" rel="noopener noreferrer" data-share-platform="messenger" data-share-app-fallback aria-label="Share on Messenger" title="Messenger">${sharePlatformIcon('messenger')}<span class="sr-only">Messenger</span></a>
         <a class="share-btn share-btn--discord" href="${escapeAttribute(intent.discord)}" rel="noopener noreferrer" data-share-platform="discord" data-share-app-fallback aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></a>
       </div>
@@ -1630,6 +1631,7 @@ function enhanceBreakingStrip(stories) {
       x: '<svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M18.24 2.25h3.31l-7.23 8.26 8.51 11.24h-6.66l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.84L7.08 4.13H5.12l11.96 15.64Z"/></svg>',
       facebook: '<svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M14 8h3V4h-3c-3.1 0-5 1.9-5 5v3H6v4h3v6h4v-6h3.1l.9-4h-4V9c0-.6.4-1 1-1Z"/></svg>',
       whatsapp: '<svg viewBox="0 0 24 24" focusable="false"><path d="M20.5 11.8a8.3 8.3 0 0 1-12.3 7.3L4 20.3l1.3-4A8.3 8.3 0 1 1 20.5 11.8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path fill="currentColor" d="M8.9 7.6c.3-.3.7-.3 1 0l1 1.4c.2.3.2.6 0 .9l-.5.7c.7 1.4 1.8 2.4 3.2 3.1l.7-.5c.3-.2.7-.2.9 0l1.4 1c.3.2.4.7.1 1-.4.6-1.1 1-1.9.9-3.4-.3-6.4-3.3-6.8-6.7-.1-.8.3-1.5.9-1.8Z"/></svg>',
+      sms: '<svg viewBox="0 0 24 24" focusable="false"><path d="M5 5.5h14a2.5 2.5 0 0 1 2.5 2.5v6.6a2.5 2.5 0 0 1-2.5 2.5h-5.8L8.7 20v-2.9H5a2.5 2.5 0 0 1-2.5-2.5V8A2.5 2.5 0 0 1 5 5.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7 10h10M7 13.5h6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
       messenger: '<svg viewBox="0 0 24 24" focusable="false"><path d="M12 4C7.3 4 3.7 7.3 3.7 11.6c0 2.3 1 4.3 2.7 5.7v2.8l2.6-1.4c.9.3 1.9.5 3 .5 4.7 0 8.3-3.3 8.3-7.6S16.7 4 12 4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path fill="currentColor" d="m7.6 14 3.3-3.5 2.3 2.2 3.5-3.8-3.3 5.2-2.4-2.2L7.6 14Z"/></svg>',
       discord: '<svg viewBox="0 0 24 24" focusable="false"><path d="M7.4 7.9c2.9-1.1 6.3-1.1 9.2 0l1.1 7.4c-1.7 1.4-3.5 2.1-5.7 2.1s-4-.7-5.7-2.1l1.1-7.4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="9.9" cy="12.2" r="1.1" fill="currentColor"/><circle cx="14.1" cy="12.2" r="1.1" fill="currentColor"/><path d="M10 15c1.2.6 2.8.6 4 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
       copy: '<svg viewBox="0 0 24 24" focusable="false"><rect x="8" y="8" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
@@ -1646,6 +1648,7 @@ function enhanceBreakingStrip(stories) {
       x: `https://x.com/intent/post?text=${encodedTitle}&url=${encodedUrl}`,
       facebook: `https://m.facebook.com/?share_text=${encodedText}`,
       whatsapp: `https://web.whatsapp.com/send?text=${encodedText}`,
+      sms: `sms:?&body=${encodedText}`,
       messenger: `https://www.messenger.com/?share_text=${encodedText}`,
       discord: `https://discord.com/channels/@me?share_text=${encodedText}`,
     };
