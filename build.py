@@ -876,9 +876,85 @@ def search_overlay(search_data: list[dict]) -> str:
 """.strip()
 
 
-def page_head(title: str, description: str, canonical: str, jsonld: str = "", extra_links: str = "") -> str:
+def social_meta(
+    title: str,
+    description: str,
+    canonical: str,
+    image: str = "",
+    image_alt: str = "",
+    image_width: object = "",
+    image_height: object = "",
+    og_type: str = "website",
+) -> str:
     canonical_url = absolute_url(canonical)
-    head_extras = "\n".join(f"  {block}" for block in (jsonld, extra_links) if block)
+    image_url = absolute_url(image or "assets/icon-512.png")
+    image_ext = Path(str(image or "assets/icon-512.png")).suffix.lower().lstrip(".")
+    image_type = {
+        "jpg": "image/jpeg",
+        "jpeg": "image/jpeg",
+        "png": "image/png",
+        "webp": "image/webp",
+        "avif": "image/avif",
+        "svg": "image/svg+xml",
+    }.get(image_ext)
+    card_type = "summary_large_image" if image else "summary"
+    lines = [
+        f'<meta property="og:type" content="{h(og_type)}" />',
+        f'<meta property="og:site_name" content="{h(SITE["name"])}" />',
+        f'<meta property="og:title" content="{h(title)}" />',
+        f'<meta property="og:description" content="{h(description)}" />',
+        f'<meta property="og:url" content="{h(canonical_url)}" />',
+        f'<meta property="og:image" content="{h(image_url)}" />',
+        f'<meta property="og:image:secure_url" content="{h(image_url)}" />',
+        f'<meta name="twitter:card" content="{h(card_type)}" />',
+        f'<meta name="twitter:url" content="{h(canonical_url)}" />',
+        f'<meta name="twitter:title" content="{h(title)}" />',
+        f'<meta name="twitter:description" content="{h(description)}" />',
+        f'<meta name="twitter:image" content="{h(image_url)}" />',
+    ]
+    if image_type:
+        lines.append(f'<meta property="og:image:type" content="{h(image_type)}" />')
+    if image_alt:
+        lines.extend([
+            f'<meta property="og:image:alt" content="{h(image_alt)}" />',
+            f'<meta name="twitter:image:alt" content="{h(image_alt)}" />',
+        ])
+    if image_width:
+        lines.append(f'<meta property="og:image:width" content="{h(image_width)}" />')
+    if image_height:
+        lines.append(f'<meta property="og:image:height" content="{h(image_height)}" />')
+    return "\n".join(lines)
+
+
+def page_head(
+    title: str,
+    description: str,
+    canonical: str,
+    jsonld: str = "",
+    extra_links: str = "",
+    social_image: str = "",
+    social_image_alt: str = "",
+    social_image_width: object = "",
+    social_image_height: object = "",
+    og_type: str = "website",
+    social_title: str = "",
+) -> str:
+    canonical_url = absolute_url(canonical)
+    social = social_meta(
+        social_title or title,
+        description,
+        canonical,
+        image=social_image,
+        image_alt=social_image_alt,
+        image_width=social_image_width,
+        image_height=social_image_height,
+        og_type=og_type,
+    )
+    head_extras = "\n".join(
+        "\n".join(f"  {line}" for line in block.splitlines())
+        for block in (social, jsonld, extra_links)
+        if block
+    )
     extras_html = f"\n{head_extras}" if head_extras else ""
     return f"""
 <head>
@@ -959,6 +1035,12 @@ def layout(
     include_progress: bool = False,
     extra_links: str = "",
     extra_scripts: str = "",
+    social_image: str = "",
+    social_image_alt: str = "",
+    social_image_width: object = "",
+    social_image_height: object = "",
+    og_type: str = "website",
+    social_title: str = "",
 ) -> str:
     progress = """
 <div class="reading-progress"><div class="reading-progress__bar" data-reading-progress></div></div>
@@ -970,7 +1052,19 @@ def layout(
     progress_html = f"  {progress}\n" if progress else ""
     return f"""<!doctype html>
 <html lang="en">
-{page_head(title, description, canonical, jsonld, extra_links=extra_links)}
+{page_head(
+    title,
+    description,
+    canonical,
+    jsonld,
+    extra_links=extra_links,
+    social_image=social_image,
+    social_image_alt=social_image_alt,
+    social_image_width=social_image_width,
+    social_image_height=social_image_height,
+    og_type=og_type,
+    social_title=social_title,
+)}
 <body class="{h(body_class)}">
   {search_overlay(search_index())}
 {progress_html}  {header(current_section=current_section, current_aux=current_aux)}
@@ -1116,7 +1210,20 @@ def render_homepage() -> str:
   </section>
 </main>
 """.strip()
-    return layout(f"{SITE['name']} — Front Page", SITE["description"], "index.html", "page-home", main, jsonld=jsonld_org())
+    social_story = lead_stories[0] if lead_stories else {}
+    return layout(
+        f"{SITE['name']} — Front Page",
+        SITE["description"],
+        "",
+        "page-home",
+        main,
+        jsonld=jsonld_org(),
+        social_image=social_story.get("image", ""),
+        social_image_alt=social_story.get("imageAlt", ""),
+        social_image_width=social_story.get("imageWidth", ""),
+        social_image_height=social_story.get("imageHeight", ""),
+        social_title=SITE["name"],
+    )
 
 
 def render_archive() -> str:
@@ -1488,6 +1595,12 @@ def render_story(story: dict) -> str:
         include_progress=True,
         extra_links=extra_links,
         extra_scripts=extra_scripts,
+        social_image=story.get("image", ""),
+        social_image_alt=story.get("imageAlt", ""),
+        social_image_width=story.get("imageWidth", ""),
+        social_image_height=story.get("imageHeight", ""),
+        og_type="article",
+        social_title=story["title"],
     )
 
 

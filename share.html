@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Opening share window - The Press</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#f4f0e8" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .share-handoff {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+    .share-handoff__panel {
+      max-width: 34rem;
+    }
+    .share-handoff h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 8vw, 5rem);
+      line-height: .95;
+    }
+    .share-handoff p {
+      margin: 1rem auto 0;
+      max-width: 28rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .share-handoff a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.2rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .72rem 1rem;
+      background: var(--surface);
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body class="page-share">
+  <main class="share-handoff">
+    <section class="share-handoff__panel" aria-labelledby="share-handoff-title">
+      <p class="eyebrow">Share</p>
+      <h1 id="share-handoff-title">Opening</h1>
+      <p data-share-handoff-copy>Sending you to the share page. The link is copied first for apps that do not accept prefilled web shares.</p>
+      <a href="index.html" data-share-return>Back to The Press</a>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const params = new URLSearchParams(window.location.search);
+      const platform = (params.get('platform') || '').toLowerCase();
+      const rawUrl = params.get('url') || 'https://thepress.live/';
+      const title = params.get('title') || 'The Press';
+      const text = params.get('text') || title;
+      const returnUrl = params.get('return') || document.referrer || 'index.html';
+      const heading = document.getElementById('share-handoff-title');
+      const returnLink = document.querySelector('[data-share-return]');
+
+      let shareUrl = 'https://thepress.live/';
+      try {
+        const parsed = new URL(rawUrl);
+        if (parsed.protocol === 'https:' || parsed.protocol === 'http:') shareUrl = parsed.href;
+      } catch (_) {}
+
+      if (returnLink) returnLink.href = returnUrl;
+
+      const encodedUrl = encodeURIComponent(shareUrl);
+      const encodedTitle = encodeURIComponent(title);
+      const encodedText = encodeURIComponent(`${title} ${shareUrl}`);
+      const destinations = {
+        x: `https://x.com/intent/post?text=${encodedTitle}&url=${encodedUrl}`,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+        whatsapp: `https://api.whatsapp.com/send?text=${encodedText}`,
+        instagram: 'https://www.instagram.com/direct/inbox/',
+        messenger: 'https://www.messenger.com/',
+        discord: 'https://discord.com/channels/@me',
+      };
+      const names = {
+        x: 'X',
+        facebook: 'Facebook',
+        whatsapp: 'WhatsApp',
+        instagram: 'Instagram',
+        messenger: 'Messenger',
+        discord: 'Discord',
+      };
+      const destination = destinations[platform] || destinations.x;
+      if (heading) heading.textContent = `Opening ${names[platform] || 'share'}`;
+
+      const copyFirst = platform === 'instagram' || platform === 'messenger' || platform === 'discord';
+      const copyLink = copyFirst && navigator.clipboard?.writeText
+        ? navigator.clipboard.writeText(`${text} ${shareUrl}`).catch(() => {})
+        : Promise.resolve();
+
+      copyLink.finally(() => {
+        window.setTimeout(() => {
+          window.location.replace(destination);
+        }, 180);
+      });
+    })();
+  </script>
+</body>
+</html>

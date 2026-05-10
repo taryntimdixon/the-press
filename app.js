@@ -1557,62 +1557,140 @@ function enhanceBreakingStrip(stories) {
 
   /* ── Share buttons ────────────────────────────────────────────────── */
   function injectShareButtons() {
-    const article = document.querySelector('.article, .article-shell');
-    const body = document.querySelector('.article-body');
-    if (!article || !body) return;
-    if (document.querySelector('.share-row')) return;
+    const articleHero = document.querySelector('.article-hero');
+    const articleMeta = articleHero?.querySelector('.article-meta');
+    const articleBody = document.querySelector('.article-body');
+    const homeIntro = document.querySelector('.page-home .home-hero__intro');
+    const contextType = articleHero ? 'article' : (homeIntro ? 'site' : '');
+    const target = articleMeta || articleBody || homeIntro;
+    if (!contextType || !target || document.querySelector('[data-press-share-row]')) return;
 
-    const title = encodeURIComponent(document.title.replace(' — The Press', '').trim());
-    const url = encodeURIComponent(window.location.href);
-    const tweetUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}&via=thepress`;
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+    const context = buildShareContext(contextType);
+    const shareRow = document.createElement('nav');
+    shareRow.className = `share-row share-row--${contextType}`;
+    shareRow.setAttribute('aria-label', context.ariaLabel);
+    shareRow.setAttribute('data-press-share-row', contextType);
+    shareRow.innerHTML = buildShareRowMarkup(context);
 
-    const shareRow = document.createElement('div');
-    shareRow.className = 'share-row';
-    shareRow.innerHTML = `
-      <span class="share-row__label">Share this story</span>
-      <a class="share-btn" href="${tweetUrl}" target="_blank" rel="noopener noreferrer" aria-label="Share on X (Twitter)">
-        𝕏&nbsp;Post
-      </a>
-      <a class="share-btn" href="${linkedInUrl}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
-        in&nbsp;LinkedIn
-      </a>
-      <button class="share-btn share-btn--copy" type="button" data-copy-link aria-label="Copy link to article">
-        🔗&nbsp;Copy link
-      </button>
-      ${navigator.share ? '<button class="share-btn share-btn--native" type="button" data-native-share aria-label="Share via system menu">↗ Share</button>' : ''}
+    if (articleMeta) {
+      articleMeta.insertAdjacentElement('afterend', shareRow);
+    } else if (articleBody) {
+      articleBody.insertAdjacentElement('afterend', shareRow);
+    } else {
+      homeIntro.appendChild(shareRow);
+    }
+
+    bindShareRow(shareRow, context);
+  }
+
+  function buildShareContext(type) {
+    const headline = document.querySelector('.article-headline')?.textContent
+      || document.querySelector('meta[property="og:title"]')?.content
+      || document.title
+      || 'The Press';
+    const title = collapseWhitespace(headline.replace(/\s+[—-]\s+The Press.*$/i, '')) || 'The Press';
+    const description = collapseWhitespace(document.querySelector('meta[name="description"]')?.content || '');
+    const url = getCleanShareUrl();
+    return {
+      type,
+      title: type === 'site' ? 'The Press' : title,
+      text: description || (type === 'site' ? 'AI powered news from The Press.' : title),
+      url,
+      returnUrl: window.location.href,
+      ariaLabel: type === 'site' ? 'Share this page' : 'Share this article',
+    };
+  }
+
+  function getCleanShareUrl() {
+    const canonical = document.querySelector('link[rel="canonical"]')?.href;
+    if (canonical) return canonical;
+    const url = new URL(window.location.href);
+    url.hash = '';
+    url.search = '';
+    return url.href;
+  }
+
+  function buildShareRowMarkup(context) {
+    const intent = buildShareIntents(context);
+    return `
+      <div class="share-row__buttons">
+        <a class="share-btn share-btn--instagram" href="${escapeAttribute(intent.instagram)}" rel="noopener noreferrer" data-share-platform="instagram" data-share-app-fallback aria-label="Share on Instagram" title="Instagram">${sharePlatformIcon('instagram')}<span class="sr-only">Instagram</span></a>
+        <a class="share-btn share-btn--x" href="${escapeAttribute(intent.x)}" rel="noopener noreferrer" data-share-platform="x" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
+        <a class="share-btn share-btn--facebook" href="${escapeAttribute(intent.facebook)}" rel="noopener noreferrer" data-share-platform="facebook" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
+        <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(intent.whatsapp)}" rel="noopener noreferrer" data-share-platform="whatsapp" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
+        <a class="share-btn share-btn--messenger" href="${escapeAttribute(intent.messenger)}" rel="noopener noreferrer" data-share-platform="messenger" data-share-app-fallback aria-label="Share on Messenger" title="Messenger">${sharePlatformIcon('messenger')}<span class="sr-only">Messenger</span></a>
+        <a class="share-btn share-btn--discord" href="${escapeAttribute(intent.discord)}" rel="noopener noreferrer" data-share-platform="discord" data-share-app-fallback aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></a>
+      </div>
     `;
-    body.insertAdjacentElement('afterend', shareRow);
+  }
 
-    // Copy link
-    const copyBtn = shareRow.querySelector('[data-copy-link]');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(window.location.href);
-          copyBtn.textContent = '✓ Copied!';
-          copyBtn.classList.add('copied');
-          setTimeout(() => {
-            copyBtn.innerHTML = '🔗&nbsp;Copy link';
-            copyBtn.classList.remove('copied');
-          }, 2200);
-        } catch (_) {
-          copyBtn.textContent = 'Copy failed';
+  function sharePlatformIcon(platform) {
+    const icons = {
+      instagram: '<svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg>',
+      x: '<svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M18.24 2.25h3.31l-7.23 8.26 8.51 11.24h-6.66l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.84L7.08 4.13H5.12l11.96 15.64Z"/></svg>',
+      facebook: '<svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M14 8h3V4h-3c-3.1 0-5 1.9-5 5v3H6v4h3v6h4v-6h3.1l.9-4h-4V9c0-.6.4-1 1-1Z"/></svg>',
+      whatsapp: '<svg viewBox="0 0 24 24" focusable="false"><path d="M20.5 11.8a8.3 8.3 0 0 1-12.3 7.3L4 20.3l1.3-4A8.3 8.3 0 1 1 20.5 11.8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path fill="currentColor" d="M8.9 7.6c.3-.3.7-.3 1 0l1 1.4c.2.3.2.6 0 .9l-.5.7c.7 1.4 1.8 2.4 3.2 3.1l.7-.5c.3-.2.7-.2.9 0l1.4 1c.3.2.4.7.1 1-.4.6-1.1 1-1.9.9-3.4-.3-6.4-3.3-6.8-6.7-.1-.8.3-1.5.9-1.8Z"/></svg>',
+      messenger: '<svg viewBox="0 0 24 24" focusable="false"><path d="M12 4C7.3 4 3.7 7.3 3.7 11.6c0 2.3 1 4.3 2.7 5.7v2.8l2.6-1.4c.9.3 1.9.5 3 .5 4.7 0 8.3-3.3 8.3-7.6S16.7 4 12 4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path fill="currentColor" d="m7.6 14 3.3-3.5 2.3 2.2 3.5-3.8-3.3 5.2-2.4-2.2L7.6 14Z"/></svg>',
+      discord: '<svg viewBox="0 0 24 24" focusable="false"><path d="M7.4 7.9c2.9-1.1 6.3-1.1 9.2 0l1.1 7.4c-1.7 1.4-3.5 2.1-5.7 2.1s-4-.7-5.7-2.1l1.1-7.4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="9.9" cy="12.2" r="1.1" fill="currentColor"/><circle cx="14.1" cy="12.2" r="1.1" fill="currentColor"/><path d="M10 15c1.2.6 2.8.6 4 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+      copy: '<svg viewBox="0 0 24 24" focusable="false"><rect x="8" y="8" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    };
+    return `<span class="share-btn__icon" aria-hidden="true">${icons[platform] || icons.copy}</span>`;
+  }
+
+  function buildShareIntents(context) {
+    return {
+      instagram: shareHandoffUrl('instagram', context),
+      x: shareHandoffUrl('x', context),
+      facebook: shareHandoffUrl('facebook', context),
+      whatsapp: shareHandoffUrl('whatsapp', context),
+      messenger: shareHandoffUrl('messenger', context),
+      discord: shareHandoffUrl('discord', context),
+    };
+  }
+
+  function shareHandoffUrl(platform, context) {
+    const params = new URLSearchParams({
+      platform,
+      title: context.title,
+      text: context.text,
+      url: context.url,
+      return: context.returnUrl,
+    });
+    return `share.html?${params.toString()}`;
+  }
+
+  function bindShareRow(row, context) {
+    row.querySelectorAll('[data-share-platform]').forEach((control) => {
+      control.addEventListener('click', () => {
+        if (control.matches('[data-share-app-fallback]')) {
+          copyShareUrl(context.url);
         }
       });
-    }
+    });
+  }
 
-    // Native share
-    const nativeBtn = shareRow.querySelector('[data-native-share]');
-    if (nativeBtn && navigator.share) {
-      nativeBtn.addEventListener('click', () => {
-        navigator.share({
-          title: document.title.replace(' — The Press', '').trim(),
-          text: document.querySelector('meta[name="description"]')?.content || '',
-          url: window.location.href,
-        }).catch(() => {});
-      });
+  async function copyShareUrl(url) {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        fallbackCopyText(url);
+      }
+    } catch (_) {
+      // Some browsers block clipboard writes on local pages; the platform still opens.
     }
+  }
+
+  function fallbackCopyText(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    textarea.remove();
   }
 
   /* ── Hover micro-animation for daily cards ────────────────────────── */

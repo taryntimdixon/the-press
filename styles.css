@@ -1436,49 +1436,96 @@ body,
 /* ── Share button row ───────────────────────────────────────────────── */
 .share-row{
   display:flex;
-  flex-wrap:wrap;
-  gap:.6rem;
-  margin:1.5rem 0 0;
-  padding:1.1rem 0 0;
-  border-top:1px solid var(--line);
+  align-items:center;
+  justify-content:flex-start;
+  margin:1rem 0 0;
+  padding:0;
+  border:0;
+  background:transparent;
+  box-shadow:none;
 }
-.share-row__label{
-  width:100%;
-  font-size:.82rem;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:.2rem;
+.share-row--site{
+  justify-content:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+.article-hero .share-row{
+  justify-content:center;
+}
+.share-row__buttons{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:inherit;
+  gap:.5rem;
+  min-width:0;
 }
 .share-btn{
   display:inline-flex;
   align-items:center;
-  gap:.45rem;
-  border:1px solid var(--line);
+  justify-content:center;
+  width:2.55rem;
+  height:2.55rem;
+  min-height:2.55rem;
+  border:1px solid color-mix(in srgb, var(--line) 70%, var(--ink));
   border-radius:999px;
   background:var(--surface-2);
   color:var(--ink);
   font:inherit;
-  font-size:.88rem;
-  font-weight:600;
-  padding:.55rem 1rem;
+  font-size:.84rem;
+  font-weight:800;
+  letter-spacing:.01em;
+  line-height:1;
+  padding:0;
   cursor:pointer;
   text-decoration:none;
-  transition:background .18s, box-shadow .18s, transform .18s;
+  white-space:nowrap;
+  transition:background .18s, border-color .18s, box-shadow .18s, color .18s, transform .18s, filter .18s;
+}
+.share-btn__icon,
+.share-btn__icon svg{
+  display:block;
+  width:1.22rem;
+  height:1.22rem;
 }
 .share-btn:hover{
-  background:var(--accent);
-  color:#fff;
-  border-color:var(--accent);
   transform:translateY(-1px);
   box-shadow:var(--shadow);
   text-decoration:none;
+  filter:saturate(1.12) contrast(1.04);
 }
-.share-btn--copy.copied{
+.share-btn--instagram{
+  background:radial-gradient(circle at 28% 108%, #fdf497 0 16%, #fd5949 42%, #d6249f 66%, #285aeb 100%);
+  border-color:#d6249f;
+  color:#fff;
+}
+.share-btn--x{background:#111;border-color:#111;color:#fff}
+.share-btn--facebook{background:#1877f2;border-color:#1877f2;color:#fff}
+.share-btn--whatsapp{background:#128c7e;border-color:#128c7e;color:#fff}
+.share-btn--messenger{background:#6f42ff;border-color:#6f42ff;color:#fff}
+.share-btn--discord{background:#5865f2;border-color:#5865f2;color:#fff}
+.share-btn--copy{
+  background:var(--surface-2);
+  border-color:color-mix(in srgb, var(--line) 70%, var(--ink));
+  color:var(--ink);
+}
+.share-btn--copy:hover,
+.share-btn.copied{
   background:#2d7a3d;
   border-color:#2d7a3d;
   color:#fff;
+}
+@media (max-width: 760px){
+  .share-row{
+    margin-top:.8rem;
+  }
+  .share-row__buttons{
+    justify-content:inherit;
+  }
+  .share-btn{
+    flex:0 0 2.55rem;
+    min-width:2.55rem;
+  }
 }
 
 /* ── Today's Daily Stories section (homepage) ───────────────────────── */
