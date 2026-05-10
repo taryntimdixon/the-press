@@ -1622,6 +1622,7 @@ function enhanceBreakingStrip(stories) {
         <a class="share-btn share-btn--messenger" href="${escapeAttribute(intent.messenger)}" rel="noopener noreferrer" data-share-platform="messenger" data-share-app-fallback aria-label="Share on Messenger" title="Messenger">${sharePlatformIcon('messenger')}<span class="sr-only">Messenger</span></a>
         <a class="share-btn share-btn--discord" href="${escapeAttribute(intent.discord)}" rel="noopener noreferrer" data-share-platform="discord" data-share-app-fallback aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></a>
       </div>
+      <p class="share-row__status" data-share-status aria-live="polite"></p>
     `;
   }
 
@@ -1658,12 +1659,27 @@ function enhanceBreakingStrip(stories) {
     row.querySelectorAll('[data-share-platform]').forEach((control) => {
       control.addEventListener('click', async (event) => {
         if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+        if (control.dataset.sharePlatform === 'sms') {
+          event.preventDefault();
+          handleSmsShare(row, control, context);
+          return;
+        }
         if (!control.href || !control.matches('[data-share-app-fallback]')) return;
         event.preventDefault();
         await copyShareText(context);
         window.location.assign(control.href);
       });
     });
+  }
+
+  async function handleSmsShare(row, control, context) {
+    const isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isPhone && control.href) {
+      window.location.assign(control.href);
+      return;
+    }
+    const copied = await copyShareText(context);
+    setShareStatus(row, copied ? 'Message text copied' : 'Message text ready to copy');
   }
 
   async function copyShareText(context) {
@@ -1674,13 +1690,28 @@ function enhanceBreakingStrip(stories) {
       } else {
         fallbackCopyText(text);
       }
+      return true;
     } catch (_) {
       try {
         fallbackCopyText(text);
+        return true;
       } catch (__) {
         // Some browsers block clipboard writes on local pages; the platform still opens.
       }
     }
+    return false;
+  }
+
+  function setShareStatus(row, message) {
+    const status = row.querySelector('[data-share-status]');
+    if (!status) return;
+    status.textContent = message;
+    status.classList.add('is-visible');
+    clearTimeout(status._pressTimer);
+    status._pressTimer = setTimeout(() => {
+      status.classList.remove('is-visible');
+      status.textContent = '';
+    }, 3200);
   }
 
   function fallbackCopyText(text) {
