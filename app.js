@@ -1614,7 +1614,7 @@ function enhanceBreakingStrip(stories) {
     const intent = buildShareIntents(context);
     return `
       <div class="share-row__buttons">
-        <a class="share-btn share-btn--instagram" href="${escapeAttribute(intent.instagram)}" target="_blank" rel="noopener noreferrer" data-share-platform="instagram" aria-label="Share on Instagram" title="Instagram">${sharePlatformIcon('instagram')}<span class="sr-only">Instagram</span></a>
+        <a class="share-btn share-btn--instagram" href="${escapeAttribute(intent.instagram)}" rel="noopener noreferrer" data-share-platform="instagram" aria-label="Share on Instagram" title="Instagram">${sharePlatformIcon('instagram')}<span class="sr-only">Instagram</span></a>
         <a class="share-btn share-btn--x" href="${escapeAttribute(intent.x)}" rel="noopener noreferrer" data-share-platform="x" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
         <a class="share-btn share-btn--facebook" href="${escapeAttribute(intent.facebook)}" rel="noopener noreferrer" data-share-platform="facebook" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
         <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(intent.whatsapp)}" rel="noopener noreferrer" data-share-platform="whatsapp" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
@@ -1645,7 +1645,7 @@ function enhanceBreakingStrip(stories) {
     const encodedTitle = encodeURIComponent(context.title);
     const encodedText = encodeURIComponent(`${context.title} ${context.url}`);
     return {
-      instagram: 'https://www.instagram.com/create/select/',
+      instagram: 'https://www.instagram.com/',
       x: `https://x.com/intent/post?text=${encodedTitle}&url=${encodedUrl}`,
       facebook: `https://m.facebook.com/?share_text=${encodedText}`,
       whatsapp: `https://web.whatsapp.com/send?text=${encodedText}`,
@@ -1660,9 +1660,8 @@ function enhanceBreakingStrip(stories) {
       control.addEventListener('click', async (event) => {
         if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
         if (control.dataset.sharePlatform === 'instagram') {
-          copyShareText(context).then((copied) => {
-            setShareStatus(row, copied ? 'Instagram caption copied' : 'Opening Instagram');
-          });
+          event.preventDefault();
+          handleInstagramShare(row, control, context);
           return;
         }
         if (control.dataset.sharePlatform === 'sms') {
@@ -1678,6 +1677,36 @@ function enhanceBreakingStrip(stories) {
     });
   }
 
+  async function handleInstagramShare(row, control, context) {
+    const targetUrl = control.href || 'https://www.instagram.com/';
+    const sharePayload = {
+      title: context.title,
+      text: context.text || context.title,
+      url: context.url,
+    };
+    const mobileShare = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (mobileShare && typeof navigator.share === 'function' && (!navigator.canShare || navigator.canShare(sharePayload))) {
+      setShareStatus(row, 'Opening share sheet');
+      try {
+        await navigator.share(sharePayload);
+        setShareStatus(row, 'Shared');
+        return;
+      } catch (error) {
+        if (error?.name === 'AbortError') {
+          setShareStatus(row, 'Share canceled');
+          return;
+        }
+      }
+    }
+
+    setShareStatus(row, 'Opening Instagram');
+    copyShareTextImmediately(context);
+    window.setTimeout(() => {
+      window.location.assign(targetUrl);
+    }, 120);
+  }
+
   async function handleSmsShare(row, control, context) {
     const isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     if (isPhone && control.href) {
@@ -1689,7 +1718,7 @@ function enhanceBreakingStrip(stories) {
   }
 
   async function copyShareText(context) {
-    const text = `${context.title} ${context.url}`;
+    const text = getShareCopyText(context);
     try {
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(text);
@@ -1706,6 +1735,23 @@ function enhanceBreakingStrip(stories) {
       }
     }
     return false;
+  }
+
+  function copyShareTextImmediately(context) {
+    const text = getShareCopyText(context);
+    let copied = false;
+    try {
+      fallbackCopyText(text);
+      copied = true;
+    } catch (_) {}
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).catch(() => {});
+    }
+    return copied;
+  }
+
+  function getShareCopyText(context) {
+    return `${context.title} ${context.url}`;
   }
 
   function setShareStatus(row, message) {
@@ -1725,11 +1771,15 @@ function enhanceBreakingStrip(stories) {
     textarea.value = text;
     textarea.setAttribute('readonly', '');
     textarea.style.position = 'fixed';
+    textarea.style.top = '0';
     textarea.style.left = '-9999px';
     document.body.appendChild(textarea);
+    textarea.focus({ preventScroll: true });
     textarea.select();
-    document.execCommand('copy');
+    textarea.setSelectionRange(0, textarea.value.length);
+    const copied = document.execCommand('copy');
     textarea.remove();
+    if (!copied) throw new Error('Copy command rejected');
   }
 
   /* ── Hover micro-animation for daily cards ────────────────────────── */
