@@ -1614,7 +1614,7 @@ function enhanceBreakingStrip(stories) {
     const intent = buildShareIntents(context);
     return `
       <div class="share-row__buttons">
-        <a class="share-btn share-btn--instagram" href="#" rel="noopener noreferrer" data-share-platform="instagram" aria-label="Share on Instagram" title="Instagram">${sharePlatformIcon('instagram')}<span class="sr-only">Instagram</span></a>
+        <a class="share-btn share-btn--instagram" href="${escapeAttribute(intent.instagram)}" target="_blank" rel="noopener noreferrer" data-share-platform="instagram" aria-label="Share on Instagram" title="Instagram">${sharePlatformIcon('instagram')}<span class="sr-only">Instagram</span></a>
         <a class="share-btn share-btn--x" href="${escapeAttribute(intent.x)}" rel="noopener noreferrer" data-share-platform="x" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
         <a class="share-btn share-btn--facebook" href="${escapeAttribute(intent.facebook)}" rel="noopener noreferrer" data-share-platform="facebook" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
         <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(intent.whatsapp)}" rel="noopener noreferrer" data-share-platform="whatsapp" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
@@ -1660,8 +1660,9 @@ function enhanceBreakingStrip(stories) {
       control.addEventListener('click', async (event) => {
         if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
         if (control.dataset.sharePlatform === 'instagram') {
-          event.preventDefault();
-          handleInstagramShare(row, control, context);
+          copyShareText(context).then((copied) => {
+            setShareStatus(row, copied ? 'Instagram caption copied' : 'Opening Instagram');
+          });
           return;
         }
         if (control.dataset.sharePlatform === 'sms') {
@@ -1675,26 +1676,6 @@ function enhanceBreakingStrip(stories) {
         window.location.assign(control.href);
       });
     });
-  }
-
-  async function handleInstagramShare(row, control, context) {
-    const isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isPhone && navigator.share) {
-      try {
-        await navigator.share({
-          title: context.title,
-          text: context.text,
-          url: context.url,
-        });
-        setShareStatus(row, 'Share sheet opened');
-        return;
-      } catch (error) {
-        if (error?.name === 'AbortError') return;
-      }
-    }
-
-    const copied = await copyShareText(context);
-    setShareStatus(row, copied ? 'Instagram caption copied' : 'Instagram caption ready to copy');
   }
 
   async function handleSmsShare(row, control, context) {
