@@ -1596,6 +1596,7 @@ function enhanceBreakingStrip(stories) {
       title: type === 'site' ? 'The Press' : title,
       text: description || (type === 'site' ? 'AI powered news from The Press.' : title),
       url,
+      imageUrl: getShareImageUrl(),
       returnUrl: window.location.href,
       ariaLabel: type === 'site' ? 'Share this page' : 'Share this article',
     };
@@ -1608,6 +1609,43 @@ function enhanceBreakingStrip(stories) {
     url.hash = '';
     url.search = '';
     return url.href;
+  }
+
+  function getShareImageUrl() {
+    const imageSelectors = [
+      '.article-hero .hero-figure img',
+      '.article-hero img',
+      '.lead-panel.is-active img',
+      '.story-card img',
+      'meta[property="og:image"]',
+      'meta[name="twitter:image"]',
+    ];
+
+    for (const selector of imageSelectors) {
+      const node = document.querySelector(selector);
+      const raw = node?.tagName === 'META'
+        ? node.getAttribute('content')
+        : node?.currentSrc || node?.getAttribute('src');
+      const url = normalizeShareAssetUrl(raw);
+      if (url) return url;
+    }
+
+    return '';
+  }
+
+  function normalizeShareAssetUrl(rawUrl) {
+    if (!rawUrl) return '';
+    try {
+      const parsed = new URL(rawUrl, window.location.href);
+      const isPressLiveAsset = /(^|\.)thepress\.live$/i.test(parsed.hostname);
+      const isLocalPreview = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(window.location.hostname);
+      if (isPressLiveAsset && isLocalPreview) {
+        return new URL(`${parsed.pathname}${parsed.search}`, window.location.href).href;
+      }
+      return parsed.href;
+    } catch (_) {
+      return '';
+    }
   }
 
   function buildShareRowMarkup(context) {
@@ -1679,32 +1717,234 @@ function enhanceBreakingStrip(stories) {
 
   async function handleInstagramShare(row, control, context) {
     const targetUrl = control.href || 'https://www.instagram.com/';
+    const shareText = getShareCopyText(context);
     const sharePayload = {
       title: context.title,
-      text: context.text || context.title,
+      text: shareText,
       url: context.url,
     };
+    setShareStatus(row, 'Preparing Instagram');
+    let copied = await copyShareText(context);
+    if (!copied) copied = copyShareTextImmediately(context);
+
+    let instagramCard = null;
+    try {
+      instagramCard = await createInstagramShareCard(context);
+    } catch (_) {
+      instagramCard = null;
+    }
+    const filePayload = instagramCard ? {
+      title: context.title,
+      text: shareText,
+      files: [instagramCard],
+    } : null;
     const mobileShare = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    if (mobileShare && typeof navigator.share === 'function' && (!navigator.canShare || navigator.canShare(sharePayload))) {
-      setShareStatus(row, 'Opening share sheet');
-      try {
-        await navigator.share(sharePayload);
-        setShareStatus(row, 'Shared');
-        return;
-      } catch (error) {
-        if (error?.name === 'AbortError') {
-          setShareStatus(row, 'Share canceled');
+    if (mobileShare && typeof navigator.share === 'function') {
+      const canShareFile = filePayload && (!navigator.canShare || navigator.canShare(filePayload));
+      const canShareLink = !navigator.canShare || navigator.canShare(sharePayload);
+      if (canShareFile || canShareLink) {
+        setShareStatus(row, 'Opening share sheet');
+        try {
+          await navigator.share(canShareFile ? filePayload : sharePayload);
+          setShareStatus(row, 'Shared');
           return;
+        } catch (error) {
+          if (error?.name === 'AbortError') {
+            setShareStatus(row, 'Share canceled');
+            return;
+          }
         }
       }
     }
 
-    setShareStatus(row, 'Opening Instagram');
-    copyShareTextImmediately(context);
+    if (instagramCard) {
+      try {
+        downloadShareCard(instagramCard);
+      } catch (_) {
+        instagramCard = null;
+      }
+    }
+    setShareStatus(row, instagramCard
+      ? (copied ? 'Card saved. Caption copied.' : 'Card saved.')
+      : (copied ? 'Caption copied' : 'Opening Instagram'));
     window.setTimeout(() => {
       window.location.assign(targetUrl);
-    }, 120);
+    }, instagramCard ? 520 : 160);
+  }
+
+  async function createInstagramShareCard(context) {
+    if (typeof File !== 'function') return null;
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext?.('2d');
+    if (!ctx) return null;
+
+    const size = 1080;
+    canvas.width = size;
+    canvas.height = size;
+
+    drawShareCardBackground(ctx, size);
+
+    const image = context.imageUrl ? await loadShareCardImage(context.imageUrl) : null;
+    if (image) {
+      drawImageCover(ctx, image, 0, 0, size, 620);
+      const imageFade = ctx.createLinearGradient(0, 420, 0, 700);
+      imageFade.addColorStop(0, 'rgba(12, 22, 35, 0)');
+      imageFade.addColorStop(0.72, 'rgba(12, 22, 35, 0.72)');
+      imageFade.addColorStop(1, 'rgba(12, 22, 35, 0.92)');
+      ctx.fillStyle = imageFade;
+      ctx.fillRect(0, 360, size, 340);
+    } else {
+      const heroGradient = ctx.createLinearGradient(0, 0, size, 620);
+      heroGradient.addColorStop(0, '#10233a');
+      heroGradient.addColorStop(0.52, '#245f70');
+      heroGradient.addColorStop(1, '#b43f32');
+      ctx.fillStyle = heroGradient;
+      ctx.fillRect(0, 0, size, 620);
+    }
+
+    ctx.fillStyle = '#fbfaf6';
+    roundRect(ctx, 58, 560, size - 116, 422, 34);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(21, 33, 52, 0.16)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.fillStyle = '#b13b2f';
+    ctx.font = '700 28px Arial, Helvetica, sans-serif';
+    ctx.letterSpacing = '0px';
+    ctx.fillText('THE PRESS', 92, 626);
+
+    ctx.fillStyle = '#152134';
+    ctx.font = '800 66px Georgia, "Times New Roman", serif';
+    wrapCanvasText(ctx, context.title, 92, 712, size - 184, 72, 4);
+
+    ctx.fillStyle = 'rgba(21, 33, 52, 0.78)';
+    ctx.font = '400 29px Arial, Helvetica, sans-serif';
+    wrapCanvasText(ctx, context.text, 92, 930, size - 184, 38, 2);
+
+    ctx.fillStyle = '#3153c9';
+    ctx.font = '700 26px Arial, Helvetica, sans-serif';
+    ctx.fillText(cleanDisplayUrl(context.url), 92, 1022);
+
+    const blob = await canvasToBlob(canvas);
+    if (!blob) return null;
+    return new File([blob], `${slugify(context.title || 'the-press') || 'the-press'}-instagram-card.png`, { type: 'image/png' });
+  }
+
+  function drawShareCardBackground(ctx, size) {
+    const background = ctx.createLinearGradient(0, 0, size, size);
+    background.addColorStop(0, '#edf3fb');
+    background.addColorStop(0.55, '#fffaf1');
+    background.addColorStop(1, '#ecf4f8');
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, size, size);
+
+    ctx.fillStyle = 'rgba(177, 59, 47, 0.16)';
+    ctx.fillRect(0, 0, size, 18);
+    ctx.fillStyle = 'rgba(49, 83, 201, 0.12)';
+    ctx.fillRect(0, size - 18, size, 18);
+  }
+
+  function loadShareCardImage(src) {
+    return new Promise((resolve) => {
+      const image = new Image();
+      const finish = (value) => {
+        window.clearTimeout(timer);
+        resolve(value);
+      };
+      const timer = window.setTimeout(() => resolve(null), 1800);
+      image.crossOrigin = 'anonymous';
+      image.onload = () => finish(image);
+      image.onerror = () => finish(null);
+      image.src = src;
+    });
+  }
+
+  function drawImageCover(ctx, image, x, y, width, height) {
+    const scale = Math.max(width / image.naturalWidth, height / image.naturalHeight);
+    const drawWidth = image.naturalWidth * scale;
+    const drawHeight = image.naturalHeight * scale;
+    const drawX = x + (width - drawWidth) / 2;
+    const drawY = y + (height - drawHeight) / 2;
+    ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
+  }
+
+  function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+    const words = collapseWhitespace(text).split(' ').filter(Boolean);
+    const lines = [];
+    let line = '';
+
+    words.forEach((word) => {
+      const testLine = line ? `${line} ${word}` : word;
+      if (ctx.measureText(testLine).width <= maxWidth || !line) {
+        line = testLine;
+        return;
+      }
+      lines.push(line);
+      line = word;
+    });
+    if (line) lines.push(line);
+
+    lines.slice(0, maxLines).forEach((lineText, index) => {
+      let output = lineText;
+      if (index === maxLines - 1 && lines.length > maxLines) output = truncateCanvasLine(ctx, lineText, maxWidth);
+      ctx.fillText(output, x, y + (index * lineHeight));
+    });
+  }
+
+  function truncateCanvasLine(ctx, text, maxWidth) {
+    let output = text;
+    while (output.length > 1 && ctx.measureText(`${output}...`).width > maxWidth) {
+      output = output.slice(0, -1).trim();
+    }
+    return `${output}...`;
+  }
+
+  function canvasToBlob(canvas) {
+    return new Promise((resolve) => {
+      try {
+        canvas.toBlob((blob) => resolve(blob), 'image/png', 0.94);
+      } catch (_) {
+        resolve(null);
+      }
+    });
+  }
+
+  function downloadShareCard(file) {
+    const link = document.createElement('a');
+    const objectUrl = URL.createObjectURL(file);
+    link.href = objectUrl;
+    link.download = file.name;
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(objectUrl), 5000);
+  }
+
+  function roundRect(ctx, x, y, width, height, radius) {
+    const r = Math.min(radius, width / 2, height / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + width - r, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + r);
+    ctx.lineTo(x + width, y + height - r);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+    ctx.lineTo(x + r, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  }
+
+  function cleanDisplayUrl(url) {
+    try {
+      const parsed = new URL(url);
+      return `${parsed.hostname.replace(/^www\./, '')}${parsed.pathname === '/' ? '' : parsed.pathname}`.slice(0, 72);
+    } catch (_) {
+      return String(url || 'thepress.live').slice(0, 72);
+    }
   }
 
   async function handleSmsShare(row, control, context) {
