@@ -1479,6 +1479,20 @@ body,
 .share-row__status.is-visible{
   opacity:1;
 }
+.share-row__manual-copy{
+  flex-basis:100%;
+  width:min(34rem, 100%);
+  min-height:2.35rem;
+  margin:.25rem auto 0;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:var(--surface);
+  color:var(--ink);
+  font:inherit;
+  font-size:.82rem;
+  font-weight:700;
+  padding:.35rem .6rem;
+}
 .share-btn{
   display:inline-flex;
   align-items:center;
@@ -1513,14 +1527,10 @@ body,
   text-decoration:none;
   filter:saturate(1.12) contrast(1.04);
 }
-.share-btn--instagram{
-  background:radial-gradient(circle at 28% 108%, #fdf497 0 16%, #fd5949 42%, #d6249f 66%, #285aeb 100%);
-  border-color:#d6249f;
-  color:#fff;
-}
 .share-btn--x{background:#111;border-color:#111;color:#fff}
 .share-btn--facebook{background:#1877f2;border-color:#1877f2;color:#fff}
 .share-btn--whatsapp{background:#128c7e;border-color:#128c7e;color:#fff}
+.share-btn--reddit{background:#ff4500;border-color:#ff4500;color:#fff}
 .share-btn--sms{background:#34c759;border-color:#34c759;color:#fff}
 .share-btn--messenger{background:#6f42ff;border-color:#6f42ff;color:#fff}
 .share-btn--discord{background:#5865f2;border-color:#5865f2;color:#fff}

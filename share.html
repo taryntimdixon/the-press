@@ -78,10 +78,10 @@
       const encodedTitle = encodeURIComponent(title);
       const encodedText = encodeURIComponent(`${title} ${shareUrl}`);
       const destinations = {
-        x: `https://x.com/intent/post?text=${encodedTitle}&url=${encodedUrl}`,
+        x: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
         facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
         whatsapp: `https://api.whatsapp.com/send?text=${encodedText}`,
-        instagram: 'https://www.instagram.com/',
+        reddit: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
         messenger: 'https://www.messenger.com/',
         discord: 'https://discord.com/channels/@me',
       };
@@ -89,14 +89,14 @@
         x: 'X',
         facebook: 'Facebook',
         whatsapp: 'WhatsApp',
-        instagram: 'Instagram',
+        reddit: 'Reddit',
         messenger: 'Messenger',
         discord: 'Discord',
       };
       const destination = destinations[platform] || destinations.x;
       if (heading) heading.textContent = `Opening ${names[platform] || 'share'}`;
 
-      const copyFirst = platform === 'instagram' || platform === 'messenger' || platform === 'discord';
+      const copyFirst = platform === 'messenger' || platform === 'discord';
       const copyLink = copyFirst && navigator.clipboard?.writeText
         ? navigator.clipboard.writeText(`${text} ${shareUrl}`).catch(() => {})
         : Promise.resolve();

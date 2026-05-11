@@ -1597,6 +1597,7 @@ function enhanceBreakingStrip(stories) {
       text: description || (type === 'site' ? 'AI powered news from The Press.' : title),
       url,
       imageUrl: getShareImageUrl(),
+      externalImageUrl: getShareImageUrl({ preferPublic: true }),
       returnUrl: window.location.href,
       ariaLabel: type === 'site' ? 'Share this page' : 'Share this article',
     };
@@ -1605,41 +1606,49 @@ function enhanceBreakingStrip(stories) {
   function getCleanShareUrl() {
     const canonical = document.querySelector('link[rel="canonical"]')?.href;
     if (canonical) return canonical;
+    const ogUrl = document.querySelector('meta[property="og:url"]')?.content
+      || document.querySelector('meta[name="twitter:url"]')?.content;
+    if (ogUrl) return ogUrl;
     const url = new URL(window.location.href);
     url.hash = '';
     url.search = '';
     return url.href;
   }
 
-  function getShareImageUrl() {
-    const imageSelectors = [
+  function getShareImageUrl(options = {}) {
+    const pageMetadataSelectors = [
+      'meta[property="og:image"]',
+      'meta[name="twitter:image"]',
+    ];
+    const visibleImageSelectors = [
       '.article-hero .hero-figure img',
       '.article-hero img',
       '.lead-panel.is-active img',
       '.story-card img',
-      'meta[property="og:image"]',
-      'meta[name="twitter:image"]',
     ];
+    const imageSelectors = options.preferPublic
+      ? [...pageMetadataSelectors, ...visibleImageSelectors]
+      : [...visibleImageSelectors, ...pageMetadataSelectors];
 
     for (const selector of imageSelectors) {
       const node = document.querySelector(selector);
       const raw = node?.tagName === 'META'
         ? node.getAttribute('content')
         : node?.currentSrc || node?.getAttribute('src');
-      const url = normalizeShareAssetUrl(raw);
+      const url = normalizeShareAssetUrl(raw, options);
       if (url) return url;
     }
 
     return '';
   }
 
-  function normalizeShareAssetUrl(rawUrl) {
+  function normalizeShareAssetUrl(rawUrl, options = {}) {
     if (!rawUrl) return '';
     try {
       const parsed = new URL(rawUrl, window.location.href);
       const isPressLiveAsset = /(^|\.)thepress\.live$/i.test(parsed.hostname);
       const isLocalPreview = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(window.location.hostname);
-      if (isPressLiveAsset && isLocalPreview) {
+      if (isPressLiveAsset && isLocalPreview && !options.preferPublic) {
         return new URL(`${parsed.pathname}${parsed.search}`, window.location.href).href;
       }
       return parsed.href;
@@ -1650,16 +1659,14 @@ function enhanceBreakingStrip(stories) {
 
   function buildShareRowMarkup(context) {
     const intent = buildShareIntents(context);
-    const bridge = buildShareBridgeIntents(intent);
     return `
       <div class="share-row__buttons">
-        <a class="share-btn share-btn--instagram" href="${escapeAttribute(bridge.instagram)}" rel="noopener noreferrer" data-share-platform="instagram" data-share-target="${escapeAttribute(intent.instagram)}" aria-label="Share on Instagram" title="Instagram">${sharePlatformIcon('instagram')}<span class="sr-only">Instagram</span></a>
-        <a class="share-btn share-btn--x" href="${escapeAttribute(bridge.x)}" rel="noopener noreferrer" data-share-platform="x" data-share-target="${escapeAttribute(intent.x)}" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
-        <a class="share-btn share-btn--facebook" href="${escapeAttribute(bridge.facebook)}" rel="noopener noreferrer" data-share-platform="facebook" data-share-target="${escapeAttribute(intent.facebook)}" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
-        <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(bridge.whatsapp)}" rel="noopener noreferrer" data-share-platform="whatsapp" data-share-target="${escapeAttribute(intent.whatsapp)}" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
-        <a class="share-btn share-btn--sms" href="${escapeAttribute(intent.sms)}" rel="noopener noreferrer" data-share-platform="sms" aria-label="Share by text message" title="Messages">${sharePlatformIcon('sms')}<span class="sr-only">Messages</span></a>
-        <a class="share-btn share-btn--messenger" href="${escapeAttribute(bridge.messenger)}" rel="noopener noreferrer" data-share-platform="messenger" data-share-target="${escapeAttribute(intent.messenger)}" data-share-app-fallback aria-label="Share on Messenger" title="Messenger">${sharePlatformIcon('messenger')}<span class="sr-only">Messenger</span></a>
-        <a class="share-btn share-btn--discord" href="${escapeAttribute(bridge.discord)}" rel="noopener noreferrer" data-share-platform="discord" data-share-target="${escapeAttribute(intent.discord)}" data-share-app-fallback aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></a>
+        <a class="share-btn share-btn--x" href="${escapeAttribute(intent.x)}" target="_blank" rel="noopener noreferrer" data-share-platform="x" data-share-target="${escapeAttribute(intent.x)}" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
+        <a class="share-btn share-btn--facebook" href="${escapeAttribute(intent.facebook)}" target="_blank" rel="noopener noreferrer" data-share-platform="facebook" data-share-target="${escapeAttribute(intent.facebook)}" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
+        <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(intent.whatsapp)}" target="_blank" rel="noopener noreferrer" data-share-platform="whatsapp" data-share-target="${escapeAttribute(intent.whatsapp)}" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
+        <a class="share-btn share-btn--reddit" href="${escapeAttribute(intent.reddit)}" target="_blank" rel="noopener noreferrer" data-share-platform="reddit" data-share-target="${escapeAttribute(intent.reddit)}" aria-label="Share on Reddit" title="Reddit">${sharePlatformIcon('reddit')}<span class="sr-only">Reddit</span></a>
+        <a class="share-btn share-btn--discord" href="${escapeAttribute(intent.discord)}" target="_blank" rel="noopener noreferrer" data-share-platform="discord" data-share-target="${escapeAttribute(intent.discord)}" aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></a>
+        <button class="share-btn share-btn--copy" type="button" data-share-platform="copy" aria-label="Copy share link" title="Copy link">${sharePlatformIcon('copy')}<span class="sr-only">Copy link</span></button>
       </div>
       <p class="share-row__status" data-share-status aria-live="polite"></p>
     `;
@@ -1667,10 +1674,10 @@ function enhanceBreakingStrip(stories) {
 
   function sharePlatformIcon(platform) {
     const icons = {
-      instagram: '<svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg>',
       x: '<svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M18.24 2.25h3.31l-7.23 8.26 8.51 11.24h-6.66l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.84L7.08 4.13H5.12l11.96 15.64Z"/></svg>',
       facebook: '<svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M14 8h3V4h-3c-3.1 0-5 1.9-5 5v3H6v4h3v6h4v-6h3.1l.9-4h-4V9c0-.6.4-1 1-1Z"/></svg>',
       whatsapp: '<svg viewBox="0 0 24 24" focusable="false"><path d="M20.5 11.8a8.3 8.3 0 0 1-12.3 7.3L4 20.3l1.3-4A8.3 8.3 0 1 1 20.5 11.8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path fill="currentColor" d="M8.9 7.6c.3-.3.7-.3 1 0l1 1.4c.2.3.2.6 0 .9l-.5.7c.7 1.4 1.8 2.4 3.2 3.1l.7-.5c.3-.2.7-.2.9 0l1.4 1c.3.2.4.7.1 1-.4.6-1.1 1-1.9.9-3.4-.3-6.4-3.3-6.8-6.7-.1-.8.3-1.5.9-1.8Z"/></svg>',
+      reddit: '<svg viewBox="0 0 24 24" focusable="false"><path d="M18.8 10.2c.9 0 1.7.7 1.7 1.7 0 .6-.3 1.1-.8 1.4.1.4.2.7.2 1.1 0 2.8-3.5 5.1-7.9 5.1s-7.9-2.3-7.9-5.1c0-.4.1-.8.2-1.1-.5-.3-.8-.8-.8-1.4 0-.9.8-1.7 1.7-1.7.5 0 .9.2 1.2.5 1.3-.8 3.1-1.3 5-1.4l.9-4.2 3 .7c.2-.6.8-1.1 1.5-1.1.9 0 1.6.7 1.6 1.6S17.7 8 16.8 8c-.6 0-1.1-.3-1.4-.8l-2.1-.5-.6 2.7c1.9.1 3.6.6 4.9 1.4.3-.4.7-.6 1.2-.6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="9.2" cy="13.8" r="1" fill="currentColor"/><circle cx="14.8" cy="13.8" r="1" fill="currentColor"/><path d="M9.5 16.4c1.3.8 3.7.8 5 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
       sms: '<svg viewBox="0 0 24 24" focusable="false"><path d="M5 5.5h14a2.5 2.5 0 0 1 2.5 2.5v6.6a2.5 2.5 0 0 1-2.5 2.5h-5.8L8.7 20v-2.9H5a2.5 2.5 0 0 1-2.5-2.5V8A2.5 2.5 0 0 1 5 5.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7 10h10M7 13.5h6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
       messenger: '<svg viewBox="0 0 24 24" focusable="false"><path d="M12 4C7.3 4 3.7 7.3 3.7 11.6c0 2.3 1 4.3 2.7 5.7v2.8l2.6-1.4c.9.3 1.9.5 3 .5 4.7 0 8.3-3.3 8.3-7.6S16.7 4 12 4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path fill="currentColor" d="m7.6 14 3.3-3.5 2.3 2.2 3.5-3.8-3.3 5.2-2.4-2.2L7.6 14Z"/></svg>',
       discord: '<svg viewBox="0 0 24 24" focusable="false"><path d="M7.4 7.9c2.9-1.1 6.3-1.1 9.2 0l1.1 7.4c-1.7 1.4-3.5 2.1-5.7 2.1s-4-.7-5.7-2.1l1.1-7.4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="9.9" cy="12.2" r="1.1" fill="currentColor"/><circle cx="14.1" cy="12.2" r="1.1" fill="currentColor"/><path d="M10 15c1.2.6 2.8.6 4 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
@@ -1684,283 +1691,74 @@ function enhanceBreakingStrip(stories) {
     const encodedTitle = encodeURIComponent(context.title);
     const encodedText = encodeURIComponent(`${context.title} ${context.url}`);
     return {
-      instagram: 'https://www.instagram.com/',
       x: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
       whatsapp: `https://api.whatsapp.com/send?text=${encodedText}`,
-      sms: `sms:?&body=${encodedText}`,
-      messenger: `https://www.messenger.com/?share_text=${encodedText}`,
-      discord: `https://discord.com/channels/@me?share_text=${encodedText}`,
+      reddit: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
+      discord: 'https://discord.com/channels/@me',
     };
-  }
-
-  function buildShareBridgeIntents(intent) {
-    return Object.fromEntries(Object.entries(intent).map(([platform, url]) => [platform, buildShareBridgeUrl(url)]));
-  }
-
-  function buildShareBridgeUrl(targetUrl) {
-    try {
-      const bridge = new URL('share-bridge.html', window.location.href);
-      bridge.searchParams.set('to', targetUrl);
-      bridge.searchParams.set('return', window.location.href);
-      bridge.searchParams.set('id', `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`);
-      return bridge.href;
-    } catch (_) {
-      return targetUrl;
-    }
   }
 
   function bindShareRow(row, context) {
     row.querySelectorAll('[data-share-platform]').forEach((control) => {
       control.addEventListener('click', async (event) => {
         if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
-        if (control.dataset.sharePlatform === 'instagram') {
+        if (control.dataset.sharePlatform === 'copy') {
           event.preventDefault();
-          handleInstagramShare(row, control, context);
+          const copied = await copyShareText(context);
+          if (copied) {
+            clearManualCopyText(row);
+            setShareStatus(row, 'Link copied');
+          } else {
+            showManualCopyText(row, context);
+            setShareStatus(row, 'Link selected. Press Ctrl+C or Command+C to copy.');
+          }
           return;
         }
-        if (control.dataset.sharePlatform === 'sms') {
-          event.preventDefault();
-          handleSmsShare(row, control, context);
-          return;
+        if (control.matches('a[href]')) {
+          const platform = control.dataset.sharePlatform;
+          const label = getSharePlatformLabel(platform);
+          let copiedForDiscord = false;
+          if (platform === 'discord') {
+            copiedForDiscord = copyShareTextImmediately(context);
+          }
+          const opened = openShareWindow(control.href);
+          if (opened) event.preventDefault();
+          if (platform === 'discord') {
+            const openingMessage = opened ? 'Discord opened in a new tab' : 'If nothing opened, this browser blocked the new tab.';
+            const copiedMessage = copiedForDiscord ? `Link copied. ${openingMessage}` : openingMessage;
+            setShareStatus(row, copiedMessage);
+            copyShareText(context).then((asyncCopied) => {
+              setShareStatus(row, asyncCopied || copiedForDiscord ? `Link copied. ${openingMessage}` : openingMessage);
+            });
+            return;
+          }
+          setShareStatus(row, opened ? `Opening ${label} in a new tab` : 'If nothing opened, this browser blocked the new tab.');
         }
-        if (!control.href || !control.matches('[data-share-app-fallback]')) return;
-        event.preventDefault();
-        await copyShareText(context);
-        window.location.assign(control.href);
       });
     });
   }
 
-  async function handleInstagramShare(row, control, context) {
-    const targetUrl = control.dataset.shareTarget || 'https://www.instagram.com/';
-    const shareText = getShareCopyText(context);
-    const sharePayload = {
-      title: context.title,
-      text: shareText,
-      url: context.url,
+  function getSharePlatformLabel(platform) {
+    const labels = {
+      x: 'X',
+      facebook: 'Facebook',
+      whatsapp: 'WhatsApp',
+      reddit: 'Reddit',
+      discord: 'Discord',
     };
-    const mobileShare = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    setShareStatus(row, 'Preparing Instagram');
-    let copied = await copyShareText(context);
-    if (!copied) copied = copyShareTextImmediately(context);
+    return labels[platform] || 'share';
+  }
 
-    let instagramCard = null;
+  function openShareWindow(url) {
     try {
-      instagramCard = await createInstagramShareCard(context);
+      const shareWindow = window.open('', '_blank');
+      if (!shareWindow) return false;
+      shareWindow.opener = null;
+      shareWindow.location.href = url;
+      return true;
     } catch (_) {
-      instagramCard = null;
-    }
-    const filePayload = instagramCard ? {
-      title: context.title,
-      text: shareText,
-      files: [instagramCard],
-    } : null;
-
-    if (mobileShare && typeof navigator.share === 'function') {
-      const canShareFile = filePayload && (!navigator.canShare || navigator.canShare(filePayload));
-      const canShareLink = !navigator.canShare || navigator.canShare(sharePayload);
-      if (canShareFile || canShareLink) {
-        setShareStatus(row, 'Opening share sheet');
-        try {
-          await navigator.share(canShareFile ? filePayload : sharePayload);
-          setShareStatus(row, 'Shared');
-          return;
-        } catch (error) {
-          if (error?.name === 'AbortError') {
-            setShareStatus(row, 'Share canceled');
-            return;
-          }
-        }
-      }
-    }
-
-    if (instagramCard) {
-      try {
-        downloadShareCard(instagramCard);
-      } catch (_) {
-        instagramCard = null;
-      }
-    }
-    setShareStatus(row, instagramCard
-      ? (copied ? 'Card saved. Caption copied.' : 'Card saved.')
-      : (copied ? 'Caption copied. Opening Instagram.' : 'Opening Instagram.'));
-    window.setTimeout(() => {
-      window.location.assign(control.href || targetUrl);
-    }, instagramCard ? 520 : 160);
-  }
-
-  async function createInstagramShareCard(context) {
-    if (typeof File !== 'function') return null;
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext?.('2d');
-    if (!ctx) return null;
-
-    const size = 1080;
-    canvas.width = size;
-    canvas.height = size;
-
-    drawShareCardBackground(ctx, size);
-
-    const image = context.imageUrl ? await loadShareCardImage(context.imageUrl) : null;
-    if (image) {
-      drawImageCover(ctx, image, 0, 0, size, 620);
-      const imageFade = ctx.createLinearGradient(0, 420, 0, 700);
-      imageFade.addColorStop(0, 'rgba(12, 22, 35, 0)');
-      imageFade.addColorStop(0.72, 'rgba(12, 22, 35, 0.72)');
-      imageFade.addColorStop(1, 'rgba(12, 22, 35, 0.92)');
-      ctx.fillStyle = imageFade;
-      ctx.fillRect(0, 360, size, 340);
-    } else {
-      const heroGradient = ctx.createLinearGradient(0, 0, size, 620);
-      heroGradient.addColorStop(0, '#10233a');
-      heroGradient.addColorStop(0.52, '#245f70');
-      heroGradient.addColorStop(1, '#b43f32');
-      ctx.fillStyle = heroGradient;
-      ctx.fillRect(0, 0, size, 620);
-    }
-
-    ctx.fillStyle = '#fbfaf6';
-    roundRect(ctx, 58, 560, size - 116, 422, 34);
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(21, 33, 52, 0.16)';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    ctx.fillStyle = '#b13b2f';
-    ctx.font = '700 28px Arial, Helvetica, sans-serif';
-    ctx.letterSpacing = '0px';
-    ctx.fillText('THE PRESS', 92, 626);
-
-    ctx.fillStyle = '#152134';
-    ctx.font = '800 66px Georgia, "Times New Roman", serif';
-    wrapCanvasText(ctx, context.title, 92, 712, size - 184, 72, 4);
-
-    ctx.fillStyle = 'rgba(21, 33, 52, 0.78)';
-    ctx.font = '400 29px Arial, Helvetica, sans-serif';
-    wrapCanvasText(ctx, context.text, 92, 930, size - 184, 38, 2);
-
-    ctx.fillStyle = '#3153c9';
-    ctx.font = '700 26px Arial, Helvetica, sans-serif';
-    ctx.fillText(cleanDisplayUrl(context.url), 92, 1022);
-
-    const blob = await canvasToBlob(canvas);
-    if (!blob) return null;
-    return new File([blob], `${slugify(context.title || 'the-press') || 'the-press'}-instagram-card.png`, { type: 'image/png' });
-  }
-
-  function drawShareCardBackground(ctx, size) {
-    const background = ctx.createLinearGradient(0, 0, size, size);
-    background.addColorStop(0, '#edf3fb');
-    background.addColorStop(0.55, '#fffaf1');
-    background.addColorStop(1, '#ecf4f8');
-    ctx.fillStyle = background;
-    ctx.fillRect(0, 0, size, size);
-
-    ctx.fillStyle = 'rgba(177, 59, 47, 0.16)';
-    ctx.fillRect(0, 0, size, 18);
-    ctx.fillStyle = 'rgba(49, 83, 201, 0.12)';
-    ctx.fillRect(0, size - 18, size, 18);
-  }
-
-  function loadShareCardImage(src) {
-    return new Promise((resolve) => {
-      const image = new Image();
-      const finish = (value) => {
-        window.clearTimeout(timer);
-        resolve(value);
-      };
-      const timer = window.setTimeout(() => resolve(null), 1800);
-      image.crossOrigin = 'anonymous';
-      image.onload = () => finish(image);
-      image.onerror = () => finish(null);
-      image.src = src;
-    });
-  }
-
-  function drawImageCover(ctx, image, x, y, width, height) {
-    const scale = Math.max(width / image.naturalWidth, height / image.naturalHeight);
-    const drawWidth = image.naturalWidth * scale;
-    const drawHeight = image.naturalHeight * scale;
-    const drawX = x + (width - drawWidth) / 2;
-    const drawY = y + (height - drawHeight) / 2;
-    ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
-  }
-
-  function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
-    const words = collapseWhitespace(text).split(' ').filter(Boolean);
-    const lines = [];
-    let line = '';
-
-    words.forEach((word) => {
-      const testLine = line ? `${line} ${word}` : word;
-      if (ctx.measureText(testLine).width <= maxWidth || !line) {
-        line = testLine;
-        return;
-      }
-      lines.push(line);
-      line = word;
-    });
-    if (line) lines.push(line);
-
-    lines.slice(0, maxLines).forEach((lineText, index) => {
-      let output = lineText;
-      if (index === maxLines - 1 && lines.length > maxLines) output = truncateCanvasLine(ctx, lineText, maxWidth);
-      ctx.fillText(output, x, y + (index * lineHeight));
-    });
-  }
-
-  function truncateCanvasLine(ctx, text, maxWidth) {
-    let output = text;
-    while (output.length > 1 && ctx.measureText(`${output}...`).width > maxWidth) {
-      output = output.slice(0, -1).trim();
-    }
-    return `${output}...`;
-  }
-
-  function canvasToBlob(canvas) {
-    return new Promise((resolve) => {
-      try {
-        canvas.toBlob((blob) => resolve(blob), 'image/png', 0.94);
-      } catch (_) {
-        resolve(null);
-      }
-    });
-  }
-
-  function downloadShareCard(file) {
-    const link = document.createElement('a');
-    const objectUrl = URL.createObjectURL(file);
-    link.href = objectUrl;
-    link.download = file.name;
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    window.setTimeout(() => URL.revokeObjectURL(objectUrl), 5000);
-  }
-
-  function roundRect(ctx, x, y, width, height, radius) {
-    const r = Math.min(radius, width / 2, height / 2);
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.lineTo(x + width - r, y);
-    ctx.quadraticCurveTo(x + width, y, x + width, y + r);
-    ctx.lineTo(x + width, y + height - r);
-    ctx.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
-    ctx.lineTo(x + r, y + height);
-    ctx.quadraticCurveTo(x, y + height, x, y + height - r);
-    ctx.lineTo(x, y + r);
-    ctx.quadraticCurveTo(x, y, x + r, y);
-    ctx.closePath();
-  }
-
-  function cleanDisplayUrl(url) {
-    try {
-      const parsed = new URL(url);
-      return `${parsed.hostname.replace(/^www\./, '')}${parsed.pathname === '/' ? '' : parsed.pathname}`.slice(0, 72);
-    } catch (_) {
-      return String(url || 'thepress.live').slice(0, 72);
+      return false;
     }
   }
 
@@ -2021,6 +1819,24 @@ function enhanceBreakingStrip(stories) {
       status.classList.remove('is-visible');
       status.textContent = '';
     }, 3200);
+  }
+
+  function showManualCopyText(row, context) {
+    clearManualCopyText(row);
+    const input = document.createElement('input');
+    input.className = 'share-row__manual-copy';
+    input.type = 'text';
+    input.readOnly = true;
+    input.value = getShareCopyText(context);
+    input.setAttribute('aria-label', 'Selected share text');
+    row.appendChild(input);
+    input.focus({ preventScroll: true });
+    input.select();
+    input.setSelectionRange(0, input.value.length);
+  }
+
+  function clearManualCopyText(row) {
+    row.querySelectorAll('.share-row__manual-copy').forEach((node) => node.remove());
   }
 
   function fallbackCopyText(text) {

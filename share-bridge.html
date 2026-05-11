@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
   <title>Opening Share - The Press</title>
-  <link rel="stylesheet" href="styles.css?v=1778459600" />
+  <link rel="stylesheet" href="styles.css?v=1778468000" />
   <style>
     body{min-height:100vh;display:grid;place-items:center;padding:2rem;background:var(--page);color:var(--ink)}
     .share-bridge{width:min(32rem,100%);text-align:center}
@@ -20,7 +20,7 @@
   <main class="share-bridge" aria-live="polite">
     <p class="eyebrow">The Press</p>
     <h1>Opening Share</h1>
-    <p>When you are done, use Back and this page will return you to The Press.</p>
+    <p>When you are done sharing, use your browser Back button to return to The Press.</p>
     <div class="share-bridge__actions">
       <a href="#" data-open-share rel="noopener noreferrer">Open share</a>
       <a href="index.html" data-return-home>Return to The Press</a>
@@ -37,14 +37,16 @@
         'facebook.com',
         'www.facebook.com',
         'm.facebook.com',
+        'reddit.com',
+        'www.reddit.com',
+        'old.reddit.com',
         'api.whatsapp.com',
         'web.whatsapp.com',
         'wa.me',
         'messenger.com',
         'www.messenger.com',
         'discord.com',
-        'www.instagram.com',
-        'instagram.com',
+        'www.discord.com',
       ]);
 
       function sameSiteUrl(raw, fallback) {
@@ -72,6 +74,7 @@
       const key = `press-share-bridge:${params.get('id') || targetUrl.slice(0, 180)}`;
       const openLink = document.querySelector('[data-open-share]');
       const returnLink = document.querySelector('[data-return-home]');
+      let leavingForShare = false;
 
       if (returnLink) returnLink.href = returnUrl;
       if (openLink && targetUrl) openLink.href = targetUrl;
@@ -83,8 +86,16 @@
         window.location.replace(returnUrl);
       }
 
-      window.addEventListener('pageshow', (event) => {
-        if (event.persisted) returnHome();
+      function alreadyOpened() {
+        try {
+          return sessionStorage.getItem(key) === 'opened';
+        } catch (_) {
+          return false;
+        }
+      }
+
+      window.addEventListener('pageshow', () => {
+        if (leavingForShare && alreadyOpened()) returnHome();
       });
 
       if (!targetUrl) {
@@ -93,7 +104,7 @@
       }
 
       try {
-        if (sessionStorage.getItem(key) === 'opened') {
+        if (alreadyOpened()) {
           returnHome();
           return;
         }
@@ -101,6 +112,7 @@
       } catch (_) {}
 
       window.setTimeout(() => {
+        leavingForShare = true;
         window.location.assign(targetUrl);
       }, 240);
     })();
