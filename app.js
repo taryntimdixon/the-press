@@ -1650,15 +1650,16 @@ function enhanceBreakingStrip(stories) {
 
   function buildShareRowMarkup(context) {
     const intent = buildShareIntents(context);
+    const bridge = buildShareBridgeIntents(intent);
     return `
       <div class="share-row__buttons">
-        <a class="share-btn share-btn--instagram" href="${escapeAttribute(intent.instagram)}" rel="noopener noreferrer" data-share-platform="instagram" aria-label="Share on Instagram" title="Instagram">${sharePlatformIcon('instagram')}<span class="sr-only">Instagram</span></a>
-        <a class="share-btn share-btn--x" href="${escapeAttribute(intent.x)}" rel="noopener noreferrer" data-share-platform="x" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
-        <a class="share-btn share-btn--facebook" href="${escapeAttribute(intent.facebook)}" rel="noopener noreferrer" data-share-platform="facebook" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
-        <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(intent.whatsapp)}" rel="noopener noreferrer" data-share-platform="whatsapp" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
+        <a class="share-btn share-btn--instagram" href="${escapeAttribute(bridge.instagram)}" rel="noopener noreferrer" data-share-platform="instagram" data-share-target="${escapeAttribute(intent.instagram)}" aria-label="Share on Instagram" title="Instagram">${sharePlatformIcon('instagram')}<span class="sr-only">Instagram</span></a>
+        <a class="share-btn share-btn--x" href="${escapeAttribute(bridge.x)}" rel="noopener noreferrer" data-share-platform="x" data-share-target="${escapeAttribute(intent.x)}" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
+        <a class="share-btn share-btn--facebook" href="${escapeAttribute(bridge.facebook)}" rel="noopener noreferrer" data-share-platform="facebook" data-share-target="${escapeAttribute(intent.facebook)}" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
+        <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(bridge.whatsapp)}" rel="noopener noreferrer" data-share-platform="whatsapp" data-share-target="${escapeAttribute(intent.whatsapp)}" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
         <a class="share-btn share-btn--sms" href="${escapeAttribute(intent.sms)}" rel="noopener noreferrer" data-share-platform="sms" aria-label="Share by text message" title="Messages">${sharePlatformIcon('sms')}<span class="sr-only">Messages</span></a>
-        <a class="share-btn share-btn--messenger" href="${escapeAttribute(intent.messenger)}" rel="noopener noreferrer" data-share-platform="messenger" data-share-app-fallback aria-label="Share on Messenger" title="Messenger">${sharePlatformIcon('messenger')}<span class="sr-only">Messenger</span></a>
-        <a class="share-btn share-btn--discord" href="${escapeAttribute(intent.discord)}" rel="noopener noreferrer" data-share-platform="discord" data-share-app-fallback aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></a>
+        <a class="share-btn share-btn--messenger" href="${escapeAttribute(bridge.messenger)}" rel="noopener noreferrer" data-share-platform="messenger" data-share-target="${escapeAttribute(intent.messenger)}" data-share-app-fallback aria-label="Share on Messenger" title="Messenger">${sharePlatformIcon('messenger')}<span class="sr-only">Messenger</span></a>
+        <a class="share-btn share-btn--discord" href="${escapeAttribute(bridge.discord)}" rel="noopener noreferrer" data-share-platform="discord" data-share-target="${escapeAttribute(intent.discord)}" data-share-app-fallback aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></a>
       </div>
       <p class="share-row__status" data-share-status aria-live="polite"></p>
     `;
@@ -1684,13 +1685,29 @@ function enhanceBreakingStrip(stories) {
     const encodedText = encodeURIComponent(`${context.title} ${context.url}`);
     return {
       instagram: 'https://www.instagram.com/',
-      x: `https://x.com/intent/post?text=${encodedTitle}&url=${encodedUrl}`,
-      facebook: `https://m.facebook.com/?share_text=${encodedText}`,
-      whatsapp: `https://web.whatsapp.com/send?text=${encodedText}`,
+      x: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      whatsapp: `https://api.whatsapp.com/send?text=${encodedText}`,
       sms: `sms:?&body=${encodedText}`,
       messenger: `https://www.messenger.com/?share_text=${encodedText}`,
       discord: `https://discord.com/channels/@me?share_text=${encodedText}`,
     };
+  }
+
+  function buildShareBridgeIntents(intent) {
+    return Object.fromEntries(Object.entries(intent).map(([platform, url]) => [platform, buildShareBridgeUrl(url)]));
+  }
+
+  function buildShareBridgeUrl(targetUrl) {
+    try {
+      const bridge = new URL('share-bridge.html', window.location.href);
+      bridge.searchParams.set('to', targetUrl);
+      bridge.searchParams.set('return', window.location.href);
+      bridge.searchParams.set('id', `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`);
+      return bridge.href;
+    } catch (_) {
+      return targetUrl;
+    }
   }
 
   function bindShareRow(row, context) {
@@ -1716,13 +1733,14 @@ function enhanceBreakingStrip(stories) {
   }
 
   async function handleInstagramShare(row, control, context) {
-    const targetUrl = control.href || 'https://www.instagram.com/';
+    const targetUrl = control.dataset.shareTarget || 'https://www.instagram.com/';
     const shareText = getShareCopyText(context);
     const sharePayload = {
       title: context.title,
       text: shareText,
       url: context.url,
     };
+    const mobileShare = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     setShareStatus(row, 'Preparing Instagram');
     let copied = await copyShareText(context);
     if (!copied) copied = copyShareTextImmediately(context);
@@ -1738,7 +1756,6 @@ function enhanceBreakingStrip(stories) {
       text: shareText,
       files: [instagramCard],
     } : null;
-    const mobileShare = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (mobileShare && typeof navigator.share === 'function') {
       const canShareFile = filePayload && (!navigator.canShare || navigator.canShare(filePayload));
@@ -1767,9 +1784,9 @@ function enhanceBreakingStrip(stories) {
     }
     setShareStatus(row, instagramCard
       ? (copied ? 'Card saved. Caption copied.' : 'Card saved.')
-      : (copied ? 'Caption copied' : 'Opening Instagram'));
+      : (copied ? 'Caption copied. Opening Instagram.' : 'Opening Instagram.'));
     window.setTimeout(() => {
-      window.location.assign(targetUrl);
+      window.location.assign(control.href || targetUrl);
     }, instagramCard ? 520 : 160);
   }
 

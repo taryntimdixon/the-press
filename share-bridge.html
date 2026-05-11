@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Opening Share - The Press</title>
+  <link rel="stylesheet" href="styles.css?v=1778459600" />
+  <style>
+    body{min-height:100vh;display:grid;place-items:center;padding:2rem;background:var(--page);color:var(--ink)}
+    .share-bridge{width:min(32rem,100%);text-align:center}
+    .share-bridge h1{margin:0 0 .5rem;font-family:var(--font-display);font-size:clamp(2.1rem,8vw,4rem);line-height:.95}
+    .share-bridge p{margin:.4rem auto;color:var(--muted);font-weight:700}
+    .share-bridge__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:1.4rem}
+    .share-bridge__actions a{display:inline-flex;align-items:center;justify-content:center;min-height:2.7rem;padding:0 1rem;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font-weight:900;text-decoration:none}
+    .share-bridge__actions a:first-child{background:var(--blue);border-color:var(--blue);color:#fff}
+  </style>
+</head>
+<body>
+  <main class="share-bridge" aria-live="polite">
+    <p class="eyebrow">The Press</p>
+    <h1>Opening Share</h1>
+    <p>When you are done, use Back and this page will return you to The Press.</p>
+    <div class="share-bridge__actions">
+      <a href="#" data-open-share rel="noopener noreferrer">Open share</a>
+      <a href="index.html" data-return-home>Return to The Press</a>
+    </div>
+  </main>
+  <script>
+    (() => {
+      const params = new URLSearchParams(window.location.search);
+      const allowedHosts = new Set([
+        'twitter.com',
+        'www.twitter.com',
+        'x.com',
+        'www.x.com',
+        'facebook.com',
+        'www.facebook.com',
+        'm.facebook.com',
+        'api.whatsapp.com',
+        'web.whatsapp.com',
+        'wa.me',
+        'messenger.com',
+        'www.messenger.com',
+        'discord.com',
+        'www.instagram.com',
+        'instagram.com',
+      ]);
+
+      function sameSiteUrl(raw, fallback) {
+        try {
+          const url = new URL(raw || '', window.location.href);
+          const isLocal = url.origin === window.location.origin;
+          const isPress = /(^|\.)thepress\.live$/i.test(url.hostname);
+          return (isLocal || isPress) ? url.href : fallback;
+        } catch (_) {
+          return fallback;
+        }
+      }
+
+      function shareTargetUrl(raw) {
+        try {
+          const url = new URL(raw || '');
+          return url.protocol === 'https:' && allowedHosts.has(url.hostname.toLowerCase()) ? url.href : '';
+        } catch (_) {
+          return '';
+        }
+      }
+
+      const returnUrl = sameSiteUrl(params.get('return'), new URL('index.html', window.location.href).href);
+      const targetUrl = shareTargetUrl(params.get('to'));
+      const key = `press-share-bridge:${params.get('id') || targetUrl.slice(0, 180)}`;
+      const openLink = document.querySelector('[data-open-share]');
+      const returnLink = document.querySelector('[data-return-home]');
+
+      if (returnLink) returnLink.href = returnUrl;
+      if (openLink && targetUrl) openLink.href = targetUrl;
+
+      function returnHome() {
+        try {
+          sessionStorage.removeItem(key);
+        } catch (_) {}
+        window.location.replace(returnUrl);
+      }
+
+      window.addEventListener('pageshow', (event) => {
+        if (event.persisted) returnHome();
+      });
+
+      if (!targetUrl) {
+        returnHome();
+        return;
+      }
+
+      try {
+        if (sessionStorage.getItem(key) === 'opened') {
+          returnHome();
+          return;
+        }
+        sessionStorage.setItem(key, 'opened');
+      } catch (_) {}
+
+      window.setTimeout(() => {
+        window.location.assign(targetUrl);
+      }, 240);
+    })();
+  </script>
+</body>
+</html>
