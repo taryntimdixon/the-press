@@ -679,6 +679,10 @@ def set_or_replace_caption(soup: BeautifulSoup, img: Any, caption_html: str) -> 
     if not figure:
         return
     existing = figure.find("figcaption")
+    if not caption_html.strip():
+        if existing:
+            existing.decompose()
+        return
     caption_soup = BeautifulSoup(caption_html, "html.parser")
     if existing:
         existing.clear()
@@ -751,12 +755,9 @@ def update_article_page(client: OpenAI, path: Path, generated_count: int) -> tup
         time.sleep(1)
 
     img = ensure_figure_and_img(soup, container, img)
-    alt = f"AI-generated editorial thumbnail for: {title}"
-    caption_html = (
-        f"{html.escape(alt)}. "
-        f'<span class="figure-credit">AI-generated image by The Press.</span>'
-    )
-    credit_plain = f"{alt}. AI-generated image by The Press."
+    alt = f"Editorial image for: {title}"
+    caption_html = ""
+    credit_plain = ""
 
     img["src"] = rel_to_file(output_path, path)
     img["alt"] = alt

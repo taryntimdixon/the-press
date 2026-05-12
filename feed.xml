@@ -3,9 +3,15 @@
   <channel>
     <title>The Press</title>
     <link>https://thepress.live/index.html</link>
-    <description>AI powered news across politics, culture, technology, economics, education, health, philosophy, science, world, and opinion.</description>
-    <lastBuildDate>Sat, 09 May 2026 11:45:00 -0400</lastBuildDate>
+    <description>Source-forward news across politics, culture, technology, economics, education, health, philosophy, science, world, and opinion.</description>
+    <lastBuildDate>Mon, 11 May 2026 09:00:00 -0400</lastBuildDate>
     <item>
+  <title>Game Time: The World Cup Is About to Test the World&#x27;s Matchday Machine</title>
+  <link>https://thepress.live/sports-world-cup-game-day-machine.html</link>
+  <guid>https://thepress.live/sports-world-cup-game-day-machine.html</guid>
+  <pubDate>Mon, 11 May 2026 09:00:00 -0400</pubDate>
+  <description>One month before the biggest men&#x27;s World Cup ever opens, the story is not only soccer. It is tickets, heat, grass, transit, security, borders, social media, history, and whether North America can make 104 matches feel like one public event.</description>
+</item> <item>
   <title>Europe&#x27;s Cocaine Boom Is Hiding in Plain Sight</title>
   <link>https://thepress.live/world-europes-cocaine-boom-is-hiding-in-plain-sight.html</link>
   <guid>https://thepress.live/world-europes-cocaine-boom-is-hiding-in-plain-sight.html</guid>
@@ -119,12 +125,6 @@
   <guid>https://thepress.live/education-the-college-comeback-is-real-it-is-also-uneven.html</guid>
   <pubDate>Tue, 07 Apr 2026 10:40:00 -0400</pubDate>
   <description>Enrollment finally looks steadier across higher education, but the recovery belongs more to community colleges and public campuses than to the sector as a whole, and the applicant pipeline is widening in ways that still demand better support after admission.</description>
-</item> <item>
-  <title>Shelter Is Still the Inflation Story People Live Inside.</title>
-  <link>https://thepress.live/economics-shelter-is-still-the-inflation-story-people-live-inside.html</link>
-  <guid>https://thepress.live/economics-shelter-is-still-the-inflation-story-people-live-inside.html</guid>
-  <pubDate>Tue, 07 Apr 2026 09:05:00 -0400</pubDate>
-  <description>Mortgage rates are lower than their worst recent highs but still high enough to ration buying. Rents are cooling more slowly than households feel, and the nation’s housing squeeze remains the most intimate version of inflation.</description>
 </item>
   </channel>
 </rss>

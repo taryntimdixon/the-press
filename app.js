@@ -387,7 +387,7 @@ function pressSiteAssetUrl(path) {
 
 })();
 (() => {
-  const AUTHOR_LABEL = 'Written and Researched by AI';
+  const AUTHOR_LABEL = 'By The Press';
   const SEARCH_EMPTY = '<div class="search-empty"><p>Start typing to search the full edition.</p></div>';
   const SEARCH_NONE = '<div class="search-empty"><p>No stories matched that search yet.</p></div>';
   let storyIndexPromise = null;
@@ -628,7 +628,7 @@ if (!hasHomepageTargets) {
 
   function normalizeVisibleBylines(root) {
     const replaceHouseByline = (text) =>
-      text.replace(/^(?:By\s+)?The Press(?:\s+Staff)?(?=\s*[•·]|\s*$)/i, AUTHOR_LABEL);
+      text.replace(/^(?:By\s+)?(?:The Press|The Press Staff|Intelligent AI|Written and Researched by AI)(?=\s*[•·]|\s*$)/i, AUTHOR_LABEL);
 
     const selectors = [
       '.article-meta span:first-child',
@@ -649,21 +649,25 @@ if (!hasHomepageTargets) {
         const text = collapseWhitespace(node.textContent || '');
         if (!text) return;
         if (selector.endsWith('span:first-child')) {
-          node.textContent = AUTHOR_LABEL;
+          if (/^(?:Intelligent AI|Written and Researched by AI|AI)\b/i.test(text)) {
+            node.textContent = AUTHOR_LABEL;
+          } else if (!/^By\s+/i.test(text)) {
+            node.textContent = `By ${text}`;
+          }
           return;
         }
-        if (/^(?:By\s+)?The Press\b/i.test(text)) {
+        if (/^(?:By\s+)?(?:The Press|Intelligent AI|Written and Researched by AI)\b/i.test(text)) {
           node.textContent = replaceHouseByline(text);
         } else if (/^By\b/i.test(text)) {
           node.textContent = text.replace(/^By\s+.*?(?=\s*[•·]|\s*$)/i, AUTHOR_LABEL);
-        } else if (/^The Press Staff/i.test(text)) {
+        } else if (/^The Press Staff|^Intelligent AI|^Written and Researched by AI/i.test(text)) {
           node.textContent = AUTHOR_LABEL;
         }
       });
     });
 
     root.querySelectorAll('.author-panel').forEach((panel) => {
-      panel.innerHTML = '<h2>AI newsroom</h2><p><strong>' + AUTHOR_LABEL + '</strong>. This edition uses AI-written stories reviewed through The Press editorial workflow before publication.</p>';
+      panel.innerHTML = '<h2>Masthead</h2><p><strong>The Press</strong>. Source notes, dates, and corrections stay close to the work.</p>';
     });
 
     root.querySelectorAll('.figure-credit a').forEach((a) => {
@@ -741,7 +745,7 @@ if (!hasHomepageTargets) {
   function relabelUtilityNav() {
     document.querySelectorAll('a[href="authors.html"]').forEach((link) => {
       if (/authors/i.test(link.textContent || '')) {
-        link.textContent = 'AI Newsroom';
+        link.textContent = 'Masthead';
       }
     });
   }
@@ -825,6 +829,8 @@ if (!hasHomepageTargets) {
   }
 
   function injectArticleDisclosure(article) {
+    article.querySelectorAll('[data-article-trust-card]').forEach((node) => node.remove());
+    return;
     if (article.querySelector('[data-article-trust-card]')) return;
 
     const disclosure = document.createElement('section');
@@ -2311,12 +2317,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const text = (el.textContent || "").trim();
     if (!text) return;
     if (/^(?:By\s+)?The Press\b/i.test(text) || el.querySelector('a[href*="#the-press"]')) {
-      el.textContent = text.replace(/^(?:By\s+)?The Press(?:\s+Staff)?(?=\s*[•·]|\s*$)/i, "Written and Researched by AI");
+      el.textContent = text.replace(/^(?:By\s+)?(?:The Press(?:\s+Staff)?|Intelligent AI|Written and Researched by AI)(?=\s*[•·]|\s*$)/i, "By The Press");
       return;
     }
 
     if (text.startsWith("By ")) {
-      el.textContent = text.replace(/^By\s+[^•]+/, "Written and Researched by AI");
+      el.textContent = text.replace(/^By\s+[^•]+/, "By The Press");
+    } else if (/^(?:Intelligent AI|Written and Researched by AI)\b/i.test(text)) {
+      el.textContent = text.replace(/^(?:Intelligent AI|Written and Researched by AI)\b/i, "By The Press");
     }
   });
 });
@@ -2329,7 +2337,7 @@ document.addEventListener("DOMContentLoaded", () => {
 (() => {
   'use strict';
 
-  const PRESS_AUTHOR = 'Written and Researched by AI';
+  const PRESS_AUTHOR = 'By The Press';
   const CACHE_PREFIX = 'press-ecosystem-cache:';
   const MODE_KEY = 'press-reader-mode';
   const FRESH_HOURS = 72;
@@ -3753,7 +3761,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   'use strict';
 
-  const AUTHOR_LABEL = 'Written and Researched by AI';
+  const AUTHOR_LABEL = 'By The Press';
 
   const SECTION_ALIASES = {
 
@@ -6431,6 +6439,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function installArticleDock(context) {
+    document.querySelectorAll('[data-living-article-dock]').forEach((node) => node.remove());
+    return;
     const existingDock = document.querySelector('[data-living-article-dock]');
     const dock = existingDock || document.createElement('section');
     dock.className = 'press-living-dock';
@@ -6506,6 +6516,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function installSocialRailEnhancements(context) {
+    document.querySelectorAll('[data-living-sidecar]').forEach((node) => node.remove());
+    return;
     if (document.querySelector('.press-social-feature')) return;
 
     const asideStack = context.article.querySelector('.article-aside .sticky-stack') || context.article.querySelector('.article-aside');

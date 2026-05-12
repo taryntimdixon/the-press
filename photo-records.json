@@ -1,115 +1,123 @@
 [
   {
+    "story": "Game Time: The World Cup Is About to Test the World's Matchday Machine",
+    "page": "sports-world-cup-game-day-machine.html",
+    "section": "Sports",
+    "image": "assets/article-thumbnails/2026-05-11-world-cup-game-day-machine-thumbnail.jpg",
+    "alt": "A diverse World Cup crowd moving through a stadium concourse at dusk, with transit signs, a train, and the pitch beyond",
+    "credit": ""
+  },
+  {
     "story": "Europe's Cocaine Boom Is Hiding in Plain Sight",
     "page": "world-europes-cocaine-boom-is-hiding-in-plain-sight.html",
     "section": "World",
     "image": "assets/article-thumbnails/2026-05-09-europe-cocaine-trafficking-thumbnail.png",
-    "alt": "AI-generated photorealistic editorial image of a rainy British residential street with ordinary residents, an ambulance in the distance and anonymous figures near a doorway suggesting hidden trafficking pressure.",
-    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+    "alt": "Image of a rainy British residential street with ordinary residents, an ambulance in the distance and anonymous figures near a doorway suggesting hidden trafficking pressure",
+    "credit": ""
   },
   {
     "story": "America's Military Year Is a Map of Force",
     "page": "world-americas-military-year-is-a-map-of-force.html",
     "section": "World",
     "image": "assets/article-thumbnails/2026-05-08-americas-military-year-thumbnail.png",
-    "alt": "U.S. carrier deck at blue hour with a stealth aircraft, deck crew, command screens and distant ship lights.",
-    "credit": "The Press editorial visual."
+    "alt": "U.S. carrier deck at blue hour with a stealth aircraft, deck crew, command screens and distant ship lights",
+    "credit": "The Press editorial visual"
   },
   {
     "story": "The Mountain That Fell Into the Sea",
     "page": "climate-the-mountain-that-fell-into-the-sea.html",
     "section": "Climate",
     "image": "assets/alaska-tracy-arm-megatsunami-thumbnail.jpg",
-    "alt": "AI-generated photorealistic editorial image of a narrow Alaskan fjord at dawn after a landslide-generated megatsunami near blue glacier ice.",
-    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+    "alt": "Image of a narrow Alaskan fjord at dawn after a landslide-generated megatsunami near blue glacier ice",
+    "credit": ""
   },
   {
     "story": "The Cold Chain Is the Invisible Machine That Feeds the World",
     "page": "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world.html",
     "section": "Systems",
     "image": "assets/systems-cold-chain-thumbnail.png",
-    "alt": "AI-generated photorealistic editorial image of a refrigerated loading dock with produce crates and vaccine coolers at dawn.",
-    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+    "alt": "Image of a refrigerated loading dock with produce crates and vaccine coolers at dawn",
+    "credit": ""
   },
   {
     "story": "The Internet Is Eating Its Own Memory",
     "page": "memory-the-internet-is-eating-its-own-memory.html",
     "section": "Memory",
     "image": "assets/memory-digital-preservation-thumbnail.png",
-    "alt": "AI-generated photorealistic editorial image of a digital preservation workbench with old game media, archival boxes, and a modern workstation.",
-    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+    "alt": "Image of a digital preservation workbench with old game media, archival boxes, and a modern workstation",
+    "credit": ""
   },
   {
     "story": "The Phone-Free School Day Is a Live Experiment",
     "page": "education-the-phone-free-school-day-is-a-live-experiment.html",
     "section": "Education",
     "image": "assets/education-phone-free-schools-thumbnail.png",
-    "alt": "AI-generated photorealistic editorial image of classroom phone pouches near a doorway with students blurred in the background.",
-    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+    "alt": "Image of classroom phone pouches near a doorway with students blurred in the background",
+    "credit": ""
   },
   {
     "story": "The Next Public-Health System Is the Room You Are In",
     "page": "health-the-next-public-health-system-is-the-room-you-are-in.html",
     "section": "Health",
     "image": "assets/health-indoor-air-thumbnail.png",
-    "alt": "AI-generated photorealistic editorial image of a school or hospital corridor with visible ventilation, a portable air filter, and a small air-quality monitor.",
-    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+    "alt": "Image of a school or hospital corridor with visible ventilation, a portable air filter, and a small air-quality monitor",
+    "credit": ""
   },
   {
     "story": "The Battery Is Becoming the Grid",
     "page": "technology-the-battery-is-becoming-the-grid.html",
     "section": "Technology",
     "image": "assets/technology-battery-grid-thumbnail.png",
-    "alt": "AI-generated photorealistic editorial image of a grid-scale battery storage site under transmission lines at dusk.",
-    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+    "alt": "Image of a grid-scale battery storage site under transmission lines at dusk",
+    "credit": ""
   },
   {
     "story": "The Ocean Has a Fever, and the Thermometer Is Everywhere",
     "page": "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere.html",
     "section": "Science",
     "image": "assets/science-ocean-fever-thumbnail.png",
-    "alt": "AI-generated photorealistic split-level ocean scene with a bleached coral reef below the surface and a research buoy and vessel above.",
-    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph."
+    "alt": "Photorealistic split-level ocean scene with a bleached coral reef below the surface and a research buoy and vessel above",
+    "credit": ""
   },
   {
     "story": "Your Home Insurance Bill Is the New Climate Map",
     "page": "climate-your-home-insurance-bill-is-the-new-climate-map.html",
     "section": "Climate",
     "image": "assets/climate-insurance-bill-thumbnail.png",
-    "alt": "AI-generated photorealistic editorial image of a homeowners insurance renewal packet and house key on a kitchen table, with storm and wildfire light outside.",
-    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph or actual insurance document."
+    "alt": "Image of a homeowners insurance renewal packet and house key on a kitchen table, with storm and wildfire light outside",
+    "credit": ""
   },
   {
     "story": "Texas Hold’em Gets Its Prime-Time Moment Back",
     "page": "sports-texas-holdem-prime-time-moment-back.html",
     "section": "Sports",
     "image": "assets/sports-texas-holdem-prime-time-thumbnail.png",
-    "alt": "AI-generated photorealistic editorial image of an empty televised poker final table under blue broadcast lights with chips and face-down cards in the foreground.",
-    "credit": "AI-generated photorealistic editorial image. Not a documentary photograph or official ESPN/WSOP image."
+    "alt": "Image of an empty televised poker final table under blue broadcast lights with chips and face-down cards in the foreground",
+    "credit": ""
   },
   {
     "story": "The Pentagon Just Let Big AI Into the Classified Room",
     "page": "technology-pentagon-ai-classified-networks.html",
     "section": "Technology",
     "image": "assets/technology-pentagon-ai-classified-networks-thumbnail.jpg",
-    "alt": "AI-generated photorealistic aerial image of the Pentagon complex in daylight, with Washington, D.C. visible in the background.",
-    "credit": "AI-generated photorealistic editorial image. Not a documentary Pentagon photograph."
+    "alt": "Photorealistic aerial image of the Pentagon complex in daylight, with Washington, D.C. visible in the background",
+    "credit": ""
   },
   {
     "story": "The Last Month at Atla",
     "page": "food-atla-noho-closing.html",
     "section": "Culture",
     "image": "assets/food-atla-noho-closing-thumbnail.jpg",
-    "alt": "AI-generated photorealistic editorial image of a warm NoHo restaurant facade with the headline “Atla’s Last Service” and closing date May 31.",
-    "credit": "AI-generated photorealistic editorial image. Not a documentary restaurant photograph."
+    "alt": "Image of a warm NoHo restaurant facade with the headline “Atla’s Last Service” and closing date May 31",
+    "credit": ""
   },
   {
     "story": "The Trial Over OpenAI’s Soul",
     "page": "technology-musk-altman-openai-court-battle.html",
     "section": "Technology",
     "image": "assets/technology-musk-altman-openai-court-battle-thumbnail.jpg",
-    "alt": "AI-generated editorial composite showing Elon Musk and Sam Altman facing each other with the OpenAI logo between them.",
-    "credit": "AI-generated editorial composite. Not a documentary courtroom photograph."
+    "alt": "Image showing Elon Musk and Sam Altman facing each other with the OpenAI logo between them",
+    "credit": ""
   },
   {
     "story": "A Country That Cannot Measure Itself Cannot Govern Itself",
@@ -117,7 +125,7 @@
     "section": "Opinion",
     "image": "assets/opinion-census-bureau-headquarters.jpg",
     "alt": "Front view of the U.S. Census Bureau headquarters building in Suitland, Maryland",
-    "credit": "Front view of the U.S. Census Bureau headquarters in Suitland, Md. The country’s statistical institutions are part of the machinery by which it learns what it is. Photo from the U.S. Census Bureau photo library , available from an official U.S. government source."
+    "credit": "Front view of the U.S. Census Bureau headquarters in Suitland, Md. The country’s statistical institutions are part of the machinery by which it learns what it is. Photo from the U.S. Census Bureau photo library , available from an official U.S. government source"
   },
   {
     "story": "Streaming Grew Up and Became TV Again.",
@@ -125,7 +133,7 @@
     "section": "Culture",
     "image": "assets/culture-sag-aftra-picket.jpg",
     "alt": "SAG-AFTRA members on a picket line during the 2023 strike",
-    "credit": "SAG-AFTRA members on a picket line in Los Angeles in July 2023. Streaming’s adulthood has become a labor, compensation, and business-model story as much as a platform story. Photo by Eden, Janine and Jim, via Wikimedia Commons , licensed CC BY 2.0 ."
+    "credit": "SAG-AFTRA members on a picket line in Los Angeles in July 2023. Streaming’s adulthood has become a labor, compensation, and business-model story as much as a platform story. Photo by Eden, Janine and Jim, via Wikimedia Commons , licensed CC BY 2.0"
   },
   {
     "story": "Bird Flu Changed Farm Policy Before It Changed Human Medicine.",
@@ -133,7 +141,7 @@
     "section": "Health",
     "image": "assets/health-usda-dairy-cows.jpg",
     "alt": "Holstein dairy cows being milked on a rotary parlor in Virginia",
-    "credit": "Holstein dairy cows on a rotary milking parlor in Bealeton, Va., on Aug. 13, 2025. Bird flu’s policy story is unfolding in surveillance, testing, and biosecurity long before any mass human-medicine response is needed. USDA photo by James Pinsky, available via Wikimedia Commons as a U.S. government work in the public domain."
+    "credit": "Holstein dairy cows on a rotary milking parlor in Bealeton, Va., on Aug. 13, 2025. Bird flu’s policy story is unfolding in surveillance, testing, and biosecurity long before any mass human-medicine response is needed. USDA photo by James Pinsky, available via Wikimedia Commons as a U.S. government work in the public domain"
   },
   {
     "story": "Europe’s Defense Turn Is Now a Budget, Supply-Chain, and Time Problem",
@@ -141,7 +149,7 @@
     "section": "World",
     "image": "assets/world-nato-summit-the-hague.jpg",
     "alt": "Group photo of leaders at the 2025 NATO Summit in The Hague",
-    "credit": "Leaders pose for a group photograph at the 2025 NATO summit in The Hague. Europe’s new defense posture now lives in budgets, production capacity, and movement as much as in summit language. Photo by Bart Maat / Ministry of Foreign Affairs of the Netherlands via Wikimedia Commons, licensed CC BY-SA 4.0 ."
+    "credit": "Leaders pose for a group photograph at the 2025 NATO summit in The Hague. Europe’s new defense posture now lives in budgets, production capacity, and movement as much as in summit language. Photo by Bart Maat / Ministry of Foreign Affairs of the Netherlands via Wikimedia Commons, licensed CC BY-SA 4.0"
   },
   {
     "story": "The College Comeback Is Real. It Is Also Uneven.",
@@ -149,7 +157,7 @@
     "section": "Education",
     "image": "assets/education-berea-college-students.jpg",
     "alt": "Students walking toward class on the Berea College campus",
-    "credit": "Students walk toward class on the Berea College campus. The higher-ed rebound is visible, but its gains remain uneven across sectors, pathways, and student groups. Photo by IMCBerea College, via Wikimedia Commons , licensed CC BY 2.0 ."
+    "credit": "Students walk toward class on the Berea College campus. The higher-ed rebound is visible, but its gains remain uneven across sectors, pathways, and student groups. Photo by IMCBerea College, via Wikimedia Commons , licensed CC BY 2.0"
   },
   {
     "story": "Shelter Is Still the Inflation Story People Live Inside.",
@@ -157,7 +165,7 @@
     "section": "Economics",
     "image": "assets/economics-apartment-construction-vuosaari.jpg",
     "alt": "Apartment building construction site in Vuosaari, Helsinki",
-    "credit": "Apartment building construction in Vuosaari, Helsinki. Housing supply takes longer to arrive than monetary policy takes to tighten, which is part of why relief feels late. Photo by kallerna, via Wikimedia Commons , licensed CC BY-SA 4.0 ."
+    "credit": "Apartment building construction in Vuosaari, Helsinki. Housing supply takes longer to arrive than monetary policy takes to tighten, which is part of why relief feels late. Photo by kallerna, via Wikimedia Commons , licensed CC BY-SA 4.0"
   },
   {
     "story": "Proof of Citizenship Is Not Just a Voting Rule. It Is a Theory of the Electorate.",
@@ -165,7 +173,7 @@
     "section": "Politics",
     "image": "assets/politics-vote-here.jpg",
     "alt": "A Vote Here / Vote Aqui sign on Election Day",
-    "credit": "A “Vote Here / Vote Aqui” sign on Election Day. The latest proof-of-citizenship fight is about the administrative gate in front of the ballot as much as the ballot itself. Photo by Lorie Shaull , via Wikimedia Commons, licensed CC BY-SA 2.0 ."
+    "credit": "A “Vote Here / Vote Aqui” sign on Election Day. The latest proof-of-citizenship fight is about the administrative gate in front of the ballot as much as the ballot itself. Photo by Lorie Shaull , via Wikimedia Commons, licensed CC BY-SA 2.0"
   },
   {
     "story": "Artemis II Proved the Moon Is an Engineering Project Again",
@@ -173,7 +181,7 @@
     "section": "Science",
     "image": "assets/science-artemis-ii-launch.jpg",
     "alt": "NASA’s Artemis II mission lifting off from Kennedy Space Center",
-    "credit": "Artemis II lifts off from Launch Complex 39B at NASA’s Kennedy Space Center on April 1, 2026. The mission’s meaning lies not only in spectacle but in the operational data it produced. Image via Wikimedia Commons ; catalogued by NASA Kennedy Space Center / NASA/Brandon Hancock and described on the file page as public domain ."
+    "credit": "Artemis II lifts off from Launch Complex 39B at NASA’s Kennedy Space Center on April 1, 2026. The mission’s meaning lies not only in spectacle but in the operational data it produced. Image via Wikimedia Commons ; catalogued by NASA Kennedy Space Center / NASA/Brandon Hancock and described on the file page as public domain"
   },
   {
     "story": "The Missing Word in the AI Debate Is Judgment.",
@@ -181,7 +189,7 @@
     "section": "Philosophy",
     "image": "assets/philosophy-hannah-arendt-1933.jpg",
     "alt": "Photograph of Hannah Arendt in 1933",
-    "credit": "Hannah Arendt in 1933. Her writing on thinking, judging, and the public realm keeps resurfacing in the AI-governance debate. Image via Wikimedia Commons , public domain as described on the file page."
+    "credit": "Hannah Arendt in 1933. Her writing on thinking, judging, and the public realm keeps resurfacing in the AI-governance debate. Image via Wikimedia Commons , public domain as described on the file page"
   },
   {
     "story": "Measles Is Not a Childhood Memory Anymore.",
@@ -189,7 +197,7 @@
     "section": "Health",
     "image": "assets/health-mmr-vaccine.jpg",
     "alt": "A bottle of measles, mumps, and rubella vaccine",
-    "credit": "A bottle of MMR vaccine. Measles prevention still depends most of all on routine immunization and high coverage. Photo by Whispyhistory, via Wikimedia Commons , licensed CC BY-SA 4.0 ."
+    "credit": "A bottle of MMR vaccine. Measles prevention still depends most of all on routine immunization and high coverage. Photo by Whispyhistory, via Wikimedia Commons , licensed CC BY-SA 4.0"
   },
   {
     "story": "School Recovery Is Now an Attendance Story.",
@@ -197,7 +205,7 @@
     "section": "Education",
     "image": "assets/education-classroom-with-students.jpg",
     "alt": "Students seated in a classroom",
-    "credit": "A classroom in session. The next phase of school recovery depends on whether attendance, focus, and instructional continuity hold at the same time. Photo by Jeff chenqinyi, via Wikimedia Commons , licensed CC BY-SA 3.0 ."
+    "credit": "A classroom in session. The next phase of school recovery depends on whether attendance, focus, and instructional continuity hold at the same time. Photo by Jeff chenqinyi, via Wikimedia Commons , licensed CC BY-SA 3.0"
   },
   {
     "story": "The Consumer Has Not Quit. The Economy Still Feels Cautious.",
@@ -205,7 +213,7 @@
     "section": "Economics",
     "image": "assets/economics-shoppers-supermarket.jpg",
     "alt": "Shoppers inside a supermarket in Arusha",
-    "credit": "Shoppers move through a supermarket aisle. In the current economy, household spending remains one of the broadest supports under growth. Photo by Mohamed mfuu, via Wikimedia Commons , licensed CC BY-SA 4.0 ."
+    "credit": "Shoppers move through a supermarket aisle. In the current economy, household spending remains one of the broadest supports under growth. Photo by Mohamed mfuu, via Wikimedia Commons , licensed CC BY-SA 4.0"
   },
   {
     "story": "The Crowd Came Back. The Old Economics Did Not.",
@@ -213,7 +221,7 @@
     "section": "Culture",
     "image": "assets/culture-broadway-times-square.jpg",
     "alt": "Broadway near Times Square in Midtown Manhattan",
-    "credit": "Broadway near Times Square in Midtown Manhattan. The commercial theater district remains the clearest public barometer of live-culture demand. Photo by Ken Lund, via Wikimedia Commons , licensed CC BY-SA 2.0 ."
+    "credit": "Broadway near Times Square in Midtown Manhattan. The commercial theater district remains the clearest public barometer of live-culture demand. Photo by Ken Lund, via Wikimedia Commons , licensed CC BY-SA 2.0"
   },
   {
     "story": "AI Needs Electricity, Steel, and Time",
@@ -221,6 +229,6 @@
     "section": "Technology",
     "image": "assets/tech-tsmc-fab-21.jpg",
     "alt": "Construction at TSMC Fab 21 in Phoenix, Arizona",
-    "credit": "TSMC Fab 21 under construction in Phoenix, Arizona, on Nov. 5, 2023. AI’s future depends not only on models but on fabs, substations, and power delivery. Photo by Hunter Trick, via Wikimedia Commons , licensed CC BY-SA 4.0 ."
+    "credit": "TSMC Fab 21 under construction in Phoenix, Arizona, on Nov. 5, 2023. AI’s future depends not only on models but on fabs, substations, and power delivery. Photo by Hunter Trick, via Wikimedia Commons , licensed CC BY-SA 4.0"
   }
 ]

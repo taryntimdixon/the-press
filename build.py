@@ -72,6 +72,83 @@ def h(value: object) -> str:
     return html.escape("" if value is None else str(value), quote=True)
 
 
+PUBLIC_AUTHOR_LABEL = "The Press"
+FOURTH_WALL_RE = re.compile(
+    r"ai[- ]generated|ai[- ]written|ai[- ]drafted|written and researched by ai|"
+    r"intelligent ai|not a documentary|real social-media screenshot|official fifa image|"
+    r"editorial workflow|source drawer|living article kit|live browser tools|static story",
+    re.I,
+)
+
+
+def public_author(value: object) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if not text or re.search(r"^(?:intelligent ai|ai|written and researched by ai)$", text, re.I):
+        return PUBLIC_AUTHOR_LABEL
+    return re.sub(r"^By\s+", "", text, flags=re.I).strip() or PUBLIC_AUTHOR_LABEL
+
+
+def public_byline(story: dict) -> str:
+    return f"By {public_author(story.get('author'))}"
+
+
+def public_meta(story: dict) -> str:
+    return f"{h(public_byline(story))} • {h(story['publishedLabel'])}"
+
+
+def clean_public_image_text(value: object, fallback: object = "") -> str:
+    text = html.unescape(re.sub(r"\s+", " ", str(value or "")).strip())
+    if not text:
+        return str(fallback or "Story image")
+    text = re.sub(r"\bAI[- ]generated\b\s*", "", text, flags=re.I)
+    text = re.sub(r"\bphotorealistic editorial\b", "editorial", text, flags=re.I)
+    text = re.sub(r"\bphotorealistic editorial image for\s*", "", text, flags=re.I)
+    text = re.sub(r"\beditorial visual of\s*", "", text, flags=re.I)
+    text = re.sub(r"\beditorial thumbnail for:\s*", "", text, flags=re.I)
+    text = re.sub(r"\beditorial illustration for:\s*", "", text, flags=re.I)
+    text = re.sub(r"\beditorial image of\b", "image of", text, flags=re.I)
+    text = re.sub(r"\beditorial image for\b", "image for", text, flags=re.I)
+    text = re.sub(r"\beditorial composite\b", "image", text, flags=re.I)
+    text = re.sub(r"\s*Not a documentary[^.]*\.", "", text, flags=re.I)
+    text = re.sub(r"\s*not documentary evidence[^.]*\.", "", text, flags=re.I)
+    text = re.sub(r"\s*not a real social-media screenshot[^.]*\.", "", text, flags=re.I)
+    text = re.sub(r"\s*or official FIFA image[^.]*\.", ".", text, flags=re.I)
+    text = re.sub(r"\s+", " ", text).strip(" .")
+    if not text or FOURTH_WALL_RE.search(text):
+        return str(fallback or "Story image")
+    return text[:1].upper() + text[1:]
+
+
+def public_image_alt(story_or_value: object, fallback: object = "") -> str:
+    if isinstance(story_or_value, dict):
+        return clean_public_image_text(story_or_value.get("imageAlt"), story_or_value.get("title") or fallback)
+    return clean_public_image_text(story_or_value, fallback)
+
+
+def public_image_credit(value: object) -> str:
+    text = html.unescape(re.sub(r"\s+", " ", str(value or "")).strip())
+    if not text or FOURTH_WALL_RE.search(text):
+        return ""
+    return text
+
+
+def public_image_caption(story: dict) -> str:
+    if story.get("imageAiGenerated") is True:
+        return ""
+    for key in ("imageCaptionHtml", "imageCaption", "imageCreditPlain"):
+        text = str(story.get(key) or "").strip()
+        if text and public_image_credit(text):
+            return text
+    return ""
+
+
+def public_nav_label(value: object) -> str:
+    text = str(value or "").strip()
+    if re.search(r"ai newsroom|ai pledge", text, re.I):
+        return "Masthead"
+    return text
+
+
 def json_script(data: object) -> str:
     return json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
 
@@ -261,12 +338,12 @@ def search_index_row(story: dict) -> dict:
         "type": story["type"],
         "dek": story["dek"],
         "url": story["filename"],
-        "author": story["author"],
+        "author": public_author(story.get("author")),
         "published": story["publishedLabel"],
         "publishedIso": story.get("publishedIso", ""),
         "updatedIso": story.get("updatedIso", ""),
         "image": story.get("image", ""),
-        "imageAlt": story.get("imageAlt") or story.get("title") or "Story thumbnail",
+        "imageAlt": public_image_alt(story, story.get("title") or "Story thumbnail"),
         "imageWidth": story.get("imageWidth"),
         "imageHeight": story.get("imageHeight"),
         "keywords": story.get("keywords", []),
@@ -280,12 +357,26 @@ def normalize_search_item(item: dict) -> dict:
     row["type"] = item.get("type") or "Report"
     row["dek"] = item.get("dek") or item.get("summary") or ""
     row["url"] = item.get("url") or item.get("filename") or "#"
-    row["author"] = item.get("author") or "Intelligent AI"
+    row["author"] = public_author(item.get("author") or item.get("byline"))
     row["published"] = item.get("published") or item.get("publishedLabel") or ""
     row["publishedIso"] = item.get("publishedIso") or item.get("published_iso") or ""
     row["updatedIso"] = item.get("updatedIso") or item.get("updated_iso") or ""
     row["image"] = item.get("image") or item.get("imageUrl") or item.get("image_url") or item.get("thumbnail") or ""
-    row["imageAlt"] = item.get("imageAlt") or item.get("image_alt") or item.get("alt") or row["title"] or "Story thumbnail"
+    row["imageAlt"] = public_image_alt(item.get("imageAlt") or item.get("image_alt") or item.get("alt"), row["title"] or "Story thumbnail")
+    if "image_alt" in row:
+        row["image_alt"] = public_image_alt(row.get("image_alt"), row["title"] or "Story thumbnail")
+    if "alt" in row:
+        row["alt"] = public_image_alt(row.get("alt"), row["title"] or "Story thumbnail")
+    if "imageCredit" in row:
+        row["imageCredit"] = public_image_credit(row.get("imageCredit"))
+    if "imageCreditPlain" in row:
+        row["imageCreditPlain"] = public_image_credit(row.get("imageCreditPlain"))
+    if "credit" in row:
+        row["credit"] = public_image_credit(row.get("credit"))
+    if "imageCaptionHtml" in row and FOURTH_WALL_RE.search(str(row.get("imageCaptionHtml") or "")):
+        row["imageCaptionHtml"] = ""
+    if "imageAiCaption" in row:
+        row["imageAiCaption"] = ""
     row["imageWidth"] = item.get("imageWidth") or item.get("image_width")
     row["imageHeight"] = item.get("imageHeight") or item.get("image_height")
     row["keywords"] = item.get("keywords") if isinstance(item.get("keywords"), list) else []
@@ -359,7 +450,7 @@ def gallery_story_rows() -> list[dict]:
             {
                 "filename": filename,
                 "image": preferred_image_path(image),
-                "imageAlt": str(story.get("imageAlt") or story.get("title") or "Story thumbnail"),
+                "imageAlt": public_image_alt(story, story.get("title") or "Story thumbnail"),
                 "title": str(story.get("title") or "Story"),
                 "section": str(story.get("section") or "News"),
                 "type": str(story.get("type") or "Report"),
@@ -399,7 +490,7 @@ def gallery_story_rows() -> list[dict]:
                 {
                     "filename": str(filename),
                     "image": preferred_image_path(str(image)),
-                    "imageAlt": str(item.get("image_alt") or item.get("imageAlt") or item.get("title") or "Story thumbnail"),
+                    "imageAlt": public_image_alt(item.get("image_alt") or item.get("imageAlt"), item.get("title") or "Story thumbnail"),
                     "title": str(item.get("title") or "Story"),
                     "section": str(item.get("section") or "News"),
                     "type": str(item.get("type") or "Report"),
@@ -449,7 +540,7 @@ def edition_export() -> list[dict]:
                 "url": story["filename"],
                 "section": story["section"],
                 "type": story["type"],
-                "author": story["author"],
+                "author": public_author(story.get("author")),
                 "publishedLabel": story["publishedLabel"],
                 "updatedLabel": story["updatedLabel"],
                 "publishedIso": story["publishedIso"],
@@ -458,8 +549,8 @@ def edition_export() -> list[dict]:
                 "readTime": story["readTime"],
                 "dek": story["dek"],
                 "image": story["image"],
-                "imageAlt": story["imageAlt"],
-                "imageCredit": story["imageCreditPlain"],
+                "imageAlt": public_image_alt(story, story["title"]),
+                "imageCredit": public_image_credit(story.get("imageCreditPlain")),
             }
         )
     return out
@@ -474,8 +565,8 @@ def photo_records() -> list[dict]:
                 "page": story["filename"],
                 "section": story["section"],
                 "image": story["image"],
-                "alt": story["imageAlt"],
-                "credit": story["imageCreditPlain"],
+                "alt": public_image_alt(story, story["title"]),
+                "credit": public_image_credit(story.get("imageCreditPlain")),
             }
         )
     return rows
@@ -508,13 +599,13 @@ def story_card(story: dict, extra_class: str = "", archive: bool = False) -> str
     return f"""
 <article class="{classes}{archive_attr}" data-section="{h(story['section'])}" data-type="{h(story['type'])}">
   <a class="story-card__image" href="{h(story['filename'])}">
-    <img src="{h(story['image'])}" alt="{h(story['imageAlt'])}" loading="lazy" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
+    <img src="{h(story['image'])}" alt="{h(public_image_alt(story, story['title']))}" loading="lazy" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
   </a>
   <div class="story-card__body">
     <p class="eyebrow eyebrow--compact">{h(story['section'])} • {h(story['type'])}</p>
     <h3 class="story-card__title"><a href="{h(story['filename'])}">{h(story['title'])}</a></h3>
     <p class="story-card__dek">{h(story['dek'])}</p>
-    <p class="story-card__meta">Written and Researched by AI • {h(story['publishedLabel'])}</p>
+    <p class="story-card__meta">{public_meta(story)}</p>
   </div>
 </article>
 """.strip()
@@ -525,7 +616,7 @@ def recency_ticker_item(story: dict, duplicate: bool = False) -> str:
     media_html = (
         f"""
   <span class="home-recency-card__media">
-    <img src="{h(story.get('image'))}" alt="{h(story.get('imageAlt') or story.get('title') or 'Story thumbnail')}" loading="lazy" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
+    <img src="{h(story.get('image'))}" alt="{h(public_image_alt(story, story.get('title') or 'Story thumbnail'))}" loading="lazy" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
   </span>
 """.rstrip()
         if story.get("image")
@@ -547,13 +638,13 @@ def river_item(story: dict) -> str:
     return f"""
 <article class="river-item">
   <a class="river-item__thumb" href="{h(story['filename'])}">
-    <img src="{h(story['image'])}" alt="{h(story['imageAlt'])}" loading="lazy" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
+    <img src="{h(story['image'])}" alt="{h(public_image_alt(story, story['title']))}" loading="lazy" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
   </a>
   <div class="river-item__body">
     <p class="eyebrow eyebrow--tiny">{h(story['section'])} • {h(story['type'])}</p>
     <h3><a href="{h(story['filename'])}">{h(story['title'])}</a></h3>
     <p>{h(story['excerpt'])}</p>
-    <p class="river-item__meta">Written and Researched by AI • {h(story['publishedLabel'])}</p>
+    <p class="river-item__meta">{public_meta(story)}</p>
   </div>
 </article>
 """.strip()
@@ -566,7 +657,7 @@ def ranked_list_item(story: dict, rank: int) -> str:
   <div>
     <p class="eyebrow eyebrow--tiny">{h(story['section'])} • {h(story['type'])}</p>
     <a href="{h(story['filename'])}">{h(story['title'])}</a>
-    <p class="link-list__meta">Written and Researched by AI • {h(story['publishedLabel'])}</p>
+    <p class="link-list__meta">{public_meta(story)}</p>
   </div>
 </li>
 """.strip()
@@ -578,7 +669,7 @@ def simple_list_item(story: dict) -> str:
   <div>
     <p class="eyebrow eyebrow--tiny">{h(story['section'])} • {h(story['type'])}</p>
     <a href="{h(story['filename'])}">{h(story['title'])}</a>
-    <p class="link-list__meta">Written and Researched by AI • {h(story['publishedLabel'])}</p>
+    <p class="link-list__meta">{public_meta(story)}</p>
   </div>
 </li>
 """.strip()
@@ -624,14 +715,14 @@ def gallery_block(story: dict) -> str:
         src = str(image.get("src") or "").strip()
         if not src:
             continue
-        alt = image.get("alt") or f"AI-generated visual {idx} for {story['title']}"
+        alt = public_image_alt(image.get("alt"), f"Visual {idx} for {story['title']}")
         style = image.get("style") or "artistic"
-        caption_html = image.get("captionHtml") or image.get("relevanceNote") or "AI-generated image by The Press."
+        caption_html = public_image_credit(image.get("captionHtml") or image.get("relevanceNote"))
+        figcaption_html = f"\n  <figcaption>{caption_html}</figcaption>" if caption_html else ""
         figures.append(
             f'''
 <figure class="ai-article-gallery__item" data-ai-art-index="{idx}" data-ai-art-style="{h(style)}">
-  <img src="{h(src)}" alt="{h(alt)}" loading="lazy" decoding="async" />
-  <figcaption>{caption_html}</figcaption>
+  <img src="{h(src)}" alt="{h(alt)}" loading="lazy" decoding="async" />{figcaption_html}
 </figure>
 '''.strip()
         )
@@ -642,9 +733,9 @@ def gallery_block(story: dict) -> str:
     return f'''
 <section class="ai-article-gallery" data-ai-article-gallery>
   <div class="ai-article-gallery__header">
-    <p class="eyebrow eyebrow--tiny">AI visual brief</p>
+    <p class="eyebrow eyebrow--tiny">Visual brief</p>
     <h2>Scenes and explainers from this story</h2>
-    <p>AI-generated visuals built from this article's reporting.</p>
+    <p>Additional visuals connected to this article's reporting.</p>
   </div>
   <div class="ai-article-gallery__grid">
     {''.join(figures)}
@@ -800,7 +891,7 @@ def header(current_section: str = "", current_aux: str = "") -> str:
     utility_links = []
     for link in SITE.get("mastheadLinks", []):
         current = ' aria-current="page"' if current_aux == link["href"] else ""
-        utility_links.append(f'<a class="utility-link" href="{h(link["href"])}"{current}>{h(link["label"])}</a>')
+        utility_links.append(f'<a class="utility-link" href="{h(link["href"])}"{current}>{h(public_nav_label(link["label"]))}</a>')
     return f"""
 <header class="site-header" data-site-header>
   <div class="masthead-row">
@@ -828,7 +919,7 @@ def footer() -> str:
     newsroom_links = """
 <li><a href="archive.html">Archive</a></li>
 <li><a href="gallery.html">Gallery</a></li>
-<li><a href="authors.html">AI Newsroom</a></li>
+<li><a href="authors.html">Masthead</a></li>
 <li><a href="about.html">About</a></li>
 <li><a href="photo-workflow.html">Photo workflow</a></li>
 """.strip()
@@ -838,7 +929,7 @@ def footer() -> str:
     <section class="footer-brand">
       <a class="masthead masthead--footer" href="index.html">{h(SITE['name'])}</a>
       <p class="footer-copy">{h(SITE['tagline'])}</p>
-      <p class="footer-copy footer-copy--small">Visible AI use and visible source notes.</p>
+      <p class="footer-copy footer-copy--small">Source notes, clear dates, and corrections in view.</p>
     </section>
     <section>
       <h2 class="footer-heading">Newsroom</h2>
@@ -1085,7 +1176,7 @@ def render_homepage() -> str:
         panel_width = f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ""
         panel_height = f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ""
         panel_media = (
-            f'<img src="{h(story["image"])}" alt="{h(story.get("imageAlt") or story.get("title") or "Story thumbnail")}" loading="eager" decoding="async"{panel_width}{panel_height} />'
+            f'<img src="{h(story["image"])}" alt="{h(public_image_alt(story, story.get("title") or "Story thumbnail"))}" loading="eager" decoding="async"{panel_width}{panel_height} />'
             if story.get("image")
             else f'<div class="press-image-fallback"><span>{h(story.get("section") or "Story")}</span></div>'
         )
@@ -1100,7 +1191,7 @@ def render_homepage() -> str:
       <p class="eyebrow">Front Page • {h(story['section'])} • {h(story['type'])}</p>
       <h2><a href="{h(story['filename'])}">{h(story['title'])}</a></h2>
       <p class="lead-panel__dek">{h(story['dek'])}</p>
-      <p class="lead-panel__meta">Written and Researched by AI • {h(story['publishedLabel'])}</p>
+      <p class="lead-panel__meta">{public_meta(story)}</p>
     </div>
     <div class="button-row">
       <a class="button" href="{h(story['filename'])}">Read story</a>
@@ -1219,7 +1310,7 @@ def render_homepage() -> str:
         main,
         jsonld=jsonld_org(),
         social_image=social_story.get("image", ""),
-        social_image_alt=social_story.get("imageAlt", ""),
+        social_image_alt=public_image_alt(social_story, social_story.get("title") or SITE["name"]),
         social_image_width=social_story.get("imageWidth", ""),
         social_image_height=social_story.get("imageHeight", ""),
         social_title=SITE["name"],
@@ -1258,7 +1349,7 @@ def render_gallery() -> str:
     tiles = "\n".join(
         f"""
 <a class="gallery-tile" href="{h(story['filename'])}" aria-label="{h(story['title'])}">
-  <img class="gallery-tile__image" src="{h(story['image'])}" alt="{h(story['imageAlt'])}" loading="lazy" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
+  <img class="gallery-tile__image" src="{h(story['image'])}" alt="{h(public_image_alt(story.get('imageAlt'), story['title']))}" loading="lazy" decoding="async"{f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ''}{f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ''} />
   <span class="sr-only">{h(story['section'])} {h(story['type'])}: {h(story['title'])}</span>
 </a>
 """.strip()
@@ -1314,6 +1405,96 @@ def render_section(section: dict) -> str:
 
 
 def render_authors() -> str:
+    main = """
+<main class="page page-pledge__main">
+<section class="pledge-hero">
+  <div class="pledge-hero__copy">
+    <p class="pledge-kicker">Masthead</p>
+    <h1>
+      <span>The Press</span>
+      <span>publishes reported, source-forward stories.</span>
+    </h1>
+    <p class="pledge-hero__dek">
+      The Press covers public systems, culture, science, technology, economics, health, and world affairs with clear dates,
+      visible source notes, and corrections when the record changes.
+    </p>
+    <div class="pledge-hero__actions" aria-label="Masthead links">
+      <a class="pledge-btn pledge-btn--primary" href="archive.html">Read the latest stories</a>
+      <a class="pledge-btn pledge-btn--ghost" href="gallery.html">Open gallery</a>
+    </div>
+  </div>
+
+  <aside class="pledge-card" aria-label="Editorial standards summary">
+    <p class="pledge-card__label">Standards</p>
+    <div class="pledge-seal" aria-hidden="true">
+      <div class="pledge-seal__ring">
+        <span class="pledge-seal__eyebrow">The</span>
+        <strong>Press</strong>
+        <span class="pledge-seal__subline">Masthead</span>
+      </div>
+      <div class="pledge-seal__chips">
+        <span>Sourced</span>
+        <span>Edited</span>
+        <span>Correctable</span>
+      </div>
+    </div>
+    <p>Every feature is built around the public record, context, and links readers can open for themselves.</p>
+  </aside>
+</section>
+
+<section class="pledge-statement">
+  <p class="pledge-kicker">Editorial Standard</p>
+  <h2>Report the record. Explain the stakes. Keep the receipts close.</h2>
+  <div class="pledge-prose">
+    <p>The Press treats every article as an argument with evidence attached. Claims should be traceable to source notes, public records, datasets, direct statements, or clearly framed analysis.</p>
+    <p>Stories are written for readers who want more than speed: they need context, dates, links, uncertainty where the evidence is incomplete, and plain corrections when something needs to be fixed.</p>
+  </div>
+</section>
+
+<section class="pledge-receipts" aria-labelledby="receipts-title">
+  <div>
+    <p class="pledge-kicker">Receipts</p>
+    <h2 id="receipts-title">The source trail is part of the product.</h2>
+  </div>
+  <div class="pledge-receipts__grid">
+    <article>
+      <h3>Primary records first</h3>
+      <p>Government documents, datasets, court records, transcripts, official statements, and original research carry more weight than commentary.</p>
+    </article>
+    <article>
+      <h3>Links readers can follow</h3>
+      <p>The goal is to make authority checkable, not decorative.</p>
+    </article>
+    <article>
+      <h3>Clear uncertainty</h3>
+      <p>When evidence is partial, developing, disputed, or messy, the story should say so.</p>
+    </article>
+  </div>
+</section>
+
+<section class="pledge-warning" aria-labelledby="warning-title">
+  <p class="pledge-warning__stamp">Reader Note</p>
+  <h2 id="warning-title">Read closely. Follow the links. Tell us when something needs correction.</h2>
+  <p>The Press is strongest when readers can inspect the evidence, compare the record, and push back on what is missing.</p>
+  <div class="pledge-warning__actions">
+    <a class="pledge-btn pledge-btn--primary" href="archive.html">Archive</a>
+    <a class="pledge-btn pledge-btn--ghost" href="gallery.html">Gallery</a>
+    <a class="pledge-btn pledge-btn--ghost" href="index.html">Front page</a>
+  </div>
+</section>
+</main>
+""".strip()
+
+    return layout(
+        f"Masthead — {SITE['name']}",
+        "The Press masthead, editorial standards, source notes, and corrections policy.",
+        "authors.html",
+        "page-authors page-pledge",
+        main,
+        current_aux="authors.html",
+        jsonld=jsonld_org(),
+    )
+
     main = """
 <main class="page page-pledge__main">
 
@@ -1541,6 +1722,9 @@ def render_story(story: dict) -> str:
     hero_image = story.get("heroImage") or story["image"]
     hero_image_width = story.get("heroImageWidth") or story.get("imageWidth")
     hero_image_height = story.get("heroImageHeight") or story.get("imageHeight")
+    hero_alt = public_image_alt(story, story["title"])
+    hero_caption = public_image_caption(story)
+    hero_caption_html = f"\n        <figcaption>{hero_caption}</figcaption>" if hero_caption else ""
     static_interactive = story.get("staticInteractive") if isinstance(story.get("staticInteractive"), dict) else {}
     static_css = str(static_interactive.get("css") or "").strip()
     static_js = str(static_interactive.get("js") or "").strip()
@@ -1562,13 +1746,12 @@ def render_story(story: dict) -> str:
       <h1 class="article-headline">{h(story['title'])}</h1>
       <p class="article-dek">{h(story['dek'])}</p>
       <div class="article-meta">
-        <span>Written and Researched by AI</span>
+        <span>{h(public_byline(story))}</span>
         <span>Published {h(story['publishedLabel'])}</span>
         <span>Updated {h(story['updatedLabel'])}</span>
       </div>
       <figure class="hero-figure">
-        <img src="{h(hero_image)}" alt="{h(story['imageAlt'])}" loading="eager" decoding="async"{f' width="{hero_image_width}"' if hero_image_width else ''}{f' height="{hero_image_height}"' if hero_image_height else ''} />
-        <figcaption>{story['imageCaptionHtml']}</figcaption>
+        <img src="{h(hero_image)}" alt="{h(hero_alt)}" loading="eager" decoding="async"{f' width="{hero_image_width}"' if hero_image_width else ''}{f' height="{hero_image_height}"' if hero_image_height else ''} />{hero_caption_html}
       </figure>
     </header>
     <div class="article-shell">
@@ -1596,7 +1779,7 @@ def render_story(story: dict) -> str:
         extra_links=extra_links,
         extra_scripts=extra_scripts,
         social_image=story.get("image", ""),
-        social_image_alt=story.get("imageAlt", ""),
+        social_image_alt=hero_alt,
         social_image_width=story.get("imageWidth", ""),
         social_image_height=story.get("imageHeight", ""),
         og_type="article",
@@ -1666,8 +1849,76 @@ def render_sitemap() -> str:
 """
 
 
+def sanitize_public_html(markup: str) -> str:
+    markup = re.sub(
+        r"<figcaption\b[^>]*>[^<]*(?:AI[- ]generated|not a documentary|not documentary evidence|official FIFA image|real social-media screenshot)[\s\S]*?</figcaption>",
+        "",
+        markup,
+        flags=re.I,
+    )
+    markup = re.sub(
+        r'<section class="article-trust-card"[\s\S]*?</section>\s*',
+        "",
+        markup,
+        flags=re.I,
+    )
+    markup = re.sub(
+        r'<section class="press-living-dock"[\s\S]*?</section>\s*',
+        "",
+        markup,
+        flags=re.I,
+    )
+    markup = re.sub(
+        r'<section class="info-box press-living-sidecar"[\s\S]*?</section>\s*',
+        "",
+        markup,
+        flags=re.I,
+    )
+    markup = re.sub(r"Written and Researched by AI", "By The Press", markup, flags=re.I)
+    markup = re.sub(r"Written with AI", "Sourced", markup, flags=re.I)
+    markup = re.sub(r"Intelligent AI", "The Press", markup, flags=re.I)
+    markup = re.sub(r"AI Newsroom", "Masthead", markup, flags=re.I)
+    markup = re.sub(r"AI Powered News", "Independent, source-forward news", markup, flags=re.I)
+    markup = re.sub(r"AI powered reporting", "source-forward reporting", markup, flags=re.I)
+    markup = re.sub(r"Latest AI Edition", "Latest Edition", markup, flags=re.I)
+    markup = re.sub(r"Transparent AI-generated journalism", "Source-forward journalism", markup, flags=re.I)
+    markup = re.sub(r"AI-generated journalism", "Source-forward journalism", markup, flags=re.I)
+    markup = re.sub(r"AI-assisted editorial workflow", "reported editorial standard", markup, flags=re.I)
+    markup = re.sub(r"\ban reported editorial standard\b", "a reported editorial standard", markup, flags=re.I)
+    markup = re.sub(r"human review expectations", "correction expectations", markup, flags=re.I)
+    markup = re.sub(r"Human reviewed", "Edited", markup, flags=re.I)
+    markup = re.sub(r"AI-generated editorial thumbnail for:\s*", "", markup, flags=re.I)
+    markup = re.sub(r"AI-generated editorial illustration for:\s*", "", markup, flags=re.I)
+    markup = re.sub(r"AI-generated image by The Press\.?", "", markup, flags=re.I)
+    markup = re.sub(r"AI-generated photorealistic editorial image of\s+", "", markup, flags=re.I)
+    markup = re.sub(r"AI-generated editorial image of\s+", "", markup, flags=re.I)
+    markup = re.sub(r"AI-generated photorealistic split-level\s+", "", markup, flags=re.I)
+    markup = re.sub(r"AI-generated editorial composite showing\s+", "Image showing ", markup, flags=re.I)
+    markup = re.sub(r"AI-generated[^.<]*(?:\.|$)", "", markup, flags=re.I)
+    markup = re.sub(r"Not a documentary[^.<]*(?:\.|$)", "", markup, flags=re.I)
+    markup = re.sub(r"No API\. Static story, live browser tools\.", "", markup, flags=re.I)
+    return markup
+
+
 def write_file(path: Path, content: str) -> None:
+    if path.suffix.lower() == ".html":
+        content = sanitize_public_html(content)
     path.write_text(content, encoding="utf-8")
+
+
+def sanitize_existing_html_outputs() -> None:
+    paths = list(SITE_DIR.glob("*.html"))
+    daily_dir = SITE_DIR / "daily"
+    if daily_dir.exists():
+        paths.extend(daily_dir.glob("*.html"))
+    for path in paths:
+        try:
+            original = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        cleaned = sanitize_public_html(original)
+        if cleaned != original:
+            path.write_text(cleaned, encoding="utf-8")
 
 
 def build() -> None:
@@ -1691,6 +1942,7 @@ def build() -> None:
     write_file(SITE_DIR / "photo-records.json", json.dumps(photo_records(), indent=2, ensure_ascii=False) + "\n")
     write_file(SITE_DIR / "feed.xml", render_feed())
     write_file(SITE_DIR / "sitemap.xml", render_sitemap())
+    sanitize_existing_html_outputs()
 
 
 if __name__ == "__main__":

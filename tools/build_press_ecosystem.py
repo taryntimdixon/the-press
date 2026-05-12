@@ -30,7 +30,7 @@ ROOT = Path(__file__).resolve().parents[1]
 NOW = datetime.now(timezone.utc)
 LIVE_WINDOW_DAYS = 14
 LIVE_MINIMUM = 48
-AUTHOR_LABEL = "Intelligent AI"
+AUTHOR_LABEL = "The Press"
 
 STOP_WORDS = {
     "a", "an", "and", "are", "as", "at", "be", "but", "by", "can", "could", "for", "from", "has", "have", "how", "in",
@@ -79,6 +79,40 @@ MONTHS = {
 
 def clean(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
+
+
+FOURTH_WALL_RE = re.compile(
+    r"ai[- ]generated|ai[- ]written|ai[- ]drafted|written and researched by ai|"
+    r"intelligent ai|not a documentary|real social-media screenshot|official fifa image|"
+    r"editorial workflow|source drawer|living article kit|live browser tools|static story",
+    re.I,
+)
+
+
+def public_author(value: Any) -> str:
+    text = clean(value)
+    if not text or re.search(r"^(?:intelligent ai|ai|written and researched by ai)$", text, re.I):
+        return AUTHOR_LABEL
+    return re.sub(r"^By\s+", "", text, flags=re.I).strip() or AUTHOR_LABEL
+
+
+def public_image_alt(value: Any, fallback: Any = "") -> str:
+    text = clean(value)
+    text = re.sub(r"\bAI[- ]generated\b\s*", "", text, flags=re.I)
+    text = re.sub(r"\bphotorealistic editorial\b", "editorial", text, flags=re.I)
+    text = re.sub(r"\beditorial thumbnail for:\s*", "", text, flags=re.I)
+    text = re.sub(r"\beditorial illustration for:\s*", "", text, flags=re.I)
+    text = re.sub(r"\beditorial image of\b", "image of", text, flags=re.I)
+    text = re.sub(r"\beditorial image for\b", "image for", text, flags=re.I)
+    text = re.sub(r"\beditorial composite\b", "image", text, flags=re.I)
+    text = re.sub(r"\s*Not a documentary[^.]*\.", "", text, flags=re.I)
+    text = re.sub(r"\s*not documentary evidence[^.]*\.", "", text, flags=re.I)
+    text = re.sub(r"\s*not a real social-media screenshot[^.]*\.", "", text, flags=re.I)
+    text = re.sub(r"\s*or official FIFA image[^.]*\.", ".", text, flags=re.I)
+    text = re.sub(r"\s+", " ", text).strip(" .")
+    if not text or FOURTH_WALL_RE.search(text):
+        text = clean(fallback) or "Story image"
+    return text[:1].upper() + text[1:]
 
 
 def slugify(value: Any) -> str:
@@ -341,7 +375,7 @@ def normalize_story(item: dict[str, Any], source: str) -> Story | None:
         type=story_type,
         dek=clean(item.get("dek") or item.get("summary") or item.get("description") or item.get("excerpt")),
         url=url,
-        author=clean(item.get("author") or item.get("byline") or AUTHOR_LABEL).replace("By ", ""),
+        author=public_author(item.get("author") or item.get("byline") or AUTHOR_LABEL),
         published=published_label,
         published_iso=published_dt.isoformat() if published_dt else "",
         updated=updated_label,
@@ -353,7 +387,7 @@ def normalize_story(item: dict[str, Any], source: str) -> Story | None:
             or item.get("thumbnail")
             or item.get("photo")
         ),
-        image_alt=clean(item.get("imageAlt") or item.get("image_alt") or item.get("alt") or title),
+        image_alt=public_image_alt(item.get("imageAlt") or item.get("image_alt") or item.get("alt"), title),
         keywords=keywords,
         read_time=clean(item.get("readTime") or item.get("read_time")),
         word_count=clean(item.get("wordCount") or item.get("word_count")),

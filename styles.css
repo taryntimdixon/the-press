@@ -7614,6 +7614,7 @@ body.page-article:has(.press-social-feature)::before{
 .press-social-feature[data-source-count]::before{
   content:"Atla's public record • " attr(data-source-count) " source notes";
   display:block;
+  box-sizing:border-box;
   width:min(760px,100%);
   margin:0 auto .2rem;
   border:1px solid var(--line);
@@ -7637,6 +7638,132 @@ body.page-article:has(.press-social-feature)::before{
 
 .press-feature-social-feature[data-source-count]::before{
   content:attr(data-source-label) " • " attr(data-source-count) " source notes";
+}
+
+.world-cup-game-day-feature[data-source-count]::before{
+  content:"World Cup public record • " attr(data-source-count) " source notes";
+}
+
+.world-cup-game-day-feature .article-jump-strip{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.55rem;
+  margin:1rem 0 1.1rem;
+}
+
+.world-cup-game-day-feature .article-jump-strip a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:2.35rem;
+  border:1px solid color-mix(in srgb,var(--accent) 72%,var(--line));
+  border-radius:999px;
+  padding:.5rem .78rem;
+  background:color-mix(in srgb,var(--surface) 82%,var(--accent-soft));
+  color:var(--accent);
+  font-size:.82rem;
+  font-weight:900;
+  text-decoration:none;
+}
+
+.world-cup-game-day-feature .article-jump-strip a:hover{
+  background:var(--accent);
+  color:#fff;
+}
+
+.article-rail-gallery{
+  margin:1.15rem auto 1.35rem;
+  width:min(760px,100%);
+  border:1px solid color-mix(in srgb,var(--line) 78%,var(--accent));
+  border-radius:18px;
+  background:linear-gradient(180deg,var(--surface),color-mix(in srgb,var(--surface-2) 78%,var(--accent-soft)));
+  padding:.86rem;
+  box-shadow:0 10px 22px rgba(24,28,38,.06);
+}
+
+.article-rail-gallery--top{
+  margin-top:1rem;
+  margin-bottom:1.45rem;
+}
+
+.article-rail-gallery summary{
+  cursor:pointer;
+  color:var(--accent);
+  font-weight:900;
+  letter-spacing:.02em;
+}
+
+.article-rail-gallery p{
+  margin:.7rem 0 1rem;
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.45;
+}
+
+.article-rail-gallery__grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:.7rem;
+}
+
+.article-rail-gallery__card{
+  display:block;
+  min-width:0;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  background:var(--surface);
+  box-shadow:0 8px 18px rgba(24,28,38,.055);
+  text-decoration:none;
+}
+
+.article-rail-gallery__card:hover{
+  text-decoration:none;
+  transform:translateY(-1px);
+  box-shadow:0 12px 26px rgba(24,28,38,.1);
+}
+
+.article-rail-gallery__card img{
+  display:block;
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  background:var(--surface-2);
+}
+
+.world-cup-rail-card--with-image .press-static-post__media--illustration a{
+  display:block;
+  width:100%;
+  min-height:0;
+  border:0;
+  border-radius:0;
+}
+
+.world-cup-rail-card--with-image .press-static-post__media--illustration a:hover{
+  background:transparent;
+}
+
+.world-cup-rail-card--with-image .press-static-post__media--illustration figcaption{
+  display:none !important;
+}
+
+.world-cup-rail-card--with-image[role="link"]{
+  cursor:pointer;
+}
+
+.world-cup-source-notes .source-list{
+  padding-left:1.35rem;
+}
+
+.world-cup-source-notes .source-list li{
+  margin:.52rem 0;
+}
+
+@media (max-width:760px){
+  .article-rail-gallery__grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:.55rem;
+  }
 }
 
 .article-interactive{

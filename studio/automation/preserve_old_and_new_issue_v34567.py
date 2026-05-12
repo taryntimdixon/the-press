@@ -26,6 +26,7 @@ from topic_radar import (
 ROOT = Path(__file__).resolve().parents[2]
 ASSETS_DAILY = ROOT / "assets" / "daily"
 DAILY_DIR = ROOT / "daily"
+SITE_BASE_URL = "https://thepress.live"
 
 SECTIONS: list[tuple[str, str]] = [
     # Future issue assignment lanes (detoxed from legacy category rotation).
@@ -1521,6 +1522,17 @@ document.addEventListener('DOMContentLoaded', function () {
     visual_brief = html.escape(story.visual_brief, quote=True)
     visual_archetype = html.escape(story.visual_archetype, quote=True)
     meta = html.escape(f"Written and Researched by AI • {story.published_label}")
+    page_url = f"{SITE_BASE_URL}/daily/{story.slug}.html"
+    thumbnail_url = f"{SITE_BASE_URL}/{str(story.thumbnail_local).lstrip('/')}"
+    thumbnail_type = {
+        ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg",
+        ".png": "image/png",
+        ".webp": "image/webp",
+        ".avif": "image/avif",
+        ".svg": "image/svg+xml",
+    }.get(Path(story.thumbnail_local).suffix.lower(), "")
+    thumbnail_type_meta = f'\n  <meta property="og:image:type" content="{thumbnail_type}" />' if thumbnail_type else ""
 
     return f"""<!doctype html>
 <html lang="en">
@@ -1531,6 +1543,21 @@ document.addEventListener('DOMContentLoaded', function () {
   <meta name="description" content="{dek}" />
   <meta name="press:visual-archetype" content="{visual_archetype}" />
   <meta name="press:visual-brief" content="{visual_brief}" />
+  <link rel="canonical" href="{page_url}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="The Press" />
+  <meta property="og:title" content="{title}" />
+  <meta property="og:description" content="{dek}" />
+  <meta property="og:url" content="{page_url}" />
+  <meta property="og:image" content="{thumbnail_url}" />
+  <meta property="og:image:secure_url" content="{thumbnail_url}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="{page_url}" />
+  <meta name="twitter:title" content="{title}" />
+  <meta name="twitter:description" content="{dek}" />
+  <meta name="twitter:image" content="{thumbnail_url}" />{thumbnail_type_meta}
+  <meta property="og:image:alt" content="{alt}" />
+  <meta name="twitter:image:alt" content="{alt}" />
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
   <link rel="shortcut icon" href="../favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="../assets/icon-192.png" sizes="192x192" type="image/png" />
@@ -1820,10 +1847,10 @@ def write_latest_json(stories: list[Story], edition_date: str) -> None:
                 "url": f"daily/{story.slug}.html",
                 "section": story.section_name,
                 "image": story.thumbnail_local,
-                "image_credit": story.thumbnail_credit_plain,
+                "image_credit": "",
                 "published": story.published_label,
                 "keywords": story.keywords,
-                "thumbnail_alt": story.thumbnail_alt,
+                "thumbnail_alt": f"Editorial image for {story.title}",
                 "visual_archetype": story.visual_archetype,
                 "visual_brief": story.visual_brief,
             }
@@ -1845,7 +1872,7 @@ def write_daily_edition_page(stories: list[Story], edition_date: str) -> None:
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Latest AI Edition — The Press</title>
+  <title>Latest Edition — The Press</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="styles.css?v={asset_version("styles.css")}" />
 </head>
@@ -1853,7 +1880,7 @@ def write_daily_edition_page(stories: list[Story], edition_date: str) -> None:
   <header class="site-header">
     <div class="topbar">
       <div class="topbar__inner">
-        <p class="edition-note">Latest AI Edition</p>
+        <p class="edition-note">Latest Edition</p>
         <a class="topbar__link" href="index.html">Home</a>
       </div>
     </div>
