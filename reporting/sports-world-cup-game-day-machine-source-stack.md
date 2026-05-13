@@ -1,7 +1,7 @@
-# Source Stack: Game Time: The World Cup Is About to Test the World's Matchday Machine
+# Source Stack: The World Cup Has Never Been This Big
 
 - Story date: May 11, 2026.
-- Body word count after generation: 9,216.
+- Body word count after generation: 9,149.
 - Source notes in article: 117.
 - Side-rail cards: 52.
 - Gallery tiles: 52.

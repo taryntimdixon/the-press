@@ -7910,6 +7910,17 @@ body.page-article:has(.press-social-feature) .hero-figure img{
   object-position:center center;
 }
 
+body.page-article .hero-figure:has(img[src*="world-cup-game-day-machine-thumbnail"]){
+  width:min(100%, 56rem);
+  margin-inline:auto;
+}
+
+body.page-article .hero-figure img[src*="world-cup-game-day-machine-thumbnail"]{
+  width:100%;
+  height:auto !important;
+  object-fit:cover !important;
+}
+
 body.page-article:has(.climate-the-mountain-that-fell-into-the-sea-social-feature) .hero-figure{
   width:min(100%, 62rem);
   margin-inline:auto;

@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-05-12T21:09:37.862604+00:00",
-  "story_count": 16,
+  "generated_at": "2026-05-13T03:29:41.495347+00:00",
+  "story_count": 15,
   "stories": [
     {
       "story_id": "sports-world-cup-game-day-machine",
       "cluster_id": "sports-world-cup-game-time-matchday-machine",
-      "title": "Game Time: The World Cup Is About to Test the World's Matchday Machine",
+      "title": "The World Cup Has Never Been This Big",
       "section": "Sports",
       "section_slug": "sports",
       "type": "Feature",
@@ -30,8 +30,8 @@
         "MetLife Stadium",
         "North America"
       ],
-      "read_time": "47 min read",
-      "word_count": "9,216 words",
+      "read_time": "46 min read",
+      "word_count": "9,149 words",
       "status": "published",
       "priority": 20,
       "hero_eligible": true,
@@ -527,42 +527,6 @@
       "hero_eligible": true,
       "source": "search-index",
       "is_daily": false
-    },
-    {
-      "story_id": "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
-      "cluster_id": "politics-security-gunman-ballroom-shaken-washington-white-house",
-      "title": "A Gunman, a Ballroom, and a Shaken Washington",
-      "section": "Politics / Security",
-      "section_slug": "politics-security",
-      "type": "Daily Issue",
-      "dek": "The White House Correspondents’ Dinner was supposed to be a night of jokes, journalism, and Washington ceremony. Instead, authorities say an armed suspect attempted to breach security near the ballroom, turning one of the capital’s most symbolic events into a national security crisis.",
-      "url": "daily/2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington.html",
-      "author": "The Press",
-      "published": "April 28, 2026 • 8:30 p.m.",
-      "published_iso": "2026-04-29T00:30:00+00:00",
-      "updated": "April 28, 2026 • 12:00 p.m. UTC",
-      "updated_iso": "2026-04-28T12:00:00+00:00",
-      "image": "assets/ai-thumbnails/whcd-shaken-washington.png",
-      "image_alt": "A tense security scene outside a formal Washington hotel ballroom after an alleged armed breach attempt",
-      "keywords": [
-        "White House Correspondents’ Dinner",
-        "Donald Trump",
-        "Secret Service",
-        "political violence",
-        "Washington Hilton",
-        "media",
-        "security",
-        "misinformation",
-        "DOJ",
-        "FBI"
-      ],
-      "read_time": "",
-      "word_count": "",
-      "status": "published",
-      "priority": 0,
-      "hero_eligible": true,
-      "source": "search-index",
-      "is_daily": true
     }
   ]
 }

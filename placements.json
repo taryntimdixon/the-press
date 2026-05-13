@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-12T21:09:37.862604+00:00",
+  "generated_at": "2026-05-13T03:29:41.495347+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -24,10 +24,9 @@
       "technology-the-battery-is-becoming-the-grid",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
       "climate-your-home-insurance-bill-is-the-new-climate-map",
-      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington"
+      "sports-texas-holdem-prime-time-moment-back"
     ],
     "editors_picks": [
-      "sports-texas-holdem-prime-time-moment-back",
       "food-atla-noho-closing",
       "technology-musk-altman-openai-court-battle",
       "technology-pentagon-ai-classified-networks"
