@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-13T03:53:48.927126+00:00",
+  "generated_at": "2026-05-14T10:42:19.283634+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -28,7 +28,6 @@
     ],
     "editors_picks": [
       "food-atla-noho-closing",
-      "technology-musk-altman-openai-court-battle",
       "technology-pentagon-ai-classified-networks"
     ],
     "latest": [
@@ -120,7 +119,7 @@
         "section": "Health"
       },
       {
-        "count": 3,
+        "count": 2,
         "latest_ts": 1778167200.0,
         "story_id": "technology-the-battery-is-becoming-the-grid",
         "section": "Technology"
