@@ -6281,28 +6281,19 @@ html[data-theme="dark"] .header-controls .theme-toggle:hover{
   }
 
   .masthead-ticker__track{
-    width:100%;
-    overflow-x:auto;
-    animation:none;
-    scrollbar-width:none;
-  }
-
-  .masthead-ticker__track::-webkit-scrollbar{
-    display:none;
-  }
-
-  .masthead-ticker__track a:nth-child(n+2){
-    display:none;
+    width:max-content;
+    overflow:visible;
+    animation:masthead-ticker-scroll var(--masthead-ticker-duration,96s) linear infinite;
   }
 
   .masthead-ticker__track a{
     font-size:.82rem;
-    width:100%;
-    max-width:100%;
-    min-width:0;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    padding-right:.9rem;
+    width:auto;
+    max-width:none;
+    min-width:auto;
+    overflow:visible;
+    text-overflow:clip;
+    padding-right:1rem;
   }
 }
 
