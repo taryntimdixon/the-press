@@ -1,7 +1,7 @@
 {
   "name": "The Press",
   "short_name": "The Press",
-  "description": "AI Powered News",
+  "description": "AI Powered Journalism",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f4f0e8",

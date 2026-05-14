@@ -1878,7 +1878,7 @@ def sanitize_public_html(markup: str) -> str:
     markup = re.sub(r"Written with AI", "Sourced", markup, flags=re.I)
     markup = re.sub(r"Intelligent AI", "The Press", markup, flags=re.I)
     markup = re.sub(r"AI Newsroom", "Masthead", markup, flags=re.I)
-    markup = re.sub(r"AI Powered News", "Independent, source-forward news", markup, flags=re.I)
+    markup = re.sub(r"AI Powered News", "AI Powered Journalism", markup, flags=re.I)
     markup = re.sub(r"AI powered reporting", "source-forward reporting", markup, flags=re.I)
     markup = re.sub(r"Latest AI Edition", "Latest Edition", markup, flags=re.I)
     markup = re.sub(r"Transparent AI-generated journalism", "Source-forward journalism", markup, flags=re.I)

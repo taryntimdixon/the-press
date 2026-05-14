@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="180" viewBox="0 0 760 180" role="img" aria-labelledby="title desc">
   <title id="title">The Press reverse logo</title>
-  <desc id="desc">Light version of The Press wordmark with the tagline AI Powered News.</desc>
+  <desc id="desc">Light version of The Press wordmark with the tagline AI Powered Journalism.</desc>
   <defs>
     <style>
       .wordmark{font-family:'Playfair Display', Georgia, 'Times New Roman', serif;font-weight:800;letter-spacing:.045em;fill:#f0ebe0;}
@@ -11,9 +11,9 @@
   </defs>
   <g transform="translate(28 28)">
     <text class="wordmark" x="0" y="72" font-size="76">THE PRESS</text>
-    <line class="rule" x1="4" y1="103" x2="230" y2="103" />
-    <rect class="tagbox" x="248" y="86" width="260" height="38" rx="19" />
-    <text class="tag" x="272" y="111" font-size="18">AI Powered News</text>
-    <line class="rule" x1="528" y1="103" x2="704" y2="103" />
+    <line class="rule" x1="4" y1="103" x2="198" y2="103" />
+    <rect class="tagbox" x="216" y="86" width="344" height="38" rx="19" />
+    <text class="tag" x="242" y="111" font-size="18">AI Powered Journalism</text>
+    <line class="rule" x1="580" y1="103" x2="704" y2="103" />
   </g>
 </svg>

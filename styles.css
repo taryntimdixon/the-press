@@ -3140,7 +3140,7 @@ html.press-page-leaving body {
 }
 /* NO_FLASH_OVERRIDE_END */
 
-/* The Press brand lockup — AI Powered News */
+/* The Press brand lockup - AI Powered Journalism */
 .site-header{
   background:color-mix(in srgb, var(--bg) 94%, transparent);
   border-bottom:1px solid color-mix(in srgb, var(--ink) 10%, transparent);
@@ -3288,6 +3288,13 @@ body {
 body.page-home .masthead.masthead-with-logo .masthead-logo {
   width: clamp(28rem, 60vw, 44rem) !important;
   height: auto !important;
+}
+
+@media (max-width:700px){
+  body.page-home .masthead.masthead-with-logo .masthead-logo {
+    width: min(100%, calc(100vw - 2rem)) !important;
+    max-width: calc(100vw - 2rem) !important;
+  }
 }
 
 /* PRESS_AI_NEWSROOM_PLEDGE_START
