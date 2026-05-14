@@ -757,13 +757,32 @@ if (!hasHomepageTargets) {
     if (!article || !body || !hero || !('speechSynthesis' in window)) return;
     if (document.querySelector('[data-listen-controls]')) return;
 
+    const synth = window.speechSynthesis;
+    const VOICE_STORAGE_KEY = 'press.listen.voice';
+    const RATE_STORAGE_KEY = 'press.listen.rate';
+
     const wrapper = document.createElement('div');
     wrapper.className = 'listen-controls';
     wrapper.setAttribute('data-listen-controls', '');
     wrapper.innerHTML = `
-      <button class="listen-button" type="button" data-listen-play aria-label="Read this article aloud">🔊 Listen</button>
-      <button class="listen-button listen-button--ghost" type="button" data-listen-pause aria-label="Pause reading">Pause</button>
-      <button class="listen-button listen-button--ghost" type="button" data-listen-stop aria-label="Stop reading">Stop</button>
+      <div class="listen-actions">
+        <button class="listen-button" type="button" data-listen-play aria-label="Read this article aloud">🔊 Listen</button>
+        <button class="listen-button listen-button--ghost" type="button" data-listen-pause aria-label="Pause reading">Pause</button>
+        <button class="listen-button listen-button--ghost" type="button" data-listen-stop aria-label="Stop reading">Stop</button>
+      </div>
+      <div class="listen-settings" data-listen-settings>
+        <label class="listen-field listen-field--voice">
+          <span>Voice</span>
+          <select class="listen-select" data-listen-voice aria-label="Voice">
+            <option value="">System voice</option>
+          </select>
+        </label>
+        <label class="listen-field listen-field--speed">
+          <span>Speed</span>
+          <input class="listen-range" type="range" min="0.85" max="1.12" step="0.01" value="0.96" data-listen-rate aria-label="Reading speed">
+          <strong class="listen-speed-value" data-listen-rate-value>0.96x</strong>
+        </label>
+      </div>
       <span class="listen-status" data-listen-status>Ready to read aloud</span>
     `;
     const meta = hero.querySelector('.article-meta');
@@ -776,42 +795,290 @@ if (!hasHomepageTargets) {
     const pause = wrapper.querySelector('[data-listen-pause]');
     const stop = wrapper.querySelector('[data-listen-stop]');
     const status = wrapper.querySelector('[data-listen-status]');
+    const voiceSelect = wrapper.querySelector('[data-listen-voice]');
+    const rateInput = wrapper.querySelector('[data-listen-rate]');
+    const rateValue = wrapper.querySelector('[data-listen-rate-value]');
 
+    let voices = [];
+    let segments = [];
+    let segmentIndex = 0;
     let utterance = null;
-    const getText = () => collapseWhitespace(body.innerText || body.textContent || '');
+    let stopRequested = true;
+    let activeSpeechRun = 0;
 
-    const stopSpeech = () => {
-      window.speechSynthesis.cancel();
-      utterance = null;
-      if (status) status.textContent = 'Stopped';
+    const setStatus = (message) => {
+      if (status) status.textContent = message;
     };
 
-    play.addEventListener('click', () => {
-      const text = getText();
-      if (!text) return;
-      if (window.speechSynthesis.paused) {
-        window.speechSynthesis.resume();
-        if (status) status.textContent = 'Reading aloud';
+    const readStoredValue = (key) => {
+      try {
+        return window.localStorage.getItem(key);
+      } catch (_) {
+        return '';
+      }
+    };
+
+    const writeStoredValue = (key, value) => {
+      try {
+        window.localStorage.setItem(key, value);
+      } catch (_) {}
+    };
+
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+    const formatRate = (value) => {
+      const text = Number(value).toFixed(2).replace(/\.00$/, '').replace(/0$/, '');
+      return `${text}x`;
+    };
+
+    const updateRateLabel = () => {
+      const value = clamp(Number(rateInput?.value) || 0.96, 0.85, 1.12);
+      if (rateInput) rateInput.value = String(value);
+      if (rateValue) rateValue.textContent = formatRate(value);
+      return value;
+    };
+
+    const getRate = () => updateRateLabel();
+
+    const getVoiceId = (voice) => voice ? (voice.voiceURI || `${voice.name}|${voice.lang}`) : '';
+
+    const scoreVoice = (voice) => {
+      if (!voice) return -Infinity;
+      const name = `${voice.name || ''} ${voice.voiceURI || ''}`.toLowerCase();
+      const lang = String(voice.lang || '').toLowerCase();
+      const userLang = String(navigator.language || 'en-US').toLowerCase();
+      const userBase = userLang.split('-')[0];
+      let score = 0;
+
+      if (lang === userLang) score += 36;
+      if (lang === 'en-us') score += 30;
+      if (lang.startsWith(`${userBase}-`)) score += 24;
+      if (lang.startsWith('en')) score += 18;
+      if (voice.default) score += 8;
+      if (voice.localService) score += 3;
+      if (/samantha|ava|allison|susan|zoe|nicky|siri|google us english|microsoft aria|microsoft jenny|microsoft guy|microsoft davis|microsoft michelle|natural|neural|enhanced|premium/.test(name)) score += 28;
+      if (/compact|novelty|whisper|bells|boing|bubbles|cellos|deranged|good news|bad news|hysterical|jester|organ|superstar|trinoids|whisper|zarvox/.test(name)) score -= 80;
+
+      return score;
+    };
+
+    const sortVoices = (items) => {
+      return Array.from(items || []).sort((a, b) => {
+        const scoreDelta = scoreVoice(b) - scoreVoice(a);
+        if (scoreDelta) return scoreDelta;
+        return String(a.name || '').localeCompare(String(b.name || ''));
+      });
+    };
+
+    const chooseBestVoice = (items) => sortVoices(items)[0] || null;
+
+    const getSelectedVoice = () => {
+      const selectedId = voiceSelect?.value || '';
+      return voices.find((voice) => getVoiceId(voice) === selectedId) || chooseBestVoice(voices);
+    };
+
+    const populateVoices = () => {
+      const available = sortVoices(synth.getVoices());
+      const storedVoiceId = readStoredValue(VOICE_STORAGE_KEY);
+      const currentVoiceId = voiceSelect?.value || storedVoiceId;
+      voices = available;
+      if (!voiceSelect) return;
+
+      voiceSelect.replaceChildren();
+      if (!voices.length) {
+        voiceSelect.appendChild(new Option('System voice', ''));
+        voiceSelect.disabled = true;
         return;
       }
-      window.speechSynthesis.cancel();
-      utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 1;
+
+      voiceSelect.disabled = false;
+      voices.forEach((voice) => {
+        const label = `${voice.name}${voice.lang ? ` (${voice.lang})` : ''}`;
+        voiceSelect.appendChild(new Option(label, getVoiceId(voice)));
+      });
+
+      const nextVoiceId = voices.some((voice) => getVoiceId(voice) === currentVoiceId)
+        ? currentVoiceId
+        : getVoiceId(chooseBestVoice(voices));
+      voiceSelect.value = nextVoiceId || '';
+    };
+
+    const splitLongSegment = (text, maxLength = 1200) => {
+      const clean = collapseWhitespace(text);
+      if (!clean) return [];
+      if (clean.length <= maxLength) return [clean];
+
+      const sentences = clean.match(/[^.!?]+[.!?]+["')\]]*|[^.!?]+$/g) || [clean];
+      const chunks = [];
+      let current = '';
+
+      sentences.forEach((sentence) => {
+        const piece = collapseWhitespace(sentence);
+        if (!piece) return;
+
+        if (piece.length > maxLength) {
+          if (current) {
+            chunks.push(current);
+            current = '';
+          }
+          let remainder = piece;
+          while (remainder.length > maxLength) {
+            const cut = Math.max(remainder.lastIndexOf(' ', maxLength), Math.floor(maxLength * 0.7));
+            chunks.push(collapseWhitespace(remainder.slice(0, cut)));
+            remainder = collapseWhitespace(remainder.slice(cut));
+          }
+          if (remainder) current = remainder;
+          return;
+        }
+
+        const next = current ? `${current} ${piece}` : piece;
+        if (next.length > maxLength) {
+          if (current) chunks.push(current);
+          current = piece;
+        } else {
+          current = next;
+        }
+      });
+
+      if (current) chunks.push(current);
+      return chunks;
+    };
+
+    const getReadableSegments = () => {
+      const clone = body.cloneNode(true);
+      clone.querySelectorAll([
+        'script',
+        'style',
+        'noscript',
+        'aside',
+        'figure',
+        'nav',
+        '[hidden]',
+        '[aria-hidden="true"]',
+        '.article-jump-strip',
+        '.article-rail-gallery',
+        '.article-source-drawer',
+        '.press-social-side',
+        '.press-social-sources',
+        '.source-notes',
+        '.source-ref',
+      ].join(',')).forEach((node) => node.remove());
+
+      const readableNodes = Array.from(clone.querySelectorAll('h2, h3, p, blockquote, li'));
+      const textBlocks = readableNodes.length
+        ? readableNodes.map((node) => collapseWhitespace(node.textContent || ''))
+        : [collapseWhitespace(clone.textContent || '')];
+
+      return textBlocks
+        .filter((text) => text && text.length > 2 && !/^(article gallery|open link|source notes)$/i.test(text))
+        .flatMap((text) => splitLongSegment(text));
+    };
+
+    const setPauseLabel = (label = 'Pause') => {
+      if (pause) pause.textContent = label;
+    };
+
+    const finishSpeech = () => {
+      utterance = null;
+      stopRequested = true;
+      setPauseLabel();
+      setStatus('Finished reading');
+    };
+
+    const speakCurrentSegment = () => {
+      if (stopRequested) return;
+      if (segmentIndex >= segments.length) {
+        finishSpeech();
+        return;
+      }
+
+      const speechToken = ++activeSpeechRun;
+      utterance = new SpeechSynthesisUtterance(segments[segmentIndex]);
+      const selectedVoice = getSelectedVoice();
+      if (selectedVoice) utterance.voice = selectedVoice;
+      utterance.rate = getRate();
       utterance.pitch = 1;
-      utterance.onstart = () => { if (status) status.textContent = 'Reading aloud'; };
-      utterance.onend = () => { if (status) status.textContent = 'Finished reading'; utterance = null; };
-      utterance.onerror = () => { if (status) status.textContent = 'Read-aloud unavailable in this browser'; utterance = null; };
-      window.speechSynthesis.speak(utterance);
+      utterance.onstart = () => setStatus('Reading aloud');
+      utterance.onend = () => {
+        if (stopRequested || speechToken !== activeSpeechRun) return;
+        segmentIndex += 1;
+        if (segmentIndex >= segments.length) {
+          finishSpeech();
+        } else {
+          window.setTimeout(speakCurrentSegment, 80);
+        }
+      };
+      utterance.onerror = () => {
+        if (stopRequested || speechToken !== activeSpeechRun) return;
+        utterance = null;
+        stopRequested = true;
+        setPauseLabel();
+        setStatus('Read-aloud unavailable in this browser');
+      };
+      synth.speak(utterance);
+    };
+
+    const startSpeech = () => {
+      segments = getReadableSegments();
+      segmentIndex = 0;
+      if (!segments.length) return;
+      stopRequested = false;
+      activeSpeechRun += 1;
+      synth.cancel();
+      window.setTimeout(speakCurrentSegment, 60);
+    };
+
+    const stopSpeech = () => {
+      stopRequested = true;
+      activeSpeechRun += 1;
+      synth.cancel();
+      utterance = null;
+      setPauseLabel();
+      setStatus('Stopped');
+    };
+
+    const savedRate = clamp(Number(readStoredValue(RATE_STORAGE_KEY)) || 0.96, 0.85, 1.12);
+    if (rateInput) rateInput.value = String(savedRate);
+    updateRateLabel();
+    populateVoices();
+    if (typeof synth.addEventListener === 'function') {
+      synth.addEventListener('voiceschanged', populateVoices);
+    } else if ('onvoiceschanged' in synth) {
+      synth.onvoiceschanged = populateVoices;
+    }
+    window.setTimeout(populateVoices, 250);
+
+    voiceSelect?.addEventListener('change', () => {
+      writeStoredValue(VOICE_STORAGE_KEY, voiceSelect.value || '');
+      setStatus(synth.speaking ? 'Voice changes on the next paragraph' : 'Voice saved');
+    });
+
+    rateInput?.addEventListener('input', () => {
+      const rate = updateRateLabel();
+      writeStoredValue(RATE_STORAGE_KEY, String(rate));
+      if (!synth.speaking) setStatus('Speed saved');
+    });
+
+    play.addEventListener('click', () => {
+      if (synth.paused) {
+        synth.resume();
+        setPauseLabel();
+        setStatus('Reading aloud');
+        return;
+      }
+      startSpeech();
     });
 
     pause.addEventListener('click', () => {
-      if (!window.speechSynthesis.speaking) return;
-      if (window.speechSynthesis.paused) {
-        window.speechSynthesis.resume();
-        if (status) status.textContent = 'Reading aloud';
+      if (!synth.speaking) return;
+      if (synth.paused) {
+        synth.resume();
+        setPauseLabel();
+        setStatus('Reading aloud');
       } else {
-        window.speechSynthesis.pause();
-        if (status) status.textContent = 'Paused';
+        synth.pause();
+        setPauseLabel('Resume');
+        setStatus('Paused');
       }
     });
 
@@ -1812,7 +2079,7 @@ function enhanceBreakingStrip(stories) {
   }
 
   function getShareCopyText(context) {
-    return `${context.title} ${context.url}`;
+    return context.url;
   }
 
   function setShareStatus(row, message) {
