@@ -3284,14 +3284,16 @@ body {
   padding-top: 0 !important;
 }
 
-/* Homepage hard override to prevent cached/older rules from shrinking the main logo. */
-body.page-home .masthead.masthead-with-logo .masthead-logo {
+/* Keep the primary masthead logo full-size on entry pages and article pages. */
+body.page-home .masthead.masthead-with-logo .masthead-logo,
+body.page-article .masthead.masthead-with-logo .masthead-logo {
   width: clamp(28rem, 60vw, 44rem) !important;
   height: auto !important;
 }
 
 @media (max-width:700px){
-  body.page-home .masthead.masthead-with-logo .masthead-logo {
+  body.page-home .masthead.masthead-with-logo .masthead-logo,
+  body.page-article .masthead.masthead-with-logo .masthead-logo {
     width: min(100%, calc(100vw - 2rem)) !important;
     max-width: calc(100vw - 2rem) !important;
   }
