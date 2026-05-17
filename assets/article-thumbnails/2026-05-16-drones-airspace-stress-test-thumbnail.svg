@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1672" height="941" viewBox="0 0 1672 941" role="img" aria-labelledby="title desc">
+  <title id="title">Drone airspace stress test data illustration</title>
+  <desc id="desc">A The Press data illustration showing FAA drone sighting reports, altitude bands, and low-altitude airspace routes.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7faf6"/>
+      <stop offset="0.48" stop-color="#edf5f2"/>
+      <stop offset="1" stop-color="#f9efe3"/>
+    </linearGradient>
+    <radialGradient id="radarGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#27a5a0" stop-opacity=".22"/>
+      <stop offset=".54" stop-color="#4961d3" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#172033" flood-opacity=".17"/>
+    </filter>
+    <filter id="dotGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#e3564f" flood-opacity=".58"/>
+    </filter>
+    <pattern id="grid" width="54" height="54" patternUnits="userSpaceOnUse">
+      <path d="M54 0H0V54" fill="none" stroke="#26364f" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1672" height="941" fill="url(#sky)"/>
+  <rect width="1672" height="941" fill="url(#grid)" opacity=".8"/>
+  <circle cx="1288" cy="422" r="410" fill="url(#radarGlow)"/>
+
+  <g opacity=".12" stroke="#223047" stroke-width="2" fill="none">
+    <path d="M92 210C265 125 454 123 628 205S958 366 1166 318s310-158 438-92"/>
+    <path d="M45 446C216 370 392 371 566 451s356 133 534 52 343-212 526-134"/>
+    <path d="M110 735c184-74 355-51 514 21s309 89 468 10 343-178 506-74"/>
+  </g>
+
+  <g transform="translate(86 98)" filter="url(#softShadow)">
+    <rect width="866" height="690" rx="30" fill="#fffef8" stroke="#d8dfdc"/>
+    <text x="46" y="65" font-family="Georgia, serif" font-size="52" font-weight="700" fill="#172033">2,234 FAA Reports</text>
+    <text x="48" y="102" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2.8" fill="#4557d5">OCT 2024 TO DEC 2025</text>
+    <text x="48" y="142" font-family="Arial, sans-serif" font-size="19" fill="#43506a">Monthly UAS sighting reports parsed by The Press from five FAA spreadsheets.</text>
+
+    <line x1="54" y1="592" x2="815" y2="592" stroke="#223047" stroke-opacity=".2"/>
+    <line x1="54" y1="442" x2="815" y2="442" stroke="#223047" stroke-opacity=".11"/>
+    <line x1="54" y1="292" x2="815" y2="292" stroke="#223047" stroke-opacity=".11"/>
+    <text x="54" y="246" font-family="Arial, sans-serif" font-size="14" fill="#68738a">224</text>
+    <text x="54" y="401" font-family="Arial, sans-serif" font-size="14" fill="#68738a">112</text>
+    <text x="54" y="626" font-family="Arial, sans-serif" font-size="14" fill="#68738a">0</text>
+
+    <g transform="translate(92 292)">
+      <rect x="0" y="122" width="34" height="178" rx="8" fill="#2f8f88"/>
+      <rect x="50" y="162" width="34" height="138" rx="8" fill="#2f8f88" opacity=".78"/>
+      <rect x="100" y="114" width="34" height="186" rx="8" fill="#2f8f88"/>
+      <rect x="150" y="146" width="34" height="154" rx="8" fill="#4961d3" opacity=".8"/>
+      <rect x="200" y="122" width="34" height="178" rx="8" fill="#4961d3" opacity=".86"/>
+      <rect x="250" y="84" width="34" height="216" rx="8" fill="#4961d3"/>
+      <rect x="300" y="51" width="34" height="249" rx="8" fill="#d89f27"/>
+      <rect x="350" y="24" width="34" height="276" rx="8" fill="#d89f27"/>
+      <rect x="400" y="0" width="34" height="300" rx="8" fill="#e3564f"/>
+      <rect x="450" y="75" width="34" height="225" rx="8" fill="#d89f27"/>
+      <rect x="500" y="88" width="34" height="212" rx="8" fill="#d89f27" opacity=".9"/>
+      <rect x="550" y="25" width="34" height="275" rx="8" fill="#e3564f" opacity=".88"/>
+      <rect x="600" y="123" width="34" height="177" rx="8" fill="#2f8f88" opacity=".86"/>
+      <rect x="650" y="178" width="34" height="122" rx="8" fill="#2f8f88" opacity=".68"/>
+      <rect x="700" y="193" width="34" height="107" rx="8" fill="#2f8f88" opacity=".58"/>
+    </g>
+    <text x="92" y="646" font-family="Arial, sans-serif" font-size="14" fill="#68738a">Oct</text>
+    <text x="292" y="646" font-family="Arial, sans-serif" font-size="14" fill="#68738a">Feb</text>
+    <text x="492" y="646" font-family="Arial, sans-serif" font-size="14" fill="#68738a">Jun</text>
+    <text x="692" y="646" font-family="Arial, sans-serif" font-size="14" fill="#68738a">Oct</text>
+    <text x="748" y="646" font-family="Arial, sans-serif" font-size="14" fill="#68738a">Dec</text>
+
+    <g transform="translate(46 594)">
+      <circle cx="10" cy="10" r="7" fill="#e3564f"/>
+      <text x="26" y="15" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#172033">Peak month: June 2025, 224 reports</text>
+      <circle cx="10" cy="40" r="7" fill="#2f8f88"/>
+      <text x="26" y="45" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#172033">Average: about 149 reports per month</text>
+    </g>
+  </g>
+
+  <g transform="translate(1002 118)" filter="url(#softShadow)">
+    <rect width="554" height="690" rx="30" fill="#fffef8" stroke="#d8dfdc"/>
+    <text x="42" y="62" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#172033">Altitude Tells</text>
+    <text x="44" y="99" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2.8" fill="#b23d38">EXTRACTED FROM 2,174 REPORTS</text>
+
+    <g transform="translate(42 146)">
+      <path d="M230 36a194 194 0 1 1-.1 0" fill="none" stroke="#223047" stroke-opacity=".12" stroke-width="18"/>
+      <path d="M230 82a148 148 0 1 1-.1 0" fill="none" stroke="#223047" stroke-opacity=".12" stroke-width="14"/>
+      <path d="M230 130a100 100 0 1 1-.1 0" fill="none" stroke="#223047" stroke-opacity=".13" stroke-width="10"/>
+      <path d="M230 42L360 174" stroke="#4961d3" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="360" cy="174" r="12" fill="#4961d3"/>
+      <circle cx="230" cy="230" r="12" fill="#172033"/>
+      <g fill="#e3564f" filter="url(#dotGlow)">
+        <circle cx="152" cy="164" r="6"/>
+        <circle cx="290" cy="106" r="5"/>
+        <circle cx="346" cy="256" r="7"/>
+        <circle cx="106" cy="276" r="5"/>
+        <circle cx="230" cy="356" r="6"/>
+        <circle cx="398" cy="118" r="4"/>
+        <circle cx="80" cy="188" r="4"/>
+      </g>
+      <path d="M196 225h68l23-18h-22l-10-16h-50l-10 16h-22z" fill="#172033"/>
+      <rect x="220" y="178" width="20" height="56" rx="8" fill="#172033"/>
+      <rect x="173" y="206" width="38" height="7" rx="4" fill="#172033"/>
+      <rect x="249" y="206" width="38" height="7" rx="4" fill="#172033"/>
+      <circle cx="170" cy="210" r="17" fill="none" stroke="#172033" stroke-width="5"/>
+      <circle cx="290" cy="210" r="17" fill="none" stroke="#172033" stroke-width="5"/>
+    </g>
+
+    <g transform="translate(55 490)">
+      <text x="0" y="-22" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#172033">Reported altitude bands</text>
+      <line x1="0" y1="158" x2="440" y2="158" stroke="#223047" stroke-opacity=".18"/>
+      <rect x="0" y="86" width="54" height="72" rx="8" fill="#2f8f88"/>
+      <rect x="89" y="7" width="54" height="151" rx="8" fill="#4961d3"/>
+      <rect x="178" y="-102" width="54" height="260" rx="8" fill="#e3564f"/>
+      <rect x="267" y="-97" width="54" height="255" rx="8" fill="#d89f27"/>
+      <rect x="356" y="97" width="54" height="61" rx="8" fill="#2f8f88" opacity=".72"/>
+      <text x="-4" y="186" font-family="Arial, sans-serif" font-size="13" fill="#68738a">&lt;=400</text>
+      <text x="82" y="186" font-family="Arial, sans-serif" font-size="13" fill="#68738a">401-1.2k</text>
+      <text x="170" y="186" font-family="Arial, sans-serif" font-size="13" fill="#68738a">1.2-3k</text>
+      <text x="264" y="186" font-family="Arial, sans-serif" font-size="13" fill="#68738a">3-10k</text>
+      <text x="358" y="186" font-family="Arial, sans-serif" font-size="13" fill="#68738a">&gt;10k</text>
+    </g>
+  </g>
+
+  <g transform="translate(120 850)">
+    <rect x="0" y="-28" width="1432" height="52" rx="26" fill="#172033"/>
+    <text x="31" y="6" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2.6" fill="#f7faf6">THE PRESS DATA ILLUSTRATION</text>
+    <text x="384" y="6" font-family="Arial, sans-serif" font-size="18" fill="#f7faf6">FAA UAS sightings, BVLOS, Remote ID, delivery, policing, war and supply chains in one low-altitude system.</text>
+  </g>
+</svg>
