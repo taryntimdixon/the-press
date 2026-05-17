@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-14T10:42:19.283634+00:00",
+  "generated_at": "2026-05-17T03:22:30.020823+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -8,36 +8,33 @@
     "rails": "freshness-weighted fallback if manual analytics are unavailable"
   },
   "home": {
+    "hero_slots": 7,
     "hero": [
       "sports-world-cup-game-day-machine",
-      "world-europes-cocaine-boom-is-hiding-in-plain-sight",
+      "world-americas-military-year-is-a-map-of-force",
       "climate-the-mountain-that-fell-into-the-sea",
-      "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world"
+      "climate-your-home-insurance-bill-is-the-new-climate-map",
+      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
+      "technology-the-battery-is-becoming-the-grid",
+      "health-the-next-public-health-system-is-the-room-you-are-in"
     ],
     "secondary": [
-      "world-americas-military-year-is-a-map-of-force",
-      "memory-the-internet-is-eating-its-own-memory",
-      "education-the-phone-free-school-day-is-a-live-experiment"
+      "world-europes-cocaine-boom-is-hiding-in-plain-sight",
+      "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
+      "memory-the-internet-is-eating-its-own-memory"
     ],
     "most_read": [
-      "health-the-next-public-health-system-is-the-room-you-are-in",
-      "technology-the-battery-is-becoming-the-grid",
-      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
-      "climate-your-home-insurance-bill-is-the-new-climate-map",
-      "sports-texas-holdem-prime-time-moment-back"
+      "education-the-phone-free-school-day-is-a-live-experiment",
+      "sports-texas-holdem-prime-time-moment-back",
+      "technology-pentagon-ai-classified-networks",
+      "food-atla-noho-closing"
     ],
-    "editors_picks": [
-      "food-atla-noho-closing",
-      "technology-pentagon-ai-classified-networks"
-    ],
+    "editors_picks": [],
     "latest": [
-      "world-americas-military-year-is-a-map-of-force",
+      "world-europes-cocaine-boom-is-hiding-in-plain-sight",
+      "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
       "memory-the-internet-is-eating-its-own-memory",
       "education-the-phone-free-school-day-is-a-live-experiment",
-      "health-the-next-public-health-system-is-the-room-you-are-in",
-      "technology-the-battery-is-becoming-the-grid",
-      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
-      "climate-your-home-insurance-bill-is-the-new-climate-map",
       "sports-texas-holdem-prime-time-moment-back",
       "technology-pentagon-ai-classified-networks",
       "food-atla-noho-closing",
@@ -45,7 +42,10 @@
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-nairobi-s-drains-are-running-out-of-room"
+      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
+      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight"
     ],
     "daily": [
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
@@ -60,20 +60,20 @@
       "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
     ],
     "breaking": [
-      "world-americas-military-year-is-a-map-of-force",
+      "world-europes-cocaine-boom-is-hiding-in-plain-sight",
+      "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
       "memory-the-internet-is-eating-its-own-memory",
       "education-the-phone-free-school-day-is-a-live-experiment",
-      "health-the-next-public-health-system-is-the-room-you-are-in",
-      "technology-the-battery-is-becoming-the-grid",
-      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
-      "climate-your-home-insurance-bill-is-the-new-climate-map",
       "sports-texas-holdem-prime-time-moment-back",
       "technology-pentagon-ai-classified-networks",
       "food-atla-noho-closing",
       "technology-musk-altman-openai-court-battle",
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
-      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map"
+      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
+      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label"
     ],
     "desk_pulse": [
       {

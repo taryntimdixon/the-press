@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-14T10:42:19.283634+00:00",
+  "generated_at": "2026-05-17T03:22:30.020823+00:00",
   "story_count": 381,
   "stories": [
     {
       "story_id": "sports-world-cup-game-day-machine",
-      "cluster_id": "sports-world-cup-game-time-matchday-machine",
+      "cluster_id": "sports-world-cup-never-big-fifa-2026",
       "title": "The World Cup Has Never Been This Big",
       "section": "Sports",
       "section_slug": "sports",
@@ -35,7 +35,7 @@
       "status": "published",
       "priority": 20,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -76,7 +76,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -114,7 +114,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -148,7 +148,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -183,7 +183,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -216,7 +216,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -249,7 +249,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -283,7 +283,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -317,7 +317,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -351,7 +351,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -384,7 +384,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -420,7 +420,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -456,7 +456,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -491,7 +491,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -525,7 +525,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -561,7 +561,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -594,7 +594,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -623,7 +623,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -655,7 +655,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -686,7 +686,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -720,7 +720,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -751,7 +751,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -780,7 +780,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -811,7 +811,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -840,7 +840,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -869,7 +869,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -900,7 +900,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -931,7 +931,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -960,7 +960,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -989,7 +989,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -1020,7 +1020,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -1051,7 +1051,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "daily-latest",
       "is_daily": true
     },
     {
@@ -11003,7 +11003,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11028,7 +11028,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11053,7 +11053,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11085,7 +11085,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11110,7 +11110,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11135,7 +11135,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11166,7 +11166,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11198,7 +11198,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11223,7 +11223,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11248,7 +11248,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11273,7 +11273,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11298,7 +11298,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11323,7 +11323,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     },
     {
@@ -11348,7 +11348,7 @@
       "status": "published",
       "priority": 0,
       "hero_eligible": true,
-      "source": "search-index",
+      "source": "master-edition",
       "is_daily": false
     }
   ]
