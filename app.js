@@ -12,6 +12,272 @@ function pressSiteAssetUrl(path) {
 }
 
 (() => {
+  const IMAGE_LINK_SELECTOR = '.drone-article-visual__media[href]';
+  let activeLightbox = null;
+
+  function openImageLightbox(link, event) {
+    if (!link) return;
+    const image = link.querySelector('img');
+    if (!image) return;
+    event?.preventDefault();
+
+    closeImageLightbox({ restoreHistory: false, restoreFocus: false });
+
+    const overlay = document.createElement('div');
+    overlay.className = 'press-image-lightbox';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', image.alt || 'Full image view');
+    overlay.tabIndex = -1;
+
+    const backButton = document.createElement('button');
+    backButton.type = 'button';
+    backButton.className = 'press-image-lightbox__back';
+    backButton.textContent = 'Back to article';
+
+    const closeButton = document.createElement('button');
+    closeButton.type = 'button';
+    closeButton.className = 'press-image-lightbox__close';
+    closeButton.setAttribute('aria-label', 'Close full image view');
+    closeButton.textContent = 'X';
+
+    const frame = document.createElement('div');
+    frame.className = 'press-image-lightbox__frame';
+
+    const fullImage = document.createElement('img');
+    fullImage.className = 'press-image-lightbox__image';
+    fullImage.src = link.href;
+    fullImage.alt = image.alt || '';
+    fullImage.decoding = 'async';
+
+    frame.appendChild(fullImage);
+    overlay.append(backButton, closeButton, frame);
+    document.body.appendChild(overlay);
+    document.body.classList.add('press-image-lightbox-open');
+
+    activeLightbox = {
+      overlay,
+      opener: link,
+      historyPushed: false,
+    };
+
+    try {
+      window.history.pushState({ ...(window.history.state || {}), pressImageLightbox: true }, '', window.location.href);
+      activeLightbox.historyPushed = true;
+    } catch (_) {
+      activeLightbox.historyPushed = false;
+    }
+
+    backButton.addEventListener('click', () => closeImageLightbox());
+    closeButton.addEventListener('click', () => closeImageLightbox());
+    overlay.addEventListener('click', (clickEvent) => {
+      if (clickEvent.target === overlay) closeImageLightbox();
+    });
+    overlay.focus({ preventScroll: true });
+  }
+
+  function closeImageLightbox(options = {}) {
+    const { restoreHistory = true, restoreFocus = true } = options;
+    if (!activeLightbox) return;
+    const { overlay, opener, historyPushed } = activeLightbox;
+    activeLightbox = null;
+    overlay.remove();
+    document.body.classList.remove('press-image-lightbox-open');
+    if (restoreFocus) opener?.focus?.({ preventScroll: true });
+    if (restoreHistory && historyPushed && window.history.state?.pressImageLightbox) {
+      window.history.back();
+    }
+  }
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.(IMAGE_LINK_SELECTOR);
+    if (!link) return;
+    openImageLightbox(link, event);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!activeLightbox) return;
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeImageLightbox();
+    }
+  });
+
+  window.addEventListener('popstate', () => {
+    if (activeLightbox) closeImageLightbox({ restoreHistory: false });
+  });
+})();
+
+(() => {
+  const CHART_EXPAND_SELECTOR = '[data-chart-expand]';
+  let activeChartLightbox = null;
+
+  function openChartLightbox(button, event) {
+    const selector = button?.getAttribute('data-chart-expand');
+    const figure = selector ? document.querySelector(selector) : null;
+    const visual = figure?.querySelector('.drone-data-graphic__visual');
+    if (!figure || !visual) return;
+    event?.preventDefault();
+
+    closeChartLightbox({ restoreFocus: false });
+
+    const overlay = document.createElement('div');
+    overlay.className = 'press-chart-lightbox';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Expanded chart view');
+    overlay.tabIndex = -1;
+
+    const backButton = document.createElement('button');
+    backButton.type = 'button';
+    backButton.className = 'press-chart-lightbox__back';
+    backButton.textContent = 'Back to article';
+
+    const closeButton = document.createElement('button');
+    closeButton.type = 'button';
+    closeButton.className = 'press-chart-lightbox__close';
+    closeButton.setAttribute('aria-label', 'Close expanded chart');
+    closeButton.textContent = 'X';
+
+    const frame = document.createElement('div');
+    frame.className = 'press-chart-lightbox__frame';
+
+    const expandedFigure = document.createElement('figure');
+    expandedFigure.className = figure.className;
+    expandedFigure.classList.add('press-chart-lightbox__figure');
+
+    const visualClone = visual.cloneNode(true);
+    visualClone.classList.add('press-chart-lightbox__visual');
+    visualClone.removeAttribute('href');
+    visualClone.removeAttribute('target');
+    visualClone.removeAttribute('rel');
+    visualClone.removeAttribute('aria-label');
+
+    const caption = figure.querySelector('figcaption')?.cloneNode(true);
+    caption?.querySelectorAll(CHART_EXPAND_SELECTOR).forEach((node) => node.remove());
+
+    expandedFigure.appendChild(visualClone);
+    if (caption) expandedFigure.appendChild(caption);
+    frame.appendChild(expandedFigure);
+    overlay.append(backButton, closeButton, frame);
+    document.body.appendChild(overlay);
+    document.body.classList.add('press-image-lightbox-open');
+
+    activeChartLightbox = { overlay, opener: button };
+
+    backButton.addEventListener('click', () => closeChartLightbox());
+    closeButton.addEventListener('click', () => closeChartLightbox());
+    overlay.addEventListener('click', (clickEvent) => {
+      if (clickEvent.target === overlay) closeChartLightbox();
+    });
+    overlay.focus({ preventScroll: true });
+  }
+
+  function closeChartLightbox(options = {}) {
+    const { restoreFocus = true } = options;
+    if (!activeChartLightbox) return;
+    const { overlay, opener } = activeChartLightbox;
+    activeChartLightbox = null;
+    overlay.remove();
+    document.body.classList.remove('press-image-lightbox-open');
+    if (restoreFocus) opener?.focus?.({ preventScroll: true });
+  }
+
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest?.(CHART_EXPAND_SELECTOR);
+    if (!button) return;
+    openChartLightbox(button, event);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!activeChartLightbox) return;
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeChartLightbox();
+    }
+  });
+})();
+
+(() => {
+  const NOTE_LINK_SELECTOR = '.source-notes li[id] > a[href], .source-list li[id] > a[href]';
+  const INLINE_SOURCE_SELECTOR = '.source-ref a[href^="#source-"]';
+  const DIRECT_SOURCE_SELECTOR = [
+    '.drone-source-chips a[href^="#source-"]',
+    '.drone-data-graphic__visual[href^="#source-"]',
+  ].join(', ');
+  const SOURCE_RAIL_LINK_SELECTOR = [
+    '.drone-social-feature .press-static-post > a[href]',
+    '.article-rail-gallery__card[href]',
+  ].join(', ');
+
+  function isExternalSourceHref(href) {
+    return /^https?:\/\//i.test(String(href || ''));
+  }
+
+  function applyExternalSourceLink(link, source, options = {}) {
+    if (!link || !source?.href) return;
+    link.setAttribute('href', source.href);
+    link.removeAttribute('target');
+    link.setAttribute('rel', 'noopener noreferrer');
+    link.setAttribute('data-source-external', 'true');
+    if (source.label) link.setAttribute('aria-label', `Open source: ${source.label}`);
+    if (options.relabel && !link.querySelector('img')) {
+      link.textContent = 'Open source site';
+    }
+  }
+
+  function enhanceArticleSourceLinks() {
+    const sourceMap = new Map();
+
+    document.querySelectorAll(NOTE_LINK_SELECTOR).forEach((link, index) => {
+      const note = link.closest('li[id]');
+      const href = link.getAttribute('href');
+      if (!note?.id || !href || href.startsWith('#')) return;
+
+      sourceMap.set(note.id, {
+        href,
+        label: link.textContent.trim(),
+        number: index + 1,
+      });
+
+      applyExternalSourceLink(link, sourceMap.get(note.id));
+    });
+
+    document.querySelectorAll(INLINE_SOURCE_SELECTOR).forEach((link) => {
+      const id = (link.getAttribute('href') || '').slice(1);
+      const source = sourceMap.get(id);
+      applyExternalSourceLink(link, source);
+      if (source?.number) {
+        link.textContent = `[${source.number}]`;
+        link.dataset.sourceNumber = String(source.number);
+        link.title = source.label ? `Source ${source.number}: ${source.label}` : `Source ${source.number}`;
+      }
+    });
+
+    document.querySelectorAll(DIRECT_SOURCE_SELECTOR).forEach((link) => {
+      const id = (link.getAttribute('href') || '').slice(1);
+      const source = sourceMap.get(id);
+      applyExternalSourceLink(link, source);
+    });
+
+    document.querySelectorAll(SOURCE_RAIL_LINK_SELECTOR).forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      const source = href.startsWith('#source-')
+        ? sourceMap.get(href.slice(1))
+        : (isExternalSourceHref(href) ? { href, label: link.textContent.trim() } : null);
+      applyExternalSourceLink(link, source, { relabel: link.closest('.press-static-post') });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', enhanceArticleSourceLinks, { once: true });
+  } else {
+    enhanceArticleSourceLinks();
+  }
+
+})();
+
+(() => {
 
   const BODY_CLASS = 'page-section';
 
@@ -725,7 +991,7 @@ if (!hasHomepageTargets) {
       link.removeAttribute('target');
 
       const openSource = () => {
-        window.location.assign(link.href);
+        window.location.href = link.href;
       };
 
       card.addEventListener('click', (event) => {
@@ -1263,7 +1529,7 @@ if (!hasHomepageTargets) {
 
         event.preventDefault();
         closeDrawer();
-        window.location.assign(link.href);
+        window.location.href = link.href;
       });
     }
 
@@ -1652,12 +1918,6 @@ function enhanceBreakingStrip(stories) {
       link.dataset.sourceNoteExternalBound = 'true';
       link.removeAttribute('target');
       link.setAttribute('rel', 'noopener noreferrer');
-      link.addEventListener('click', (event) => {
-        const plainClick = event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
-        if (!plainClick) return;
-        event.preventDefault();
-        window.location.assign(link.href);
-      });
     });
   }
 
@@ -2038,7 +2298,7 @@ function enhanceBreakingStrip(stories) {
   async function handleSmsShare(row, control, context) {
     const isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     if (isPhone && control.href) {
-      window.location.assign(control.href);
+      window.location.href = control.href;
       return;
     }
     const copied = await copyShareText(context);
@@ -2914,18 +3174,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const usedUrls = new Set();
 
     const heroTarget = Math.max(7, Number(placementFile?.home?.hero_slots || placementFile?.home?.heroSlots || HERO_TARGET) || HERO_TARGET);
-    const autoHero = pickStories(clusterFresh.filter((story) => story.heroEligible && story.image), Math.min(HERO_AUTO_SEED, heroTarget), {
+    const resolvedHero = resolvePlacementList(placementFile?.home?.hero, byId, heroTarget)
+      .filter(Boolean);
+    const hasManualHero = resolvedHero.length > 0;
+    const autoHero = hasManualHero ? [] : pickStories(clusterFresh.filter((story) => story.heroEligible && story.image), Math.min(HERO_AUTO_SEED, heroTarget), {
       usedClusters: new Set(),
       usedUrls: new Set(),
       uniqueSections: false,
     });
     const heroUsedClusters = new Set(autoHero.map((story) => story.clusterId));
     const heroUsedUrls = new Set(autoHero.map((story) => story.url));
-    const resolvedHero = resolvePlacementList(placementFile?.home?.hero, byId, heroTarget)
-      .filter((story) => story && !heroUsedUrls.has(story.url) && !heroUsedClusters.has(story.clusterId));
     resolvedHero.forEach((story) => remember(story, heroUsedClusters, heroUsedUrls));
-    const heroBase = autoHero
-      .concat(resolvedHero)
+    const heroBase = resolvedHero
+      .concat(autoHero)
       .concat(pickStories(clusterFresh.filter((story) => story.heroEligible && story.image), heroTarget - autoHero.length - resolvedHero.length, {
         usedClusters: heroUsedClusters,
         usedUrls: heroUsedUrls,

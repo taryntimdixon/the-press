@@ -7640,6 +7640,1323 @@ body.page-article:has(.press-social-feature)::before{
   content:attr(data-source-label) " • " attr(data-source-count) " source notes";
 }
 
+.drone-feature-body .drone-method-note{
+  border-radius:8px;
+}
+
+.drone-social-feature .press-static-post{
+  --rail-photo:url("assets/drone-rail-photos/airport-runway.jpg");
+}
+
+.drone-social-feature .press-static-post__visual{
+  min-height:172px;
+  align-content:end;
+  gap:0;
+  padding:6.25rem .82rem .82rem;
+  background:
+    linear-gradient(180deg, rgba(12,18,30,.08) 0%, rgba(12,18,30,.18) 42%, rgba(12,18,30,.82) 100%),
+    var(--rail-photo) center / cover no-repeat;
+  border:1px solid rgba(255,255,255,.28);
+  color:#fff;
+}
+
+.drone-social-feature .press-static-post__visual::before{
+  inset:0;
+  height:auto;
+  border:0;
+  border-radius:0;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.26), transparent 34%),
+    radial-gradient(circle at 18% 18%, rgba(255,255,255,.24), transparent 28%);
+  box-shadow:none;
+}
+
+.drone-social-feature .press-static-post__visual::after{
+  content:none;
+  display:none;
+}
+
+.drone-social-feature .press-static-post__kicker{
+  display:none;
+}
+
+.drone-social-feature .press-static-post__visual strong{
+  display:none;
+}
+
+.drone-social-feature .press-static-post__visual em{
+  display:none;
+}
+
+.drone-social-feature .press-static-post[data-source-id*="bvlos"],
+.drone-social-feature .press-static-post[data-source-id*="utm"],
+.drone-social-feature .press-static-post[data-source-id*="traffic"],
+.drone-social-feature .press-static-post[data-source-id*="docket"],
+.drone-social-feature .press-static-post[data-source-id*="regulations"],
+.drone-social-feature .press-static-post[data-source-id*="forecast"],
+.drone-social-feature .press-static-post[data-source-id*="compendium"],
+.drone-social-feature .press-static-post[data-source-id*="easa"],
+.drone-social-feature .press-static-post[data-source-id*="caa"],
+.drone-social-feature .press-static-post[data-source-id*="icao"],
+.drone-social-feature .press-static-post[data-source-id*="jarus"],
+.drone-social-feature .press-static-post[data-source-id*="eurocontrol"],
+.drone-social-feature .press-static-post[data-source-id*="sesar"],
+.drone-social-feature .press-static-post[data-source-id*="nasa"]{
+  --rail-photo:url("assets/drone-rail-photos/traffic-management.jpg");
+}
+
+.drone-social-feature .press-static-post[data-source-id*="remote-id"],
+.drone-social-feature .press-static-post[data-source-id*="part89"],
+.drone-social-feature .press-static-post[data-source-id*="dronezone"],
+.drone-social-feature .press-static-post[data-source-id*="register"]{
+  --rail-photo:url("assets/drone-rail-photos/remote-id-operator.jpg");
+}
+
+.drone-social-feature .press-static-post[data-source-id*="police"],
+.drone-social-feature .press-static-post[data-source-id*="dfr"],
+.drone-social-feature .press-static-post[data-source-id*="chula"],
+.drone-social-feature .press-static-post[data-source-id*="public-safety"],
+.drone-social-feature .press-static-post[data-source-id*="doj"],
+.drone-social-feature .press-static-post[data-source-id*="justice"],
+.drone-social-feature .press-static-post[data-source-id*="bja"],
+.drone-social-feature .press-static-post[data-source-id*="ojp"],
+.drone-social-feature .press-static-post[data-source-id*="cna"]{
+  --rail-photo:url("assets/drone-rail-photos/police-first-responder.jpg");
+}
+
+.drone-social-feature .press-static-post[data-source-id*="delivery"],
+.drone-social-feature .press-static-post[data-source-id*="part135"],
+.drone-social-feature .press-static-post[data-source-id*="zipline"],
+.drone-social-feature .press-static-post[data-source-id*="wing"],
+.drone-social-feature .press-static-post[data-source-id*="amazon"],
+.drone-social-feature .press-static-post[data-source-id*="tolleson"],
+.drone-social-feature .press-static-post[data-source-id*="walmart"],
+.drone-social-feature .press-static-post[data-source-id*="beyond"]{
+  --rail-photo:url("assets/drone-rail-photos/delivery-rooftop.jpg");
+}
+
+.drone-social-feature .press-static-post[data-source-id*="privacy"],
+.drone-social-feature .press-static-post[data-source-id*="aclu"],
+.drone-social-feature .press-static-post[data-source-id*="eff"],
+.drone-social-feature .press-static-post[data-source-id*="surveillance"],
+.drone-social-feature .press-static-post[data-source-id*="legal-privacy"],
+.drone-social-feature .press-static-post[data-source-id*="senate"]{
+  --rail-photo:url("assets/drone-rail-photos/privacy-neighborhood.jpg");
+}
+
+.drone-social-feature .press-static-post[data-source-id*="search"],
+.drone-social-feature .press-static-post[data-source-id*="rescue"],
+.drone-social-feature .press-static-post[data-source-id*="responders"],
+.drone-social-feature .press-static-post[data-source-id*="nist"],
+.drone-social-feature .press-static-post[data-source-id*="complex-urban"]{
+  --rail-photo:url("assets/drone-rail-photos/search-rescue.jpg");
+}
+
+.drone-social-feature .press-static-post[data-source-id*="cuas"],
+.drone-social-feature .press-static-post[data-source-id*="counter"],
+.drone-social-feature .press-static-post[data-source-id*="dhs"],
+.drone-social-feature .press-static-post[data-source-id*="cisa"],
+.drone-social-feature .press-static-post[data-source-id*="critical"],
+.drone-social-feature .press-static-post[data-source-id*="discvr"]{
+  --rail-photo:url("assets/drone-rail-photos/counter-drone-detection.jpg");
+}
+
+.drone-social-feature .press-static-post[data-source-id*="dod"],
+.drone-social-feature .press-static-post[data-source-id*="replicator"],
+.drone-social-feature .press-static-post[data-source-id*="army"],
+.drone-social-feature .press-static-post[data-source-id*="rusi"],
+.drone-social-feature .press-static-post[data-source-id*="rand"],
+.drone-social-feature .press-static-post[data-source-id*="cnas"],
+.drone-social-feature .press-static-post[data-source-id*="csis"],
+.drone-social-feature .press-static-post[data-source-id*="crs"],
+.drone-social-feature .press-static-post[data-source-id*="dib"],
+.drone-social-feature .press-static-post[data-source-id*="ukraine"],
+.drone-social-feature .press-static-post[data-source-id*="black-sea"],
+.drone-social-feature .press-static-post[data-source-id*="launched"]{
+  --rail-photo:url("assets/drone-rail-photos/military-workshop.jpg");
+}
+
+.drone-social-feature .press-static-post[data-source-id*="supply"],
+.drone-social-feature .press-static-post[data-source-id*="blue-uas"],
+.drone-social-feature .press-static-post[data-source-id*="diu"],
+.drone-social-feature .press-static-post[data-source-id*="auvsi"],
+.drone-social-feature .press-static-post[data-source-id*="commerce"],
+.drone-social-feature .press-static-post[data-source-id*="icts"],
+.drone-social-feature .press-static-post[data-source-id*="fcc"],
+.drone-social-feature .press-static-post[data-source-id*="sam"],
+.drone-social-feature .press-static-post[data-source-id*="far"],
+.drone-social-feature .press-static-post[data-source-id*="acquisition"],
+.drone-social-feature .press-static-post[data-source-id*="asda"],
+.drone-social-feature .press-static-post[data-source-id*="covered"],
+.drone-social-feature .press-static-post[data-source-id*="whitehouse"],
+.drone-social-feature .press-static-post[data-source-id*="white-house"]{
+  --rail-photo:url("assets/drone-rail-photos/supply-chain-workbench.jpg");
+}
+
+.drone-social-feature .press-static-post[data-source-id*="utility"],
+.drone-social-feature .press-static-post[data-source-id*="inspection"],
+.drone-social-feature .press-static-post[data-source-id*="power"]{
+  --rail-photo:url("assets/drone-rail-photos/utility-inspection.jpg");
+}
+
+.drone-social-feature .press-static-post[data-source-id*="planning"],
+.drone-social-feature .press-static-post[data-source-id*="meeting"],
+.drone-social-feature .press-static-post[data-source-id*="gao-uas-integration"]{
+  --rail-photo:url("assets/drone-rail-photos/public-planning.jpg");
+}
+
+/* Drone rail unique photo assignment: 144 card-specific images. */
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(1){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-001.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(2){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-002.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(3){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-003.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(4){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-004.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(5){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-005.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(6){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-006.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(7){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-007.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(8){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-008.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(9){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-009.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(10){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-010.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(11){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-011.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(12){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-012.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(13){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-013.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(14){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-014.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(15){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-015.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(16){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-016.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(17){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-017.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(18){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-018.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(19){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-019.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(20){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-020.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(21){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-021.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(22){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-022.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(23){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-023.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(24){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-024.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(25){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-025.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(26){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-026.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(27){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-027.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(28){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-028.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(29){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-029.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(30){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-030.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(31){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-031.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(32){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-032.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(33){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-033.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(34){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-034.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(35){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-035.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(36){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-036.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(37){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-037.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(38){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-038.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(39){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-039.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(40){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-040.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(41){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-041.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(42){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-042.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(43){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-043.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(44){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-044.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(45){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-045.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(46){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-046.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(47){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-047.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(48){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-048.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(49){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-049.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(50){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-050.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(51){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-051.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(52){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-052.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(53){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-053.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(54){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-054.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(55){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-055.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(56){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-056.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(57){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-057.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(58){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-058.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(59){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-059.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(60){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-060.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(61){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-061.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(62){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-062.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(63){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-063.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(64){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-064.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(65){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-065.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(66){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-066.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(67){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-067.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(68){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-068.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(69){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-069.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(70){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-070.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(71){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-071.jpg");}
+.drone-social-feature .press-social-side--left .press-static-post:nth-of-type(72){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-145.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(1){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-073.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(2){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-074.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(3){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-075.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(4){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-076.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(5){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-077.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(6){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-078.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(7){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-079.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(8){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-080.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(9){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-081.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(10){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-082.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(11){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-083.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(12){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-084.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(13){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-085.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(14){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-086.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(15){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-087.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(16){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-088.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(17){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-089.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(18){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-090.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(19){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-091.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(20){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-092.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(21){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-093.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(22){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-094.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(23){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-095.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(24){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-096.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(25){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-097.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(26){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-098.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(27){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-099.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(28){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-100.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(29){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-101.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(30){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-102.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(31){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-103.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(32){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-104.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(33){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-105.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(34){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-106.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(35){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-107.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(36){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-108.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(37){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-109.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(38){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-110.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(39){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-111.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(40){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-112.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(41){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-113.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(42){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-114.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(43){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-115.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(44){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-116.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(45){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-117.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(46){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-118.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(47){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-119.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(48){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-120.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(49){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-121.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(50){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-122.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(51){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-123.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(52){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-124.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(53){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-125.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(54){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-126.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(55){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-127.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(56){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-128.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(57){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-129.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(58){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-130.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(59){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-131.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(60){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-132.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(61){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-133.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(62){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-134.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(63){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-135.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(64){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-136.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(65){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-137.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(66){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-138.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(67){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-139.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(68){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-140.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(69){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-141.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(70){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-142.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(71){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-143.jpg");}
+.drone-social-feature .press-social-side--right .press-static-post:nth-of-type(72){--rail-photo:url("assets/drone-rail-photos/unique/drone-rail-card-144.jpg");}
+
+.drone-feature-body .drone-source-chips{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.42rem;
+  margin:.75rem 0 0;
+  color:var(--muted);
+  font-size:.76rem;
+  line-height:1.2;
+}
+
+.drone-feature-body .drone-source-chips span{
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.drone-feature-body .drone-source-chips a{
+  display:inline-flex;
+  align-items:center;
+  min-height:1.75rem;
+  border:1px solid color-mix(in srgb,var(--accent) 46%,var(--line));
+  border-radius:999px;
+  padding:.28rem .52rem;
+  background:color-mix(in srgb,var(--surface) 78%,var(--accent-soft));
+  color:var(--accent);
+  font-weight:850;
+  text-decoration:none;
+}
+
+.drone-feature-body .drone-source-chips a:hover,
+.drone-feature-body .drone-source-chips a:focus-visible{
+  background:var(--accent);
+  color:var(--surface);
+  text-decoration:none;
+}
+
+.drone-article-visual{
+  margin:clamp(1.45rem,3vw,2.25rem) 0;
+  border:1px solid color-mix(in srgb,var(--line) 74%,var(--accent));
+  border-radius:8px;
+  overflow:hidden;
+  background:var(--surface);
+  box-shadow:0 12px 28px rgba(24,28,38,.08);
+}
+
+.drone-article-visual--tall{
+  max-width:min(640px,100%);
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.drone-article-visual__media{
+  display:block;
+  background:#11191a;
+  color:inherit;
+  text-decoration:none !important;
+}
+
+.drone-article-visual__media:hover,
+.drone-article-visual__media:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--accent) 32%,transparent);
+  outline-offset:-3px;
+  text-decoration:none !important;
+}
+
+.drone-article-visual img{
+  display:block;
+  width:100%;
+  height:auto;
+  background:#11191a;
+}
+
+.drone-article-visual--comic img{
+  background:#d7e8f8;
+}
+
+.drone-article-visual--wide img{
+  background:#101316;
+}
+
+.drone-article-visual figcaption{
+  margin:0;
+  border-top:1px solid var(--line);
+  padding:.78rem 1rem 1rem;
+  background:
+    linear-gradient(180deg, color-mix(in srgb,var(--surface) 90%,#fff), color-mix(in srgb,var(--surface-2) 82%,var(--accent-soft))),
+    var(--surface);
+  color:var(--muted);
+  font-size:.86rem;
+  line-height:1.45;
+}
+
+.press-image-lightbox-open{
+  overflow:hidden;
+}
+
+.press-image-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:12000;
+  display:grid;
+  place-items:center;
+  padding:0;
+  background:#050608;
+}
+
+.press-image-lightbox__frame{
+  display:grid;
+  place-items:center;
+  width:100vw;
+  height:100vh;
+  min-width:0;
+  min-height:0;
+}
+
+.press-image-lightbox__image{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:100vw;
+  max-height:100vh;
+  object-fit:contain;
+  background:#050608;
+}
+
+.press-image-lightbox__back,
+.press-image-lightbox__close{
+  position:fixed;
+  z-index:12001;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:2.6rem;
+  border:1px solid rgba(255,255,255,.32);
+  border-radius:999px;
+  background:rgba(5,6,8,.72);
+  color:#fff;
+  font:inherit;
+  font-weight:900;
+  box-shadow:0 10px 28px rgba(0,0,0,.34);
+  cursor:pointer;
+}
+
+.press-image-lightbox__back{
+  left:clamp(.7rem,2vw,1.2rem);
+  top:clamp(.7rem,2vw,1.2rem);
+  padding:.55rem .9rem;
+}
+
+.press-image-lightbox__close{
+  right:clamp(.7rem,2vw,1.2rem);
+  top:clamp(.7rem,2vw,1.2rem);
+  width:2.7rem;
+  padding:0;
+  font-size:1rem;
+}
+
+.press-image-lightbox__back:hover,
+.press-image-lightbox__close:hover,
+.press-image-lightbox__back:focus-visible,
+.press-image-lightbox__close:focus-visible{
+  background:#fff;
+  color:#050608;
+  outline:3px solid rgba(255,255,255,.42);
+  outline-offset:2px;
+}
+
+.press-chart-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:12000;
+  display:grid;
+  place-items:center;
+  padding:clamp(3.7rem,6vw,4.8rem) clamp(.7rem,2vw,1.25rem) clamp(.85rem,2vw,1.25rem);
+  background:rgba(5,6,8,.94);
+}
+
+.press-chart-lightbox__frame{
+  width:min(1160px,100%);
+  max-height:100%;
+  overflow:auto;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:8px;
+  background:var(--surface);
+  box-shadow:0 26px 80px rgba(0,0,0,.48);
+}
+
+.press-chart-lightbox__visual{
+  cursor:default;
+}
+
+.press-chart-lightbox__frame .drone-data-graphic__visual{
+  pointer-events:none;
+}
+
+.press-chart-lightbox__frame .drone-matrix-grid{
+  grid-template-columns:minmax(9.6rem,1.08fr) repeat(4,minmax(8.1rem,1fr));
+  gap:.45rem;
+}
+
+.press-chart-lightbox__frame .drone-matrix-cell{
+  min-height:3.35rem;
+  padding:.72rem .76rem;
+  font-size:.88rem;
+}
+
+.press-chart-lightbox__frame .drone-matrix-cell--head{
+  font-size:.72rem;
+}
+
+.press-chart-lightbox__frame .drone-data-graphic figcaption{
+  background:var(--surface);
+}
+
+.press-chart-lightbox__back,
+.press-chart-lightbox__close{
+  position:fixed;
+  z-index:12001;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:2.6rem;
+  border:1px solid rgba(255,255,255,.32);
+  border-radius:999px;
+  background:rgba(5,6,8,.72);
+  color:#fff;
+  font:inherit;
+  font-weight:900;
+  box-shadow:0 10px 28px rgba(0,0,0,.34);
+  cursor:pointer;
+}
+
+.press-chart-lightbox__back{
+  left:clamp(.7rem,2vw,1.2rem);
+  top:clamp(.7rem,2vw,1.2rem);
+  padding:.55rem .9rem;
+}
+
+.press-chart-lightbox__close{
+  right:clamp(.7rem,2vw,1.2rem);
+  top:clamp(.7rem,2vw,1.2rem);
+  width:2.7rem;
+  padding:0;
+  font-size:1rem;
+}
+
+.press-chart-lightbox__back:hover,
+.press-chart-lightbox__close:hover,
+.press-chart-lightbox__back:focus-visible,
+.press-chart-lightbox__close:focus-visible{
+  background:#fff;
+  color:#050608;
+  outline:3px solid rgba(255,255,255,.42);
+  outline-offset:2px;
+}
+
+.drone-original-note{
+  margin:1.25rem 0;
+  border:1px solid color-mix(in srgb,var(--accent) 34%,var(--line));
+  border-left:6px solid var(--accent);
+  border-radius:8px;
+  padding:1rem 1rem 1.05rem;
+  background:
+    linear-gradient(135deg, color-mix(in srgb,var(--surface) 88%,#fff), color-mix(in srgb,var(--accent-soft) 42%,var(--surface-2))),
+    var(--surface);
+  box-shadow:0 8px 18px rgba(24,28,38,.05);
+}
+
+.drone-original-note .eyebrow{
+  margin-bottom:.45rem;
+}
+
+.drone-original-note h3{
+  margin:0 0 .55rem;
+  font-family:var(--serif);
+  font-size:clamp(1.25rem,2.1vw,1.7rem);
+  line-height:1.08;
+  letter-spacing:0;
+}
+
+.drone-original-note p{
+  margin:.55rem 0 0;
+}
+
+.drone-data-graphic{
+  margin:1.35rem 0 1.45rem;
+  border:1px solid color-mix(in srgb,var(--line) 78%,var(--accent));
+  border-radius:8px;
+  overflow:hidden;
+  background:var(--surface);
+  box-shadow:0 10px 24px rgba(24,28,38,.07);
+}
+
+.drone-data-graphic__visual{
+  display:grid;
+  gap:.9rem;
+  padding:1rem;
+  background:
+    linear-gradient(135deg, color-mix(in srgb,var(--surface-2) 66%,#fff), color-mix(in srgb,var(--accent-soft) 34%,var(--surface))),
+    var(--surface-2);
+  color:var(--ink);
+  text-decoration:none !important;
+}
+
+.drone-data-graphic__visual:hover,
+.drone-data-graphic__visual:focus-visible{
+  background:
+    linear-gradient(135deg, color-mix(in srgb,var(--surface-2) 52%,#fff), color-mix(in srgb,var(--accent-soft) 58%,var(--surface))),
+    var(--surface-2);
+  outline:3px solid color-mix(in srgb,var(--accent) 28%,transparent);
+  outline-offset:-3px;
+  text-decoration:none !important;
+}
+
+.drone-data-graphic__kicker{
+  width:max-content;
+  max-width:100%;
+  border:1px solid color-mix(in srgb,var(--accent) 42%,var(--line));
+  border-radius:999px;
+  padding:.25rem .55rem;
+  background:color-mix(in srgb,var(--surface) 82%,var(--accent-soft));
+  color:var(--accent);
+  font-size:.68rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.drone-data-graphic__visual > strong{
+  max-width:38rem;
+  font-family:var(--serif);
+  font-size:clamp(1.35rem,2.35vw,2rem);
+  line-height:1.05;
+  letter-spacing:0;
+}
+
+.drone-bar-list{
+  display:grid;
+  gap:.55rem;
+}
+
+.drone-bar-row{
+  display:grid;
+  grid-template-columns:minmax(8.9rem,1.08fr) minmax(6rem,2fr) minmax(2.8rem,.28fr);
+  gap:.75rem;
+  align-items:center;
+  min-height:2.05rem;
+}
+
+.drone-bar-row b{
+  min-width:0;
+  color:var(--ink);
+  font-size:.9rem;
+  line-height:1.15;
+}
+
+.drone-bar-row i{
+  color:var(--muted);
+  font-style:normal;
+  font-weight:900;
+  text-align:right;
+}
+
+.drone-bar-fill{
+  display:block;
+  width:calc(var(--value) * 1%);
+  min-width:.7rem;
+  height:.72rem;
+  border-radius:999px;
+  background:linear-gradient(90deg,#27666c,#4961d3 68%,#e0ad46);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42);
+}
+
+.drone-bar-row:nth-child(2n) .drone-bar-fill{
+  background:linear-gradient(90deg,#9d3a2d,#d7a84c);
+}
+
+.drone-data-graphic figcaption{
+  margin:0;
+  border-top:1px solid var(--line);
+  padding:.78rem 1rem 1rem;
+  color:var(--muted);
+  font-size:.86rem;
+  line-height:1.45;
+}
+
+.drone-data-graphic figcaption .drone-source-chips{
+  margin-top:.58rem;
+}
+
+.drone-signal-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.7rem;
+}
+
+.drone-signal-grid span{
+  display:grid;
+  align-content:start;
+  gap:.22rem;
+  min-height:5.6rem;
+  border:1px solid color-mix(in srgb,var(--line) 72%,var(--accent));
+  border-radius:8px;
+  padding:.8rem;
+  background:rgba(255,255,255,.64);
+}
+
+.drone-signal-grid b{
+  color:var(--accent);
+  font-family:var(--serif);
+  font-size:clamp(1.75rem,4vw,2.45rem);
+  line-height:.94;
+}
+
+.drone-signal-grid em{
+  color:var(--muted);
+  font-style:normal;
+  font-size:.84rem;
+  line-height:1.22;
+}
+
+.drone-lollipop-chart{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  align-items:end;
+  gap:.55rem;
+  min-height:13rem;
+  padding:.2rem 0 .1rem;
+}
+
+.drone-lollipop{
+  display:grid;
+  grid-template-rows:1fr auto auto;
+  justify-items:center;
+  align-items:end;
+  gap:.34rem;
+  min-width:0;
+  min-height:12rem;
+  text-align:center;
+}
+
+.drone-lollipop i{
+  position:relative;
+  display:block;
+  width:.68rem;
+  height:calc(var(--value) * 1.12px);
+  min-height:3.1rem;
+  max-height:8.8rem;
+  border-radius:999px;
+  background:linear-gradient(180deg,#4961d3,#27666c);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5);
+}
+
+.drone-lollipop:nth-child(2n) i{
+  background:linear-gradient(180deg,#d7a84c,#9d3a2d);
+}
+
+.drone-lollipop i::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:-.32rem;
+  width:1.2rem;
+  height:1.2rem;
+  border:3px solid color-mix(in srgb,var(--surface) 82%,#fff);
+  border-radius:999px;
+  background:inherit;
+  transform:translateX(-50%);
+  box-shadow:0 4px 10px rgba(24,28,38,.18);
+}
+
+.drone-lollipop b{
+  color:var(--ink);
+  font-size:.78rem;
+  line-height:1.05;
+}
+
+.drone-lollipop em{
+  color:var(--muted);
+  font-size:.85rem;
+  font-style:normal;
+  font-weight:900;
+  line-height:1;
+}
+
+.drone-analysis-lab{
+  margin:1.55rem 0 1.7rem;
+  border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));
+  border-radius:8px;
+  padding:1rem;
+  background:
+    linear-gradient(135deg, color-mix(in srgb,#fff 78%,var(--surface-2)), color-mix(in srgb,var(--accent-soft) 34%,var(--surface))),
+    var(--surface);
+  box-shadow:0 12px 28px rgba(24,28,38,.07);
+}
+
+.drone-analysis-lab h2{
+  margin:.2rem 0 .55rem;
+  font-family:var(--serif);
+  font-size:1.9rem;
+  line-height:1.05;
+  letter-spacing:0;
+}
+
+.drone-analysis-lab > p{
+  margin:.55rem 0 0;
+}
+
+.drone-analysis-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(10.6rem,1fr));
+  gap:.7rem;
+  margin:1rem 0 0;
+}
+
+.drone-analysis-card{
+  min-width:0;
+  border:1px solid color-mix(in srgb,var(--line) 78%,var(--accent));
+  border-radius:8px;
+  padding:.78rem;
+  background:rgba(255,255,255,.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.62);
+}
+
+.drone-analysis-card span{
+  display:block;
+  color:var(--accent);
+  font-family:var(--serif);
+  font-size:1.75rem;
+  font-weight:900;
+  line-height:.95;
+}
+
+.drone-analysis-card h3{
+  margin:.45rem 0 .35rem;
+  color:var(--ink);
+  font-size:.9rem;
+  line-height:1.1;
+}
+
+.drone-analysis-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:.82rem;
+  line-height:1.35;
+}
+
+.drone-matrix-legend{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:.42rem;
+}
+
+.drone-matrix-legend span{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:.12rem .38rem;
+  align-items:start;
+  min-width:0;
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:.45rem .5rem;
+  background:rgba(255,255,255,.62);
+}
+
+.drone-matrix-legend i{
+  grid-row:1 / span 2;
+  display:block;
+  width:.72rem;
+  height:.72rem;
+  margin-top:.08rem;
+  border-radius:999px;
+}
+
+.drone-matrix-legend b{
+  color:var(--ink);
+  font-size:.72rem;
+  line-height:1;
+  text-transform:uppercase;
+}
+
+.drone-matrix-legend em{
+  color:var(--muted);
+  font-size:.69rem;
+  font-style:normal;
+  line-height:1.15;
+}
+
+.drone-matrix-legend [data-heat="high"] i{
+  background:#9d3a2d;
+}
+
+.drone-matrix-legend [data-heat="medium"] i{
+  background:#d7a84c;
+}
+
+.drone-matrix-legend [data-heat="low"] i{
+  background:#27666c;
+}
+
+.drone-matrix-scroll{
+  overflow:visible;
+  padding-bottom:0;
+}
+
+.drone-matrix-grid{
+  display:grid;
+  grid-template-columns:minmax(5.9rem,1.1fr) repeat(4,minmax(0,1fr));
+  gap:.28rem;
+  min-width:0;
+}
+
+.drone-matrix-cell{
+  display:flex;
+  align-items:center;
+  min-width:0;
+  min-height:2.7rem;
+  border:1px solid color-mix(in srgb,var(--line) 78%,var(--accent));
+  border-radius:8px;
+  padding:.42rem .42rem;
+  background:rgba(255,255,255,.62);
+  color:var(--ink);
+  font-size:.68rem;
+  font-weight:850;
+  line-height:1.12;
+  overflow-wrap:anywhere;
+}
+
+.drone-matrix-cell--head{
+  min-height:2.2rem;
+  background:color-mix(in srgb,var(--ink) 88%,#273858);
+  color:#fffdf8;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  font-size:.57rem;
+}
+
+.drone-matrix-cell--label{
+  background:color-mix(in srgb,var(--surface) 74%,var(--accent-soft));
+  color:var(--accent);
+}
+
+.drone-matrix-cell[data-heat="high"]{
+  background:color-mix(in srgb,#9d3a2d 20%,#fff);
+  border-color:color-mix(in srgb,#9d3a2d 46%,var(--line));
+}
+
+.drone-matrix-cell[data-heat="medium"]{
+  background:color-mix(in srgb,#d7a84c 22%,#fff);
+  border-color:color-mix(in srgb,#d7a84c 48%,var(--line));
+}
+
+.drone-matrix-cell[data-heat="low"]{
+  background:color-mix(in srgb,#27666c 16%,#fff);
+  border-color:color-mix(in srgb,#27666c 44%,var(--line));
+}
+
+.drone-chart-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45rem;
+  margin-top:.7rem;
+}
+
+.drone-chart-expand{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:2rem;
+  border:1px solid color-mix(in srgb,var(--accent) 58%,var(--line));
+  border-radius:999px;
+  padding:.38rem .72rem;
+  background:color-mix(in srgb,var(--surface) 84%,var(--accent-soft));
+  color:var(--accent);
+  font:inherit;
+  font-size:.78rem;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.drone-chart-expand:hover,
+.drone-chart-expand:focus-visible{
+  background:var(--accent);
+  color:var(--surface);
+  outline:2px solid color-mix(in srgb,var(--accent) 26%,transparent);
+  outline-offset:2px;
+}
+
+.drone-flow-track{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(8.6rem,1fr));
+  gap:.58rem;
+}
+
+.drone-flow-track span,
+.drone-loop-grid span,
+.drone-trust-stack span,
+.drone-decision-chain span,
+.drone-split-test section{
+  min-width:0;
+  border:1px solid color-mix(in srgb,var(--line) 74%,var(--accent));
+  border-radius:8px;
+  background:rgba(255,255,255,.66);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.62);
+}
+
+.drone-flow-track span{
+  position:relative;
+  display:grid;
+  align-content:start;
+  gap:.45rem;
+  min-height:8.4rem;
+  padding:.72rem;
+}
+
+.drone-flow-track span:not(:last-child)::after{
+  display:none;
+}
+
+.drone-flow-track b{
+  display:grid;
+  place-items:center;
+  width:2rem;
+  height:2rem;
+  border-radius:999px;
+  background:var(--accent);
+  color:#fffdf8;
+  font-family:var(--serif);
+  font-size:1.1rem;
+}
+
+.drone-flow-track em,
+.drone-loop-grid em,
+.drone-trust-stack em,
+.drone-decision-chain em,
+.drone-split-test p{
+  color:var(--muted);
+  font-size:.82rem;
+  font-style:normal;
+  line-height:1.3;
+}
+
+.drone-mission-map{
+  display:grid;
+  gap:.62rem;
+}
+
+.drone-mission-map span{
+  display:grid;
+  grid-template-columns:minmax(9.5rem,1fr) minmax(5.2rem,.72fr) minmax(5.2rem,.72fr);
+  gap:.65rem;
+  align-items:center;
+  min-height:3.6rem;
+  border:1px solid color-mix(in srgb,var(--line) 78%,var(--accent));
+  border-radius:8px;
+  padding:.62rem;
+  background:rgba(255,255,255,.66);
+}
+
+.drone-mission-map b{
+  min-width:0;
+  color:var(--ink);
+  font-size:.9rem;
+  line-height:1.12;
+}
+
+.drone-mission-map i,
+.drone-mission-map em{
+  display:block;
+  position:relative;
+  padding-top:.82rem;
+  color:var(--muted);
+  font-size:.74rem;
+  font-style:normal;
+  font-weight:850;
+  line-height:1.1;
+}
+
+.drone-mission-map i::before,
+.drone-mission-map em::before{
+  content:"";
+  position:absolute;
+  top:.15rem;
+  left:0;
+  height:.42rem;
+  border-radius:999px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55);
+}
+
+.drone-mission-map i::before{
+  width:calc(var(--clarity) * 1%);
+  background:linear-gradient(90deg,#27666c,#4961d3);
+}
+
+.drone-mission-map em::before{
+  width:calc(var(--burden) * 1%);
+  background:linear-gradient(90deg,#d7a84c,#9d3a2d);
+}
+
+.drone-split-test{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.8rem;
+}
+
+.drone-split-test section{
+  padding:.9rem;
+}
+
+.drone-split-test h3{
+  margin:0 0 .45rem;
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:1.25rem;
+  line-height:1.08;
+  letter-spacing:0;
+}
+
+.drone-split-test section:first-child{
+  border-color:color-mix(in srgb,#27666c 48%,var(--line));
+  background:color-mix(in srgb,#27666c 12%,#fff);
+}
+
+.drone-split-test section:last-child{
+  border-color:color-mix(in srgb,#9d3a2d 48%,var(--line));
+  background:color-mix(in srgb,#9d3a2d 12%,#fff);
+}
+
+.drone-loop-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(8.8rem,1fr));
+  gap:.65rem;
+}
+
+.drone-loop-grid span{
+  position:relative;
+  display:grid;
+  gap:.38rem;
+  min-height:6.8rem;
+  padding:.8rem;
+}
+
+.drone-loop-grid span::before{
+  content:"";
+  width:2.15rem;
+  height:.42rem;
+  border-radius:999px;
+  background:linear-gradient(90deg,#4961d3,#d7a84c);
+}
+
+.drone-loop-grid b,
+.drone-trust-stack b,
+.drone-decision-chain b{
+  color:var(--ink);
+  font-size:.94rem;
+  line-height:1.12;
+}
+
+.drone-trust-stack{
+  display:grid;
+  gap:.52rem;
+}
+
+.drone-trust-stack span{
+  display:grid;
+  grid-template-columns:minmax(7rem,.6fr) minmax(0,1.4fr);
+  gap:.65rem;
+  align-items:center;
+  min-height:3rem;
+  padding:.64rem .75rem;
+}
+
+.drone-trust-stack span:nth-child(odd){
+  background:color-mix(in srgb,#27666c 10%,#fff);
+}
+
+.drone-trust-stack span:nth-child(even){
+  background:color-mix(in srgb,#d7a84c 12%,#fff);
+}
+
+.drone-decision-chain{
+  display:grid;
+  gap:.58rem;
+  counter-reset:drone-decision;
+}
+
+.drone-decision-chain span{
+  counter-increment:drone-decision;
+  display:grid;
+  grid-template-columns:2.35rem minmax(0,1fr);
+  gap:.7rem;
+  align-items:start;
+  min-height:3.9rem;
+  padding:.68rem .78rem;
+}
+
+.drone-decision-chain span::before{
+  content:counter(drone-decision);
+  display:grid;
+  place-items:center;
+  width:2.1rem;
+  height:2.1rem;
+  border-radius:999px;
+  background:var(--accent);
+  color:#fffdf8;
+  font-family:var(--serif);
+  font-weight:900;
+}
+
+.drone-decision-chain b,
+.drone-decision-chain em{
+  grid-column:2;
+}
+
+@media (max-width:820px){
+  .drone-analysis-grid,
+  .drone-flow-track,
+  .drone-loop-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .drone-flow-track span:not(:last-child)::after{
+    display:none;
+  }
+}
+
+@media (max-width:620px){
+  .drone-original-note,
+  .drone-analysis-lab,
+  .drone-data-graphic__visual,
+  .drone-data-graphic figcaption{
+    padding:.9rem;
+  }
+
+  .drone-analysis-grid,
+  .drone-flow-track,
+  .drone-loop-grid,
+  .drone-split-test{
+    grid-template-columns:1fr;
+  }
+
+  .drone-lollipop-chart{
+    grid-template-columns:repeat(5,minmax(3.2rem,1fr));
+    overflow-x:auto;
+  }
+
+  .drone-flow-track span:not(:last-child)::after{
+    display:none;
+  }
+
+  .drone-matrix-legend{
+    grid-template-columns:1fr;
+  }
+
+  .drone-matrix-grid{
+    grid-template-columns:minmax(4.45rem,1.1fr) repeat(4,minmax(0,1fr));
+    gap:.2rem;
+  }
+
+  .drone-matrix-cell{
+    min-height:2.35rem;
+    padding:.3rem .26rem;
+    border-radius:6px;
+    font-size:.55rem;
+    line-height:1.08;
+  }
+
+  .drone-matrix-cell--head{
+    min-height:2rem;
+    font-size:.47rem;
+    letter-spacing:0;
+  }
+
+  .press-chart-lightbox{
+    padding-top:4.15rem;
+  }
+
+  .press-chart-lightbox__frame .drone-matrix-grid{
+    grid-template-columns:minmax(6.5rem,1.08fr) repeat(4,minmax(5.7rem,1fr));
+  }
+
+  .press-chart-lightbox__frame .drone-matrix-cell{
+    font-size:.72rem;
+    padding:.5rem;
+  }
+
+  .drone-mission-map span,
+  .drone-trust-stack span{
+    grid-template-columns:1fr;
+  }
+
+  .drone-bar-row{
+    grid-template-columns:minmax(0,1fr) minmax(2.8rem,.28fr);
+    gap:.35rem .65rem;
+  }
+
+  .drone-bar-row b{
+    grid-column:1 / -1;
+  }
+
+  .drone-signal-grid{
+    grid-template-columns:1fr;
+  }
+}
+
 .world-cup-game-day-feature[data-source-count]::before{
   content:"World Cup public record • " attr(data-source-count) " source notes";
 }
@@ -7668,6 +8985,169 @@ body.page-article:has(.press-social-feature)::before{
 
 .world-cup-game-day-feature .article-jump-strip a:hover{
   background:var(--accent);
+  color:#fff;
+}
+
+.article-top-drawers{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.72rem;
+  align-items:start;
+  width:min(840px,100%);
+  margin:1rem auto 1.45rem;
+}
+
+.article-top-drawers > details{
+  box-sizing:border-box;
+  width:100%;
+  margin:0;
+}
+
+.article-top-drawers > details[open]{
+  grid-column:1 / -1;
+}
+
+.article-top-drawers > details summary{
+  min-height:1.35rem;
+}
+
+.article-analysis-gallery{
+  margin:1.05rem auto 1.2rem;
+  width:min(820px,100%);
+  border:1px solid color-mix(in srgb,var(--accent) 44%,var(--line));
+  border-radius:18px;
+  background:
+    linear-gradient(180deg,color-mix(in srgb,var(--surface) 92%,var(--accent-soft)),var(--surface)),
+    var(--surface);
+  padding:.92rem;
+  box-shadow:0 14px 30px rgba(24,28,38,.075);
+}
+
+.article-analysis-gallery--top{
+  margin-top:1rem;
+  margin-bottom:1.05rem;
+}
+
+.article-analysis-gallery summary{
+  cursor:pointer;
+  color:var(--accent);
+  font-weight:900;
+  letter-spacing:.02em;
+}
+
+.article-analysis-gallery > p{
+  max-width:64rem;
+  margin:.72rem 0 .9rem;
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.45;
+}
+
+.article-analysis-gallery__stats{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:.55rem;
+  margin:.65rem 0 .82rem;
+}
+
+.article-analysis-gallery__stats span{
+  display:grid;
+  gap:.16rem;
+  min-width:0;
+  border:1px solid color-mix(in srgb,var(--line) 78%,var(--accent));
+  border-radius:10px;
+  padding:.56rem .5rem;
+  background:color-mix(in srgb,var(--surface) 86%,var(--accent-soft));
+  text-align:center;
+}
+
+.article-analysis-gallery__stats strong{
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:1.26rem;
+  line-height:1;
+}
+
+.article-analysis-gallery__stats em{
+  color:var(--muted);
+  font-size:.68rem;
+  font-style:normal;
+  font-weight:800;
+  letter-spacing:.04em;
+  line-height:1.15;
+  text-transform:uppercase;
+}
+
+.article-analysis-gallery__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:.68rem;
+}
+
+.article-analysis-gallery__card{
+  display:grid;
+  align-content:start;
+  gap:.34rem;
+  min-width:0;
+  min-height:8.4rem;
+  border:1px solid color-mix(in srgb,var(--line) 80%,var(--accent));
+  border-radius:10px;
+  padding:.78rem;
+  background:var(--surface);
+  color:var(--ink);
+  text-decoration:none;
+  box-shadow:0 8px 18px rgba(24,28,38,.055);
+}
+
+.article-analysis-gallery__card,
+.article-analysis-gallery__card *{
+  text-decoration:none;
+}
+
+.article-body .article-analysis-gallery__card,
+.article-body .article-analysis-gallery__card:hover,
+.article-body .article-analysis-gallery__card:focus-visible{
+  text-decoration:none;
+}
+
+.article-analysis-gallery__card span{
+  color:var(--accent);
+  font-size:.66rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  line-height:1.1;
+  text-transform:uppercase;
+}
+
+.article-analysis-gallery__card strong{
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:1.08rem;
+  line-height:1.06;
+}
+
+.article-analysis-gallery__card em{
+  color:var(--muted);
+  font-size:.78rem;
+  font-style:normal;
+  line-height:1.28;
+}
+
+.article-analysis-gallery__card:hover,
+.article-analysis-gallery__card:focus-visible{
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  transform:translateY(-1px);
+  box-shadow:0 14px 28px color-mix(in srgb,var(--accent) 22%,transparent);
+}
+
+.article-analysis-gallery__card:hover span,
+.article-analysis-gallery__card:hover strong,
+.article-analysis-gallery__card:hover em,
+.article-analysis-gallery__card:focus-visible span,
+.article-analysis-gallery__card:focus-visible strong,
+.article-analysis-gallery__card:focus-visible em{
   color:#fff;
 }
 
@@ -7760,9 +9240,37 @@ body.page-article:has(.press-social-feature)::before{
 }
 
 @media (max-width:760px){
+  .article-top-drawers{
+    grid-template-columns:1fr;
+  }
+
+  .article-analysis-gallery__stats{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .article-analysis-gallery__grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:.55rem;
+  }
+
   .article-rail-gallery__grid{
     grid-template-columns:repeat(2,minmax(0,1fr));
     gap:.55rem;
+  }
+}
+
+@media (max-width:480px){
+  .article-analysis-gallery{
+    padding:.78rem;
+  }
+
+  .article-analysis-gallery__stats,
+  .article-analysis-gallery__grid{
+    grid-template-columns:1fr;
+  }
+
+  .article-analysis-gallery__card{
+    min-height:auto;
   }
 }
 
@@ -9279,8 +10787,12 @@ body.page-article:has(.press-social-feature) .press-current-beat{
   line-height:1;
 }
 
-body.page-article.has-living-current-beat .press-back-to-top{
+body.page-article.has-living-current-beat:not(:has(.drone-feature-body)) .press-back-to-top{
   display:none;
+}
+
+body.page-article.has-living-current-beat:has(.drone-feature-body) .press-back-to-top{
+  display:inline-flex;
 }
 
 html[data-living-reader="focus"] body.page-article.has-living-current-beat .press-back-to-top{
@@ -9650,6 +11162,10 @@ html[data-theme="dark"] .press-share-studio__formats button.is-active{
 
   .press-current-beat{
     display:none;
+  }
+
+  body.page-article.has-living-current-beat .press-back-to-top{
+    display:inline-flex;
   }
 
   .press-relationship-map{

@@ -198,20 +198,23 @@ def add_unique_story(target: list[dict], seen: set[str], story: dict | None) -> 
 def homepage_lead_stories() -> list[dict]:
     """Build the reusable hero set.
 
-    The newest image-ready stories seed the hero first so a freshly published
-    article does not require hand-editing homepage lead lists just to appear.
-    Manual leadOrder entries still shape the rest of the rotation.
+    Manual leadOrder entries anchor the front page so article-level work does
+    not unexpectedly replace the homepage lead. If no manual order exists, the
+    newest image-ready stories can still seed the hero.
     """
 
     final: list[dict] = []
     seen: set[str] = set()
     homepage = DATA.get("homepage", {})
+    lead_order = homepage.get("leadOrder", [])
 
-    for story in [story for story in STORIES if story_is_hero_eligible(story)][:HOME_HERO_AUTO_SEED]:
-        add_unique_story(final, seen, story)
+    if lead_order:
+        for filename in lead_order:
+            add_unique_story(final, seen, STORY_BY_FILE.get(filename))
+    else:
+        for story in [story for story in STORIES if story_is_hero_eligible(story)][:HOME_HERO_AUTO_SEED]:
+            add_unique_story(final, seen, story)
 
-    for filename in homepage.get("leadOrder", []):
-        add_unique_story(final, seen, STORY_BY_FILE.get(filename))
 
     for story in [story for story in STORIES if story_is_hero_eligible(story)]:
         add_unique_story(final, seen, story)

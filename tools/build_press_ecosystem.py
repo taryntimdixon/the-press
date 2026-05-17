@@ -31,6 +31,12 @@ NOW = datetime.now(timezone.utc)
 LIVE_WINDOW_DAYS = 14
 LIVE_MINIMUM = 48
 AUTHOR_LABEL = "The Press"
+SOURCE_PRIORITY = {
+    "search-index": 0,
+    "daily-latest": 1,
+    "edition": 2,
+    "master-edition": 3,
+}
 
 STOP_WORDS = {
     "a", "an", "and", "are", "as", "at", "be", "but", "by", "can", "could", "for", "from", "has", "have", "how", "in",
@@ -424,7 +430,9 @@ def extract_source(payload: Any, source: str) -> list[Story]:
 
 
 def merge_story(a: Story, b: Story) -> Story:
-    newer, older = (b, a) if b.sort_ts >= a.sort_ts else (a, b)
+    a_key = (a.sort_ts, SOURCE_PRIORITY.get(a.source, 0))
+    b_key = (b.sort_ts, SOURCE_PRIORITY.get(b.source, 0))
+    newer, older = (b, a) if b_key >= a_key else (a, b)
     merged = Story(**asdict(newer))
 
     merged.image = newer.image or older.image
@@ -529,7 +537,45 @@ def pick(
     return out[:count]
 
 
-def build_placements(stories: list[Story]) -> dict[str, Any]:
+def resolve_manual_stories(stories: list[Story], entries: Any, count: int) -> list[Story]:
+    if not isinstance(entries, list):
+        return []
+
+    by_key: dict[str, Story] = {}
+    for story in stories:
+        keys = {
+            story.story_id,
+            story.url,
+            normalize_url(story.url),
+            story_id_from_url(story.url),
+        }
+        for key in keys:
+            if key:
+                by_key[key] = story
+
+    out: list[Story] = []
+    seen: set[str] = set()
+    for entry in entries:
+        key = clean(entry.get("story_id") or entry.get("storyId") or entry.get("url") or entry.get("id")) if isinstance(entry, dict) else clean(entry)
+        candidates = [
+            key,
+            normalize_url(key),
+            story_id_from_url(key),
+        ]
+        story = next((by_key.get(candidate) for candidate in candidates if candidate in by_key), None)
+        if not story or story.story_id in seen:
+            continue
+        seen.add(story.story_id)
+        out.append(story)
+        if len(out) >= count:
+            break
+
+    return out
+
+
+def build_placements(stories: list[Story], homepage: dict[str, Any] | None = None) -> dict[str, Any]:
+    homepage = homepage or {}
+    hero_target = int(homepage.get("heroSlots") or homepage.get("hero_slots") or 7)
     live_cutoff = NOW - timedelta(days=LIVE_WINDOW_DAYS)
     recent = [
         story
@@ -541,13 +587,17 @@ def build_placements(stories: list[Story]) -> dict[str, Any]:
     cluster_pool = freshest_per_cluster(live_pool)
     used: set[str] = set()
 
-    hero = pick(
-        [s for s in cluster_pool if s.hero_eligible],
-        4,
-        used,
-        unique_sections=True,
-        require_image=True,
-    )
+    hero = resolve_manual_stories(stories, homepage.get("leadOrder"), hero_target)
+    if hero:
+        used.update(story.cluster_id for story in hero)
+    else:
+        hero = pick(
+            [s for s in cluster_pool if s.hero_eligible],
+            hero_target,
+            used,
+            unique_sections=True,
+            require_image=True,
+        )
 
     secondary = pick(cluster_pool, 3, used, unique_sections=True)
     hero_ids = {s.story_id for s in hero}
@@ -606,6 +656,7 @@ def build_placements(stories: list[Story]) -> dict[str, Any]:
             "rails": "freshness-weighted fallback if manual analytics are unavailable",
         },
         "home": {
+            "hero_slots": hero_target,
             "hero": [s.story_id for s in hero],
             "secondary": [s.story_id for s in secondary],
             "most_read": [s.story_id for s in most_read],
@@ -704,7 +755,7 @@ def main() -> None:
     write_json(ROOT / "content-index.json", content_payload)
     write_json(ROOT / "live-index.json", live_payload)
     write_json(ROOT / "archive-index.json", archive_payload)
-    write_json(ROOT / "placements.json", build_placements(stories))
+    write_json(ROOT / "placements.json", build_placements(stories, master.get("homepage", {})))
 
     if args.refresh_search_index:
         write_json(ROOT / "search-index.json", compact_search(stories))
