@@ -1,5 +1,52 @@
 [
   {
+    "title": "Drones Have Left the Gadget Era",
+    "section": "Technology",
+    "type": "Investigation",
+    "dek": "The hard part is no longer whether small aircraft can fly useful missions. It is whether law, air traffic systems, police oversight, war planning and supply chains can see and govern the low-altitude sky now filling up.",
+    "url": "technology-drones-have-left-the-gadget-era.html",
+    "author": "The Press",
+    "published": "May 16, 2026 • 2:30 p.m. EDT",
+    "publishedIso": "2026-05-16T14:30:00-04:00",
+    "updatedIso": "2026-05-16T14:30:00-04:00",
+    "image": "assets/article-thumbnails/2026-05-16-drones-airspace-stress-test-photoreal.jpg",
+    "imageAlt": "Commercial drone flying over an airport approach corridor, city rooftops and low-altitude logistics infrastructure at blue hour",
+    "imageWidth": 1672,
+    "imageHeight": 941,
+    "keywords": [
+      "drones",
+      "FAA",
+      "UAS",
+      "BVLOS",
+      "Remote ID",
+      "drone delivery",
+      "police drones",
+      "Ukraine drones",
+      "Replicator",
+      "DJI",
+      "airspace"
+    ],
+    "publishedLabel": "May 16, 2026 • 2:30 p.m. EDT",
+    "updatedLabel": "May 16, 2026 • 2:30 p.m. EDT",
+    "wordCount": "10,453 words",
+    "readTime": "53 min read",
+    "imageCredit": "The Press photorealistic editorial visual",
+    "story_id": "technology-drones-have-left-the-gadget-era",
+    "cluster_id": "technology-drones-left-gadget-era-faa-uas",
+    "section_slug": "technology",
+    "published_iso": "2026-05-16T18:30:00+00:00",
+    "updated": "May 16, 2026 • 2:30 p.m. EDT",
+    "updated_iso": "2026-05-16T18:30:00+00:00",
+    "image_alt": "Commercial drone flying over an airport approach corridor, city rooftops and low-altitude logistics infrastructure at blue hour",
+    "read_time": "53 min read",
+    "word_count": "10,453 words",
+    "status": "published",
+    "priority": 0,
+    "hero_eligible": true,
+    "source": "master-edition",
+    "is_daily": false
+  },
+  {
     "title": "The World Cup Has Never Been This Big",
     "section": "Sports",
     "type": "Feature",
@@ -31,7 +78,7 @@
     "readTime": "46 min read",
     "imageCredit": "",
     "story_id": "sports-world-cup-game-day-machine",
-    "cluster_id": "sports-world-cup-game-time-matchday-machine",
+    "cluster_id": "sports-world-cup-never-big-fifa-2026",
     "section_slug": "sports",
     "published_iso": "2026-05-11T13:00:00+00:00",
     "updated": "May 11, 2026 • 9:00 a.m. EDT",
@@ -42,7 +89,7 @@
     "status": "published",
     "priority": 20,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -93,7 +140,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -141,7 +188,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -185,7 +232,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -230,7 +277,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -273,7 +320,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -316,7 +363,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -360,7 +407,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -404,7 +451,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -448,7 +495,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -491,7 +538,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -537,7 +584,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -583,7 +630,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -628,7 +675,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -672,7 +719,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -708,7 +755,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-29T00:30:00+00:00",
     "updatedIso": "2026-04-28T12:00:00+00:00",
@@ -746,7 +793,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-28T16:00:00+00:00",
     "updatedIso": "2026-04-28T12:00:00+00:00",
@@ -780,7 +827,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -817,7 +864,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -853,7 +900,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -892,7 +939,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -928,7 +975,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -962,7 +1009,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -998,7 +1045,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -1032,7 +1079,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -1066,7 +1113,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -1102,7 +1149,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -1138,7 +1185,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -1172,7 +1219,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -1206,7 +1253,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -1242,7 +1289,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -1278,7 +1325,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "daily-latest",
     "is_daily": true,
     "publishedIso": "2026-04-27T13:53:00+00:00",
     "updatedIso": "2026-04-27T12:00:00+00:00",
@@ -12920,7 +12967,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -12955,7 +13002,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -12990,7 +13037,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -13032,7 +13079,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -13067,7 +13114,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -13102,7 +13149,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -13143,7 +13190,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -13185,7 +13232,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -13220,7 +13267,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -13255,7 +13302,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -13290,7 +13337,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -13325,7 +13372,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -13360,7 +13407,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   },
   {
@@ -13395,7 +13442,7 @@
     "status": "published",
     "priority": 0,
     "hero_eligible": true,
-    "source": "search-index",
+    "source": "master-edition",
     "is_daily": false
   }
 ]

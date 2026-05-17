@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-17T03:22:30.020823+00:00",
+  "generated_at": "2026-05-17T01:18:22.497186+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -11,30 +11,32 @@
     "hero_slots": 7,
     "hero": [
       "sports-world-cup-game-day-machine",
+      "technology-drones-have-left-the-gadget-era",
+      "world-europes-cocaine-boom-is-hiding-in-plain-sight",
       "world-americas-military-year-is-a-map-of-force",
       "climate-the-mountain-that-fell-into-the-sea",
       "climate-your-home-insurance-bill-is-the-new-climate-map",
-      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
-      "technology-the-battery-is-becoming-the-grid",
-      "health-the-next-public-health-system-is-the-room-you-are-in"
+      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere"
     ],
     "secondary": [
-      "world-europes-cocaine-boom-is-hiding-in-plain-sight",
       "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
-      "memory-the-internet-is-eating-its-own-memory"
+      "memory-the-internet-is-eating-its-own-memory",
+      "education-the-phone-free-school-day-is-a-live-experiment"
     ],
     "most_read": [
-      "education-the-phone-free-school-day-is-a-live-experiment",
+      "health-the-next-public-health-system-is-the-room-you-are-in",
+      "technology-the-battery-is-becoming-the-grid",
       "sports-texas-holdem-prime-time-moment-back",
       "technology-pentagon-ai-classified-networks",
       "food-atla-noho-closing"
     ],
     "editors_picks": [],
     "latest": [
-      "world-europes-cocaine-boom-is-hiding-in-plain-sight",
       "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
       "memory-the-internet-is-eating-its-own-memory",
       "education-the-phone-free-school-day-is-a-live-experiment",
+      "health-the-next-public-health-system-is-the-room-you-are-in",
+      "technology-the-battery-is-becoming-the-grid",
       "sports-texas-holdem-prime-time-moment-back",
       "technology-pentagon-ai-classified-networks",
       "food-atla-noho-closing",
@@ -44,8 +46,7 @@
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
       "2026-04-27-nairobi-s-drains-are-running-out-of-room",
       "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
-      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
-      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight"
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label"
     ],
     "daily": [
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
@@ -60,10 +61,11 @@
       "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
     ],
     "breaking": [
-      "world-europes-cocaine-boom-is-hiding-in-plain-sight",
       "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
       "memory-the-internet-is-eating-its-own-memory",
       "education-the-phone-free-school-day-is-a-live-experiment",
+      "health-the-next-public-health-system-is-the-room-you-are-in",
+      "technology-the-battery-is-becoming-the-grid",
       "sports-texas-holdem-prime-time-moment-back",
       "technology-pentagon-ai-classified-networks",
       "food-atla-noho-closing",
@@ -72,10 +74,15 @@
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
       "2026-04-27-nairobi-s-drains-are-running-out-of-room",
-      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
-      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label"
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class"
     ],
     "desk_pulse": [
+      {
+        "count": 3,
+        "latest_ts": 1778956200.0,
+        "story_id": "technology-drones-have-left-the-gadget-era",
+        "section": "Technology"
+      },
       {
         "count": 2,
         "latest_ts": 1778504400.0,
@@ -117,12 +124,6 @@
         "latest_ts": 1778171400.0,
         "story_id": "health-the-next-public-health-system-is-the-room-you-are-in",
         "section": "Health"
-      },
-      {
-        "count": 2,
-        "latest_ts": 1778167200.0,
-        "story_id": "technology-the-battery-is-becoming-the-grid",
-        "section": "Technology"
       },
       {
         "count": 1,
