@@ -709,6 +709,10 @@ if (!hasHomepageTargets) {
 
   function loadStoryIndex() {
   if (storyIndexPromise) return storyIndexPromise;
+  if (window.__pressStoryIndexPromise) {
+    storyIndexPromise = window.__pressStoryIndexPromise;
+    return storyIndexPromise;
+  }
 
   const normalizePayload = (data) => {
     if (Array.isArray(data)) return normalizeStoryArray(data);
@@ -719,7 +723,7 @@ if (!hasHomepageTargets) {
   };
 
   const fetchJson = (url) =>
-    fetch(pressSiteAssetUrl(url), { cache: 'no-cache' }).then((response) => {
+    fetch(pressSiteAssetUrl(url), { cache: 'force-cache' }).then((response) => {
       if (!response.ok) throw new Error(`Could not load ${url}`);
       return response.json();
     });
@@ -741,6 +745,7 @@ if (!hasHomepageTargets) {
 
       return [];
     });
+  window.__pressStoryIndexPromise = storyIndexPromise;
 
   return storyIndexPromise;
 }
@@ -2952,13 +2957,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ecosystemPromise) return ecosystemPromise;
 
     ecosystemPromise = (async () => {
-      const [placementsRaw, liveRaw, contentRaw, dailyRaw, editionRaw, searchRaw, embeddedRaw] = await Promise.all([
+      const needsBroadIndex =
+        document.body.classList.contains('page-archive') ||
+        document.body.classList.contains('page-section');
+      const needsDailyIndex = document.body.classList.contains('page-home') || needsBroadIndex;
+      const [placementsRaw, liveRaw, contentRaw, dailyRaw, editionRaw, embeddedRaw] = await Promise.all([
         fetchOptionalJson(FETCH_TARGETS.placements),
         fetchOptionalJson(FETCH_TARGETS.live),
-        fetchOptionalJson(FETCH_TARGETS.content),
-        fetchOptionalJson(FETCH_TARGETS.daily),
-        fetchOptionalJson(FETCH_TARGETS.edition),
-        fetchOptionalJson(FETCH_TARGETS.search),
+        needsBroadIndex ? fetchOptionalJson(FETCH_TARGETS.content) : Promise.resolve(null),
+        needsDailyIndex ? fetchOptionalJson(FETCH_TARGETS.daily) : Promise.resolve(null),
+        needsBroadIndex ? fetchOptionalJson(FETCH_TARGETS.edition) : Promise.resolve(null),
         Promise.resolve(readEmbeddedSearchJson()),
       ]);
 
@@ -2967,7 +2975,6 @@ document.addEventListener("DOMContentLoaded", () => {
         extractStories(liveRaw, 'live-index'),
         extractStories(dailyRaw, 'daily-latest'),
         extractStories(editionRaw, 'edition'),
-        extractStories(searchRaw, 'search-index'),
         extractStories(embeddedRaw, 'embedded-search'),
       ]);
 
@@ -2989,7 +2996,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchOptionalJson(url) {
     try {
-      const response = await fetch(pressSiteAssetUrl(url), { cache: 'no-store' });
+      const response = await fetch(pressSiteAssetUrl(url), { cache: 'force-cache' });
       if (!response.ok) return readCachedJson(url);
 
       const json = await response.json();
@@ -3578,7 +3585,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function leadPanel(story, index) {
     const imageHtml = story.image
-      ? `<img alt="${escapeAttr(story.imageAlt || story.title)}" decoding="async" loading="${index === 0 ? 'eager' : 'lazy'}" src="${escapeAttr(story.image)}" />`
+      ? `<img alt="${escapeAttr(story.imageAlt || story.title)}" decoding="async" fetchpriority="${index === 0 ? 'high' : 'low'}" loading="${index === 0 ? 'eager' : 'lazy'}" src="${escapeAttr(story.image)}" />`
       : `<div class="press-image-fallback"><span>${escapeHtml(story.section)}</span></div>`;
 
     return `
@@ -4545,10 +4552,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchJson(url) {
 
-    const requestUrl = pressSiteAssetUrl(url);
-    const cacheBuster = `${requestUrl}${requestUrl.includes('?') ? '&' : '?'}restore=${Date.now()}`;
-
-    const response = await fetch(cacheBuster, { cache: 'no-store' });
+    const response = await fetch(pressSiteAssetUrl(url), { cache: 'force-cache' });
 
     if (!response.ok) {
 
@@ -4568,11 +4572,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const files = [
 
-      'content-index.json',
-
-      'search-index.json',
-
       'live-index.json',
+
+      'content-index.json',
 
       'archive-index.json',
 
@@ -5358,6 +5360,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   ready(function initFutureNewsroom() {
+    const hasFutureSurface = document.querySelector('.press-future-studio, .press-topic-radar, [data-future-command-open]');
+    if (!document.body.classList.contains('page-home') || !hasFutureSurface) return;
+
     document.documentElement.classList.add('press-future-newsroom');
     installCommandPalette();
     bindGlobalCommands();
@@ -5391,7 +5396,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchOptionalJson(url) {
     try {
-      const response = await fetch(pressSiteAssetUrl(url), { cache: 'no-store' });
+      const response = await fetch(pressSiteAssetUrl(url), { cache: 'force-cache' });
       if (!response.ok) return null;
       return response.json();
     } catch (_) {

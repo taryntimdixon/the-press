@@ -948,7 +948,7 @@ def footer() -> str:
 """.strip()
 
 
-def search_overlay(search_data: list[dict]) -> str:
+def search_overlay() -> str:
     return f"""
 <div class="search-overlay" hidden data-search-overlay>
   <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="search-title">
@@ -966,7 +966,6 @@ def search_overlay(search_data: list[dict]) -> str:
     </div>
   </div>
 </div>
-<script id="press-search-data" type="application/json">{json_script(search_data)}</script>
 """.strip()
 
 
@@ -1160,7 +1159,7 @@ def layout(
     social_title=social_title,
 )}
 <body class="{h(body_class)}">
-  {search_overlay(search_index())}
+  {search_overlay()}
 {progress_html}  {header(current_section=current_section, current_aux=current_aux)}
   {main_html}
   {footer()}
@@ -1178,8 +1177,10 @@ def render_homepage() -> str:
         active = " is-active" if idx == 0 else ""
         panel_width = f' width="{story["imageWidth"]}"' if story.get("imageWidth") else ""
         panel_height = f' height="{story["imageHeight"]}"' if story.get("imageHeight") else ""
+        panel_loading = "eager" if idx == 0 else "lazy"
+        panel_priority = ' fetchpriority="high"' if idx == 0 else ' fetchpriority="low"'
         panel_media = (
-            f'<img src="{h(story["image"])}" alt="{h(public_image_alt(story, story.get("title") or "Story thumbnail"))}" loading="eager" decoding="async"{panel_width}{panel_height} />'
+            f'<img src="{h(story["image"])}" alt="{h(public_image_alt(story, story.get("title") or "Story thumbnail"))}" loading="{panel_loading}" decoding="async"{panel_priority}{panel_width}{panel_height} />'
             if story.get("image")
             else f'<div class="press-image-fallback"><span>{h(story.get("section") or "Story")}</span></div>'
         )
