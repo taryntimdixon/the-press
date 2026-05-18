@@ -6183,54 +6183,35 @@ document.addEventListener("DOMContentLoaded", () => {
     sourceTrail: 'press-living-source-trail',
   };
 
+  const railPhotoSequence = (slug, count) => Array.from(
+    { length: count },
+    (_, index) => `assets/rail-photoreal/${slug}/${slug}-${String(index + 1).padStart(2, '0')}.jpg`
+  );
+
   const RAIL_PHOTO_SETS = [
     {
       selector: '.atla-social-feature',
-      images: [
-        'assets/food-atla-noho-closing-thumbnail-generated-original.png',
-        'assets/food-atla-noho-closing-thumbnail.jpg',
-        'assets/food-atla-noho-closing-thumbnail.png',
-      ],
+      images: railPhotoSequence('atla', 52),
     },
     {
       selector: '.science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere-social-feature',
-      images: [
-        'assets/science-ocean-fever-thumbnail.png',
-      ],
+      images: railPhotoSequence('ocean-fever', 32),
     },
     {
       selector: '.climate-your-home-insurance-bill-is-the-new-climate-map-social-feature',
-      images: [
-        'assets/climate-insurance-bill-thumbnail.png',
-        'assets/ai-thumbnails/2026-04-26-the-premium-sheet-is-becoming-a-school-finance-document.jpg',
-        'assets/ai-thumbnails/2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class.jpg',
-        'assets/ai-thumbnails/2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze.jpg',
-      ],
+      images: railPhotoSequence('home-insurance', 32),
     },
     {
       selector: '.education-the-phone-free-school-day-is-a-live-experiment-social-feature',
-      images: [
-        'assets/education-phone-free-schools-thumbnail.png',
-        'assets/ai-thumbnails/2026-04-27-locked-pouches-pull-the-attention-economy-into-homeroom.jpg',
-        'assets/education-classroom-with-students.jpg',
-      ],
+      images: railPhotoSequence('phone-free-school', 32),
     },
     {
       selector: '.poker-prime-time-feature',
-      images: [
-        'assets/sports-texas-holdem-prime-time-thumbnail.png',
-      ],
+      images: railPhotoSequence('texas-holdem', 24),
     },
     {
       selector: '.defense-ai-social-feature',
-      images: [
-        'assets/technology-pentagon-ai-classified-networks-thumbnail.jpg',
-        'assets/social/photoreal/2026-us-military-rail-classified-ai.png',
-        'assets/social/photoreal/2026-us-military-rail-overview.png',
-        'assets/social/photoreal/2026-us-military-rail-logistics.png',
-        'assets/social/photoreal/2026-us-military-rail-budget-blueprint.png',
-        'assets/social/photoreal/2026-us-military-rail-cfr.png',
-      ],
+      images: railPhotoSequence('pentagon-ai', 32),
     },
   ];
 
@@ -6991,7 +6972,7 @@ document.addEventListener("DOMContentLoaded", () => {
     figure.style.setProperty('--rail-photo-position', RAIL_PHOTO_POSITIONS[index % RAIL_PHOTO_POSITIONS.length]);
 
     const img = document.createElement('img');
-    img.src = src;
+    img.src = pressSiteAssetUrl(src);
     img.alt = '';
     img.loading = 'lazy';
     img.decoding = 'async';
