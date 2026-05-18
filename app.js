@@ -6187,30 +6187,37 @@ document.addEventListener("DOMContentLoaded", () => {
     { length: count },
     (_, index) => `assets/rail-photoreal/${slug}/${slug}-${String(index + 1).padStart(2, '0')}.jpg`
   );
+  const RAIL_PHOTO_ASSET_VERSION = '1779071223';
 
   const RAIL_PHOTO_SETS = [
     {
       selector: '.atla-social-feature',
+      galleryLabel: 'ATLA NoHo',
       images: railPhotoSequence('atla', 52),
     },
     {
       selector: '.science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere-social-feature',
+      galleryLabel: 'The Ocean Has a Fever',
       images: railPhotoSequence('ocean-fever', 32),
     },
     {
       selector: '.climate-your-home-insurance-bill-is-the-new-climate-map-social-feature',
+      galleryLabel: 'Home insurance climate map',
       images: railPhotoSequence('home-insurance', 32),
     },
     {
       selector: '.education-the-phone-free-school-day-is-a-live-experiment-social-feature',
+      galleryLabel: 'Phone-free school day',
       images: railPhotoSequence('phone-free-school', 32),
     },
     {
       selector: '.poker-prime-time-feature',
+      galleryLabel: 'Texas Holdem',
       images: railPhotoSequence('texas-holdem', 24),
     },
     {
       selector: '.defense-ai-social-feature',
+      galleryLabel: 'Pentagon AI',
       images: railPhotoSequence('pentagon-ai', 32),
     },
   ];
@@ -6941,10 +6948,134 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ready(function initLivingArticleKit() {
     bindGlobalLivingActions();
+    installRailPhotoGalleries();
     installRailPhotos();
     initArticlePage();
     initHomepagePulse();
   });
+
+  function installRailPhotoGalleries() {
+    RAIL_PHOTO_SETS.forEach((set) => {
+      document.querySelectorAll(set.selector).forEach((feature) => {
+        if (!set.images?.length || feature.querySelector('#article-gallery.article-rail-gallery')) return;
+
+        const details = document.createElement('details');
+        details.className = 'article-rail-gallery article-rail-gallery--top';
+        details.id = 'article-gallery';
+
+        const summary = document.createElement('summary');
+        summary.textContent = 'Article Gallery';
+
+        const grid = document.createElement('div');
+        grid.className = 'article-rail-gallery__grid';
+
+        const sourceCards = Array.from(feature.querySelectorAll('.press-static-post'));
+        set.images.forEach((src, index) => {
+          const imageUrl = railPhotoAssetUrl(src);
+          const sourceHref = getRailCardSourceHref(sourceCards[index]);
+          const card = document.createElement('a');
+          card.className = 'article-rail-gallery__card';
+          card.href = sourceHref || (document.getElementById('source-notes') ? '#source-notes' : window.location.href);
+          if (sourceHref && /^https?:\/\//i.test(sourceHref)) {
+            card.rel = 'noopener noreferrer';
+          }
+          card.setAttribute('aria-label', `${set.galleryLabel || 'Article'} source ${index + 1}`);
+
+          const img = document.createElement('img');
+          img.src = imageUrl;
+          img.alt = `${set.galleryLabel || 'Article'} rail card photo ${index + 1}`;
+          img.loading = 'lazy';
+          img.decoding = 'async';
+
+          card.appendChild(img);
+          grid.appendChild(card);
+        });
+
+        details.append(summary, grid);
+        feature.prepend(details);
+        installArticleGalleryJumpLink();
+      });
+    });
+  }
+
+  function getRailCardSourceHref(card) {
+    if (!card) return '';
+    const dataUrl = card.getAttribute('data-source-url');
+    if (dataUrl) return dataUrl;
+
+    const ids = new Set();
+    (card.getAttribute('data-source-ids') || '').split(/\s+/).forEach((id) => {
+      if (id) ids.add(id);
+    });
+
+    Array.from(card.querySelectorAll('a[data-source-id]')).forEach((candidate) => {
+      const id = candidate.getAttribute('data-source-id');
+      if (id) ids.add(id);
+    });
+
+    for (const id of ids) {
+      const resolved = getSourceNoteExternalHref(id);
+      if (resolved) return resolved;
+    }
+
+    const links = Array.from(card.querySelectorAll('a[href]'));
+    const link = links.find((candidate) => {
+      const href = candidate.getAttribute('href') || '';
+      return href && !href.startsWith('#') && !/\.(?:avif|gif|jpe?g|png|webp)(?:[?#].*)?$/i.test(href);
+    });
+    if (link) return link.href || link.getAttribute('href') || '';
+
+    for (const candidate of links) {
+      const href = candidate.getAttribute('href') || '';
+      if (!href.startsWith('#source-')) continue;
+      const resolved = getSourceNoteExternalHref(href.slice(1));
+      if (resolved) return resolved;
+    }
+
+    const internalSourceLink = links.find((candidate) => {
+      const href = candidate.getAttribute('href') || '';
+      return href && href.startsWith('#') && !href.includes('article-gallery');
+    });
+
+    return internalSourceLink?.getAttribute('href') || '';
+  }
+
+  function getSourceNoteExternalHref(id) {
+    if (!id) return '';
+    const sourceId = id.startsWith('source-') ? id : `source-${id}`;
+    const sourceNote = document.getElementById(sourceId);
+    const link = sourceNote?.querySelector('a[href^="http://"], a[href^="https://"]');
+    return link?.href || link?.getAttribute('href') || '';
+  }
+
+  function installArticleGalleryJumpLink() {
+    const gallery = document.getElementById('article-gallery');
+    if (!gallery) return;
+
+    const asideCards = Array.from(document.querySelectorAll('.article-aside .aside-card'));
+    const onThisPage = asideCards.find((card) => {
+      const heading = card.querySelector('h2, h3');
+      return heading?.textContent?.trim().toLowerCase() === 'on this page';
+    });
+    const list = onThisPage?.querySelector('ol, ul');
+    if (list && !list.querySelector('a[href="#article-gallery"]')) {
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = '#article-gallery';
+      link.textContent = 'Article Gallery';
+      link.setAttribute('data-open-gallery', '');
+      item.appendChild(link);
+      list.insertBefore(item, list.firstElementChild?.nextElementSibling || list.firstElementChild || null);
+    }
+
+    document.querySelectorAll('a[href="#article-gallery"]').forEach((link) => {
+      if (link.dataset.galleryOpenBound === 'true') return;
+      link.dataset.galleryOpenBound = 'true';
+      link.addEventListener('click', () => {
+        gallery.open = true;
+      });
+    });
+  }
 
   function installRailPhotos() {
     RAIL_PHOTO_SETS.forEach((set) => {
@@ -6972,7 +7103,7 @@ document.addEventListener("DOMContentLoaded", () => {
     figure.style.setProperty('--rail-photo-position', RAIL_PHOTO_POSITIONS[index % RAIL_PHOTO_POSITIONS.length]);
 
     const img = document.createElement('img');
-    img.src = pressSiteAssetUrl(src);
+    img.src = railPhotoAssetUrl(src);
     img.alt = '';
     img.loading = 'lazy';
     img.decoding = 'async';
@@ -6994,6 +7125,12 @@ document.addEventListener("DOMContentLoaded", () => {
     card.classList.remove('press-static-post--with-illustration', 'press-static-post--with-real-image', 'press-static-post--text-only');
     card.classList.add('press-static-post--with-rail-photo');
     card.dataset.railPhotoBound = 'true';
+  }
+
+  function railPhotoAssetUrl(src) {
+    const url = new URL(pressSiteAssetUrl(src), window.location.href);
+    url.searchParams.set('v', RAIL_PHOTO_ASSET_VERSION);
+    return url.href;
   }
 
   function initArticlePage() {
