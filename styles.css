@@ -7611,6 +7611,59 @@ body.page-article:has(.press-social-feature)::before{
   content:none;
   display:none;
 }
+
+.press-static-post--with-rail-photo{
+  padding:.7rem;
+}
+
+.press-static-post__media--rail-photo{
+  margin:.18rem 0 .68rem;
+  border:1px solid color-mix(in srgb,var(--line) 78%,var(--accent));
+  border-radius:15px;
+  overflow:hidden;
+  background:var(--surface-2);
+  box-shadow:0 5px 12px rgba(24,28,38,.045);
+}
+
+.press-static-post__media--rail-photo img{
+  display:block;
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  object-position:var(--rail-photo-position, center center);
+  background:var(--surface-2);
+}
+
+.press-static-post--with-rail-photo .press-static-post__visual{
+  min-height:auto;
+  padding:.68rem;
+  margin:.2rem 0 .58rem;
+  background:linear-gradient(135deg,var(--surface-2),color-mix(in srgb,var(--accent-soft) 42%,var(--surface)));
+}
+
+.press-static-post--with-rail-photo .press-static-post__visual::before,
+.press-static-post--with-rail-photo .press-static-post__visual::after{
+  content:none;
+  display:none;
+}
+
+.press-static-post--with-rail-photo .press-static-post__visual strong{
+  font-size:1.03rem;
+}
+
+.poker-rail-card.press-static-post--with-rail-photo .press-static-post__media--rail-photo{
+  margin:.52rem 0 .7rem;
+}
+
+.poker-rail-card.press-static-post--with-rail-photo .press-static-post__media--rail-photo img{
+  aspect-ratio:16/10;
+}
+
+@media (max-width:1180px){
+  .press-static-post__media--rail-photo img{
+    aspect-ratio:16/9;
+  }
+}
 .press-social-feature[data-source-count]::before{
   content:"Atla's public record • " attr(data-source-count) " source notes";
   display:block;
@@ -10697,10 +10750,10 @@ html[data-living-source-trail="on"] .press-evidence-tags{
 }
 
 body.page-article:has(.press-social-feature) .press-current-beat{
-  right:auto;
-  left:50%;
+  right:1rem;
+  left:auto;
   width:min(16rem,calc(100vw - 2rem));
-  transform:translateX(-50%);
+  transform:none;
 }
 
 .press-current-beat__button{

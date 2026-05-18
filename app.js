@@ -6183,6 +6183,67 @@ document.addEventListener("DOMContentLoaded", () => {
     sourceTrail: 'press-living-source-trail',
   };
 
+  const RAIL_PHOTO_SETS = [
+    {
+      selector: '.atla-social-feature',
+      images: [
+        'assets/food-atla-noho-closing-thumbnail-generated-original.png',
+        'assets/food-atla-noho-closing-thumbnail.jpg',
+        'assets/food-atla-noho-closing-thumbnail.png',
+      ],
+    },
+    {
+      selector: '.science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere-social-feature',
+      images: [
+        'assets/science-ocean-fever-thumbnail.png',
+      ],
+    },
+    {
+      selector: '.climate-your-home-insurance-bill-is-the-new-climate-map-social-feature',
+      images: [
+        'assets/climate-insurance-bill-thumbnail.png',
+        'assets/ai-thumbnails/2026-04-26-the-premium-sheet-is-becoming-a-school-finance-document.jpg',
+        'assets/ai-thumbnails/2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class.jpg',
+        'assets/ai-thumbnails/2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze.jpg',
+      ],
+    },
+    {
+      selector: '.education-the-phone-free-school-day-is-a-live-experiment-social-feature',
+      images: [
+        'assets/education-phone-free-schools-thumbnail.png',
+        'assets/ai-thumbnails/2026-04-27-locked-pouches-pull-the-attention-economy-into-homeroom.jpg',
+        'assets/education-classroom-with-students.jpg',
+      ],
+    },
+    {
+      selector: '.poker-prime-time-feature',
+      images: [
+        'assets/sports-texas-holdem-prime-time-thumbnail.png',
+      ],
+    },
+    {
+      selector: '.defense-ai-social-feature',
+      images: [
+        'assets/technology-pentagon-ai-classified-networks-thumbnail.jpg',
+        'assets/social/photoreal/2026-us-military-rail-classified-ai.png',
+        'assets/social/photoreal/2026-us-military-rail-overview.png',
+        'assets/social/photoreal/2026-us-military-rail-logistics.png',
+        'assets/social/photoreal/2026-us-military-rail-budget-blueprint.png',
+        'assets/social/photoreal/2026-us-military-rail-cfr.png',
+      ],
+    },
+  ];
+
+  const RAIL_PHOTO_POSITIONS = [
+    'center center',
+    '50% 34%',
+    '50% 66%',
+    '35% center',
+    '65% center',
+    '44% 42%',
+    '56% 58%',
+  ];
+
   const PLACE_LIBRARY = [
     {
       id: 'atla-noho',
@@ -6899,9 +6960,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ready(function initLivingArticleKit() {
     bindGlobalLivingActions();
+    installRailPhotos();
     initArticlePage();
     initHomepagePulse();
   });
+
+  function installRailPhotos() {
+    RAIL_PHOTO_SETS.forEach((set) => {
+      document.querySelectorAll(set.selector).forEach((feature) => {
+        const cards = Array.from(feature.querySelectorAll('.press-static-post'));
+        cards.forEach((card, index) => attachRailPhoto(card, set, index));
+      });
+    });
+  }
+
+  function attachRailPhoto(card, set, index) {
+    if (!card || card.dataset.railPhotoBound === 'true' || !set.images?.length) return;
+
+    card.querySelectorAll('.press-static-post__media--illustration, .press-static-post__media--real').forEach((node) => node.remove());
+    const existingPhoto = card.querySelector('.press-static-post__media--rail-photo');
+    if (existingPhoto) {
+      card.dataset.railPhotoBound = 'true';
+      return;
+    }
+
+    const src = set.images[index % set.images.length];
+    const figure = document.createElement('figure');
+    figure.className = 'press-static-post__media press-static-post__media--rail-photo';
+    figure.setAttribute('aria-hidden', 'true');
+    figure.style.setProperty('--rail-photo-position', RAIL_PHOTO_POSITIONS[index % RAIL_PHOTO_POSITIONS.length]);
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.onerror = () => {
+      figure.remove();
+      card.classList.remove('press-static-post--with-rail-photo');
+      card.dataset.railPhotoBound = 'false';
+    };
+
+    figure.appendChild(img);
+
+    const insertBefore = card.querySelector('.press-static-post__visual') || card.querySelector('h3') || card.querySelector('.press-static-post__source') || card.firstElementChild;
+    if (insertBefore) {
+      card.insertBefore(figure, insertBefore);
+    } else {
+      card.appendChild(figure);
+    }
+
+    card.classList.remove('press-static-post--with-illustration', 'press-static-post--with-real-image', 'press-static-post--text-only');
+    card.classList.add('press-static-post--with-rail-photo');
+    card.dataset.railPhotoBound = 'true';
+  }
 
   function initArticlePage() {
     if (!document.body.classList.contains('page-article')) return;
