@@ -2782,7 +2782,9 @@ function enhanceBreakingStrip(stories) {
       ctx.font = '800 19px Inter, ui-sans-serif, system-ui, sans-serif';
       fillTrackedCanvasText(ctx, shortenShareCanvasText(item.section || 'Story', 18).toUpperCase(), tileX + 22, tileY + tileHeight - 74, 1.4);
       ctx.font = '800 28px "Playfair Display", Georgia, "Times New Roman", serif';
-      wrapShareCanvasText(ctx, item.title, tileX + 22, tileY + tileHeight - 35, tileWidth - 44, 31, 2);
+      drawBottomAlignedShareCanvasText(ctx, item.title, tileX + 22, tileY + tileHeight - 25, tileWidth - 44, 31, 2, {
+        minFontSize: 20,
+      });
     });
     ctx.restore();
   }
@@ -2958,34 +2960,119 @@ function enhanceBreakingStrip(stories) {
     ctx.drawImage(img, x + (width - drawWidth) / 2, y + (height - drawHeight) / 2, drawWidth, drawHeight);
   }
 
-  function wrapShareCanvasText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
-    const words = collapseWhitespace(text).split(/\s+/).filter(Boolean);
-    let line = '';
-    let cursor = y;
-    let lines = 0;
+  function wrapShareCanvasText(ctx, text, x, y, maxWidth, lineHeight, maxLines, options = {}) {
+    const layout = layoutShareCanvasText(ctx, text, maxWidth, lineHeight, maxLines, options);
+    return drawShareCanvasTextLines(ctx, layout.lines, x, y, layout.lineHeight, layout.font);
+  }
 
-    for (const word of words) {
+  function drawBottomAlignedShareCanvasText(ctx, text, x, bottomY, maxWidth, lineHeight, maxLines, options = {}) {
+    const layout = layoutShareCanvasText(ctx, text, maxWidth, lineHeight, maxLines, options);
+    const startY = bottomY - Math.max(0, layout.lines.length - 1) * layout.lineHeight;
+    drawShareCanvasTextLines(ctx, layout.lines, x, startY, layout.lineHeight, layout.font);
+    return startY;
+  }
+
+  function drawShareCanvasTextLines(ctx, lines, x, y, lineHeight, font) {
+    const originalFont = ctx.font;
+    ctx.font = font || originalFont;
+    let cursor = y;
+    lines.forEach((line) => {
+      ctx.fillText(line, x, cursor);
+      cursor += lineHeight;
+    });
+    ctx.font = originalFont;
+    return cursor;
+  }
+
+  function layoutShareCanvasText(ctx, text, maxWidth, lineHeight, maxLines, options = {}) {
+    const originalFont = ctx.font;
+    const originalSize = getShareCanvasFontSize(originalFont);
+    const minFontSize = options.minFontSize || Math.max(18, Math.round(originalSize * 0.78));
+    const step = options.step || 2;
+    let fontSize = originalSize;
+    let lines = [];
+
+    while (fontSize >= minFontSize) {
+      ctx.font = setShareCanvasFontSize(originalFont, fontSize);
+      lines = getShareCanvasTextLines(ctx, text, maxWidth);
+      if (lines.length <= maxLines) break;
+      fontSize -= step;
+    }
+
+    if (fontSize < minFontSize) {
+      fontSize = minFontSize;
+      ctx.font = setShareCanvasFontSize(originalFont, fontSize);
+      lines = getShareCanvasTextLines(ctx, text, maxWidth);
+    }
+
+    const fittedLineHeight = Math.max(18, Math.round(lineHeight * (fontSize / originalSize)));
+    lines = clampShareCanvasTextLines(ctx, lines, maxLines, maxWidth);
+    ctx.font = originalFont;
+
+    return {
+      font: setShareCanvasFontSize(originalFont, fontSize),
+      lineHeight: fittedLineHeight,
+      lines,
+    };
+  }
+
+  function getShareCanvasTextLines(ctx, text, maxWidth) {
+    const words = collapseWhitespace(text).split(/\s+/).filter(Boolean);
+    const lines = [];
+    let line = '';
+
+    words.forEach((word) => {
       const test = line ? `${line} ${word}` : word;
-      if (ctx.measureText(test).width > maxWidth && line) {
-        if (lines >= maxLines - 1) {
-          ctx.fillText(shortenShareCanvasText(line, 58), x, cursor);
-          return cursor + lineHeight;
-        }
-        ctx.fillText(line, x, cursor);
-        cursor += lineHeight;
-        lines += 1;
-        line = word;
-      } else {
+      if (ctx.measureText(test).width <= maxWidth) {
         line = test;
+        return;
+      }
+      if (line) lines.push(line);
+      line = ctx.measureText(word).width > maxWidth
+        ? fitShareCanvasLine(ctx, word, maxWidth)
+        : word;
+    });
+
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  function clampShareCanvasTextLines(ctx, lines, maxLines, maxWidth) {
+    if (!maxLines || lines.length <= maxLines) return lines;
+    const clipped = lines.slice(0, maxLines);
+    clipped[maxLines - 1] = fitShareCanvasLine(ctx, [clipped[maxLines - 1], ...lines.slice(maxLines)].join(' '), maxWidth);
+    return clipped;
+  }
+
+  function fitShareCanvasLine(ctx, text, maxWidth) {
+    const value = collapseWhitespace(text);
+    if (!value || ctx.measureText(value).width <= maxWidth) return value;
+    const suffix = '...';
+    let low = 0;
+    let high = value.length;
+    let best = suffix;
+
+    while (low <= high) {
+      const mid = Math.floor((low + high) / 2);
+      const candidate = `${value.slice(0, mid).trim()}${suffix}`;
+      if (ctx.measureText(candidate).width <= maxWidth) {
+        best = candidate;
+        low = mid + 1;
+      } else {
+        high = mid - 1;
       }
     }
 
-    if (line && lines < maxLines) {
-      ctx.fillText(line, x, cursor);
-      cursor += lineHeight;
-    }
+    return best;
+  }
 
-    return cursor;
+  function getShareCanvasFontSize(font) {
+    const match = String(font || '').match(/(\d+(?:\.\d+)?)px/);
+    return match ? Number(match[1]) : 16;
+  }
+
+  function setShareCanvasFontSize(font, size) {
+    return String(font || '').replace(/(\d+(?:\.\d+)?)px/, `${Math.round(size)}px`);
   }
 
   function measureTrackedCanvasText(ctx, text, tracking) {
