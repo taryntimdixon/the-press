@@ -2316,16 +2316,12 @@ function enhanceBreakingStrip(stories) {
     modal.hidden = false;
     document.documentElement.classList.add('press-instagram-story-open');
     modal.querySelector('[data-instagram-story-close]')?.focus({ preventScroll: true });
-    setInstagramStoryStatus(status, 'Building story image...');
-    setInstagramStoryActionsDisabled(modal, true);
-    modal._pressInstagramStoryReady = drawInstagramStoryCanvas(context, canvas).then(() => {
-      setInstagramStoryStatus(status, 'Story image ready.');
-      return true;
-    }).catch(() => {
-      setInstagramStoryStatus(status, 'Story image ready with fallback art.');
-      return false;
-    }).finally(() => {
-      setInstagramStoryActionsDisabled(modal, false);
+    renderInstagramStoryPreview(modal, context, canvas, status, modal._pressInstagramStoryStyle || 'classic');
+
+    modal.querySelectorAll('[data-instagram-story-style]').forEach((button) => {
+      button.onclick = () => {
+        renderInstagramStoryPreview(modal, context, canvas, status, button.dataset.instagramStoryStyle || 'classic');
+      };
     });
 
     modal.querySelector('[data-instagram-story-download]').onclick = async () => {
@@ -2336,14 +2332,6 @@ function enhanceBreakingStrip(stories) {
       await ensureInstagramStoryReady(modal, status);
       await nativeShareInstagramStoryCanvas(canvas, context, status);
     };
-    modal.querySelector('[data-instagram-story-open-png]').onclick = async () => {
-      await ensureInstagramStoryReady(modal, status);
-      await openInstagramStoryPng(canvas, context, status);
-    };
-    modal.querySelector('[data-instagram-story-copy]').onclick = async () => {
-      const copied = await copyShareText(context);
-      setInstagramStoryStatus(status, copied ? 'Link copied.' : 'Select and copy the link from the share row.');
-    };
     modal.querySelector('[data-instagram-story-open]').onclick = async (event) => {
       event.preventDefault();
       await ensureInstagramStoryReady(modal, status);
@@ -2351,16 +2339,21 @@ function enhanceBreakingStrip(stories) {
       if (isMobile) {
         const shared = await shareInstagramStoryFile(canvas, context, status);
         if (shared) return;
+        const copied = await copyShareText(context);
         window.location.href = 'instagram://story-camera';
         window.setTimeout(() => {
           if (!document.hidden) openShareWindow('https://www.instagram.com/');
         }, 900);
-        setInstagramStoryStatus(status, 'Instagram opened. If the image is not attached, use Download PNG.');
+        setInstagramStoryStatus(status, copied
+          ? 'Instagram Story opened. Link copied for a sticker.'
+          : 'Instagram Story opened. Use Save image if the image is not attached.');
       } else {
         startInstagramStoryDownloadFromCanvas(canvas, getInstagramStoryFilename(context), status, 'Story PNG download started. Instagram is opening.');
-        copyShareText(context);
+        const copied = await copyShareText(context);
         openShareWindow('https://www.instagram.com/');
-        setInstagramStoryStatus(status, 'Instagram opened. Browser security cannot pre-load the PNG, so upload the downloaded story image.');
+        setInstagramStoryStatus(status, copied
+          ? 'Instagram opened. PNG downloaded and link copied for a sticker.'
+          : 'Instagram opened. PNG downloaded; upload it from your device.');
       }
     };
   }
@@ -2390,13 +2383,16 @@ function enhanceBreakingStrip(stories) {
           <div class="press-instagram-story__preview">
             <canvas width="1080" height="1920" data-instagram-story-canvas></canvas>
           </div>
-          <div class="press-instagram-story__actions">
-            <button type="button" data-instagram-story-native>Share image</button>
-            <button type="button" data-instagram-story-download>Download PNG</button>
-            <button type="button" data-instagram-story-open-png>Open PNG</button>
-            <button type="button" data-instagram-story-open>Open Instagram</button>
-            <button type="button" data-instagram-story-copy>Copy link</button>
-            <p data-instagram-story-status aria-live="polite"></p>
+          <div class="press-instagram-story__side">
+            <div class="press-instagram-story__styles" role="group" aria-label="Preview style">
+              ${buildInstagramStoryStyleButtons()}
+            </div>
+            <div class="press-instagram-story__actions">
+              <button type="button" data-instagram-story-native>Share image</button>
+              <button type="button" data-instagram-story-download>Save image</button>
+              <button type="button" data-instagram-story-open>Instagram Story</button>
+              <p data-instagram-story-status aria-live="polite"></p>
+            </div>
           </div>
         </div>
       </div>
@@ -2419,6 +2415,41 @@ function enhanceBreakingStrip(stories) {
     document.documentElement.classList.remove('press-instagram-story-open');
   }
 
+  function buildInstagramStoryStyleButtons() {
+    return getInstagramStoryStyles().map((style) => `
+      <button class="press-instagram-story__style" type="button" data-instagram-story-style="${escapeAttribute(style.key)}" aria-label="${escapeAttribute(style.label)} style" aria-pressed="${style.key === 'classic' ? 'true' : 'false'}" title="${escapeAttribute(style.label)}">
+        <span class="press-instagram-story__swatch press-instagram-story__swatch--${escapeAttribute(style.key)}" aria-hidden="true"></span>
+        <span class="press-instagram-story__style-name">${escapeHtml(style.label)}</span>
+      </button>
+    `).join('');
+  }
+
+  function renderInstagramStoryPreview(modal, context, canvas, status, styleKey) {
+    if (!modal || !canvas) return;
+    const style = getInstagramStoryStyle(styleKey);
+    const renderId = (modal._pressInstagramStoryRenderId || 0) + 1;
+    modal._pressInstagramStoryRenderId = renderId;
+    modal._pressInstagramStoryStyle = style.key;
+    updateInstagramStoryStyleButtons(modal, style.key);
+    setInstagramStoryStatus(status, 'Building story image...');
+    setInstagramStoryActionsDisabled(modal, true);
+    modal._pressInstagramStoryReady = drawInstagramStoryCanvas(context, canvas, style.key).then(() => {
+      if (modal._pressInstagramStoryRenderId === renderId) setInstagramStoryStatus(status, 'Story image ready.');
+      return true;
+    }).catch(() => {
+      if (modal._pressInstagramStoryRenderId === renderId) setInstagramStoryStatus(status, 'Story image ready with fallback art.');
+      return false;
+    }).finally(() => {
+      if (modal._pressInstagramStoryRenderId === renderId) setInstagramStoryActionsDisabled(modal, false);
+    });
+  }
+
+  function updateInstagramStoryStyleButtons(modal, styleKey) {
+    modal.querySelectorAll('[data-instagram-story-style]').forEach((button) => {
+      button.setAttribute('aria-pressed', button.dataset.instagramStoryStyle === styleKey ? 'true' : 'false');
+    });
+  }
+
   function setInstagramStoryActionsDisabled(modal, disabled) {
     if (!modal) return;
     modal.querySelectorAll('.press-instagram-story__actions button').forEach((button) => {
@@ -2434,7 +2465,7 @@ function enhanceBreakingStrip(stories) {
     return ready;
   }
 
-  async function drawInstagramStoryCanvas(context, canvas) {
+  async function drawInstagramStoryCanvas(context, canvas, styleKey = 'classic') {
     if (!canvas) return;
     const width = 1080;
     const height = 1920;
@@ -2442,24 +2473,24 @@ function enhanceBreakingStrip(stories) {
     canvas.height = height;
 
     const ctx = canvas.getContext('2d');
-    const accent = instagramStoryAccent(context);
+    const theme = getInstagramStoryTheme(context, styleKey);
+    const accent = theme.accent;
     const title = context.type === 'site' ? 'The Press' : context.title;
     const label = context.type === 'site' ? 'Front Page' : 'Article';
     const dek = context.text || 'Source-forward reporting from The Press.';
     const url = new URL(context.url, window.location.href);
     const host = url.hostname.replace(/^www\./, '') || 'thepress.live';
+    const displayUrl = getInstagramStoryDisplayUrl(context.url);
 
     const bg = ctx.createLinearGradient(0, 0, width, height);
-    bg.addColorStop(0, '#131821');
-    bg.addColorStop(0.48, '#231727');
-    bg.addColorStop(1, '#0e1f25');
+    theme.background.forEach(([stop, color]) => bg.addColorStop(stop, color));
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, width, height);
-    drawInstagramStoryBackdrop(ctx, width, height, accent);
+    drawInstagramStoryBackdrop(ctx, width, height, theme);
 
     ctx.save();
-    ctx.translate(width / 2, 805);
-    ctx.rotate(-3.2 * Math.PI / 180);
+    ctx.translate(width / 2, theme.cardCenterY);
+    ctx.rotate(theme.rotation * Math.PI / 180);
     const cardWidth = 830;
     const cardHeight = 1180;
     const cardX = -cardWidth / 2;
@@ -2468,7 +2499,7 @@ function enhanceBreakingStrip(stories) {
     ctx.shadowBlur = 36;
     ctx.shadowOffsetY = 22;
     roundRectPath(ctx, cardX, cardY, cardWidth, cardHeight, 30);
-    ctx.fillStyle = '#f8f4ec';
+    ctx.fillStyle = theme.card;
     ctx.fill();
     ctx.shadowColor = 'transparent';
 
@@ -2477,7 +2508,7 @@ function enhanceBreakingStrip(stories) {
     const photoWidth = cardWidth - 92;
     const photoHeight = 560;
     roundRectPath(ctx, photoX, photoY, photoWidth, photoHeight, 18);
-    ctx.fillStyle = '#d9e0df';
+    ctx.fillStyle = theme.photoBase;
     ctx.fill();
 
     const imageSrc = context.imageUrl || context.externalImageUrl;
@@ -2498,42 +2529,42 @@ function enhanceBreakingStrip(stories) {
 
     ctx.fillStyle = accent;
     ctx.fillRect(photoX, photoY + photoHeight + 46, 120, 8);
-    ctx.fillStyle = '#1b2230';
+    ctx.fillStyle = theme.text;
     ctx.font = '900 31px Arial, sans-serif';
     ctx.fillText(label.toUpperCase(), photoX, photoY + photoHeight + 104);
     ctx.font = '900 58px Georgia, serif';
     const titleEnd = wrapShareCanvasText(ctx, title, photoX, photoY + photoHeight + 182, photoWidth, 66, 5);
-    ctx.fillStyle = '#55606e';
+    ctx.fillStyle = theme.muted;
     ctx.font = '400 29px Georgia, serif';
     wrapShareCanvasText(ctx, dek, photoX, titleEnd + 24, photoWidth, 40, 4);
-    ctx.fillStyle = '#1b2230';
+    ctx.fillStyle = theme.text;
     ctx.font = '800 25px Arial, sans-serif';
     ctx.fillText(host, photoX, cardY + cardHeight - 58);
     ctx.restore();
 
     ctx.save();
-    ctx.fillStyle = '#f8f4ec';
+    ctx.fillStyle = theme.footer;
     roundRectPath(ctx, 126, 1520, 828, 146, 36);
     ctx.fill();
-    ctx.fillStyle = '#111820';
+    ctx.fillStyle = theme.footerText;
     ctx.font = '900 38px Arial, sans-serif';
     ctx.fillText('THE PRESS', 170, 1580);
-    ctx.fillStyle = '#4f5a69';
+    ctx.fillStyle = theme.footerMuted;
     ctx.font = '700 28px Arial, sans-serif';
-    wrapShareCanvasText(ctx, context.url.replace(/^https?:\/\//i, ''), 170, 1630, 700, 34, 2);
+    wrapShareCanvasText(ctx, displayUrl, 170, 1630, 700, 34, 2);
     ctx.restore();
   }
 
-  function drawInstagramStoryBackdrop(ctx, width, height, accent) {
+  function drawInstagramStoryBackdrop(ctx, width, height, theme) {
     ctx.save();
-    ctx.globalAlpha = 0.28;
+    ctx.globalAlpha = theme.glowAlpha;
     const glow = ctx.createRadialGradient(width - 120, 120, 40, width - 120, 120, 470);
-    glow.addColorStop(0, accent);
+    glow.addColorStop(0, theme.accent);
     glow.addColorStop(1, 'rgba(255,255,255,0)');
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, width, height);
-    ctx.globalAlpha = 0.18;
-    ctx.strokeStyle = '#f8f4ec';
+    ctx.globalAlpha = theme.lineAlpha;
+    ctx.strokeStyle = theme.line;
     ctx.lineWidth = 2;
     for (let y = 90; y < height; y += 92) {
       ctx.beginPath();
@@ -2552,6 +2583,125 @@ function enhanceBreakingStrip(stories) {
     ctx.fillRect(x, y, width, height);
     ctx.fillStyle = 'rgba(255,255,255,.18)';
     ctx.fillRect(x + 42, y + 42, width - 84, height - 84);
+  }
+
+  function getInstagramStoryStyles() {
+    return [
+      {
+        key: 'classic',
+        label: 'Classic',
+        accent: '',
+        background: [[0, '#131821'], [0.48, '#231727'], [1, '#0e1f25']],
+        card: '#f8f4ec',
+        text: '#1b2230',
+        muted: '#55606e',
+        footer: '#f8f4ec',
+        footerText: '#111820',
+        footerMuted: '#4f5a69',
+        photoBase: '#d9e0df',
+        line: '#f8f4ec',
+        lineAlpha: 0.18,
+        glowAlpha: 0.28,
+        rotation: -3.2,
+        cardCenterY: 805,
+      },
+      {
+        key: 'ocean',
+        label: 'Ocean',
+        accent: '#37d5c6',
+        background: [[0, '#071b25'], [0.52, '#0b3a42'], [1, '#09272f']],
+        card: '#eef8f4',
+        text: '#102c35',
+        muted: '#41676c',
+        footer: '#eaf7f6',
+        footerText: '#0e2a31',
+        footerMuted: '#3d6870',
+        photoBase: '#b8dcd9',
+        line: '#bdece8',
+        lineAlpha: 0.16,
+        glowAlpha: 0.32,
+        rotation: 2.4,
+        cardCenterY: 800,
+      },
+      {
+        key: 'sunset',
+        label: 'Sunset',
+        accent: '#ff8a4c',
+        background: [[0, '#2a1018'], [0.48, '#5c203c'], [1, '#18243c']],
+        card: '#fff3e7',
+        text: '#2b1720',
+        muted: '#765362',
+        footer: '#fff1e6',
+        footerText: '#281820',
+        footerMuted: '#7a5762',
+        photoBase: '#ead0bc',
+        line: '#ffd6b3',
+        lineAlpha: 0.18,
+        glowAlpha: 0.34,
+        rotation: -1.6,
+        cardCenterY: 812,
+      },
+      {
+        key: 'ink',
+        label: 'Ink',
+        accent: '#111820',
+        background: [[0, '#050609'], [0.56, '#15171d'], [1, '#252932']],
+        card: '#f4f0e8',
+        text: '#101318',
+        muted: '#585b62',
+        footer: '#f4f0e8',
+        footerText: '#101318',
+        footerMuted: '#565a62',
+        photoBase: '#cfd1d3',
+        line: '#f6f0e8',
+        lineAlpha: 0.12,
+        glowAlpha: 0.18,
+        rotation: 0,
+        cardCenterY: 806,
+      },
+      {
+        key: 'pop',
+        label: 'Pop',
+        accent: '#d9ff4f',
+        background: [[0, '#25116a'], [0.48, '#8b1b84'], [1, '#0b7c89']],
+        card: '#fffaf0',
+        text: '#161326',
+        muted: '#5a5770',
+        footer: '#fffaf0',
+        footerText: '#151326',
+        footerMuted: '#57576b',
+        photoBase: '#d9d5ee',
+        line: '#fffaf0',
+        lineAlpha: 0.2,
+        glowAlpha: 0.36,
+        rotation: -5,
+        cardCenterY: 795,
+      },
+    ];
+  }
+
+  function getInstagramStoryStyle(styleKey) {
+    return getInstagramStoryStyles().find((style) => style.key === styleKey) || getInstagramStoryStyles()[0];
+  }
+
+  function getInstagramStoryTheme(context, styleKey) {
+    const style = getInstagramStoryStyle(styleKey);
+    return {
+      ...style,
+      accent: style.accent || instagramStoryAccent(context),
+    };
+  }
+
+  function getInstagramStoryDisplayUrl(rawUrl) {
+    try {
+      const parsed = new URL(rawUrl, window.location.href);
+      const host = parsed.hostname.replace(/^www\./, '') || 'thepress.live';
+      const path = parsed.pathname.replace(/\/$/, '').split('/').filter(Boolean).pop() || '';
+      if (!path || path === 'index.html') return host;
+      return `${host} / ${shortenShareCanvasText(path.replace(/[-_]+/g, ' '), 58)}`;
+    } catch (_) {
+      return shortenShareCanvasText(String(rawUrl || 'thepress.live').replace(/^https?:\/\//i, ''), 64);
+    }
   }
 
   function instagramStoryAccent(context) {
@@ -2652,11 +2802,11 @@ function enhanceBreakingStrip(stories) {
     try {
       const started = triggerTemporaryDownload(canvas.toDataURL('image/png'), filename);
       setInstagramStoryStatus(status, started
-        ? (statusMessage || 'PNG download started.')
-        : 'Download was blocked. Try Open PNG.');
+        ? (statusMessage || 'Image save started.')
+        : 'Save was blocked. Try Share image.');
       return started;
     } catch (_) {
-      setInstagramStoryStatus(status, 'Download was blocked. Try Open PNG.');
+      setInstagramStoryStatus(status, 'Save was blocked. Try Share image.');
       return false;
     }
   }
@@ -2694,18 +2844,6 @@ function enhanceBreakingStrip(stories) {
       setInstagramStoryStatus(status, 'Image share did not open. Starting PNG download.');
       return false;
     }
-  }
-
-  async function openInstagramStoryPng(canvas, context, status) {
-    const filename = getInstagramStoryFilename(context);
-    const blob = await canvasToPngBlob(canvas);
-    const url = blob ? URL.createObjectURL(blob) : canvas.toDataURL('image/png');
-    const opened = openShareWindow(url);
-    if (blob) window.setTimeout(() => URL.revokeObjectURL(url), 300000);
-    setInstagramStoryStatus(status, opened
-      ? `PNG opened in a new tab as ${filename}.`
-      : 'The browser blocked the PNG tab. Try Download PNG.');
-    return opened;
   }
 
   function getInstagramStoryFilename(context) {
