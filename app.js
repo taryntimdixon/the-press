@@ -2813,11 +2813,9 @@ function enhanceBreakingStrip(stories) {
       ctx.fill();
 
       ctx.fillStyle = '#fffdf9';
-      ctx.font = '800 19px Inter, ui-sans-serif, system-ui, sans-serif';
-      fillTrackedCanvasText(ctx, shortenShareCanvasText(item.section || 'Story', 18).toUpperCase(), tileX + 22, tileY + tileHeight - 74, 1.4);
       ctx.font = '800 28px "Playfair Display", Georgia, "Times New Roman", serif';
-      drawBottomAlignedShareCanvasText(ctx, item.title, tileX + 22, tileY + tileHeight - 25, tileWidth - 44, 31, 2, {
-        minFontSize: 20,
+      drawBottomAlignedShareCanvasText(ctx, item.title, tileX + 22, tileY + tileHeight - 27, tileWidth - 44, 31, 3, {
+        minFontSize: 18,
       });
     });
     ctx.restore();
