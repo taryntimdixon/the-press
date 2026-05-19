@@ -2317,34 +2317,50 @@ function enhanceBreakingStrip(stories) {
     document.documentElement.classList.add('press-instagram-story-open');
     modal.querySelector('[data-instagram-story-close]')?.focus({ preventScroll: true });
     setInstagramStoryStatus(status, 'Building story image...');
-    drawInstagramStoryCanvas(context, canvas).then(() => {
+    setInstagramStoryActionsDisabled(modal, true);
+    modal._pressInstagramStoryReady = drawInstagramStoryCanvas(context, canvas).then(() => {
       setInstagramStoryStatus(status, 'Story image ready.');
+      return true;
     }).catch(() => {
       setInstagramStoryStatus(status, 'Story image ready with fallback art.');
+      return false;
+    }).finally(() => {
+      setInstagramStoryActionsDisabled(modal, false);
     });
 
     modal.querySelector('[data-instagram-story-download]').onclick = async () => {
-      await downloadInstagramStoryCanvas(canvas, context, status);
+      await ensureInstagramStoryReady(modal, status);
+      await downloadInstagramStoryCanvas(canvas, context, status, { skipPicker: true });
     };
     modal.querySelector('[data-instagram-story-native]').onclick = async () => {
+      await ensureInstagramStoryReady(modal, status);
       await nativeShareInstagramStoryCanvas(canvas, context, status);
+    };
+    modal.querySelector('[data-instagram-story-open-png]').onclick = async () => {
+      await ensureInstagramStoryReady(modal, status);
+      await openInstagramStoryPng(canvas, context, status);
     };
     modal.querySelector('[data-instagram-story-copy]').onclick = async () => {
       const copied = await copyShareText(context);
       setInstagramStoryStatus(status, copied ? 'Link copied.' : 'Select and copy the link from the share row.');
     };
-    modal.querySelector('[data-instagram-story-open]').onclick = (event) => {
+    modal.querySelector('[data-instagram-story-open]').onclick = async (event) => {
       event.preventDefault();
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      await ensureInstagramStoryReady(modal, status);
+      const isMobile = isMobileShareDevice();
       if (isMobile) {
+        const shared = await shareInstagramStoryFile(canvas, context, status);
+        if (shared) return;
         window.location.href = 'instagram://story-camera';
         window.setTimeout(() => {
           if (!document.hidden) openShareWindow('https://www.instagram.com/');
         }, 900);
-        setInstagramStoryStatus(status, 'Opening Instagram.');
+        setInstagramStoryStatus(status, 'Instagram opened. If the image is not attached, use Download PNG.');
       } else {
+        startInstagramStoryDownloadFromCanvas(canvas, getInstagramStoryFilename(context), status, 'Story PNG download started. Instagram is opening.');
+        copyShareText(context);
         openShareWindow('https://www.instagram.com/');
-        setInstagramStoryStatus(status, 'Instagram opened. Download the story image if you need to upload it.');
+        setInstagramStoryStatus(status, 'Instagram opened. Browser security cannot pre-load the PNG, so upload the downloaded story image.');
       }
     };
   }
@@ -2377,6 +2393,7 @@ function enhanceBreakingStrip(stories) {
           <div class="press-instagram-story__actions">
             <button type="button" data-instagram-story-native>Share image</button>
             <button type="button" data-instagram-story-download>Download PNG</button>
+            <button type="button" data-instagram-story-open-png>Open PNG</button>
             <button type="button" data-instagram-story-open>Open Instagram</button>
             <button type="button" data-instagram-story-copy>Copy link</button>
             <p data-instagram-story-status aria-live="polite"></p>
@@ -2400,6 +2417,21 @@ function enhanceBreakingStrip(stories) {
     if (!modal) return;
     modal.hidden = true;
     document.documentElement.classList.remove('press-instagram-story-open');
+  }
+
+  function setInstagramStoryActionsDisabled(modal, disabled) {
+    if (!modal) return;
+    modal.querySelectorAll('.press-instagram-story__actions button').forEach((button) => {
+      button.disabled = Boolean(disabled);
+    });
+  }
+
+  async function ensureInstagramStoryReady(modal, status) {
+    if (!modal?._pressInstagramStoryReady) return true;
+    setInstagramStoryStatus(status, 'Preparing story image...');
+    const ready = await modal._pressInstagramStoryReady;
+    if (ready) setInstagramStoryStatus(status, 'Story image ready.');
+    return ready;
   }
 
   async function drawInstagramStoryCanvas(context, canvas) {
@@ -2611,52 +2643,110 @@ function enhanceBreakingStrip(stories) {
     });
   }
 
-  async function downloadInstagramStoryCanvas(canvas, context, status) {
-    const filename = `${slugify(context.title || 'the-press')}-instagram-story.png`;
-    const blob = await canvasToPngBlob(canvas);
-    if (blob) {
-      const url = URL.createObjectURL(blob);
-      triggerTemporaryDownload(url, filename);
-      window.setTimeout(() => URL.revokeObjectURL(url), 2500);
-    } else {
-      triggerTemporaryDownload(canvas.toDataURL('image/png'), filename);
+  async function downloadInstagramStoryCanvas(canvas, context, status, options = {}) {
+    const filename = getInstagramStoryFilename(context);
+    return startInstagramStoryDownloadFromCanvas(canvas, filename, status, options.statusMessage);
+  }
+
+  function startInstagramStoryDownloadFromCanvas(canvas, filename, status, statusMessage) {
+    try {
+      const started = triggerTemporaryDownload(canvas.toDataURL('image/png'), filename);
+      setInstagramStoryStatus(status, started
+        ? (statusMessage || 'PNG download started.')
+        : 'Download was blocked. Try Open PNG.');
+      return started;
+    } catch (_) {
+      setInstagramStoryStatus(status, 'Download was blocked. Try Open PNG.');
+      return false;
     }
-    setInstagramStoryStatus(status, 'PNG downloaded.');
   }
 
   async function nativeShareInstagramStoryCanvas(canvas, context, status) {
-    const blob = await canvasToPngBlob(canvas);
-    if (!blob || typeof File === 'undefined') {
-      setInstagramStoryStatus(status, 'Native image sharing is not available here. Use Download PNG.');
-      return;
-    }
+    const sharedFile = await shareInstagramStoryFile(canvas, context, status);
+    if (sharedFile) return;
 
-    const file = new File([blob], `${slugify(context.title || 'the-press')}-story.png`, { type: 'image/png' });
+    await downloadInstagramStoryCanvas(canvas, context, status, {
+      skipPicker: true,
+      statusMessage: 'Image sharing was blocked here, so the PNG download started.',
+    });
+  }
+
+  async function shareInstagramStoryFile(canvas, context, status) {
+    if (!isMobileShareDevice()) return false;
+    const blob = await canvasToPngBlob(canvas);
+    if (!blob || typeof File === 'undefined' || !navigator.share) return false;
+
+    const file = new File([blob], getInstagramStoryFilename(context), { type: 'image/png' });
     const shareData = {
       files: [file],
       title: context.title,
       text: context.url,
     };
 
+    const canAskForFileShare = !navigator.canShare || navigator.canShare({ files: [file] });
+    if (!canAskForFileShare) return false;
+
     try {
-      if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
-        await navigator.share(shareData);
-        setInstagramStoryStatus(status, 'Share sheet opened.');
-      } else {
-        setInstagramStoryStatus(status, 'Native image sharing is not available here. Use Download PNG.');
-      }
+      await navigator.share(shareData);
+      setInstagramStoryStatus(status, 'Share sheet opened. Choose Instagram Stories if it appears.');
+      return true;
     } catch (_) {
-      setInstagramStoryStatus(status, 'Share canceled. The PNG is still ready.');
+      setInstagramStoryStatus(status, 'Image share did not open. Starting PNG download.');
+      return false;
     }
+  }
+
+  async function openInstagramStoryPng(canvas, context, status) {
+    const filename = getInstagramStoryFilename(context);
+    const blob = await canvasToPngBlob(canvas);
+    const url = blob ? URL.createObjectURL(blob) : canvas.toDataURL('image/png');
+    const opened = openShareWindow(url);
+    if (blob) window.setTimeout(() => URL.revokeObjectURL(url), 300000);
+    setInstagramStoryStatus(status, opened
+      ? `PNG opened in a new tab as ${filename}.`
+      : 'The browser blocked the PNG tab. Try Download PNG.');
+    return opened;
+  }
+
+  function getInstagramStoryFilename(context) {
+    return `${slugifyShareFilename(context.title || 'the-press')}-instagram-story.png`;
+  }
+
+  function isMobileShareDevice() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+
+  function slugifyShareFilename(value) {
+    const slug = collapseWhitespace(value)
+      .toLowerCase()
+      .replace(/&/g, 'and')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+    return slug || 'the-press';
   }
 
   function triggerTemporaryDownload(url, filename) {
     const link = document.createElement('a');
     link.href = url;
     link.download = filename;
+    link.rel = 'noopener';
+    link.target = '_blank';
+    link.style.display = 'none';
     document.body.appendChild(link);
-    link.click();
-    link.remove();
+    let started = false;
+    try {
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+      started = true;
+    } catch (_) {
+      try {
+        link.click();
+        started = true;
+      } catch (__) {
+        started = false;
+      }
+    }
+    window.setTimeout(() => link.remove(), 0);
+    return started;
   }
 
   function setInstagramStoryStatus(status, message) {

@@ -1659,6 +1659,11 @@ body,
   padding:.62rem .9rem;
 }
 
+.press-instagram-story__actions button:disabled{
+  cursor:wait;
+  opacity:.52;
+}
+
 .press-instagram-story__body{
   min-height:0;
   display:grid;
