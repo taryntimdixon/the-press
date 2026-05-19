@@ -2095,7 +2095,7 @@ function enhanceBreakingStrip(stories) {
   }
 
   /* ── Share buttons ────────────────────────────────────────────────── */
-  const HOMEPAGE_SOCIAL_SHARE_VERSION = '1779158224';
+  const SOCIAL_SHARE_CARD_VERSION = '1779159509';
 
   function injectShareButtons() {
     const articleHero = document.querySelector('.article-hero');
@@ -2314,11 +2314,11 @@ function enhanceBreakingStrip(stories) {
   }
 
   function getPlatformShareUrl(context, platform) {
-    if (context.type !== 'site' || !['x', 'facebook'].includes(platform)) return context.url;
+    if (!['x', 'facebook'].includes(platform)) return context.url;
     try {
       const url = new URL(context.url);
-      url.searchParams.set('share', 'front-page');
-      url.searchParams.set('card', HOMEPAGE_SOCIAL_SHARE_VERSION);
+      url.searchParams.set('share', context.type === 'site' ? 'front-page' : 'article');
+      url.searchParams.set('card', SOCIAL_SHARE_CARD_VERSION);
       return url.href;
     } catch (_) {
       return context.url;
