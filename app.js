@@ -3969,7 +3969,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchOptionalJson(url) {
     try {
-      const response = await fetch(pressSiteAssetUrl(url), { cache: 'force-cache' });
+      const response = await fetch(versionedJsonAssetUrl(url), { cache: 'no-cache' });
       if (!response.ok) return readCachedJson(url);
 
       const json = await response.json();
@@ -3999,6 +3999,13 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (_) {
       return null;
     }
+  }
+
+  function versionedJsonAssetUrl(url) {
+    const resolved = new URL(pressSiteAssetUrl(url), window.location.href);
+    const appVersion = new URL(document.querySelector('script[src*="app.js"]')?.src || window.location.href).searchParams.get('v');
+    if (appVersion) resolved.searchParams.set('v', appVersion);
+    return resolved.href;
   }
 
   function readEmbeddedSearchJson() {
@@ -4326,21 +4333,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function rotateHeroListFromStoredHero(stories) {
     const items = uniqueByUrl(Array.isArray(stories) ? stories : []);
-    if (items.length < 2) return items;
-
-    let previousUrl = '';
-    try {
-      previousUrl = sessionStorage.getItem(HERO_ROTATION_KEY) || '';
-    } catch (_) {}
-
-    const previousKey = normalizeUrlKey(previousUrl);
-    const previousIndex = previousKey
-      ? items.findIndex((story) => normalizeUrlKey(story.url) === previousKey)
-      : -1;
-
-    if (previousIndex < 0) return items;
-
-    return items.slice(previousIndex + 1).concat(items.slice(0, previousIndex + 1));
+    return items;
   }
 
   function scoreSort(stories, mode = 'placement') {
