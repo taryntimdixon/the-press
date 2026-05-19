@@ -2095,7 +2095,7 @@ function enhanceBreakingStrip(stories) {
   }
 
   /* ── Share buttons ────────────────────────────────────────────────── */
-  const SOCIAL_SHARE_CARD_VERSION = '1779159509';
+  const SOCIAL_SHARE_CARD_VERSION = '1779159880';
 
   function injectShareButtons() {
     const articleHero = document.querySelector('.article-hero');
