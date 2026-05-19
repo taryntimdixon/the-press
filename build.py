@@ -1305,7 +1305,6 @@ def render_homepage() -> str:
   </section>
 </main>
 """.strip()
-    social_story = lead_stories[0] if lead_stories else {}
     return layout(
         f"{SITE['name']} — Front Page",
         SITE["description"],
@@ -1313,10 +1312,10 @@ def render_homepage() -> str:
         "page-home",
         main,
         jsonld=jsonld_org(),
-        social_image=social_story.get("image", ""),
-        social_image_alt=public_image_alt(social_story, social_story.get("title") or SITE["name"]),
-        social_image_width=social_story.get("imageWidth", ""),
-        social_image_height=social_story.get("imageHeight", ""),
+        social_image="assets/the-press-front-page-share-card.png",
+        social_image_alt="The Press front page share card with a four-story collage across technology, world, climate, and science",
+        social_image_width="1200",
+        social_image_height="630",
         social_title=SITE["name"],
     )
 

@@ -2095,6 +2095,15 @@ function enhanceBreakingStrip(stories) {
   }
 
   /* ── Share buttons ────────────────────────────────────────────────── */
+  const HOMEPAGE_SOCIAL_SHARE_PAGES = [
+    'share-homepage-1.html',
+    'share-homepage-2.html',
+    'share-homepage-3.html',
+    'share-homepage-4.html',
+    'share-homepage-5.html',
+    'share-homepage-6.html',
+  ];
+
   function injectShareButtons() {
     const articleHero = document.querySelector('.article-hero');
     const articleMeta = articleHero?.querySelector('.article-meta');
@@ -2295,16 +2304,37 @@ function enhanceBreakingStrip(stories) {
   }
 
   function buildShareIntents(context) {
+    const xDestination = getSocialShareDestination(context, 'x');
+    const facebookDestination = getSocialShareDestination(context, 'facebook');
     const encodedUrl = encodeURIComponent(context.url);
+    const encodedXUrl = encodeURIComponent(xDestination);
+    const encodedFacebookUrl = encodeURIComponent(facebookDestination);
     const encodedTitle = encodeURIComponent(context.title);
     const encodedText = encodeURIComponent(`${context.title} ${context.url}`);
     return {
-      x: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      x: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedXUrl}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedFacebookUrl}`,
       whatsapp: `https://api.whatsapp.com/send?text=${encodedText}`,
       reddit: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
       discord: 'https://discord.com/channels/@me',
     };
+  }
+
+  function getSocialShareDestination(context, platform) {
+    if (context.type !== 'site' || !['x', 'facebook'].includes(platform)) return context.url;
+    const page = HOMEPAGE_SOCIAL_SHARE_PAGES[getRandomShareIndex(HOMEPAGE_SOCIAL_SHARE_PAGES.length)];
+    return new URL(page, context.url).href;
+  }
+
+  function getRandomShareIndex(max) {
+    if (!max) return 0;
+    try {
+      const values = new Uint32Array(1);
+      window.crypto?.getRandomValues(values);
+      return values[0] % max;
+    } catch (_) {
+      return Math.floor(Math.random() * max);
+    }
   }
 
   function bindShareRow(row, context) {
@@ -2330,6 +2360,10 @@ function enhanceBreakingStrip(stories) {
         }
         if (control.matches('a[href]')) {
           const platform = control.dataset.sharePlatform;
+          if (['x', 'facebook'].includes(platform)) {
+            control.href = buildShareIntents(context)[platform] || control.href;
+            control.dataset.shareTarget = control.href;
+          }
           const label = getSharePlatformLabel(platform);
           let copiedForDiscord = false;
           if (platform === 'discord') {
