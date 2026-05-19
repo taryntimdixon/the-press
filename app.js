@@ -2200,6 +2200,7 @@ function enhanceBreakingStrip(stories) {
     return `
       <div class="share-row__buttons">
         <a class="share-btn share-btn--x" href="${escapeAttribute(intent.x)}" target="_blank" rel="noopener noreferrer" data-share-platform="x" data-share-target="${escapeAttribute(intent.x)}" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
+        <button class="share-btn share-btn--instagram" type="button" data-share-platform="instagram" aria-label="Make an Instagram Story image" title="Instagram Story">${sharePlatformIcon('instagram')}<span class="sr-only">Instagram Story</span></button>
         <a class="share-btn share-btn--facebook" href="${escapeAttribute(intent.facebook)}" target="_blank" rel="noopener noreferrer" data-share-platform="facebook" data-share-target="${escapeAttribute(intent.facebook)}" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
         <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(intent.whatsapp)}" target="_blank" rel="noopener noreferrer" data-share-platform="whatsapp" data-share-target="${escapeAttribute(intent.whatsapp)}" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
         <a class="share-btn share-btn--reddit" href="${escapeAttribute(intent.reddit)}" target="_blank" rel="noopener noreferrer" data-share-platform="reddit" data-share-target="${escapeAttribute(intent.reddit)}" aria-label="Share on Reddit" title="Reddit">${sharePlatformIcon('reddit')}<span class="sr-only">Reddit</span></a>
@@ -2213,6 +2214,7 @@ function enhanceBreakingStrip(stories) {
   function sharePlatformIcon(platform) {
     const icons = {
       x: '<svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M18.24 2.25h3.31l-7.23 8.26 8.51 11.24h-6.66l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.84L7.08 4.13H5.12l11.96 15.64Z"/></svg>',
+      instagram: '<svg viewBox="0 0 24 24" focusable="false"><rect x="4.2" y="4.2" width="15.6" height="15.6" rx="4.4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.35" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16.8" cy="7.35" r="1.05" fill="currentColor"/></svg>',
       facebook: '<svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M14 8h3V4h-3c-3.1 0-5 1.9-5 5v3H6v4h3v6h4v-6h3.1l.9-4h-4V9c0-.6.4-1 1-1Z"/></svg>',
       whatsapp: '<svg viewBox="0 0 24 24" focusable="false"><path d="M20.5 11.8a8.3 8.3 0 0 1-12.3 7.3L4 20.3l1.3-4A8.3 8.3 0 1 1 20.5 11.8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path fill="currentColor" d="M8.9 7.6c.3-.3.7-.3 1 0l1 1.4c.2.3.2.6 0 .9l-.5.7c.7 1.4 1.8 2.4 3.2 3.1l.7-.5c.3-.2.7-.2.9 0l1.4 1c.3.2.4.7.1 1-.4.6-1.1 1-1.9.9-3.4-.3-6.4-3.3-6.8-6.7-.1-.8.3-1.5.9-1.8Z"/></svg>',
       reddit: '<svg viewBox="0 0 24 24" focusable="false"><path d="M18.8 10.2c.9 0 1.7.7 1.7 1.7 0 .6-.3 1.1-.8 1.4.1.4.2.7.2 1.1 0 2.8-3.5 5.1-7.9 5.1s-7.9-2.3-7.9-5.1c0-.4.1-.8.2-1.1-.5-.3-.8-.8-.8-1.4 0-.9.8-1.7 1.7-1.7.5 0 .9.2 1.2.5 1.3-.8 3.1-1.3 5-1.4l.9-4.2 3 .7c.2-.6.8-1.1 1.5-1.1.9 0 1.6.7 1.6 1.6S17.7 8 16.8 8c-.6 0-1.1-.3-1.4-.8l-2.1-.5-.6 2.7c1.9.1 3.6.6 4.9 1.4.3-.4.7-.6 1.2-.6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="9.2" cy="13.8" r="1" fill="currentColor"/><circle cx="14.8" cy="13.8" r="1" fill="currentColor"/><path d="M9.5 16.4c1.3.8 3.7.8 5 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
@@ -2253,6 +2255,11 @@ function enhanceBreakingStrip(stories) {
           }
           return;
         }
+        if (control.dataset.sharePlatform === 'instagram') {
+          event.preventDefault();
+          openInstagramStoryStudio(row, context);
+          return;
+        }
         if (control.matches('a[href]')) {
           const platform = control.dataset.sharePlatform;
           const label = getSharePlatformLabel(platform);
@@ -2280,6 +2287,7 @@ function enhanceBreakingStrip(stories) {
   function getSharePlatformLabel(platform) {
     const labels = {
       x: 'X',
+      instagram: 'Instagram',
       facebook: 'Facebook',
       whatsapp: 'WhatsApp',
       reddit: 'Reddit',
@@ -2298,6 +2306,362 @@ function enhanceBreakingStrip(stories) {
     } catch (_) {
       return false;
     }
+  }
+
+  function openInstagramStoryStudio(row, context) {
+    clearManualCopyText(row);
+    const modal = ensureInstagramStoryStudio();
+    const canvas = modal.querySelector('[data-instagram-story-canvas]');
+    const status = modal.querySelector('[data-instagram-story-status]');
+    modal.hidden = false;
+    document.documentElement.classList.add('press-instagram-story-open');
+    modal.querySelector('[data-instagram-story-close]')?.focus({ preventScroll: true });
+    setInstagramStoryStatus(status, 'Building story image...');
+    drawInstagramStoryCanvas(context, canvas).then(() => {
+      setInstagramStoryStatus(status, 'Story image ready.');
+    }).catch(() => {
+      setInstagramStoryStatus(status, 'Story image ready with fallback art.');
+    });
+
+    modal.querySelector('[data-instagram-story-download]').onclick = async () => {
+      await downloadInstagramStoryCanvas(canvas, context, status);
+    };
+    modal.querySelector('[data-instagram-story-native]').onclick = async () => {
+      await nativeShareInstagramStoryCanvas(canvas, context, status);
+    };
+    modal.querySelector('[data-instagram-story-copy]').onclick = async () => {
+      const copied = await copyShareText(context);
+      setInstagramStoryStatus(status, copied ? 'Link copied.' : 'Select and copy the link from the share row.');
+    };
+    modal.querySelector('[data-instagram-story-open]').onclick = (event) => {
+      event.preventDefault();
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.location.href = 'instagram://story-camera';
+        window.setTimeout(() => {
+          if (!document.hidden) openShareWindow('https://www.instagram.com/');
+        }, 900);
+        setInstagramStoryStatus(status, 'Opening Instagram.');
+      } else {
+        openShareWindow('https://www.instagram.com/');
+        setInstagramStoryStatus(status, 'Instagram opened. Download the story image if you need to upload it.');
+      }
+    };
+  }
+
+  function ensureInstagramStoryStudio() {
+    let modal = document.querySelector('[data-instagram-story-modal]');
+    if (modal) return modal;
+
+    modal = document.createElement('aside');
+    modal.className = 'press-instagram-story';
+    modal.setAttribute('data-instagram-story-modal', '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'instagram-story-title');
+    modal.hidden = true;
+    modal.innerHTML = `
+      <button class="press-instagram-story__scrim" type="button" data-instagram-story-close aria-label="Close Instagram Story maker"></button>
+      <div class="press-instagram-story__panel" role="document">
+        <div class="press-instagram-story__header">
+          <div>
+            <p>Instagram Story</p>
+            <h2 id="instagram-story-title">Story Preview</h2>
+          </div>
+          <button class="press-instagram-story__close" type="button" data-instagram-story-close>Close</button>
+        </div>
+        <div class="press-instagram-story__body">
+          <div class="press-instagram-story__preview">
+            <canvas width="1080" height="1920" data-instagram-story-canvas></canvas>
+          </div>
+          <div class="press-instagram-story__actions">
+            <button type="button" data-instagram-story-native>Share image</button>
+            <button type="button" data-instagram-story-download>Download PNG</button>
+            <button type="button" data-instagram-story-open>Open Instagram</button>
+            <button type="button" data-instagram-story-copy>Copy link</button>
+            <p data-instagram-story-status aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.querySelectorAll('[data-instagram-story-close]').forEach((button) => {
+      button.addEventListener('click', () => closeInstagramStoryStudio(modal));
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !modal.hidden) closeInstagramStoryStudio(modal);
+    });
+
+    return modal;
+  }
+
+  function closeInstagramStoryStudio(modal) {
+    if (!modal) return;
+    modal.hidden = true;
+    document.documentElement.classList.remove('press-instagram-story-open');
+  }
+
+  async function drawInstagramStoryCanvas(context, canvas) {
+    if (!canvas) return;
+    const width = 1080;
+    const height = 1920;
+    canvas.width = width;
+    canvas.height = height;
+
+    const ctx = canvas.getContext('2d');
+    const accent = instagramStoryAccent(context);
+    const title = context.type === 'site' ? 'The Press' : context.title;
+    const label = context.type === 'site' ? 'Front Page' : 'Article';
+    const dek = context.text || 'Source-forward reporting from The Press.';
+    const url = new URL(context.url, window.location.href);
+    const host = url.hostname.replace(/^www\./, '') || 'thepress.live';
+
+    const bg = ctx.createLinearGradient(0, 0, width, height);
+    bg.addColorStop(0, '#131821');
+    bg.addColorStop(0.48, '#231727');
+    bg.addColorStop(1, '#0e1f25');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, width, height);
+    drawInstagramStoryBackdrop(ctx, width, height, accent);
+
+    ctx.save();
+    ctx.translate(width / 2, 805);
+    ctx.rotate(-3.2 * Math.PI / 180);
+    const cardWidth = 830;
+    const cardHeight = 1180;
+    const cardX = -cardWidth / 2;
+    const cardY = -cardHeight / 2;
+    ctx.shadowColor = 'rgba(0,0,0,.32)';
+    ctx.shadowBlur = 36;
+    ctx.shadowOffsetY = 22;
+    roundRectPath(ctx, cardX, cardY, cardWidth, cardHeight, 30);
+    ctx.fillStyle = '#f8f4ec';
+    ctx.fill();
+    ctx.shadowColor = 'transparent';
+
+    const photoX = cardX + 46;
+    const photoY = cardY + 48;
+    const photoWidth = cardWidth - 92;
+    const photoHeight = 560;
+    roundRectPath(ctx, photoX, photoY, photoWidth, photoHeight, 18);
+    ctx.fillStyle = '#d9e0df';
+    ctx.fill();
+
+    const imageSrc = context.imageUrl || context.externalImageUrl;
+    if (imageSrc) {
+      try {
+        const img = await loadShareImage(imageSrc);
+        ctx.save();
+        roundRectPath(ctx, photoX, photoY, photoWidth, photoHeight, 18);
+        ctx.clip();
+        drawShareImageCover(ctx, img, photoX, photoY, photoWidth, photoHeight);
+        ctx.restore();
+      } catch (_) {
+        drawInstagramImageFallback(ctx, photoX, photoY, photoWidth, photoHeight, accent);
+      }
+    } else {
+      drawInstagramImageFallback(ctx, photoX, photoY, photoWidth, photoHeight, accent);
+    }
+
+    ctx.fillStyle = accent;
+    ctx.fillRect(photoX, photoY + photoHeight + 46, 120, 8);
+    ctx.fillStyle = '#1b2230';
+    ctx.font = '900 31px Arial, sans-serif';
+    ctx.fillText(label.toUpperCase(), photoX, photoY + photoHeight + 104);
+    ctx.font = '900 58px Georgia, serif';
+    const titleEnd = wrapShareCanvasText(ctx, title, photoX, photoY + photoHeight + 182, photoWidth, 66, 5);
+    ctx.fillStyle = '#55606e';
+    ctx.font = '400 29px Georgia, serif';
+    wrapShareCanvasText(ctx, dek, photoX, titleEnd + 24, photoWidth, 40, 4);
+    ctx.fillStyle = '#1b2230';
+    ctx.font = '800 25px Arial, sans-serif';
+    ctx.fillText(host, photoX, cardY + cardHeight - 58);
+    ctx.restore();
+
+    ctx.save();
+    ctx.fillStyle = '#f8f4ec';
+    roundRectPath(ctx, 126, 1520, 828, 146, 36);
+    ctx.fill();
+    ctx.fillStyle = '#111820';
+    ctx.font = '900 38px Arial, sans-serif';
+    ctx.fillText('THE PRESS', 170, 1580);
+    ctx.fillStyle = '#4f5a69';
+    ctx.font = '700 28px Arial, sans-serif';
+    wrapShareCanvasText(ctx, context.url.replace(/^https?:\/\//i, ''), 170, 1630, 700, 34, 2);
+    ctx.restore();
+  }
+
+  function drawInstagramStoryBackdrop(ctx, width, height, accent) {
+    ctx.save();
+    ctx.globalAlpha = 0.28;
+    const glow = ctx.createRadialGradient(width - 120, 120, 40, width - 120, 120, 470);
+    glow.addColorStop(0, accent);
+    glow.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, width, height);
+    ctx.globalAlpha = 0.18;
+    ctx.strokeStyle = '#f8f4ec';
+    ctx.lineWidth = 2;
+    for (let y = 90; y < height; y += 92) {
+      ctx.beginPath();
+      ctx.moveTo(-120, y);
+      ctx.lineTo(width + 120, y - 260);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawInstagramImageFallback(ctx, x, y, width, height, accent) {
+    const gradient = ctx.createLinearGradient(x, y, x + width, y + height);
+    gradient.addColorStop(0, accent);
+    gradient.addColorStop(1, '#26344a');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(x, y, width, height);
+    ctx.fillStyle = 'rgba(255,255,255,.18)';
+    ctx.fillRect(x + 42, y + 42, width - 84, height - 84);
+  }
+
+  function instagramStoryAccent(context) {
+    const section = `${context.title} ${context.text}`.toLowerCase();
+    if (/science|ocean|climate|health/.test(section)) return '#31a89a';
+    if (/sport|world cup|poker|texas/.test(section)) return '#5f8ee8';
+    if (/technology|ai|drone|battery/.test(section)) return '#8067f2';
+    if (/culture|film|music|streaming/.test(section)) return '#e45086';
+    return '#e16b4f';
+  }
+
+  function loadShareImage(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+
+  function drawShareImageCover(ctx, img, x, y, width, height) {
+    const naturalWidth = img.naturalWidth || img.width;
+    const naturalHeight = img.naturalHeight || img.height;
+    if (!naturalWidth || !naturalHeight) return;
+    const scale = Math.max(width / naturalWidth, height / naturalHeight);
+    const drawWidth = naturalWidth * scale;
+    const drawHeight = naturalHeight * scale;
+    ctx.drawImage(img, x + (width - drawWidth) / 2, y + (height - drawHeight) / 2, drawWidth, drawHeight);
+  }
+
+  function wrapShareCanvasText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+    const words = collapseWhitespace(text).split(/\s+/).filter(Boolean);
+    let line = '';
+    let cursor = y;
+    let lines = 0;
+
+    for (const word of words) {
+      const test = line ? `${line} ${word}` : word;
+      if (ctx.measureText(test).width > maxWidth && line) {
+        if (lines >= maxLines - 1) {
+          ctx.fillText(shortenShareCanvasText(line, 58), x, cursor);
+          return cursor + lineHeight;
+        }
+        ctx.fillText(line, x, cursor);
+        cursor += lineHeight;
+        lines += 1;
+        line = word;
+      } else {
+        line = test;
+      }
+    }
+
+    if (line && lines < maxLines) {
+      ctx.fillText(line, x, cursor);
+      cursor += lineHeight;
+    }
+
+    return cursor;
+  }
+
+  function shortenShareCanvasText(value, max) {
+    const text = collapseWhitespace(value);
+    if (!max || text.length <= max) return text;
+    return `${text.slice(0, Math.max(0, max - 3)).trim()}...`;
+  }
+
+  function roundRectPath(ctx, x, y, width, height, radius) {
+    const r = Math.min(radius, width / 2, height / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + width - r, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + r);
+    ctx.lineTo(x + width, y + height - r);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+    ctx.lineTo(x + r, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  }
+
+  function canvasToPngBlob(canvas) {
+    return new Promise((resolve) => {
+      if (!canvas?.toBlob) {
+        resolve(null);
+        return;
+      }
+      canvas.toBlob((blob) => resolve(blob), 'image/png');
+    });
+  }
+
+  async function downloadInstagramStoryCanvas(canvas, context, status) {
+    const filename = `${slugify(context.title || 'the-press')}-instagram-story.png`;
+    const blob = await canvasToPngBlob(canvas);
+    if (blob) {
+      const url = URL.createObjectURL(blob);
+      triggerTemporaryDownload(url, filename);
+      window.setTimeout(() => URL.revokeObjectURL(url), 2500);
+    } else {
+      triggerTemporaryDownload(canvas.toDataURL('image/png'), filename);
+    }
+    setInstagramStoryStatus(status, 'PNG downloaded.');
+  }
+
+  async function nativeShareInstagramStoryCanvas(canvas, context, status) {
+    const blob = await canvasToPngBlob(canvas);
+    if (!blob || typeof File === 'undefined') {
+      setInstagramStoryStatus(status, 'Native image sharing is not available here. Use Download PNG.');
+      return;
+    }
+
+    const file = new File([blob], `${slugify(context.title || 'the-press')}-story.png`, { type: 'image/png' });
+    const shareData = {
+      files: [file],
+      title: context.title,
+      text: context.url,
+    };
+
+    try {
+      if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
+        await navigator.share(shareData);
+        setInstagramStoryStatus(status, 'Share sheet opened.');
+      } else {
+        setInstagramStoryStatus(status, 'Native image sharing is not available here. Use Download PNG.');
+      }
+    } catch (_) {
+      setInstagramStoryStatus(status, 'Share canceled. The PNG is still ready.');
+    }
+  }
+
+  function triggerTemporaryDownload(url, filename) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
+  function setInstagramStoryStatus(status, message) {
+    if (!status) return;
+    status.textContent = message;
   }
 
   async function handleSmsShare(row, control, context) {
