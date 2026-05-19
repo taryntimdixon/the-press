@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-17T03:33:51.572336+00:00",
+  "generated_at": "2026-05-19T16:57:41.103173+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -25,10 +25,7 @@
     ],
     "most_read": [
       "health-the-next-public-health-system-is-the-room-you-are-in",
-      "technology-the-battery-is-becoming-the-grid",
-      "sports-texas-holdem-prime-time-moment-back",
-      "technology-pentagon-ai-classified-networks",
-      "food-atla-noho-closing"
+      "technology-the-battery-is-becoming-the-grid"
     ],
     "editors_picks": [],
     "latest": [
@@ -78,13 +75,13 @@
     ],
     "desk_pulse": [
       {
-        "count": 3,
+        "count": 2,
         "latest_ts": 1778956200.0,
         "story_id": "technology-drones-have-left-the-gadget-era",
         "section": "Technology"
       },
       {
-        "count": 2,
+        "count": 1,
         "latest_ts": 1778504400.0,
         "story_id": "sports-world-cup-game-day-machine",
         "section": "Sports"
@@ -130,12 +127,6 @@
         "latest_ts": 1778163000.0,
         "story_id": "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
         "section": "Science"
-      },
-      {
-        "count": 1,
-        "latest_ts": 1777813200.0,
-        "story_id": "food-atla-noho-closing",
-        "section": "Culture"
       }
     ]
   }
