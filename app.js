@@ -684,6 +684,7 @@ function pressSiteAssetUrl(path) {
     extendSectionNavigation();
     setupDarkMode();
     injectShareButtons();
+    setupShareButtonRefresh();
     bindSourceNoteExternalLinks(document);
     applyDailyCardHover();
 
@@ -2097,17 +2098,29 @@ function enhanceBreakingStrip(stories) {
   function injectShareButtons() {
     const articleHero = document.querySelector('.article-hero');
     const articleMeta = articleHero?.querySelector('.article-meta');
-    const articleBody = document.querySelector('.article-body');
+    const articleBody = document.querySelector('[data-article-body], .article-body, .generated-story');
+    const articleHeadline = document.querySelector('.article-headline, .article-title, h1');
     const homeIntro = document.querySelector('.page-home .home-hero__intro');
-    const contextType = articleHero ? 'article' : (homeIntro ? 'site' : '');
+    const contextType = (articleHero || articleBody || articleHeadline) && !document.body.classList.contains('page-home')
+      ? 'article'
+      : (homeIntro ? 'site' : '');
     const target = articleMeta || articleBody || homeIntro;
-    if (!contextType || !target || document.querySelector('[data-press-share-row]')) return;
+    if (!contextType || !target) return;
 
     const context = buildShareContext(contextType);
+    document.querySelectorAll('[data-press-share-row]').forEach((row) => {
+      const staleType = row.getAttribute('data-press-share-row') !== contextType;
+      const staleUrl = row.getAttribute('data-share-url') !== context.url;
+      const staleTarget = !target.contains(row) && row.parentElement !== target.parentElement;
+      if (staleType || staleUrl || staleTarget) row.remove();
+    });
+    if (document.querySelector('[data-press-share-row]')) return;
+
     const shareRow = document.createElement('nav');
     shareRow.className = `share-row share-row--${contextType}`;
     shareRow.setAttribute('aria-label', context.ariaLabel);
     shareRow.setAttribute('data-press-share-row', contextType);
+    shareRow.setAttribute('data-share-url', context.url);
     shareRow.innerHTML = buildShareRowMarkup(context);
 
     if (articleMeta) {
@@ -2119,6 +2132,22 @@ function enhanceBreakingStrip(stories) {
     }
 
     bindShareRow(shareRow, context);
+  }
+
+  function setupShareButtonRefresh() {
+    let timer = 0;
+    const refresh = () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(injectShareButtons, 80);
+    };
+    window.addEventListener('pageshow', refresh);
+    window.addEventListener('popstate', refresh);
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest?.('a[href]');
+      if (!link || link.target || link.origin !== window.location.origin) return;
+      window.setTimeout(injectShareButtons, 180);
+      window.setTimeout(injectShareButtons, 600);
+    });
   }
 
   function buildShareContext(type) {
@@ -2326,7 +2355,7 @@ function enhanceBreakingStrip(stories) {
 
     modal.querySelector('[data-instagram-story-download]').onclick = async () => {
       await ensureInstagramStoryReady(modal, status);
-      await downloadInstagramStoryCanvas(canvas, context, status, { skipPicker: true });
+      await saveInstagramStoryCanvas(canvas, context, status);
     };
     modal.querySelector('[data-instagram-story-native]').onclick = async () => {
       await ensureInstagramStoryReady(modal, status);
@@ -2389,7 +2418,7 @@ function enhanceBreakingStrip(stories) {
             </div>
             <div class="press-instagram-story__actions">
               <button type="button" data-instagram-story-native>Share image</button>
-              <button type="button" data-instagram-story-download>Save image</button>
+              <button type="button" data-instagram-story-download>Save to device</button>
               <button type="button" data-instagram-story-open>Instagram Story</button>
               <p data-instagram-story-status aria-live="polite"></p>
             </div>
@@ -2478,9 +2507,6 @@ function enhanceBreakingStrip(stories) {
     const title = context.type === 'site' ? 'The Press' : context.title;
     const label = context.type === 'site' ? 'Front Page' : 'Article';
     const dek = context.text || 'Source-forward reporting from The Press.';
-    const url = new URL(context.url, window.location.href);
-    const host = url.hostname.replace(/^www\./, '') || 'thepress.live';
-    const displayUrl = getInstagramStoryDisplayUrl(context.url);
 
     const bg = ctx.createLinearGradient(0, 0, width, height);
     theme.background.forEach(([stop, color]) => bg.addColorStop(stop, color));
@@ -2539,19 +2565,18 @@ function enhanceBreakingStrip(stories) {
     wrapShareCanvasText(ctx, dek, photoX, titleEnd + 24, photoWidth, 40, 4);
     ctx.fillStyle = theme.text;
     ctx.font = '800 25px Arial, sans-serif';
-    ctx.fillText(host, photoX, cardY + cardHeight - 58);
+    ctx.fillText('THE PRESS', photoX, cardY + cardHeight - 58);
     ctx.restore();
 
     ctx.save();
     ctx.fillStyle = theme.footer;
-    roundRectPath(ctx, 126, 1520, 828, 146, 36);
+    roundRectPath(ctx, 306, 1536, 468, 92, 34);
     ctx.fill();
     ctx.fillStyle = theme.footerText;
-    ctx.font = '900 38px Arial, sans-serif';
-    ctx.fillText('THE PRESS', 170, 1580);
-    ctx.fillStyle = theme.footerMuted;
-    ctx.font = '700 28px Arial, sans-serif';
-    wrapShareCanvasText(ctx, displayUrl, 170, 1630, 700, 34, 2);
+    ctx.font = '900 36px Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('THE PRESS', width / 2, 1594);
+    ctx.textAlign = 'left';
     ctx.restore();
   }
 
@@ -2692,18 +2717,6 @@ function enhanceBreakingStrip(stories) {
     };
   }
 
-  function getInstagramStoryDisplayUrl(rawUrl) {
-    try {
-      const parsed = new URL(rawUrl, window.location.href);
-      const host = parsed.hostname.replace(/^www\./, '') || 'thepress.live';
-      const path = parsed.pathname.replace(/\/$/, '').split('/').filter(Boolean).pop() || '';
-      if (!path || path === 'index.html') return host;
-      return `${host} / ${shortenShareCanvasText(path.replace(/[-_]+/g, ' '), 58)}`;
-    } catch (_) {
-      return shortenShareCanvasText(String(rawUrl || 'thepress.live').replace(/^https?:\/\//i, ''), 64);
-    }
-  }
-
   function instagramStoryAccent(context) {
     const section = `${context.title} ${context.text}`.toLowerCase();
     if (/science|ocean|climate|health/.test(section)) return '#31a89a';
@@ -2798,6 +2811,23 @@ function enhanceBreakingStrip(stories) {
     return startInstagramStoryDownloadFromCanvas(canvas, filename, status, options.statusMessage);
   }
 
+  async function saveInstagramStoryCanvas(canvas, context, status) {
+    if (isMobileShareDevice()) {
+      setInstagramStoryStatus(status, 'Opening save options...');
+      const shared = await shareInstagramStoryFile(canvas, context, status, {
+        successMessage: 'Choose Save Image to save it to Photos.',
+        cancelMessage: 'Save sheet closed. Starting a device download.',
+      });
+      if (shared) return true;
+    }
+
+    return downloadInstagramStoryCanvas(canvas, context, status, {
+      statusMessage: isMobileShareDevice()
+        ? 'Device download started. For Photos, use Share image and choose Save Image.'
+        : 'Image download started.',
+    });
+  }
+
   function startInstagramStoryDownloadFromCanvas(canvas, filename, status, statusMessage) {
     try {
       const started = triggerTemporaryDownload(canvas.toDataURL('image/png'), filename);
@@ -2821,7 +2851,7 @@ function enhanceBreakingStrip(stories) {
     });
   }
 
-  async function shareInstagramStoryFile(canvas, context, status) {
+  async function shareInstagramStoryFile(canvas, context, status, options = {}) {
     if (!isMobileShareDevice()) return false;
     const blob = await canvasToPngBlob(canvas);
     if (!blob || typeof File === 'undefined' || !navigator.share) return false;
@@ -2838,10 +2868,10 @@ function enhanceBreakingStrip(stories) {
 
     try {
       await navigator.share(shareData);
-      setInstagramStoryStatus(status, 'Share sheet opened. Choose Instagram Stories if it appears.');
+      setInstagramStoryStatus(status, options.successMessage || 'Share sheet opened. Choose Instagram Stories if it appears.');
       return true;
     } catch (_) {
-      setInstagramStoryStatus(status, 'Image share did not open. Starting PNG download.');
+      setInstagramStoryStatus(status, options.cancelMessage || 'Image share did not open. Starting PNG download.');
       return false;
     }
   }
