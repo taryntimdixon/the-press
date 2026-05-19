@@ -2095,6 +2095,8 @@ function enhanceBreakingStrip(stories) {
   }
 
   /* ── Share buttons ────────────────────────────────────────────────── */
+  const HOMEPAGE_SOCIAL_SHARE_VERSION = '1779158224';
+
   function injectShareButtons() {
     const articleHero = document.querySelector('.article-hero');
     const articleMeta = articleHero?.querySelector('.article-meta');
@@ -2295,16 +2297,32 @@ function enhanceBreakingStrip(stories) {
   }
 
   function buildShareIntents(context) {
+    const xShareUrl = getPlatformShareUrl(context, 'x');
+    const facebookShareUrl = getPlatformShareUrl(context, 'facebook');
     const encodedUrl = encodeURIComponent(context.url);
+    const encodedXUrl = encodeURIComponent(xShareUrl);
+    const encodedFacebookUrl = encodeURIComponent(facebookShareUrl);
     const encodedTitle = encodeURIComponent(context.title);
     const encodedText = encodeURIComponent(`${context.title} ${context.url}`);
     return {
-      x: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      x: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedXUrl}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedFacebookUrl}`,
       whatsapp: `https://api.whatsapp.com/send?text=${encodedText}`,
       reddit: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
       discord: 'https://discord.com/channels/@me',
     };
+  }
+
+  function getPlatformShareUrl(context, platform) {
+    if (context.type !== 'site' || !['x', 'facebook'].includes(platform)) return context.url;
+    try {
+      const url = new URL(context.url);
+      url.searchParams.set('share', 'front-page');
+      url.searchParams.set('card', HOMEPAGE_SOCIAL_SHARE_VERSION);
+      return url.href;
+    } catch (_) {
+      return context.url;
+    }
   }
 
   function bindShareRow(row, context) {
