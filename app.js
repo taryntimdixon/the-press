@@ -2165,6 +2165,7 @@ function enhanceBreakingStrip(stories) {
       url,
       imageUrl: getShareImageUrl(),
       externalImageUrl: getShareImageUrl({ preferPublic: true }),
+      storyItems: type === 'site' ? getHomepageShareItems(4) : [],
       returnUrl: window.location.href,
       ariaLabel: type === 'site' ? 'Share this page' : 'Share this article',
     };
@@ -2207,6 +2208,44 @@ function enhanceBreakingStrip(stories) {
     }
 
     return '';
+  }
+
+  function getHomepageShareItems(limit = 4) {
+    if (!document.body.classList.contains('page-home')) return [];
+    const candidates = [];
+    const seen = new Set();
+    document.querySelectorAll('.lead-panel, .story-card, .archive-card, .river-item, [data-story-url]').forEach((card) => {
+      const titleNode = card.querySelector('.story-card__title, h1, h2, h3, strong');
+      const link = titleNode?.querySelector('a[href]')
+        || card.querySelector('a[href$=".html"], a[href*=".html?"]')
+        || (card.matches('a[href]') ? card : null);
+      const url = link?.href || card.dataset.storyUrl || '';
+      const title = collapseWhitespace(titleNode?.textContent || link?.textContent || '');
+      if (!url || !title || seen.has(url)) return;
+      const img = card.querySelector('img');
+      const imageUrl = normalizeShareAssetUrl(img?.currentSrc || img?.getAttribute('src') || '');
+      if (!imageUrl) return;
+      const section = collapseWhitespace(card.querySelector('.eyebrow, [data-section], .story-card__meta, .lead-panel__meta')?.textContent || '')
+        .split(/[•/]/)[0]
+        .trim();
+      seen.add(url);
+      candidates.push({
+        title,
+        section: section || 'Story',
+        imageUrl,
+      });
+    });
+
+    return shuffleShareItems(candidates).slice(0, limit);
+  }
+
+  function shuffleShareItems(items) {
+    const shuffled = [...items];
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+    }
+    return shuffled;
   }
 
   function normalizeShareAssetUrl(rawUrl, options = {}) {
@@ -2339,36 +2378,37 @@ function enhanceBreakingStrip(stories) {
 
   function openInstagramStoryStudio(row, context) {
     clearManualCopyText(row);
+    const storyContext = context.type === 'site' ? buildShareContext('site') : context;
     const modal = ensureInstagramStoryStudio();
     const canvas = modal.querySelector('[data-instagram-story-canvas]');
     const status = modal.querySelector('[data-instagram-story-status]');
     modal.hidden = false;
     document.documentElement.classList.add('press-instagram-story-open');
     modal.querySelector('[data-instagram-story-close]')?.focus({ preventScroll: true });
-    renderInstagramStoryPreview(modal, context, canvas, status, modal._pressInstagramStoryStyle || getDefaultInstagramStoryStyleKey());
+    renderInstagramStoryPreview(modal, storyContext, canvas, status, modal._pressInstagramStoryStyle || getDefaultInstagramStoryStyleKey());
 
     modal.querySelectorAll('[data-instagram-story-style]').forEach((button) => {
       button.onclick = () => {
-        renderInstagramStoryPreview(modal, context, canvas, status, button.dataset.instagramStoryStyle || getDefaultInstagramStoryStyleKey());
+        renderInstagramStoryPreview(modal, storyContext, canvas, status, button.dataset.instagramStoryStyle || getDefaultInstagramStoryStyleKey());
       };
     });
 
     modal.querySelector('[data-instagram-story-download]').onclick = async () => {
       await ensureInstagramStoryReady(modal, status);
-      await saveInstagramStoryCanvas(canvas, context, status);
+      await saveInstagramStoryCanvas(canvas, storyContext, status);
     };
     modal.querySelector('[data-instagram-story-native]').onclick = async () => {
       await ensureInstagramStoryReady(modal, status);
-      await nativeShareInstagramStoryCanvas(canvas, context, status);
+      await nativeShareInstagramStoryCanvas(canvas, storyContext, status);
     };
     modal.querySelector('[data-instagram-story-open]').onclick = async (event) => {
       event.preventDefault();
       await ensureInstagramStoryReady(modal, status);
       const isMobile = isMobileShareDevice();
       if (isMobile) {
-        const shared = await shareInstagramStoryFile(canvas, context, status);
+        const shared = await shareInstagramStoryFile(canvas, storyContext, status);
         if (shared) return;
-        const copied = await copyShareText(context);
+        const copied = await copyShareText(storyContext);
         window.location.href = 'instagram://story-camera';
         window.setTimeout(() => {
           if (!document.hidden) openShareWindow('https://www.instagram.com/');
@@ -2377,8 +2417,8 @@ function enhanceBreakingStrip(stories) {
           ? 'Instagram Story opened. Link copied for a sticker.'
           : 'Instagram Story opened. Use Save image if the image is not attached.');
       } else {
-        startInstagramStoryDownloadFromCanvas(canvas, getInstagramStoryFilename(context), status, 'Story PNG download started. Instagram is opening.');
-        const copied = await copyShareText(context);
+        startInstagramStoryDownloadFromCanvas(canvas, getInstagramStoryFilename(storyContext), status, 'Story PNG download started. Instagram is opening.');
+        const copied = await copyShareText(storyContext);
         openShareWindow('https://www.instagram.com/');
         setInstagramStoryStatus(status, copied
           ? 'Instagram opened. PNG downloaded and link copied for a sticker.'
@@ -2505,22 +2545,40 @@ function enhanceBreakingStrip(stories) {
     const ctx = canvas.getContext('2d');
     const theme = getInstagramStoryTheme(context, styleKey);
     const accent = theme.accent;
-    const title = context.type === 'site' ? 'The Press' : context.title;
+    const title = context.type === 'site' ? "Today's Front Page" : context.title;
     const label = context.type === 'site' ? 'Front Page' : 'Article';
-    const dek = context.text || 'Source-forward reporting from The Press.';
+    const dek = context.type === 'site'
+      ? 'Four stories from the latest edition.'
+      : (context.text || 'Source-forward reporting from The Press.');
     const imageSrc = context.imageUrl || context.externalImageUrl;
     let image = null;
+    let storyItems = [];
 
     if (imageSrc) {
       try {
         image = await loadShareImage(imageSrc);
       } catch (_) {}
     }
+    if (context.type === 'site' && Array.isArray(context.storyItems)) {
+      storyItems = await loadHomepageStoryImages(context.storyItems);
+      if (storyItems[0]?.image) image = storyItems[0].image;
+    }
     try {
       await document.fonts?.ready;
     } catch (_) {}
 
-    drawInstagramStoryLayout(ctx, { width, height, theme, accent, title, label, dek, image });
+    drawInstagramStoryLayout(ctx, { width, height, theme, accent, title, label, dek, image, storyItems });
+  }
+
+  async function loadHomepageStoryImages(items) {
+    const usable = items.slice(0, 4);
+    return Promise.all(usable.map(async (item) => {
+      try {
+        return { ...item, image: await loadShareImage(item.imageUrl) };
+      } catch (_) {
+        return item;
+      }
+    }));
   }
 
   function drawInstagramStoryLayout(ctx, data) {
@@ -2535,7 +2593,7 @@ function enhanceBreakingStrip(stories) {
     draw(ctx, data);
   }
 
-  function drawInstagramStoryFrontPage(ctx, { width, height, theme, accent, title, label, dek, image }) {
+  function drawInstagramStoryFrontPage(ctx, { width, height, theme, accent, title, label, dek, image, storyItems }) {
     ctx.save();
     ctx.fillStyle = theme.bg;
     ctx.fillRect(0, 0, width, height);
@@ -2551,7 +2609,7 @@ function enhanceBreakingStrip(stories) {
     ctx.textAlign = 'left';
 
     drawShadowedPanel(ctx, 96, 398, 888, 1234, 18, theme.paper, 'rgba(31,31,27,.18)', 0, 28, 52);
-    drawInstagramStoryImage(ctx, image, 146, 448, 788, 560, 14, theme.photoBase, accent);
+    drawStoryImageOrMosaic(ctx, { image, storyItems, x: 146, y: 448, width: 788, height: 560, radius: 14, fallback: theme.photoBase, accent });
     ctx.fillStyle = accent;
     ctx.fillRect(146, 1056, 138, 10);
     ctx.fillStyle = '#1f1f1b';
@@ -2560,11 +2618,10 @@ function enhanceBreakingStrip(stories) {
     ctx.fillStyle = '#5f5a52';
     ctx.font = '400 31px "Playfair Display", Georgia, "Times New Roman", serif';
     wrapShareCanvasText(ctx, dek, 146, titleEnd + 30, 788, 43, 3);
-    drawPressCanvasBrandChip(ctx, 285, 1690, 510, 116, 0.55);
     ctx.restore();
   }
 
-  function drawInstagramStoryGallery(ctx, { width, height, theme, accent, title, label, dek, image }) {
+  function drawInstagramStoryGallery(ctx, { width, height, theme, accent, title, label, dek, image, storyItems }) {
     ctx.save();
     ctx.fillStyle = theme.bg;
     ctx.fillRect(0, 0, width, height);
@@ -2580,7 +2637,7 @@ function enhanceBreakingStrip(stories) {
     drawShadowedPanel(ctx, 86, 96, 672, 128, 36, '#fffdf9', 'rgba(0,0,0,.24)', 0, 18, 34);
     drawPressCanvasBrand(ctx, 124, 132, { scale: 0.64 });
     drawShadowedPanel(ctx, 112, 330, 856, 690, 24, '#fffdf9', 'rgba(0,0,0,.34)', 0, 24, 58);
-    drawInstagramStoryImage(ctx, image, 152, 370, 776, 610, 18, theme.photoBase, accent);
+    drawStoryImageOrMosaic(ctx, { image, storyItems, x: 152, y: 370, width: 776, height: 610, radius: 18, fallback: theme.photoBase, accent });
 
     drawShadowedPanel(ctx, 92, 1110, 896, 590, 26, '#fffdf9', 'rgba(0,0,0,.28)', 0, 26, 60);
     ctx.fillStyle = accent;
@@ -2593,11 +2650,10 @@ function enhanceBreakingStrip(stories) {
     ctx.fillStyle = '#5f5a52';
     ctx.font = '400 30px "Playfair Display", Georgia, "Times New Roman", serif';
     wrapShareCanvasText(ctx, dek, 142, titleEnd + 26, 796, 42, 3);
-    drawPressCanvasBrandChip(ctx, 320, 1742, 440, 104, 0.48);
     ctx.restore();
   }
 
-  function drawInstagramStoryBriefing(ctx, { width, height, theme, accent, title, label, dek, image }) {
+  function drawInstagramStoryBriefing(ctx, { width, height, theme, accent, title, label, dek, image, storyItems }) {
     ctx.save();
     ctx.fillStyle = theme.bg;
     ctx.fillRect(0, 0, width, height);
@@ -2608,13 +2664,13 @@ function enhanceBreakingStrip(stories) {
     drawPressCanvasBrandChip(ctx, 232, 80, 616, 122, 0.66);
 
     drawShadowedPanel(ctx, 232, 270, 760, 530, 20, theme.paper, 'rgba(0,0,0,.36)', 0, 24, 52);
-    drawInstagramStoryImage(ctx, image, 262, 300, 700, 470, 16, theme.photoBase, accent);
+    drawStoryImageOrMosaic(ctx, { image, storyItems, x: 262, y: 300, width: 700, height: 470, radius: 16, fallback: theme.photoBase, accent });
     ctx.fillStyle = '#fffdf9';
     ctx.font = '800 25px Inter, ui-sans-serif, system-ui, sans-serif';
     ctx.save();
     ctx.translate(102, 1556);
     ctx.rotate(-Math.PI / 2);
-    fillTrackedCanvasText(ctx, 'THE PRESS BRIEFING', 0, 0, 6);
+    fillTrackedCanvasText(ctx, 'STORY BRIEFING', 0, 0, 6);
     ctx.restore();
 
     ctx.fillStyle = '#fffdf9';
@@ -2634,7 +2690,7 @@ function enhanceBreakingStrip(stories) {
     ctx.restore();
   }
 
-  function drawInstagramStoryEdition(ctx, { width, height, theme, accent, title, label, dek, image }) {
+  function drawInstagramStoryEdition(ctx, { width, height, theme, accent, title, label, dek, image, storyItems }) {
     ctx.save();
     ctx.fillStyle = theme.bg;
     ctx.fillRect(0, 0, width, height);
@@ -2644,7 +2700,7 @@ function enhanceBreakingStrip(stories) {
     drawPressCanvasBrand(ctx, 168, 304, { scale: 0.82 });
     ctx.fillStyle = accent;
     ctx.fillRect(168, 444, 742, 7);
-    drawInstagramStoryImage(ctx, image, 168, 506, 742, 486, 18, theme.photoBase, accent);
+    drawStoryImageOrMosaic(ctx, { image, storyItems, x: 168, y: 506, width: 742, height: 486, radius: 18, fallback: theme.photoBase, accent });
     ctx.fillStyle = accent;
     roundRectPath(ctx, 168, 1038, 248, 58, 29);
     ctx.fill();
@@ -2659,15 +2715,14 @@ function enhanceBreakingStrip(stories) {
     ctx.fillStyle = '#5f5a52';
     ctx.font = '400 30px "Playfair Display", Georgia, "Times New Roman", serif';
     wrapShareCanvasText(ctx, dek, 168, titleEnd + 28, 742, 42, 3);
-    drawPressCanvasBrandChip(ctx, 298, 1664, 484, 110, 0.52);
     ctx.restore();
   }
 
-  function drawInstagramStorySpotlight(ctx, { width, height, theme, accent, title, label, dek, image }) {
+  function drawInstagramStorySpotlight(ctx, { width, height, theme, accent, title, label, dek, image, storyItems }) {
     ctx.save();
     ctx.fillStyle = theme.bg;
     ctx.fillRect(0, 0, width, height);
-    drawInstagramStoryImage(ctx, image, 80, 150, 920, 860, 42, theme.photoBase, accent);
+    drawStoryImageOrMosaic(ctx, { image, storyItems, x: 80, y: 150, width: 920, height: 860, radius: 42, fallback: theme.photoBase, accent });
     const mask = ctx.createLinearGradient(0, 560, 0, 1080);
     mask.addColorStop(0, 'rgba(31,31,27,0)');
     mask.addColorStop(1, 'rgba(31,31,27,.78)');
@@ -2687,7 +2742,48 @@ function enhanceBreakingStrip(stories) {
     ctx.fillStyle = '#5f5a52';
     ctx.font = '400 31px "Playfair Display", Georgia, "Times New Roman", serif';
     wrapShareCanvasText(ctx, dek, 136, titleEnd + 26, 812, 43, 3);
-    drawPressCanvasBrandChip(ctx, 306, 1744, 468, 106, 0.5);
+    ctx.restore();
+  }
+
+  function drawStoryImageOrMosaic(ctx, options) {
+    if (options.storyItems?.length >= 2) {
+      drawHomepageStoryMosaic(ctx, options);
+      return;
+    }
+    drawInstagramStoryImage(ctx, options.image, options.x, options.y, options.width, options.height, options.radius, options.fallback, options.accent);
+  }
+
+  function drawHomepageStoryMosaic(ctx, { storyItems, x, y, width, height, radius, fallback, accent }) {
+    const items = storyItems.slice(0, 4);
+    const gap = 14;
+    const tileWidth = (width - gap) / 2;
+    const tileHeight = (height - gap) / 2;
+    ctx.save();
+    roundRectPath(ctx, x, y, width, height, radius);
+    ctx.clip();
+    ctx.fillStyle = fallback || '#d9e0df';
+    ctx.fillRect(x, y, width, height);
+
+    items.forEach((item, index) => {
+      const col = index % 2;
+      const row = Math.floor(index / 2);
+      const tileX = x + col * (tileWidth + gap);
+      const tileY = y + row * (tileHeight + gap);
+      drawInstagramStoryImage(ctx, item.image, tileX, tileY, tileWidth, tileHeight, 12, fallback, accent);
+
+      const shade = ctx.createLinearGradient(0, tileY + tileHeight * 0.38, 0, tileY + tileHeight);
+      shade.addColorStop(0, 'rgba(0,0,0,0)');
+      shade.addColorStop(1, 'rgba(0,0,0,.74)');
+      roundRectPath(ctx, tileX, tileY, tileWidth, tileHeight, 12);
+      ctx.fillStyle = shade;
+      ctx.fill();
+
+      ctx.fillStyle = '#fffdf9';
+      ctx.font = '800 19px Inter, ui-sans-serif, system-ui, sans-serif';
+      fillTrackedCanvasText(ctx, shortenShareCanvasText(item.section || 'Story', 18).toUpperCase(), tileX + 22, tileY + tileHeight - 74, 1.4);
+      ctx.font = '800 28px "Playfair Display", Georgia, "Times New Roman", serif';
+      wrapShareCanvasText(ctx, item.title, tileX + 22, tileY + tileHeight - 35, tileWidth - 44, 31, 2);
+    });
     ctx.restore();
   }
 
