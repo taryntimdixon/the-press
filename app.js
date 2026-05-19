@@ -2345,11 +2345,11 @@ function enhanceBreakingStrip(stories) {
     modal.hidden = false;
     document.documentElement.classList.add('press-instagram-story-open');
     modal.querySelector('[data-instagram-story-close]')?.focus({ preventScroll: true });
-    renderInstagramStoryPreview(modal, context, canvas, status, modal._pressInstagramStoryStyle || 'classic');
+    renderInstagramStoryPreview(modal, context, canvas, status, modal._pressInstagramStoryStyle || getDefaultInstagramStoryStyleKey());
 
     modal.querySelectorAll('[data-instagram-story-style]').forEach((button) => {
       button.onclick = () => {
-        renderInstagramStoryPreview(modal, context, canvas, status, button.dataset.instagramStoryStyle || 'classic');
+        renderInstagramStoryPreview(modal, context, canvas, status, button.dataset.instagramStoryStyle || getDefaultInstagramStoryStyleKey());
       };
     });
 
@@ -2445,8 +2445,9 @@ function enhanceBreakingStrip(stories) {
   }
 
   function buildInstagramStoryStyleButtons() {
+    const defaultStyle = getDefaultInstagramStoryStyleKey();
     return getInstagramStoryStyles().map((style) => `
-      <button class="press-instagram-story__style" type="button" data-instagram-story-style="${escapeAttribute(style.key)}" aria-label="${escapeAttribute(style.label)} style" aria-pressed="${style.key === 'classic' ? 'true' : 'false'}" title="${escapeAttribute(style.label)}">
+      <button class="press-instagram-story__style" type="button" data-instagram-story-style="${escapeAttribute(style.key)}" aria-label="${escapeAttribute(style.label)} style" aria-pressed="${style.key === defaultStyle ? 'true' : 'false'}" title="${escapeAttribute(style.label)}">
         <span class="press-instagram-story__swatch press-instagram-story__swatch--${escapeAttribute(style.key)}" aria-hidden="true"></span>
         <span class="press-instagram-story__style-name">${escapeHtml(style.label)}</span>
       </button>
@@ -2494,7 +2495,7 @@ function enhanceBreakingStrip(stories) {
     return ready;
   }
 
-  async function drawInstagramStoryCanvas(context, canvas, styleKey = 'classic') {
+  async function drawInstagramStoryCanvas(context, canvas, styleKey = getDefaultInstagramStoryStyleKey()) {
     if (!canvas) return;
     const width = 1080;
     const height = 1920;
@@ -2507,96 +2508,253 @@ function enhanceBreakingStrip(stories) {
     const title = context.type === 'site' ? 'The Press' : context.title;
     const label = context.type === 'site' ? 'Front Page' : 'Article';
     const dek = context.text || 'Source-forward reporting from The Press.';
-
-    const bg = ctx.createLinearGradient(0, 0, width, height);
-    theme.background.forEach(([stop, color]) => bg.addColorStop(stop, color));
-    ctx.fillStyle = bg;
-    ctx.fillRect(0, 0, width, height);
-    drawInstagramStoryBackdrop(ctx, width, height, theme);
-
-    ctx.save();
-    ctx.translate(width / 2, theme.cardCenterY);
-    ctx.rotate(theme.rotation * Math.PI / 180);
-    const cardWidth = 830;
-    const cardHeight = 1180;
-    const cardX = -cardWidth / 2;
-    const cardY = -cardHeight / 2;
-    ctx.shadowColor = 'rgba(0,0,0,.32)';
-    ctx.shadowBlur = 36;
-    ctx.shadowOffsetY = 22;
-    roundRectPath(ctx, cardX, cardY, cardWidth, cardHeight, 30);
-    ctx.fillStyle = theme.card;
-    ctx.fill();
-    ctx.shadowColor = 'transparent';
-
-    const photoX = cardX + 46;
-    const photoY = cardY + 48;
-    const photoWidth = cardWidth - 92;
-    const photoHeight = 560;
-    roundRectPath(ctx, photoX, photoY, photoWidth, photoHeight, 18);
-    ctx.fillStyle = theme.photoBase;
-    ctx.fill();
-
     const imageSrc = context.imageUrl || context.externalImageUrl;
+    let image = null;
+
     if (imageSrc) {
       try {
-        const img = await loadShareImage(imageSrc);
-        ctx.save();
-        roundRectPath(ctx, photoX, photoY, photoWidth, photoHeight, 18);
-        ctx.clip();
-        drawShareImageCover(ctx, img, photoX, photoY, photoWidth, photoHeight);
-        ctx.restore();
-      } catch (_) {
-        drawInstagramImageFallback(ctx, photoX, photoY, photoWidth, photoHeight, accent);
-      }
-    } else {
-      drawInstagramImageFallback(ctx, photoX, photoY, photoWidth, photoHeight, accent);
+        image = await loadShareImage(imageSrc);
+      } catch (_) {}
     }
+    try {
+      await document.fonts?.ready;
+    } catch (_) {}
 
-    ctx.fillStyle = accent;
-    ctx.fillRect(photoX, photoY + photoHeight + 46, 120, 8);
-    ctx.fillStyle = theme.text;
-    ctx.font = '900 31px Arial, sans-serif';
-    ctx.fillText(label.toUpperCase(), photoX, photoY + photoHeight + 104);
-    ctx.font = '900 58px Georgia, serif';
-    const titleEnd = wrapShareCanvasText(ctx, title, photoX, photoY + photoHeight + 182, photoWidth, 66, 5);
-    ctx.fillStyle = theme.muted;
-    ctx.font = '400 29px Georgia, serif';
-    wrapShareCanvasText(ctx, dek, photoX, titleEnd + 24, photoWidth, 40, 4);
-    ctx.fillStyle = theme.text;
-    ctx.font = '800 25px Arial, sans-serif';
-    ctx.fillText('THE PRESS', photoX, cardY + cardHeight - 58);
-    ctx.restore();
+    drawInstagramStoryLayout(ctx, { width, height, theme, accent, title, label, dek, image });
+  }
 
+  function drawInstagramStoryLayout(ctx, data) {
+    const layouts = {
+      frontpage: drawInstagramStoryFrontPage,
+      gallery: drawInstagramStoryGallery,
+      briefing: drawInstagramStoryBriefing,
+      edition: drawInstagramStoryEdition,
+      spotlight: drawInstagramStorySpotlight,
+    };
+    const draw = layouts[data.theme.layout] || drawInstagramStoryFrontPage;
+    draw(ctx, data);
+  }
+
+  function drawInstagramStoryFrontPage(ctx, { width, height, theme, accent, title, label, dek, image }) {
     ctx.save();
-    ctx.fillStyle = theme.footer;
-    roundRectPath(ctx, 306, 1536, 468, 92, 34);
-    ctx.fill();
-    ctx.fillStyle = theme.footerText;
-    ctx.font = '900 36px Arial, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('THE PRESS', width / 2, 1594);
+    ctx.fillStyle = theme.bg;
+    ctx.fillRect(0, 0, width, height);
+    drawPaperGrain(ctx, width, height, '#1f1f1b', 0.035);
+    drawPressCanvasBrand(ctx, 126, 112, { scale: 1.04 });
+    ctx.fillStyle = accent;
+    ctx.fillRect(126, 286, 828, 8);
+    ctx.fillStyle = '#1f1f1b';
+    ctx.font = '800 25px Inter, ui-sans-serif, system-ui, sans-serif';
+    fillTrackedCanvasText(ctx, label.toUpperCase(), 126, 342, 3);
+    ctx.textAlign = 'right';
+    ctx.fillText('STORY EDITION', 954, 342);
     ctx.textAlign = 'left';
+
+    drawShadowedPanel(ctx, 96, 398, 888, 1234, 18, theme.paper, 'rgba(31,31,27,.18)', 0, 28, 52);
+    drawInstagramStoryImage(ctx, image, 146, 448, 788, 560, 14, theme.photoBase, accent);
+    ctx.fillStyle = accent;
+    ctx.fillRect(146, 1056, 138, 10);
+    ctx.fillStyle = '#1f1f1b';
+    ctx.font = '800 76px "Playfair Display", Georgia, "Times New Roman", serif';
+    const titleEnd = wrapShareCanvasText(ctx, title, 146, 1158, 788, 84, 4);
+    ctx.fillStyle = '#5f5a52';
+    ctx.font = '400 31px "Playfair Display", Georgia, "Times New Roman", serif';
+    wrapShareCanvasText(ctx, dek, 146, titleEnd + 30, 788, 43, 3);
+    drawPressCanvasBrandChip(ctx, 285, 1690, 510, 116, 0.55);
     ctx.restore();
   }
 
-  function drawInstagramStoryBackdrop(ctx, width, height, theme) {
+  function drawInstagramStoryGallery(ctx, { width, height, theme, accent, title, label, dek, image }) {
     ctx.save();
-    ctx.globalAlpha = theme.glowAlpha;
-    const glow = ctx.createRadialGradient(width - 120, 120, 40, width - 120, 120, 470);
-    glow.addColorStop(0, theme.accent);
-    glow.addColorStop(1, 'rgba(255,255,255,0)');
-    ctx.fillStyle = glow;
+    ctx.fillStyle = theme.bg;
     ctx.fillRect(0, 0, width, height);
-    ctx.globalAlpha = theme.lineAlpha;
-    ctx.strokeStyle = theme.line;
-    ctx.lineWidth = 2;
-    for (let y = 90; y < height; y += 92) {
-      ctx.beginPath();
-      ctx.moveTo(-120, y);
-      ctx.lineTo(width + 120, y - 260);
-      ctx.stroke();
+    drawInstagramStoryImage(ctx, image, 0, 0, width, height, 0, theme.photoBase, accent);
+    ctx.fillStyle = 'rgba(12,13,14,.5)';
+    ctx.fillRect(0, 0, width, height);
+    const vignette = ctx.createRadialGradient(width / 2, height * 0.42, 180, width / 2, height * 0.42, 850);
+    vignette.addColorStop(0, 'rgba(255,255,255,.18)');
+    vignette.addColorStop(1, 'rgba(0,0,0,.62)');
+    ctx.fillStyle = vignette;
+    ctx.fillRect(0, 0, width, height);
+
+    drawShadowedPanel(ctx, 86, 96, 672, 128, 36, '#fffdf9', 'rgba(0,0,0,.24)', 0, 18, 34);
+    drawPressCanvasBrand(ctx, 124, 132, { scale: 0.64 });
+    drawShadowedPanel(ctx, 112, 330, 856, 690, 24, '#fffdf9', 'rgba(0,0,0,.34)', 0, 24, 58);
+    drawInstagramStoryImage(ctx, image, 152, 370, 776, 610, 18, theme.photoBase, accent);
+
+    drawShadowedPanel(ctx, 92, 1110, 896, 590, 26, '#fffdf9', 'rgba(0,0,0,.28)', 0, 26, 60);
+    ctx.fillStyle = accent;
+    ctx.fillRect(142, 1166, 114, 10);
+    ctx.fillStyle = '#1f1f1b';
+    ctx.font = '800 27px Inter, ui-sans-serif, system-ui, sans-serif';
+    fillTrackedCanvasText(ctx, label.toUpperCase(), 142, 1227, 3);
+    ctx.font = '800 72px "Playfair Display", Georgia, "Times New Roman", serif';
+    const titleEnd = wrapShareCanvasText(ctx, title, 142, 1322, 796, 80, 4);
+    ctx.fillStyle = '#5f5a52';
+    ctx.font = '400 30px "Playfair Display", Georgia, "Times New Roman", serif';
+    wrapShareCanvasText(ctx, dek, 142, titleEnd + 26, 796, 42, 3);
+    drawPressCanvasBrandChip(ctx, 320, 1742, 440, 104, 0.48);
+    ctx.restore();
+  }
+
+  function drawInstagramStoryBriefing(ctx, { width, height, theme, accent, title, label, dek, image }) {
+    ctx.save();
+    ctx.fillStyle = theme.bg;
+    ctx.fillRect(0, 0, width, height);
+    ctx.fillStyle = '#11110f';
+    ctx.fillRect(0, 0, 168, height);
+    ctx.fillStyle = accent;
+    ctx.fillRect(168, 0, 10, height);
+    drawPressCanvasBrandChip(ctx, 232, 80, 616, 122, 0.66);
+
+    drawShadowedPanel(ctx, 232, 270, 760, 530, 20, theme.paper, 'rgba(0,0,0,.36)', 0, 24, 52);
+    drawInstagramStoryImage(ctx, image, 262, 300, 700, 470, 16, theme.photoBase, accent);
+    ctx.fillStyle = '#fffdf9';
+    ctx.font = '800 25px Inter, ui-sans-serif, system-ui, sans-serif';
+    ctx.save();
+    ctx.translate(102, 1556);
+    ctx.rotate(-Math.PI / 2);
+    fillTrackedCanvasText(ctx, 'THE PRESS BRIEFING', 0, 0, 6);
+    ctx.restore();
+
+    ctx.fillStyle = '#fffdf9';
+    ctx.font = '800 34px Inter, ui-sans-serif, system-ui, sans-serif';
+    fillTrackedCanvasText(ctx, label.toUpperCase(), 232, 900, 4);
+    ctx.fillStyle = '#fffdf9';
+    ctx.font = '800 82px "Playfair Display", Georgia, "Times New Roman", serif';
+    const titleEnd = wrapShareCanvasText(ctx, title, 232, 1012, 780, 90, 4);
+    ctx.fillStyle = '#d8d0c3';
+    ctx.font = '400 31px "Playfair Display", Georgia, "Times New Roman", serif';
+    wrapShareCanvasText(ctx, dek, 232, titleEnd + 32, 770, 43, 4);
+    ctx.fillStyle = accent;
+    ctx.fillRect(232, 1690, 190, 12);
+    ctx.fillStyle = '#fffdf9';
+    ctx.font = '800 25px Inter, ui-sans-serif, system-ui, sans-serif';
+    ctx.fillText('AI POWERED JOURNALISM', 232, 1760);
+    ctx.restore();
+  }
+
+  function drawInstagramStoryEdition(ctx, { width, height, theme, accent, title, label, dek, image }) {
+    ctx.save();
+    ctx.fillStyle = theme.bg;
+    ctx.fillRect(0, 0, width, height);
+    drawPaperGrain(ctx, width, height, '#1f1f1b', 0.028);
+    drawShadowedPanel(ctx, 146, 160, 788, 1310, 22, '#eee5d5', 'rgba(31,31,27,.12)', -14, 22, 40);
+    drawShadowedPanel(ctx, 116, 210, 848, 1320, 22, '#fffdf9', 'rgba(31,31,27,.22)', 0, 28, 58);
+    drawPressCanvasBrand(ctx, 168, 304, { scale: 0.82 });
+    ctx.fillStyle = accent;
+    ctx.fillRect(168, 444, 742, 7);
+    drawInstagramStoryImage(ctx, image, 168, 506, 742, 486, 18, theme.photoBase, accent);
+    ctx.fillStyle = accent;
+    roundRectPath(ctx, 168, 1038, 248, 58, 29);
+    ctx.fill();
+    ctx.fillStyle = '#fffdf9';
+    ctx.font = '800 24px Inter, ui-sans-serif, system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    fillTrackedCanvasText(ctx, label.toUpperCase(), 292, 1075, 2, 'center');
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#1f1f1b';
+    ctx.font = '800 76px "Playfair Display", Georgia, "Times New Roman", serif';
+    const titleEnd = wrapShareCanvasText(ctx, title, 168, 1170, 742, 84, 4);
+    ctx.fillStyle = '#5f5a52';
+    ctx.font = '400 30px "Playfair Display", Georgia, "Times New Roman", serif';
+    wrapShareCanvasText(ctx, dek, 168, titleEnd + 28, 742, 42, 3);
+    drawPressCanvasBrandChip(ctx, 298, 1664, 484, 110, 0.52);
+    ctx.restore();
+  }
+
+  function drawInstagramStorySpotlight(ctx, { width, height, theme, accent, title, label, dek, image }) {
+    ctx.save();
+    ctx.fillStyle = theme.bg;
+    ctx.fillRect(0, 0, width, height);
+    drawInstagramStoryImage(ctx, image, 80, 150, 920, 860, 42, theme.photoBase, accent);
+    const mask = ctx.createLinearGradient(0, 560, 0, 1080);
+    mask.addColorStop(0, 'rgba(31,31,27,0)');
+    mask.addColorStop(1, 'rgba(31,31,27,.78)');
+    ctx.fillStyle = mask;
+    roundRectPath(ctx, 80, 150, 920, 860, 42);
+    ctx.fill();
+    drawShadowedPanel(ctx, 118, 86, 570, 116, 34, '#fffdf9', 'rgba(0,0,0,.22)', 0, 18, 32);
+    drawPressCanvasBrand(ctx, 150, 120, { scale: 0.58 });
+    drawShadowedPanel(ctx, 84, 1040, 912, 660, 34, '#fffdf9', 'rgba(0,0,0,.28)', 0, 24, 58);
+    ctx.fillStyle = accent;
+    ctx.fillRect(136, 1098, 156, 11);
+    ctx.fillStyle = '#1f1f1b';
+    ctx.font = '800 26px Inter, ui-sans-serif, system-ui, sans-serif';
+    fillTrackedCanvasText(ctx, label.toUpperCase(), 136, 1160, 3);
+    ctx.font = '800 78px "Playfair Display", Georgia, "Times New Roman", serif';
+    const titleEnd = wrapShareCanvasText(ctx, title, 136, 1262, 812, 86, 3);
+    ctx.fillStyle = '#5f5a52';
+    ctx.font = '400 31px "Playfair Display", Georgia, "Times New Roman", serif';
+    wrapShareCanvasText(ctx, dek, 136, titleEnd + 26, 812, 43, 3);
+    drawPressCanvasBrandChip(ctx, 306, 1744, 468, 106, 0.5);
+    ctx.restore();
+  }
+
+  function drawInstagramStoryImage(ctx, image, x, y, width, height, radius, fallback, accent) {
+    ctx.save();
+    roundRectPath(ctx, x, y, width, height, radius);
+    ctx.clip();
+    ctx.fillStyle = fallback || '#d9e0df';
+    ctx.fillRect(x, y, width, height);
+    if (image) {
+      drawShareImageCover(ctx, image, x, y, width, height);
+    } else {
+      drawInstagramImageFallback(ctx, x, y, width, height, accent);
     }
+    ctx.restore();
+  }
+
+  function drawShadowedPanel(ctx, x, y, width, height, radius, fill, shadow, offsetX, offsetY, blur) {
+    ctx.save();
+    ctx.shadowColor = shadow || 'rgba(0,0,0,.18)';
+    ctx.shadowOffsetX = offsetX || 0;
+    ctx.shadowOffsetY = offsetY || 0;
+    ctx.shadowBlur = blur || 0;
+    roundRectPath(ctx, x, y, width, height, radius);
+    ctx.fillStyle = fill;
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawPaperGrain(ctx, width, height, color, alpha) {
+    ctx.save();
+    ctx.fillStyle = color;
+    ctx.globalAlpha = alpha;
+    for (let i = 0; i < 620; i += 1) {
+      const x = (Math.sin(i * 12.9898) * 43758.5453) % 1;
+      const y = (Math.sin(i * 78.233) * 24634.6345) % 1;
+      ctx.fillRect(Math.abs(x) * width, Math.abs(y) * height, 1.2, 1.2);
+    }
+    ctx.restore();
+  }
+
+  function drawPressCanvasBrandChip(ctx, x, y, width, height, scale) {
+    drawShadowedPanel(ctx, x, y, width, height, 34, '#fffdf9', 'rgba(31,31,27,.16)', 0, 14, 28);
+    drawPressCanvasBrand(ctx, x + (width - 704 * scale) / 2, y + 34, { scale });
+  }
+
+  function drawPressCanvasBrand(ctx, x, y, options = {}) {
+    const scale = options.scale || 1;
+    const ink = options.ink || '#1f1f1b';
+    const accent = options.accent || '#9d3a2d';
+    ctx.save();
+    ctx.fillStyle = ink;
+    ctx.font = `800 ${Math.round(76 * scale)}px "Playfair Display", Georgia, "Times New Roman", serif`;
+    fillTrackedCanvasText(ctx, 'THE PRESS', x, y + 72 * scale, 3.4 * scale);
+    ctx.strokeStyle = accent;
+    ctx.lineWidth = 2.4 * scale;
+    ctx.lineCap = 'round';
+    const ruleY = y + 103 * scale;
+    ctx.beginPath();
+    ctx.moveTo(x + 4 * scale, ruleY);
+    ctx.lineTo(x + 198 * scale, ruleY);
+    ctx.moveTo(x + 580 * scale, ruleY);
+    ctx.lineTo(x + 704 * scale, ruleY);
+    ctx.stroke();
+    ctx.fillStyle = accent;
+    ctx.font = `800 ${Math.round(18 * scale)}px Inter, ui-sans-serif, system-ui, sans-serif`;
+    fillTrackedCanvasText(ctx, 'AI POWERED JOURNALISM', x + 242 * scale, y + 111 * scale, 3.2 * scale);
     ctx.restore();
   }
 
@@ -2613,96 +2771,55 @@ function enhanceBreakingStrip(stories) {
   function getInstagramStoryStyles() {
     return [
       {
-        key: 'classic',
-        label: 'Classic',
-        accent: '',
-        background: [[0, '#131821'], [0.48, '#231727'], [1, '#0e1f25']],
-        card: '#f8f4ec',
-        text: '#1b2230',
-        muted: '#55606e',
-        footer: '#f8f4ec',
-        footerText: '#111820',
-        footerMuted: '#4f5a69',
+        key: 'frontpage',
+        label: 'Front Page',
+        layout: 'frontpage',
+        accent: '#9d3a2d',
+        bg: '#f4f0e8',
+        paper: '#fffdf9',
         photoBase: '#d9e0df',
-        line: '#f8f4ec',
-        lineAlpha: 0.18,
-        glowAlpha: 0.28,
-        rotation: -3.2,
-        cardCenterY: 805,
       },
       {
-        key: 'ocean',
-        label: 'Ocean',
-        accent: '#37d5c6',
-        background: [[0, '#071b25'], [0.52, '#0b3a42'], [1, '#09272f']],
-        card: '#eef8f4',
-        text: '#102c35',
-        muted: '#41676c',
-        footer: '#eaf7f6',
-        footerText: '#0e2a31',
-        footerMuted: '#3d6870',
-        photoBase: '#b8dcd9',
-        line: '#bdece8',
-        lineAlpha: 0.16,
-        glowAlpha: 0.32,
-        rotation: 2.4,
-        cardCenterY: 800,
+        key: 'gallery',
+        label: 'Gallery',
+        layout: 'gallery',
+        accent: '#9d3a2d',
+        bg: '#14120f',
+        paper: '#fffdf9',
+        photoBase: '#d8d0c3',
       },
       {
-        key: 'sunset',
-        label: 'Sunset',
-        accent: '#ff8a4c',
-        background: [[0, '#2a1018'], [0.48, '#5c203c'], [1, '#18243c']],
-        card: '#fff3e7',
-        text: '#2b1720',
-        muted: '#765362',
-        footer: '#fff1e6',
-        footerText: '#281820',
-        footerMuted: '#7a5762',
-        photoBase: '#ead0bc',
-        line: '#ffd6b3',
-        lineAlpha: 0.18,
-        glowAlpha: 0.34,
-        rotation: -1.6,
-        cardCenterY: 812,
+        key: 'briefing',
+        label: 'Briefing',
+        layout: 'briefing',
+        accent: '#9d3a2d',
+        bg: '#1f1f1b',
+        paper: '#fffdf9',
+        photoBase: '#d8d0c3',
       },
       {
-        key: 'ink',
-        label: 'Ink',
-        accent: '#111820',
-        background: [[0, '#050609'], [0.56, '#15171d'], [1, '#252932']],
-        card: '#f4f0e8',
-        text: '#101318',
-        muted: '#585b62',
-        footer: '#f4f0e8',
-        footerText: '#101318',
-        footerMuted: '#565a62',
-        photoBase: '#cfd1d3',
-        line: '#f6f0e8',
-        lineAlpha: 0.12,
-        glowAlpha: 0.18,
-        rotation: 0,
-        cardCenterY: 806,
+        key: 'edition',
+        label: 'Edition',
+        layout: 'edition',
+        accent: '#9d3a2d',
+        bg: '#e7dece',
+        paper: '#fffdf9',
+        photoBase: '#d7cec0',
       },
       {
-        key: 'pop',
-        label: 'Pop',
-        accent: '#d9ff4f',
-        background: [[0, '#25116a'], [0.48, '#8b1b84'], [1, '#0b7c89']],
-        card: '#fffaf0',
-        text: '#161326',
-        muted: '#5a5770',
-        footer: '#fffaf0',
-        footerText: '#151326',
-        footerMuted: '#57576b',
-        photoBase: '#d9d5ee',
-        line: '#fffaf0',
-        lineAlpha: 0.2,
-        glowAlpha: 0.36,
-        rotation: -5,
-        cardCenterY: 795,
+        key: 'spotlight',
+        label: 'Spotlight',
+        layout: 'spotlight',
+        accent: '#9d3a2d',
+        bg: '#1f1f1b',
+        paper: '#fffdf9',
+        photoBase: '#d9d2c5',
       },
     ];
+  }
+
+  function getDefaultInstagramStoryStyleKey() {
+    return getInstagramStoryStyles()[0]?.key || 'frontpage';
   }
 
   function getInstagramStoryStyle(styleKey) {
@@ -2773,6 +2890,25 @@ function enhanceBreakingStrip(stories) {
     }
 
     return cursor;
+  }
+
+  function measureTrackedCanvasText(ctx, text, tracking) {
+    return [...String(text || '')].reduce((width, char, index, chars) => (
+      width + ctx.measureText(char).width + (index < chars.length - 1 ? tracking : 0)
+    ), 0);
+  }
+
+  function fillTrackedCanvasText(ctx, text, x, y, tracking = 0, align = 'left') {
+    const chars = [...String(text || '')];
+    const totalWidth = measureTrackedCanvasText(ctx, text, tracking);
+    let cursor = x;
+    if (align === 'center') cursor -= totalWidth / 2;
+    if (align === 'right') cursor -= totalWidth;
+    chars.forEach((char, index) => {
+      ctx.fillText(char, cursor, y);
+      cursor += ctx.measureText(char).width + (index < chars.length - 1 ? tracking : 0);
+    });
+    return totalWidth;
   }
 
   function shortenShareCanvasText(value, max) {

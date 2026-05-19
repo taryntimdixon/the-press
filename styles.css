@@ -1733,11 +1733,11 @@ body,
   box-shadow:0 0 0 1px rgba(0,0,0,.18);
 }
 
-.press-instagram-story__swatch--classic{background:linear-gradient(135deg, #131821, #231727 55%, #31a89a);}
-.press-instagram-story__swatch--ocean{background:linear-gradient(135deg, #071b25, #0b3a42 56%, #37d5c6);}
-.press-instagram-story__swatch--sunset{background:linear-gradient(135deg, #2a1018, #5c203c 55%, #ff8a4c);}
-.press-instagram-story__swatch--ink{background:linear-gradient(135deg, #050609, #252932 62%, #f4f0e8);}
-.press-instagram-story__swatch--pop{background:linear-gradient(135deg, #25116a, #8b1b84 50%, #d9ff4f);}
+.press-instagram-story__swatch--frontpage{background:linear-gradient(135deg, #f4f0e8 0 46%, #9d3a2d 46% 55%, #1f1f1b 55%);}
+.press-instagram-story__swatch--gallery{background:radial-gradient(circle at 35% 35%, #fffdf9 0 26%, transparent 27%),linear-gradient(135deg, #1f1f1b, #9d3a2d 64%, #f4f0e8);}
+.press-instagram-story__swatch--briefing{background:linear-gradient(90deg, #11110f 0 28%, #9d3a2d 28% 36%, #1f1f1b 36%);}
+.press-instagram-story__swatch--edition{background:linear-gradient(135deg, #e7dece 0 34%, #fffdf9 34% 70%, #9d3a2d 70% 76%, #1f1f1b 76%);}
+.press-instagram-story__swatch--spotlight{background:radial-gradient(circle at 55% 35%, #d9d2c5 0 24%, transparent 25%),linear-gradient(135deg, #1f1f1b 0 58%, #fffdf9 58% 84%, #9d3a2d 84%);}
 
 .press-instagram-story__actions{
   align-self:start;
