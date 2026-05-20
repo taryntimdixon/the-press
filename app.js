@@ -2103,6 +2103,7 @@ function enhanceBreakingStrip(stories) {
     'share-homepage-5.html',
     'share-homepage-6.html',
   ];
+  const HOMEPAGE_SOCIAL_SHARE_STORAGE_PREFIX = 'press-homepage-social-share';
 
   function injectShareButtons() {
     const articleHero = document.querySelector('.article-hero');
@@ -2322,8 +2323,47 @@ function enhanceBreakingStrip(stories) {
 
   function getSocialShareDestination(context, platform) {
     if (context.type !== 'site' || !['x', 'facebook'].includes(platform)) return context.url;
-    const page = HOMEPAGE_SOCIAL_SHARE_PAGES[getRandomShareIndex(HOMEPAGE_SOCIAL_SHARE_PAGES.length)];
-    return new URL(page, context.url).href;
+    const selection = getRotatingHomepageSocialShareSelection(platform);
+    const url = new URL(selection.page, context.url);
+    url.searchParams.set('share', buildHomepageShareCacheKey(platform, selection.index));
+    return url.href;
+  }
+
+  function getRotatingHomepageSocialShareSelection(platform) {
+    const pages = HOMEPAGE_SOCIAL_SHARE_PAGES;
+    if (!pages.length) return { page: 'index.html', index: 0 };
+    const storageKey = `${HOMEPAGE_SOCIAL_SHARE_STORAGE_PREFIX}:${platform}:last-index`;
+    const lastIndex = getStoredShareIndex(storageKey);
+    let index = getRandomShareIndex(pages.length);
+    if (pages.length > 1 && index === lastIndex) {
+      index = (index + 1 + getRandomShareIndex(pages.length - 1)) % pages.length;
+    }
+    storeShareIndex(storageKey, index);
+    return { page: pages[index], index };
+  }
+
+  function getStoredShareIndex(key) {
+    try {
+      const value = window.localStorage?.getItem(key) ?? window.sessionStorage?.getItem(key);
+      const parsed = Number.parseInt(value || '', 10);
+      return Number.isFinite(parsed) ? parsed : -1;
+    } catch (_) {
+      return -1;
+    }
+  }
+
+  function storeShareIndex(key, index) {
+    try {
+      window.localStorage?.setItem(key, String(index));
+    } catch (_) {}
+    try {
+      window.sessionStorage?.setItem(key, String(index));
+    } catch (_) {}
+  }
+
+  function buildHomepageShareCacheKey(platform, index) {
+    const nonce = getRandomShareIndex(0xffffffff).toString(36);
+    return `${platform}-${index + 1}-${Date.now().toString(36)}-${nonce}`;
   }
 
   function getRandomShareIndex(max) {
