@@ -1660,12 +1660,72 @@ if (!hasHomepageTargets) {
         btn.setAttribute('aria-pressed', String(active));
       });
       leadPanels.forEach((panel) => panel.classList.toggle('is-active', panel.id === targetId));
+      if (document.body.classList.contains('page-home')) {
+        window.PressHomepageLeadRotation?.rememberTarget?.(targetId);
+      }
     };
     leadButtons.forEach((btn) => btn.addEventListener('click', () => setLead(btn.dataset.target)));
 
-    const chosenButton = leadButtons.find((button) => button.classList.contains('is-active')) || leadButtons[0];
+    const chosenTarget = document.body.classList.contains('page-home')
+      ? window.PressHomepageLeadRotation?.chooseTarget?.(leadButtons.map((button) => button.dataset.target).filter(Boolean))
+      : '';
+    const chosenButton = (chosenTarget && leadButtons.find((button) => button.dataset.target === chosenTarget))
+      || leadButtons.find((button) => button.classList.contains('is-active'))
+      || leadButtons[0];
     if (chosenButton) setLead(chosenButton.dataset.target);
   }
+
+  window.PressHomepageLeadRotation = (() => {
+    const storageKey = 'press-homepage-refresh-lead-target';
+    let currentTarget = '';
+
+    function chooseTarget(targets) {
+      const candidates = Array.from(new Set((targets || []).filter(Boolean)));
+      if (!document.body.classList.contains('page-home') || !candidates.length) return candidates[0] || '';
+      if (currentTarget && candidates.includes(currentTarget)) return currentTarget;
+
+      const previousTarget = readTarget();
+      let index = randomIndex(candidates.length);
+      if (candidates.length > 1 && candidates[index] === previousTarget) {
+        index = (index + 1 + randomIndex(candidates.length - 1)) % candidates.length;
+      }
+
+      rememberTarget(candidates[index]);
+      return currentTarget;
+    }
+
+    function rememberTarget(target) {
+      currentTarget = target || '';
+      if (!currentTarget) return;
+      try {
+        sessionStorage.setItem(storageKey, currentTarget);
+      } catch (_) {}
+      try {
+        localStorage.setItem(storageKey, currentTarget);
+      } catch (_) {}
+    }
+
+    function readTarget() {
+      try {
+        return sessionStorage.getItem(storageKey) || localStorage.getItem(storageKey) || '';
+      } catch (_) {
+        return '';
+      }
+    }
+
+    function randomIndex(max) {
+      if (!max) return 0;
+      try {
+        const values = new Uint32Array(1);
+        window.crypto?.getRandomValues(values);
+        return values[0] % max;
+      } catch (_) {
+        return Math.floor(Math.random() * max);
+      }
+    }
+
+    return { chooseTarget, rememberTarget };
+  })();
 
   function setupArchiveFilters() {
     const filterButtons = document.querySelectorAll('[data-filter]');
@@ -4567,12 +4627,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const navBox = document.querySelector('.lead-nav');
 
     if (!panelBox || !navBox || !stories?.length) return;
-    rememberVisibleHero(stories[0]);
+    const activeIndex = chooseHomepageHeroActiveIndex(stories);
+    rememberVisibleHero(stories[activeIndex] || stories[0]);
 
-    panelBox.innerHTML = stories.map((story, index) => leadPanel(story, index)).join('');
+    panelBox.innerHTML = stories.map((story, index) => leadPanel(story, index, activeIndex)).join('');
 
     navBox.innerHTML = stories.map((story, index) => `
-      <button aria-pressed="${index === 0}" class="lead-nav__button${index === 0 ? ' is-active' : ''}" data-lead-button data-target="lead-${index}" type="button">
+      <button aria-pressed="${index === activeIndex}" class="lead-nav__button${index === activeIndex ? ' is-active' : ''}" data-lead-button data-target="lead-${index}" type="button">
         ${leadNavThumbnail(story)}
         <span class="lead-nav__kicker">${escapeHtml(story.section)}</span>
         <strong>${escapeHtml(story.title)}</strong>
@@ -4582,6 +4643,14 @@ document.addEventListener("DOMContentLoaded", () => {
     bindLeadSwitcher(navBox, panelBox);
   }
 
+  function chooseHomepageHeroActiveIndex(stories) {
+    if (!document.body.classList.contains('page-home')) return 0;
+    const targets = stories.map((_, index) => `lead-${index}`);
+    const chosenTarget = window.PressHomepageLeadRotation?.chooseTarget?.(targets);
+    const index = targets.indexOf(chosenTarget);
+    return index >= 0 ? index : 0;
+  }
+
   function rememberVisibleHero(story) {
     if (!story?.url) return;
     try {
@@ -4589,13 +4658,14 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (_) {}
   }
 
-  function leadPanel(story, index) {
+  function leadPanel(story, index, activeIndex = 0) {
+    const active = index === activeIndex;
     const imageHtml = story.image
-      ? `<img alt="${escapeAttr(story.imageAlt || story.title)}" decoding="async" fetchpriority="${index === 0 ? 'high' : 'low'}" loading="${index === 0 ? 'eager' : 'lazy'}" src="${escapeAttr(story.image)}" />`
+      ? `<img alt="${escapeAttr(story.imageAlt || story.title)}" decoding="async" fetchpriority="${active ? 'high' : 'low'}" loading="${active ? 'eager' : 'lazy'}" src="${escapeAttr(story.image)}" />`
       : `<div class="press-image-fallback"><span>${escapeHtml(story.section)}</span></div>`;
 
     return `
-      <div class="lead-panel${index === 0 ? ' is-active' : ''}" data-lead-panel id="lead-${index}">
+      <div class="lead-panel${active ? ' is-active' : ''}" data-lead-panel id="lead-${index}">
         <div class="lead-panel__media">
           ${imageHtml}
           <div class="lead-panel__media-note">
@@ -4681,6 +4751,7 @@ document.addEventListener("DOMContentLoaded", () => {
           panel.classList.toggle('is-active', panel.id === target);
         });
 
+        window.PressHomepageLeadRotation?.rememberTarget?.(target);
         layoutLeadSideSlots(navBox);
 
         if (typeof pressLayoutLeadNav === 'function') {
