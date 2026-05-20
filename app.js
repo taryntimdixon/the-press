@@ -877,7 +877,7 @@ if (!hasHomepageTargets) {
     if (!itemsBox || !Array.isArray(stories) || !stories.length) return;
 
     const seen = new Set();
-    const headlines = stories
+    const headlines = rotateMastheadHeadlines(stories
       .filter((story) => story?.title && story?.url)
       .filter((story) => {
         const key = `${story.title}|${story.url}`;
@@ -885,7 +885,7 @@ if (!hasHomepageTargets) {
         seen.add(key);
         return true;
       })
-      .slice(0, 14);
+      .slice(0, 14));
 
     if (!headlines.length) return;
 
@@ -896,6 +896,50 @@ if (!hasHomepageTargets) {
 
     itemsBox.style.setProperty('--masthead-ticker-duration', `${Math.max(70, Math.min(150, Math.round(charBudget / 7)))}s`);
     itemsBox.innerHTML = `<div class="masthead-ticker__track">${links}${links}</div>`;
+  }
+
+  function rotateMastheadHeadlines(headlines) {
+    if (!Array.isArray(headlines) || headlines.length < 2) return headlines || [];
+
+    const storageKey = 'press-masthead-ticker-start-key';
+    const keyFor = (story) => `${story?.title || ''}|${story?.url || ''}`;
+    const previousKey = readStoredString(storageKey);
+    let index = getRandomIndex(headlines.length);
+
+    if (headlines.length > 1 && keyFor(headlines[index]) === previousKey) {
+      index = (index + 1 + getRandomIndex(headlines.length - 1)) % headlines.length;
+    }
+
+    writeStoredString(storageKey, keyFor(headlines[index]));
+    return headlines.slice(index).concat(headlines.slice(0, index));
+  }
+
+  function getRandomIndex(max) {
+    if (!max) return 0;
+    try {
+      const values = new Uint32Array(1);
+      window.crypto?.getRandomValues(values);
+      return values[0] % max;
+    } catch (_) {
+      return Math.floor(Math.random() * max);
+    }
+  }
+
+  function readStoredString(key) {
+    try {
+      return sessionStorage.getItem(key) || localStorage.getItem(key) || '';
+    } catch (_) {
+      return '';
+    }
+  }
+
+  function writeStoredString(key, value) {
+    try {
+      sessionStorage.setItem(key, value || '');
+    } catch (_) {}
+    try {
+      localStorage.setItem(key, value || '');
+    } catch (_) {}
   }
 
   function normalizeVisibleBylines(root) {
@@ -1653,7 +1697,11 @@ if (!hasHomepageTargets) {
     const leadButtons = Array.from(document.querySelectorAll('[data-lead-button]'));
     const leadPanels = Array.from(document.querySelectorAll('[data-lead-panel]'));
     if (!leadButtons.length || !leadPanels.length) return;
+
+    const buttonKey = (button) => button?.dataset?.storyKey || '';
+
     const setLead = (targetId) => {
+      const activeButton = leadButtons.find((btn) => btn.dataset.target === targetId);
       leadButtons.forEach((btn) => {
         const active = btn.dataset.target === targetId;
         btn.classList.toggle('is-active', active);
@@ -1661,51 +1709,63 @@ if (!hasHomepageTargets) {
       });
       leadPanels.forEach((panel) => panel.classList.toggle('is-active', panel.id === targetId));
       if (document.body.classList.contains('page-home')) {
-        window.PressHomepageLeadRotation?.rememberTarget?.(targetId);
+        const key = buttonKey(activeButton);
+        if (key) window.PressHomepageLeadRotation?.rememberKey?.(key);
+        if (activeButton?.parentElement && activeButton.parentElement.firstElementChild !== activeButton) {
+          activeButton.parentElement.insertBefore(activeButton, activeButton.parentElement.firstElementChild);
+        }
       }
     };
     leadButtons.forEach((btn) => btn.addEventListener('click', () => setLead(btn.dataset.target)));
 
-    const chosenTarget = document.body.classList.contains('page-home')
-      ? window.PressHomepageLeadRotation?.chooseTarget?.(leadButtons.map((button) => button.dataset.target).filter(Boolean))
+    const chosenKey = document.body.classList.contains('page-home')
+      ? window.PressHomepageLeadRotation?.chooseKey?.(leadButtons.map(buttonKey).filter(Boolean))
       : '';
-    const chosenButton = (chosenTarget && leadButtons.find((button) => button.dataset.target === chosenTarget))
+    const chosenButton = (chosenKey && leadButtons.find((button) => buttonKey(button) === chosenKey))
       || leadButtons.find((button) => button.classList.contains('is-active'))
       || leadButtons[0];
     if (chosenButton) setLead(chosenButton.dataset.target);
   }
 
   window.PressHomepageLeadRotation = (() => {
-    const storageKey = 'press-homepage-refresh-lead-target';
-    let currentTarget = '';
+    const storageKey = 'press-homepage-refresh-lead-key';
+    let currentKey = '';
 
-    function chooseTarget(targets) {
-      const candidates = Array.from(new Set((targets || []).filter(Boolean)));
+    function chooseKey(keys) {
+      const candidates = Array.from(new Set((keys || []).filter(Boolean)));
       if (!document.body.classList.contains('page-home') || !candidates.length) return candidates[0] || '';
-      if (currentTarget && candidates.includes(currentTarget)) return currentTarget;
+      if (currentKey && candidates.includes(currentKey)) return currentKey;
 
-      const previousTarget = readTarget();
+      const previousKey = readKey();
       let index = randomIndex(candidates.length);
-      if (candidates.length > 1 && candidates[index] === previousTarget) {
+      if (candidates.length > 1 && candidates[index] === previousKey) {
         index = (index + 1 + randomIndex(candidates.length - 1)) % candidates.length;
       }
 
-      rememberTarget(candidates[index]);
-      return currentTarget;
+      rememberKey(candidates[index]);
+      return currentKey;
+    }
+
+    function rememberKey(key) {
+      currentKey = key || '';
+      if (!currentKey) return;
+      try {
+        sessionStorage.setItem(storageKey, currentKey);
+      } catch (_) {}
+      try {
+        localStorage.setItem(storageKey, currentKey);
+      } catch (_) {}
+    }
+
+    function chooseTarget(targets) {
+      return chooseKey(targets);
     }
 
     function rememberTarget(target) {
-      currentTarget = target || '';
-      if (!currentTarget) return;
-      try {
-        sessionStorage.setItem(storageKey, currentTarget);
-      } catch (_) {}
-      try {
-        localStorage.setItem(storageKey, currentTarget);
-      } catch (_) {}
+      rememberKey(target);
     }
 
-    function readTarget() {
+    function readKey() {
       try {
         return sessionStorage.getItem(storageKey) || localStorage.getItem(storageKey) || '';
       } catch (_) {
@@ -1724,7 +1784,7 @@ if (!hasHomepageTargets) {
       }
     }
 
-    return { chooseTarget, rememberTarget };
+    return { chooseKey, rememberKey, chooseTarget, rememberTarget };
   })();
 
   function setupArchiveFilters() {
@@ -4627,13 +4687,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const navBox = document.querySelector('.lead-nav');
 
     if (!panelBox || !navBox || !stories?.length) return;
-    const activeIndex = chooseHomepageHeroActiveIndex(stories);
-    rememberVisibleHero(stories[activeIndex] || stories[0]);
+    const orderedStories = orderHomepageHeroStories(stories);
+    const activeIndex = 0;
+    rememberVisibleHero(orderedStories[0]);
 
-    panelBox.innerHTML = stories.map((story, index) => leadPanel(story, index, activeIndex)).join('');
+    panelBox.innerHTML = orderedStories.map((story, index) => leadPanel(story, index, activeIndex)).join('');
 
-    navBox.innerHTML = stories.map((story, index) => `
-      <button aria-pressed="${index === activeIndex}" class="lead-nav__button${index === activeIndex ? ' is-active' : ''}" data-lead-button data-target="lead-${index}" type="button">
+    navBox.innerHTML = orderedStories.map((story, index) => `
+      <button aria-pressed="${index === activeIndex}" class="lead-nav__button${index === activeIndex ? ' is-active' : ''}" data-lead-button data-story-key="${escapeAttr(homepageHeroStoryKey(story))}" data-target="lead-${index}" type="button">
         ${leadNavThumbnail(story)}
         <span class="lead-nav__kicker">${escapeHtml(story.section)}</span>
         <strong>${escapeHtml(story.title)}</strong>
@@ -4643,12 +4704,18 @@ document.addEventListener("DOMContentLoaded", () => {
     bindLeadSwitcher(navBox, panelBox);
   }
 
-  function chooseHomepageHeroActiveIndex(stories) {
-    if (!document.body.classList.contains('page-home')) return 0;
-    const targets = stories.map((_, index) => `lead-${index}`);
-    const chosenTarget = window.PressHomepageLeadRotation?.chooseTarget?.(targets);
-    const index = targets.indexOf(chosenTarget);
-    return index >= 0 ? index : 0;
+  function orderHomepageHeroStories(stories) {
+    const items = Array.isArray(stories) ? stories.slice() : [];
+    if (!document.body.classList.contains('page-home') || items.length < 2) return items;
+    const keys = items.map(homepageHeroStoryKey);
+    const chosenKey = window.PressHomepageLeadRotation?.chooseKey?.(keys);
+    const chosenIndex = keys.indexOf(chosenKey);
+    if (chosenIndex <= 0) return items;
+    return items.slice(chosenIndex).concat(items.slice(0, chosenIndex));
+  }
+
+  function homepageHeroStoryKey(story) {
+    return story?.url || story?.title || '';
   }
 
   function rememberVisibleHero(story) {
@@ -4751,7 +4818,7 @@ document.addEventListener("DOMContentLoaded", () => {
           panel.classList.toggle('is-active', panel.id === target);
         });
 
-        window.PressHomepageLeadRotation?.rememberTarget?.(target);
+        window.PressHomepageLeadRotation?.rememberKey?.(button.dataset.storyKey || button.querySelector('strong')?.textContent?.trim() || target);
         layoutLeadSideSlots(navBox);
 
         if (typeof pressLayoutLeadNav === 'function') {
