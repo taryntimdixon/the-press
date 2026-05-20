@@ -12,6 +12,43 @@ function pressSiteAssetUrl(path) {
 }
 
 (() => {
+  const body = document.body;
+  if (!body?.classList.contains('page-home') && !body?.classList.contains('page-article')) return;
+
+  const editableSelector = 'input, textarea, select, [contenteditable=""], [contenteditable="true"]';
+  const step = (amount) => {
+    body.scrollTop = Math.max(0, Math.min(
+      body.scrollHeight - body.clientHeight,
+      body.scrollTop + amount
+    ));
+  };
+
+  document.addEventListener('keydown', (event) => {
+    if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) return;
+    if (event.target?.closest?.(editableSelector)) return;
+    if (event.key === 'PageDown' || (event.key === ' ' && !event.shiftKey)) {
+      event.preventDefault();
+      step(body.clientHeight * .86);
+    } else if (event.key === 'PageUp' || (event.key === ' ' && event.shiftKey)) {
+      event.preventDefault();
+      step(body.clientHeight * -.86);
+    } else if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      step(64);
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      step(-64);
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      body.scrollTop = 0;
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      body.scrollTop = body.scrollHeight;
+    }
+  });
+})();
+
+(() => {
   const IMAGE_LINK_SELECTOR = '.drone-article-visual__media[href]';
   let activeLightbox = null;
 
@@ -8063,6 +8100,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ready(function initLivingArticleKit() {
     bindGlobalLivingActions();
     installRailPhotoGalleries();
+    installArticleGalleryJumpLink();
     installRailPhotos();
     initArticlePage();
     initHomepagePulse();
@@ -8183,6 +8221,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.querySelectorAll('a[href="#article-gallery"]').forEach((link) => {
+      if (gallery.dataset.galleryOpenMode === 'manual' && !link.hasAttribute('data-open-gallery')) return;
       if (link.dataset.galleryOpenBound === 'true') return;
       link.dataset.galleryOpenBound = 'true';
       link.addEventListener('click', () => {

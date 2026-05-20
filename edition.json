@@ -1,5 +1,22 @@
 [
   {
+    "title": "Wildlife for Sale",
+    "url": "science-wildlife-for-sale.html",
+    "section": "Science",
+    "type": "Investigation",
+    "author": "Mira Sato",
+    "publishedLabel": "May 20, 2026 • 9:00 a.m. EDT",
+    "updatedLabel": "May 20, 2026 • 9:00 a.m. EDT",
+    "publishedIso": "2026-05-20T09:00:00-04:00",
+    "updatedIso": "2026-05-20T09:00:00-04:00",
+    "wordCount": "9,290 words",
+    "readTime": "46 min read",
+    "dek": "The trade begins with capture and ends with desire. In between are airports, ports, forged permits, encrypted chats, online listings, weak laws, and animals treated as cargo with a heartbeat.",
+    "image": "assets/wildlife-for-sale/wildlife-for-sale-thumbnail-v5.jpg",
+    "imageAlt": "Wildlife and customs officers inspecting freight, permits and animal transport crates at a rain-slick seaport and airport cargo checkpoint at sunrise",
+    "imageCredit": "The Press photorealistic editorial visual"
+  },
+  {
     "title": "Drones Have Left the Gadget Era",
     "url": "technology-drones-have-left-the-gadget-era.html",
     "section": "Technology",

@@ -56,7 +56,10 @@
   --shadow-hover:0 24px 56px rgba(18,18,16,.14);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+  overflow-y:auto;
+}
 body{
   margin:0;
   color:var(--ink);
@@ -307,13 +310,12 @@ button{cursor:pointer}
   display:block;
   line-height:1.18;
 }
-body.page-home{
-  overflow-x:clip;
-}
-@supports not (overflow: clip){
-  body.page-home{
-    overflow-x:hidden;
-  }
+body.page-home,
+body.page-article{
+  height:100vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
 }
 .home-grid{
   display:grid;
@@ -7952,6 +7954,64 @@ body.page-article:has(.press-social-feature)::before{
   content:attr(data-source-label) " • " attr(data-source-count) " source notes";
 }
 
+.wildlife-for-sale-feature .wildlife-rail-card .press-static-post__media--real img{
+  aspect-ratio:16/10;
+}
+
+.wildlife-for-sale-feature .wildlife-rail-card .press-static-post__visual{
+  min-height:auto;
+  padding:.72rem;
+  margin:.2rem 0 .58rem;
+}
+
+.wildlife-for-sale-feature .wildlife-rail-card .press-static-post__visual::before,
+.wildlife-for-sale-feature .wildlife-rail-card .press-static-post__visual::after{
+  content:none;
+  display:none;
+}
+
+.wildlife-inline-visual,
+.wildlife-terms-box{
+  margin:1.35rem 0;
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+  background:var(--surface-2);
+}
+
+.wildlife-inline-visual img{
+  display:block;
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  background:var(--surface-2);
+}
+
+.wildlife-inline-visual figcaption{
+  margin:0;
+  padding:.58rem .7rem;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:.82rem;
+  line-height:1.35;
+}
+
+.wildlife-terms-box{
+  padding:1rem;
+}
+
+.wildlife-terms-box h3{
+  margin:0 0 .7rem;
+  font-size:1rem;
+  line-height:1.15;
+}
+
+.wildlife-terms-box p{
+  margin:.65rem 0;
+  font-size:.94rem;
+  line-height:1.52;
+}
+
 .drone-feature-body .drone-method-note{
   border-radius:8px;
 }
@@ -9273,14 +9333,16 @@ body.page-article:has(.press-social-feature)::before{
   content:"World Cup public record • " attr(data-source-count) " source notes";
 }
 
-.world-cup-game-day-feature .article-jump-strip{
+.world-cup-game-day-feature .article-jump-strip,
+.wildlife-for-sale-feature .article-jump-strip{
   display:flex;
   flex-wrap:wrap;
   gap:.55rem;
   margin:1rem 0 1.1rem;
 }
 
-.world-cup-game-day-feature .article-jump-strip a{
+.world-cup-game-day-feature .article-jump-strip a,
+.wildlife-for-sale-feature .article-jump-strip a{
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -9295,7 +9357,8 @@ body.page-article:has(.press-social-feature)::before{
   text-decoration:none;
 }
 
-.world-cup-game-day-feature .article-jump-strip a:hover{
+.world-cup-game-day-feature .article-jump-strip a:hover,
+.wildlife-for-sale-feature .article-jump-strip a:hover{
   background:var(--accent);
   color:#fff;
 }
@@ -9739,6 +9802,11 @@ body.page-article .hero-figure img[src*="world-cup-game-day-machine-thumbnail"]{
   width:100%;
   height:auto !important;
   object-fit:cover !important;
+}
+
+body.page-article .hero-figure:has(img[src*="wildlife-for-sale-thumbnail"]){
+  width:min(100%, 64rem);
+  margin-inline:auto;
 }
 
 body.page-article:has(.climate-the-mountain-that-fell-into-the-sea-social-feature) .hero-figure{
