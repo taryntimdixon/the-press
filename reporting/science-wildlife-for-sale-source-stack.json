@@ -1,0 +1,854 @@
+{
+  "source_count": 106,
+  "rail_card_count": 106,
+  "sources": [
+    {
+      "id": "interpol-thunder-2025",
+      "org": "INTERPOL",
+      "title": "Operation Thunder 2025",
+      "url": "https://www.interpol.int/en/News-and-Events/News/2025/30-000-live-animals-seized-in-global-operation-against-wildlife-and-forestry-crime",
+      "category": "enforcement",
+      "note": "Global wildlife and forestry crime operation with live-animal seizure figures."
+    },
+    {
+      "id": "interpol-wildlife-crime",
+      "org": "INTERPOL",
+      "title": "Wildlife crime",
+      "url": "https://www.interpol.int/en/Crimes/Environmental-crime/Wildlife-crime",
+      "category": "enforcement",
+      "note": "Defines wildlife crime as a transnational enforcement problem."
+    },
+    {
+      "id": "interpol-environmental-crime",
+      "org": "INTERPOL",
+      "title": "Environmental crime",
+      "url": "https://www.interpol.int/en/Crimes/Environmental-crime",
+      "category": "enforcement",
+      "note": "Frames wildlife trafficking inside broader environmental crime."
+    },
+    {
+      "id": "unodc-wwcr-2024",
+      "org": "UNODC",
+      "title": "World Wildlife Crime Report 2024",
+      "url": "https://www.unodc.org/documents/data-and-analysis/wildlife/2024/Wildlife2024_Final.pdf",
+      "category": "law",
+      "note": "Core global report on species, commodities, seizures and criminal markets."
+    },
+    {
+      "id": "unodc-wildlife-portal",
+      "org": "UNODC",
+      "title": "Wildlife crime data and analysis",
+      "url": "https://www.unodc.org/unodc/en/data-and-analysis/wildlife.html",
+      "category": "research",
+      "note": "UNODC hub for wildlife-crime reporting and analysis."
+    },
+    {
+      "id": "unodc-wwcr-2020",
+      "org": "UNODC",
+      "title": "World Wildlife Crime Report 2020",
+      "url": "https://www.unodc.org/documents/data-and-analysis/wildlife/2020/World_Wildlife_Report_2020_9July.pdf",
+      "category": "law",
+      "note": "Prior global baseline on illegal wildlife markets and seizure data."
+    },
+    {
+      "id": "cites-what",
+      "org": "CITES",
+      "title": "What is CITES?",
+      "url": "https://cites.org/eng/disc/what.php",
+      "category": "law",
+      "note": "Explains the treaty system that governs international trade in listed species."
+    },
+    {
+      "id": "cites-appendices",
+      "org": "CITES",
+      "title": "CITES Appendices",
+      "url": "https://cites.org/eng/app/appendices.php",
+      "category": "law",
+      "note": "Used to explain Appendix I, II and III trade restrictions."
+    },
+    {
+      "id": "cites-trade-db",
+      "org": "CITES",
+      "title": "CITES Trade Database",
+      "url": "https://trade.cites.org/",
+      "category": "law",
+      "note": "Official database for reported legal CITES trade records."
+    },
+    {
+      "id": "tradeview",
+      "org": "CITES / UNEP-WCMC",
+      "title": "Wildlife TradeView",
+      "url": "https://tradeview.cites.org/",
+      "category": "law",
+      "note": "Public interface for CITES-listed wildlife trade data."
+    },
+    {
+      "id": "tradeview-faq",
+      "org": "CITES / UNEP-WCMC",
+      "title": "Wildlife TradeView FAQ",
+      "url": "https://tradeview.cites.org/en/faqs",
+      "category": "law",
+      "note": "Caveats on what CITES trade data can and cannot show."
+    },
+    {
+      "id": "speciesplus",
+      "org": "UNEP-WCMC",
+      "title": "Species+",
+      "url": "https://speciesplus.net/",
+      "category": "law",
+      "note": "Legal listing and nomenclature reference for CITES and CMS species."
+    },
+    {
+      "id": "cites-illegal-trade-reports",
+      "org": "CITES",
+      "title": "Annual illegal trade reports",
+      "url": "https://cites.org/eng/resources/reports/Illegal_trade_reports",
+      "category": "law",
+      "note": "Parties' annual reporting channel for illegal trade."
+    },
+    {
+      "id": "cites-wwtr-2022",
+      "org": "CITES",
+      "title": "World Wildlife Trade Report 2022",
+      "url": "https://cites.org/eng/news/cites-launches-first-world-wildlife-trade-report-2022",
+      "category": "law",
+      "note": "Pilot report on legal wildlife trade and its documentation limits."
+    },
+    {
+      "id": "iccwc",
+      "org": "ICCWC",
+      "title": "International Consortium on Combating Wildlife Crime",
+      "url": "https://cites.org/eng/prog/iccwc",
+      "category": "law",
+      "note": "Explains the multi-agency enforcement consortium."
+    },
+    {
+      "id": "iccwc-toolkit",
+      "org": "ICCWC",
+      "title": "Wildlife and forest crime analytic toolkit",
+      "url": "https://cites.org/eng/prog/iccwc/analytical_toolkit",
+      "category": "law",
+      "note": "Assessment toolkit for national wildlife-crime response."
+    },
+    {
+      "id": "fatf-iwt",
+      "org": "FATF",
+      "title": "Money laundering and the illegal wildlife trade",
+      "url": "https://www.fatf-gafi.org/en/publications/Methodsandtrends/Money-laundering-wildlife-trade.html",
+      "category": "law",
+      "note": "Financial-crime frame for trafficking networks."
+    },
+    {
+      "id": "fincen-wildlife-threat",
+      "org": "FinCEN",
+      "title": "Illicit finance threat involving wildlife trafficking",
+      "url": "https://www.fincen.gov/news/news-releases/fincen-financial-threat-analysis-illicit-finance-threat-involving-wildlife",
+      "category": "law",
+      "note": "U.S. financial-threat analysis using Bank Secrecy Act data."
+    },
+    {
+      "id": "fincen-environmental-crimes",
+      "org": "FinCEN",
+      "title": "Environmental crimes vigilance reminder",
+      "url": "https://www.fincen.gov/index.php/news/news-releases/fincen-reminds-financial-institutions-remain-vigilant-environmental-crimes",
+      "category": "law",
+      "note": "Connects wildlife trafficking to financial reporting obligations."
+    },
+    {
+      "id": "ec-wildlife-trade",
+      "org": "European Commission",
+      "title": "Wildlife trade",
+      "url": "https://environment.ec.europa.eu/topics/nature-and-biodiversity/wildlife-trade_en",
+      "category": "law",
+      "note": "EU policy context for wildlife trade regulation."
+    },
+    {
+      "id": "ec-action-plan",
+      "org": "European Commission",
+      "title": "EU Action Plan against Wildlife Trafficking",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_22_6581",
+      "category": "law",
+      "note": "EU action-plan announcement and enforcement priorities."
+    },
+    {
+      "id": "europol-environmental-crime",
+      "org": "Europol",
+      "title": "Environmental crime",
+      "url": "https://www.europol.europa.eu/crime-areas-and-statistics/crime-areas/environmental-crime",
+      "category": "enforcement",
+      "note": "European organized-crime frame for environmental crime."
+    },
+    {
+      "id": "wco-environment",
+      "org": "World Customs Organization",
+      "title": "Environment programme",
+      "url": "https://www.wcoomd.org/en/topics/enforcement-and-compliance/activities-and-programmes/environment-programme.aspx",
+      "category": "port",
+      "note": "Customs role in environmental and wildlife crime enforcement."
+    },
+    {
+      "id": "oecd-seasia",
+      "org": "OECD",
+      "title": "The Illegal Wildlife Trade in Southeast Asia",
+      "url": "https://www.oecd.org/en/publications/the-illegal-wildlife-trade-in-southeast-asia_14fe3297-en.html",
+      "category": "law",
+      "note": "Regional governance and enforcement-capacity report."
+    },
+    {
+      "id": "world-bank-wildlife-trade",
+      "org": "World Bank",
+      "title": "Illegal logging, fishing, and wildlife trade",
+      "url": "https://www.worldbank.org/en/topic/environment/brief/illegal-logging-fishing-and-wildlife-trade",
+      "category": "law",
+      "note": "Economic-development frame for illicit natural-resource trade."
+    },
+    {
+      "id": "iucn-red-list",
+      "org": "IUCN",
+      "title": "IUCN Red List",
+      "url": "https://nrl.iucnredlist.org/",
+      "category": "research",
+      "note": "Extinction-risk baseline for species named in the story."
+    },
+    {
+      "id": "iucn-summary",
+      "org": "IUCN",
+      "title": "Red List Summary Statistics",
+      "url": "https://nrl.iucnredlist.org/resources/summary-statistics",
+      "category": "research",
+      "note": "Threatened-share estimates by assessed taxonomic group."
+    },
+    {
+      "id": "ipbes-global",
+      "org": "IPBES / UNEP",
+      "title": "Global Assessment press release",
+      "url": "https://www.unep.org/news-and-stories/press-release/natures-dangerous-decline-unprecedented-species-extinction-rates",
+      "category": "research",
+      "note": "Global biodiversity-loss drivers and extinction-risk frame."
+    },
+    {
+      "id": "ipbes-invasive",
+      "org": "IPBES / UNEP",
+      "title": "Invasive Alien Species Report",
+      "url": "https://www.unep.org/resources/report/invasive-alien-species-report",
+      "category": "research",
+      "note": "Invasive-species context tied to live wildlife movement."
+    },
+    {
+      "id": "protected-planet-2024",
+      "org": "UNEP-WCMC / IUCN",
+      "title": "Protected Planet Report 2024",
+      "url": "https://www.unep.org/news-and-stories/press-release/world-must-act-faster-protect-30-planet-2030",
+      "category": "community",
+      "note": "Protected-area coverage and 30 by 30 progress."
+    },
+    {
+      "id": "fao-fish-stocks-2025",
+      "org": "FAO",
+      "title": "Review of world marine fishery resources 2025",
+      "url": "https://www.fao.org/newsroom/detail/fao-releases-the-most-detailed-global-assessment-of-marine-fish-stocks-to-date/en",
+      "category": "marine",
+      "note": "Fish-stock status for marine-exploitation context."
+    },
+    {
+      "id": "noaa-coral-bleaching",
+      "org": "NOAA",
+      "title": "Fourth global coral bleaching event",
+      "url": "https://www.nesdis.noaa.gov/news/noaa-confirms-fourth-global-coral-bleaching-event",
+      "category": "marine",
+      "note": "Coral and reef-animal climate pressure background."
+    },
+    {
+      "id": "cms-migratory",
+      "org": "Convention on Migratory Species",
+      "title": "State of the World's Migratory Species",
+      "url": "https://www.cms.int/en/publication/state-worlds-migratory-species",
+      "category": "research",
+      "note": "Migration and cross-border animal conservation context."
+    },
+    {
+      "id": "usfws-ole",
+      "org": "U.S. Fish and Wildlife Service",
+      "title": "Office of Law Enforcement",
+      "url": "https://www.fws.gov/program/office-of-law-enforcement",
+      "category": "enforcement",
+      "note": "U.S. wildlife-law enforcement and inspection context."
+    },
+    {
+      "id": "usfws-wildlife-trafficking",
+      "org": "U.S. Fish and Wildlife Service",
+      "title": "Combating Wildlife Trafficking",
+      "url": "https://www.fws.gov/initiative/combating-wildlife-trafficking",
+      "category": "enforcement",
+      "note": "U.S. public explainer on wildlife trafficking."
+    },
+    {
+      "id": "usfws-inspection",
+      "org": "U.S. Fish and Wildlife Service",
+      "title": "Office of Law Enforcement: What We Do",
+      "url": "https://www.fws.gov/rivers/program/office-of-law-enforcement/what-we-do",
+      "category": "port",
+      "note": "Port inspection role for imported and exported wildlife."
+    },
+    {
+      "id": "usfws-cites",
+      "org": "U.S. Fish and Wildlife Service",
+      "title": "CITES",
+      "url": "https://www.fws.gov/international-affairs/cites",
+      "category": "law",
+      "note": "U.S. implementation of CITES."
+    },
+    {
+      "id": "usfws-lacey",
+      "org": "U.S. Fish and Wildlife Service",
+      "title": "Lacey Act",
+      "url": "https://www.fws.gov/law/lacey-act",
+      "category": "law",
+      "note": "U.S. law against illegal wildlife trafficking and false labeling."
+    },
+    {
+      "id": "usfws-esa",
+      "org": "U.S. Fish and Wildlife Service",
+      "title": "Endangered Species Act",
+      "url": "https://www.fws.gov/law/endangered-species-act",
+      "category": "law",
+      "note": "U.S. endangered-species legal context."
+    },
+    {
+      "id": "doj-enrd-wildlife",
+      "org": "U.S. Department of Justice",
+      "title": "Wildlife trafficking",
+      "url": "https://www.justice.gov/enrd/wildlife-trafficking",
+      "category": "enforcement",
+      "note": "Federal prosecution frame for wildlife trafficking."
+    },
+    {
+      "id": "state-wildlife-trafficking",
+      "org": "U.S. State Department",
+      "title": "Wildlife trafficking",
+      "url": "https://www.state.gov/wildlife-trafficking/",
+      "category": "law",
+      "note": "Diplomatic and transnational response framing."
+    },
+    {
+      "id": "noaa-ole",
+      "org": "NOAA Fisheries",
+      "title": "Office of Law Enforcement",
+      "url": "https://www.fisheries.noaa.gov/topic/enforcement",
+      "category": "marine",
+      "note": "Marine-resource enforcement and illegal fishing context."
+    },
+    {
+      "id": "uk-cites",
+      "org": "UK Government",
+      "title": "CITES imports and exports",
+      "url": "https://www.gov.uk/guidance/cites-imports-and-exports",
+      "category": "law",
+      "note": "UK permit and border rules for listed species."
+    },
+    {
+      "id": "uk-nwcu",
+      "org": "National Wildlife Crime Unit",
+      "title": "UK National Wildlife Crime Unit",
+      "url": "https://www.nwcu.police.uk/",
+      "category": "enforcement",
+      "note": "UK wildlife-crime policing context."
+    },
+    {
+      "id": "eu-twix",
+      "org": "EU-TWIX",
+      "title": "EU Trade in Wildlife Information Exchange",
+      "url": "https://www.eu-twix.org/",
+      "category": "enforcement",
+      "note": "European information exchange for illegal wildlife trade."
+    },
+    {
+      "id": "australia-cites",
+      "org": "Australian Government",
+      "title": "Wildlife trade and CITES",
+      "url": "https://www.dcceew.gov.au/environment/wildlife-trade/cites",
+      "category": "law",
+      "note": "Australian CITES and wildlife-trade controls."
+    },
+    {
+      "id": "canada-cites",
+      "org": "Government of Canada",
+      "title": "CITES in Canada",
+      "url": "https://www.canada.ca/en/environment-climate-change/services/convention-international-trade-endangered-species.html",
+      "category": "law",
+      "note": "Canadian CITES implementation."
+    },
+    {
+      "id": "nz-cites",
+      "org": "New Zealand Department of Conservation",
+      "title": "CITES",
+      "url": "https://www.doc.govt.nz/about-us/international-agreements/cites/",
+      "category": "law",
+      "note": "New Zealand CITES implementation."
+    },
+    {
+      "id": "singapore-nparks-cites",
+      "org": "NParks Singapore",
+      "title": "About CITES",
+      "url": "https://avs.nparks.gov.sg/wildlife/wildlife-trade/cites/about/",
+      "category": "law",
+      "note": "Singapore permitting and species-protection system."
+    },
+    {
+      "id": "singapore-wildlife-trade",
+      "org": "NParks Singapore",
+      "title": "Importing or exporting wildlife and endangered species",
+      "url": "https://avs.nparks.gov.sg/businesses/commercial-importers-exporters/animals/wildlife-endangered-species/",
+      "category": "enforcement",
+      "note": "Singapore wildlife-trade enforcement and public guidance."
+    },
+    {
+      "id": "hongkong-afcd",
+      "org": "Hong Kong AFCD",
+      "title": "Protection of Endangered Species",
+      "url": "https://www.afcd.gov.hk/english/conservation/con_end/con_end.html",
+      "category": "law",
+      "note": "Hong Kong endangered-species protection context."
+    },
+    {
+      "id": "hongkong-customs",
+      "org": "Hong Kong Customs",
+      "title": "Customs press releases",
+      "url": "https://www.customs.gov.hk/en/customs-announcement/press-release/index.html",
+      "category": "port",
+      "note": "Customs release archive used for seizure context."
+    },
+    {
+      "id": "india-wccb",
+      "org": "Wildlife Crime Control Bureau",
+      "title": "Wildlife Crime Control Bureau",
+      "url": "https://wccb.gov.in/",
+      "category": "enforcement",
+      "note": "Indian wildlife-crime enforcement agency."
+    },
+    {
+      "id": "south-africa-rhino",
+      "org": "South African DFFE",
+      "title": "Rhino poaching statistics",
+      "url": "https://www.dffe.gov.za/mediarelease/rhinopoaching_statistics_2024",
+      "category": "enforcement",
+      "note": "Rhino poaching and enforcement context."
+    },
+    {
+      "id": "kenya-wildlife-service",
+      "org": "Kenya Wildlife Service",
+      "title": "Kenya Wildlife Service",
+      "url": "https://www.kws.go.ke/",
+      "category": "community",
+      "note": "East African wildlife-management and anti-poaching context."
+    },
+    {
+      "id": "malaysia-wildlife",
+      "org": "PERHILITAN Malaysia",
+      "title": "Department of Wildlife and National Parks",
+      "url": "https://www.wildlife.gov.my/",
+      "category": "enforcement",
+      "note": "Malaysian wildlife enforcement and conservation context."
+    },
+    {
+      "id": "traffic-iwt",
+      "org": "TRAFFIC",
+      "title": "Wildlife crime",
+      "url": "https://www.traffic.org/what-we-do/thematic-issues/wildlife-crime/",
+      "category": "research",
+      "note": "TRAFFIC overview of illegal wildlife trade."
+    },
+    {
+      "id": "traffic-publications",
+      "org": "TRAFFIC",
+      "title": "Publications",
+      "url": "https://www.traffic.org/publications/",
+      "category": "research",
+      "note": "Report library used for commodity and market checks."
+    },
+    {
+      "id": "traffic-portal",
+      "org": "TRAFFIC",
+      "title": "Wildlife Trade Portal",
+      "url": "https://www.wildlifetradeportal.org/",
+      "category": "research",
+      "note": "Open seizure-report portal for wildlife trade incidents."
+    },
+    {
+      "id": "traffic-pangolin",
+      "org": "TRAFFIC",
+      "title": "The global trafficking of pangolins",
+      "url": "https://www.traffic.org/publications/reports/the-global-trafficking-of-pangolins/",
+      "category": "market",
+      "note": "Pangolin commodity and trafficking context."
+    },
+    {
+      "id": "traffic-glass-eel",
+      "org": "TRAFFIC",
+      "title": "European eel trafficking surge",
+      "url": "https://www.traffic.org/news/traffic-warns-of-european-eel-trafficking-surge/",
+      "category": "marine",
+      "note": "Glass eel trafficking and enforcement context."
+    },
+    {
+      "id": "traffic-songbirds",
+      "org": "TRAFFIC",
+      "title": "Asian Songbirds",
+      "url": "https://www.traffic.org/what-we-do/species/asian-songbirds/",
+      "category": "birds",
+      "note": "Songbird trade and market-pressure background."
+    },
+    {
+      "id": "traffic-reptiles-japan",
+      "org": "TRAFFIC",
+      "title": "Reptiles and amphibians endemic to Japan's Nansei Islands",
+      "url": "https://www.traffic.org/vn/publications/reports/reptiles-and-amphibians-endemic-to-japans-nansei-islands-japanese/",
+      "category": "online",
+      "note": "Reptile and amphibian pet-trade case source."
+    },
+    {
+      "id": "traffic-sharks-rays",
+      "org": "TRAFFIC",
+      "title": "SharkTrace",
+      "url": "https://www.traffic.org/sharktrace/",
+      "category": "marine",
+      "note": "Shark and ray trade pressure source."
+    },
+    {
+      "id": "wwf-iwt",
+      "org": "WWF",
+      "title": "Illegal wildlife trade",
+      "url": "https://www.worldwildlife.org/threats/illegal-wildlife-trade",
+      "category": "research",
+      "note": "Accessible overview of illegal wildlife trade threats."
+    },
+    {
+      "id": "wwf-uk-iwt",
+      "org": "WWF",
+      "title": "The latest trends in the illegal wildlife trade",
+      "url": "https://www.worldwildlife.org/news/stories/the-latest-trends-in-the-illegal-wildlife-trade/",
+      "category": "research",
+      "note": "Demand and enforcement frame from WWF."
+    },
+    {
+      "id": "wwf-coalition",
+      "org": "WWF",
+      "title": "Coalition to End Wildlife Trafficking Online",
+      "url": "https://www.worldwildlife.org/initiatives/coalition-to-end-wildlife-trafficking-online",
+      "category": "online",
+      "note": "Platform coalition source for online trade."
+    },
+    {
+      "id": "coalition-online",
+      "org": "Coalition to End Wildlife Trafficking Online",
+      "title": "Coalition homepage",
+      "url": "https://www.endwildlifetraffickingonline.org/",
+      "category": "online",
+      "note": "Online platform response and member context."
+    },
+    {
+      "id": "ifaw-cybercrime",
+      "org": "IFAW",
+      "title": "Disrupting Wildlife Cybercrime",
+      "url": "https://www.ifaw.org/projects/wildlife-cybercrime-prevention-global",
+      "category": "online",
+      "note": "Online wildlife-trafficking campaign and evidence."
+    },
+    {
+      "id": "ifaw-offline",
+      "org": "IFAW",
+      "title": "Wildlife cybercrime factsheet",
+      "url": "https://www.ifaw.org/ca-en/resources/wildlife-cybercrime-factsheet",
+      "category": "online",
+      "note": "Online listings and illegal wildlife trade report."
+    },
+    {
+      "id": "ifaw-disrupt",
+      "org": "IFAW",
+      "title": "Disrupt: Wildlife Cybercrime",
+      "url": "https://www.ifaw.org/resources/disrupt-wildlife-cybercrime",
+      "category": "online",
+      "note": "Cybercrime and platform enforcement source."
+    },
+    {
+      "id": "wjc-home",
+      "org": "Wildlife Justice Commission",
+      "title": "Our work",
+      "url": "https://wildlifejustice.org/our-work/",
+      "category": "enforcement",
+      "note": "Intelligence-led investigation model."
+    },
+    {
+      "id": "wjc-rhino",
+      "org": "Wildlife Justice Commission",
+      "title": "Rhino horn trafficking report",
+      "url": "https://wildlifejustice.org/rhino-horn-trafficking-report/",
+      "category": "market",
+      "note": "Transnational rhino-horn trafficking report."
+    },
+    {
+      "id": "wjc-disruption-disarray",
+      "org": "Wildlife Justice Commission",
+      "title": "Disruption and Disarray",
+      "url": "https://wildlifejustice.org/wildlife-justice-commission-report-reveals-major-disruption-in-pangolin-scale-and-ivory-trafficking/",
+      "category": "market",
+      "note": "Pangolin scale and ivory trafficking analysis through 2024."
+    },
+    {
+      "id": "wjc-convergence",
+      "org": "Wildlife Justice Commission",
+      "title": "Convergence of wildlife crime with other organised crime",
+      "url": "https://wildlifejustice.org/convergence-wildlife-crime-organised-crime/",
+      "category": "law",
+      "note": "Crime convergence with drugs, seafood, tax and corruption."
+    },
+    {
+      "id": "wjc-corruption",
+      "org": "Wildlife Justice Commission",
+      "title": "Dirty Money: corruption and wildlife crime",
+      "url": "https://wildlifejustice.org/new-report-sheds-light-on-the-key-role-of-corruption-in-enabling-wildlife-crime/",
+      "category": "law",
+      "note": "Corruption risk in wildlife-crime supply chains."
+    },
+    {
+      "id": "eia-wildlife",
+      "org": "Environmental Investigation Agency",
+      "title": "Wildlife",
+      "url": "https://eia-international.org/wildlife/",
+      "category": "research",
+      "note": "Investigative source on wildlife trafficking."
+    },
+    {
+      "id": "eia-tipping-scales",
+      "org": "Environmental Investigation Agency",
+      "title": "Smoke and Mirrors",
+      "url": "https://eia-international.org/report/chinas-complicity-in-the-global-illegal-pangolin-trade-smoke-and-mirrors/",
+      "category": "market",
+      "note": "Pangolin trafficking and market-pressure report."
+    },
+    {
+      "id": "eia-out-of-africa",
+      "org": "Environmental Investigation Agency",
+      "title": "Out of Africa",
+      "url": "https://reports.eia-international.org/out-of-africa/",
+      "category": "market",
+      "note": "Ivory trafficking investigation source."
+    },
+    {
+      "id": "eia-totoaba",
+      "org": "Environmental Investigation Agency",
+      "title": "On Borrowed Time",
+      "url": "https://eia-international.org/report/on-borrowed-time/",
+      "category": "marine",
+      "note": "Totoaba swim-bladder trade and vaquita pressure."
+    },
+    {
+      "id": "wildaid-sharks",
+      "org": "WildAid",
+      "title": "Sharks",
+      "url": "https://wildaid.org/programs/sharks/",
+      "category": "marine",
+      "note": "Demand-reduction and shark-fin trade context."
+    },
+    {
+      "id": "wcs-wildlife-trade",
+      "org": "Wildlife Conservation Society",
+      "title": "Wildlife trade",
+      "url": "https://programs.wcs.org/wildlifetrade/",
+      "category": "research",
+      "note": "Conservation and public-health frame for wildlife trade."
+    },
+    {
+      "id": "panthera-trade",
+      "org": "Panthera",
+      "title": "The Illegal Wildlife Trade",
+      "url": "https://panthera.org/threat-illegal-wildlife-trade",
+      "category": "market",
+      "note": "Big-cat and jaguar trafficking context."
+    },
+    {
+      "id": "irf-rhino",
+      "org": "International Rhino Foundation",
+      "title": "State of the Rhino",
+      "url": "https://rhinos.org/about-rhinos/state-of-the-rhino/",
+      "category": "market",
+      "note": "Rhino conservation and trafficking context."
+    },
+    {
+      "id": "save-elephants-etis",
+      "org": "CITES / TRAFFIC",
+      "title": "Elephant Trade Information System",
+      "url": "https://cites.org/eng/prog/etis",
+      "category": "market",
+      "note": "Ivory seizure monitoring context."
+    },
+    {
+      "id": "shark-trust",
+      "org": "Shark Trust",
+      "title": "Position Statement: UK Shark Fin Ban",
+      "url": "https://www.sharktrust.org/banning-the-import-of-shark-fins-to-uk",
+      "category": "marine",
+      "note": "Public explainer on shark-fin demand and regulation."
+    },
+    {
+      "id": "nature-reptile-trade",
+      "org": "Nature Communications",
+      "title": "Thousands of reptile species threatened by under-regulated global trade",
+      "url": "https://www.nature.com/articles/s41467-020-18523-4",
+      "category": "research",
+      "note": "Peer-reviewed analysis of web-based reptile trade gaps."
+    },
+    {
+      "id": "nature-trade-impact",
+      "org": "Nature Ecology & Evolution",
+      "title": "Impacts of wildlife trade on terrestrial biodiversity",
+      "url": "https://www.nature.com/articles/s41559-021-01399-y",
+      "category": "research",
+      "note": "Meta-analysis of trade-driven population declines."
+    },
+    {
+      "id": "nature-cites-gaps",
+      "org": "Nature Ecology & Evolution",
+      "title": "Species likely threatened by international trade",
+      "url": "https://www.nature.com/articles/s41559-023-02115-8",
+      "category": "research",
+      "note": "Research on CITES gaps for trade-threatened species."
+    },
+    {
+      "id": "nature-alien-vertebrates",
+      "org": "Nature Communications",
+      "title": "Alien vertebrates from wildlife trade",
+      "url": "https://www.nature.com/articles/s41467-023-43754-6",
+      "category": "research",
+      "note": "Live wildlife trade and invasive vertebrate risk."
+    },
+    {
+      "id": "sci-reports-snake",
+      "org": "Scientific Reports",
+      "title": "Slow life history leaves endangered snake vulnerable to illegal collecting",
+      "url": "https://www.nature.com/articles/s41598-021-84745-1",
+      "category": "research",
+      "note": "Example of rare reptile demand and population vulnerability."
+    },
+    {
+      "id": "frontiers-primates",
+      "org": "Frontiers in Conservation Science",
+      "title": "Primate trade and conservation crisis",
+      "url": "https://www.frontiersin.org/journals/conservation-science/articles/10.3389/fcosc.2024.1400613/full",
+      "category": "research",
+      "note": "Nonhuman primate trade, pet demand and online market source."
+    },
+    {
+      "id": "plos-iwt-value-usa",
+      "org": "PLOS ONE",
+      "title": "Economic value of illegal wildlife trade entering the USA",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0258523",
+      "category": "research",
+      "note": "Open-method valuation and LEMIS-related seizure context."
+    },
+    {
+      "id": "plos-pangolin-detection",
+      "org": "PLOS ONE",
+      "title": "Where are you hiding the pangolins?",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0299152",
+      "category": "forensics",
+      "note": "Detection tools and inspection-method review for wildlife contraband."
+    },
+    {
+      "id": "springer-songbirds",
+      "org": "Biodiversity and Conservation",
+      "title": "Songbirds on sale across online and physical markets in Indonesia",
+      "url": "https://link.springer.com/article/10.1007/s10531-024-02825-w",
+      "category": "birds",
+      "note": "Online and physical market comparison for songbirds."
+    },
+    {
+      "id": "springer-pangolins-india",
+      "org": "European Journal of Wildlife Research",
+      "title": "Illegal trade of pangolins in India",
+      "url": "https://link.springer.com/article/10.1007/s10344-023-01708-9",
+      "category": "research",
+      "note": "Pangolin seizure analysis and prosecution context."
+    },
+    {
+      "id": "stoten-glass-eels",
+      "org": "Science of the Total Environment",
+      "title": "Health of smuggled European glass eels",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048969724085048",
+      "category": "marine",
+      "note": "Physiological impact of glass eel trafficking."
+    },
+    {
+      "id": "marine-policy-eels",
+      "org": "Marine Policy",
+      "title": "Crime script analysis of European eel trafficking",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0308597X24005694",
+      "category": "marine",
+      "note": "Illegal eel trade process and source-to-market script."
+    },
+    {
+      "id": "sharks-plane",
+      "org": "Forensic Science International: Animals and Environments",
+      "title": "Sharks on a plane",
+      "url": "https://www.sciencedirect.com/science/article/pii/S2666937422000154",
+      "category": "marine",
+      "note": "Shark-fin seizure and CITES-listed species identification source."
+    },
+    {
+      "id": "plos-youtube-exotic",
+      "org": "PLOS ONE",
+      "title": "Is YouTube promoting the exotic pet trade?",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0235451",
+      "category": "online",
+      "note": "Online content and exotic-pet demand source."
+    },
+    {
+      "id": "plos-spillover-regulation",
+      "org": "PLOS ONE",
+      "title": "Preventing zoonotic spillover and wildlife trade regulation",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0312012",
+      "category": "research",
+      "note": "Regulatory approaches and zoonotic-risk framing."
+    },
+    {
+      "id": "nature-food-risky",
+      "org": "Nature Food",
+      "title": "Risky business",
+      "url": "https://www.nature.com/articles/s43016-021-00330-9",
+      "category": "research",
+      "note": "Wildlife trade and zoonotic-risk assessment context."
+    },
+    {
+      "id": "plos-rarity-value",
+      "org": "PLOS Biology",
+      "title": "Rarity value and species extinction",
+      "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0040415",
+      "category": "research",
+      "note": "Anthropogenic Allee effect and rare-species market logic."
+    },
+    {
+      "id": "rusi-illicit-finance",
+      "org": "RUSI",
+      "title": "Illegal wildlife trade and illicit finance in the UK",
+      "url": "https://static.rusi.org/314_WHR_G7_IWT_UK.pdf",
+      "category": "law",
+      "note": "UK illicit-finance and wildlife-trafficking source."
+    },
+    {
+      "id": "global-initiative-iwt",
+      "org": "Global Initiative Against Transnational Organized Crime",
+      "title": "Illegal wildlife trade analysis",
+      "url": "https://globalinitiative.net/analysis/illegal-wildlife-trade/",
+      "category": "law",
+      "note": "Organized-crime analysis of illegal wildlife trade."
+    },
+    {
+      "id": "tnrc-crime-convergence",
+      "org": "WWF TNRC",
+      "title": "Crime convergence and natural resources",
+      "url": "https://www.worldwildlife.org/projects/crime-convergence-natural-resource-exploitation-and-transnational-organized-crime",
+      "category": "law",
+      "note": "Natural-resource crime convergence and corruption context."
+    }
+  ]
+}

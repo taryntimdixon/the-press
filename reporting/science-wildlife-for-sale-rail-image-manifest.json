@@ -1,0 +1,854 @@
+{
+  "image_count": 106,
+  "unique_sheet_tiles": 106,
+  "images": [
+    {
+      "index": 1,
+      "source_id": "interpol-thunder-2025",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/interpol-thunder-2025.jpg",
+      "sheet": 1,
+      "tile": 1
+    },
+    {
+      "index": 2,
+      "source_id": "interpol-wildlife-crime",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/interpol-wildlife-crime.jpg",
+      "sheet": 1,
+      "tile": 2
+    },
+    {
+      "index": 3,
+      "source_id": "interpol-environmental-crime",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/interpol-environmental-crime.jpg",
+      "sheet": 1,
+      "tile": 3
+    },
+    {
+      "index": 4,
+      "source_id": "unodc-wwcr-2024",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/unodc-wwcr-2024.jpg",
+      "sheet": 3,
+      "tile": 1
+    },
+    {
+      "index": 5,
+      "source_id": "unodc-wildlife-portal",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/unodc-wildlife-portal.jpg",
+      "sheet": 7,
+      "tile": 1
+    },
+    {
+      "index": 6,
+      "source_id": "unodc-wwcr-2020",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/unodc-wwcr-2020.jpg",
+      "sheet": 3,
+      "tile": 2
+    },
+    {
+      "index": 7,
+      "source_id": "cites-what",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/cites-what.jpg",
+      "sheet": 3,
+      "tile": 3
+    },
+    {
+      "index": 8,
+      "source_id": "cites-appendices",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/cites-appendices.jpg",
+      "sheet": 3,
+      "tile": 4
+    },
+    {
+      "index": 9,
+      "source_id": "cites-trade-db",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/cites-trade-db.jpg",
+      "sheet": 3,
+      "tile": 5
+    },
+    {
+      "index": 10,
+      "source_id": "tradeview",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/tradeview.jpg",
+      "sheet": 3,
+      "tile": 6
+    },
+    {
+      "index": 11,
+      "source_id": "tradeview-faq",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/tradeview-faq.jpg",
+      "sheet": 3,
+      "tile": 7
+    },
+    {
+      "index": 12,
+      "source_id": "speciesplus",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/speciesplus.jpg",
+      "sheet": 3,
+      "tile": 8
+    },
+    {
+      "index": 13,
+      "source_id": "cites-illegal-trade-reports",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/cites-illegal-trade-reports.jpg",
+      "sheet": 3,
+      "tile": 9
+    },
+    {
+      "index": 14,
+      "source_id": "cites-wwtr-2022",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/cites-wwtr-2022.jpg",
+      "sheet": 3,
+      "tile": 10
+    },
+    {
+      "index": 15,
+      "source_id": "iccwc",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/iccwc.jpg",
+      "sheet": 3,
+      "tile": 11
+    },
+    {
+      "index": 16,
+      "source_id": "iccwc-toolkit",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/iccwc-toolkit.jpg",
+      "sheet": 3,
+      "tile": 12
+    },
+    {
+      "index": 17,
+      "source_id": "fatf-iwt",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/fatf-iwt.jpg",
+      "sheet": 3,
+      "tile": 13
+    },
+    {
+      "index": 18,
+      "source_id": "fincen-wildlife-threat",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/fincen-wildlife-threat.jpg",
+      "sheet": 3,
+      "tile": 14
+    },
+    {
+      "index": 19,
+      "source_id": "fincen-environmental-crimes",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/fincen-environmental-crimes.jpg",
+      "sheet": 3,
+      "tile": 15
+    },
+    {
+      "index": 20,
+      "source_id": "ec-wildlife-trade",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/ec-wildlife-trade.jpg",
+      "sheet": 3,
+      "tile": 16
+    },
+    {
+      "index": 21,
+      "source_id": "ec-action-plan",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/ec-action-plan.jpg",
+      "sheet": 8,
+      "tile": 1
+    },
+    {
+      "index": 22,
+      "source_id": "europol-environmental-crime",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/europol-environmental-crime.jpg",
+      "sheet": 1,
+      "tile": 4
+    },
+    {
+      "index": 23,
+      "source_id": "wco-environment",
+      "category": "port",
+      "image": "assets/wildlife-for-sale/rails/wco-environment.jpg",
+      "sheet": 1,
+      "tile": 5
+    },
+    {
+      "index": 24,
+      "source_id": "oecd-seasia",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/oecd-seasia.jpg",
+      "sheet": 8,
+      "tile": 2
+    },
+    {
+      "index": 25,
+      "source_id": "world-bank-wildlife-trade",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/world-bank-wildlife-trade.jpg",
+      "sheet": 8,
+      "tile": 3
+    },
+    {
+      "index": 26,
+      "source_id": "iucn-red-list",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/iucn-red-list.jpg",
+      "sheet": 7,
+      "tile": 2
+    },
+    {
+      "index": 27,
+      "source_id": "iucn-summary",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/iucn-summary.jpg",
+      "sheet": 7,
+      "tile": 3
+    },
+    {
+      "index": 28,
+      "source_id": "ipbes-global",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/ipbes-global.jpg",
+      "sheet": 7,
+      "tile": 4
+    },
+    {
+      "index": 29,
+      "source_id": "ipbes-invasive",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/ipbes-invasive.jpg",
+      "sheet": 7,
+      "tile": 5
+    },
+    {
+      "index": 30,
+      "source_id": "protected-planet-2024",
+      "category": "community",
+      "image": "assets/wildlife-for-sale/rails/protected-planet-2024.jpg",
+      "sheet": 5,
+      "tile": 1
+    },
+    {
+      "index": 31,
+      "source_id": "fao-fish-stocks-2025",
+      "category": "marine",
+      "image": "assets/wildlife-for-sale/rails/fao-fish-stocks-2025.jpg",
+      "sheet": 4,
+      "tile": 1
+    },
+    {
+      "index": 32,
+      "source_id": "noaa-coral-bleaching",
+      "category": "marine",
+      "image": "assets/wildlife-for-sale/rails/noaa-coral-bleaching.jpg",
+      "sheet": 4,
+      "tile": 2
+    },
+    {
+      "index": 33,
+      "source_id": "cms-migratory",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/cms-migratory.jpg",
+      "sheet": 7,
+      "tile": 6
+    },
+    {
+      "index": 34,
+      "source_id": "usfws-ole",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/usfws-ole.jpg",
+      "sheet": 1,
+      "tile": 6
+    },
+    {
+      "index": 35,
+      "source_id": "usfws-wildlife-trafficking",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/usfws-wildlife-trafficking.jpg",
+      "sheet": 1,
+      "tile": 7
+    },
+    {
+      "index": 36,
+      "source_id": "usfws-inspection",
+      "category": "port",
+      "image": "assets/wildlife-for-sale/rails/usfws-inspection.jpg",
+      "sheet": 1,
+      "tile": 8
+    },
+    {
+      "index": 37,
+      "source_id": "usfws-cites",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/usfws-cites.jpg",
+      "sheet": 8,
+      "tile": 4
+    },
+    {
+      "index": 38,
+      "source_id": "usfws-lacey",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/usfws-lacey.jpg",
+      "sheet": 8,
+      "tile": 5
+    },
+    {
+      "index": 39,
+      "source_id": "usfws-esa",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/usfws-esa.jpg",
+      "sheet": 8,
+      "tile": 6
+    },
+    {
+      "index": 40,
+      "source_id": "doj-enrd-wildlife",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/doj-enrd-wildlife.jpg",
+      "sheet": 1,
+      "tile": 9
+    },
+    {
+      "index": 41,
+      "source_id": "state-wildlife-trafficking",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/state-wildlife-trafficking.jpg",
+      "sheet": 8,
+      "tile": 7
+    },
+    {
+      "index": 42,
+      "source_id": "noaa-ole",
+      "category": "marine",
+      "image": "assets/wildlife-for-sale/rails/noaa-ole.jpg",
+      "sheet": 4,
+      "tile": 3
+    },
+    {
+      "index": 43,
+      "source_id": "uk-cites",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/uk-cites.jpg",
+      "sheet": 8,
+      "tile": 8
+    },
+    {
+      "index": 44,
+      "source_id": "uk-nwcu",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/uk-nwcu.jpg",
+      "sheet": 1,
+      "tile": 10
+    },
+    {
+      "index": 45,
+      "source_id": "eu-twix",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/eu-twix.jpg",
+      "sheet": 1,
+      "tile": 11
+    },
+    {
+      "index": 46,
+      "source_id": "australia-cites",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/australia-cites.jpg",
+      "sheet": 8,
+      "tile": 9
+    },
+    {
+      "index": 47,
+      "source_id": "canada-cites",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/canada-cites.jpg",
+      "sheet": 8,
+      "tile": 10
+    },
+    {
+      "index": 48,
+      "source_id": "nz-cites",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/nz-cites.jpg",
+      "sheet": 8,
+      "tile": 11
+    },
+    {
+      "index": 49,
+      "source_id": "singapore-nparks-cites",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/singapore-nparks-cites.jpg",
+      "sheet": 8,
+      "tile": 12
+    },
+    {
+      "index": 50,
+      "source_id": "singapore-wildlife-trade",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/singapore-wildlife-trade.jpg",
+      "sheet": 1,
+      "tile": 12
+    },
+    {
+      "index": 51,
+      "source_id": "hongkong-afcd",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/hongkong-afcd.jpg",
+      "sheet": 8,
+      "tile": 13
+    },
+    {
+      "index": 52,
+      "source_id": "hongkong-customs",
+      "category": "port",
+      "image": "assets/wildlife-for-sale/rails/hongkong-customs.jpg",
+      "sheet": 1,
+      "tile": 13
+    },
+    {
+      "index": 53,
+      "source_id": "india-wccb",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/india-wccb.jpg",
+      "sheet": 1,
+      "tile": 14
+    },
+    {
+      "index": 54,
+      "source_id": "south-africa-rhino",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/south-africa-rhino.jpg",
+      "sheet": 1,
+      "tile": 15
+    },
+    {
+      "index": 55,
+      "source_id": "kenya-wildlife-service",
+      "category": "community",
+      "image": "assets/wildlife-for-sale/rails/kenya-wildlife-service.jpg",
+      "sheet": 5,
+      "tile": 2
+    },
+    {
+      "index": 56,
+      "source_id": "malaysia-wildlife",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/malaysia-wildlife.jpg",
+      "sheet": 1,
+      "tile": 16
+    },
+    {
+      "index": 57,
+      "source_id": "traffic-iwt",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/traffic-iwt.jpg",
+      "sheet": 7,
+      "tile": 7
+    },
+    {
+      "index": 58,
+      "source_id": "traffic-publications",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/traffic-publications.jpg",
+      "sheet": 7,
+      "tile": 8
+    },
+    {
+      "index": 59,
+      "source_id": "traffic-portal",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/traffic-portal.jpg",
+      "sheet": 7,
+      "tile": 9
+    },
+    {
+      "index": 60,
+      "source_id": "traffic-pangolin",
+      "category": "market",
+      "image": "assets/wildlife-for-sale/rails/traffic-pangolin.jpg",
+      "sheet": 2,
+      "tile": 1
+    },
+    {
+      "index": 61,
+      "source_id": "traffic-glass-eel",
+      "category": "marine",
+      "image": "assets/wildlife-for-sale/rails/traffic-glass-eel.jpg",
+      "sheet": 4,
+      "tile": 4
+    },
+    {
+      "index": 62,
+      "source_id": "traffic-songbirds",
+      "category": "birds",
+      "image": "assets/wildlife-for-sale/rails/traffic-songbirds.jpg",
+      "sheet": 5,
+      "tile": 3
+    },
+    {
+      "index": 63,
+      "source_id": "traffic-reptiles-japan",
+      "category": "online",
+      "image": "assets/wildlife-for-sale/rails/traffic-reptiles-japan.jpg",
+      "sheet": 2,
+      "tile": 2
+    },
+    {
+      "index": 64,
+      "source_id": "traffic-sharks-rays",
+      "category": "marine",
+      "image": "assets/wildlife-for-sale/rails/traffic-sharks-rays.jpg",
+      "sheet": 4,
+      "tile": 5
+    },
+    {
+      "index": 65,
+      "source_id": "wwf-iwt",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/wwf-iwt.jpg",
+      "sheet": 7,
+      "tile": 10
+    },
+    {
+      "index": 66,
+      "source_id": "wwf-uk-iwt",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/wwf-uk-iwt.jpg",
+      "sheet": 7,
+      "tile": 11
+    },
+    {
+      "index": 67,
+      "source_id": "wwf-coalition",
+      "category": "online",
+      "image": "assets/wildlife-for-sale/rails/wwf-coalition.jpg",
+      "sheet": 2,
+      "tile": 3
+    },
+    {
+      "index": 68,
+      "source_id": "coalition-online",
+      "category": "online",
+      "image": "assets/wildlife-for-sale/rails/coalition-online.jpg",
+      "sheet": 2,
+      "tile": 4
+    },
+    {
+      "index": 69,
+      "source_id": "ifaw-cybercrime",
+      "category": "online",
+      "image": "assets/wildlife-for-sale/rails/ifaw-cybercrime.jpg",
+      "sheet": 2,
+      "tile": 5
+    },
+    {
+      "index": 70,
+      "source_id": "ifaw-offline",
+      "category": "online",
+      "image": "assets/wildlife-for-sale/rails/ifaw-offline.jpg",
+      "sheet": 2,
+      "tile": 6
+    },
+    {
+      "index": 71,
+      "source_id": "ifaw-disrupt",
+      "category": "online",
+      "image": "assets/wildlife-for-sale/rails/ifaw-disrupt.jpg",
+      "sheet": 2,
+      "tile": 7
+    },
+    {
+      "index": 72,
+      "source_id": "wjc-home",
+      "category": "enforcement",
+      "image": "assets/wildlife-for-sale/rails/wjc-home.jpg",
+      "sheet": 8,
+      "tile": 14
+    },
+    {
+      "index": 73,
+      "source_id": "wjc-rhino",
+      "category": "market",
+      "image": "assets/wildlife-for-sale/rails/wjc-rhino.jpg",
+      "sheet": 2,
+      "tile": 8
+    },
+    {
+      "index": 74,
+      "source_id": "wjc-disruption-disarray",
+      "category": "market",
+      "image": "assets/wildlife-for-sale/rails/wjc-disruption-disarray.jpg",
+      "sheet": 2,
+      "tile": 9
+    },
+    {
+      "index": 75,
+      "source_id": "wjc-convergence",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/wjc-convergence.jpg",
+      "sheet": 8,
+      "tile": 15
+    },
+    {
+      "index": 76,
+      "source_id": "wjc-corruption",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/wjc-corruption.jpg",
+      "sheet": 8,
+      "tile": 16
+    },
+    {
+      "index": 77,
+      "source_id": "eia-wildlife",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/eia-wildlife.jpg",
+      "sheet": 7,
+      "tile": 12
+    },
+    {
+      "index": 78,
+      "source_id": "eia-tipping-scales",
+      "category": "market",
+      "image": "assets/wildlife-for-sale/rails/eia-tipping-scales.jpg",
+      "sheet": 2,
+      "tile": 10
+    },
+    {
+      "index": 79,
+      "source_id": "eia-out-of-africa",
+      "category": "market",
+      "image": "assets/wildlife-for-sale/rails/eia-out-of-africa.jpg",
+      "sheet": 2,
+      "tile": 11
+    },
+    {
+      "index": 80,
+      "source_id": "eia-totoaba",
+      "category": "marine",
+      "image": "assets/wildlife-for-sale/rails/eia-totoaba.jpg",
+      "sheet": 4,
+      "tile": 6
+    },
+    {
+      "index": 81,
+      "source_id": "wildaid-sharks",
+      "category": "marine",
+      "image": "assets/wildlife-for-sale/rails/wildaid-sharks.jpg",
+      "sheet": 4,
+      "tile": 7
+    },
+    {
+      "index": 82,
+      "source_id": "wcs-wildlife-trade",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/wcs-wildlife-trade.jpg",
+      "sheet": 7,
+      "tile": 13
+    },
+    {
+      "index": 83,
+      "source_id": "panthera-trade",
+      "category": "market",
+      "image": "assets/wildlife-for-sale/rails/panthera-trade.jpg",
+      "sheet": 2,
+      "tile": 12
+    },
+    {
+      "index": 84,
+      "source_id": "irf-rhino",
+      "category": "market",
+      "image": "assets/wildlife-for-sale/rails/irf-rhino.jpg",
+      "sheet": 2,
+      "tile": 13
+    },
+    {
+      "index": 85,
+      "source_id": "save-elephants-etis",
+      "category": "market",
+      "image": "assets/wildlife-for-sale/rails/save-elephants-etis.jpg",
+      "sheet": 2,
+      "tile": 14
+    },
+    {
+      "index": 86,
+      "source_id": "shark-trust",
+      "category": "marine",
+      "image": "assets/wildlife-for-sale/rails/shark-trust.jpg",
+      "sheet": 4,
+      "tile": 8
+    },
+    {
+      "index": 87,
+      "source_id": "nature-reptile-trade",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/nature-reptile-trade.jpg",
+      "sheet": 7,
+      "tile": 14
+    },
+    {
+      "index": 88,
+      "source_id": "nature-trade-impact",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/nature-trade-impact.jpg",
+      "sheet": 7,
+      "tile": 15
+    },
+    {
+      "index": 89,
+      "source_id": "nature-cites-gaps",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/nature-cites-gaps.jpg",
+      "sheet": 7,
+      "tile": 16
+    },
+    {
+      "index": 90,
+      "source_id": "nature-alien-vertebrates",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/nature-alien-vertebrates.jpg",
+      "sheet": 6,
+      "tile": 1
+    },
+    {
+      "index": 91,
+      "source_id": "sci-reports-snake",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/sci-reports-snake.jpg",
+      "sheet": 6,
+      "tile": 2
+    },
+    {
+      "index": 92,
+      "source_id": "frontiers-primates",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/frontiers-primates.jpg",
+      "sheet": 6,
+      "tile": 3
+    },
+    {
+      "index": 93,
+      "source_id": "plos-iwt-value-usa",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/plos-iwt-value-usa.jpg",
+      "sheet": 6,
+      "tile": 4
+    },
+    {
+      "index": 94,
+      "source_id": "plos-pangolin-detection",
+      "category": "forensics",
+      "image": "assets/wildlife-for-sale/rails/plos-pangolin-detection.jpg",
+      "sheet": 2,
+      "tile": 15
+    },
+    {
+      "index": 95,
+      "source_id": "springer-songbirds",
+      "category": "birds",
+      "image": "assets/wildlife-for-sale/rails/springer-songbirds.jpg",
+      "sheet": 5,
+      "tile": 4
+    },
+    {
+      "index": 96,
+      "source_id": "springer-pangolins-india",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/springer-pangolins-india.jpg",
+      "sheet": 6,
+      "tile": 5
+    },
+    {
+      "index": 97,
+      "source_id": "stoten-glass-eels",
+      "category": "marine",
+      "image": "assets/wildlife-for-sale/rails/stoten-glass-eels.jpg",
+      "sheet": 4,
+      "tile": 9
+    },
+    {
+      "index": 98,
+      "source_id": "marine-policy-eels",
+      "category": "marine",
+      "image": "assets/wildlife-for-sale/rails/marine-policy-eels.jpg",
+      "sheet": 4,
+      "tile": 10
+    },
+    {
+      "index": 99,
+      "source_id": "sharks-plane",
+      "category": "marine",
+      "image": "assets/wildlife-for-sale/rails/sharks-plane.jpg",
+      "sheet": 4,
+      "tile": 11
+    },
+    {
+      "index": 100,
+      "source_id": "plos-youtube-exotic",
+      "category": "online",
+      "image": "assets/wildlife-for-sale/rails/plos-youtube-exotic.jpg",
+      "sheet": 2,
+      "tile": 16
+    },
+    {
+      "index": 101,
+      "source_id": "plos-spillover-regulation",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/plos-spillover-regulation.jpg",
+      "sheet": 6,
+      "tile": 6
+    },
+    {
+      "index": 102,
+      "source_id": "nature-food-risky",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/nature-food-risky.jpg",
+      "sheet": 6,
+      "tile": 7
+    },
+    {
+      "index": 103,
+      "source_id": "plos-rarity-value",
+      "category": "research",
+      "image": "assets/wildlife-for-sale/rails/plos-rarity-value.jpg",
+      "sheet": 6,
+      "tile": 8
+    },
+    {
+      "index": 104,
+      "source_id": "rusi-illicit-finance",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/rusi-illicit-finance.jpg",
+      "sheet": 4,
+      "tile": 12
+    },
+    {
+      "index": 105,
+      "source_id": "global-initiative-iwt",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/global-initiative-iwt.jpg",
+      "sheet": 4,
+      "tile": 13
+    },
+    {
+      "index": 106,
+      "source_id": "tnrc-crime-convergence",
+      "category": "law",
+      "image": "assets/wildlife-for-sale/rails/tnrc-crime-convergence.jpg",
+      "sheet": 4,
+      "tile": 14
+    }
+  ]
+}
