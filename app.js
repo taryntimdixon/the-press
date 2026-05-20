@@ -904,25 +904,11 @@ if (!hasHomepageTargets) {
     const storageKey = 'press-masthead-ticker-start-key';
     const keyFor = (story) => `${story?.title || ''}|${story?.url || ''}`;
     const previousKey = readStoredString(storageKey);
-    let index = getRandomIndex(headlines.length);
-
-    if (headlines.length > 1 && keyFor(headlines[index]) === previousKey) {
-      index = (index + 1 + getRandomIndex(headlines.length - 1)) % headlines.length;
-    }
+    const previousIndex = headlines.findIndex((story) => keyFor(story) === previousKey);
+    const index = previousIndex >= 0 ? (previousIndex + 1) % headlines.length : 0;
 
     writeStoredString(storageKey, keyFor(headlines[index]));
     return headlines.slice(index).concat(headlines.slice(0, index));
-  }
-
-  function getRandomIndex(max) {
-    if (!max) return 0;
-    try {
-      const values = new Uint32Array(1);
-      window.crypto?.getRandomValues(values);
-      return values[0] % max;
-    } catch (_) {
-      return Math.floor(Math.random() * max);
-    }
   }
 
   function readStoredString(key) {
@@ -1737,10 +1723,8 @@ if (!hasHomepageTargets) {
       if (currentKey && candidates.includes(currentKey)) return currentKey;
 
       const previousKey = readKey();
-      let index = randomIndex(candidates.length);
-      if (candidates.length > 1 && candidates[index] === previousKey) {
-        index = (index + 1 + randomIndex(candidates.length - 1)) % candidates.length;
-      }
+      const previousIndex = candidates.indexOf(previousKey);
+      const index = previousIndex >= 0 ? (previousIndex + 1) % candidates.length : 0;
 
       rememberKey(candidates[index]);
       return currentKey;
@@ -1770,17 +1754,6 @@ if (!hasHomepageTargets) {
         return sessionStorage.getItem(storageKey) || localStorage.getItem(storageKey) || '';
       } catch (_) {
         return '';
-      }
-    }
-
-    function randomIndex(max) {
-      if (!max) return 0;
-      try {
-        const values = new Uint32Array(1);
-        window.crypto?.getRandomValues(values);
-        return values[0] % max;
-      } catch (_) {
-        return Math.floor(Math.random() * max);
       }
     }
 
@@ -2454,10 +2427,7 @@ function enhanceBreakingStrip(stories) {
     if (!pages.length) return { page: 'index.html', index: 0 };
     const storageKey = `${HOMEPAGE_SOCIAL_SHARE_STORAGE_PREFIX}:${platform}:last-index`;
     const lastIndex = getStoredShareIndex(storageKey);
-    let index = getRandomShareIndex(pages.length);
-    if (pages.length > 1 && index === lastIndex) {
-      index = (index + 1 + getRandomShareIndex(pages.length - 1)) % pages.length;
-    }
+    const index = lastIndex >= 0 ? (lastIndex + 1) % pages.length : 0;
     storeShareIndex(storageKey, index);
     return { page: pages[index], index };
   }

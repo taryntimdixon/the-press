@@ -157,6 +157,13 @@ def absolute_url(path: str) -> str:
     return SITE["baseUrl"].rstrip("/") + "/" + path.lstrip("/")
 
 
+def versioned_asset_url(path: str) -> str:
+    value = str(path or "")
+    if not value or re.match(r"^[a-z][a-z0-9+.-]*:", value, re.I) or "?" in value:
+        return value
+    return f"{value}?v={asset_version(value)}"
+
+
 def preferred_image_path(image_path: str) -> str:
   rel = Path(image_path)
   if not image_path:
@@ -980,8 +987,9 @@ def social_meta(
     og_type: str = "website",
 ) -> str:
     canonical_url = absolute_url(canonical)
-    image_url = absolute_url(image or "assets/icon-512.png")
-    image_ext = Path(str(image or "assets/icon-512.png")).suffix.lower().lstrip(".")
+    image_path = versioned_asset_url(image or "assets/icon-512.png")
+    image_url = image_path if re.match(r"^[a-z][a-z0-9+.-]*:", image_path, re.I) else absolute_url(image_path)
+    image_ext = Path(str(image_path).split("?", 1)[0]).suffix.lower().lstrip(".")
     image_type = {
         "jpg": "image/jpeg",
         "jpeg": "image/jpeg",
@@ -1218,7 +1226,7 @@ def render_homepage() -> str:
         elif 4 <= idx <= 6:
             side_slot = f' data-side-slot="right-{idx - 3}"'
         lead_buttons.append(
-            f'<button class="lead-nav__button{" is-active" if idx == 0 else ""}" type="button" data-lead-button data-target="lead-{idx}" aria-pressed="{str(idx == 0).lower()}"{side_slot}>{thumb}<span class="lead-nav__kicker">{h(story["section"])}</span><strong>{h(story["title"])}</strong></button>'
+            f'<button class="lead-nav__button{" is-active" if idx == 0 else ""}" type="button" data-lead-button data-story-key="{h(story["filename"])}" data-target="lead-{idx}" aria-pressed="{str(idx == 0).lower()}"{side_slot}>{thumb}<span class="lead-nav__kicker">{h(story["section"])}</span><strong>{h(story["title"])}</strong></button>'
         )
     recency_stories = homepage_recency_stories(lead_stories)
     recency_cards = "\n".join(recency_ticker_item(story) for story in recency_stories)
