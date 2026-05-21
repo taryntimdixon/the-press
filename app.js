@@ -13,7 +13,11 @@ function pressSiteAssetUrl(path) {
 
 (() => {
   const body = document.body;
-  if (!body?.classList.contains('page-home') && !body?.classList.contains('page-article')) return;
+  if (
+    !body?.classList.contains('page-home') &&
+    !body?.classList.contains('page-article') &&
+    !body?.classList.contains('page-archive')
+  ) return;
 
   const editableSelector = 'input, textarea, select, [contenteditable=""], [contenteditable="true"]';
   const step = (amount) => {
@@ -702,6 +706,8 @@ function pressSiteAssetUrl(path) {
 
     ensureHeaderControls();
     ensureMastheadTicker();
+    ensureLiveClock();
+    setupOnThisDayHistory();
     setupMenu();
     setupSearch();
     setupReadingProgress();
@@ -907,6 +913,401 @@ if (!hasHomepageTargets) {
     if (ticker.parentElement !== mastheadRow) {
       mastheadRow.appendChild(ticker);
     }
+  }
+
+  const HISTORY_PALETTES = {
+    archive: {
+      bg: '#f6efe2',
+      paper: '#fffdf9',
+      ink: '#1f1f1b',
+      accent: '#9d3a2d',
+      second: '#2f6f73',
+      third: '#d89b37',
+      muted: '#d8cbbb',
+    },
+    civic: {
+      bg: '#edf1ea',
+      paper: '#fffdf9',
+      ink: '#1f1f1b',
+      accent: '#9d3a2d',
+      second: '#315f7c',
+      third: '#d6a83d',
+      muted: '#c9d2c5',
+    },
+    dispatch: {
+      bg: '#f1eadf',
+      paper: '#fff8ec',
+      ink: '#1f1f1b',
+      accent: '#8f2f28',
+      second: '#596b5d',
+      third: '#d79a33',
+      muted: '#d5c2ad',
+    },
+    laboratory: {
+      bg: '#eaf3f1',
+      paper: '#fffdf9',
+      ink: '#1f1f1b',
+      accent: '#287c7a',
+      second: '#8f3b47',
+      third: '#d4a13b',
+      muted: '#c8d8d4',
+    },
+    lunar: {
+      bg: '#e9edf4',
+      paper: '#fffdf9',
+      ink: '#1f1f1b',
+      accent: '#314f8f',
+      second: '#9d3a2d',
+      third: '#d3a23d',
+      muted: '#c8d0de',
+    },
+    'public-square': {
+      bg: '#f2eadb',
+      paper: '#fffdf9',
+      ink: '#1f1f1b',
+      accent: '#8f3c2f',
+      second: '#2f6d68',
+      third: '#d39b3a',
+      muted: '#d9c9b2',
+    },
+    stage: {
+      bg: '#ece7f0',
+      paper: '#fffdf9',
+      ink: '#1f1f1b',
+      accent: '#7a3f8f',
+      second: '#9d3a2d',
+      third: '#d6a33d',
+      muted: '#d4c7da',
+    },
+    voyage: {
+      bg: '#e9f0ed',
+      paper: '#fffdf9',
+      ink: '#1f1f1b',
+      accent: '#2f6f73',
+      second: '#405a90',
+      third: '#d09235',
+      muted: '#c6d2cd',
+    },
+  };
+
+  function ensureLiveClock() {
+    const siteHeader = document.querySelector('[data-site-header]');
+    const mastheadRow = siteHeader?.querySelector('.masthead-row');
+    const ticker = mastheadRow?.querySelector('.masthead-ticker');
+
+    if (!siteHeader || !mastheadRow) return;
+
+    let clock = siteHeader.querySelector('[data-live-clock]');
+
+    if (!clock) {
+      clock = document.createElement('aside');
+      clock.className = 'press-live-clock';
+      clock.setAttribute('data-live-clock', '');
+      clock.setAttribute('aria-label', 'Current local date and time');
+    }
+
+    if (!clock.querySelector('[data-live-clock-date]') || clock.querySelector('.press-live-clock__dial')) {
+      clock.innerHTML = `
+        <time class="press-live-clock__date" data-live-clock-date></time>
+        <span class="press-live-clock__separator" aria-hidden="true">•</span>
+        <time class="press-live-clock__time" data-live-clock-time></time>
+      `;
+    }
+
+    if (clock.parentElement !== mastheadRow || clock.nextElementSibling !== ticker) {
+      mastheadRow.insertBefore(clock, ticker || null);
+    }
+
+    if (clock.dataset.liveClockReady === 'true') return;
+    clock.dataset.liveClockReady = 'true';
+
+    const dateNode = clock.querySelector('[data-live-clock-date]');
+    const timeNode = clock.querySelector('[data-live-clock-time]');
+    const dateFormatter = new Intl.DateTimeFormat(undefined, {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+    const timeFormatter = new Intl.DateTimeFormat(undefined, {
+      hour: 'numeric',
+      minute: '2-digit',
+      second: '2-digit',
+    });
+    let currentDayKey = '';
+    let tickAnimationTimer = 0;
+
+    const tick = () => {
+      const now = new Date();
+      const nextDayKey = localDateKey(now);
+
+      if (dateNode) {
+        dateNode.dateTime = nextDayKey;
+        dateNode.textContent = dateFormatter.format(now);
+      }
+
+      if (timeNode) {
+        const previousTime = timeNode.textContent;
+        const nextTime = timeFormatter.format(now);
+        timeNode.dateTime = now.toISOString();
+        timeNode.textContent = nextTime;
+
+        if (previousTime && previousTime !== nextTime) {
+          clock.classList.remove('is-ticking');
+          void clock.offsetWidth;
+          clock.classList.add('is-ticking');
+          window.clearTimeout(tickAnimationTimer);
+          tickAnimationTimer = window.setTimeout(() => {
+            clock.classList.remove('is-ticking');
+          }, 520);
+        }
+      }
+
+      if (currentDayKey && currentDayKey !== nextDayKey) {
+        window.dispatchEvent(new CustomEvent('press:calendar-day-change', {
+          detail: { date: now, dateKey: nextDayKey },
+        }));
+      }
+
+      currentDayKey = nextDayKey;
+    };
+
+    tick();
+    window.setInterval(tick, 1000);
+  }
+
+  function setupOnThisDayHistory() {
+    if (!document.body.classList.contains('page-home')) return;
+
+    const section = ensureOnThisDaySection();
+    if (!section || section.dataset.historyReady === 'true') return;
+
+    section.dataset.historyReady = 'true';
+
+    const render = (event) => renderOnThisDay(section, event?.detail?.date instanceof Date ? event.detail.date : new Date());
+    render();
+    window.addEventListener('press:calendar-day-change', render);
+  }
+
+  function ensureOnThisDaySection() {
+    let section = document.querySelector('[data-on-this-day]');
+    if (section) return section;
+
+    const ticker = document.querySelector('[data-home-recency-ticker]');
+    if (!ticker) return null;
+
+    section = document.createElement('section');
+    section.className = 'on-this-day';
+    section.id = 'on-this-day';
+    section.setAttribute('data-on-this-day', '');
+    section.setAttribute('aria-live', 'polite');
+    section.innerHTML = `
+      <div class="on-this-day__header">
+        <div>
+          <p class="eyebrow eyebrow--tiny">On this day in history</p>
+          <h2 class="section-heading">Today's big moment</h2>
+          <p class="section-copy" data-history-date>Loading today's historical moment.</p>
+        </div>
+        <p class="on-this-day__count">365 daily moments</p>
+      </div>
+      <div class="on-this-day__layout">
+        <figure class="on-this-day__art" data-history-art aria-label="Flat editorial illustration for today's historical moment"></figure>
+        <article class="on-this-day__story">
+          <p class="on-this-day__year" data-history-year></p>
+          <h3 data-history-title>Checking the archive</h3>
+          <p data-history-text></p>
+          <div class="on-this-day__meta">
+            <a href="https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/01/01" data-history-source target="_blank" rel="noopener">Source</a>
+            <span data-history-rollover>Changes at 12:00 AM local time.</span>
+          </div>
+        </article>
+      </div>
+    `;
+    ticker.insertAdjacentElement('afterend', section);
+    return section;
+  }
+
+  function renderOnThisDay(section, date) {
+    const moments = window.PRESS_ON_THIS_DAY_MOMENTS || {};
+    const key = historyMomentKey(date, moments);
+    const moment = moments[key];
+
+    if (!moment) {
+      section.querySelector('[data-history-date]')?.replaceChildren(document.createTextNode('The history archive is unavailable right now.'));
+      return;
+    }
+
+    section.dataset.historyVisual = moment.visual || 'chronicle';
+
+    const dateNode = section.querySelector('[data-history-date]');
+    const yearNode = section.querySelector('[data-history-year]');
+    const titleNode = section.querySelector('[data-history-title]');
+    const textNode = section.querySelector('[data-history-text]');
+    const sourceNode = section.querySelector('[data-history-source]');
+    const rolloverNode = section.querySelector('[data-history-rollover]');
+    const artNode = section.querySelector('[data-history-art]');
+
+    if (dateNode) {
+      const displayDate = new Intl.DateTimeFormat(undefined, {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      }).format(date);
+      const fallbackNote = key !== monthDayKey(date) ? ` using ${moment.displayDate}` : '';
+      dateNode.textContent = `${displayDate}${fallbackNote}`;
+    }
+
+    if (yearNode) yearNode.textContent = formatHistoryYear(moment.year);
+    if (titleNode) titleNode.textContent = moment.title || 'Historical moment';
+    if (textNode) textNode.textContent = moment.text || '';
+
+    if (sourceNode) {
+      sourceNode.href = moment.source || (window.PRESS_ON_THIS_DAY_ATTRIBUTION?.endpoint || 'https://en.wikipedia.org/wiki/Main_Page');
+      sourceNode.textContent = moment.sourceLabel || 'Wikipedia source';
+    }
+
+    if (rolloverNode) {
+      const count = window.PRESS_ON_THIS_DAY_ATTRIBUTION?.count || Object.keys(moments).length || 365;
+      rolloverNode.textContent = `${count} moments. Changes at 12:00 AM local time.`;
+    }
+
+    if (artNode) {
+      artNode.innerHTML = renderHistoryArt(moment, key);
+    }
+  }
+
+  function localDateKey(date) {
+    return [
+      date.getFullYear(),
+      String(date.getMonth() + 1).padStart(2, '0'),
+      String(date.getDate()).padStart(2, '0'),
+    ].join('-');
+  }
+
+  function monthDayKey(date) {
+    return `${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  }
+
+  function historyMomentKey(date, moments) {
+    const key = monthDayKey(date);
+    if (moments[key]) return key;
+    if (key === '02-29') return moments['02-28'] ? '02-28' : '03-01';
+    return Object.keys(moments)[0] || '01-01';
+  }
+
+  function formatHistoryYear(year) {
+    const value = Number(year);
+    if (!Number.isFinite(value)) return '';
+    return value < 0 ? `${Math.abs(value)} BCE` : String(value);
+  }
+
+  function historyPalette(name) {
+    return HISTORY_PALETTES[name] || HISTORY_PALETTES.archive;
+  }
+
+  function renderHistoryArt(moment, key) {
+    const palette = historyPalette(moment.palette);
+    const suffix = String(key || 'today').replace(/[^a-z0-9-]/gi, '');
+    const label = `${moment.displayDate || 'Today'}: ${moment.title || 'Historical moment'}`;
+    const year = formatHistoryYear(moment.year);
+    const motif = historyArtMotif(moment.visual, palette);
+
+    return `
+      <svg class="on-this-day__svg" viewBox="0 0 920 560" role="img" aria-labelledby="history-art-title-${escapeAttribute(suffix)} history-art-desc-${escapeAttribute(suffix)}" preserveAspectRatio="xMidYMid meet">
+        <title id="history-art-title-${escapeAttribute(suffix)}">${escapeHtml(label)}</title>
+        <desc id="history-art-desc-${escapeAttribute(suffix)}">A flat editorial illustration for ${escapeHtml(moment.title || 'the selected historical moment')}.</desc>
+        <rect width="920" height="560" rx="0" fill="${palette.bg}"></rect>
+        <path d="M0 448 C155 386 282 478 454 411 C620 347 739 384 920 309 L920 560 L0 560 Z" fill="${palette.muted}"></path>
+        <circle cx="782" cy="104" r="62" fill="${palette.third}" opacity=".95"></circle>
+        <rect x="52" y="52" width="190" height="68" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="4"></rect>
+        <text x="78" y="96" fill="${palette.ink}" font-family="Georgia, serif" font-size="38" font-weight="700">${escapeHtml(year)}</text>
+        ${motif}
+        <path d="M54 500 H866" stroke="${palette.ink}" stroke-width="8" stroke-linecap="round"></path>
+      </svg>
+    `;
+  }
+
+  function historyArtMotif(type, palette) {
+    if (type === 'space') return `
+      <circle cx="456" cy="286" r="122" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8"></circle>
+      <circle cx="416" cy="244" r="20" fill="${palette.muted}"></circle>
+      <circle cx="492" cy="322" r="32" fill="${palette.muted}"></circle>
+      <path d="M213 399 C354 272 501 217 721 175" fill="none" stroke="${palette.second}" stroke-width="12" stroke-linecap="round"></path>
+      <path d="M652 158 L748 184 L673 242 Z" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="7" stroke-linejoin="round"></path>
+      <circle cx="682" cy="192" r="13" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="5"></circle>
+      <path d="M250 170 L276 221 L332 229 L292 269 L302 326 L250 299 L198 326 L208 269 L168 229 L224 221 Z" fill="${palette.third}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
+    `;
+
+    if (type === 'science') return `
+      <path d="M394 142 H526 L505 238 L640 430 H280 L415 238 Z" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
+      <path d="M335 382 C387 330 530 330 585 382 L620 430 H300 Z" fill="${palette.accent}" opacity=".88"></path>
+      <ellipse cx="460" cy="286" rx="210" ry="68" fill="none" stroke="${palette.second}" stroke-width="8"></ellipse>
+      <ellipse cx="460" cy="286" rx="210" ry="68" fill="none" stroke="${palette.third}" stroke-width="8" transform="rotate(62 460 286)"></ellipse>
+      <circle cx="460" cy="286" r="28" fill="${palette.ink}"></circle>
+      <circle cx="610" cy="235" r="18" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="6"></circle>
+      <circle cx="319" cy="343" r="18" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="6"></circle>
+    `;
+
+    if (type === 'rights') return `
+      <rect x="278" y="158" width="126" height="170" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="7"></rect>
+      <rect x="516" y="128" width="136" height="194" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="7"></rect>
+      <path d="M342 328 V447 M584 322 V447" stroke="${palette.ink}" stroke-width="10" stroke-linecap="round"></path>
+      <circle cx="276" cy="386" r="42" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7"></circle>
+      <circle cx="460" cy="372" r="54" fill="${palette.second}" stroke="${palette.ink}" stroke-width="7"></circle>
+      <circle cx="648" cy="386" r="42" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7"></circle>
+      <path d="M218 448 C277 412 337 412 396 448 M386 448 C448 400 514 400 576 448 M528 448 C591 412 653 412 716 448" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="7" stroke-linejoin="round"></path>
+      <path d="M308 202 H374 M546 184 H622 M546 226 H622" stroke="${palette.ink}" stroke-width="7" stroke-linecap="round"></path>
+    `;
+
+    if (type === 'civic') return `
+      <path d="M460 111 L686 207 H234 Z" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
+      <rect x="260" y="207" width="400" height="54" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8"></rect>
+      <path d="M302 261 V440 M404 261 V440 M516 261 V440 M618 261 V440" stroke="${palette.ink}" stroke-width="15" stroke-linecap="round"></path>
+      <rect x="236" y="440" width="448" height="48" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8"></rect>
+      <path d="M706 338 L812 401 L706 464 Z" fill="${palette.second}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
+      <path d="M155 355 H263" stroke="${palette.third}" stroke-width="17" stroke-linecap="round"></path>
+      <path d="M175 393 H283" stroke="${palette.third}" stroke-width="17" stroke-linecap="round"></path>
+    `;
+
+    if (type === 'conflict') return `
+      <path d="M205 167 L384 123 L524 172 L714 132 L753 410 L562 462 L414 413 L228 462 Z" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
+      <path d="M384 123 L414 413 M524 172 L562 462" stroke="${palette.ink}" stroke-width="6"></path>
+      <path d="M286 280 C344 242 391 254 438 290 C491 330 548 310 617 258" fill="none" stroke="${palette.accent}" stroke-width="13" stroke-linecap="round"></path>
+      <circle cx="294" cy="280" r="22" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7"></circle>
+      <circle cx="620" cy="258" r="22" fill="${palette.second}" stroke="${palette.ink}" stroke-width="7"></circle>
+      <path d="M693 208 L760 275 M760 208 L693 275" stroke="${palette.accent}" stroke-width="12" stroke-linecap="round"></path>
+      <path d="M191 392 L298 337 L347 383 L461 323" fill="none" stroke="${palette.second}" stroke-width="8" stroke-linecap="round"></path>
+    `;
+
+    if (type === 'culture') return `
+      <path d="M174 440 L745 440 L681 196 L238 196 Z" fill="${palette.ink}"></path>
+      <path d="M260 196 C303 114 380 118 426 196 M494 196 C540 118 617 114 660 196" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8"></path>
+      <path d="M240 228 H680" stroke="${palette.third}" stroke-width="14" stroke-linecap="round"></path>
+      <circle cx="347" cy="326" r="78" fill="${palette.accent}" stroke="${palette.paper}" stroke-width="10"></circle>
+      <circle cx="347" cy="326" r="22" fill="${palette.paper}"></circle>
+      <rect x="499" y="278" width="132" height="98" fill="${palette.second}" stroke="${palette.paper}" stroke-width="8"></rect>
+      <path d="M499 314 H631 M543 278 V376 M587 278 V376" stroke="${palette.paper}" stroke-width="6"></path>
+    `;
+
+    if (type === 'transport') return `
+      <path d="M200 382 C295 344 380 344 474 382 C566 419 648 419 734 382 L700 458 H238 Z" fill="${palette.second}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
+      <path d="M306 274 H620 L706 382 H220 Z" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
+      <path d="M348 274 L390 203 H538 L586 274" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
+      <circle cx="332" cy="416" r="35" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7"></circle>
+      <circle cx="593" cy="416" r="35" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7"></circle>
+      <path d="M176 206 C320 136 492 126 736 179" fill="none" stroke="${palette.accent}" stroke-width="9" stroke-linecap="round" stroke-dasharray="18 22"></path>
+      <path d="M680 151 L756 182 L683 215 Z" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7" stroke-linejoin="round"></path>
+    `;
+
+    return `
+      <rect x="260" y="139" width="384" height="296" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8"></rect>
+      <path d="M306 196 H596 M306 246 H596 M306 296 H525" stroke="${palette.ink}" stroke-width="9" stroke-linecap="round"></path>
+      <rect x="326" y="335" width="118" height="58" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="7"></rect>
+      <circle cx="586" cy="366" r="37" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7"></circle>
+      <path d="M211 183 L259 139 V435 L211 391 Z" fill="${palette.second}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
+      <path d="M644 139 L711 178 V390 L644 435 Z" fill="${palette.muted}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
+    `;
   }
 
   function renderMastheadTicker(stories) {

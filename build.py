@@ -1231,7 +1231,6 @@ def render_homepage() -> str:
     recency_stories = homepage_recency_stories(lead_stories)
     recency_cards = "\n".join(recency_ticker_item(story) for story in recency_stories)
     recency_cards_duplicate = "\n".join(recency_ticker_item(story, duplicate=True) for story in recency_stories)
-    latest_html = "\n".join(river_item(story) for story in STORIES[:8])
     main = f"""
 <main class="page">
   <section class="home-hero">
@@ -1265,19 +1264,28 @@ def render_homepage() -> str:
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="latest-section">
-    <div class="section-heading-row">
-      <div>
-        <p class="eyebrow">Latest</p>
-        <h2 class="section-heading">The newest stories across the desks</h2>
-      </div>
-      <a class="section-link" href="archive.html">See everything</a>
-    </div>
-    <div class="river">
-      {latest_html}
+      <section class="on-this-day" id="on-this-day" data-on-this-day aria-live="polite">
+        <div class="on-this-day__header">
+          <div>
+            <p class="eyebrow eyebrow--tiny">On this day in history</p>
+            <h2 class="section-heading">Today’s big moment</h2>
+            <p class="section-copy" data-history-date>Loading today’s historical moment.</p>
+          </div>
+          <p class="on-this-day__count">365 daily moments</p>
+        </div>
+        <div class="on-this-day__layout">
+          <figure class="on-this-day__art" data-history-art aria-label="Flat editorial illustration for today’s historical moment"></figure>
+          <article class="on-this-day__story">
+            <p class="on-this-day__year" data-history-year></p>
+            <h3 data-history-title>Checking the archive</h3>
+            <p data-history-text></p>
+            <div class="on-this-day__meta">
+              <a href="https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/05/20" data-history-source target="_blank" rel="noopener">Source</a>
+              <span data-history-rollover>Changes at 12:00 AM local time.</span>
+            </div>
+          </article>
+        </div>
+      </section>
     </div>
   </section>
 
@@ -1325,6 +1333,7 @@ def render_homepage() -> str:
         social_image_width="1200",
         social_image_height="630",
         social_title=SITE["name"],
+        extra_scripts=f'<script src="assets/on-this-day-moments.js?v={h(asset_version("assets/on-this-day-moments.js"))}" defer></script>',
     )
 
 

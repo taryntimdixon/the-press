@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Space+Mono:wght@400;700&display=swap');
 
 :root{
   --bg:#f4f0e8;
@@ -18,6 +18,7 @@
   --reading:760px;
   --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --serif: 'Playfair Display', Georgia, "Times New Roman", Times, serif;
+  --mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   --theme-transition: background-color .25s ease, color .25s ease, border-color .25s ease;
 }
 
@@ -311,7 +312,8 @@ button{cursor:pointer}
   line-height:1.18;
 }
 body.page-home,
-body.page-article{
+body.page-article,
+body.page-archive{
   height:100vh;
   overflow-x:hidden;
   overflow-y:auto;
@@ -11819,5 +11821,239 @@ html[data-theme="dark"] body.page-article .listen-speed-value{
   body.page-article .listen-select,
   body.page-article .listen-range{
     width:100%;
+  }
+}
+
+/* Live date, clock, and daily history feature */
+.press-live-clock{
+  grid-column:1 / -1;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:.38rem .58rem;
+  min-width:0;
+  margin:.12rem 0 .22rem;
+  padding:.42rem 0;
+  border-top:1px solid color-mix(in srgb,#9d3a2d 58%,var(--line));
+  border-bottom:1px solid color-mix(in srgb,#1f1f1b 26%,transparent);
+  background:linear-gradient(90deg,transparent,rgba(255,253,249,.56) 26%,rgba(255,253,249,.56) 74%,transparent);
+  color:#1f1f1b;
+}
+.press-live-clock__label{
+  color:#9d3a2d;
+  font-size:.7rem;
+  font-weight:900;
+  letter-spacing:.12em;
+  line-height:1;
+  text-transform:uppercase;
+}
+.press-live-clock__date{
+  min-width:0;
+  color:#344061;
+  font-family:var(--serif);
+  font-size:clamp(1.08rem,1.8vw,1.32rem);
+  font-weight:800;
+  line-height:1.05;
+  white-space:nowrap;
+}
+.press-live-clock__separator{
+  color:#9d3a2d;
+  font-size:1rem;
+  line-height:1;
+}
+.press-live-clock__time{
+  color:#1f1f1b;
+  display:inline-block;
+  min-width:7.8rem;
+  padding:.12rem .46rem .14rem;
+  border:1px solid color-mix(in srgb,#344061 28%,var(--line));
+  background:rgba(255,253,249,.74);
+  font-family:var(--mono);
+  font-size:clamp(1.08rem,1.8vw,1.28rem);
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:.02em;
+  line-height:1.1;
+  text-align:center;
+  white-space:nowrap;
+  box-shadow:inset 0 -2px 0 rgba(157,58,45,.12);
+  transform-origin:center bottom;
+  will-change:transform, color, background-color;
+}
+.press-live-clock.is-ticking .press-live-clock__time{
+  animation:press-time-tick .42s cubic-bezier(.2,.7,.2,1);
+}
+@keyframes press-time-tick{
+  0%{
+    transform:translateY(0) scale(1);
+    color:#1f1f1b;
+    background:rgba(255,253,249,.74);
+  }
+  45%{
+    transform:translateY(-2px) scale(1.025);
+    color:#9d3a2d;
+    background:#fffdf9;
+    box-shadow:inset 0 -2px 0 rgba(157,58,45,.28),0 6px 18px rgba(157,58,45,.12);
+  }
+  100%{
+    transform:translateY(0) scale(1);
+    color:#1f1f1b;
+    background:rgba(255,253,249,.74);
+  }
+}
+.on-this-day{
+  margin-top:clamp(1.3rem,3vw,2rem);
+  padding:clamp(1rem,2.5vw,1.45rem) 0 clamp(1.25rem,3vw,1.8rem);
+  border-top:2px solid var(--ink);
+  border-bottom:1px solid var(--line);
+}
+.on-this-day__header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:1rem;
+}
+.on-this-day__header .section-copy{
+  max-width:44rem;
+  font-size:.98rem;
+}
+.on-this-day__count{
+  flex:0 0 auto;
+  margin:0;
+  padding:.35rem .62rem;
+  border:1px solid var(--line);
+  color:var(--muted);
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.on-this-day__layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(270px,.92fr);
+  gap:clamp(1rem,2.4vw,1.35rem);
+  align-items:stretch;
+}
+.on-this-day__art{
+  margin:0;
+  min-width:0;
+  min-height:clamp(260px,34vw,420px);
+  border:1px solid var(--line);
+  background:var(--surface-2);
+  overflow:hidden;
+}
+.on-this-day__svg{
+  display:block;
+  width:100%;
+  height:100%;
+  min-height:clamp(260px,34vw,420px);
+}
+.on-this-day__story{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:.78rem;
+  min-width:0;
+  padding:clamp(1rem,3vw,1.6rem);
+  border:1px solid var(--line);
+  border-left:4px solid var(--accent);
+  background:color-mix(in srgb,var(--surface) 86%,var(--surface-2));
+}
+.on-this-day__year{
+  margin:0;
+  color:var(--accent);
+  font-family:var(--serif);
+  font-size:clamp(2.5rem,7vw,5rem);
+  font-weight:800;
+  letter-spacing:0;
+  line-height:.86;
+}
+.on-this-day__story h3{
+  margin:0;
+  font-family:var(--serif);
+  font-size:clamp(1.55rem,3.2vw,2.45rem);
+  line-height:1.02;
+  letter-spacing:0;
+  overflow-wrap:anywhere;
+}
+.on-this-day__story p{
+  margin:0;
+}
+.on-this-day__story [data-history-text]{
+  color:var(--ink);
+  font-size:clamp(1rem,1.7vw,1.12rem);
+  line-height:1.55;
+}
+.on-this-day__meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.55rem .85rem;
+  align-items:center;
+  margin-top:.35rem;
+  color:var(--muted);
+  font-size:.82rem;
+  font-weight:700;
+}
+.on-this-day__meta a{
+  color:var(--accent);
+  text-decoration:underline;
+  text-decoration-thickness:2px;
+  text-underline-offset:.18em;
+}
+.on-this-day__meta span{
+  color:var(--muted);
+}
+html[data-theme="dark"] .on-this-day__art,
+html[data-theme="dark"] .on-this-day__story{
+  border-color:#334052;
+}
+html[data-theme="dark"] .on-this-day__story{
+  background:#202838;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .on-this-day__art,
+  :root:not([data-theme="light"]) .on-this-day__story{
+    border-color:#334052;
+  }
+  :root:not([data-theme="light"]) .on-this-day__story{
+    background:#202838;
+  }
+}
+@media (max-width:980px){
+  .press-live-clock{
+    justify-content:center;
+  }
+}
+@media (max-width:760px){
+  .press-live-clock{
+    padding:.35rem 0;
+  }
+  .on-this-day__header{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .on-this-day__layout{
+    grid-template-columns:1fr;
+  }
+  .on-this-day__art,
+  .on-this-day__svg{
+    min-height:250px;
+  }
+}
+@media (max-width:520px){
+  .press-live-clock{
+    gap:.28rem .42rem;
+  }
+  .press-live-clock__time{
+    min-width:7.25rem;
+  }
+  .press-live-clock__date,
+  .press-live-clock__time{
+    white-space:normal;
+  }
+  .on-this-day__story{
+    padding:1rem;
   }
 }
