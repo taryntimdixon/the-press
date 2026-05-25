@@ -1006,8 +1006,9 @@ if (!hasHomepageTargets) {
       clock.setAttribute('aria-label', 'Current local date and time');
     }
 
-    if (!clock.querySelector('[data-live-clock-date]') || clock.querySelector('.press-live-clock__dial')) {
+    if (!clock.querySelector('[data-live-clock-date]') || !clock.querySelector('.press-live-clock__label') || clock.querySelector('.press-live-clock__dial')) {
       clock.innerHTML = `
+        <span class="press-live-clock__label">Live clock</span>
         <time class="press-live-clock__date" data-live-clock-date></time>
         <span class="press-live-clock__separator" aria-hidden="true">•</span>
         <time class="press-live-clock__time" data-live-clock-time></time>
@@ -1084,14 +1085,51 @@ if (!hasHomepageTargets) {
 
     section.dataset.historyReady = 'true';
 
+    let rolloverTimer = 0;
     const render = (event) => renderOnThisDay(section, event?.detail?.date instanceof Date ? event.detail.date : new Date());
+    const scheduleRollover = () => {
+      window.clearTimeout(rolloverTimer);
+      const now = new Date();
+      const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 2);
+      rolloverTimer = window.setTimeout(() => {
+        render();
+        scheduleRollover();
+      }, Math.max(1000, nextMidnight.getTime() - now.getTime()));
+    };
+    const renderAndReschedule = (event) => {
+      render(event);
+      scheduleRollover();
+    };
+
+    section.addEventListener('click', (event) => {
+      const card = event.target.closest?.('[data-history-card-link]');
+      if (!card || !section.contains(card) || event.target.closest?.('a, button, input, select, textarea')) return;
+      openHistoryDetailCard(card);
+    });
+    section.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const card = event.target.closest?.('[data-history-card-link]');
+      if (!card || !section.contains(card)) return;
+      event.preventDefault();
+      openHistoryDetailCard(card);
+    });
+
     render();
-    window.addEventListener('press:calendar-day-change', render);
+    scheduleRollover();
+    window.addEventListener('press:calendar-day-change', renderAndReschedule);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) renderAndReschedule();
+    });
   }
 
   function ensureOnThisDaySection() {
     let section = document.querySelector('[data-on-this-day]');
-    if (section) return section;
+    if (section) {
+      if (!section.querySelector('[data-history-detail-link]') || !section.querySelector('[data-history-art]')) {
+        section.innerHTML = historySectionMarkup();
+      }
+      return section;
+    }
 
     const ticker = document.querySelector('[data-home-recency-ticker]');
     if (!ticker) return null;
@@ -1101,30 +1139,37 @@ if (!hasHomepageTargets) {
     section.id = 'on-this-day';
     section.setAttribute('data-on-this-day', '');
     section.setAttribute('aria-live', 'polite');
-    section.innerHTML = `
+    section.innerHTML = historySectionMarkup();
+    ticker.insertAdjacentElement('afterend', section);
+    return section;
+  }
+
+  function historySectionMarkup() {
+    return `
       <div class="on-this-day__header">
-        <div>
-          <p class="eyebrow eyebrow--tiny">On this day in history</p>
-          <h2 class="section-heading">Today's big moment</h2>
+        <div class="on-this-day__intro">
+          <h2 class="section-heading">On This Day History</h2>
           <p class="section-copy" data-history-date>Loading today's historical moment.</p>
         </div>
-        <p class="on-this-day__count">365 daily moments</p>
+        <a class="on-this-day__count" href="on-this-day-preview.html">Preview all 365</a>
       </div>
       <div class="on-this-day__layout">
-        <figure class="on-this-day__art" data-history-art aria-label="Flat editorial illustration for today's historical moment"></figure>
-        <article class="on-this-day__story">
+        <div class="on-this-day__visuals">
+          <figure class="on-this-day__art" data-history-art aria-label="Photorealistic editorial scene for today's historical moment"></figure>
+        </div>
+        <article class="on-this-day__story" data-history-card-link tabindex="0">
           <p class="on-this-day__year" data-history-year></p>
           <h3 data-history-title>Checking the archive</h3>
+          <p class="on-this-day__dek" data-history-dek></p>
           <p data-history-text></p>
+          <div class="on-this-day__facts" data-history-facts></div>
+          <a class="on-this-day__more" href="on-this-day-event.html" data-history-detail-link>Read more about this</a>
           <div class="on-this-day__meta">
-            <a href="https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/01/01" data-history-source target="_blank" rel="noopener">Source</a>
             <span data-history-rollover>Changes at 12:00 AM local time.</span>
           </div>
         </article>
       </div>
     `;
-    ticker.insertAdjacentElement('afterend', section);
-    return section;
   }
 
   function renderOnThisDay(section, date) {
@@ -1138,12 +1183,16 @@ if (!hasHomepageTargets) {
     }
 
     section.dataset.historyVisual = moment.visual || 'chronicle';
+    section.dataset.historyDateKey = key;
 
     const dateNode = section.querySelector('[data-history-date]');
     const yearNode = section.querySelector('[data-history-year]');
     const titleNode = section.querySelector('[data-history-title]');
+    const dekNode = section.querySelector('[data-history-dek]');
     const textNode = section.querySelector('[data-history-text]');
-    const sourceNode = section.querySelector('[data-history-source]');
+    const factsNode = section.querySelector('[data-history-facts]');
+    const detailLinkNode = section.querySelector('[data-history-detail-link]');
+    const storyNode = section.querySelector('[data-history-card-link]');
     const rolloverNode = section.querySelector('[data-history-rollover]');
     const artNode = section.querySelector('[data-history-art]');
 
@@ -1159,22 +1208,44 @@ if (!hasHomepageTargets) {
     }
 
     if (yearNode) yearNode.textContent = formatHistoryYear(moment.year);
-    if (titleNode) titleNode.textContent = moment.title || 'Historical moment';
+    if (titleNode) titleNode.textContent = moment.title || moment.headline || 'Historical moment';
+    if (dekNode) dekNode.textContent = moment.dek || '';
     if (textNode) textNode.textContent = moment.text || '';
 
-    if (sourceNode) {
-      sourceNode.href = moment.source || (window.PRESS_ON_THIS_DAY_ATTRIBUTION?.endpoint || 'https://en.wikipedia.org/wiki/Main_Page');
-      sourceNode.textContent = moment.sourceLabel || 'Wikipedia source';
+    if (factsNode) {
+      const facts = Array.isArray(moment.facts) ? moment.facts.slice(0, 5) : [];
+      factsNode.innerHTML = facts.map((fact) => `
+        <div class="on-this-day__fact">
+          <span>${escapeHtml(fact.label || '')}</span>
+          <strong>${escapeHtml(fact.value || '')}</strong>
+        </div>
+      `).join('');
+    }
+
+    if (detailLinkNode) {
+      detailLinkNode.href = historyDetailUrl(key);
+      detailLinkNode.textContent = 'Read more about this';
+    }
+
+    if (storyNode) {
+      storyNode.dataset.historyHref = historyDetailUrl(key);
+      storyNode.setAttribute('aria-label', `Read more about ${moment.title || moment.headline || 'this historical moment'}`);
     }
 
     if (rolloverNode) {
       const count = window.PRESS_ON_THIS_DAY_ATTRIBUTION?.count || Object.keys(moments).length || 365;
-      rolloverNode.textContent = `${count} moments. Changes at 12:00 AM local time.`;
+      rolloverNode.textContent = `${count} moments. Synced to the live clock; changes at 12:00 AM local time.`;
     }
 
     if (artNode) {
       artNode.innerHTML = renderHistoryArt(moment, key);
     }
+  }
+
+  function openHistoryDetailCard(card) {
+    const href = card?.dataset?.historyHref || card?.querySelector?.('[data-history-detail-link]')?.getAttribute('href');
+    if (!href) return;
+    window.location.href = href;
   }
 
   function localDateKey(date) {
@@ -1207,106 +1278,241 @@ if (!hasHomepageTargets) {
   }
 
   function renderHistoryArt(moment, key) {
+    const artwork = historyArtworkFor(key);
+    if (artwork?.src) {
+      const alt = artwork.alt || `${moment.displayDate || 'Today'}: ${moment.title || 'Historical moment'}`;
+      return `
+        <img
+          class="on-this-day__asset"
+          src="${escapeAttribute(pressSiteAssetUrl(artwork.src))}"
+          alt="${escapeAttribute(alt)}"
+          loading="lazy"
+          decoding="async"
+        >
+      `;
+    }
+
+    return renderHistoryPosterArt(moment, key);
+  }
+
+  function historyArtworkFor(key) {
+    const manifest = window.PRESS_ON_THIS_DAY_ARTWORK || {};
+    return manifest[key] || null;
+  }
+
+  function historyDetailUrl(key) {
+    return `on-this-day-event.html?date=${encodeURIComponent(key || '')}`;
+  }
+
+  function renderHistoryPosterArt(moment, key) {
     const palette = historyPalette(moment.palette);
     const suffix = String(key || 'today').replace(/[^a-z0-9-]/gi, '');
+    const safeSuffix = escapeAttribute(suffix || 'today');
     const label = `${moment.displayDate || 'Today'}: ${moment.title || 'Historical moment'}`;
     const year = formatHistoryYear(moment.year);
-    const motif = historyArtMotif(moment.visual, palette);
+    const motif = historyArtMotif(moment, palette);
+    const titleLines = historyArtTextLines(moment.title || moment.topic || 'Historical moment', 19, 2);
+    const titleTspans = titleLines.map((line, index) => `
+          <tspan x="332" dy="${index === 0 ? 0 : 38}">${escapeHtml(line)}</tspan>`).join('');
+    const lane = historyArtLane(moment.visual);
 
     return `
-      <svg class="on-this-day__svg" viewBox="0 0 920 560" role="img" aria-labelledby="history-art-title-${escapeAttribute(suffix)} history-art-desc-${escapeAttribute(suffix)}" preserveAspectRatio="xMidYMid meet">
-        <title id="history-art-title-${escapeAttribute(suffix)}">${escapeHtml(label)}</title>
-        <desc id="history-art-desc-${escapeAttribute(suffix)}">A flat editorial illustration for ${escapeHtml(moment.title || 'the selected historical moment')}.</desc>
+      <svg class="on-this-day__svg" viewBox="0 0 920 560" role="img" aria-labelledby="history-art-title-${safeSuffix} history-art-desc-${safeSuffix}" preserveAspectRatio="xMidYMid meet">
+        <title id="history-art-title-${safeSuffix}">${escapeHtml(label)}</title>
+        <desc id="history-art-desc-${safeSuffix}">A static editorial poster illustration for ${escapeHtml(moment.title || 'the selected historical moment')}.</desc>
+        <defs>
+          <pattern id="history-grid-${safeSuffix}" width="34" height="34" patternUnits="userSpaceOnUse">
+            <path d="M34 0 H0 V34" fill="none" stroke="${palette.ink}" stroke-width="1" opacity=".08"></path>
+          </pattern>
+          <pattern id="history-dot-${safeSuffix}" width="18" height="18" patternUnits="userSpaceOnUse">
+            <circle cx="2.6" cy="2.6" r="1.8" fill="${palette.ink}" opacity=".13"></circle>
+          </pattern>
+          <linearGradient id="history-wash-${safeSuffix}" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="${palette.paper}"></stop>
+            <stop offset="1" stop-color="${palette.muted}"></stop>
+          </linearGradient>
+        </defs>
         <rect width="920" height="560" rx="0" fill="${palette.bg}"></rect>
-        <path d="M0 448 C155 386 282 478 454 411 C620 347 739 384 920 309 L920 560 L0 560 Z" fill="${palette.muted}"></path>
-        <circle cx="782" cy="104" r="62" fill="${palette.third}" opacity=".95"></circle>
-        <rect x="52" y="52" width="190" height="68" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="4"></rect>
-        <text x="78" y="96" fill="${palette.ink}" font-family="Georgia, serif" font-size="38" font-weight="700">${escapeHtml(year)}</text>
-        ${motif}
-        <path d="M54 500 H866" stroke="${palette.ink}" stroke-width="8" stroke-linecap="round"></path>
+        <rect width="920" height="560" fill="url(#history-grid-${safeSuffix})"></rect>
+        <path d="M0 405 C116 364 224 386 332 338 C484 270 600 314 742 248 C811 216 870 196 920 194 L920 560 L0 560 Z" fill="${palette.muted}" opacity=".82"></path>
+        <rect x="32" y="32" width="856" height="496" fill="none" stroke="${palette.ink}" stroke-width="3" opacity=".9"></rect>
+        <rect x="58" y="58" width="220" height="444" fill="${palette.ink}"></rect>
+        <rect x="76" y="76" width="184" height="408" fill="none" stroke="${palette.paper}" stroke-width="2" opacity=".42"></rect>
+        <text x="96" y="119" fill="${palette.paper}" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="900" letter-spacing="3">ON THIS DAY</text>
+        <text x="96" y="251" fill="${palette.paper}" font-family="Georgia, serif" font-size="78" font-weight="800" letter-spacing="-1">${escapeHtml(year)}</text>
+        <path d="M96 287 H240" stroke="${palette.third}" stroke-width="8"></path>
+        <text x="96" y="330" fill="${palette.paper}" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="800">${escapeHtml(moment.displayDate || 'Today')}</text>
+        <text x="96" y="366" fill="${palette.third}" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="900" letter-spacing="2">${escapeHtml(lane)}</text>
+        <path d="M96 430 H222" stroke="${palette.paper}" stroke-width="2" opacity=".52"></path>
+        <circle cx="236" cy="430" r="9" fill="${palette.third}"></circle>
+        <g transform="translate(316 58)">
+          <rect x="0" y="0" width="546" height="344" fill="url(#history-wash-${safeSuffix})" stroke="${palette.ink}" stroke-width="3"></rect>
+          <rect x="0" y="0" width="546" height="344" fill="url(#history-dot-${safeSuffix})" opacity=".44"></rect>
+          ${motif}
+        </g>
+        <text x="332" y="454" fill="${palette.ink}" font-family="Georgia, serif" font-size="36" font-weight="800" letter-spacing="0">${titleTspans}
+        </text>
+        <path d="M332 505 H852" stroke="${palette.accent}" stroke-width="7"></path>
       </svg>
     `;
   }
 
-  function historyArtMotif(type, palette) {
+  function historyArtTextLines(value, maxChars, maxLines) {
+    const words = collapseWhitespace(value).split(/\s+/).filter(Boolean);
+    const lines = [];
+    let current = '';
+
+    words.forEach((word) => {
+      const next = current ? `${current} ${word}` : word;
+      if (next.length > maxChars && current) {
+        lines.push(current);
+        current = word;
+      } else {
+        current = next;
+      }
+    });
+
+    if (current) lines.push(current);
+
+    if (lines.length > maxLines) {
+      const kept = lines.slice(0, maxLines);
+      kept[maxLines - 1] = `${kept[maxLines - 1].replace(/[.,;:]$/, '')}...`;
+      return kept;
+    }
+
+    return lines.length ? lines : ['Historical moment'];
+  }
+
+  function historyArtLane(type) {
+    return {
+      space: 'SPACE',
+      science: 'SCIENCE',
+      rights: 'RIGHTS',
+      civic: 'CIVIC',
+      conflict: 'CONFLICT',
+      culture: 'CULTURE',
+      crime: 'CRIME',
+      medicine: 'MEDICINE',
+      music: 'MUSIC',
+      protest: 'PROTEST',
+      sports: 'SPORTS',
+      tech: 'TECH',
+      transport: 'MOTION',
+      chronicle: 'ARCHIVE',
+    }[type] || 'ARCHIVE';
+  }
+
+  function historyArtText(moment) {
+    return [
+      moment?.title,
+      moment?.topic,
+      moment?.headline,
+      moment?.text,
+      moment?.sourceDescription,
+    ].map((value) => collapseWhitespace(value || '')).join(' ').toLowerCase();
+  }
+
+  function historyArtMotif(moment, palette) {
+    const type = moment?.visual || 'chronicle';
+    const text = historyArtText(moment);
+
     if (type === 'space') return `
-      <circle cx="456" cy="286" r="122" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8"></circle>
-      <circle cx="416" cy="244" r="20" fill="${palette.muted}"></circle>
-      <circle cx="492" cy="322" r="32" fill="${palette.muted}"></circle>
-      <path d="M213 399 C354 272 501 217 721 175" fill="none" stroke="${palette.second}" stroke-width="12" stroke-linecap="round"></path>
-      <path d="M652 158 L748 184 L673 242 Z" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="7" stroke-linejoin="round"></path>
-      <circle cx="682" cy="192" r="13" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="5"></circle>
-      <path d="M250 170 L276 221 L332 229 L292 269 L302 326 L250 299 L198 326 L208 269 L168 229 L224 221 Z" fill="${palette.third}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
+      <circle cx="398" cy="98" r="54" fill="${palette.third}" opacity=".95"></circle>
+      <path d="M0 255 C94 221 184 248 274 214 C382 174 465 198 546 156 V344 H0 Z" fill="${palette.muted}" opacity=".8"></path>
+      <circle cx="178" cy="198" r="86" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="5"></circle>
+      <circle cx="145" cy="174" r="13" fill="${palette.muted}"></circle>
+      <circle cx="199" cy="221" r="20" fill="${palette.muted}"></circle>
+      <path d="M294 244 C346 176 393 126 472 86" fill="none" stroke="${palette.accent}" stroke-width="7" stroke-linecap="round"></path>
+      <path d="M398 102 L480 132 L418 188 L359 164 Z" fill="${palette.ink}"></path>
+      <path d="M421 117 L454 132 L419 162 L390 151 Z" fill="${palette.paper}"></path>
+      <path d="M373 174 L341 217 M435 177 L470 214" stroke="${palette.accent}" stroke-width="7" stroke-linecap="round"></path>
     `;
 
     if (type === 'science') return `
-      <path d="M394 142 H526 L505 238 L640 430 H280 L415 238 Z" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
-      <path d="M335 382 C387 330 530 330 585 382 L620 430 H300 Z" fill="${palette.accent}" opacity=".88"></path>
-      <ellipse cx="460" cy="286" rx="210" ry="68" fill="none" stroke="${palette.second}" stroke-width="8"></ellipse>
-      <ellipse cx="460" cy="286" rx="210" ry="68" fill="none" stroke="${palette.third}" stroke-width="8" transform="rotate(62 460 286)"></ellipse>
-      <circle cx="460" cy="286" r="28" fill="${palette.ink}"></circle>
-      <circle cx="610" cy="235" r="18" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="6"></circle>
-      <circle cx="319" cy="343" r="18" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="6"></circle>
+      <rect x="50" y="64" width="168" height="232" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="5"></rect>
+      <path d="M96 111 H176 M96 153 H168 M96 195 H190" stroke="${palette.ink}" stroke-width="5" stroke-linecap="round"></path>
+      <path d="M320 75 H405 L389 156 L475 291 H250 L336 156 Z" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
+      <path d="M291 250 C326 209 397 210 435 250 L461 291 H265 Z" fill="${palette.accent}" opacity=".9"></path>
+      <ellipse cx="365" cy="178" rx="126" ry="42" fill="none" stroke="${palette.second}" stroke-width="6"></ellipse>
+      <ellipse cx="365" cy="178" rx="126" ry="42" fill="none" stroke="${palette.third}" stroke-width="6" transform="rotate(60 365 178)"></ellipse>
+      <circle cx="365" cy="178" r="17" fill="${palette.ink}"></circle>
+      <path d="M72 304 H510" stroke="${palette.ink}" stroke-width="7" stroke-linecap="round"></path>
     `;
 
     if (type === 'rights') return `
-      <rect x="278" y="158" width="126" height="170" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="7"></rect>
-      <rect x="516" y="128" width="136" height="194" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="7"></rect>
-      <path d="M342 328 V447 M584 322 V447" stroke="${palette.ink}" stroke-width="10" stroke-linecap="round"></path>
-      <circle cx="276" cy="386" r="42" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7"></circle>
-      <circle cx="460" cy="372" r="54" fill="${palette.second}" stroke="${palette.ink}" stroke-width="7"></circle>
-      <circle cx="648" cy="386" r="42" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7"></circle>
-      <path d="M218 448 C277 412 337 412 396 448 M386 448 C448 400 514 400 576 448 M528 448 C591 412 653 412 716 448" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="7" stroke-linejoin="round"></path>
-      <path d="M308 202 H374 M546 184 H622 M546 226 H622" stroke="${palette.ink}" stroke-width="7" stroke-linecap="round"></path>
+      <rect x="60" y="76" width="148" height="196" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="5"></rect>
+      <rect x="338" y="64" width="156" height="208" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="5"></rect>
+      <path d="M96 122 H176 M96 164 H166 M372 118 H462 M372 162 H452" stroke="${palette.ink}" stroke-width="5" stroke-linecap="round"></path>
+      <circle cx="120" cy="304" r="29" fill="${palette.third}" stroke="${palette.ink}" stroke-width="5"></circle>
+      <circle cx="272" cy="290" r="40" fill="${palette.second}" stroke="${palette.ink}" stroke-width="5"></circle>
+      <circle cx="430" cy="304" r="29" fill="${palette.third}" stroke="${palette.ink}" stroke-width="5"></circle>
+      <path d="M74 342 C109 314 152 314 187 342 M211 342 C253 307 294 307 336 342 M382 342 C416 314 459 314 494 342" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="5" stroke-linejoin="round"></path>
+      <path d="M274 96 V220" stroke="${palette.ink}" stroke-width="8" stroke-linecap="round"></path>
+      <path d="M234 137 H314" stroke="${palette.ink}" stroke-width="8" stroke-linecap="round"></path>
     `;
 
     if (type === 'civic') return `
-      <path d="M460 111 L686 207 H234 Z" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
-      <rect x="260" y="207" width="400" height="54" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8"></rect>
-      <path d="M302 261 V440 M404 261 V440 M516 261 V440 M618 261 V440" stroke="${palette.ink}" stroke-width="15" stroke-linecap="round"></path>
-      <rect x="236" y="440" width="448" height="48" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8"></rect>
-      <path d="M706 338 L812 401 L706 464 Z" fill="${palette.second}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
-      <path d="M155 355 H263" stroke="${palette.third}" stroke-width="17" stroke-linecap="round"></path>
-      <path d="M175 393 H283" stroke="${palette.third}" stroke-width="17" stroke-linecap="round"></path>
+      <path d="M273 64 L444 142 H102 Z" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
+      <rect x="126" y="142" width="294" height="40" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="6"></rect>
+      <path d="M158 182 V292 M228 182 V292 M318 182 V292 M388 182 V292" stroke="${palette.ink}" stroke-width="11" stroke-linecap="round"></path>
+      <rect x="94" y="292" width="358" height="45" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="6"></rect>
+      <path d="M86 82 H146 M410 86 H494 M70 326 H496" stroke="${palette.third}" stroke-width="9" stroke-linecap="round"></path>
+      <path d="M452 206 L520 246 L452 286 Z" fill="${palette.second}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
     `;
 
     if (type === 'conflict') return `
-      <path d="M205 167 L384 123 L524 172 L714 132 L753 410 L562 462 L414 413 L228 462 Z" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
-      <path d="M384 123 L414 413 M524 172 L562 462" stroke="${palette.ink}" stroke-width="6"></path>
-      <path d="M286 280 C344 242 391 254 438 290 C491 330 548 310 617 258" fill="none" stroke="${palette.accent}" stroke-width="13" stroke-linecap="round"></path>
-      <circle cx="294" cy="280" r="22" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7"></circle>
-      <circle cx="620" cy="258" r="22" fill="${palette.second}" stroke="${palette.ink}" stroke-width="7"></circle>
-      <path d="M693 208 L760 275 M760 208 L693 275" stroke="${palette.accent}" stroke-width="12" stroke-linecap="round"></path>
-      <path d="M191 392 L298 337 L347 383 L461 323" fill="none" stroke="${palette.second}" stroke-width="8" stroke-linecap="round"></path>
+      <path d="M58 90 L178 61 L282 98 L444 66 L492 285 L348 321 L244 286 L89 326 Z" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
+      <path d="M178 61 L244 286 M282 98 L348 321" stroke="${palette.ink}" stroke-width="4" opacity=".7"></path>
+      <path d="M114 193 C176 150 223 164 266 204 C314 249 371 219 430 164" fill="none" stroke="${palette.accent}" stroke-width="9" stroke-linecap="round"></path>
+      <circle cx="116" cy="193" r="18" fill="${palette.third}" stroke="${palette.ink}" stroke-width="5"></circle>
+      <circle cx="430" cy="164" r="18" fill="${palette.second}" stroke="${palette.ink}" stroke-width="5"></circle>
+      <path d="M384 232 L444 292 M444 232 L384 292" stroke="${palette.accent}" stroke-width="9" stroke-linecap="round"></path>
+      <path d="M38 316 H520" stroke="${palette.ink}" stroke-width="7" stroke-linecap="round"></path>
     `;
 
     if (type === 'culture') return `
-      <path d="M174 440 L745 440 L681 196 L238 196 Z" fill="${palette.ink}"></path>
-      <path d="M260 196 C303 114 380 118 426 196 M494 196 C540 118 617 114 660 196" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8"></path>
-      <path d="M240 228 H680" stroke="${palette.third}" stroke-width="14" stroke-linecap="round"></path>
-      <circle cx="347" cy="326" r="78" fill="${palette.accent}" stroke="${palette.paper}" stroke-width="10"></circle>
-      <circle cx="347" cy="326" r="22" fill="${palette.paper}"></circle>
-      <rect x="499" y="278" width="132" height="98" fill="${palette.second}" stroke="${palette.paper}" stroke-width="8"></rect>
-      <path d="M499 314 H631 M543 278 V376 M587 278 V376" stroke="${palette.paper}" stroke-width="6"></path>
+      <path d="M88 294 L462 294 L420 108 L128 108 Z" fill="${palette.ink}"></path>
+      <path d="M142 108 C169 54 226 58 256 108 M300 108 C330 58 386 54 414 108" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="6"></path>
+      <path d="M126 137 H424" stroke="${palette.third}" stroke-width="11" stroke-linecap="round"></path>
+      <circle cx="206" cy="214" r="54" fill="${palette.accent}" stroke="${palette.paper}" stroke-width="7"></circle>
+      <circle cx="206" cy="214" r="15" fill="${palette.paper}"></circle>
+      <rect x="315" y="174" width="92" height="72" fill="${palette.second}" stroke="${palette.paper}" stroke-width="6"></rect>
+      <path d="M315 200 H407 M344 174 V246 M378 174 V246" stroke="${palette.paper}" stroke-width="4"></path>
+      <path d="M62 318 H488" stroke="${palette.ink}" stroke-width="7" stroke-linecap="round"></path>
     `;
 
+    if (type === 'transport' && /\b(flight|aircraft|airplane|aviation|lindbergh|transatlantic|spirit of st\.? louis)\b/.test(text)) {
+      return `
+        <circle cx="440" cy="78" r="47" fill="${palette.third}" opacity=".95"></circle>
+        <path d="M44 230 C151 126 306 88 498 114" fill="none" stroke="${palette.second}" stroke-width="7" stroke-linecap="round" stroke-dasharray="14 16"></path>
+        <path d="M88 248 C170 220 272 224 382 250 C442 264 488 264 526 250" fill="none" stroke="${palette.ink}" stroke-width="5" opacity=".38"></path>
+        <path d="M76 178 C129 153 254 152 392 175 L499 193 C523 197 528 215 500 220 L380 230 L314 297 H254 L296 235 L168 231 L95 280 H44 L94 225 L59 219 C23 214 28 192 76 178 Z" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
+        <path d="M242 169 L312 100 H363 L326 181" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
+        <path d="M118 184 L76 118 H119 L179 176" fill="${palette.second}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
+        <circle cx="458" cy="205" r="12" fill="${palette.third}" stroke="${palette.ink}" stroke-width="4"></circle>
+        <path d="M90 306 H168 M376 306 H469" stroke="${palette.accent}" stroke-width="8" stroke-linecap="round"></path>
+        <text x="86" y="325" fill="${palette.ink}" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="900" letter-spacing="2">ATLANTIC CROSSING</text>
+      `;
+    }
+
     if (type === 'transport') return `
-      <path d="M200 382 C295 344 380 344 474 382 C566 419 648 419 734 382 L700 458 H238 Z" fill="${palette.second}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
-      <path d="M306 274 H620 L706 382 H220 Z" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
-      <path d="M348 274 L390 203 H538 L586 274" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
-      <circle cx="332" cy="416" r="35" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7"></circle>
-      <circle cx="593" cy="416" r="35" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7"></circle>
-      <path d="M176 206 C320 136 492 126 736 179" fill="none" stroke="${palette.accent}" stroke-width="9" stroke-linecap="round" stroke-dasharray="18 22"></path>
-      <path d="M680 151 L756 182 L683 215 Z" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7" stroke-linejoin="round"></path>
+      <path d="M46 246 C110 171 192 128 292 115 C377 103 450 120 511 168" fill="none" stroke="${palette.second}" stroke-width="7" stroke-linecap="round" stroke-dasharray="13 15"></path>
+      <path d="M80 226 H408 C456 226 492 260 496 303 H72 C69 269 54 249 80 226 Z" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
+      <path d="M126 226 L164 162 H310 L364 226" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
+      <circle cx="150" cy="304" r="28" fill="${palette.third}" stroke="${palette.ink}" stroke-width="5"></circle>
+      <circle cx="398" cy="304" r="28" fill="${palette.third}" stroke="${palette.ink}" stroke-width="5"></circle>
+      <path d="M58 332 H512" stroke="${palette.ink}" stroke-width="7" stroke-linecap="round"></path>
+      <circle cx="464" cy="112" r="34" fill="${palette.third}" opacity=".95"></circle>
     `;
 
     return `
-      <rect x="260" y="139" width="384" height="296" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="8"></rect>
-      <path d="M306 196 H596 M306 246 H596 M306 296 H525" stroke="${palette.ink}" stroke-width="9" stroke-linecap="round"></path>
-      <rect x="326" y="335" width="118" height="58" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="7"></rect>
-      <circle cx="586" cy="366" r="37" fill="${palette.third}" stroke="${palette.ink}" stroke-width="7"></circle>
-      <path d="M211 183 L259 139 V435 L211 391 Z" fill="${palette.second}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
-      <path d="M644 139 L711 178 V390 L644 435 Z" fill="${palette.muted}" stroke="${palette.ink}" stroke-width="8" stroke-linejoin="round"></path>
+      <rect x="90" y="70" width="330" height="226" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="6"></rect>
+      <path d="M128 121 H380 M128 164 H366 M128 207 H318" stroke="${palette.ink}" stroke-width="7" stroke-linecap="round"></path>
+      <rect x="142" y="242" width="92" height="42" fill="${palette.accent}" stroke="${palette.ink}" stroke-width="5"></rect>
+      <circle cx="362" cy="263" r="30" fill="${palette.third}" stroke="${palette.ink}" stroke-width="5"></circle>
+      <path d="M52 102 L90 70 V296 L52 264 Z" fill="${palette.second}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
+      <path d="M420 70 L476 104 V263 L420 296 Z" fill="${palette.muted}" stroke="${palette.ink}" stroke-width="6" stroke-linejoin="round"></path>
+      <path d="M74 320 H496" stroke="${palette.ink}" stroke-width="7" stroke-linecap="round"></path>
     `;
   }
 

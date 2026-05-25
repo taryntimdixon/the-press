@@ -5,6 +5,7 @@
 
 __pycache__/
 *.py[cod]
+.cache/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
@@ -16,4 +17,5 @@ venv/
 *.patch
 *.diff
 .bak-*/
+ON_THIS_DAY_HISTORY_FEATURE_PACKAGE/
 tmp/

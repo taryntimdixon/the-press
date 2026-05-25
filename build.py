@@ -1266,21 +1266,25 @@ def render_homepage() -> str:
       </div>
       <section class="on-this-day" id="on-this-day" data-on-this-day aria-live="polite">
         <div class="on-this-day__header">
-          <div>
-            <p class="eyebrow eyebrow--tiny">On this day in history</p>
-            <h2 class="section-heading">Today’s big moment</h2>
+          <div class="on-this-day__intro">
+            <h2 class="section-heading">On This Day History</h2>
             <p class="section-copy" data-history-date>Loading today’s historical moment.</p>
           </div>
-          <p class="on-this-day__count">365 daily moments</p>
+          <a class="on-this-day__count" href="on-this-day-preview.html">Preview all 365</a>
         </div>
         <div class="on-this-day__layout">
-          <figure class="on-this-day__art" data-history-art aria-label="Flat editorial illustration for today’s historical moment"></figure>
+          <div class="on-this-day__visuals">
+            <figure class="on-this-day__art" data-history-art aria-label="Photorealistic editorial scene for today’s historical moment"></figure>
+          </div>
           <article class="on-this-day__story">
             <p class="on-this-day__year" data-history-year></p>
             <h3 data-history-title>Checking the archive</h3>
+            <p class="on-this-day__dek" data-history-dek></p>
             <p data-history-text></p>
+            <div class="on-this-day__facts" data-history-facts></div>
+            <a class="on-this-day__more" href="on-this-day-event.html" data-history-detail-link>Read more about this</a>
             <div class="on-this-day__meta">
-              <a href="https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/05/20" data-history-source target="_blank" rel="noopener">Source</a>
+              <a href="https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/05/20" data-history-source>Source</a>
               <span data-history-rollover>Changes at 12:00 AM local time.</span>
             </div>
           </article>
@@ -1333,7 +1337,10 @@ def render_homepage() -> str:
         social_image_width="1200",
         social_image_height="630",
         social_title=SITE["name"],
-        extra_scripts=f'<script src="assets/on-this-day-moments.js?v={h(asset_version("assets/on-this-day-moments.js"))}" defer></script>',
+        extra_scripts="\n".join([
+            f'<script src="assets/on-this-day-moments.js?v={h(asset_version("assets/on-this-day-moments.js"))}" defer></script>',
+            f'<script src="assets/on-this-day-artwork.js?v={h(asset_version("assets/on-this-day-artwork.js"))}" defer></script>',
+        ]),
     )
 
 
