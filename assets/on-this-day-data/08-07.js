@@ -42,8 +42,8 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-07"] = {
   ],
   "summary": [
     "August 7, 1850, is not just a date label for East Coast Main Line. It is the point where a larger transportation story becomes visible enough to study. The first section of the Great Northern Railway, now the southern section of the East Coast Main Line, opened between London and Peterborough. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The first section of the Great Northern Railway, now the southern section of the East Coast Main Line... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is a route, vehicle, station, bridge, port, or horizon where distance started to feel different. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. East Coast Main Line belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "The first section of the Great Northern Railway, now the southern section of the East Coast Main Line... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is a route, vehicle, station, bridge, port, or horizon where distance started to feel different. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1891,
   "related": [
@@ -61,7 +61,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-07"] = {
   "coolFacts": [
     "August 7 places the reader in 1850, inside a transportation story with consequences beyond the date itself.",
     "The first section of the Great Northern Railway, now the southern section of the East Coast Main Line, opened between London and Peterborough.",
-    "The central source trail begins with East Coast Main Line.",
+    "A useful starting source is East Coast Main Line.",
     "The big historical pressure point: it changed how bodies, goods, news, armies, families, and ambition moved through the world.",
     "Transportation history is really about distance losing some of its power: the journey becomes shorter, riskier, more public, or more possible."
   ],
@@ -109,7 +109,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-07"] = {
       ]
     },
     {
-      "text": "The first section of the Great Northern Railway, now the southern section of the East Coast Main Line... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The first section of the Great Northern Railway, now the southern section of the East Coast Main Line... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-07"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is a route, vehicle, station, bridge, port, or horizon where distance started to feel different. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. East Coast Main Line belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is a route, vehicle, station, bridge, port, or horizon where distance started to feel different. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -248,7 +248,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-07"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of August 7 is easy: The first section of the Great Northern Railway, now the southern section of the East Coast Main Line, opened between London and Peterborough. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of August 7 is easy: The first section of the Great Northern Railway, now the southern section of the East Coast Main Line, opened between London and Peterborough. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

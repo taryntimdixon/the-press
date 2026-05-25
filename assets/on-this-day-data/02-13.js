@@ -42,8 +42,8 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-13"] = {
   ],
   "summary": [
     "February 13, 2012, is not just a date label for European Space Agency. It is the point where a larger space exploration story becomes visible enough to study. The first Vega rocket was launched by the European Space Agency from the Guiana Space Centre. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The first Vega rocket was launched by the European Space Agency from the Guiana Space Centre. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is a mission environment where hardware, risk, mathematics, weather, and public imagination had to line up. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. European Space Agency belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "The first Vega rocket was launched by the European Space Agency from the Guiana Space Centre. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is a mission environment where hardware, risk, mathematics, weather, and public imagination had to line up. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1857,
   "related": [
@@ -66,7 +66,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-13"] = {
   "coolFacts": [
     "February 13 places the reader in 2012, inside a space exploration story with consequences beyond the date itself.",
     "The first Vega rocket was launched by the European Space Agency from the Guiana Space Centre.",
-    "The central source trail begins with European Space Agency.",
+    "A useful starting source is European Space Agency.",
     "The big historical pressure point: it pushed the boundary between ordinary life on Earth and the dangerous machinery of exploration.",
     "The lasting meaning sits in the mix of engineering discipline and public wonder: one mission becomes a shared picture of what humans can attempt."
   ],
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-13"] = {
       ]
     },
     {
-      "text": "The first Vega rocket was launched by the European Space Agency from the Guiana Space Centre. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The first Vega rocket was launched by the European Space Agency from the Guiana Space Centre. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -124,7 +124,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-13"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is a mission environment where hardware, risk, mathematics, weather, and public imagination had to line up. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. European Space Agency belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is a mission environment where hardware, risk, mathematics, weather, and public imagination had to line up. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -253,7 +253,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-13"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of February 13 is easy: The first Vega rocket was launched by the European Space Agency from the Guiana Space Centre. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of February 13 is easy: The first Vega rocket was launched by the European Space Agency from the Guiana Space Centre. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

@@ -46,15 +46,15 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-14"] = {
   ],
   "summary": [
     "July 14, 1789, is not just a date label for Storming of the Bastille. It is the point where a larger protest story becomes visible enough to study. Parisians stormed the Bastille, turning a fortress-prison into a revolutionary symbol and making July 14 a defining date in the politics of popular sovereignty. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Revolutionaries stormed the Bastille in Paris, becoming an enduring symbol of the French Revolution. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is Paris at the Bastille, where fortress, prison, arms, crowds, royal authority, rumor, and revolutionary violence became a founding symbol. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Storming of the Bastille belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "Revolutionaries stormed the Bastille in Paris, becoming an enduring symbol of the French Revolution. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is Paris at the Bastille, where fortress, prison, arms, crowds, royal authority, rumor, and revolutionary violence became a founding symbol. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1950,
   "related": [],
   "coolFacts": [
     "July 14 places the reader in 1789, inside a protest story with consequences beyond the date itself.",
     "Parisians stormed the Bastille, turning a fortress-prison into a revolutionary symbol and making July 14 a defining date in the politics of popular sovereignty.",
-    "The central source trail begins with Storming of the Bastille.",
+    "A useful starting source is Storming of the Bastille.",
     "The big historical pressure point: it changed the emotional temperature of politics and showed what pressure from below could do.",
     "Protest history is about the moment private frustration becomes public force, and public force becomes impossible to ignore."
   ],
@@ -116,7 +116,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-14"] = {
       ]
     },
     {
-      "text": "Revolutionaries stormed the Bastille in Paris, becoming an enduring symbol of the French Revolution. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Revolutionaries stormed the Bastille in Paris, becoming an enduring symbol of the French Revolution. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -126,7 +126,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-14"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is Paris at the Bastille, where fortress, prison, arms, crowds, royal authority, rumor, and revolutionary violence became a founding symbol. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Storming of the Bastille belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is Paris at the Bastille, where fortress, prison, arms, crowds, royal authority, rumor, and revolutionary violence became a founding symbol. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -268,7 +268,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-14"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of July 14 is easy: Parisians stormed the Bastille, turning a fortress-prison into a revolutionary symbol and making July 14 a defining date in the politics of popular sovereignty. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of July 14 is easy: Parisians stormed the Bastille, turning a fortress-prison into a revolutionary symbol and making July 14 a defining date in the politics of popular sovereignty. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

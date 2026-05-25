@@ -46,15 +46,15 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-06"] = {
   ],
   "summary": [
     "July 6, 2016, is not just a date label for Pokemon Go Launches. It is the point where a larger technology story becomes visible enough to study. Pokemon Go launched for iPhone and Android, sending players into parks, plazas, landmarks, and streets and making augmented reality feel mainstream almost overnight. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Pokemon Go launched on smartphones, turning augmented reality into a street-level global craze. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is parks, plazas, sidewalks, smartphones, GPS, cameras, and game servers as Pokemon Go made augmented reality feel physically public. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Pokemon Go Launches belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "Pokemon Go launched on smartphones, turning augmented reality into a street-level global craze. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is parks, plazas, sidewalks, smartphones, GPS, cameras, and game servers as Pokemon Go made augmented reality feel physically public. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1942,
   "related": [],
   "coolFacts": [
     "July 6 places the reader in 2016, inside a technology story with consequences beyond the date itself.",
     "Pokemon Go launched for iPhone and Android, sending players into parks, plazas, landmarks, and streets and making augmented reality feel mainstream almost overnight.",
-    "The central source trail begins with The Pokemon Company: Pokemon Go available today.",
+    "A useful starting source is The Pokemon Company: Pokemon Go available today.",
     "The big historical pressure point: it changed how people used tools, information, screens, networks, or systems in daily life.",
     "The practical result was not only a new object or platform; it was a new rhythm of attention, work, money, and expectation."
   ],
@@ -116,7 +116,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-06"] = {
       ]
     },
     {
-      "text": "Pokemon Go launched on smartphones, turning augmented reality into a street-level global craze. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Pokemon Go launched on smartphones, turning augmented reality into a street-level global craze. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -126,7 +126,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-06"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is parks, plazas, sidewalks, smartphones, GPS, cameras, and game servers as Pokemon Go made augmented reality feel physically public. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Pokemon Go Launches belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is parks, plazas, sidewalks, smartphones, GPS, cameras, and game servers as Pokemon Go made augmented reality feel physically public. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -268,7 +268,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-06"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of July 6 is easy: Pokemon Go launched for iPhone and Android, sending players into parks, plazas, landmarks, and streets and making augmented reality feel mainstream almost overnight. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of July 6 is easy: Pokemon Go launched for iPhone and Android, sending players into parks, plazas, landmarks, and streets and making augmented reality feel mainstream almost overnight. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

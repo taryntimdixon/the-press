@@ -46,15 +46,15 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-02"] = {
   ],
   "summary": [
     "July 2, 1964, is not just a date label for Civil Rights Act Signed. It is the point where a larger rights and public power story becomes visible enough to study. The Civil Rights Act of 1964 was signed into law, outlawing major forms of segregation and discrimination in public accommodations, employment, and education. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The Civil Rights Act of 1964 was signed into law, outlawing major forms of segregation and discrimination. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is the Civil Rights Act of 1964 entering law, backed by movement pressure, congressional struggle, presidential signature, and public-accommodation enforcement. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Civil Rights Act Signed belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "The Civil Rights Act of 1964 was signed into law, outlawing major forms of segregation and discrimination. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is the Civil Rights Act of 1964 entering law, backed by movement pressure, congressional struggle, presidential signature, and public-accommodation enforcement. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1949,
   "related": [],
   "coolFacts": [
     "July 2 places the reader in 1964, inside a rights and public power story with consequences beyond the date itself.",
     "The Civil Rights Act of 1964 was signed into law, outlawing major forms of segregation and discrimination in public accommodations, employment, and education.",
-    "The central source trail begins with Civil Rights Act of 1964.",
+    "A useful starting source is Civil Rights Act of 1964.",
     "The big historical pressure point: it changed who could claim safety, dignity, citizenship, visibility, or equal treatment.",
     "The consequence was not only legal or symbolic; it changed what people could demand from institutions that had once excluded them."
   ],
@@ -116,7 +116,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-02"] = {
       ]
     },
     {
-      "text": "The Civil Rights Act of 1964 was signed into law, outlawing major forms of segregation and discrimination. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The Civil Rights Act of 1964 was signed into law, outlawing major forms of segregation and discrimination. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -126,7 +126,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-02"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is the Civil Rights Act of 1964 entering law, backed by movement pressure, congressional struggle, presidential signature, and public-accommodation enforcement. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Civil Rights Act Signed belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is the Civil Rights Act of 1964 entering law, backed by movement pressure, congressional struggle, presidential signature, and public-accommodation enforcement. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -268,7 +268,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-02"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of July 2 is easy: The Civil Rights Act of 1964 was signed into law, outlawing major forms of segregation and discrimination in public accommodations, employment, and education. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of July 2 is easy: The Civil Rights Act of 1964 was signed into law, outlawing major forms of segregation and discrimination in public accommodations, employment, and education. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

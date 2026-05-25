@@ -46,15 +46,15 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-04"] = {
   ],
   "summary": [
     "July 4, 2012, is not just a date label for Higgs Boson Discovery Announced. It is the point where a larger science story becomes visible enough to study. CERN announced that ATLAS and CMS had discovered a new particle consistent with the Higgs boson, confirming a central piece of the Standard Model after decades of searching. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "CERN announced the discovery of a new particle consistent with the Higgs boson. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is CERN’s 2012 announcement hall, where ATLAS and CMS data, physicists, detector images, and decades of theory focused on a new particle. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Higgs Boson Discovery Announced belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "CERN announced the discovery of a new particle consistent with the Higgs boson. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is CERN’s 2012 announcement hall, where ATLAS and CMS data, physicists, detector images, and decades of theory focused on a new particle. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1974,
   "related": [],
   "coolFacts": [
     "July 4 places the reader in 2012, inside a science story with consequences beyond the date itself.",
     "CERN announced that ATLAS and CMS had discovered a new particle consistent with the Higgs boson, confirming a central piece of the Standard Model after decades of searching.",
-    "The central source trail begins with CERN: The Higgs boson, ten years after its discovery.",
+    "A useful starting source is CERN: The Higgs boson, ten years after its discovery.",
     "The big historical pressure point: it changed what could be measured, proven, feared, predicted, or imagined.",
     "Science history matters because a result can move from a graph or observation into policy, technology, danger, or wonder."
   ],
@@ -116,7 +116,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-04"] = {
       ]
     },
     {
-      "text": "CERN announced the discovery of a new particle consistent with the Higgs boson. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "CERN announced the discovery of a new particle consistent with the Higgs boson. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -126,7 +126,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-04"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is CERN’s 2012 announcement hall, where ATLAS and CMS data, physicists, detector images, and decades of theory focused on a new particle. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Higgs Boson Discovery Announced belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is CERN’s 2012 announcement hall, where ATLAS and CMS data, physicists, detector images, and decades of theory focused on a new particle. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -268,7 +268,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-04"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of July 4 is easy: CERN announced that ATLAS and CMS had discovered a new particle consistent with the Higgs boson, confirming a central piece of the Standard Model after decades of searching. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of July 4 is easy: CERN announced that ATLAS and CMS had discovered a new particle consistent with the Higgs boson, confirming a central piece of the Standard Model after decades of searching. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

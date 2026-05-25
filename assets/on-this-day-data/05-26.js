@@ -46,15 +46,15 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-26"] = {
   ],
   "summary": [
     "May 26, 1940, is not just a date label for Dunkirk Evacuation Begins. It is the point where a larger war and crisis story becomes visible enough to study. The Dunkirk evacuation began, sending naval vessels and civilian boats across the Channel to rescue Allied soldiers trapped on the beaches of northern France during World War II. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Operation Dynamo began as Allied soldiers were evacuated from Dunkirk under attack during World War II. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is the beaches and harbor approaches around Dunkirk as Operation Dynamo began moving stranded Allied soldiers toward warships and civilian vessels under air attack. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Dunkirk Evacuation Begins belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "Operation Dynamo began as Allied soldiers were evacuated from Dunkirk under attack during World War II. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is the beaches and harbor approaches around Dunkirk as Operation Dynamo began moving stranded Allied soldiers toward warships and civilian vessels under air attack. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1973,
   "related": [],
   "coolFacts": [
     "May 26 places the reader in 1940, inside a war and crisis story with consequences beyond the date itself.",
     "The Dunkirk evacuation began, sending naval vessels and civilian boats across the Channel to rescue Allied soldiers trapped on the beaches of northern France during World War II.",
-    "The central source trail begins with Dunkirk evacuation.",
+    "A useful starting source is Dunkirk evacuation.",
     "The big historical pressure point: it changed the balance of power and left people living with consequences far beyond the day itself.",
     "Conflict history matters because the line between strategy and human cost is never clean; the map changes, and lives change with it."
   ],
@@ -116,7 +116,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-26"] = {
       ]
     },
     {
-      "text": "Operation Dynamo began as Allied soldiers were evacuated from Dunkirk under attack during World War II. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Operation Dynamo began as Allied soldiers were evacuated from Dunkirk under attack during World War II. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -126,7 +126,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-26"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is the beaches and harbor approaches around Dunkirk as Operation Dynamo began moving stranded Allied soldiers toward warships and civilian vessels under air attack. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Dunkirk Evacuation Begins belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is the beaches and harbor approaches around Dunkirk as Operation Dynamo began moving stranded Allied soldiers toward warships and civilian vessels under air attack. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -268,7 +268,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-26"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of May 26 is easy: The Dunkirk evacuation began, sending naval vessels and civilian boats across the Channel to rescue Allied soldiers trapped on the beaches of northern France during World War II. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of May 26 is easy: The Dunkirk evacuation began, sending naval vessels and civilian boats across the Channel to rescue Allied soldiers trapped on the beaches of northern France during World War II. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

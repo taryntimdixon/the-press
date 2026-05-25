@@ -42,8 +42,8 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-08"] = {
   ],
   "summary": [
     "January 8, 2016, is not just a date label for Joaquín \"El Chapo\" Guzmán. It is the point where a larger crime and accountability story becomes visible enough to study. Mexican marines recaptured Joaquín \"El Chapo\" Guzmán in Los Mochis after the Sinaloa Cartel leader had escaped from a maximum-security prison through a tunnel months earlier. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Mexican marines recaptured Joaquín \"El Chapo\" Guzmán in Los Mochis after the Sinaloa Cartel leader had escaped from... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is a hallway, office, courtroom, evidence table, newsroom, or police setting where a case became bigger than the act itself. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Joaquín \"El Chapo\" Guzmán belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "Mexican marines recaptured Joaquín \"El Chapo\" Guzmán in Los Mochis after the Sinaloa Cartel leader had escaped from... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene for this history is not a symbol floating in empty space. It is a hallway, office, courtroom, evidence table, newsroom, or police setting where a case became bigger than the act itself. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Joaquín \"El Chapo\" Guzmán belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1941,
   "related": [
@@ -56,7 +56,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-08"] = {
   "coolFacts": [
     "January 8 places the reader in 2016, inside a crime and accountability story with consequences beyond the date itself.",
     "Mexican marines recaptured Joaquín \"El Chapo\" Guzmán in Los Mochis after the Sinaloa Cartel leader had escaped from a maximum-security prison through a tunnel months earlier.",
-    "The central source trail begins with Joaquín \"El Chapo\" Guzmán.",
+    "A useful starting source is Joaquín \"El Chapo\" Guzmán.",
     "The big historical pressure point: it changed public trust, institutions, law enforcement, media attention, or constitutional pressure.",
     "Crime history can become civic history when evidence, secrecy, power, and accountability all enter the same room."
   ],
@@ -104,7 +104,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-08"] = {
       ]
     },
     {
-      "text": "Mexican marines recaptured Joaquín \"El Chapo\" Guzmán in Los Mochis after the Sinaloa Cartel leader had escaped from... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Mexican marines recaptured Joaquín \"El Chapo\" Guzmán in Los Mochis after the Sinaloa Cartel leader had escaped from... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-08"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is a hallway, office, courtroom, evidence table, newsroom, or police setting where a case became bigger than the act itself. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Joaquín \"El Chapo\" Guzmán belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene for this history is not a symbol floating in empty space. It is a hallway, office, courtroom, evidence table, newsroom, or police setting where a case became bigger than the act itself. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Joaquín \"El Chapo\" Guzmán belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -243,7 +243,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-08"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of January 8 is easy: Mexican marines recaptured Joaquín \"El Chapo\" Guzmán in Los Mochis after the Sinaloa Cartel leader had escaped from a maximum-security prison through a tunnel months earlier. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of January 8 is easy: Mexican marines recaptured Joaquín \"El Chapo\" Guzmán in Los Mochis after the Sinaloa Cartel leader had escaped from a maximum-security prison through a tunnel months earlier. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

@@ -1,1763 +1,1763 @@
 /*
-  Real artwork assets for The Press daily history moments.
-  Add generated editorial or photorealistic image files here as they are approved.
+  Artwork assets for The Press daily history moments.
+  Alt text is reader-facing; keep production prompts and image-direction notes out of visible copy.
 */
 window.PRESS_ON_THIS_DAY_ARTWORK = {
   "01-01": {
     "src": "assets/on-this-day-images/01-01-new-horizons-arrokoth.png",
-    "alt": "Photorealistic editorial scene of New Horizons mission control during the Arrokoth flyby.",
+    "alt": "2019: NASA. The NASA space probe New Horizons flew by the trans-Neptunian object Arrokoth, making it the farthest object visited by a spacecraft.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-02": {
     "src": "assets/on-this-day-images/01-02-luna-1.png",
-    "alt": "Photorealistic editorial artwork of an early Soviet rocket on a freezing Baikonur launch pad at night.",
+    "alt": "1959: Luna 1. The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a Vostok rocket from the Baikonur Cosmodrome.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-03": {
     "src": "assets/on-this-day-images/01-03-yankees-sale-cbs.png",
-    "alt": "Photorealistic editorial scene of CBS executives and baseball investors around the 1973 New York Yankees sale.",
+    "alt": "1973: CBS. CBS announced the sale of the New York Yankees professional baseball team to a group of investors headed by American businessman George Steinbrenner.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-04": {
     "src": "assets/on-this-day-images/01-04-spirit-rover.png",
-    "alt": "Photorealistic editorial artwork of NASA's Spirit rover newly deployed on the surface of Mars.",
+    "alt": "2004: Spirit (rover). Spirit, the first of two rovers of NASA's Mars Exploration Rover mission, successfully landed on Mars.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-05": {
     "src": "assets/on-this-day-images/01-05-ricin-plot-arrests.png",
-    "alt": "Photorealistic editorial scene of London forensic officers and police after 2003 ricin-plot arrests.",
+    "alt": "2003: Metropolitan Police. The Metropolitan Police arrested six people in conjunction with an alleged terrorist plot to release ricin on the London Underground, although no toxin was found.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-06": {
     "src": "assets/on-this-day-images/01-06-maria-montessori.png",
-    "alt": "Photorealistic editorial artwork of Maria Montessori observing children in an early Rome classroom.",
+    "alt": "1907: Maria Montessori. Italian educator Maria Montessori opened her first school and day-care centre for working-class children in Rome, employing a philosophy of education that now bears her name.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-07": {
     "src": "assets/on-this-day-images/01-07-bank-of-north-america.png",
-    "alt": "Photorealistic editorial scene of the Bank of North America opening in Philadelphia in 1782.",
+    "alt": "1782: Bank of North America. The Bank of North America opened in Philadelphia as the de facto first central bank of the United States.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-08": {
     "src": "assets/on-this-day-images/01-08-el-chapo-recapture.png",
-    "alt": "Photorealistic editorial scene of Mexican marines and investigators during the 2016 recapture of Joaquin El Chapo Guzman in Los Mochis.",
+    "alt": "2016: Joaquín \"El Chapo\" Guzmán. Mexican marines recaptured Joaquín \"El Chapo\" Guzmán in Los Mochis after the Sinaloa Cartel leader had escaped from a maximum-security prison through a tunnel months earlier.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-09": {
     "src": "assets/on-this-day-images/01-09-iphone-introduced.png",
-    "alt": "Photorealistic editorial scene of the first iPhone being introduced on a dark 2007 tech keynote stage.",
+    "alt": "2007: iPhone (1st generation). Steve Jobs introduced the first iPhone at Macworld in San Francisco, presenting a touch-screen phone, iPod, and internet communicator as one device.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-10": {
     "src": "assets/on-this-day-images/01-10-guinea-general-strike.png",
-    "alt": "Photorealistic editorial scene of Guinean workers and students beginning a general strike in Conakry in 2007.",
+    "alt": "2007: Lansana Conté. A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting in the appointment of two new prime ministers.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-11": {
     "src": "assets/on-this-day-images/01-11-film-academy-banquet.png",
-    "alt": "Photorealistic editorial scene of a 1927 Hollywood banquet where a motion-picture academy begins taking shape.",
+    "alt": "1927: Louis B. Mayer. Louis B. Mayer, head of Metro-Goldwyn-Mayer, hosted 36 people involved in the film industry at a banquet, where he announced the creation of what would become the Academy of Motion Picture Arts and Sciences.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-12": {
     "src": "assets/on-this-day-images/01-12-first-cryonic-preservation.png",
-    "alt": "Photorealistic editorial science scene of a 1960s cryonics lab preparing an early preservation capsule.",
+    "alt": "1967: James Bedford. Seventy-three-year-old psychology professor James Bedford became the first person to be cryonically preserved with intent of future resuscitation.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-13": {
     "src": "assets/on-this-day-images/01-13-johnny-cash-folsom-prison.png",
-    "alt": "Photorealistic editorial scene of a prison concert recording in the style of Johnny Cash at Folsom Prison in 1968.",
+    "alt": "1968: Johnny Cash. American singer Johnny Cash recorded his landmark album At Folsom Prison live at Folsom State Prison in California.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-14": {
     "src": "assets/on-this-day-images/01-14-arab-spring-tunisia.png",
-    "alt": "Photorealistic editorial scene of Tunisian Arab Spring protesters filling a city street at dusk.",
+    "alt": "2011: Arab Spring. Arab Spring: Tunisian president Zine El Abidine Ben Ali fled the country after several violent protests.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-15": {
     "src": "assets/on-this-day-images/01-15-first-wikipedia-edit.png",
-    "alt": "Photorealistic editorial scene of an early 2000s computer desk as the first Wikipedia edit is made.",
+    "alt": "2001: Wikipedia. The first edit to the internet encyclopedia Wikipedia was made.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-16": {
     "src": "assets/on-this-day-images/01-16-hello-dolly-broadway.png",
-    "alt": "Photorealistic editorial scene of a Broadway theater and backstage bustle as Hello Dolly opens in 1964.",
+    "alt": "1964: Hello, Dolly! (musical). The musical Hello, Dolly!",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-17": {
     "src": "assets/on-this-day-images/01-17-little-saigon-protests.png",
-    "alt": "Photorealistic editorial scene of Vietnamese American community protests in Little Saigon in 1999.",
+    "alt": "1999: Ho Chi Minh. In Little Saigon, California, a series of protests began when the owner of a video rental store displayed an image of Ho Chi Minh.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-18": {
     "src": "assets/on-this-day-images/01-18-dc-mayor-sting-operation.png",
-    "alt": "Photorealistic editorial scene of a 1990 Washington, D.C. political sting arrest outside a courthouse.",
+    "alt": "1990: Sting operation. In a sting operation conducted by the FBI, Marion Barry, the mayor of Washington, D.C., was arrested for possession of crack cocaine.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-19": {
     "src": "assets/on-this-day-images/01-19-megaupload-shutdown.png",
-    "alt": "Photorealistic editorial scene of investigators sealing servers during the 2012 Megaupload shutdown.",
+    "alt": "2012: Megaupload. The Hong Kong–based file-sharing website Megaupload was shut down by the FBI.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-20": {
     "src": "assets/on-this-day-images/01-20-game-of-the-century-basketball.png",
-    "alt": "Photorealistic editorial sports scene of the 1968 college basketball Game of the Century in the Astrodome.",
+    "alt": "1968: College basketball. The Houston Cougars upset the UCLA Bruins in what became known as the \"Game of the Century\", ending the Bruins' 47-game winning streak and establishing college basketball as a sports commodity on American television.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-21": {
     "src": "assets/on-this-day-images/01-21-womens-march.png",
-    "alt": "Photorealistic editorial scene of millions participating in the 2017 Women's March in Washington, D.C. and around the world.",
+    "alt": "2017: Washington, D.C.. Millions of people participated in the Women's March in Washington, D.C., and around the world to advocate for legislation and policies on human rights and other issues.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-22": {
     "src": "assets/on-this-day-images/01-22-graphical-personal-computer-ad.png",
-    "alt": "Photorealistic editorial scene of families watching the 1984 computer commercial that introduced a graphical personal computer to a mass audience.",
+    "alt": "1984: Super Bowl XVIII. During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical user interface, with the television commercial \"1984\".",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-23": {
     "src": "assets/on-this-day-images/01-23-pioneer-10-final-signal.png",
-    "alt": "Photorealistic editorial scene of mission engineers receiving Pioneer 10's final signal in 2003.",
+    "alt": "2003: NASA. The final signal was detected from the NASA space probe Pioneer 10, then about 12 billion kilometres (7.5 billion miles) from Earth.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-24": {
     "src": "assets/on-this-day-images/01-24-forsyth-county-civil-rights.png",
-    "alt": "Photorealistic editorial scene of the 1987 Forsyth County civil-rights march in Georgia.",
+    "alt": "1987: Forsyth County, Georgia. About 20,000 protestors marched in a civil rights demonstration in Forsyth County, Georgia, United States.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-25": {
     "src": "assets/on-this-day-images/01-25-opportunity-rover.png",
-    "alt": "Photorealistic editorial scene of NASA rover Opportunity newly landed at Eagle crater on Mars.",
+    "alt": "2004: Mars Exploration Rover. Mars Exploration Rover Opportunity landed on Mars and rolled into Eagle crater, a small crater on the Meridiani Planum.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-26": {
     "src": "assets/on-this-day-images/01-26-apollo-theater-opens.png",
-    "alt": "Photorealistic editorial scene of Harlem audiences and performers outside the Apollo Theater opening era in 1934.",
+    "alt": "1934: Apollo Theater. Hurtig & Seamon's New Burlesque Theater in New York City reopened as the Apollo Theater, becoming one of the nation's premier venues for African-American performers.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-27": {
     "src": "assets/on-this-day-images/01-27-yemeni-revolution.png",
-    "alt": "Photorealistic editorial scene of Yemeni Arab Spring demonstrators gathering in Sanaa in 2011.",
+    "alt": "2011: Yemeni revolution. Arab Spring: The Yemeni Revolution began as more than 16,000 protesters demonstrated in Sanaa to demand governmental changes.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-28": {
     "src": "assets/on-this-day-images/01-28-manitoba-womens-vote.png",
-    "alt": "Photorealistic editorial scene of Canadian suffragists after Manitoba grants some women the vote in 1916.",
+    "alt": "1916: Manitoba. The province of Manitoba passed a law that first granted some Canadian women the right to vote.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-29": {
     "src": "assets/on-this-day-images/01-29-egypt-identity-documents.png",
-    "alt": "Photorealistic editorial scene of Cairo families and lawyers after a court ruling on identity documents.",
+    "alt": "2009: Supreme Constitutional Court (Egypt). The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three government-recognised religions were also eligible to receive government identity documents.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-30": {
     "src": "assets/on-this-day-images/01-30-naro-1-launch.png",
-    "alt": "Photorealistic editorial scene of South Korean engineers during the Naro-1 orbital launch.",
+    "alt": "2013: Korea Aerospace Research Institute. The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to achieve Earth orbit.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "01-31": {
     "src": "assets/on-this-day-images/01-31-mercury-redstone-2.png",
-    "alt": "Photorealistic editorial scene of NASA engineers and the Mercury-Redstone 2 test flight in 1961.",
+    "alt": "1961: NASA. Aboard NASA's Mercury-Redstone 2, the chimpanzee Ham became the first hominid to be launched into outer space.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-01": {
     "src": "assets/on-this-day-images/02-01-civil-rights-movement.png",
-    "alt": "Photorealistic editorial artwork of four students seated calmly at a 1960 Greensboro lunch counter.",
+    "alt": "1960: Civil rights movement. Civil rights movement: Four African-American students staged the first of more than five months of sit-ins at an F.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-02": {
     "src": "assets/on-this-day-images/02-02-tennis-number-one.png",
-    "alt": "Photorealistic editorial sports scene of a Swiss men's tennis player becoming world number one in an early-2000s arena.",
+    "alt": "2004: Roger Federer. Swiss tennis player Roger Federer became the top-ranked men's singles player, a position he held for a record 237 consecutive weeks.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-03": {
     "src": "assets/on-this-day-images/02-03-independent-computer-animation-studio.png",
-    "alt": "Photorealistic editorial scene of a 1986 computer-animation studio becoming independent in a California graphics lab.",
+    "alt": "1986: Steve Jobs. Steve Jobs purchased Pixar from Lucasfilm and launched it as an independent computer-animation studio.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-04": {
     "src": "assets/on-this-day-images/02-04-john-marshall-chief-justice.png",
-    "alt": "Photorealistic editorial scene of an early American Supreme Court swearing-in and courtroom preparation in 1801.",
+    "alt": "1801: John Marshall. John Marshall, whose court opinions helped lay the basis for U.S.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-05": {
     "src": "assets/on-this-day-images/02-05-haiti-gonaives-coup-crisis.png",
-    "alt": "Photorealistic editorial scene of civilians and journalists in Gonaives, Haiti, as a 2004 coup crisis begins.",
+    "alt": "2004: Gonaïves. The National Revolutionary Front for the Liberation of Haiti captured the city of Gonaïves, starting a coup d'état against President Jean-Bertrand Aristide's government.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-06": {
     "src": "assets/on-this-day-images/02-06-franco-american-treaties.png",
-    "alt": "Photorealistic editorial scene of French and American diplomats signing alliance and commerce treaties in 1778.",
+    "alt": "1778: Treaty of Amity and Commerce (France–United States). France and the United States signed the Treaty of Amity and Commerce and the Treaty of Alliance, respectively establishing commercial and military ties between the two nations.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-07": {
     "src": "assets/on-this-day-images/02-07-first-untethered-spacewalk.png",
-    "alt": "Photorealistic editorial scene of the first untethered astronaut spacewalk near a Space Shuttle in 1984.",
+    "alt": "1984: Space Shuttle Challenger. During the Space Shuttle Challenger mission STS-41-B, astronauts Bruce McCandless II and Robert L.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-08": {
     "src": "assets/on-this-day-images/02-08-senate-elects-vice-president.png",
-    "alt": "Photorealistic editorial scene of the U.S. Senate electing a vice president in 1837.",
+    "alt": "1837: Richard Mentor Johnson. Richard Mentor Johnson became the only person ever to be elected Vice President of the United States by the Senate.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-09": {
     "src": "assets/on-this-day-images/02-09-beatlemania-tv-broadcast.png",
-    "alt": "Photorealistic editorial scene of a 1964 television studio rock broadcast as Beatlemania sweeps the United States.",
+    "alt": "1964: Beatlemania. As Beatlemania swept the United States, the Beatles made their first appearance on The Ed Sullivan Show before a record-breaking audience, beginning a musical phenomenon known as the British Invasion.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-10": {
     "src": "assets/on-this-day-images/02-10-roy-lichtenstein.png",
-    "alt": "Photorealistic editorial artwork of Roy Lichtenstein and visitors at an early 1960s New York gallery opening.",
+    "alt": "1962: Roy Lichtenstein. The first solo exhibition by Roy Lichtenstein opened, including the painting Look Mickey, which featured his first use of Ben Day dots, speech balloons, and comic imagery sourcing.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-11": {
     "src": "assets/on-this-day-images/02-11-mandela-release.png",
-    "alt": "Photorealistic editorial scene of Nelson Mandela walking free from prison into a cheering South African crowd.",
+    "alt": "1990: Nelson Mandela. Anti-apartheid activist Nelson Mandela, having been a political prisoner for 27 years, was released from Victor Verster Prison near Paarl, South Africa.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-12": {
     "src": "assets/on-this-day-images/02-12-near-shoemaker-eros.png",
-    "alt": "Photorealistic editorial scene of NASA's NEAR Shoemaker spacecraft resting on the asteroid Eros.",
+    "alt": "2001: NASA. The NASA space probe NEAR Shoemaker touched down on Eros, becoming the first spacecraft to land on an asteroid.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-13": {
     "src": "assets/on-this-day-images/02-13-vega-first-launch.png",
-    "alt": "Photorealistic editorial scene of the first Vega rocket launching from the Guiana Space Centre in 2012.",
+    "alt": "2012: European Space Agency. The first Vega rocket was launched by the European Space Agency from the Guiana Space Centre.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-14": {
     "src": "assets/on-this-day-images/02-14-youtube-founded.png",
-    "alt": "Photorealistic editorial scene of a mid-2000s startup workspace where online video culture begins.",
+    "alt": "2005: YouTube. The online video platform YouTube was founded by Steve Chen, Chad Hurley, and Jawed Karim.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-15": {
     "src": "assets/on-this-day-images/02-15-kevin-mitnick-arrest.png",
-    "alt": "Photorealistic editorial scene of the 1995 Kevin Mitnick computer-fraud arrest with 1990s computers and evidence files.",
+    "alt": "1995: Kevin Mitnick. Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with computer fraud and wire fraud.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-16": {
     "src": "assets/on-this-day-images/02-16-musical-note.png",
-    "alt": "Photorealistic editorial artwork of Paris musicians and officials testing tuning forks as concert pitch is standardized.",
+    "alt": "1859: Musical note. The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in the first attempt to standardize concert pitch.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-17": {
     "src": "assets/on-this-day-images/02-17-bahrain-pearl-roundabout.png",
-    "alt": "Photorealistic editorial scene of Bahraini protesters and medics regrouping near Pearl Roundabout during the Arab Spring in 2011.",
+    "alt": "2011: Arab Spring. Arab Spring: Bahraini security forces killed four protesters in a pre-dawn raid at the Pearl Roundabout in Manama, while the \"Day of Rage\" took place in Libya with nationwide protests against Muammar Gaddafi's government.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-18": {
     "src": "assets/on-this-day-images/02-18-enterprise-test-flight.png",
-    "alt": "Photorealistic editorial scene of Space Shuttle Enterprise atop the Shuttle Carrier Aircraft during its 1977 first test flight.",
+    "alt": "1977: NASA. NASA's first Space Shuttle, Enterprise, made its first test flight on top of the Shuttle Carrier Aircraft.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-19": {
     "src": "assets/on-this-day-images/02-19-apodaca-prison-riot-aftermath.png",
-    "alt": "Photorealistic editorial scene of families and responders outside Apodaca prison after the 2012 riot.",
+    "alt": "2012: Mexican drug war. Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas and the Gulf Cartel.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-20": {
     "src": "assets/on-this-day-images/02-20-krakow-uprising.png",
-    "alt": "Photorealistic editorial scene of Polish insurgents preparing leaflets in Krakow during the 1846 uprising.",
+    "alt": "1846: Austrian Empire. Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national independence that was put down by the Austrian Empire nine days later.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-21": {
     "src": "assets/on-this-day-images/02-21-malcolm-x-audubon-ballroom.png",
-    "alt": "Photorealistic editorial scene of Malcolm X speaking at the Audubon Ballroom before the 1965 assassination.",
+    "alt": "1965: Malcolm X. American Black nationalist Malcolm X was assassinated while giving a speech in New York City's Audubon Ballroom.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-22": {
     "src": "assets/on-this-day-images/02-22-lake-placid-broadcast-upset.png",
-    "alt": "Photorealistic editorial scene of a Lake Placid Olympic hockey upset becoming a national broadcast moment in 1980.",
+    "alt": "1980: Lake Placid, New York. At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet team in an unlikely victory that became known as the Miracle on Ice.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-23": {
     "src": "assets/on-this-day-images/02-23-dick-turpin-handwriting.png",
-    "alt": "Photorealistic editorial scene of Georgian constables identifying Dick Turpin through handwriting in 1739.",
+    "alt": "1739: Highwayman. The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading to Turpin's trial.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-24": {
     "src": "assets/on-this-day-images/02-24-marbury-v-madison.png",
-    "alt": "Photorealistic editorial scene of the Marbury v Madison decision taking shape in an early U.S. Supreme Court chamber.",
+    "alt": "1803: Marbury v. Madison. In Marbury v. Madison, the Supreme Court declared an act of Congress unconstitutional for the first time, forming the basis of judicial review in the United States.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-25": {
     "src": "assets/on-this-day-images/02-25-hiram-revels-senate.png",
-    "alt": "Photorealistic editorial scene of Hiram Rhodes Revels taking his seat in the Reconstruction-era U.S. Senate.",
+    "alt": "1870: Hiram R. Revels. Mississippi senator Hiram Rhodes Revels became the first African American to be seated in the U.S.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-26": {
     "src": "assets/on-this-day-images/02-26-ny-philharmonic-north-korea.png",
-    "alt": "Photorealistic editorial scene of an American orchestra tuning before a historic 2008 concert in Pyongyang.",
+    "alt": "2008: Korean War. In the first significant cultural visit from the United States to North Korea since the Korean War, the New York Philharmonic Orchestra performed in Pyongyang.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-27": {
     "src": "assets/on-this-day-images/02-27-sunday-people-police-bribery.png",
-    "alt": "Photorealistic editorial scene of 1970s London journalists exposing a police bribery scandal.",
+    "alt": "1972: Sunday People. The Sunday People revealed that James Humphreys, a notorious pornographer, had bribed a senior London police officer with a holiday to Cyprus and Beirut.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "02-28": {
     "src": "assets/on-this-day-images/02-28-cv-raman.png",
-    "alt": "Photorealistic editorial artwork of C. V. Raman and colleagues studying light scattering in a 1920s laboratory.",
+    "alt": "1928: C. V. Raman. Indian physicist C. V. Raman and his colleagues discovered what is now known as Raman scattering, for which he later became the first Asian to win the Nobel Prize in Physics.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-01": {
     "src": "assets/on-this-day-images/03-01-progressive-rock-album-release.png",
-    "alt": "Photorealistic editorial scene of 1970s listeners in a record shop as a landmark progressive rock album is released.",
+    "alt": "1973: Pink Floyd. Pink Floyd's critically acclaimed album The Dark Side of the Moon was released.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-02": {
     "src": "assets/on-this-day-images/03-02-wilt-100-points.png",
-    "alt": "Photorealistic editorial scene of Wilt Chamberlain after his 100-point basketball game in a packed 1960s arena.",
+    "alt": "1962: Wilt Chamberlain. Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the New York Knicks, which remains an NBA record.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-03": {
     "src": "assets/on-this-day-images/03-03-satirical-concept-album.png",
-    "alt": "Photorealistic editorial scene of a 1970s progressive rock band handling a newspaper-style satirical concept album release.",
+    "alt": "1972: Jethro Tull (band). The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from an eight-year-old boy's epic poem.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-04": {
     "src": "assets/on-this-day-images/03-04-voyager-jupiter-rings.png",
-    "alt": "Photorealistic editorial scene of Voyager 1 discovering Jupiter's faint ring system in 1979.",
+    "alt": "1979: Voyager 1. The space probe Voyager 1 discovered the rings of Jupiter, the third ring system to be discovered in the Solar System, after those of Saturn and Uranus.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-05": {
     "src": "assets/on-this-day-images/03-05-che-photograph-korda.png",
-    "alt": "Photorealistic editorial scene of a Cuban photographer capturing a famous revolutionary image in Havana in 1960.",
+    "alt": "1960: Alberto Korda. Cuban photographer Alberto Korda took his iconic photograph Guerrillero Heroico of Marxist revolutionary Che Guevara.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-06": {
     "src": "assets/on-this-day-images/03-06-muhammad-ali-name.png",
-    "alt": "Photorealistic editorial scene of a 1960s radio studio as Cassius Clay becomes Muhammad Ali.",
+    "alt": "1964: Nation of Islam. In a radio broadcast, Nation of Islam leader Elijah Muhammad announced that American boxer Cassius Clay would change his name to Muhammad Ali.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-07": {
     "src": "assets/on-this-day-images/03-07-selma-bloody-sunday.png",
-    "alt": "Photorealistic editorial scene of civil-rights marchers stepping onto the Edmund Pettus Bridge on Bloody Sunday.",
+    "alt": "1965: Montgomery, Alabama. Unarmed civil rights activists marching from Selma to Montgomery, Alabama, were attacked by police on \"Bloody Sunday\".",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-08": {
     "src": "assets/on-this-day-images/03-08-voyager-io-volcanoes.png",
-    "alt": "Photorealistic editorial scene of Voyager 1 revealing volcanic plumes on Jupiter's moon Io in 1979.",
+    "alt": "1979: Voyager 1. Images taken by Voyager 1 proved the existence of volcanoes on Io, a moon of Jupiter.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-09": {
     "src": "assets/on-this-day-images/03-09-barbie-toy-fair.png",
-    "alt": "Photorealistic editorial scene of the Barbie fashion doll debuting at a 1959 toy fair booth.",
+    "alt": "1959: Barbie. The popular fashion doll Barbie debuted at the American International Toy Fair in New York City.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-10": {
     "src": "assets/on-this-day-images/03-10-mars-reconnaissance-orbiter.png",
-    "alt": "Photorealistic editorial scene of mission control as Mars Reconnaissance Orbiter reaches Mars in 2006.",
+    "alt": "2006: Mars Reconnaissance Orbiter. NASA's Mars Reconnaissance Orbiter reached and entered orbit around Mars.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-11": {
     "src": "assets/on-this-day-images/03-11-chile-inauguration-earthquakes.png",
-    "alt": "Photorealistic editorial scene of Chilean officials and journalists during inauguration earthquakes in 2010.",
+    "alt": "2010: Sebastián Piñera. During the inauguration of Chilean president Sebastián Piñera, earthquakes registering 6.9 and 7.0.mw-parser-output.tooltip-dotted{border-bottom:1px dotted;cursor:help}Mw struck the O'Higgins Region near the city of Pichilemu,...",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-12": {
     "src": "assets/on-this-day-images/03-12-salt-march-begins.png",
-    "alt": "Photorealistic editorial scene of Indian nonviolent protesters beginning the Salt March in 1930.",
+    "alt": "1930: Mahatma Gandhi. Mahatma Gandhi began the Salt March, a 24-day nonviolent walk to defy the British salt tax in colonial India.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-13": {
     "src": "assets/on-this-day-images/03-13-football-hooliganism-aftermath.png",
-    "alt": "Photorealistic editorial scene of police, reporters, and fans after the 1985 Luton-Millwall football disorder.",
+    "alt": "1985: Football hooliganism. One of England's worst incidents of football hooliganism occurred when supporters of Luton Town and Millwall rioted before a match at Kenilworth Road stadium.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-14": {
     "src": "assets/on-this-day-images/03-14-mikado-savoy-theatre.png",
-    "alt": "Photorealistic editorial scene of Victorian theatergoers and performers at the Savoy Theatre debut of The Mikado in 1885.",
+    "alt": "1885: The Mikado. The Mikado, Gilbert and Sullivan's most frequently performed Savoy opera, debuted at the Savoy Theatre in London.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-15": {
     "src": "assets/on-this-day-images/03-15-uk-trans-rights-conference.png",
-    "alt": "Photorealistic editorial scene of the first UK trans-rights conference reception in Leeds in 1974.",
+    "alt": "1974: Transvestism and Transsexualism in Modern Society. Transvestism and Transsexualism in Modern Society, the UK's first trans-rights conference, opened with an evening reception in Leeds.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-16": {
     "src": "assets/on-this-day-images/03-16-savannah-sit-in.png",
-    "alt": "Photorealistic editorial scene of Savannah civil-rights activists beginning a 1960 lunch-counter sit-in.",
+    "alt": "1960: Savannah, Georgia. African American civil rights activists in Savannah, Georgia, conducted a sit-in, commencing the Savannah Protest Movement.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-17": {
     "src": "assets/on-this-day-images/03-17-pow-family-reunion.png",
-    "alt": "Photorealistic editorial scene of a Vietnam-era returning prisoner of war reuniting with family on an air base tarmac.",
+    "alt": "1973: Vietnam War. Slava Veder took his Pulitzer Prize-winning photograph Burst of Joy, which came to symbolize the end of United States involvement in the Vietnam War.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-18": {
     "src": "assets/on-this-day-images/03-18-punk-debut-single.png",
-    "alt": "Photorealistic editorial scene of a 1977 punk band releasing a controversial debut single in London.",
+    "alt": "1977: The Clash. The punk group the Clash released their first single, \"White Riot\", described as their \"most controversial song\" due to its lyrics about class economics and race.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-19": {
     "src": "assets/on-this-day-images/03-19-folk-debut-album.png",
-    "alt": "Photorealistic editorial scene of a Greenwich Village folk coffeehouse and record shop around a 1962 debut album release.",
+    "alt": "1962: Bob Dylan. Influential American musician Bob Dylan released his eponymous debut album, mainly comprising traditional folk, blues and gospel songs.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-20": {
     "src": "assets/on-this-day-images/03-20-uncle-toms-cabin.png",
-    "alt": "Photorealistic editorial artwork of Harriet Beecher Stowe and readers around freshly printed copies of Uncle Tom's Cabin.",
+    "alt": "1987: Zidovudine. The antiretroviral drug zidovudine became the first treatment approved by the U.S.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-21": {
     "src": "assets/on-this-day-images/03-21-moondog-coronation-ball.png",
-    "alt": "Photorealistic editorial artwork of teenagers crowding into the 1952 Moondog Coronation Ball in Cleveland.",
+    "alt": "1960: Sharpeville. Police in Sharpeville, South Africa, opened fire on a group of unarmed black demonstrators who were protesting pass laws, killing 69 people and wounding 180 others.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-22": {
     "src": "assets/on-this-day-images/03-22-british-rock-first-album.png",
-    "alt": "Photorealistic editorial scene of a 1960s London record shop as an early British rock group releases its first album.",
+    "alt": "1963: Please Please Me. Please Please Me, the first album recorded by the Beatles, was released.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-23": {
     "src": "assets/on-this-day-images/03-23-televised-watergate-interviews.png",
-    "alt": "Photorealistic editorial scene of late-1970s televised Watergate-era interviews in a studio.",
+    "alt": "1977: David Frost. British journalist David Frost began a series of interviews with former U.S.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-24": {
     "src": "assets/on-this-day-images/03-24-womens-olympiad.png",
-    "alt": "Photorealistic editorial scene of women athletes at the inaugural Women's Olympiad in Monaco in 1921.",
+    "alt": "1921: Women's sports. The inaugural Women's Olympiad, the first international women's sports event, opened at the International Sporting Club of Monaco in Monte Carlo.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-25": {
     "src": "assets/on-this-day-images/03-25-ward-cunningham.png",
-    "alt": "Photorealistic editorial artwork of a 1990s programmer launching an early collaborative website at a CRT workstation.",
+    "alt": "1995: Ward Cunningham. American computer programmer Ward Cunningham established the first wiki site, the WikiWikiWeb.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-26": {
     "src": "assets/on-this-day-images/03-26-metis-rights-riele.png",
-    "alt": "Photorealistic editorial scene of Metis families and leaders organizing around rights petitions in Saskatchewan in 1885.",
+    "alt": "1885: Métis. Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel began the North-West Rebellion.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-27": {
     "src": "assets/on-this-day-images/03-27-sildenafil-approval.png",
-    "alt": "Photorealistic editorial scene of the 1998 FDA approval of sildenafil as a medical milestone.",
+    "alt": "1998: Food and Drug Administration. The Food and Drug Administration approved the drug sildenafil, better known by the trade name Viagra, as the first treatment approved in the United States for erectile dysfunction.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-28": {
     "src": "assets/on-this-day-images/03-28-rome-georgia-student-sit-in.png",
-    "alt": "Photorealistic editorial scene of Black high-school students staging a sit-in in Rome, Georgia, in 1963.",
+    "alt": "1963: Civil rights movement. Civil rights movement: Over one hundred high school students conducted a sit-in protest in Rome, Georgia.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-29": {
     "src": "assets/on-this-day-images/03-29-mariner-10-mercury.png",
-    "alt": "Photorealistic editorial space scene of Mariner 10 flying past Mercury in 1974.",
+    "alt": "1974: NASA. NASA's Mariner 10 became the first space probe to make a flyby of Mercury.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-30": {
     "src": "assets/on-this-day-images/03-30-annie-hall-first-screening.png",
-    "alt": "Photorealistic editorial scene of a 1977 Los Angeles festival lobby before the first screening of Annie Hall.",
+    "alt": "1977: Annie Hall. Annie Hall had its first screening at the LA Film Festival; it was voted the funniest screenplay ever by members of the Writers Guild of America.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "03-31": {
     "src": "assets/on-this-day-images/03-31-belvidere-concert-tornado.png",
-    "alt": "Photorealistic editorial scene of emergency responders and concertgoers after the 2023 Belvidere concert-venue tornado collapse.",
+    "alt": "2023: Belvidere, Illinois. A tornado caused the collapse of a venue hosting a sold-out concert in Belvidere, Illinois, United States, resulting in one death and 48 injuries.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-01": {
     "src": "assets/on-this-day-images/04-01-apple-computer.png",
-    "alt": "Photorealistic editorial artwork of early personal-computer hardware being assembled in a 1970s California garage.",
+    "alt": "1976: Steve Jobs. Steve Jobs and Steve Wozniak founded Apple Computer, Inc..",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-02": {
     "src": "assets/on-this-day-images/04-02-2001-space-odyssey-premiere.png",
-    "alt": "Photorealistic editorial scene of a 1968 theater premiere for a landmark science-fiction film.",
+    "alt": "1968: 2001: A Space Odyssey. 2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the Uptown Theater in Washington, D.C.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-03": {
     "src": "assets/on-this-day-images/04-03-ipad-release.png",
-    "alt": "Photorealistic editorial scene of customers trying the first iPad on release day in 2010.",
+    "alt": "2010: Apple Inc.. Apple Inc. released the first generation iPad, a tablet computer.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-04": {
     "src": "assets/on-this-day-images/04-04-evan-mecham-impeachment.png",
-    "alt": "Photorealistic editorial scene of Arizona lawmakers and reporters during the 1988 Evan Mecham impeachment removal.",
+    "alt": "1988: Evan Mecham. Evan Mecham, Governor of Arizona, was removed from office after being convicted in his impeachment trial.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-05": {
     "src": "assets/on-this-day-images/04-05-birkenhead-park.png",
-    "alt": "Photorealistic editorial artwork of Victorian townspeople entering Birkenhead Park on opening day.",
+    "alt": "1847: Birkenhead Park. Birkenhead Park, generally acknowledged as the world's first publicly funded civic park, opened in Birkenhead, England.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-06": {
     "src": "assets/on-this-day-images/04-06-san-fernando-investigation.png",
-    "alt": "Photorealistic editorial scene of forensic investigators and families near the 2011 San Fernando mass-grave investigation.",
+    "alt": "2011: Mexican drug war. Mexican drug war: Authorities discovered 59 bodies in clandestine mass graves linked to earlier bus hijackings in San Fernando, Tamaulipas.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-07": {
     "src": "assets/on-this-day-images/04-07-mars-odyssey-launch.png",
-    "alt": "Photorealistic editorial scene of NASA's 2001 Mars Odyssey launching from Cape Canaveral.",
+    "alt": "2001: NASA. NASA's 2001 Mars Odyssey, the longest-surviving continually active spacecraft in orbit around a planet other than Earth, launched from Cape Canaveral.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-08": {
     "src": "assets/on-this-day-images/04-08-first-korean-astronaut.png",
-    "alt": "Photorealistic editorial scene of Yi So-yeon preparing to launch as the first Korean astronaut.",
+    "alt": "2008: Soyuz TMA-12. On board Soyuz TMA-12, Yi So-yeon became the first Korean astronaut.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-09": {
     "src": "assets/on-this-day-images/04-09-lincoln-memorial-concert.png",
-    "alt": "Photorealistic editorial scene of a 1939 Black contralto performing at the Lincoln Memorial before a vast crowd.",
+    "alt": "1939: Daughters of the American Revolution. After being denied permission to perform at Constitution Hall by the Daughters of the American Revolution, African-American singer Marian Anderson gave an open-air concert on the steps of the Lincoln Memorial in...",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-10": {
     "src": "assets/on-this-day-images/04-10-british-rock-band-breakup.png",
-    "alt": "Photorealistic editorial scene of a 1970 London press conference signaling the breakup of a world-famous British rock band.",
+    "alt": "1970: Paul McCartney. In the midst of business disagreements with his bandmates, Paul McCartney announced his departure from the Beatles.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-11": {
     "src": "assets/on-this-day-images/04-11-luton-town-founded.png",
-    "alt": "Photorealistic editorial scene of Victorian players and founders forming Luton Town Football Club in 1885.",
+    "alt": "1885: Luton Town F.C.. Luton Town Football Club was founded in England.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-12": {
     "src": "assets/on-this-day-images/04-12-greek-island-refugees.png",
-    "alt": "Photorealistic editorial scene of civilians leaving an Aegean island harbor during the 1822 Greek War of Independence crisis.",
+    "alt": "1822: Greek War of Independence. Greek War of Independence: Ottoman troops began a massacre of tens of thousands of Greeks on the island of Chios.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-13": {
     "src": "assets/on-this-day-images/04-13-catch-a-fire-reggae-release.png",
-    "alt": "Photorealistic editorial scene of a 1970s Jamaican reggae album release in a Kingston studio and record shop.",
+    "alt": "1973: Catch a Fire. Catch a Fire, the landmark reggae album by Bob Marley and the Wailers, was released.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-14": {
     "src": "assets/on-this-day-images/04-14-apollo-13-mission-control.png",
-    "alt": "Photorealistic editorial scene of Apollo 13 mission control during the 1970 spacecraft emergency.",
+    "alt": "1970: Apollo 13. After an oxygen tank aboard Apollo 13 exploded, disabling the spacecraft's electrical and life-support systems, astronaut Jack Swigert reported: \"Houston, we've had a problem here\".",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-15": {
     "src": "assets/on-this-day-images/04-15-jackie-robinson.png",
-    "alt": "Photorealistic editorial scene of Jackie Robinson stepping onto a 1940s Brooklyn baseball field.",
+    "alt": "1947: Jackie Robinson. Jackie Robinson, the first African American to break the baseball color line, played his first game in Major League Baseball.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-16": {
     "src": "assets/on-this-day-images/04-16-dc-emancipation.png",
-    "alt": "Photorealistic editorial artwork of Black families and community members receiving news of emancipation in Washington, D.C.",
+    "alt": "1862: District of Columbia Compensated Emancipation Act. Slavery in Washington, D.C., ended when the District of Columbia Compensated Emancipation Act became law.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-17": {
     "src": "assets/on-this-day-images/04-17-kepler-186f.png",
-    "alt": "Photorealistic editorial scene of astronomers announcing the Kepler-186f exoplanet discovery.",
+    "alt": "2014: NASA. NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the habitable zone of another star.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-18": {
     "src": "assets/on-this-day-images/04-18-qana-humanitarian-response.png",
-    "alt": "Photorealistic editorial scene of aid workers, civilians, and journalists during the 1996 Qana humanitarian aftermath.",
+    "alt": "1996: Operation Grapes of Wrath. Operation Grapes of Wrath: Israeli forces shelled Qana, Lebanon, killing at least 100 civilians and injuring more than 110 others at a United Nations compound.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-19": {
     "src": "assets/on-this-day-images/04-19-la-woman-release.png",
-    "alt": "Photorealistic editorial scene of a 1971 Los Angeles rock band and engineers listening to an album playback in a studio.",
+    "alt": "1971: The Doors. The Doors released L.A. Woman, their final album during their lead vocalist Jim Morrison's lifetime.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-20": {
     "src": "assets/on-this-day-images/04-20-strange-fruit-recording.png",
-    "alt": "Photorealistic editorial scene of a late-1930s jazz vocalist recording with musicians in a New York studio.",
+    "alt": "1939: Billie Holiday. Billie Holiday recorded the song \"Strange Fruit\", which later became an emblem of the civil rights movement.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-21": {
     "src": "assets/on-this-day-images/04-21-washington-trenton-reception.png",
-    "alt": "Photorealistic editorial scene of the Ladies of Trenton reception for president-elect George Washington in 1789.",
+    "alt": "1789: George Washington. The Ladies of Trenton social club hosted a reception for President-elect George Washington as he journeyed to New York City for his first inauguration.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-22": {
     "src": "assets/on-this-day-images/04-22-supreme-court-climate-vigil.png",
-    "alt": "Photorealistic editorial scene of climate activists, reporters, and a vigil outside the U.S. Supreme Court in 2022.",
+    "alt": "2022: United States Supreme Court Building. American climate activist Wynn Bruce set himself on fire outside the United States Supreme Court Building in an apparent protest against the climate crisis.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-23": {
     "src": "assets/on-this-day-images/04-23-sticky-fingers-label-launch.png",
-    "alt": "Photorealistic editorial scene of a 1971 London record-label launch with couriers, press, instruments, and rain-slick street energy.",
+    "alt": "1971: The Rolling Stones. The Rolling Stones released Sticky Fingers, the first album on their own label, Rolling Stones Records.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-24": {
     "src": "assets/on-this-day-images/04-24-hubble-launch.png",
-    "alt": "Photorealistic editorial scene of the Hubble Space Telescope launching aboard a space shuttle above Earth.",
+    "alt": "1990: Hubble Space Telescope. The Hubble Space Telescope was launched aboard STS-31 by Space Shuttle Discovery.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-25": {
     "src": "assets/on-this-day-images/04-25-jakarta-post-first-issue.png",
-    "alt": "Photorealistic editorial scene of Indonesian journalists and press workers producing a first newspaper issue in Jakarta in 1983.",
+    "alt": "1983: The Jakarta Post. The first issue of The Jakarta Post was published in Indonesia.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-26": {
     "src": "assets/on-this-day-images/04-26-beijing-editorial-student-unrest.png",
-    "alt": "Photorealistic editorial scene of a Beijing print room and students reading a 1989 editorial during the Tiananmen Square crisis.",
+    "alt": "1989: People's Daily. An editorial was published in the People's Daily denouncing the growing unrest in Tiananmen Square in Beijing which would remain contentious through the remainder of the protests.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-27": {
     "src": "assets/on-this-day-images/04-27-french-abolition-slavery.png",
-    "alt": "Photorealistic editorial scene of the French National Assembly proclaiming abolition of slavery in 1848.",
+    "alt": "1848: National Assembly (France). The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following the February Revolution.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-28": {
     "src": "assets/on-this-day-images/04-28-progressive-rock-listening.png",
-    "alt": "Photorealistic editorial scene of 1970s listeners and record-shop staff as a progressive rock album climbs the charts.",
+    "alt": "1973: The Dark Side of the Moon. The album The Dark Side of the Moon by the British progressive rock band Pink Floyd entered the Billboard Top LPs & Tape chart, on which it spent a record 942 weeks.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-29": {
     "src": "assets/on-this-day-images/04-29-bali-nine-aftermath.png",
-    "alt": "Photorealistic editorial scene of families, lawyers, and journalists outside an Indonesian prison after the Bali Nine executions in 2015.",
+    "alt": "2015: Bali Nine. The ringleaders of the Bali Nine were executed in Indonesia for attempting to smuggle 8.3 kg (18 lb) of heroin to Australia in 2005.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "04-30": {
     "src": "assets/on-this-day-images/04-30-abu-ghraib-reporting.png",
-    "alt": "Photorealistic editorial scene of investigative editors reviewing redacted evidence before publishing Abu Ghraib abuse reporting in 2004.",
+    "alt": "2004: The New Yorker. The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military personnel of Iraqi prisoners held at Abu Ghraib prison in Baghdad.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-01": {
     "src": "assets/on-this-day-images/05-01-chicago-board-of-trade-opens.png",
-    "alt": "Photorealistic editorial scene of the original Chicago Board of Trade Building opening for business in 1885.",
+    "alt": "1885: Chicago Board of Trade Building. The original Chicago Board of Trade Building opened for business.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-02": {
     "src": "assets/on-this-day-images/05-02-treaty-of-wuchale.png",
-    "alt": "Photorealistic editorial scene of Ethiopian and Italian delegations signing the Treaty of Wuchale.",
+    "alt": "1889: Treaty of Wuchale. The Treaty of Wuchale was signed, ending the Italo-Ethiopian War, but differences in translation later led to another war.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-03": {
     "src": "assets/on-this-day-images/05-03-birmingham-civil-rights.png",
-    "alt": "Photorealistic editorial scene of Birmingham civil-rights demonstrators and press after police pressure in 1963.",
+    "alt": "1963: Birmingham, Alabama. Police in Birmingham, Alabama, used high-pressure water hoses and dogs against civil-rights protesters, bringing scrutiny on racial segregation in the southern United States.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-04": {
     "src": "assets/on-this-day-images/05-04-w-series-inaugural-race.png",
-    "alt": "Photorealistic editorial scene of a woman racing driver celebrating after the inaugural W Series race in 2019.",
+    "alt": "2019: W Series (championship). The inaugural race of the W Series took place at Hockenheimring, Germany, and was won by Jamie Chadwick, who later became the season's champion.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-05": {
     "src": "assets/on-this-day-images/05-05-carnegie-hall-opening.png",
-    "alt": "Photorealistic editorial scene of Carnegie Hall opening night in 1891 with orchestra, conductor, and a packed audience.",
+    "alt": "1891: Carnegie Hall. Carnegie Hall in New York City, built by the philanthropist Andrew Carnegie, officially opened with a concert conducted by Pyotr Ilyich Tchaikovsky.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-06": {
     "src": "assets/on-this-day-images/05-06-imac-g3-unveiled.png",
-    "alt": "Photorealistic editorial scene of a colorful translucent all-in-one computer being unveiled at a 1998 tech keynote.",
+    "alt": "1998: Steve Jobs. Steve Jobs unveiled the iMac G3' personal computer.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-07": {
     "src": "assets/on-this-day-images/05-07-animation-labor-strike.png",
-    "alt": "Photorealistic editorial scene of 1937 New York animation workers beginning a major labor strike.",
+    "alt": "1937: Fleischer Studios. Employees at Fleischer Studios in New York City went on strike in the animation industry's first major labor strike.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-08": {
     "src": "assets/on-this-day-images/05-08-loiseau-blanc-takeoff.png",
-    "alt": "Photorealistic editorial scene of L Oiseau Blanc taking off from Paris in 1927 for a transatlantic attempt.",
+    "alt": "1927: Charles Nungesser. French aviators Charles Nungesser and François Coli aboard the biplane L'Oiseau Blanc took off from Paris, attempting to make the first non-stop flight to New York, only to disappear before arrival.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-09": {
     "src": "assets/on-this-day-images/05-09-birth-control-pill.png",
-    "alt": "Photorealistic editorial scene of the 1960 FDA approval of the first oral contraceptive pill.",
+    "alt": "1960: Food and Drug Administration. The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first combined oral contraceptive pill.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-10": {
     "src": "assets/on-this-day-images/05-10-astor-place-riot-aftermath.png",
-    "alt": "Photorealistic editorial scene of police, theatergoers, and newspaper readers after the 1849 Astor Place riot.",
+    "alt": "1849: Edwin Forrest. A personal dispute between actors Edwin Forrest and William Macready in New York City devolved into a riot that left at least 22 dead and more than 120 injured.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-11": {
     "src": "assets/on-this-day-images/05-11-pullman-strike.png",
-    "alt": "Photorealistic editorial scene of Pullman railcar workers leaving the factory yard during the 1894 strike.",
+    "alt": "1894: Illinois. In response to a 28-percent wage cut, 4,000 Pullman Palace Car Company workers went on strike in Illinois, bringing rail traffic west of Chicago to a halt.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-12": {
     "src": "assets/on-this-day-images/05-12-psychedelic-guitar-debut.png",
-    "alt": "Photorealistic editorial scene of a 1967 psychedelic guitar debut album arriving in a record shop.",
+    "alt": "1967: Jimi Hendrix. The Jimi Hendrix Experience released the critically acclaimed and widely influential debut album Are You Experienced.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-13": {
     "src": "assets/on-this-day-images/05-13-eurovision-portugal-win.png",
-    "alt": "Photorealistic editorial scene of a tender Eurovision-style arena performance and delegation celebration during a major 2017 win.",
+    "alt": "2017: Amar pelos dois. Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed by Salvador Sobral.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-14": {
     "src": "assets/on-this-day-images/05-14-salem-witchcraft-trial.png",
-    "alt": "Photorealistic editorial scene of the last U.S. witchcraft trial opening in a Salem courtroom in 1878.",
+    "alt": "1878: Salem, Massachusetts. The last witchcraft trial in the United States opened in Salem, Massachusetts.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-15": {
     "src": "assets/on-this-day-images/05-15-fertilisation-of-orchids.png",
-    "alt": "Photorealistic editorial scene of Victorian naturalists studying orchids around the publication of Darwin's Fertilisation of Orchids.",
+    "alt": "1862: Fertilisation of Orchids. Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail, was published.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-16": {
     "src": "assets/on-this-day-images/05-16-button-gwinnett-duel.png",
-    "alt": "Photorealistic editorial scene of Button Gwinnett wounded after an 1777 duel in Georgia.",
+    "alt": "1777: United States Declaration of Independence. Button Gwinnett, a signer of the United States Declaration of Independence, is wounded in a duel with Continental Army officer Lachlan McIntosh, dying of his injuries several days later.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-17": {
     "src": "assets/on-this-day-images/05-17-uefa-final-aftermath.png",
-    "alt": "Photorealistic editorial scene of police, medics, journalists, fans, and a flower memorial near a tense 2000 football final in Copenhagen.",
+    "alt": "2000: 2000 UEFA Cup semi-final violence. Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish hooligans rioted on the day of the UEFA Cup Final in Copenhagen, Denmark.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-18": {
     "src": "assets/on-this-day-images/05-18-open-world-fantasy-rpg-e3.png",
-    "alt": "Photorealistic editorial scene of an early-2000s E3 trade-show demo for an open-world fantasy role-playing game.",
+    "alt": "2005: The Elder Scrolls IV: Oblivion. The Elder Scrolls IV: Oblivion publicly debuted at the Electronic Entertainment Expo.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-19": {
     "src": "assets/on-this-day-images/05-19-bangkok-crackdown-aftermath.png",
-    "alt": "Photorealistic editorial scene of Bangkok streets after the 2010 protest crackdown with press, volunteers, monks, barricades, and distant soldiers.",
+    "alt": "2010: 2010 Thai military crackdown. In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition leaders.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-20": {
     "src": "assets/on-this-day-images/05-20-romer-v-evans.png",
-    "alt": "Photorealistic editorial scene of LGBTQ rights advocates after the Romer v. Evans ruling.",
+    "alt": "1996: Romer v. Evans. In deciding Romer v. Evans, the U.S.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-21": {
     "src": "assets/on-this-day-images/05-21-spirit-of-st-louis.png",
-    "alt": "Photorealistic editorial artwork of the Spirit of St. Louis flying over the Atlantic at sunrise.",
+    "alt": "1927: Spirit of St. Louis. Aboard the Spirit of St. Louis, American aviator Charles Lindbergh completed the first solo non-stop transatlantic flight, flying from Roosevelt Field near New York City to Paris–Le Bourget Airport.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-22": {
     "src": "assets/on-this-day-images/05-22-pac-man-arcade.png",
-    "alt": "Photorealistic editorial scene of a 1980 Tokyo arcade crowd discovering Pac-Man during location testing.",
+    "alt": "1980: Pac-Man. Location testing for Pac-Man, a Japanese arcade game that became an icon of 1980s popular culture, began in Shibuya, Tokyo.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-23": {
     "src": "assets/on-this-day-images/05-23-the-shining-premiere.png",
-    "alt": "Photorealistic editorial scene of moviegoers leaving early screenings of The Shining in 1980.",
+    "alt": "1980: Stanley Kubrick. The Shining, the psychological horror film directed by Stanley Kubrick, was premiered on 10 screens in New York City and Los Angeles.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "05-24": {
     "src": "assets/on-this-day-images/05-24-first-telegraph-message.png",
-    "alt": "Photorealistic 1844 telegraph demonstration room centered on a brass telegraph key and message paper as observers witness the first long-distance electric message between Washington and Baltimore.",
+    "alt": "1844: First Telegraph Message. On May 24, 1844, Samuel Morse opened the Washington-to-Baltimore telegraph line by sending \"What hath God wrought,\" proving that information could move faster than any train, horse, ship, or messenger.",
     "style": "photorealistic historical communications breakthrough",
     "status": "generated"
   },
   "05-25": {
     "src": "assets/on-this-day-images/05-25-star-wars-opening-theater-line.png",
-    "alt": "Photorealistic 1977 Los Angeles movie-theater line at dusk as a space-opera premiere launches the modern blockbuster and fandom era, with period cars, marquee light, press cameras, and a diverse crowd.",
+    "alt": "1977: Star Wars Opens. Star Wars opened in theaters, launching a global entertainment phenomenon that changed blockbuster filmmaking, visual effects, fan culture, merchandising, and the shared language of modern pop mythology.",
     "style": "photorealistic cultural history scene",
     "status": "generated"
   },
   "05-26": {
     "src": "assets/on-this-day-images/05-26-dunkirk-evacuation-operation-dynamo.png",
-    "alt": "Photorealistic dawn scene of the Dunkirk evacuation beginning on May 26, 1940, with Allied soldiers wading through surf toward small boats under smoke and aircraft over northern France.",
+    "alt": "1940: Dunkirk Evacuation Begins. The Dunkirk evacuation began, sending naval vessels and civilian boats across the Channel to rescue Allied soldiers trapped on the beaches of northern France during World War II.",
     "style": "photorealistic World War II evacuation scene",
     "status": "generated"
   },
   "05-27": {
     "src": "assets/on-this-day-images/05-27-golden-gate-bridge-pedestrian-opening.png",
-    "alt": "Photorealistic May 27, 1937 Golden Gate Bridge pedestrian opening with a diverse 1930s crowd crossing through fog beneath the orange towers above San Francisco Bay.",
+    "alt": "1937: Golden Gate Bridge Opens. The Golden Gate Bridge opened to pedestrians, joining San Francisco and Marin County with a suspension bridge that became an icon of engineering, migration, risk, and American modernity.",
     "style": "photorealistic engineering landmark opening scene",
     "status": "generated"
   },
   "05-28": {
     "src": "assets/on-this-day-images/05-28-chagai-i-pakistan-nuclear-tests.png",
-    "alt": "Photorealistic 1998 Chagai-I underground nuclear test range in Balochistan, with Pakistani scientists, military observers, instruments, desert cables, dust, and the mountain test site.",
+    "alt": "1998: Pakistan Nuclear Tests. Pakistan conducted the Chagai-I nuclear tests in Balochistan, declaring itself a nuclear-armed state and changing the strategic balance of South Asia and global nonproliferation politics.",
     "style": "photorealistic nuclear-history field scene",
     "status": "generated"
   },
   "05-29": {
     "src": "assets/on-this-day-images/05-29-everest.png",
-    "alt": "Photorealistic 1953 Everest summit scene with Tenzing Norgay and Edmund Hillary in period high-altitude gear above the Himalayas, prayer flags, snow, oxygen equipment, and vast mountain scale.",
+    "alt": "1953: Everest Summit. Tenzing Norgay and Edmund Hillary reached the summit of Mount Everest, turning the highest point on Earth into a global symbol of endurance, empire, Sherpa expertise, and human ambition.",
     "style": "photorealistic mountaineering history scene",
     "status": "generated"
   },
   "05-30": {
     "src": "assets/on-this-day-images/05-30-joan-of-arc-rouen-nongraphic.png",
-    "alt": "Photorealistic non-graphic 1431 Rouen marketplace scene as Joan of Arc is escorted through a muddy medieval square, with soldiers, clergy, townspeople, smoke, trial papers, and timber-framed buildings.",
+    "alt": "1431: Joan of Arc Executed. Joan of Arc was executed in Rouen after a politically charged trial, transforming a young military and religious figure into a lasting symbol of martyrdom, nationalism, gender, and power.",
     "style": "photorealistic medieval historical scene",
     "status": "generated"
   },
   "05-31": {
     "src": "assets/on-this-day-images/05-31-tulsa-greenwood-community-aftermath.png",
-    "alt": "Photorealistic respectful 1921 Greenwood District scene at smoke-hazed dawn, centered on Black residents and families evacuating with belongings as Tulsa’s Black Wall Street faces catastrophe.",
+    "alt": "1921: Tulsa Race Massacre Begins. The Tulsa race massacre began in Oklahoma, destroying much of the Greenwood District, killing Black residents, displacing thousands, and becoming one of the starkest examples of racial terror and economic destruction in...",
     "style": "photorealistic civil-rights historical scene",
     "status": "generated"
   },
   "06-01": {
     "src": "assets/on-this-day-images/06-01-cnn-24-hour-news-control-room.png",
-    "alt": "Photorealistic 1980 cable-news control room and anchor studio as CNN begins broadcasting, with CRT monitors, switcher boards, tapes, satellite maps, clocks, and diverse newsroom staff in motion.",
+    "alt": "1980: CNN Launches. CNN began broadcasting as the first 24-hour television news network, changing how breaking news, crises, markets, wars, disasters, and politics entered everyday life in real time.",
     "style": "photorealistic media-history control room scene",
     "status": "generated"
   },
   "06-02": {
     "src": "assets/on-this-day-images/06-02-surveyor-1-moon-soft-landing.png",
-    "alt": "Photorealistic NASA-style lunar scene of Surveyor 1 after its June 2, 1966 soft landing, with spidery robotic lander hardware, regolith, long shadows, and Earth in black sky.",
+    "alt": "1966: Surveyor 1 Lands on the Moon. Surveyor 1 soft-landed on the Moon, proving that a spacecraft could land safely on the lunar surface and helping prepare the way for Apollo.",
     "style": "photorealistic space exploration scene",
     "status": "generated"
   },
   "06-03": {
     "src": "assets/on-this-day-images/06-03-gemini-4-ed-white-spacewalk.png",
-    "alt": "Photorealistic Gemini 4 scene of Ed White performing the first American spacewalk on June 3, 1965, floating tethered outside the capsule above Earth.",
+    "alt": "1965: First American Spacewalk. Ed White performed the first American spacewalk during Gemini 4, floating outside the spacecraft as the space race entered a new and startlingly human visual phase.",
     "style": "photorealistic NASA spacewalk scene",
     "status": "generated"
   },
   "06-04": {
     "src": "assets/on-this-day-images/06-04-tiananmen-crackdown-aftermath-bicycles.png",
-    "alt": "Photorealistic non-graphic June 4, 1989 Beijing avenue aftermath with abandoned bicycles, smoke, wet pavement, distant armored silhouettes, and Chinese civilians leaving Tiananmen Square after the crackdown.",
+    "alt": "1989: Tiananmen Crackdown. Chinese troops moved against pro-democracy demonstrators in Beijing, ending the Tiananmen Square protests and making Tiananmen one of the most consequential and contested political memories of the late twentieth century.",
     "style": "photorealistic political-crisis aftermath scene",
     "status": "generated"
   },
   "06-05": {
     "src": "assets/on-this-day-images/06-05-first-aids-report-public-health-desk.png",
-    "alt": "Photorealistic 1981 public-health office desk as the first official AIDS report is assembled, with typewriter, medical files, microscope, maps, phone, and exhausted diverse health workers.",
+    "alt": "1981: First AIDS Report. The CDC published a report describing unusual pneumonia cases in five young gay men in Los Angeles, an early public signal of what became the global HIV/AIDS crisis.",
     "style": "photorealistic public-health history scene",
     "status": "generated"
   },
   "06-06": {
     "src": "assets/on-this-day-images/06-06-d-day-normandy-landings.png",
-    "alt": "Photorealistic June 6, 1944 D-Day Normandy landing scene from surf level, with Allied soldiers moving through rough water, landing craft, beach obstacles, smoke, and cliffs in haze.",
+    "alt": "1944: D-Day. Allied forces landed on the beaches of Normandy on D-Day, beginning the liberation of Western Europe from Nazi occupation and creating one of the most consequential military operations in history.",
     "style": "photorealistic World War II landing scene",
     "status": "generated"
   },
   "06-07": {
     "src": "assets/on-this-day-images/06-07-pietermaritzburg-train-platform.png",
-    "alt": "Photorealistic 1893 Pietermaritzburg railway platform at night, centered on a young Indian lawyer beside luggage after being removed from a first-class train compartment under colonial racial discrimination.",
+    "alt": "1893: Gandhi Removed from Train. Mahatma Gandhi was removed from a first-class railway compartment at Pietermaritzburg station in South Africa, an experience he later described as formative in his fight against racial discrimination and colonial injustice.",
     "style": "photorealistic civil-resistance origin scene",
     "status": "generated"
   },
   "06-08": {
     "src": "assets/on-this-day-images/06-08-laki-eruption-iceland-fissure.png",
-    "alt": "Photorealistic 1783 Icelandic Laki fissure eruption with lava curtains, ash-dark sky, turf-roof farms, livestock, and farming families facing poisonous haze and environmental disaster.",
+    "alt": "1783: Laki Eruption Begins. The Laki volcanic eruption began in Iceland, releasing poisonous gases and haze that devastated Iceland, affected climate and harvests across Europe, and became one of history’s most consequential environmental disasters.",
     "style": "photorealistic volcanic environmental disaster scene",
     "status": "generated"
   },
   "06-09": {
     "src": "assets/on-this-day-images/06-09-nero-death-rome-succession-crisis.png",
-    "alt": "Photorealistic 68 CE Roman road at dawn after Nero’s death, with couriers, soldiers, wax tablets, horses, distant Rome, and a fallen laurel wreath symbolizing the end of the Julio-Claudian dynasty.",
+    "alt": "68: Nero Dies. Nero died outside Rome, ending the Julio-Claudian dynasty and triggering the Year of the Four Emperors, a succession crisis that exposed the volatility of imperial power.",
     "style": "photorealistic ancient political-crisis scene",
     "status": "generated"
   },
   "06-10": {
     "src": "assets/on-this-day-images/06-10-six-day-war-aftermath-checkpoint.png",
-    "alt": "Photorealistic non-graphic June 10, 1967 Middle Eastern road checkpoint after the Six-Day War, with maps, radios, soldiers, civilians, bus, dust, and old city walls showing territorial transformation.",
+    "alt": "1967: Six-Day War Ends. The Six-Day War ended after Israel captured territories including the Sinai Peninsula, Gaza Strip, West Bank, East Jerusalem, and Golan Heights, reshaping Middle Eastern politics for generations.",
     "style": "photorealistic geopolitical aftermath scene",
     "status": "generated"
   },
   "06-11": {
     "src": "assets/on-this-day-images/06-11-university-alabama-desegregation.png",
-    "alt": "Photorealistic June 11, 1963 University of Alabama desegregation scene, centered on two Black students walking into registration under federal protection as press cameras and officials crowd the steps.",
+    "alt": "1963: University of Alabama Desegregation. Vivian Malone and James Hood registered at the University of Alabama after federal intervention, defeating Governor George Wallace’s symbolic attempt to block desegregation at the schoolhouse door.",
     "style": "photorealistic civil-rights history scene",
     "status": "generated"
   },
   "06-12": {
     "src": "assets/on-this-day-images/06-12-loving-v-virginia.png",
-    "alt": "Photorealistic 1967 Loving v. Virginia civil-rights scene outside the Supreme Court, centered on an interracial couple, attorneys, reporters, microphones, and courthouse columns after the marriage-equality ruling.",
+    "alt": "1967: Loving v. Virginia. The U.S. Supreme Court decided Loving v.",
     "style": "photorealistic Supreme Court civil-rights scene",
     "status": "generated"
   },
   "06-13": {
     "src": "assets/on-this-day-images/06-13-miranda-v-arizona-interrogation-room.png",
-    "alt": "Photorealistic 1966 police-station interrogation room for Miranda v. Arizona, with rights card, reel-to-reel recorder, rotary phone, lawyers, officers, and fluorescent procedural tension.",
+    "alt": "1966: Miranda v. Arizona. The Supreme Court decided Miranda v.",
     "style": "photorealistic legal-rights history scene",
     "status": "generated"
   },
   "06-14": {
     "src": "assets/on-this-day-images/06-14-german-troops-enter-paris-1940.png",
-    "alt": "Photorealistic June 14, 1940 Paris occupation scene with German troops and vehicles moving down a rain-dark boulevard while civilians watch from cafe windows beneath the Eiffel Tower haze.",
+    "alt": "1940: German Troops Enter Paris. German troops entered Paris during World War II, turning one of the world’s great capitals into an occupied city and marking a devastating moment in the fall of France.",
     "style": "photorealistic World War II occupation scene",
     "status": "generated"
   },
   "06-15": {
     "src": "assets/on-this-day-images/06-15-magna-carta-runnymede-sealing.png",
-    "alt": "Photorealistic June 15, 1215 Runnymede scene with Magna Carta parchment and wax seals in a muddy Thames meadow as King John, barons, clergy, soldiers, and scribes crowd under stormy sky.",
+    "alt": "1215: Magna Carta. King John sealed Magna Carta at Runnymede, creating a charter that became a long-lived symbol of limits on power, due process, and the rule of law.",
     "style": "photorealistic medieval legal-history scene",
     "status": "generated"
   },
   "06-16": {
     "src": "assets/on-this-day-images/06-16-tereshkova-vostok-6-launch-prep.png",
-    "alt": "Photorealistic June 16, 1963 Vostok 6 launch-preparation scene centered on the first woman in space in an orange Soviet pressure suit, with technicians, analog equipment, and rocket gantry at dawn.",
+    "alt": "1963: First Woman in Space. Valentina Tereshkova launched aboard Vostok 6 and became the first woman in space, orbiting Earth and transforming the gender symbolism of the space age.",
     "style": "photorealistic women-in-space history scene",
     "status": "generated"
   },
   "06-17": {
     "src": "assets/on-this-day-images/06-17-watergate-break-in-taped-door.png",
-    "alt": "Photorealistic June 17, 1972 Watergate office corridor at night, with taped door latch, lock tools, typewriters, rotary phones, security guard, police flashlights, and 1970s constitutional-crisis tension.",
+    "alt": "1972: Watergate Break-In. Five men were arrested breaking into Democratic National Committee headquarters at the Watergate complex, beginning the scandal that led to investigations, constitutional crisis, and President Nixon’s resignation.",
     "style": "photorealistic political crime scene",
     "status": "generated"
   },
   "06-18": {
     "src": "assets/on-this-day-images/06-18-waterloo-aftermath-battlefield.png",
-    "alt": "Photorealistic non-graphic June 18, 1815 Waterloo aftermath with rain-soaked mud, abandoned cannon, wagon wheels, soldiers, horses, smoke, and farmhouse horizon after Napoleon’s defeat.",
+    "alt": "1815: Battle of Waterloo. Napoleon was defeated at the Battle of Waterloo, ending the Napoleonic Wars and reshaping European power, diplomacy, and military memory for the nineteenth century.",
     "style": "photorealistic Napoleonic battlefield aftermath scene",
     "status": "generated"
   },
   "06-19": {
     "src": "assets/on-this-day-images/06-19-juneteenth-galveston-emancipation.png",
-    "alt": "Photorealistic June 19, 1865 Galveston Juneteenth scene centered on Black families hearing emancipation announced by Union troops near a church and waterfront, with dust, heat, and stunned joy.",
+    "alt": "1865: Juneteenth. Union troops arrived in Galveston, Texas, and announced that enslaved people were free, making Juneteenth one of the central commemorations of emancipation and Black freedom in the United States.",
     "style": "photorealistic emancipation history scene",
     "status": "generated"
   },
   "06-20": {
     "src": "assets/on-this-day-images/06-20-jaws-opening-beach-town-theater.png",
-    "alt": "Photorealistic 1975 beach-town movie theater at twilight as Jaws opens and the summer blockbuster era begins, with lifeguard chair, seaside street, station wagons, theater lights, and a diverse audience line.",
+    "alt": "1975: Jaws Released. Jaws opened in theaters, terrifying audiences and helping invent the modern summer blockbuster through mass release, television advertising, suspense editing, and event-film culture.",
     "style": "photorealistic film-culture history scene",
     "status": "generated"
   },
   "06-21": {
     "src": "assets/on-this-day-images/06-21-manchester-baby-computer.png",
-    "alt": "Photorealistic 1948 Manchester Baby computer lab with glowing cathode tubes, racks of vacuum tubes, cables, notebooks, and engineers testing the first stored program in electronic memory.",
+    "alt": "1948: Manchester Baby Runs First Program. The Manchester Baby ran the first stored program, proving a fundamental principle of modern computing and helping open the path to the software age.",
     "style": "photorealistic early-computing history scene",
     "status": "generated"
   },
   "06-22": {
     "src": "assets/on-this-day-images/06-22-operation-barbarossa-radio-newsroom.png",
-    "alt": "Photorealistic 1941 wartime radio newsroom as news breaks of Operation Barbarossa, with teletype paper, analog microphones, headphones, wall maps, translators, and editors absorbing the Eastern Front shock.",
+    "alt": "1941: Operation Barbarossa. Nazi Germany launched Operation Barbarossa, the largest invasion in history, opening a brutal Eastern Front that became central to World War II’s outcome and human cost.",
     "style": "photorealistic wartime news-infrastructure scene",
     "status": "generated"
   },
   "06-23": {
     "src": "assets/on-this-day-images/06-23-brexit-referendum-counting-hall.png",
-    "alt": "Photorealistic June 23, 2016 Brexit referendum counting hall on a rainy UK night, with ballot boxes, election workers, media vans, umbrellas, and diverse voters watching through glass.",
+    "alt": "2016: Brexit Referendum. The United Kingdom voted to leave the European Union in the Brexit referendum, triggering years of political turmoil, economic uncertainty, constitutional argument, and European realignment.",
     "style": "photorealistic democratic rupture scene",
     "status": "generated"
   },
   "06-24": {
     "src": "assets/on-this-day-images/06-24-berlin-blockade-airlift-cargo-airfield.png",
-    "alt": "Photorealistic 1948 Berlin Blockade airfield scene with a vintage cargo plane unloading coal and food under runway lights as civilians watch beside ruined postwar Berlin.",
+    "alt": "1948: Berlin Blockade Begins. The Soviet Union began the Berlin Blockade, cutting off Western land access to Berlin and prompting the Berlin Airlift, one of the Cold War’s defining confrontations.",
     "style": "photorealistic Cold War logistics scene",
     "status": "generated"
   },
   "06-25": {
     "src": "assets/on-this-day-images/06-25-pop-star-vigil.png",
-    "alt": "Photorealistic 2009 Los Angeles global pop-star vigil with flowers, candles, TV trucks, satellite dishes, phones, and a diverse crowd mourning Michael Jackson under city lights.",
+    "alt": "2009: Michael Jackson Dies. Michael Jackson died in Los Angeles, sending shock through global music culture and turning streets, arenas, television, and the early social web into shared spaces of mourning.",
     "style": "vibrant photorealistic global pop-culture memorial scene",
     "status": "generated"
   },
   "06-26": {
     "src": "assets/on-this-day-images/06-26-harry-potter-first-bookshop.png",
-    "alt": "Photorealistic colorful 1997 London bookshop scene as the first Harry Potter book is published, with diverse children and families discovering stacked fantasy hardbacks under warm lamps and rain-lit windows.",
+    "alt": "1997: Harry Potter's First Book Published. Harry Potter and the Philosopher's Stone was first published in the United Kingdom, beginning a book series that became a worldwide publishing, film, fandom, and youth-culture phenomenon.",
     "style": "vibrant photorealistic publishing and fandom history scene",
     "status": "generated"
   },
   "06-27": {
     "src": "assets/on-this-day-images/06-27-atari-founded-arcade-workshop.png",
-    "alt": "Photorealistic vibrant 1972 California electronics workshop as Atari is founded, with prototype arcade cabinets, CRT color patterns, oscilloscopes, solder smoke, and a diverse startup team building early video games.",
+    "alt": "1972: Atari Founded. Atari was incorporated in California, helping turn electronic games from engineering curiosities into arcades, home consoles, youth culture, and a global interactive-entertainment industry.",
     "style": "vibrant photorealistic video-game industry origin scene",
     "status": "generated"
   },
   "06-28": {
     "src": "assets/on-this-day-images/06-28-stonewall-uprising.png",
-    "alt": "Photorealistic 1969 Greenwich Village night scene at the Stonewall uprising, with neon bar light, queer community resistance, police pressure, wet pavement, and defiant street energy.",
+    "alt": "1969: Stonewall Uprising. The Stonewall uprising began in Greenwich Village after a police raid at the Stonewall Inn, becoming a catalytic moment in modern LGBTQ rights, protest culture, and queer public memory.",
     "style": "vibrant photorealistic LGBTQ rights uprising scene",
     "status": "generated"
   },
   "06-29": {
     "src": "assets/on-this-day-images/06-29-first-iphone-sale.png",
-    "alt": "Photorealistic 2007 first iPhone sale outside a glass-front store, with a long line, press cameras, early smartphone reveal, and excited buyers at the start of the pocket-computing era.",
+    "alt": "2007: First iPhone Goes on Sale. The first iPhone went on sale in the United States, turning a product launch into a mobile-computing shift that changed phones, apps, cameras, maps, music, payments, and daily attention.",
     "style": "photorealistic consumer-tech launch scene",
     "status": "generated"
   },
   "06-30": {
     "src": "assets/on-this-day-images/06-30-congo-independence-leopoldville-celebration.png",
-    "alt": "Photorealistic colorful June 30, 1960 Leopoldville street celebration as Congo becomes independent, centered on Congolese crowds, patterned clothing, radios, flags, press cameras, river haze, and public joy.",
+    "alt": "1960: Congo Becomes Independent. The Republic of the Congo became independent from Belgium, placing decolonization, mineral wealth, Cold War pressure, and African self-determination on a volatile world stage.",
     "style": "vibrant photorealistic decolonization history scene",
     "status": "generated"
   },
   "07-01": {
     "src": "assets/on-this-day-images/07-01-sony-walkman-tokyo-street.png",
-    "alt": "Photorealistic vibrant 1979 Tokyo street scene as the Sony Walkman goes on sale, with portable cassette player, orange headphones, electronics shops, record racks, neon, rain reflections, and commuters.",
+    "alt": "1979: Sony Walkman Goes on Sale. The first Sony Walkman went on sale in Japan, helping make music portable, private, stylish, and personal long before smartphones and streaming.",
     "style": "vibrant photorealistic portable-music technology scene",
     "status": "generated"
   },
   "07-02": {
     "src": "assets/on-this-day-images/07-02-civil-rights-act.png",
-    "alt": "Photorealistic July 2, 1964 Civil Rights Act scene with Black organizers, reporters, courthouse steps, television cameras, newspapers, summer light, and public celebration as landmark rights legislation enters civic life.",
+    "alt": "1964: Civil Rights Act Signed. The Civil Rights Act of 1964 was signed into law, outlawing major forms of segregation and discrimination in public accommodations, employment, and education.",
     "style": "vibrant photorealistic civil-rights law scene",
     "status": "generated"
   },
   "07-03": {
     "src": "assets/on-this-day-images/07-03-back-to-the-future-opening-night.png",
-    "alt": "Photorealistic vibrant 1985 movie-theater opening night for a time-travel pop-culture hit, with neon marquee, arcade lobby, diverse crowd, wet pavement, lightning, and a gull-wing car cue.",
+    "alt": "1985: Back to the Future Opens. Back to the Future opened in theaters, turning time travel, teen comedy, rock-and-roll nostalgia, and pop-science style into a durable global movie language.",
     "style": "vibrant photorealistic 1980s film-culture scene",
     "status": "generated"
   },
   "07-04": {
     "src": "assets/on-this-day-images/07-04-higgs-boson-cern-announcement.png",
-    "alt": "Photorealistic vibrant July 4, 2012 CERN Higgs boson announcement with cheering international physicists, glowing particle-event displays, screens, laptops, cameras, and blue-gold detector light.",
+    "alt": "2012: Higgs Boson Discovery Announced. CERN announced that ATLAS and CMS had discovered a new particle consistent with the Higgs boson, confirming a central piece of the Standard Model after decades of searching.",
     "style": "vibrant photorealistic particle-physics discovery scene",
     "status": "generated"
   },
   "07-05": {
     "src": "assets/on-this-day-images/07-05-dolly-sheep-roslin-biotech-lab.png",
-    "alt": "Photorealistic vibrant 1996 Roslin Institute biotech lab and lambing room as Dolly the sheep is born, with newborn lamb, straw, DNA gel glow, microscopes, and scientists reacting.",
+    "alt": "1996: Dolly the Sheep Is Born. Dolly the sheep was born at the Roslin Institute, becoming the first mammal cloned from an adult somatic cell and transforming public debate about genetics, biotechnology, and identity.",
     "style": "vibrant photorealistic biotechnology milestone scene",
     "status": "generated"
   },
   "07-06": {
     "src": "assets/on-this-day-images/07-06-pokemon-go-augmented-reality-park.png",
-    "alt": "Photorealistic vibrant July 6, 2016 city park at dusk as location-based augmented-reality gaming launches, with diverse crowds using smartphones around fountains, food carts, bicycles, and glowing public landmarks.",
+    "alt": "2016: Pokemon Go Launches. Pokemon Go launched for iPhone and Android, sending players into parks, plazas, landmarks, and streets and making augmented reality feel mainstream almost overnight.",
     "style": "vibrant photorealistic mobile-gaming culture scene",
     "status": "generated"
   },
   "07-07": {
     "src": "assets/on-this-day-images/07-07-live-earth-global-concert.png",
-    "alt": "Photorealistic vibrant July 7, 2007 Live Earth-style climate benefit concert with saturated stage lights, broadcast cameras, satellite trucks, abstract planet screens, rain ponchos, and a diverse global crowd.",
+    "alt": "2007: Live Earth Concerts. Live Earth concerts were held across the world, using pop music, television, and online media to turn climate awareness into a synchronized global entertainment event.",
     "style": "vibrant photorealistic global concert broadcast scene",
     "status": "generated"
   },
   "07-08": {
     "src": "assets/on-this-day-images/07-08-final-space-shuttle-launch-atlantis.png",
-    "alt": "Photorealistic vibrant July 8, 2011 final Space Shuttle launch with Atlantis rising over Kennedy Space Center, orange flame, vapor clouds, press cameras, spectators, and causeway water reflections.",
+    "alt": "2011: Final Space Shuttle Launch. Space Shuttle Atlantis launched on STS-135, closing the Space Shuttle program after three decades of reusable spacecraft, orbital construction, and public spaceflight imagery.",
     "style": "vibrant photorealistic space-shuttle farewell scene",
     "status": "generated"
   },
   "07-09": {
     "src": "assets/on-this-day-images/07-09-donkey-kong-japanese-arcade.png",
-    "alt": "Photorealistic vibrant 1981 Japanese arcade as a landmark platform game reaches cabinets, with CRT scanlines, coins, joystick hands, neon reflections, young players, and character-driven gaming energy.",
+    "alt": "1981: Donkey Kong Hits Arcades. Donkey Kong received its first arcade release in Japan, helping define platform games, character-driven game design, arcade culture, and Nintendo’s path toward global dominance.",
     "style": "vibrant photorealistic arcade-gaming history scene",
     "status": "generated"
   },
   "07-10": {
     "src": "assets/on-this-day-images/07-10-telstar-launch-tracking-station.png",
-    "alt": "Photorealistic vibrant July 10, 1962 Telstar 1 launch and tracking-station scene with rocket flame, parabolic antennas, analog consoles, CRT monitors, red phones, and diverse engineers linking continents.",
+    "alt": "1962: Telstar 1 Launches. Telstar 1 launched from Cape Canaveral, becoming the satellite that soon relayed live transatlantic television and made communications satellites feel real to the public.",
     "style": "vibrant photorealistic satellite-communications history scene",
     "status": "generated"
   },
   "07-11": {
     "src": "assets/on-this-day-images/07-11-skylab-reentry-australia-night.png",
-    "alt": "Photorealistic vivid July 11, 1979 Western Australian outback night as Skylab debris burns across the sky, with 1970s cars, radios, reporters, families, red earth, and roadside observers.",
+    "alt": "1979: Skylab Falls to Earth. Skylab reentered Earth’s atmosphere, scattering debris over the Indian Ocean and Western Australia and turning space infrastructure, media suspense, and orbital decay into a worldwide spectacle.",
     "style": "vibrant photorealistic space-reentry spectacle scene",
     "status": "generated"
   },
   "07-12": {
     "src": "assets/on-this-day-images/07-12-france-world-cup-paris.png",
-    "alt": "Photorealistic vibrant July 12, 1998 Paris World Cup celebration after France defeats Brazil, with diverse fans, stadium screens, confetti, metro lights, drums, and blue-white-red reflections.",
+    "alt": "1998: France Wins the World Cup. France defeated Brazil in the 1998 FIFA World Cup final, turning a diverse national team, Paris celebration, sport, identity, and mass television into a defining global football image.",
     "style": "vibrant photorealistic football culture scene",
     "status": "generated"
   },
   "07-13": {
     "src": "assets/on-this-day-images/07-13-live-aid.png",
-    "alt": "Photorealistic 1985 Live Aid stadium broadcast from behind the stage, with enormous crowd, sunset, camera crane, stage lights, guitar cables, control gear, and global benefit-concert scale.",
+    "alt": "1985: Live Aid. Live Aid concerts linked London and Philadelphia in a global music broadcast, using stadium rock and television scale to raise money and attention for famine relief in Ethiopia.",
     "style": "vibrant photorealistic global music-broadcast scene",
     "status": "generated"
   },
   "07-14": {
     "src": "assets/on-this-day-images/07-14-storming-bastille-paris.png",
-    "alt": "Photorealistic dramatic July 14, 1789 Paris street outside the Bastille, with revolutionary crowd, tricolor fabric, smoke, market carts, workers, women, drums, tools, and fortress gates.",
+    "alt": "1789: Storming of the Bastille. Parisians stormed the Bastille, turning a fortress-prison into a revolutionary symbol and making July 14 a defining date in the politics of popular sovereignty.",
     "style": "vibrant photorealistic French Revolution scene",
     "status": "generated"
   },
   "07-15": {
     "src": "assets/on-this-day-images/07-15-famicom-tokyo-electronics-shop.png",
-    "alt": "Photorealistic vibrant July 15, 1983 Tokyo electronics shop as Nintendo’s Family Computer launches, with red-and-white home consoles, CRT game glow, cartridge shelves, children, parents, and arcade light.",
+    "alt": "1983: Famicom Launches. Nintendo released the Family Computer in Japan, helping launch the 8-bit home-console era and moving video games from arcades into family living rooms worldwide.",
     "style": "vibrant photorealistic home-console launch scene",
     "status": "generated"
   },
   "07-16": {
     "src": "assets/on-this-day-images/07-16-apollo-11-saturn-v-launch.png",
-    "alt": "Photorealistic vibrant July 16, 1969 Apollo 11 Saturn V launch from Kennedy Space Center, with orange flame, vapor clouds, causeway water, press cameras, 1960s spectators, and blue Florida sky.",
+    "alt": "1969: Apollo 11 Launches. Apollo 11 launched from Kennedy Space Center, beginning the mission that would land humans on the Moon and create one of the defining technological images of the twentieth century.",
     "style": "vibrant photorealistic Apollo launch scene",
     "status": "generated"
   },
   "07-17": {
     "src": "assets/on-this-day-images/07-17-disneyland-opening-day-televised.png",
-    "alt": "Photorealistic colorful July 17, 1955 California theme-park opening day with television cameras, balloons, midcentury families, pastel facades, marching band, summer light, and broadcast spectacle.",
+    "alt": "1955: Disneyland Opens. Disneyland opened in Anaheim, California, turning themed environments, television promotion, family tourism, fantasy architecture, and branded entertainment into a new global template.",
     "style": "vibrant photorealistic theme-park opening scene",
     "status": "generated"
   },
   "07-18": {
     "src": "assets/on-this-day-images/07-18-intel-founded-semiconductor-lab.png",
-    "alt": "Photorealistic vibrant July 18, 1968 semiconductor lab as Intel is founded, with shimmering silicon wafer, integrated circuits, oscilloscopes, graph paper, microscopes, and a diverse startup engineering team.",
+    "alt": "1968: Intel Founded. Intel was founded in California, helping push memory chips, microprocessors, personal computers, data centers, and the semiconductor industry into the center of modern life.",
     "style": "vibrant photorealistic semiconductor founding scene",
     "status": "generated"
   },
   "07-19": {
     "src": "assets/on-this-day-images/07-19-cassini-earth-from-saturn.png",
-    "alt": "Photorealistic Cassini-at-Saturn view for The Day the Earth Smiled, with golden rings, a tiny Earth in the distance, black space, and majestic planetary scale.",
+    "alt": "2013: The Day the Earth Smiled. Cassini photographed Saturn with Earth visible in the distance, creating The Day the Earth Smiled and turning planetary science into a shared cosmic self-portrait.",
     "style": "photorealistic planetary-science image",
     "status": "generated"
   },
   "07-20": {
     "src": "assets/on-this-day-images/07-20-lunar-module-eagle.png",
-    "alt": "Photorealistic July 20, 1969 Apollo 11 Lunar Module Eagle on the Moon, with landing legs, gold foil, lunar dust, long shadows, black sky, and Earth above the Sea of Tranquility.",
+    "alt": "1969: Apollo 11 Moon Landing. Apollo 11’s Lunar Module Eagle landed on the Moon, making the first human landing on another world and becoming one of the central technological memories of the twentieth century.",
     "style": "photorealistic Moon landing scene",
     "status": "generated"
   },
   "07-21": {
     "src": "assets/on-this-day-images/07-21-final-fantasy-book-midnight-release.png",
-    "alt": "Photorealistic vibrant July 21, 2007 midnight bookstore release for the final book in a global fantasy series, with plain wrapped books, rain-specked glass, compact cameras, and a diverse crowd waiting outside.",
+    "alt": "2007: Final Harry Potter Book Released. Harry Potter and the Deathly Hallows was released worldwide, turning midnight book lines, secrecy, spoilers, fandom, and global publishing into a shared cultural finale.",
     "style": "vibrant photorealistic global publishing fandom scene",
     "status": "generated"
   },
   "07-22": {
     "src": "assets/on-this-day-images/07-22-first-solo-around-world-flight.png",
-    "alt": "Photorealistic colorful July 22, 1933 airfield arrival after the first solo around-the-world flight, with scarred aircraft, flashbulb cameras, mechanics, fuel drums, maps, crowd ropes, and aviation glamour.",
+    "alt": "1933: First Solo Around-the-World Flight Completed. Wiley Post completed the first solo flight around the world, proving long-distance aviation, navigation, endurance, and global news spectacle could fit inside one aircraft journey.",
     "style": "vibrant photorealistic aviation milestone scene",
     "status": "generated"
   },
   "07-23": {
     "src": "assets/on-this-day-images/07-23-telstar-transatlantic-tv-broadcast.png",
-    "alt": "Photorealistic vibrant July 23, 1962 broadcast-control room as Telstar relays the first live transatlantic television broadcast, with CRT monitor wall, analog switchers, satellite dish, clocks, and diverse engineers.",
+    "alt": "1962: First Live Transatlantic TV Broadcast. Telstar relayed the first publicly available live transatlantic television broadcast, linking North America and Europe by satellite and changing the scale of live media.",
     "style": "vibrant photorealistic live-satellite-television scene",
     "status": "generated"
   },
   "07-24": {
     "src": "assets/on-this-day-images/07-24-apollo-11-splashdown-recovery.png",
-    "alt": "Photorealistic vibrant July 24, 1969 Apollo 11 Pacific splashdown recovery, with orange command module, Navy divers, helicopter spray, flotation collar, recovery ship, cameras, and sunlit ocean.",
+    "alt": "1969: Apollo 11 Returns to Earth. Apollo 11 splashed down safely in the Pacific Ocean, completing the first Moon landing mission as recovery crews, quarantine procedures, and global television turned triumph into return.",
     "style": "vibrant photorealistic Apollo splashdown recovery scene",
     "status": "generated"
   },
   "07-25": {
     "src": "assets/on-this-day-images/07-25-mozart-symphony-vienna-storm.png",
-    "alt": "Photorealistic editorial storm scene on an eighteenth-century Vienna street with musicians, carriages, a candlelit window, and a tied score on the sill implying Mozart's Symphony No. 40.",
+    "alt": "1788: Symphony. Mozart completed his Symphony No.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "07-26": {
     "src": "assets/on-this-day-images/07-26-esperanto-unua-libro.png",
-    "alt": "Photorealistic editorial scene of Unua Libro being printed in Warsaw in 1887, introducing Esperanto.",
+    "alt": "1887: L. L. Zamenhof. L. L. Zamenhof published Unua Libro, the first publication to describe Esperanto, a constructed international language.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "07-27": {
     "src": "assets/on-this-day-images/07-27-dance-pop-debut.png",
-    "alt": "Photorealistic editorial scene of a 1983 dance-pop debut album release in a downtown record shop and club doorway.",
+    "alt": "1983: Madonna. American musician Madonna released her self-titled debut album, which set the standard for the genre of dance-pop for decades.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "07-28": {
     "src": "assets/on-this-day-images/07-28-vinnie-ream.png",
-    "alt": "Photorealistic editorial artwork of Vinnie Ream sculpting in a 19th-century studio.",
+    "alt": "1866: Vinnie Ream. Aged 18, Vinnie Ream became the youngest artist and first woman to receive a United States government commission for a statue—that of Abraham Lincoln currently in the Capitol rotunda.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "07-29": {
     "src": "assets/on-this-day-images/07-29-fellowship-bookshop.png",
-    "alt": "Photorealistic editorial scene of a rainy 1954 Oxford street with a warmly lit bookshop window, new fantasy novels, students, bicycles, and a child looking in.",
+    "alt": "1954: The Fellowship of the Ring. The Fellowship of the Ring, the first part of J.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "07-30": {
     "src": "assets/on-this-day-images/07-30-bach-cantata-church.png",
-    "alt": "Photorealistic editorial scene of a 1724 Leipzig church performance with choir, orchestra, organ loft, congregation, and morning light pouring through high windows.",
+    "alt": "1724: Psalm 124. Bach's chorale cantata Wo Gott der Herr nicht bei uns hält, a paraphrase of Psalm 124 based on a 1524 hymn by Justus Jonas, was first performed in Leipzig.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "07-31": {
     "src": "assets/on-this-day-images/07-31-ranger-7-moon-images.png",
-    "alt": "Photorealistic editorial space-history scene of Ranger 7 lunar surface imagery filling the frame with faint 1960s mission-control engineers reflected in glass.",
+    "alt": "1964: Ranger 7. The space probe Ranger 7 captured thousands of close-up photographs of the Moon over its final minutes of flight and transmitted them to Earth before crashing on the lunar surface.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-01": {
     "src": "assets/on-this-day-images/08-01-mtv-first-video.png",
-    "alt": "Photorealistic editorial scene of an early 1980s cable control room as the first music video airs.",
+    "alt": "1981: Video Killed the Radio Star. \"Video Killed the Radio Star\" by the Buggles became the first music video broadcast on the American cable television network MTV.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-02": {
     "src": "assets/on-this-day-images/08-02-whos-next-industrial-crowd.png",
-    "alt": "Photorealistic editorial 1970s industrial landscape with youth gathered around a speaker van near power-station towers as a major rock album hits the culture.",
+    "alt": "1971: The Who. The English rock band the Who released Who's Next, their only album to top the UK charts.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-03": {
     "src": "assets/on-this-day-images/08-03-jesse-owens-berlin.png",
-    "alt": "Photorealistic editorial scene of Jesse Owens crossing the finish line at the 1936 Berlin Olympics.",
+    "alt": "1936: Jesse Owens. African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi leaders' hopes of Aryan domination at the games.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-04": {
     "src": "assets/on-this-day-images/08-04-first-chicago-plat.png",
-    "alt": "Photorealistic editorial scene of surveyors producing the first plat of Chicago in 1830.",
+    "alt": "1830: James Thompson (surveyor). American surveyor James Thompson produced the first plat of Chicago for the Illinois and Michigan Canal Commissioners.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-05": {
     "src": "assets/on-this-day-images/08-05-juno-launch.png",
-    "alt": "Photorealistic editorial wide scene of a Cape Canaveral rocket launch for the Juno mission, with marshland, ocean, spectators, and a tiny planet-like point in the blue sky.",
+    "alt": "2011: Juno (spacecraft). NASA launched the Juno probe to Jupiter as part of the New Frontiers program.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-06": {
     "src": "assets/on-this-day-images/08-06-world-wide-web-invitation.png",
-    "alt": "Photorealistic editorial scene of the early World Wide Web public collaboration invitation being sent from a 1991 workstation.",
+    "alt": "1991: Programmer. British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents accessible via the Internet, known as the World Wide Web.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-07": {
     "src": "assets/on-this-day-images/08-07-great-northern-railway.png",
-    "alt": "Photorealistic editorial scene of a Victorian steam train departing on the newly opened Great Northern Railway in 1850.",
+    "alt": "1850: East Coast Main Line. The first section of the Great Northern Railway, now the southern section of the East Coast Main Line, opened between London and Peterborough.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-08": {
     "src": "assets/on-this-day-images/08-08-abbey-road-zebra-crossing-v2.png",
-    "alt": "Photorealistic editorial elevated scene of a 1969 London zebra crossing photo setup with four generic musicians all walking the same direction, paused traffic, and a photographer on a ladder.",
+    "alt": "1969: Zebra crossing. At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for the cover of the Beatles' album Abbey Road.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-09": {
     "src": "assets/on-this-day-images/08-09-pretoria-womens-march.png",
-    "alt": "Photorealistic editorial scene of South African women marching on Pretoria against apartheid pass laws in 1956.",
+    "alt": "1956: Pretoria. About 20,000 women marched on Pretoria, South Africa, to protest the introduction of pass laws for black women under apartheid.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-10": {
     "src": "assets/on-this-day-images/08-10-louvre.png",
-    "alt": "Photorealistic editorial artwork of the public entering the Louvre galleries when the museum opened in 1793.",
+    "alt": "2019: Jeffrey Epstein. Jeffrey Epstein, an American financier and convicted sex offender, was found dead in his cell at the Metropolitan Correctional Center, New York.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-11": {
     "src": "assets/on-this-day-images/08-11-hip-hop-bronx-party.png",
-    "alt": "Photorealistic editorial scene of a 1973 Bronx party where extended breakbeats help launch hip hop.",
+    "alt": "1973: DJ Kool Herc. At a party in New York City, Jamaican musician DJ Kool Herc began rapping during an extended break, laying the foundation for hip hop music.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-12": {
     "src": "assets/on-this-day-images/08-12-jal123-mountain-rescue.png",
-    "alt": "Photorealistic editorial wide mountain search-and-rescue scene in Japan after Flight 123, with helicopters, rescue teams, mist, command tents, and non-graphic wreckage fragments.",
+    "alt": "1985: Japan Air Lines Flight 123. Japan Air Lines Flight 123 crashed into Mount Takamagahara in Gunma Prefecture, killing 520 of 524 people on board, including singer Kyu Sakamoto, in the world's worst single-aircraft aviation disaster.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-13": {
     "src": "assets/on-this-day-images/08-13-opha-may-johnson-enlists.png",
-    "alt": "Photorealistic editorial scene of Opha May Johnson becoming the first woman to enlist in the Marine Corps in 1918.",
+    "alt": "1918: Opha May Johnson. Opha May Johnson became the first woman to enlist in the United States Marine Corps.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-14": {
     "src": "assets/on-this-day-images/08-14-arthur-sullivan-phonograph.png",
-    "alt": "Photorealistic editorial artwork of Victorian reporters and musicians listening to an early phonograph demonstration.",
+    "alt": "1888: Arthur Sullivan. One of the first recordings of music, of Arthur Sullivan's \"The Lost Chord\", was played at a press conference in London to introduce Thomas Edison's phonograph.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-15": {
     "src": "assets/on-this-day-images/08-15-republic-of-korea-founded.png",
-    "alt": "Photorealistic editorial scene of citizens and officials at the 1948 founding ceremony of the Republic of Korea.",
+    "alt": "1948: Syngman Rhee. The Republic of Korea was established with Syngman Rhee as its first president.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-16": {
     "src": "assets/on-this-day-images/08-16-world-record-sprint.png",
-    "alt": "Photorealistic editorial night stadium scene of a generic sprinter crossing the 100-meter finish line far ahead of the field as photographers and a huge crowd react.",
+    "alt": "2009: Usain Bolt. At the World Championships in Athletics in Berlin, Usain Bolt ran the 100 metres in 9.58 seconds, breaking his own record set a year earlier.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-17": {
     "src": "assets/on-this-day-images/08-17-eight-gold-medals-swimming.png",
-    "alt": "Photorealistic editorial sports scene of an American swimmer celebrating an eighth gold medal in 2008.",
+    "alt": "2008: Michael Phelps. Michael Phelps won his eighth gold medal of the Summer Olympics in Beijing, setting the record for the most gold medals won by an athlete at a single games.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-18": {
     "src": "assets/on-this-day-images/08-18-nineteenth-amendment.png",
-    "alt": "Photorealistic editorial artwork of women activists receiving news of the Nineteenth Amendment's ratification in 1920.",
+    "alt": "1920: Nineteenth Amendment to the United States Constitution. The Nineteenth Amendment to the United States Constitution was ratified, guaranteeing women's suffrage in the country.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-19": {
     "src": "assets/on-this-day-images/08-19-bach-chorale-church.png",
-    "alt": "Photorealistic editorial scene of a Baroque Leipzig church performance with choir, orchestra, organ loft, congregation, and golden morning light.",
+    "alt": "1725: Lobe den Herren, den mächtigen König der Ehren, BWV 137. J. S. Bach led the first performance of Lobe den Herren, den mächtigen König der Ehren, BWV 137, a cantata setting the unchanged text of Neander's hymn.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-20": {
     "src": "assets/on-this-day-images/08-20-pluto-first-photographed.png",
-    "alt": "Photorealistic editorial scene of astronomers examining a 1909 photographic plate at Yerkes Observatory.",
+    "alt": "1909: Pluto. Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years before it was officially discovered by Clyde Tombaugh.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-21": {
     "src": "assets/on-this-day-images/08-21-underwater-game-release.png",
-    "alt": "Photorealistic editorial scene of a 2007 game-store crowd watching a landmark underwater dystopian video-game demo.",
+    "alt": "2007: BioShock. BioShock was released in North America, becoming a critical success and a demonstration of video games as an art form.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-23": {
     "src": "assets/on-this-day-images/08-23-web-opened-public.png",
-    "alt": "Photorealistic editorial scene of the World Wide Web opening to the public in an early 1990s computer lab.",
+    "alt": "1991: World Wide Web. The World Wide Web was opened to the public.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-25": {
     "src": "assets/on-this-day-images/08-25-voyager-interstellar.png",
-    "alt": "Photorealistic editorial scene of mission control marking Voyager 1 entering interstellar space.",
+    "alt": "2012: NASA. The NASA space probe Voyager 1 became the first man-made object to enter interstellar space.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-26": {
     "src": "assets/on-this-day-images/08-26-womens-strike-equality.png",
-    "alt": "Photorealistic editorial scene of the 1970 Women's Strike for Equality filling a Manhattan avenue.",
+    "alt": "1970: Betty Friedan. Betty Friedan and the National Organization for Women organized the Women's Strike for Equality in New York City, in which 50,000 women protested the continuing lack of gender equality.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-27": {
     "src": "assets/on-this-day-images/08-27-guinness-world-records.png",
-    "alt": "Photorealistic editorial artwork of mid-century editors and fact-checkers assembling the first Guinness Book of Records.",
+    "alt": "1955: Guinness World Records. The first edition of the Guinness Book of Records was published.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "08-28": {
     "src": "assets/on-this-day-images/08-28-althea-gibson.png",
-    "alt": "Photorealistic editorial scene of Althea Gibson stepping onto court at the 1950 U.S. National Championships.",
+    "alt": "1950: Althea Gibson. American tennis player Althea Gibson became the first African-American woman to compete at the U.S.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-03": {
     "src": "assets/on-this-day-images/09-03-lachwa-ghetto-uprising.png",
-    "alt": "Photorealistic editorial scene of Jewish residents organizing resistance in the Lachwa Ghetto in 1942.",
+    "alt": "1942: The Holocaust. The Holocaust: In possibly the first Jewish ghetto uprising, residents of the Łachwa Ghetto in occupied Poland, informed of the upcoming \"liquidation\" of the ghetto, unsuccessfully fought against their Nazi captors.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-06": {
     "src": "assets/on-this-day-images/09-06-mlb-pride-night.png",
-    "alt": "Photorealistic editorial scene of fans entering the first Pride Night in Major League Baseball history.",
+    "alt": "2000: Los Angeles Dodgers. The Los Angeles Dodgers hosted the first Pride Night in Major League Baseball history.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-09": {
     "src": "assets/on-this-day-images/09-09-civil-rights-act-1957.png",
-    "alt": "Photorealistic editorial scene of advocates, press, and officials around the signing of the Civil Rights Act of 1957.",
+    "alt": "1957: Civil Rights Act of 1957. U.S. president Dwight D. Eisenhower signed the Civil Rights Act of 1957, the first civil rights bill since Reconstruction.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-10": {
     "src": "assets/on-this-day-images/09-10-abebe-bikila-marathon.png",
-    "alt": "Photorealistic editorial scene of an Ethiopian marathon runner winning Olympic gold barefoot in Rome.",
+    "alt": "1960: Abebe Bikila. Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan Africa to win an Olympic gold medal.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-11": {
     "src": "assets/on-this-day-images/09-11-parliament-world-religions.png",
-    "alt": "Photorealistic editorial scene of a South Asian speaker addressing the 1893 Parliament of the World's Religions.",
+    "alt": "1893: Swami Vivekananda. Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's Religions in Chicago.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-12": {
     "src": "assets/on-this-day-images/09-12-steam-public-release.png",
-    "alt": "Photorealistic editorial scene of an early-2000s PC gamer seeing a new digital game platform release.",
+    "alt": "2003: Steam (service). The first public release of Steam, a distribution service for computer games, was made available for download.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-13": {
     "src": "assets/on-this-day-images/09-13-nirvana-in-utero.png",
-    "alt": "Photorealistic editorial scene of a 1993 record store unpacking a major grunge album release.",
+    "alt": "1993: Nirvana (band). Nirvana released their third and final studio album, In Utero, which went on to sell more than 15 million copies.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-15": {
     "src": "assets/on-this-day-images/09-15-rights-of-woman-declaration.png",
-    "alt": "Photorealistic editorial scene of Olympe de Gouges publishing the Declaration of the Rights of Woman in 1791.",
+    "alt": "1791: Declaration of the Rights of Woman and of the Female Citizen. French playwright Olympe de Gouges published the Declaration of the Rights of Woman and of the Female Citizen, hoping to expose the failures of the French Revolution in the recognition of...",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-18": {
     "src": "assets/on-this-day-images/09-18-regular-geyser-observed.png",
-    "alt": "Photorealistic editorial scene of an 1870 survey party observing a regular geyser eruption in Wyoming Territory.",
+    "alt": "1870: Nathaniel P. Langford. Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular intervals, naming it Old Faithful (video featured).",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-19": {
     "src": "assets/on-this-day-images/09-19-universal-suffrage.png",
-    "alt": "Photorealistic editorial artwork of New Zealand suffrage organizers gathered near government buildings in 1893.",
+    "alt": "1893: Universal suffrage. New Zealand became the first country to introduce universal suffrage following the women's suffrage movement led by Kate Sheppard.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-20": {
     "src": "assets/on-this-day-images/09-20-battle-of-the-sexes.png",
-    "alt": "Photorealistic editorial scene of the Battle of the Sexes tennis match inside the Houston Astrodome.",
+    "alt": "1973: Billie Jean King. Billie Jean King defeated Bobby Riggs in straight sets at the Astrodome in Houston, Texas, in an internationally televised tennis match dubbed the \"Battle of the Sexes\".",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-22": {
     "src": "assets/on-this-day-images/09-22-dolphin-emulator-release.png",
-    "alt": "Photorealistic editorial scene of early-2000s independent developers testing a console emulator late at night.",
+    "alt": "2003: GameCube. Dolphin, the first emulator for the GameCube that could run commercial video games, was released.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-23": {
     "src": "assets/on-this-day-images/09-23-televised-political-speech.png",
-    "alt": "Photorealistic editorial scene of a 1952 political candidate addressing television cameras in an early TV politics landmark.",
+    "alt": "1952: Richard Nixon. U.S. vice-presidential candidate Richard Nixon delivered the Checkers speech, one of the first political uses of television to appeal directly to the populace.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-24": {
     "src": "assets/on-this-day-images/09-24-judiciary-act-1789.png",
-    "alt": "Photorealistic editorial scene of early American officials preparing the Judiciary Act of 1789.",
+    "alt": "1789: Judiciary Act of 1789. The Judiciary Act of 1789 was signed into law, establishing the U.S.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-25": {
     "src": "assets/on-this-day-images/09-25-first-woman-supreme-court-justice.png",
-    "alt": "Photorealistic editorial scene of the first woman justice joining the U.S. Supreme Court in 1981.",
+    "alt": "1981: Sandra Day O'Connor. Sandra Day O'Connor became the first female justice of the Supreme Court of the United States.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-28": {
     "src": "assets/on-this-day-images/09-28-mexico-independence-declaration.png",
-    "alt": "Photorealistic editorial scene of Mexico's Declaration of Independence being drafted in the National Palace.",
+    "alt": "1821: Declaration of Independence (Mexico). The Declaration of Independence of the Mexican Empire from Spain was drafted in the National Palace in Mexico City.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "09-29": {
     "src": "assets/on-this-day-images/09-29-yf22-first-flight.png",
-    "alt": "Photorealistic editorial aviation scene of the YF-22 prototype making its first flight in 1990.",
+    "alt": "1990: Lockheed YF-22. The Lockheed YF-22, the prototype for the F-22 Raptor, made its first flight.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "10-01": {
     "src": "assets/on-this-day-images/10-01-thrilla-in-manila.png",
-    "alt": "Photorealistic editorial scene of the Thrilla in Manila heavyweight boxing match between rounds.",
+    "alt": "1975: Muhammad Ali. In boxing, Muhammad Ali defeated Joe Frazier in a match known as the \"Thrilla in Manila\".",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "10-02": {
     "src": "assets/on-this-day-images/10-02-thurgood-marshall-supreme-court.png",
-    "alt": "Photorealistic editorial scene of Thurgood Marshall being sworn in as the first Black U.S. Supreme Court justice in 1967.",
+    "alt": "1967: Thurgood Marshall. Thurgood Marshall was sworn in as the first African-American justice of the Supreme Court of the United States.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "10-09": {
     "src": "assets/on-this-day-images/10-09-universal-postal-union.png",
-    "alt": "Photorealistic editorial scene of delegates establishing the General Postal Union by the Treaty of Bern in 1874.",
+    "alt": "1874: Treaty of Bern. The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "10-10": {
     "src": "assets/on-this-day-images/10-10-womens-social-political-union.png",
-    "alt": "Photorealistic editorial scene of British suffrage organizers founding the Women's Social and Political Union in 1903.",
+    "alt": "1903: Women's Social and Political Union. Emmeline Pankhurst founded the Women's Social and Political Union, a militant organisation campaigning for women's suffrage in the United Kingdom.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "10-13": {
     "src": "assets/on-this-day-images/10-13-brigid-kosgei-world-record.png",
-    "alt": "Photorealistic editorial sports scene of a Kenyan woman marathoner setting the world record in Chicago in 2019.",
+    "alt": "2019: Brigid Kosgei. At the Chicago Marathon, Kenyan runner Brigid Kosgei set the current marathon world record for women running in a mixed-sex race.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "10-21": {
     "src": "assets/on-this-day-images/10-21-medicine-lodge-treaties.png",
-    "alt": "Photorealistic editorial scene of Plains Native leaders and U.S. commissioners negotiating the Medicine Lodge treaties in 1867.",
+    "alt": "1867: Medicine Lodge, Kansas. The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in...",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "10-24": {
     "src": "assets/on-this-day-images/10-24-icelandic-womens-strike.png",
-    "alt": "Photorealistic editorial scene of women gathering in Reykjavik during Iceland's 1975 women's strike.",
+    "alt": "1975: 1975 Icelandic women's strike. In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike for a day.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "10-27": {
     "src": "assets/on-this-day-images/10-27-nyc-subway-opens.png",
-    "alt": "Photorealistic editorial scene of New Yorkers crowding the City Hall station platform as the subway opens in 1904.",
+    "alt": "1904: New York City Subway. The first underground segment of the New York City Subway opened, connecting New York City Hall with Harlem.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "10-28": {
     "src": "assets/on-this-day-images/10-28-statue-of-liberty-dedication.png",
-    "alt": "Photorealistic editorial scene of the Statue of Liberty dedication ceremony in New York Harbor in 1886.",
+    "alt": "1886: United States Declaration of Independence. In New York Harbor, U.S. president Grover Cleveland dedicated the Statue of Liberty, a gift from France commemorating the Declaration of Independence.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "10-30": {
     "src": "assets/on-this-day-images/10-30-invincible-release-studio.png",
-    "alt": "Photorealistic editorial scene of an early-2000s pop album release inside a high-end recording studio.",
+    "alt": "2001: Michael Jackson. Michael Jackson released Invincible, his final studio album and the most expensive album ever produced.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "11-01": {
     "src": "assets/on-this-day-images/11-01-ansel-adams-moonrise.png",
-    "alt": "Photorealistic editorial scene of a landscape photographer setting up a large-format camera for Moonrise, Hernandez, New Mexico.",
+    "alt": "1941: Ansel Adams. American photographer Ansel Adams shot Moonrise, Hernandez, New Mexico, one of his most famous photographs.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "11-05": {
     "src": "assets/on-this-day-images/11-05-india-mars-orbiter.png",
-    "alt": "Photorealistic editorial scene of Indian space engineers during the Mars Orbiter Mission launch.",
+    "alt": "2013: Mars Orbiter Mission. The Indian Space Research Organisation launched the Mars Orbiter Mission, India's first interplanetary probe.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "11-07": {
     "src": "assets/on-this-day-images/11-07-magic-johnson-press-conference.png",
-    "alt": "Photorealistic editorial scene of a 1991 basketball press conference about HIV and retirement.",
+    "alt": "1991: Magic Johnson. Magic Johnson announced his retirement from professional basketball due to HIV infection.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "11-09": {
     "src": "assets/on-this-day-images/11-09-rolling-stone.png",
-    "alt": "Photorealistic editorial artwork of a 1960s magazine newsroom preparing the first issue of Rolling Stone.",
+    "alt": "1967: Rolling Stone. The first issue of Rolling Stone, an American magazine focusing on music, politics and popular culture, was published.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "11-10": {
     "src": "assets/on-this-day-images/11-10-nadarajah-raviraj-mourning.png",
-    "alt": "Photorealistic editorial scene of Tamil lawyers, activists, and journalists mourning human-rights lawyer Nadarajah Raviraj in Colombo.",
+    "alt": "2006: Nadarajah Raviraj. Nadarajah Raviraj, a prominent Sri Lankan Tamil politician and human rights lawyer, was assassinated in Colombo.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "11-13": {
     "src": "assets/on-this-day-images/11-13-fantasia-stereophonic-premiere.png",
-    "alt": "Photorealistic editorial scene of 1940 theater projectionists and sound engineers presenting a stereophonic film premiere.",
+    "alt": "1940: Walt Disney. Walt Disney's Fantasia, the first commercial film shown with stereophonic sound, premiered at the Broadway Theatre in New York City.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "11-18": {
     "src": "assets/on-this-day-images/11-18-minecraft-release.png",
-    "alt": "Photorealistic editorial scene of the official 2011 release of a block-building indie video game at a developer gathering.",
+    "alt": "2011: Minecraft. The sandbox video game Minecraft exited beta with the official release of version 1.0.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "11-19": {
     "src": "assets/on-this-day-images/11-19-pele-thousandth-goal.png",
-    "alt": "Photorealistic editorial scene of a Brazilian footballer celebrating a thousandth goal in a packed Rio stadium.",
+    "alt": "1969: Pelé. Playing for Santos against Vasco da Gama in Rio de Janeiro, Brazilian footballer Pelé scored his thousandth goal.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "11-22": {
     "src": "assets/on-this-day-images/11-22-first-cgi-feature.png",
-    "alt": "Photorealistic editorial scene of 1995 animators and moviegoers during the arrival of the first all-CGI feature film.",
+    "alt": "1995: Toy Story. Toy Story, the first feature film created using only computer-generated imagery, was released in theaters in the United States.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "11-24": {
     "src": "assets/on-this-day-images/11-24-origin-of-species-published.png",
-    "alt": "Photorealistic editorial scene of Victorian readers and publishers handling first copies of On the Origin of Species in 1859.",
+    "alt": "1859: Charles Darwin. British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print run on the first day.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "11-26": {
     "src": "assets/on-this-day-images/11-26-curiosity-launch.png",
-    "alt": "Photorealistic editorial scene of the Mars Science Laboratory launch carrying the Curiosity rover.",
+    "alt": "2011: Mars Science Laboratory. NASA launched the Mars Science Laboratory mission from Cape Canaveral, carrying the Curiosity rover on board.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "11-29": {
     "src": "assets/on-this-day-images/11-29-thriller-release-store.png",
-    "alt": "Photorealistic editorial scene of a 1982 record store on the release day of a landmark pop album.",
+    "alt": "1982: Michael Jackson. Michael Jackson's Thriller, the best-selling album of all time, was released.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-01": {
     "src": "assets/on-this-day-images/12-01-rosa-parks-bus-arrest.png",
-    "alt": "Photorealistic editorial scene of Rosa Parks calmly seated during the 1955 Montgomery bus arrest moment.",
+    "alt": "1955: Rosa Parks. Rosa Parks was arrested for refusing to give up her seat on a public bus to a white man in Montgomery, Alabama, United States, sparking the Montgomery bus boycott.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-02": {
     "src": "assets/on-this-day-images/12-02-pablo-escobar-manhunt.png",
-    "alt": "Photorealistic editorial scene of Colombian investigators and police during the end of the Pablo Escobar manhunt in Medellin.",
+    "alt": "1993: Pablo Escobar. Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel boss.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-03": {
     "src": "assets/on-this-day-images/12-03-playstation-launch.png",
-    "alt": "Photorealistic editorial scene of the 1994 Japanese launch of a major new game console in a Tokyo electronics shop.",
+    "alt": "1994: Sony Interactive Entertainment. Sony released the PlayStation, the first computer entertainment platform to ship 100 million units.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-04": {
     "src": "assets/on-this-day-images/12-04-fred-hampton-aftermath.png",
-    "alt": "Photorealistic editorial scene of Chicago community members and reporters after the Fred Hampton raid.",
+    "alt": "1969: Black Panther Party. Fred Hampton, the leader of the Illinois chapter of the Black Panther Party, and Mark Clark were killed in a raid by Chicago police officers in what many scholars consider an illegal assassination.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-05": {
     "src": "assets/on-this-day-images/12-05-glasnost-meeting.png",
-    "alt": "Photorealistic editorial scene of Soviet dissidents at the 1965 glasnost meeting in Moscow.",
+    "alt": "1965: Glasnost meeting. The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War II and marking the beginning of the civil rights movement in the country.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-06": {
     "src": "assets/on-this-day-images/12-06-thirteenth-amendment-ratified.png",
-    "alt": "Photorealistic editorial scene of Americans reading news that the Thirteenth Amendment was ratified in 1865.",
+    "alt": "1865: Slavery in the United States. Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-10": {
     "src": "assets/on-this-day-images/12-10-doom-pc-gaming.png",
-    "alt": "Photorealistic editorial scene of 1993 PC gamers crowding around a landmark first-person shooter release.",
+    "alt": "1993: First-person shooter. The video game Doom, later considered the \"father\" of the first-person shooter genre, is released.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-12": {
     "src": "assets/on-this-day-images/12-12-greek-junta-council-europe.png",
-    "alt": "Photorealistic editorial scene of lawyers and journalists reacting to the Greek junta leaving the Council of Europe in 1969.",
+    "alt": "1969: Greek junta. The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of torture and other human-rights violations by the European Commission of Human Rights.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-13": {
     "src": "assets/on-this-day-images/12-13-surprise-visual-album.png",
-    "alt": "Photorealistic editorial scene of a late-night surprise visual-album release war room.",
+    "alt": "2013: Beyoncé. Beyoncé released her fifth studio album without any prior announcement or promotion; it sold 2.3 million copies before the end of the year.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-15": {
     "src": "assets/on-this-day-images/12-15-delhi-women-caa-protest.png",
-    "alt": "Photorealistic editorial scene of women leading a Delhi road blockade during the 2019 Citizenship Amendment Act protests.",
+    "alt": "2019: Citizenship Amendment Act protests. Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest the exclusion of Muslims from the amended Citizenship Act.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-16": {
     "src": "assets/on-this-day-images/12-16-english-bill-of-rights.png",
-    "alt": "Photorealistic editorial scene of Parliament formalizing the English Bill of Rights in 1689.",
+    "alt": "1689: Universal Declaration of Human Rights. The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-19": {
     "src": "assets/on-this-day-images/12-19-titanic-theater-release.png",
-    "alt": "Photorealistic editorial scene of 1997 moviegoers lining up for the opening-night release of Titanic.",
+    "alt": "1997: Titanic (1997 film). Titanic, the fourth-highest-grossing film of all time with a worldwide total of more than US$2.2 billion, was released in the United States.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-25": {
     "src": "assets/on-this-day-images/12-25-worldwideweb.png",
-    "alt": "Photorealistic editorial artwork of an early 1990s CERN workstation demonstration of the first web browser and editor.",
+    "alt": "1990: Tim Berners-Lee. British computer programmer Tim Berners-Lee introduced WorldWideWeb, the world's first web browser and WYSIWYG HTML editor.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-26": {
     "src": "assets/on-this-day-images/12-26-submarine-cable-outage.png",
-    "alt": "Photorealistic editorial scene of engineers on a cable repair ship during the 2006 Asian internet cable outage.",
+    "alt": "2006: Submarine communications cable. Two earthquakes off the southwest coast of Taiwan damaged submarine communications cables, disrupting Internet services in Asia and affecting financial transactions.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-29": {
     "src": "assets/on-this-day-images/12-29-wounded-knee-aftermath.png",
-    "alt": "Photorealistic editorial scene of Lakota families and survivors in the winter aftermath of Wounded Knee in 1890.",
+    "alt": "1890: Wounded Knee Massacre. Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded Knee Massacre, beginning the Ghost Dance War.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   },
   "12-31": {
     "src": "assets/on-this-day-images/12-31-roberto-clemente-aid-flight.png",
-    "alt": "Photorealistic editorial scene of Roberto Clemente and volunteers preparing humanitarian aid for Nicaragua.",
+    "alt": "1972: Roberto Clemente. Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims of that year's Nicaragua earthquake.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"
   }

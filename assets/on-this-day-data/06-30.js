@@ -46,15 +46,15 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-30"] = {
   ],
   "summary": [
     "June 30, 1960, is not just a date label for Congo Becomes Independent. It is the point where a larger government and civic power story becomes visible enough to study. The Republic of the Congo became independent from Belgium, placing decolonization, mineral wealth, Cold War pressure, and African self-determination on a volatile world stage. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The Republic of the Congo became independent from Belgium. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is Leopoldville/Kinshasa at independence, with Belgian colonial rule ending amid ceremony, speeches, mineral wealth, Cold War pressure, and Congolese self-determination. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Congo Becomes Independent belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "The Republic of the Congo became independent from Belgium. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is Leopoldville/Kinshasa at independence, with Belgian colonial rule ending amid ceremony, speeches, mineral wealth, Cold War pressure, and Congolese self-determination. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1941,
   "related": [],
   "coolFacts": [
     "June 30 places the reader in 1960, inside a government and civic power story with consequences beyond the date itself.",
     "The Republic of the Congo became independent from Belgium, placing decolonization, mineral wealth, Cold War pressure, and African self-determination on a volatile world stage.",
-    "The central source trail begins with Independence of the Democratic Republic of the Congo.",
+    "A useful starting source is Independence of the Democratic Republic of the Congo.",
     "The big historical pressure point: it changed who held authority and how that authority could be justified, limited, celebrated, or challenged.",
     "Civic history is built from paper and ceremony, but paper and ceremony can decide land, rights, money, punishment, and the future of whole communities."
   ],
@@ -116,7 +116,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-30"] = {
       ]
     },
     {
-      "text": "The Republic of the Congo became independent from Belgium. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The Republic of the Congo became independent from Belgium. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -126,7 +126,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-30"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is Leopoldville/Kinshasa at independence, with Belgian colonial rule ending amid ceremony, speeches, mineral wealth, Cold War pressure, and Congolese self-determination. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Congo Becomes Independent belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is Leopoldville/Kinshasa at independence, with Belgian colonial rule ending amid ceremony, speeches, mineral wealth, Cold War pressure, and Congolese self-determination. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -268,7 +268,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-30"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of June 30 is easy: The Republic of the Congo became independent from Belgium, placing decolonization, mineral wealth, Cold War pressure, and African self-determination on a volatile world stage. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of June 30 is easy: The Republic of the Congo became independent from Belgium, placing decolonization, mineral wealth, Cold War pressure, and African self-determination on a volatile world stage. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

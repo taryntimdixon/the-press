@@ -42,8 +42,8 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-17"] = {
   ],
   "summary": [
     "August 17, 2008, is not just a date label for Michael Phelps. It is the point where a larger history story becomes visible enough to study. Michael Phelps won his eighth gold medal of the Summer Olympics in Beijing, setting the record for the most gold medals won by an athlete at a single games. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Michael Phelps won his eighth gold medal of the Summer Olympics in Beijing, setting the record for the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Michael Phelps belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "Michael Phelps won his eighth gold medal of the Summer Olympics in Beijing, setting the record for the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1888,
   "related": [
@@ -61,7 +61,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-17"] = {
   "coolFacts": [
     "August 17 places the reader in 2008, inside a history story with consequences beyond the date itself.",
     "Michael Phelps won his eighth gold medal of the Summer Olympics in Beijing, setting the record for the most gold medals won by an athlete at a single games.",
-    "The central source trail begins with Michael Phelps.",
+    "A useful starting source is Michael Phelps.",
     "The big historical pressure point: it changed how later generations understood the period around it.",
     "A calendar entry matters when one date opens into institutions, people, material evidence, and consequences that did not end at midnight."
   ],
@@ -109,7 +109,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-17"] = {
       ]
     },
     {
-      "text": "Michael Phelps won his eighth gold medal of the Summer Olympics in Beijing, setting the record for the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Michael Phelps won his eighth gold medal of the Summer Olympics in Beijing, setting the record for the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-17"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Michael Phelps belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -248,7 +248,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-17"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of August 17 is easy: Michael Phelps won his eighth gold medal of the Summer Olympics in Beijing, setting the record for the most gold medals won by an athlete at a single games. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of August 17 is easy: Michael Phelps won his eighth gold medal of the Summer Olympics in Beijing, setting the record for the most gold medals won by an athlete at a single games. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

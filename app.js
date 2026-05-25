@@ -1039,9 +1039,8 @@ function pressSiteAssetUrl(path) {
       clock.setAttribute('aria-label', 'Current local date and time');
     }
 
-    if (!clock.querySelector('[data-live-clock-date]') || !clock.querySelector('.press-live-clock__label') || clock.querySelector('.press-live-clock__dial')) {
+    if (!clock.querySelector('[data-live-clock-date]') || !clock.querySelector('[data-live-clock-time]') || clock.querySelector('.press-live-clock__dial')) {
       clock.innerHTML = `
-        <span class="press-live-clock__label">Live clock</span>
         <time class="press-live-clock__date" data-live-clock-date></time>
         <span class="press-live-clock__separator" aria-hidden="true">•</span>
         <time class="press-live-clock__time" data-live-clock-time></time>
@@ -1188,7 +1187,7 @@ function pressSiteAssetUrl(path) {
       </div>
       <div class="on-this-day__layout">
         <div class="on-this-day__visuals">
-          <figure class="on-this-day__art" data-history-art aria-label="Photorealistic editorial scene for today's historical moment"></figure>
+          <figure class="on-this-day__art" data-history-art aria-label="Artwork for today's historical moment"></figure>
         </div>
         <article class="on-this-day__story" data-history-card-link tabindex="0">
           <p class="on-this-day__year" data-history-year></p>
@@ -1313,7 +1312,7 @@ function pressSiteAssetUrl(path) {
   function renderHistoryArt(moment, key) {
     const artwork = historyArtworkFor(key);
     if (artwork?.src) {
-      const alt = artwork.alt || `${moment.displayDate || 'Today'}: ${moment.title || 'Historical moment'}`;
+      const alt = historyImageAltText(moment, key, artwork);
       const src = historyDisplayImageSrc(artwork.src);
       return `
         <img
@@ -1327,6 +1326,48 @@ function pressSiteAssetUrl(path) {
     }
 
     return renderHistoryPosterArt(moment, key);
+  }
+
+  function historyImageAltText(moment = {}, key = '', artwork = {}) {
+    const cleanedArtAlt = cleanHistoryImageText(artwork.alt || artwork.caption || '');
+    if (cleanedArtAlt) return cleanedArtAlt;
+
+    const year = formatHistoryYear(moment.year);
+    const title = cleanHistoryImageText(moment.title || moment.topic || 'Historical moment');
+    const summary = firstHistoryImageSentence(moment.text || moment.headline || moment.dek || '');
+    const opener = [year, title].filter(Boolean).join(': ');
+
+    if (opener && summary && collapseWhitespace(summary).toLowerCase() !== collapseWhitespace(title).toLowerCase()) {
+      return trimHistoryImageText(`${opener}. ${summary}`);
+    }
+    return trimHistoryImageText(opener || summary || `${moment.displayDate || key || 'Today'}: Historical moment`);
+  }
+
+  function firstHistoryImageSentence(value) {
+    const cleaned = cleanHistoryImageText(value).replace(/\s+The deeper story is\b.*$/i, '');
+    const sentence = cleaned.match(/^.{24,260}?[.!?](?:\s|$)/);
+    return trimHistoryImageText(sentence ? sentence[0] : cleaned);
+  }
+
+  function cleanHistoryImageText(value) {
+    let text = collapseWhitespace(value);
+    if (!text) return '';
+
+    text = text
+      .replace(/^photorealistic\s+/i, '')
+      .replace(/^(?:editorial|historical|science|cinematic|wide|dawn|night)\s+(?:scene|artwork|image)\s+(?:of\s+)?/i, '')
+      .replace(/^scene\s+of\s+/i, '')
+      .replace(/\s*,?\s+with\s+(?:period|historical|era-appropriate|marquee|press|crowd|crowds|cables|instruments|cars|uniforms|documents|machines|smoke|dust|lighting|props|visual|cinematic)\b.*$/i, '.')
+      .replace(/\b(?:AI-generated|generated image|artwork prompt|image direction|production note)\b/gi, '')
+      .replace(/\s+\./g, '.');
+
+    return collapseWhitespace(text);
+  }
+
+  function trimHistoryImageText(value) {
+    const text = collapseWhitespace(value);
+    if (text.length <= 260) return text;
+    return `${text.slice(0, 257).replace(/\s+\S*$/, '')}...`;
   }
 
   function historyArtworkFor(key) {

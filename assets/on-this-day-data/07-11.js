@@ -46,15 +46,15 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-11"] = {
   ],
   "summary": [
     "July 11, 1979, is not just a date label for Skylab Falls to Earth. It is the point where a larger space exploration story becomes visible enough to study. Skylab reentered Earth’s atmosphere, scattering debris over the Indian Ocean and Western Australia and turning space infrastructure, media suspense, and orbital decay into a worldwide spectacle. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Skylab reentered Earth’s atmosphere, scattering debris over the Indian Ocean and Western Australia. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is Skylab’s fiery reentry over the Indian Ocean and Western Australia, where space debris became a media event, legal joke, and public spectacle. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Skylab Falls to Earth belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "Skylab reentered Earth’s atmosphere, scattering debris over the Indian Ocean and Western Australia. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is Skylab’s fiery reentry over the Indian Ocean and Western Australia, where space debris became a media event, legal joke, and public spectacle. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1987,
   "related": [],
   "coolFacts": [
     "July 11 places the reader in 1979, inside a space exploration story with consequences beyond the date itself.",
     "Skylab reentered Earth’s atmosphere, scattering debris over the Indian Ocean and Western Australia and turning space infrastructure, media suspense, and orbital decay into a worldwide spectacle.",
-    "The central source trail begins with NASA: Skylab reenters Earth’s atmosphere.",
+    "A useful starting source is NASA: Skylab reenters Earth’s atmosphere.",
     "The big historical pressure point: it pushed the boundary between ordinary life on Earth and the dangerous machinery of exploration.",
     "The lasting meaning sits in the mix of engineering discipline and public wonder: one mission becomes a shared picture of what humans can attempt."
   ],
@@ -116,7 +116,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-11"] = {
       ]
     },
     {
-      "text": "Skylab reentered Earth’s atmosphere, scattering debris over the Indian Ocean and Western Australia. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Skylab reentered Earth’s atmosphere, scattering debris over the Indian Ocean and Western Australia. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -126,7 +126,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-11"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is Skylab’s fiery reentry over the Indian Ocean and Western Australia, where space debris became a media event, legal joke, and public spectacle. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Skylab Falls to Earth belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is Skylab’s fiery reentry over the Indian Ocean and Western Australia, where space debris became a media event, legal joke, and public spectacle. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -268,7 +268,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-11"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of July 11 is easy: Skylab reentered Earth’s atmosphere, scattering debris over the Indian Ocean and Western Australia and turning space infrastructure, media suspense, and orbital decay into a worldwide spectacle. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of July 11 is easy: Skylab reentered Earth’s atmosphere, scattering debris over the Indian Ocean and Western Australia and turning space infrastructure, media suspense, and orbital decay into a worldwide spectacle. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

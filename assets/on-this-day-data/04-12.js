@@ -42,8 +42,8 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-12"] = {
   ],
   "summary": [
     "April 12, 1822, is not just a date label for Greek War of Independence. It is the point where a larger government and civic power story becomes visible enough to study. Greek War of Independence: Ottoman troops began a massacre of tens of thousands of Greeks on the island of Chios. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Greek War of Independence: Ottoman troops began a massacre of tens of thousands of Greeks on the island... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is a formal place where documents, offices, ceremonies, laws, and public legitimacy became the center of the story. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Greek War of Independence belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "Greek War of Independence: Ottoman troops began a massacre of tens of thousands of Greeks on the island... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is a formal place where documents, offices, ceremonies, laws, and public legitimacy became the center of the story. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1891,
   "related": [
@@ -71,7 +71,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-12"] = {
   "coolFacts": [
     "April 12 places the reader in 1822, inside a government and civic power story with consequences beyond the date itself.",
     "Greek War of Independence: Ottoman troops began a massacre of tens of thousands of Greeks on the island of Chios.",
-    "The central source trail begins with Greek War of Independence.",
+    "A useful starting source is Greek War of Independence.",
     "The big historical pressure point: it changed who held authority and how that authority could be justified, limited, celebrated, or challenged.",
     "Civic history is built from paper and ceremony, but paper and ceremony can decide land, rights, money, punishment, and the future of whole communities."
   ],
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-12"] = {
       ]
     },
     {
-      "text": "Greek War of Independence: Ottoman troops began a massacre of tens of thousands of Greeks on the island... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Greek War of Independence: Ottoman troops began a massacre of tens of thousands of Greeks on the island... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -129,7 +129,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-12"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is a formal place where documents, offices, ceremonies, laws, and public legitimacy became the center of the story. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Greek War of Independence belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is a formal place where documents, offices, ceremonies, laws, and public legitimacy became the center of the story. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -258,7 +258,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-12"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of April 12 is easy: Greek War of Independence: Ottoman troops began a massacre of tens of thousands of Greeks on the island of Chios. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of April 12 is easy: Greek War of Independence: Ottoman troops began a massacre of tens of thousands of Greeks on the island of Chios. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

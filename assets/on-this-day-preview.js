@@ -118,7 +118,7 @@
       <article class="history-preview-card" data-preview-card data-search="${escapeHtml(textBlob(moment))}">
         <div class="history-preview-card__media">
           ${hasImage ? `
-            <img src="${escapeHtml(assetUrl(historyDisplayImageSrc(art.src)))}" alt="${escapeHtml(art.alt || `${moment.displayDate}: ${moment.title}`)}" loading="lazy" decoding="async">
+            <img src="${escapeHtml(assetUrl(historyDisplayImageSrc(art.src)))}" alt="${escapeHtml(historyImageAltText(moment, art))}" loading="lazy" decoding="async">
           ` : `
             <div class="history-preview-card__queued">
               <span>Image coming soon</span>
@@ -162,4 +162,56 @@
   lane?.addEventListener('change', render);
   era?.addEventListener('change', render);
   render();
+
+  function historyImageAltText(moment = {}, art = {}) {
+    const cleanedArtAlt = cleanHistoryImageText(art.alt || art.caption || '');
+    if (cleanedArtAlt) return cleanedArtAlt;
+
+    const year = formatHistoryYear(moment.year);
+    const title = cleanHistoryImageText(moment.title || moment.topic || 'Historical moment');
+    const summary = firstHistoryImageSentence(moment.text || moment.headline || moment.dek || '');
+    const opener = [year, title].filter(Boolean).join(': ');
+
+    if (opener && summary && collapseWhitespace(summary).toLowerCase() !== collapseWhitespace(title).toLowerCase()) {
+      return trimHistoryImageText(`${opener}. ${summary}`);
+    }
+    return trimHistoryImageText(opener || summary || `${moment.displayDate || moment.date || 'Today'}: Historical moment`);
+  }
+
+  function formatHistoryYear(yearValue) {
+    const value = Number(yearValue);
+    if (!Number.isFinite(value)) return '';
+    return value < 0 ? `${Math.abs(value)} BCE` : String(value);
+  }
+
+  function firstHistoryImageSentence(value) {
+    const cleaned = cleanHistoryImageText(value).replace(/\s+The deeper story is\b.*$/i, '');
+    const sentence = cleaned.match(/^.{24,260}?[.!?](?:\s|$)/);
+    return trimHistoryImageText(sentence ? sentence[0] : cleaned);
+  }
+
+  function cleanHistoryImageText(value) {
+    let text = collapseWhitespace(value);
+    if (!text) return '';
+
+    text = text
+      .replace(/^photorealistic\s+/i, '')
+      .replace(/^(?:editorial|historical|science|cinematic|wide|dawn|night)\s+(?:scene|artwork|image)\s+(?:of\s+)?/i, '')
+      .replace(/^scene\s+of\s+/i, '')
+      .replace(/\s*,?\s+with\s+(?:period|historical|era-appropriate|marquee|press|crowd|crowds|cables|instruments|cars|uniforms|documents|machines|smoke|dust|lighting|props|visual|cinematic)\b.*$/i, '.')
+      .replace(/\b(?:AI-generated|generated image|artwork prompt|image direction|production note)\b/gi, '')
+      .replace(/\s+\./g, '.');
+
+    return collapseWhitespace(text);
+  }
+
+  function trimHistoryImageText(value) {
+    const text = collapseWhitespace(value);
+    if (text.length <= 260) return text;
+    return `${text.slice(0, 257).replace(/\s+\S*$/, '')}...`;
+  }
+
+  function collapseWhitespace(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
 })();

@@ -42,8 +42,8 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-30"] = {
   ],
   "summary": [
     "July 30, 1724, is not just a date label for Psalm 124. It is the point where a larger culture story becomes visible enough to study. Bach's chorale cantata Wo Gott der Herr nicht bei uns hält, a paraphrase of Psalm 124 based on a 1524 hymn by Justus Jonas, was first performed in Leipzig. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Bach's chorale cantata Wo Gott der Herr nicht bei uns hält, a paraphrase of Psalm 124 based on... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is a theater, shop, studio, page, screen, or public crowd where an idea moved from private work into mass imagination. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Psalm 124 belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "Bach's chorale cantata Wo Gott der Herr nicht bei uns hält, a paraphrase of Psalm 124 based on... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is a theater, shop, studio, page, screen, or public crowd where an idea moved from private work into mass imagination. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1913,
   "related": [
@@ -71,7 +71,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-30"] = {
   "coolFacts": [
     "July 30 places the reader in 1724, inside a culture story with consequences beyond the date itself.",
     "Bach's chorale cantata Wo Gott der Herr nicht bei uns hält, a paraphrase of Psalm 124 based on a 1524 hymn by Justus Jonas, was first performed in Leipzig.",
-    "The central source trail begins with Psalm 124.",
+    "A useful starting source is Psalm 124.",
     "The big historical pressure point: it altered taste, language, fandom, entertainment, memory, or the way audiences recognized themselves.",
     "Cultural history can look light from a distance, but it shapes childhood, markets, style, technology, and the stories people carry around for decades."
   ],
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-30"] = {
       ]
     },
     {
-      "text": "Bach's chorale cantata Wo Gott der Herr nicht bei uns hält, a paraphrase of Psalm 124 based on... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Bach's chorale cantata Wo Gott der Herr nicht bei uns hält, a paraphrase of Psalm 124 based on... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -129,7 +129,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-30"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is a theater, shop, studio, page, screen, or public crowd where an idea moved from private work into mass imagination. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Psalm 124 belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is a theater, shop, studio, page, screen, or public crowd where an idea moved from private work into mass imagination. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -258,7 +258,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-30"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of July 30 is easy: Bach's chorale cantata Wo Gott der Herr nicht bei uns hält, a paraphrase of Psalm 124 based on a 1524 hymn by Justus Jonas, was first performed in Leipzig. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of July 30 is easy: Bach's chorale cantata Wo Gott der Herr nicht bei uns hält, a paraphrase of Psalm 124 based on a 1524 hymn by Justus Jonas, was first performed in Leipzig. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

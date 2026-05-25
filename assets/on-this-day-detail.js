@@ -40,8 +40,10 @@
   function renderPage(moment, resolvedKey) {
   const art = artwork[resolvedKey] || {};
   const imageSrc = art.src ? historyDisplayImageSrc(art.src) : '';
+  const imageCaption = historyImageCaption(moment, resolvedKey, art);
+  const imageAlt = imageCaption || cleanHistoryImageText(art.alt) || `${moment.displayDate || resolvedKey}: ${moment.title || 'Historical moment'}`;
   const image = art.src
-    ? `<img src="${escapeAttribute(assetUrl(imageSrc))}" alt="${escapeAttribute(art.alt || `${moment.displayDate}: ${moment.title}`)}" decoding="async" fetchpriority="high">`
+    ? `<img src="${escapeAttribute(assetUrl(imageSrc))}" alt="${escapeAttribute(imageAlt)}" decoding="async" fetchpriority="high">`
     : '<div class="history-detail-image__missing">Image coming soon</div>';
   const summary = Array.isArray(moment.summary) ? moment.summary : [];
   const articleBlocks = Array.isArray(moment.article) ? moment.article : summary;
@@ -77,7 +79,7 @@
     </section>
     <figure class="history-detail-image">
       ${image}
-      ${art.alt ? `<figcaption>${escapeHtml(art.alt)}</figcaption>` : ''}
+      ${imageCaption ? `<figcaption>${escapeHtml(imageCaption)}</figcaption>` : ''}
     </figure>
     <div class="history-detail-shell">
       <aside class="history-detail-rail history-detail-rail--left" aria-label="Event quick facts">
@@ -116,7 +118,7 @@
       </aside>
       <article class="history-detail-body">
         <p class="history-detail-lead">${escapeHtml(moment.text || '')}</p>
-        ${articleBlocks.map((block) => renderArticleBlock(block, sources)).join('')}
+        ${articleBlocks.map((block) => renderArticleBlock(block, sources, moment)).join('')}
         ${renderSourceList(sources)}
       </article>
       <aside class="history-detail-rail history-detail-rail--right" aria-label="Event sources">
@@ -190,6 +192,50 @@
     const value = Number(yearValue);
     if (!Number.isFinite(value)) return '';
     return value < 0 ? `${Math.abs(value)} BCE` : String(value);
+  }
+
+  function historyImageCaption(moment, resolvedKey, art = {}) {
+    const directCaption = cleanHistoryImageText(moment.imageCaption || art.caption || '');
+    if (directCaption) return trimCaption(directCaption);
+
+    const year = formatHistoryYear(moment.year);
+    const title = cleanHistoryImageText(moment.title || moment.topic || 'Historical moment');
+    const summary = firstHistorySentence(moment.text || moment.headline || moment.dek || art.alt || '');
+    const opener = [year, title].filter(Boolean).join(': ');
+
+    if (opener && summary && !sameText(summary, title)) return trimCaption(`${opener}. ${summary}`);
+    return trimCaption(opener || summary || `${moment.displayDate || resolvedKey}: Historical moment`);
+  }
+
+  function firstHistorySentence(value) {
+    const cleaned = cleanHistoryImageText(value).replace(/\s+The deeper story is\b.*$/i, '');
+    const sentence = cleaned.match(/^.{24,260}?[.!?](?:\s|$)/);
+    return trimCaption(sentence ? sentence[0] : cleaned);
+  }
+
+  function cleanHistoryImageText(value) {
+    let text = collapseWhitespace(value);
+    if (!text) return '';
+
+    text = text
+      .replace(/^photorealistic\s+/i, '')
+      .replace(/^(?:editorial|historical|science|cinematic|wide|dawn|night)\s+(?:scene|artwork|image)\s+(?:of\s+)?/i, '')
+      .replace(/^scene\s+of\s+/i, '')
+      .replace(/\s*,?\s+with\s+(?:period|historical|era-appropriate|marquee|press|crowd|crowds|cables|instruments|cars|uniforms|documents|machines|smoke|dust|lighting|props|visual|cinematic)\b.*$/i, '.')
+      .replace(/\b(?:AI-generated|generated image|artwork prompt|image direction|production note)\b/gi, '')
+      .replace(/\s+\./g, '.');
+
+    return collapseWhitespace(text);
+  }
+
+  function trimCaption(value) {
+    const text = collapseWhitespace(value);
+    if (text.length <= 260) return text;
+    return `${text.slice(0, 257).replace(/\s+\S*$/, '')}...`;
+  }
+
+  function sameText(a, b) {
+    return collapseWhitespace(a).toLowerCase() === collapseWhitespace(b).toLowerCase();
   }
 
   function assetUrl(path) {
@@ -411,18 +457,31 @@
     `;
   }
 
-  function renderArticleBlock(block, sources) {
-    if (typeof block === 'string') return `<p>${escapeHtml(block)}</p>`;
+  function renderArticleBlock(block, sources, moment) {
+    if (typeof block === 'string') return `<p>${escapeHtml(cleanHistoryArticleText(block, moment))}</p>`;
     if (!block || typeof block !== 'object') return '';
 
     const type = String(block.type || '').toLowerCase();
-    const text = block.text || block.copy || block.body || '';
+    const text = cleanHistoryArticleText(block.text || block.copy || block.body || '', moment);
     const refs = renderSourceRefs(block.sources || block.sourceRefs || block.refs, sources);
 
     if (type === 'heading') return `<h2>${escapeHtml(block.text || block.title || '')}</h2>`;
     if (type === 'quote') return `<blockquote>${escapeHtml(text)}${refs}</blockquote>`;
     if (!text) return '';
     return `<p>${escapeHtml(text)}${refs}</p>`;
+  }
+
+  function cleanHistoryArticleText(value, moment = {}) {
+    const text = collapseWhitespace(value);
+    if (!text) return '';
+    if (/^The strongest image for this entry\b/i.test(text)) {
+      const title = moment.title || moment.topic || 'This moment';
+      const setting = moment.scene || 'a real setting where people, institutions, tools, and public pressure met';
+      return `${title} was not an abstract headline. It unfolded in ${setting}. That setting matters because historical change does not happen in slogans alone; it happens through rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.`;
+    }
+    return text
+      .replace(/\bthis entry\b/gi, 'this history')
+      .replace(/\bthe strongest image\b/gi, 'the clearest scene');
   }
 
   function renderSourceRefs(refs, sources) {
@@ -464,5 +523,9 @@
 
   function escapeAttribute(value) {
     return escapeHtml(value).replace(/`/g, '&#96;');
+  }
+
+  function collapseWhitespace(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
   }
 })();

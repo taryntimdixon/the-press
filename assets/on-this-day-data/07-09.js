@@ -46,15 +46,15 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-09"] = {
   ],
   "summary": [
     "July 9, 1981, is not just a date label for Donkey Kong Hits Arcades. It is the point where a larger technology story becomes visible enough to study. Donkey Kong received its first arcade release in Japan, helping define platform games, character-driven game design, arcade culture, and Nintendo’s path toward global dominance. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Donkey Kong received its first arcade release in Japan, helping define platform games and Nintendo’s global future. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is Japanese arcades in 1981, where Donkey Kong fused platforms, characters, cabinet culture, and Nintendo’s future identity. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Donkey Kong Hits Arcades belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "Donkey Kong received its first arcade release in Japan, helping define platform games and Nintendo’s global future. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is Japanese arcades in 1981, where Donkey Kong fused platforms, characters, cabinet culture, and Nintendo’s future identity. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1955,
   "related": [],
   "coolFacts": [
     "July 9 places the reader in 1981, inside a technology story with consequences beyond the date itself.",
     "Donkey Kong received its first arcade release in Japan, helping define platform games, character-driven game design, arcade culture, and Nintendo’s path toward global dominance.",
-    "The central source trail begins with Donkey Kong.",
+    "A useful starting source is Donkey Kong.",
     "The big historical pressure point: it changed how people used tools, information, screens, networks, or systems in daily life.",
     "The practical result was not only a new object or platform; it was a new rhythm of attention, work, money, and expectation."
   ],
@@ -116,7 +116,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-09"] = {
       ]
     },
     {
-      "text": "Donkey Kong received its first arcade release in Japan, helping define platform games and Nintendo’s global future. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Donkey Kong received its first arcade release in Japan, helping define platform games and Nintendo’s global future. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -126,7 +126,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-09"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is Japanese arcades in 1981, where Donkey Kong fused platforms, characters, cabinet culture, and Nintendo’s future identity. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Donkey Kong Hits Arcades belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is Japanese arcades in 1981, where Donkey Kong fused platforms, characters, cabinet culture, and Nintendo’s future identity. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -268,7 +268,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-09"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of July 9 is easy: Donkey Kong received its first arcade release in Japan, helping define platform games, character-driven game design, arcade culture, and Nintendo’s path toward global dominance. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of July 9 is easy: Donkey Kong received its first arcade release in Japan, helping define platform games, character-driven game design, arcade culture, and Nintendo’s path toward global dominance. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

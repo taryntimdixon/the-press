@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-22"] = {
     },
     {
       "label": "Scene",
-      "value": "Wiley Post’s airfield arrival after a solo circumnavigation, with Winnie Mae, navigation, fatigue, press cameras, fuel stops, and..."
+      "value": "Wiley Post’s airfield arrival after a solo circumnavigation, with Winnie Mae, navigation, fatigue, fuel stops, and..."
     },
     {
       "label": "Why it mattered",
@@ -46,15 +46,15 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-22"] = {
   ],
   "summary": [
     "July 22, 1933, is not just a date label for First Solo Around-the-World Flight Completed. It is the point where a larger transportation story becomes visible enough to study. Wiley Post completed the first solo flight around the world, proving long-distance aviation, navigation, endurance, and global news spectacle could fit inside one aircraft journey. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Wiley Post completed the first solo flight around the world. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is Wiley Post’s airfield arrival after a solo circumnavigation, with Winnie Mae, navigation, fatigue, press cameras, fuel stops, and aviation celebrity. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. First Solo Around-the-World Flight Completed belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "Wiley Post completed the first solo flight around the world. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is Wiley Post’s airfield arrival after a solo circumnavigation, with Winnie Mae, navigation, fatigue, fuel stops, and aviation celebrity. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1970,
   "related": [],
   "coolFacts": [
     "July 22 places the reader in 1933, inside a transportation story with consequences beyond the date itself.",
     "Wiley Post completed the first solo flight around the world, proving long-distance aviation, navigation, endurance, and global news spectacle could fit inside one aircraft journey.",
-    "The central source trail begins with Wiley Post.",
+    "A useful starting source is Wiley Post.",
     "The big historical pressure point: it changed how bodies, goods, news, armies, families, and ambition moved through the world.",
     "Transportation history is really about distance losing some of its power: the journey becomes shorter, riskier, more public, or more possible."
   ],
@@ -116,7 +116,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-22"] = {
       ]
     },
     {
-      "text": "Wiley Post completed the first solo flight around the world. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Wiley Post completed the first solo flight around the world. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -126,7 +126,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-22"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is Wiley Post’s airfield arrival after a solo circumnavigation, with Winnie Mae, navigation, fatigue, press cameras, fuel stops, and aviation celebrity. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. First Solo Around-the-World Flight Completed belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is Wiley Post’s airfield arrival after a solo circumnavigation, with Winnie Mae, navigation, fatigue, fuel stops, and aviation celebrity. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -159,7 +159,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-22"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On July 22, 1933, Wiley Post completed the first solo flight around the world, proving long-distance aviation, navigation, endurance, and global news spectacle could fit inside one aircraft journey. Why it mattered: An aviation milestone that made the planet feel smaller through speed, radio, navigation, celebrity, and machines. In the wider transport story, it changed how people, goods, risk, distance, or rescue moved across the world. The source record identifies Wiley Post as american aviator who completed the first solo flight around the world. The lasting consequence was movement: people, goods, danger, rescue, or infrastructure crossed distance in a new way.  Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On July 22, 1933, Wiley Post completed the first solo flight around the world, proving long-distance aviation, navigation, endurance, and global news spectacle could fit inside one aircraft journey. Why it mattered: An aviation milestone that made the planet feel smaller through speed, radio, navigation, celebrity, and machines. In the wider transport story, it changed how people, goods, risk, distance, or rescue moved across the world. The source record identifies Wiley Post as american aviator who completed the first solo flight around the world. The lasting consequence was movement: people, goods, danger, rescue, or infrastructure crossed distance in a new way. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4
@@ -268,7 +268,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-22"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of July 22 is easy: Wiley Post completed the first solo flight around the world, proving long-distance aviation, navigation, endurance, and global news spectacle could fit inside one aircraft journey. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of July 22 is easy: Wiley Post completed the first solo flight around the world, proving long-distance aviation, navigation, endurance, and global news spectacle could fit inside one aircraft journey. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

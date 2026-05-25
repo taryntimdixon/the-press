@@ -46,15 +46,15 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-17"] = {
   ],
   "summary": [
     "June 17, 1972, is not just a date label for Watergate Break-In. It is the point where a larger crime and accountability story becomes visible enough to study. Five men were arrested breaking into Democratic National Committee headquarters at the Watergate complex, beginning the scandal that led to investigations, constitutional crisis, and President Nixon’s resignation. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Five men were arrested breaking into Democratic National Committee headquarters at the Watergate complex. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is the Watergate complex at night, where taped doors, burglary tools, campaign politics, reporters, courts, and congressional investigation converged. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Watergate Break-In belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "Five men were arrested breaking into Democratic National Committee headquarters at the Watergate complex. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is the Watergate complex at night, where taped doors, burglary tools, campaign politics, reporters, courts, and congressional investigation converged. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1934,
   "related": [],
   "coolFacts": [
     "June 17 places the reader in 1972, inside a crime and accountability story with consequences beyond the date itself.",
     "Five men were arrested breaking into Democratic National Committee headquarters at the Watergate complex, beginning the scandal that led to investigations, constitutional crisis, and President Nixon’s resignation.",
-    "The central source trail begins with Watergate scandal.",
+    "A useful starting source is Watergate scandal.",
     "The big historical pressure point: it changed public trust, institutions, law enforcement, media attention, or constitutional pressure.",
     "Crime history can become civic history when evidence, secrecy, power, and accountability all enter the same room."
   ],
@@ -116,7 +116,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-17"] = {
       ]
     },
     {
-      "text": "Five men were arrested breaking into Democratic National Committee headquarters at the Watergate complex. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Five men were arrested breaking into Democratic National Committee headquarters at the Watergate complex. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -126,7 +126,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-17"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is the Watergate complex at night, where taped doors, burglary tools, campaign politics, reporters, courts, and congressional investigation converged. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Watergate Break-In belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is the Watergate complex at night, where taped doors, burglary tools, campaign politics, reporters, courts, and congressional investigation converged. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -268,7 +268,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-17"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of June 17 is easy: Five men were arrested breaking into Democratic National Committee headquarters at the Watergate complex, beginning the scandal that led to investigations, constitutional crisis, and President Nixon’s resignation. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of June 17 is easy: Five men were arrested breaking into Democratic National Committee headquarters at the Watergate complex, beginning the scandal that led to investigations, constitutional crisis, and President Nixon’s resignation. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

@@ -46,15 +46,15 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-20"] = {
   ],
   "summary": [
     "July 20, 1969, is not just a date label for Apollo 11 Moon Landing. It is the point where a larger space exploration story becomes visible enough to study. Apollo 11’s Lunar Module Eagle landed on the Moon, making the first human landing on another world and becoming one of the central technological memories of the twentieth century. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Apollo 11’s Lunar Module Eagle landed on the Moon. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
-    "The strongest image for this entry is not a symbol floating in empty space. It is the Lunar Module Eagle on the Sea of Tranquility, where landing alarms, fuel margins, crew calm, television, and lunar dust became history. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Apollo 11 Moon Landing belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time."
+    "Apollo 11’s Lunar Module Eagle landed on the Moon. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The clearest scene is the Lunar Module Eagle on the Sea of Tranquility, where landing alarms, fuel margins, crew calm, television, and lunar dust became history. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1986,
   "related": [],
   "coolFacts": [
     "July 20 places the reader in 1969, inside a space exploration story with consequences beyond the date itself.",
     "Apollo 11’s Lunar Module Eagle landed on the Moon, making the first human landing on another world and becoming one of the central technological memories of the twentieth century.",
-    "The central source trail begins with NASA: Apollo 11.",
+    "A useful starting source is NASA: Apollo 11.",
     "The big historical pressure point: it pushed the boundary between ordinary life on Earth and the dangerous machinery of exploration.",
     "The lasting meaning sits in the mix of engineering discipline and public wonder: one mission becomes a shared picture of what humans can attempt."
   ],
@@ -116,7 +116,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-20"] = {
       ]
     },
     {
-      "text": "Apollo 11’s Lunar Module Eagle landed on the Moon. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of expanding this entry is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Apollo 11’s Lunar Module Eagle landed on the Moon. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -126,7 +126,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-20"] = {
       "text": "The Scene Behind The Headline"
     },
     {
-      "text": "The strongest image for this entry is not a symbol floating in empty space. It is the Lunar Module Eagle on the Sea of Tranquility, where landing alarms, fuel margins, crew calm, television, and lunar dust became history. That matters because historical change does not happen in abstract nouns. It happens in rooms, streets, laboratories, courts, stadiums, launch pads, offices, shops, ships, fields, and homes. Apollo 11 Moon Landing belongs to a real setting full of material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those clues help the event feel less like trivia and more like a situation people had to navigate in real time.",
+      "text": "The clearest scene is the Lunar Module Eagle on the Sea of Tranquility, where landing alarms, fuel margins, crew calm, television, and lunar dust became history. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time.",
       "sources": [
         2,
         3
@@ -268,7 +268,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-20"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of July 20 is easy: Apollo 11’s Lunar Module Eagle landed on the Moon, making the first human landing on another world and becoming one of the central technological memories of the twentieth century. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this entry belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of July 20 is easy: Apollo 11’s Lunar Module Eagle landed on the Moon, making the first human landing on another world and becoming one of the central technological memories of the twentieth century. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]
