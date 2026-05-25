@@ -5,11 +5,34 @@ const PRESS_SITE_ASSET_BASE = (() => {
   return new URL('.', new URL(scriptSrc, window.location.href)).href;
 })();
 
+const PRESS_SITE_APP_VERSION = (() => {
+  const script = document.currentScript
+    || Array.from(document.scripts).reverse().find((item) => /(?:^|\/)app\.js(?:\?|$)/.test(item.getAttribute('src') || ''));
+  const scriptSrc = script?.getAttribute('src') || '';
+  try {
+    return new URL(scriptSrc, window.location.href).searchParams.get('v') || '';
+  } catch (_) {
+    return '';
+  }
+})();
+
 function pressSiteAssetUrl(path) {
   const value = String(path || '').trim();
   if (!value || /^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(value)) return value;
-  return new URL(value, PRESS_SITE_ASSET_BASE).href;
+  const resolved = new URL(value, PRESS_SITE_ASSET_BASE);
+  if (/\.json$/i.test(resolved.pathname) && PRESS_SITE_APP_VERSION && !resolved.searchParams.has('v')) {
+    resolved.searchParams.set('v', PRESS_SITE_APP_VERSION);
+  }
+  return resolved.href;
 }
+
+(() => {
+  if (document.querySelector('[data-press-fonts]')) return;
+  const script = document.createElement('script');
+  script.src = pressSiteAssetUrl('assets/press-fonts.js?v=1779692200');
+  script.defer = true;
+  document.head.appendChild(script);
+})();
 
 (() => {
   const body = document.body;
@@ -731,25 +754,35 @@ function pressSiteAssetUrl(path) {
     bindSourceNoteExternalLinks(document);
     applyDailyCardHover();
 
-    loadStoryIndex().then((stories) => {
-      enhanceBreakingStrip(stories);
-      renderMastheadTicker(stories);
-      injectEditionRadar(stories);
-      if (!document.body.classList.contains('page-home')) {
-        pressRefreshHomepageStoryBlocks(stories);
-      }
-      renderSectionPage(stories);
-      renderDynamicCategoryPages(stories);
-      const hasHomepageTargets =
-  document.querySelector('.lead-switcher__panels') ||
-  document.querySelector('.home-grid__main .cards-grid.cards-grid--three') ||
-  document.querySelector('.latest-section .river');
+    runWhenIdle(() => {
+      loadStoryIndex().then((stories) => {
+        enhanceBreakingStrip(stories);
+        renderMastheadTicker(stories);
+        injectEditionRadar(stories);
+        if (!document.body.classList.contains('page-home')) {
+          pressRefreshHomepageStoryBlocks(stories);
+        }
+        renderSectionPage(stories);
+        renderDynamicCategoryPages(stories);
+        const hasHomepageTargets =
+    document.querySelector('.lead-switcher__panels') ||
+    document.querySelector('.home-grid__main .cards-grid.cards-grid--three') ||
+    document.querySelector('.latest-section .river');
 
-if (!hasHomepageTargets) {
-  hydrateMissingCardImages();
-}
+  if (!hasHomepageTargets) {
+    hydrateMissingCardImages();
+  }
+      });
     });
   });
+
+  function runWhenIdle(callback) {
+    if (typeof window.requestIdleCallback === 'function') {
+      window.requestIdleCallback(callback, { timeout: 2500 });
+    } else {
+      window.setTimeout(callback, 900);
+    }
+  }
 
   function loadStoryIndex() {
   if (storyIndexPromise) return storyIndexPromise;
@@ -2249,6 +2282,7 @@ if (!hasHomepageTargets) {
     const searchInput = document.querySelector('[data-search-input]');
     const resultsBox = document.querySelector('[data-search-results]');
     let searchData = [];
+    let searchDataPromise = null;
 
     function showOverlay(show) {
       if (!overlay) return;
@@ -2261,6 +2295,7 @@ if (!hasHomepageTargets) {
     function openSearch() {
       showOverlay(true);
       window.setTimeout(() => searchInput && searchInput.focus(), 30);
+      ensureSearchData().then(() => runSearch());
     }
 
     function closeSearch() {
@@ -2297,18 +2332,32 @@ if (!hasHomepageTargets) {
     }
 
     if (!searchInput) return;
-    loadStoryIndex().then((stories) => {
-      searchData = stories;
-      searchInput.addEventListener('input', () => {
-        const query = searchInput.value.trim().toLowerCase();
-        if (!query) return renderSearchResults([], '');
-        const results = searchData.filter((item) => {
-          const haystack = [item.title, item.section, item.type, item.dek, item.summary, ...(item.keywords || [])].join(' ').toLowerCase();
-          return haystack.includes(query);
-        }).slice(0, 12);
-        renderSearchResults(results, query);
-      });
-    });
+
+    function ensureSearchData() {
+      if (!searchDataPromise) {
+        searchDataPromise = loadStoryIndex().then((stories) => {
+          searchData = stories;
+          return stories;
+        });
+      }
+      return searchDataPromise;
+    }
+
+    function runSearch() {
+      const query = searchInput.value.trim().toLowerCase();
+      if (!query) return renderSearchResults([], '');
+      if (!searchData.length) {
+        ensureSearchData().then(runSearch);
+        return;
+      }
+      const results = searchData.filter((item) => {
+        const haystack = [item.title, item.section, item.type, item.dek, item.summary, ...(item.keywords || [])].join(' ').toLowerCase();
+        return haystack.includes(query);
+      }).slice(0, 12);
+      renderSearchResults(results, query);
+    }
+
+    searchInput.addEventListener('input', runSearch);
   }
 
   function setupReadingProgress() {
@@ -6706,8 +6755,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   const finePointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const useDynamicMotion = root.dataset.pressMotion === 'full';
 
-  root.classList.add('press-dynamic-page');
+  if (useDynamicMotion) root.classList.add('press-dynamic-page');
 
   const ready = (callback) => {
     if (document.readyState === 'loading') {
@@ -6911,12 +6961,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ready(() => {
     markPageReady();
+    setupBackToTop();
+    if (!useDynamicMotion) return;
+
     const revealObserver = buildRevealObserver();
     setupMicroInteractions();
     setupRevealOnScroll(document, revealObserver);
     setupSmoothNavigation();
     setupRipples();
-    setupBackToTop();
     watchDynamicContent(revealObserver);
   });
 
