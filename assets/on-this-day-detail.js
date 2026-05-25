@@ -23,8 +23,7 @@
   };
 
   const key = selectedDateKey();
-  const moment = moments[key] || moments[monthDayKey(new Date())] || Object.values(moments)[0];
-  const resolvedKey = moment?.date || key;
+  const moment = resolveMoment(key);
 
   if (!moment) {
     page.classList.remove('history-detail-page--loading');
@@ -33,9 +32,16 @@
     return;
   }
 
+  renderPage(moment, moment.date || key);
+  loadDetailMoment(moment.date || key).then((detailMoment) => {
+    if (detailMoment) renderPage(detailMoment, detailMoment.date || moment.date || key);
+  });
+
+  function renderPage(moment, resolvedKey) {
   const art = artwork[resolvedKey] || {};
+  const imageSrc = art.src ? historyDisplayImageSrc(art.src) : '';
   const image = art.src
-    ? `<img src="${escapeAttribute(assetUrl(art.src))}" alt="${escapeAttribute(art.alt || `${moment.displayDate}: ${moment.title}`)}" decoding="async" fetchpriority="high">`
+    ? `<img src="${escapeAttribute(assetUrl(imageSrc))}" alt="${escapeAttribute(art.alt || `${moment.displayDate}: ${moment.title}`)}" decoding="async" fetchpriority="high">`
     : '<div class="history-detail-image__missing">Image coming soon</div>';
   const summary = Array.isArray(moment.summary) ? moment.summary : [];
   const articleBlocks = Array.isArray(moment.article) ? moment.article : summary;
@@ -126,6 +132,47 @@
       </aside>
     </div>
   `;
+  }
+
+  function resolveMoment(key) {
+    return moments[key] || moments[monthDayKey(new Date())] || Object.values(moments)[0] || null;
+  }
+
+  function loadDetailMoment(key) {
+    if (!key || !/^\d{2}-\d{2}$/.test(key)) return Promise.resolve(null);
+    const cached = window.PRESS_ON_THIS_DAY_DETAIL?.[key];
+    if (cached) return Promise.resolve(cached);
+
+    return new Promise((resolve) => {
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        resolve(window.PRESS_ON_THIS_DAY_DETAIL?.[key] || null);
+      };
+      const previousReady = window.PRESS_ON_THIS_DAY_DETAIL_READY;
+      window.PRESS_ON_THIS_DAY_DETAIL_READY = (readyKey) => {
+        if (typeof previousReady === 'function') previousReady(readyKey);
+        if (readyKey === key) finish();
+      };
+
+      const existing = document.querySelector(`script[data-history-detail-payload="${key}"]`);
+      if (existing) {
+        existing.addEventListener('load', finish, { once: true });
+        existing.addEventListener('error', finish, { once: true });
+        window.setTimeout(finish, 0);
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = assetUrl(`assets/on-this-day-data/${key}.js?v=1779691000`);
+      script.async = true;
+      script.dataset.historyDetailPayload = key;
+      script.addEventListener('load', finish, { once: true });
+      script.addEventListener('error', finish, { once: true });
+      document.head.appendChild(script);
+    });
+  }
 
   function selectedDateKey() {
     const params = new URLSearchParams(window.location.search);
@@ -148,6 +195,11 @@
   function assetUrl(path) {
     if (typeof pressSiteAssetUrl === 'function') return pressSiteAssetUrl(path);
     return path;
+  }
+
+  function historyDisplayImageSrc(path) {
+    const value = String(path || '');
+    return value.replace(/assets\/on-this-day-images\/([^?#]+?)\.(?:png|jpe?g)(?=$|[?#])/i, 'assets/on-this-day-display/$1.jpg');
   }
 
   function collectSources(moment, sourceLabel, sourceHref, related) {

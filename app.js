@@ -1281,10 +1281,11 @@ if (!hasHomepageTargets) {
     const artwork = historyArtworkFor(key);
     if (artwork?.src) {
       const alt = artwork.alt || `${moment.displayDate || 'Today'}: ${moment.title || 'Historical moment'}`;
+      const src = historyDisplayImageSrc(artwork.src);
       return `
         <img
           class="on-this-day__asset"
-          src="${escapeAttribute(pressSiteAssetUrl(artwork.src))}"
+          src="${escapeAttribute(pressSiteAssetUrl(src))}"
           alt="${escapeAttribute(alt)}"
           loading="lazy"
           decoding="async"
@@ -1298,6 +1299,11 @@ if (!hasHomepageTargets) {
   function historyArtworkFor(key) {
     const manifest = window.PRESS_ON_THIS_DAY_ARTWORK || {};
     return manifest[key] || null;
+  }
+
+  function historyDisplayImageSrc(path) {
+    const value = String(path || '');
+    return value.replace(/assets\/on-this-day-images\/([^?#]+?)\.(?:png|jpe?g)(?=$|[?#])/i, 'assets/on-this-day-display/$1.jpg');
   }
 
   function historyDetailUrl(key) {

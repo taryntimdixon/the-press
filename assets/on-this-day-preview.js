@@ -81,6 +81,11 @@
     return path;
   }
 
+  function historyDisplayImageSrc(path) {
+    const value = String(path || '');
+    return value.replace(/assets\/on-this-day-images\/([^?#]+?)\.(?:png|jpe?g)(?=$|[?#])/i, 'assets/on-this-day-display/$1.jpg');
+  }
+
   function escapeHtml(value) {
     return String(value ?? '')
       .replace(/&/g, '&amp;')
@@ -113,7 +118,7 @@
       <article class="history-preview-card" data-preview-card data-search="${escapeHtml(textBlob(moment))}">
         <div class="history-preview-card__media">
           ${hasImage ? `
-            <img src="${escapeHtml(assetUrl(art.src))}" alt="${escapeHtml(art.alt || `${moment.displayDate}: ${moment.title}`)}" loading="lazy" decoding="async">
+            <img src="${escapeHtml(assetUrl(historyDisplayImageSrc(art.src)))}" alt="${escapeHtml(art.alt || `${moment.displayDate}: ${moment.title}`)}" loading="lazy" decoding="async">
           ` : `
             <div class="history-preview-card__queued">
               <span>Image coming soon</span>
