@@ -3472,7 +3472,7 @@ html.press-page-leaving body {
   font-weight:800;
 }
 
-.footer-brand .footer-copy:first-of-type{
+.footer-brand .footer-copy:not(.footer-copy--small):first-of-type{
   display:inline-flex;
   align-items:center;
   width:max-content;
@@ -3486,6 +3486,21 @@ html.press-page-leaving body {
   font-weight:800;
   letter-spacing:.14em;
   line-height:1.1;
+}
+
+.footer-brand .footer-copy.footer-copy--small{
+  display:block;
+  width:auto;
+  margin:.35rem 0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:inherit;
+  font-size:.92rem;
+  font-weight:400;
+  letter-spacing:0;
+  line-height:1.45;
 }
 .footer-brand .masthead-with-logo .masthead-logo{
   width:clamp(8rem, 14vw, 11rem);

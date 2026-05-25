@@ -938,7 +938,6 @@ def footer() -> str:
   <div class="footer-grid footer-grid--archive-only">
     <section class="footer-brand">
       <a class="masthead masthead--footer" href="index.html">{h(SITE['name'])}</a>
-      <p class="footer-copy">{h(SITE['tagline'])}</p>
       <p class="footer-copy footer-copy--small">Source notes, clear dates, and corrections in view.</p>
     </section>
     <section>
