@@ -644,6 +644,334 @@ def recency_ticker_item(story: dict, duplicate: bool = False) -> str:
 """.strip()
 
 
+BELOW_FOLD_REMOTE_DIMS = {
+    "lead-collage.png": (1558, 1010),
+    "new-york-city.png": (1536, 1024),
+    "los-angeles.png": (1536, 1024),
+    "san-francisco.png": (1536, 1024),
+    "boulder.png": (1536, 1024),
+    "austin.png": (1536, 1024),
+    "san-diego.png": (1536, 1024),
+    "atlanta.png": (1536, 1024),
+    "asheville.png": (1537, 1023),
+    "bend.png": (1567, 1004),
+    "santa-fe.png": (1672, 941),
+}
+
+
+def below_fold_remote_src(image: str) -> str:
+    return f"assets/below-fold/remote-work-usa/{image}"
+
+
+def below_fold_image_media(image: str, alt: str, loading: str = "lazy") -> str:
+    src = below_fold_remote_src(image)
+    width, height = BELOW_FOLD_REMOTE_DIMS.get(image, ("", ""))
+    if not (SITE_DIR / src).exists():
+        return f'<span class="below-fold-image-media below-fold-image-media--missing" role="img" aria-label="{h(alt)}"></span>'
+    width_attr = f' width="{width}"' if width else ""
+    height_attr = f' height="{height}"' if height else ""
+    return (
+        f'<span class="below-fold-image-media">'
+        f'<img src="{h(src)}?v={h(asset_version(src))}" alt="{h(alt)}" loading="{h(loading)}" decoding="async"'
+        f'{width_attr}{height_attr} />'
+        f'</span>'
+    )
+
+
+def below_fold_image_figure(image: str, alt: str, caption: str, class_name: str = "", loading: str = "lazy") -> str:
+    classes = "below-fold-image-frame"
+    if class_name:
+        classes = f"{classes} {class_name}"
+    return f"""
+<figure class="{h(classes)}">
+  {below_fold_image_media(image, alt, loading)}
+  <figcaption>{h(caption)}</figcaption>
+</figure>
+""".strip()
+
+
+def below_fold_place_card(place: dict, major: bool = False) -> str:
+    major_class = " below-fold-place-card--major" if major else ""
+    return f"""
+<article class="below-fold-place-card{major_class}" data-below-fold-slot="place" data-below-fold-hook="{h(place["slug"])}">
+  <figure>
+    {below_fold_image_media(place["image"], place["alt"])}
+    <figcaption><span>No. {place["rank"]:02d}</span>{h(place["palette"])}</figcaption>
+  </figure>
+  <div class="below-fold-place-card__body">
+    <p class="below-fold-kicker">{h(place["label"])}</p>
+    <h4>{h(place["city"])}</h4>
+    <p class="below-fold-place-card__state">{h(place["state"])}</p>
+    <p>{h(place["best"])}</p>
+    <p class="below-fold-place-card__tradeoff">{h(place["tradeoff"])}</p>
+  </div>
+</article>
+""".strip()
+
+
+def below_fold_rank_cell(place: dict) -> str:
+    return f"""
+<article class="below-fold-rank-cell" data-below-fold-slot="ranking" data-below-fold-hook="rank-{h(place["slug"])}">
+  <span>{place["rank"]:02d}</span>
+  <h4>{h(place["city"])}</h4>
+  <p>{h(place["short"])}</p>
+</article>
+""".strip()
+
+
+def render_below_the_fold() -> str:
+    places = [
+        {
+            "rank": 1,
+            "city": "New York City",
+            "state": "New York",
+            "slug": "new-york-city",
+            "image": "new-york-city.png",
+            "label": "Ambition desk",
+            "palette": "Graphite, amber, electric blue",
+            "best": "Best for media, publishing, design, finance, late-night cafes, and the feeling that every room is a network.",
+            "tradeoff": "Tradeoff: the cost of staying close to the action is real.",
+            "short": "The maximum-density desk: culture, clients, coffee, transit, and pressure.",
+            "alt": "Remote work desk by a tall New York City window with skyline lights and rain-dark reflections.",
+        },
+        {
+            "rank": 2,
+            "city": "Los Angeles",
+            "state": "California",
+            "slug": "los-angeles",
+            "image": "los-angeles.png",
+            "label": "Creative patio",
+            "palette": "Citrus, palm green, pool blue",
+            "best": "Best for creative workers who want film, music, design, wellness, and outdoor workdays in the same week.",
+            "tradeoff": "Tradeoff: the city rewards people who can build their own map.",
+            "short": "A sprawling creative machine with sunlight, studios, patios, and side quests.",
+            "alt": "Los Angeles outdoor patio workspace with laptop, sketchbook, palms, and sun-washed hills.",
+        },
+        {
+            "rank": 3,
+            "city": "San Francisco",
+            "state": "California",
+            "slug": "san-francisco",
+            "image": "san-francisco.png",
+            "label": "Founder window",
+            "palette": "Fog blue, eucalyptus, bridge red",
+            "best": "Best for tech, AI, product work, startup adjacency, Bay views, and conversations that turn into companies.",
+            "tradeoff": "Tradeoff: the rent asks whether the network is worth it.",
+            "short": "The classic high-signal tech city, sharper now because the stakes are higher.",
+            "alt": "San Francisco laptop workspace by a foggy bay window with bridge forms and cool morning light.",
+        },
+        {
+            "rank": 4,
+            "city": "Boulder",
+            "state": "Colorado",
+            "slug": "boulder",
+            "image": "boulder.png",
+            "label": "Alpine focus",
+            "palette": "Alpine green, granite, sky blue",
+            "best": "Best for mountain-town productivity, outdoor recovery, and a serious remote-work infrastructure.",
+            "tradeoff": "Tradeoff: premium calm still costs premium money.",
+            "short": "A clear-headed mountain desk with trails close enough to change the day.",
+            "alt": "Boulder cafe workspace with laptop, cycling helmet, trail map, and mountain forms outside.",
+        },
+        {
+            "rank": 5,
+            "city": "Austin",
+            "state": "Texas",
+            "slug": "austin",
+            "image": "austin.png",
+            "label": "Social coworking",
+            "palette": "Sunset coral, teal, limestone",
+            "best": "Best for founders, music, warm patios, social coworking, and the no-state-income-tax draw.",
+            "tradeoff": "Tradeoff: growth changed the easy version of the city.",
+            "short": "A warm-weather launchpad where the after-work plan is part of the pitch.",
+            "alt": "Austin patio workspace with laptop, iced coffee, warm street glow, and music-culture shapes.",
+        },
+        {
+            "rank": 6,
+            "city": "San Diego",
+            "state": "California",
+            "slug": "san-diego",
+            "image": "san-diego.png",
+            "label": "Marine morning",
+            "palette": "Ocean cyan, sand, kelp green",
+            "best": "Best for weather, coast, biotech and tech crossover, and a lower-friction California rhythm.",
+            "tradeoff": "Tradeoff: easy living can hide serious expense.",
+            "short": "A clean coastal workday with enough industry nearby to keep it practical.",
+            "alt": "San Diego coastal laptop workspace with coffee, surfboard, and ocean horizon.",
+        },
+        {
+            "rank": 7,
+            "city": "Atlanta",
+            "state": "Georgia",
+            "slug": "atlanta",
+            "image": "atlanta.png",
+            "label": "Connected value",
+            "palette": "Emerald, gold, brick red",
+            "best": "Best for big-city value, airport access, coworking depth, business services, and creative momentum.",
+            "tradeoff": "Tradeoff: sprawl makes neighborhood choice the whole game.",
+            "short": "A practical big-city base with reach, warmth, and room to build.",
+            "alt": "Atlanta coworking lounge with laptop, plants, skyline silhouette, and transit cues.",
+        },
+        {
+            "rank": 8,
+            "city": "Asheville",
+            "state": "North Carolina",
+            "slug": "asheville",
+            "image": "asheville.png",
+            "label": "Blue Ridge reset",
+            "palette": "Misty blue, moss, clay",
+            "best": "Best for an artsy mountain base, slower pacing, good coffee, and an after-work life that feels handmade.",
+            "tradeoff": "Tradeoff: the dream-town premium has arrived.",
+            "short": "A softer creative desk with mountains outside the window.",
+            "alt": "Asheville artsy mountain cafe workspace with laptop, ceramic mug, sketchbook, and Blue Ridge view.",
+        },
+        {
+            "rank": 9,
+            "city": "Bend",
+            "state": "Oregon",
+            "slug": "bend",
+            "image": "bend.png",
+            "label": "Trail calendar",
+            "palette": "Pine, slate, river teal",
+            "best": "Best for the outdoor remote-work fantasy: trail access, quiet mornings, and high-focus routines.",
+            "tradeoff": "Tradeoff: fantasy towns attract fantasy-town prices.",
+            "short": "A disciplined outdoors desk, built around early work and late daylight.",
+            "alt": "Bend Oregon remote work table with laptop, thermos, trail shoes, forest, and volcanic mountain silhouette.",
+        },
+        {
+            "rank": 10,
+            "city": "Santa Fe",
+            "state": "New Mexico",
+            "slug": "santa-fe",
+            "image": "santa-fe.png",
+            "label": "Desert studio",
+            "palette": "Adobe, turquoise, sage",
+            "best": "Best for art, desert light, quiet luxury, serious off-screen time, and work that needs space around it.",
+            "tradeoff": "Tradeoff: slower does not always mean easier.",
+            "short": "A beautiful reset for people whose work improves when the noise drops.",
+            "alt": "Santa Fe adobe courtyard remote-work desk with laptop, ceramic cup, sketchbook, desert plants, and distant mesas.",
+        },
+    ]
+    big_three = places[:3]
+    regional_files = places[3:]
+    issue_month = BUILD_REFERENCE_DT.strftime("%B %Y")
+    lead_caption = "Generated editorial art for the remote-work map: the country as a set of desks, windows, patios, coastlines, mountains, and late trains."
+
+    return f"""
+<section class="below-fold below-fold--remote" aria-labelledby="below-fold-title" data-below-fold-root data-below-fold-version="2" data-below-fold-package="remote-work-usa">
+  <div class="below-fold-folio" aria-label="Below the Fold folio">
+    <span>Remote Work USA</span>
+    <strong>Below The Fold</strong>
+    <span>Pages B1-B10 / {h(issue_month)}</span>
+  </div>
+
+  <header class="below-fold-header">
+    <p class="below-fold-kicker">Ranked travel guide</p>
+    <h2 id="below-fold-title">The Remote Work List</h2>
+    <p>Ten places where the workday has a point of view: cultural gravity, real desk life, strong after-hours payoff, and enough friction to keep the ranking honest.</p>
+  </header>
+
+  <div class="below-fold-quote" aria-label="Below the Fold issue line">
+    <span>Vol. 1 / Section B</span>
+    <p>The coolest remote-work base is not always the cheapest one.</p>
+    <span>Top 10 USA</span>
+  </div>
+
+  <section class="below-fold-spread below-fold-spread--lead" aria-label="Lead remote-work ranking" data-below-fold-slot="lead-feature" data-below-fold-hook="remote-work-lead">
+    <article class="below-fold-lead-copy">
+      <p class="below-fold-kicker">Lead ranking / Work from anywhere</p>
+      <h3>The 10 Coolest Places to Work Remote in the USA</h3>
+      <p class="below-fold-dek">A ranked guide for people who want the laptop life without surrendering the city, coast, mountain, desert, or creative scene that makes the work worth doing.</p>
+      <div class="below-fold-columns">
+        <p>This is not a cheapest-rent list. It is an editorial map of where remote work feels most alive: where a morning call can become a gallery walk, a trail run, a founder coffee, a late train, or a clean hour beside the water.</p>
+        <p>New York, Los Angeles, and San Francisco sit at the top because network gravity still matters. They are expensive, yes. They are also where entire industries keep their informal offices in cafes, studios, rooftops, and borrowed conference rooms.</p>
+        <p>The rest of the list widens the definition of a serious work base: alpine focus in Boulder, social speed in Austin, coastal ease in San Diego, connected value in Atlanta, mountain-art calm in Asheville, outdoor discipline in Bend, and desert quiet in Santa Fe.</p>
+      </div>
+    </article>
+    {below_fold_image_figure("lead-collage.png", "Editorial collage of remote work scenes across the United States.", lead_caption, "below-fold-lead-art", "eager")}
+    <aside class="below-fold-index" data-below-fold-slot="index" data-below-fold-hook="remote-work-index">
+      <h4>Inside The List</h4>
+      <dl>
+        {"".join(f'<div><dt>{place["rank"]:02d}</dt><dd>{h(place["city"])}</dd></div>' for place in places)}
+      </dl>
+    </aside>
+  </section>
+
+  <section class="below-fold-spread below-fold-spread--big-three" aria-labelledby="below-fold-big-three-title" data-below-fold-slot="big-three">
+    <div class="below-fold-section-head">
+      <p class="below-fold-kicker">The big three</p>
+      <h3 id="below-fold-big-three-title">Culture, Capital, Gravity</h3>
+    </div>
+    <div class="below-fold-big-three-grid">
+      {"".join(below_fold_place_card(place, True) for place in big_three)}
+    </div>
+  </section>
+
+  <section class="below-fold-spread below-fold-spread--ranking" aria-labelledby="below-fold-ranking-title" data-below-fold-slot="ranking-grid">
+    <div class="below-fold-section-head">
+      <p class="below-fold-kicker">Full ranking</p>
+      <h3 id="below-fold-ranking-title">The Top 10 Desk Map</h3>
+    </div>
+    <div class="below-fold-ranking-grid">
+      {"".join(below_fold_rank_cell(place) for place in places)}
+    </div>
+  </section>
+
+  <section class="below-fold-spread below-fold-spread--regional" aria-labelledby="below-fold-regional-title" data-below-fold-slot="regional-files">
+    <div class="below-fold-section-head">
+      <p class="below-fold-kicker">Regional files</p>
+      <h3 id="below-fold-regional-title">Seven Ways to Leave the Headquarters</h3>
+    </div>
+    <div class="below-fold-regional-grid">
+      {"".join(below_fold_place_card(place) for place in regional_files)}
+    </div>
+  </section>
+
+  <section class="below-fold-spread below-fold-spread--service" aria-labelledby="below-fold-service-title" data-below-fold-slot="field-notes">
+    <div class="below-fold-section-head">
+      <p class="below-fold-kicker">Field notes</p>
+      <h3 id="below-fold-service-title">How We Read The Workday</h3>
+    </div>
+    <div class="below-fold-service-grid">
+      <article class="below-fold-service-panel below-fold-service-panel--wide">
+        <p class="below-fold-kicker">Tradeoffs</p>
+        <h4>Cool is not the same as easy</h4>
+        <p>NYC, LA, and San Francisco win on professional gravity, cultural velocity, and high-signal rooms. Boulder, Bend, Asheville, and Santa Fe win on air, focus, and the feeling that closing the laptop changes the day.</p>
+      </article>
+      <article class="below-fold-service-panel">
+        <p class="below-fold-kicker">Scorecard</p>
+        <h4>What counted</h4>
+        <ul>
+          <li>Network density</li>
+          <li>Cafe and coworking depth</li>
+          <li>After-work payoff</li>
+          <li>Transit or airport reach</li>
+          <li>Cost pressure</li>
+        </ul>
+      </article>
+      <article class="below-fold-service-panel">
+        <p class="below-fold-kicker">Packing list</p>
+        <h4>Bring the office lightly</h4>
+        <ul>
+          <li>Laptop and compact charger</li>
+          <li>Notebook for bad Wi-Fi moments</li>
+          <li>Headphones that mean it</li>
+          <li>Layer for overcooled rooms</li>
+          <li>One local transit card</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="below-fold-ledger" aria-label="Remote work ledger" data-below-fold-slot="ledger">
+    <p><strong>Method:</strong> Ranked by editorial cool factor, remote-work practicality, industry gravity, desk culture, and after-hours payoff.</p>
+    <p><strong>Caveat:</strong> Expensive cities remain here because culture and network density still change the work.</p>
+    <p><strong>Desk note:</strong> No old article links or archive images are used in this section.</p>
+  </section>
+</section>
+""".strip()
+
+
 def river_item(story: dict) -> str:
     return f"""
 <article class="river-item">
@@ -1145,10 +1473,11 @@ def layout(
     progress = """
 <div class="reading-progress"><div class="reading-progress__bar" data-reading-progress></div></div>
 """.strip() if include_progress else ""
-    scripts = [f'<script src="app.js?v={h(APP_VERSION)}" defer></script>']
+    scripts = []
     if extra_scripts:
         scripts.append(extra_scripts)
-    scripts_html = "\n  ".join(scripts)
+    scripts.append(f'<script src="app.js?v={h(APP_VERSION)}" defer></script>')
+    scripts_html = "\n".join(scripts)
     progress_html = f"  {progress}\n" if progress else ""
     return f"""<!doctype html>
 <html lang="en">
@@ -1283,12 +1612,12 @@ def render_homepage() -> str:
             <div class="on-this-day__facts" data-history-facts></div>
             <a class="on-this-day__more" href="on-this-day-event.html" data-history-detail-link>Read more about this</a>
             <div class="on-this-day__meta">
-              <a href="https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/05/20" data-history-source>Source</a>
-              <span data-history-rollover>Changes at 12:00 AM local time.</span>
+              <span data-history-rollover>Synced to the live clock; changes at 12:00 AM local time.</span>
             </div>
           </article>
         </div>
       </section>
+      {render_below_the_fold()}
     </div>
   </section>
 
@@ -1307,7 +1636,7 @@ def render_homepage() -> str:
         social_image_height="630",
         social_title=SITE["name"],
         extra_scripts="\n".join([
-            f'<script src="assets/on-this-day-moments.js?v={h(asset_version("assets/on-this-day-moments.js"))}" defer></script>',
+            f'<script src="assets/on-this-day-summary.js?v={h(asset_version("assets/on-this-day-summary.js"))}" defer></script>',
             f'<script src="assets/on-this-day-artwork.js?v={h(asset_version("assets/on-this-day-artwork.js"))}" defer></script>',
         ]),
     )
