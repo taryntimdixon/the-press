@@ -910,7 +910,9 @@ function pressSiteAssetUrl(path) {
     searchButton.classList.add('search-trigger');
     searchButton.type = 'button';
     searchButton.setAttribute('data-search-open', '');
-    searchButton.textContent = 'Search';
+    searchButton.setAttribute('aria-label', 'Search');
+    searchButton.setAttribute('title', 'Search');
+    searchButton.innerHTML = '<svg class="search-trigger__icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l5 5"></path></svg><span class="sr-only">Search</span>';
 
     const menuButton = siteHeader.querySelector('[data-menu-toggle]');
 
@@ -1022,7 +1024,6 @@ function pressSiteAssetUrl(path) {
       muted: '#c6d2cd',
     },
   };
-
   function ensureLiveClock() {
     const siteHeader = document.querySelector('[data-site-header]');
     const mastheadRow = siteHeader?.querySelector('.masthead-row');
@@ -1036,14 +1037,13 @@ function pressSiteAssetUrl(path) {
       clock = document.createElement('aside');
       clock.className = 'press-live-clock';
       clock.setAttribute('data-live-clock', '');
-      clock.setAttribute('aria-label', 'Current local date and time');
+      clock.setAttribute('aria-label', 'Current local date');
     }
+    clock.dataset.clockStyle = 'date';
 
-    if (!clock.querySelector('[data-live-clock-date]') || !clock.querySelector('[data-live-clock-time]') || clock.querySelector('.press-live-clock__dial')) {
+    if (!clock.querySelector('[data-live-clock-date]') || clock.querySelector('[data-live-clock-time]') || clock.querySelector('.press-live-clock__separator') || clock.querySelector('.press-live-clock__dial')) {
       clock.innerHTML = `
         <time class="press-live-clock__date" data-live-clock-date></time>
-        <span class="press-live-clock__separator" aria-hidden="true">•</span>
-        <time class="press-live-clock__time" data-live-clock-time></time>
       `;
     }
 
@@ -1055,45 +1055,22 @@ function pressSiteAssetUrl(path) {
     clock.dataset.liveClockReady = 'true';
 
     const dateNode = clock.querySelector('[data-live-clock-date]');
-    const timeNode = clock.querySelector('[data-live-clock-time]');
     const dateFormatter = new Intl.DateTimeFormat(undefined, {
       weekday: 'short',
       month: 'short',
       day: 'numeric',
       year: 'numeric',
     });
-    const timeFormatter = new Intl.DateTimeFormat(undefined, {
-      hour: 'numeric',
-      minute: '2-digit',
-      second: '2-digit',
-    });
     let currentDayKey = '';
-    let tickAnimationTimer = 0;
+    let rolloverTimer = 0;
 
-    const tick = () => {
+    const refreshDate = () => {
       const now = new Date();
       const nextDayKey = localDateKey(now);
 
       if (dateNode) {
         dateNode.dateTime = nextDayKey;
         dateNode.textContent = dateFormatter.format(now);
-      }
-
-      if (timeNode) {
-        const previousTime = timeNode.textContent;
-        const nextTime = timeFormatter.format(now);
-        timeNode.dateTime = now.toISOString();
-        timeNode.textContent = nextTime;
-
-        if (previousTime && previousTime !== nextTime) {
-          clock.classList.remove('is-ticking');
-          void clock.offsetWidth;
-          clock.classList.add('is-ticking');
-          window.clearTimeout(tickAnimationTimer);
-          tickAnimationTimer = window.setTimeout(() => {
-            clock.classList.remove('is-ticking');
-          }, 520);
-        }
       }
 
       if (currentDayKey && currentDayKey !== nextDayKey) {
@@ -1103,10 +1080,21 @@ function pressSiteAssetUrl(path) {
       }
 
       currentDayKey = nextDayKey;
+      return now;
     };
 
-    tick();
-    window.setInterval(tick, 1000);
+    const scheduleDateRollover = () => {
+      window.clearTimeout(rolloverTimer);
+      const now = refreshDate();
+      const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 2);
+      rolloverTimer = window.setTimeout(scheduleDateRollover, Math.max(1000, nextMidnight.getTime() - now.getTime()));
+    };
+
+    scheduleDateRollover();
+    window.addEventListener('focus', refreshDate);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) refreshDate();
+    });
   }
 
   function setupOnThisDayHistory() {

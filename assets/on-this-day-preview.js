@@ -5,6 +5,14 @@
   const search = document.querySelector('[data-history-preview-search]');
   const lane = document.querySelector('[data-history-preview-lane]');
   const era = document.querySelector('[data-history-preview-era]');
+  const resultCount = document.querySelector('[data-history-preview-count]');
+  const backButton = document.querySelector('[data-history-preview-back]');
+  const topButton = document.querySelector('[data-history-preview-top]');
+  const todayButton = document.querySelector('[data-history-preview-today]');
+  const calendarDays = document.querySelector('[data-history-preview-calendar-days]');
+  const calendarMonthLabel = document.querySelector('[data-history-preview-month-label]');
+  const calendarPrev = document.querySelector('[data-history-preview-month-prev]');
+  const calendarNext = document.querySelector('[data-history-preview-month-next]');
 
   if (!grid) return;
 
@@ -44,6 +52,27 @@
     recent: '2000s',
   };
   const eraOrder = ['ancient', 'medieval', 'earlyModern', 'eighteenth', 'nineteenth', 'early1900', 'late1900', 'recent'];
+  const monthLabels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const monthDayCounts = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const entriesByDate = entries.reduce((map, moment) => {
+    if (moment?.date) map.set(moment.date, moment);
+    return map;
+  }, new Map());
+  let visibleMonthIndex = Math.max(0, Math.min(11, Number(todayKey().slice(0, 2)) - 1 || 0));
+  let activeDate = todayKey();
   const eraCounts = entries.reduce((counts, moment) => {
     const key = eraKey(moment.year);
     counts[key] = (counts[key] || 0) + 1;
@@ -62,7 +91,6 @@
       .map((key) => `<option value="${escapeHtml(key)}">${escapeHtml(eraLabels[key])} (${eraCounts[key]})</option>`)
       .join(''));
   }
-
   function eraKey(year) {
     const value = Number(year);
     if (!Number.isFinite(value)) return 'recent';
@@ -108,14 +136,89 @@
     ].join(' ').toLowerCase();
   }
 
+  function dateId(date) {
+    return `history-${String(date || '').replace(/[^a-z0-9]+/gi, '-')}`;
+  }
+
+  function todayKey() {
+    const now = new Date();
+    return `${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  }
+
+  function setActiveDate(date) {
+    activeDate = String(date || '');
+    if (activeDate) {
+      const monthValue = Number(activeDate.slice(0, 2));
+      if (Number.isFinite(monthValue) && monthValue >= 1 && monthValue <= 12) {
+        visibleMonthIndex = monthValue - 1;
+      }
+    }
+    renderCalendar();
+  }
+
+  function jumpToDate(date) {
+    const key = String(date || '');
+    if (!key) return;
+    let target = document.getElementById(dateId(key));
+    if (!target && (search?.value || lane?.value !== 'all' || era?.value !== 'all')) {
+      if (search) search.value = '';
+      if (lane) lane.value = 'all';
+      if (era) era.value = 'all';
+      render();
+      target = document.getElementById(dateId(key));
+    }
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    target.classList.add('is-jump-target');
+    window.setTimeout(() => target.classList.remove('is-jump-target'), 1200);
+    target.focus({ preventScroll: true });
+    setActiveDate(key);
+  }
+
+  function changeCalendarMonth(delta) {
+    visibleMonthIndex = (visibleMonthIndex + delta + 12) % 12;
+    renderCalendar();
+  }
+
+  function renderCalendar() {
+    if (!calendarDays || !calendarMonthLabel) return;
+
+    const monthNumber = String(visibleMonthIndex + 1).padStart(2, '0');
+    const firstWeekday = new Date(2026, visibleMonthIndex, 1).getDay();
+    const daysInMonth = monthDayCounts[visibleMonthIndex];
+    const cells = [];
+
+    calendarMonthLabel.textContent = monthLabels[visibleMonthIndex] || '';
+
+    for (let index = 0; index < firstWeekday; index += 1) {
+      cells.push('<span class="history-preview-calendar__blank" aria-hidden="true"></span>');
+    }
+    for (let day = 1; day <= daysInMonth; day += 1) {
+      const key = `${monthNumber}-${String(day).padStart(2, '0')}`;
+      const moment = entriesByDate.get(key);
+      const isToday = key === todayKey();
+      const isActive = key === activeDate;
+      cells.push(`
+        <button
+          type="button"
+          class="${isToday ? 'is-today' : ''} ${isActive ? 'is-active' : ''}"
+          data-history-preview-calendar-day="${escapeHtml(key)}"
+          ${moment ? `title="${escapeHtml(moment.title || moment.displayDate || key)}"` : 'disabled'}
+          aria-label="${escapeHtml(moment ? `${moment.displayDate || key}: ${moment.title || 'Historical moment'}` : key)}"
+        >${day}</button>
+      `);
+    }
+    calendarDays.innerHTML = cells.join('');
+  }
+
   function cardMarkup(moment) {
     const art = artwork[moment.date];
     const hasImage = Boolean(art?.src);
-    const facts = (moment.coolFacts || []).slice(0, 5);
+    const facts = (moment.coolFacts || []).slice(0, 2);
     const factItems = facts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join('');
 
     return `
-      <article class="history-preview-card" data-preview-card data-search="${escapeHtml(textBlob(moment))}">
+      <article class="history-preview-card" id="${escapeHtml(dateId(moment.date))}" data-preview-card data-date="${escapeHtml(moment.date || '')}" data-search="${escapeHtml(textBlob(moment))}" tabindex="-1">
         <div class="history-preview-card__media">
           ${hasImage ? `
             <img src="${escapeHtml(assetUrl(historyDisplayImageSrc(art.src)))}" alt="${escapeHtml(historyImageAltText(moment, art))}" loading="lazy" decoding="async">
@@ -133,7 +236,7 @@
           </div>
           <h2>${escapeHtml(moment.title || 'Historical moment')}</h2>
           <p class="history-preview-card__dek">${escapeHtml(moment.dek || '')}</p>
-          <p>${escapeHtml(moment.text || '')}</p>
+          <p class="history-preview-card__text">${escapeHtml(moment.text || '')}</p>
           <ul class="history-preview-card__facts">${factItems}</ul>
           <a class="history-preview-card__more" href="on-this-day-event.html?date=${escapeHtml(moment.date || '')}">Read more about this</a>
         </div>
@@ -145,23 +248,60 @@
     const query = (search?.value || '').trim().toLowerCase();
     const laneValue = lane?.value || 'all';
     const eraValue = era?.value || 'all';
-    const html = entries
+    const filtered = entries
       .filter((moment) => {
         if (laneValue !== 'all' && moment.visual !== laneValue) return false;
         if (eraValue !== 'all' && eraKey(moment.year) !== eraValue) return false;
         if (!query) return true;
         return textBlob(moment).includes(query);
-      })
+      });
+    const html = filtered
       .map(cardMarkup)
       .join('');
 
     grid.innerHTML = html || '<p class="history-preview-empty">No history entries matched that filter.</p>';
+    if (resultCount) {
+      const label = filtered.length === entries.length
+        ? `Showing all ${entries.length} entries`
+        : `Showing ${filtered.length} of ${entries.length} entries`;
+      resultCount.textContent = label;
+    }
   }
 
   search?.addEventListener('input', render);
   lane?.addEventListener('change', render);
   era?.addEventListener('change', render);
+  backButton?.addEventListener('click', (event) => {
+    if (window.history.length <= 1) return;
+    event.preventDefault();
+    window.history.back();
+  });
+  todayButton?.addEventListener('click', () => jumpToDate(todayKey()));
+  calendarPrev?.addEventListener('click', () => changeCalendarMonth(-1));
+  calendarNext?.addEventListener('click', () => changeCalendarMonth(1));
+  calendarDays?.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-history-preview-calendar-day]');
+    if (button) jumpToDate(button.getAttribute('data-history-preview-calendar-day'));
+  });
   render();
+  renderCalendar();
+
+  if (topButton) {
+    const updateTopButton = () => {
+      const offset = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      topButton.classList.toggle('is-visible', offset > 700);
+    };
+
+    topButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.documentElement.scrollTo?.({ top: 0, behavior: 'smooth' });
+      document.body.scrollTo?.({ top: 0, behavior: 'smooth' });
+      search?.focus({ preventScroll: true });
+    });
+    window.addEventListener('scroll', updateTopButton, { passive: true });
+    document.body.addEventListener('scroll', updateTopButton, { passive: true });
+    updateTopButton();
+  }
 
   function historyImageAltText(moment = {}, art = {}) {
     const cleanedArtAlt = cleanHistoryImageText(art.alt || art.caption || '');

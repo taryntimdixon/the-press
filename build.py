@@ -914,7 +914,7 @@ def header(current_section: str = "", current_aux: str = "") -> str:
       </nav>
       <div class="header-controls">
         <button aria-label="Toggle dark mode" class="theme-toggle" data-theme-toggle title="Toggle dark/light mode" type="button">☀︎</button>
-        <button class="search-trigger" type="button" data-search-open>Search</button>
+        <button class="search-trigger" type="button" data-search-open aria-label="Search" title="Search"><svg class="search-trigger__icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l5 5"></path></svg><span class="sr-only">Search</span></button>
       </div>
     </div>
     <div class="masthead-ticker" aria-label="Latest headlines">
