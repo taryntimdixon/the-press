@@ -658,6 +658,17 @@ BELOW_FOLD_REMOTE_DIMS = {
     "santa-fe.png": (1672, 941),
 }
 
+BELOW_FOLD_ARTEMIS_DIMS = {
+    "artemis-ii-liftoff.jpg": (2000, 1224),
+    "artemis-ii-crew.jpg": (1920, 1280),
+    "artemis-ii-splashdown.jpg": (2000, 1333),
+    "orion-moon-flyby.jpg": (1920, 1440),
+    "lander-cabin.jpg": (2000, 1333),
+    "lead-lunar-future.png": (1536, 1024),
+    "roadmap-panel.png": (1536, 1024),
+    "moon-base-south-pole.png": (1536, 1024),
+}
+
 
 def below_fold_remote_src(image: str) -> str:
     return f"assets/below-fold/remote-work-usa/{image}"
@@ -676,6 +687,37 @@ def below_fold_image_media(image: str, alt: str, loading: str = "lazy") -> str:
         f'{width_attr}{height_attr} />'
         f'</span>'
     )
+
+
+def below_fold_artemis_src(image: str) -> str:
+    return f"assets/below-fold/artemis-future/{image}"
+
+
+def below_fold_artemis_media(image: str, alt: str, loading: str = "lazy") -> str:
+    src = below_fold_artemis_src(image)
+    width, height = BELOW_FOLD_ARTEMIS_DIMS.get(image, ("", ""))
+    if not (SITE_DIR / src).exists():
+        return f'<span class="below-fold-image-media below-fold-image-media--missing" role="img" aria-label="{h(alt)}"></span>'
+    width_attr = f' width="{width}"' if width else ""
+    height_attr = f' height="{height}"' if height else ""
+    return (
+        f'<span class="below-fold-image-media">'
+        f'<img src="{h(src)}?v={h(asset_version(src))}" alt="{h(alt)}" loading="{h(loading)}" decoding="async"'
+        f'{width_attr}{height_attr} />'
+        f'</span>'
+    )
+
+
+def below_fold_artemis_figure(image: str, alt: str, caption: str, class_name: str = "", loading: str = "lazy") -> str:
+    classes = "below-fold-image-frame"
+    if class_name:
+        classes = f"{classes} {class_name}"
+    return f"""
+<figure class="{h(classes)}">
+  {below_fold_artemis_media(image, alt, loading)}
+  <figcaption>{h(caption)}</figcaption>
+</figure>
+""".strip()
 
 
 def below_fold_image_figure(image: str, alt: str, caption: str, class_name: str = "", loading: str = "lazy") -> str:
@@ -967,6 +1009,166 @@ def render_below_the_fold() -> str:
     <p><strong>Method:</strong> Ranked by editorial cool factor, remote-work practicality, industry gravity, desk culture, and after-hours payoff.</p>
     <p><strong>Caveat:</strong> Expensive cities remain here because culture and network density still change the work.</p>
     <p><strong>Desk note:</strong> No old article links or archive images are used in this section.</p>
+  </section>
+</section>
+""".strip()
+
+
+def render_below_fold_artemis() -> str:
+    issue_month = BUILD_REFERENCE_DT.strftime("%B %Y")
+    crew = [
+        ("Commander", "Reid Wiseman", "A Navy aviator and former International Space Station commander, Wiseman carried the mission's left-seat burden: keep the test flight calm enough to learn from."),
+        ("Pilot", "Victor Glover", "Glover helped turn Orion into a piloted spacecraft, testing handling and crew procedures that future lunar-docking flights will depend on."),
+        ("Mission specialist", "Christina Koch", "Koch brought long-duration station experience to a short but demanding deep-space test, where life support and human factors mattered every hour."),
+        ("Mission specialist", "Jeremy Hansen", "The Canadian Space Agency astronaut made Artemis II an international lunar flight, a preview of how the campaign will be built by partners."),
+    ]
+    roadmap = [
+        ("Artemis II", "April 2026", "A 10-day crewed lunar flyby proved Orion, SLS, life support, manual handling, recovery, and deep-space operations with astronauts aboard."),
+        ("Artemis III", "Target: 2027", "A low-Earth-orbit test is planned to rehearse Orion rendezvous and docking with commercial landers before a surface return."),
+        ("Artemis IV", "Target: early 2028", "NASA is aiming for the first crewed Artemis lunar landing, with astronauts transferring from Orion to a commercial lander."),
+        ("Artemis V", "Target: late 2028", "The next surface mission is expected to begin the base-building cadence: more infrastructure, more surface work, and less one-off spectacle."),
+        ("Mars", "Long horizon", "The lunar campaign remains the proving ground for operations, hardware, logistics, and crew life needed before human Mars missions."),
+    ]
+    hardware = [
+        ("Orion", "The spacecraft carried four astronauts around the Moon and back, sustaining crew in deep space and returning through Earth's atmosphere."),
+        ("SLS", "The rocket sent Orion and crew from Launch Complex 39B, supplying the lift needed for direct lunar trajectories."),
+        ("Commercial landers", "Blue Origin and SpaceX systems are central to the next tests, where docking and transfer become the campaign's hard center."),
+        ("Spacesuits", "Suit checkouts move from equipment lists to mission architecture: mobility, interfaces, communications, and surface work all depend on them."),
+        ("Heat shield", "NASA plans an upgraded Orion heat shield test during Artemis III to support more flexible reentry profiles for later missions."),
+        ("Mission control", "The next phase is choreography: multiple spacecraft, commercial partners, docking timelines, and lunar-surface decision making."),
+    ]
+
+    return f"""
+<section class="below-fold below-fold--artemis" aria-labelledby="below-fold-artemis-title" data-below-fold-root data-below-fold-version="1" data-below-fold-package="artemis-future">
+  <div class="below-fold-folio" aria-label="Artemis Dispatch folio">
+    <span>Artemis Dispatch</span>
+    <strong>Below The Fold</strong>
+    <span>Section C / Moon to Mars / {h(issue_month)}</span>
+  </div>
+
+  <header class="below-fold-header below-fold-artemis-header">
+    <p class="below-fold-kicker">Science desk / Moon campaign</p>
+    <h2 id="below-fold-artemis-title">After the Moonshot, the Moon Work Begins</h2>
+    <p>Artemis II gave NASA its first crewed lunar flyby in more than 50 years. The next campaign is less about spectacle than choreography: docking, landers, suits, heat shields, surface systems, and people trained to make the Moon ordinary enough to work on.</p>
+  </header>
+
+  <div class="below-fold-quote below-fold-artemis-quote" aria-label="Artemis issue line">
+    <span>Vol. 1 / Section C</span>
+    <p>It is one thing to go around the Moon. It is another to build a workday there.</p>
+    <span>Moon to Mars</span>
+  </div>
+
+  <section class="below-fold-spread below-fold-spread--lead below-fold-artemis-lead" aria-label="Lead Artemis feature" data-below-fold-slot="lead-feature" data-below-fold-hook="artemis-lead">
+    <article class="below-fold-lead-copy">
+      <p class="below-fold-kicker">Lead feature / Deep-space return</p>
+      <h3>Artemis II Turned the Moon Back Into a Destination</h3>
+      <p class="below-fold-dek">Reid Wiseman, Victor Glover, Christina Koch, and Jeremy Hansen launched April 1, splashed down April 10, and left NASA with a harder assignment: turn a triumphant flyby into a repeatable lunar system.</p>
+      <div class="below-fold-columns">
+        <p>The numbers were the front-page kind: a launch from Kennedy, a nearly 10-day journey, a Pacific splashdown, and a farthest distance from Earth of 252,756 miles. But the quieter story was the checklist: life support, exercise, manual flying, emergency equipment, crew suits, recovery, and the discipline of operating Orion with people aboard.</p>
+        <p>During the April 6 lunar flyby, the crew photographed the Moon and pushed Orion through the kind of evaluations that make later missions possible. NASA says the data will guide future rendezvous and docking operations with human-rated landers.</p>
+        <p>The next phase moves the drama closer to home before it moves back to the Moon. Artemis III is being shaped as a 2027 Earth-orbit systems test with commercial landers; Artemis IV is the targeted return to the lunar surface; Artemis V begins the argument for permanence.</p>
+      </div>
+    </article>
+    {below_fold_artemis_figure("lead-lunar-future.png", "Editorial collage of Artemis lunar infrastructure, Orion-like spacecraft, mission control, and a distant Mars horizon.", "Generated editorial art: the Artemis campaign as a working system, from lunar orbit to surface infrastructure and Mars planning.", "below-fold-lead-art below-fold-artemis-lead-art", "eager")}
+    <aside class="below-fold-index below-fold-artemis-index" data-below-fold-slot="index" data-below-fold-hook="artemis-index">
+      <h4>Mission Ledger</h4>
+      <dl>
+        <div><dt>Launch</dt><dd>April 1, 2026</dd></div>
+        <div><dt>Return</dt><dd>April 10, 2026</dd></div>
+        <div><dt>Farthest</dt><dd>252,756 miles</dd></div>
+        <div><dt>Flyby</dt><dd>4,067 miles above the Moon</dd></div>
+        <div><dt>Next</dt><dd>Earth-orbit docking test</dd></div>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="below-fold-spread below-fold-artemis-photo-led" aria-labelledby="below-fold-artemis-photo-title" data-below-fold-slot="photo-desk">
+    <div class="below-fold-section-head">
+      <p class="below-fold-kicker">Photo desk</p>
+      <h3 id="below-fold-artemis-photo-title">The Flight in Four Frames</h3>
+    </div>
+    <div class="below-fold-artemis-photo-grid">
+      {below_fold_artemis_figure("artemis-ii-liftoff.jpg", "NASA SLS rocket lifting off with Artemis II from Kennedy Space Center.", "NASA image: Artemis II lifts off from Launch Pad 39B at Kennedy Space Center on April 1, 2026.")}
+      {below_fold_artemis_figure("artemis-ii-crew.jpg", "The Artemis II crew in orange launch and entry suits on the crew access arm.", "NASA image: Victor Glover, Reid Wiseman, Christina Koch, and Jeremy Hansen before the first crewed Artemis lunar flyby.")}
+      {below_fold_artemis_figure("orion-moon-flyby.jpg", "The Moon seen from Orion during Artemis II.", "NASA image: Orion's view during the Artemis II lunar flyby, part of the crew's official image downlink.")}
+      {below_fold_artemis_figure("artemis-ii-splashdown.jpg", "Orion splashing down in the Pacific Ocean under parachutes.", "NASA image: Orion splashes down off California on April 10, 2026, closing the Artemis II test flight.")}
+    </div>
+  </section>
+
+  <section class="below-fold-spread below-fold-artemis-crew" aria-labelledby="below-fold-artemis-crew-title" data-below-fold-slot="crew-room">
+    <div class="below-fold-section-head">
+      <p class="below-fold-kicker">Crew room</p>
+      <h3 id="below-fold-artemis-crew-title">Four Names in the Loop</h3>
+    </div>
+    <div class="below-fold-artemis-crew-grid">
+      {"".join(f'<article class="below-fold-artemis-crew-card" data-below-fold-slot="crew" data-below-fold-hook="{h(name.lower().replace(" ", "-"))}"><p class="below-fold-kicker">{h(role)}</p><h4>{h(name)}</h4><p>{h(copy)}</p></article>' for role, name, copy in crew)}
+    </div>
+  </section>
+
+  <section class="below-fold-spread below-fold-artemis-roadmap" aria-labelledby="below-fold-artemis-roadmap-title" data-below-fold-slot="roadmap">
+    <div class="below-fold-section-head">
+      <p class="below-fold-kicker">Roadmap</p>
+      <h3 id="below-fold-artemis-roadmap-title">From Flyby to Foothold</h3>
+    </div>
+    <div class="below-fold-artemis-roadmap-grid">
+      {below_fold_artemis_figure("roadmap-panel.png", "Editorial technical roadmap panel showing Artemis II, Artemis III, Artemis IV, Artemis V, and Mars as linked mission beats.", "Generated technical art: a non-text mission map of Orion, landers, lunar surface work, and the Mars horizon.", "below-fold-artemis-roadmap-art")}
+      <div class="below-fold-artemis-timeline">
+        {"".join(f'<article class="below-fold-artemis-timeline-card"><span>{h(label)}</span><h4>{h(date)}</h4><p>{h(copy)}</p></article>' for label, date, copy in roadmap)}
+      </div>
+    </div>
+  </section>
+
+  <section class="below-fold-spread below-fold-artemis-hardware" aria-labelledby="below-fold-artemis-hardware-title" data-below-fold-slot="hardware-desk">
+    <div class="below-fold-section-head">
+      <p class="below-fold-kicker">Hardware desk</p>
+      <h3 id="below-fold-artemis-hardware-title">The Machines Still Have to Agree</h3>
+    </div>
+    <div class="below-fold-artemis-hardware-layout">
+      {below_fold_artemis_figure("lander-cabin.jpg", "Blue Origin Blue Moon Mark 2 crew cabin trainer inside NASA Johnson Space Center.", "NASA image: a full-scale Blue Moon Mark 2 crew cabin trainer at Johnson Space Center, used for mission simulations and human-in-the-loop testing.")}
+      <div class="below-fold-dispatch-grid below-fold-artemis-hardware-grid">
+        {"".join(f'<article class="below-fold-brief" data-below-fold-slot="hardware" data-below-fold-hook="{h(title.lower().replace(" ", "-"))}"><p class="below-fold-kicker">System</p><h4>{h(title)}</h4><p>{h(copy)}</p></article>' for title, copy in hardware)}
+      </div>
+    </div>
+  </section>
+
+  <section class="below-fold-spread below-fold-artemis-risk" aria-labelledby="below-fold-artemis-risk-title" data-below-fold-slot="risk-ledger">
+    <div class="below-fold-section-head">
+      <p class="below-fold-kicker">Risk ledger</p>
+      <h3 id="below-fold-artemis-risk-title">The Hard Parts Are the Story</h3>
+    </div>
+    <div class="below-fold-service-grid below-fold-artemis-risk-grid">
+      <article class="below-fold-service-panel below-fold-service-panel--wide">
+        <p class="below-fold-kicker">Surface return</p>
+        <h4>Lander readiness decides the pace</h4>
+        <p>NASA's revised architecture puts a lander-and-docking test before the surface return. That is the plain lesson of Artemis II: proof in deep space is valuable, but every new interface becomes a mission of its own.</p>
+      </article>
+      <article class="below-fold-service-panel">
+        <p class="below-fold-kicker">Watch list</p>
+        <h4>What must work</h4>
+        <ul>
+          <li>Orion-to-lander docking</li>
+          <li>Suit and cabin interfaces</li>
+          <li>Heat shield margins</li>
+          <li>Mission-control handoffs</li>
+          <li>Surface power and comms</li>
+        </ul>
+      </article>
+      <article class="below-fold-service-panel">
+        <p class="below-fold-kicker">Moon base</p>
+        <h4>From sortie to system</h4>
+        <p>The late-2028 surface mission is where NASA expects base-building to begin: less flag-planting, more tools, training, cargo, and the slow accumulation of things that can survive another night.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="below-fold-spread below-fold-artemis-surface" aria-label="Lunar surface future" data-below-fold-slot="surface-future">
+    {below_fold_artemis_figure("moon-base-south-pole.png", "Generated editorial image of a restrained future Artemis lunar south pole worksite with habitats, rover tracks, astronauts, and instruments.", "Generated editorial art: a plausible early lunar worksite, closer to field station than science-fiction city.", "below-fold-artemis-surface-art")}
+  </section>
+
+  <section class="below-fold-ledger" aria-label="Artemis source ledger" data-below-fold-slot="ledger">
+    <p><strong>Source note:</strong> Current facts checked against NASA releases and Artemis mission pages in May 2026.</p>
+    <p><strong>Image note:</strong> Flight, crew, Moon, and trainer photos are NASA public imagery; future surface and roadmap panels are generated editorial art.</p>
+    <p><strong>Desk note:</strong> No old article links, archive images, or old article copy are used in this section.</p>
   </section>
 </section>
 """.strip()
@@ -1618,6 +1820,7 @@ def render_homepage() -> str:
         </div>
       </section>
       {render_below_the_fold()}
+      {render_below_fold_artemis()}
     </div>
   </section>
 
