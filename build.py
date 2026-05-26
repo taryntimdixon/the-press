@@ -1275,7 +1275,7 @@ def render_homepage() -> str:
           <div class="on-this-day__visuals">
             <figure class="on-this-day__art" data-history-art aria-label="Photorealistic editorial scene for today’s historical moment"></figure>
           </div>
-          <article class="on-this-day__story">
+          <article class="on-this-day__story" data-history-card-link tabindex="0">
             <p class="on-this-day__year" data-history-year></p>
             <h3 data-history-title>Checking the archive</h3>
             <p class="on-this-day__dek" data-history-dek></p>
@@ -1292,36 +1292,6 @@ def render_homepage() -> str:
     </div>
   </section>
 
-  <section class="newsletter-block">
-    <div>
-      <p class="eyebrow">Newsletter</p>
-      <h2 class="section-heading">{h(SITE['newsletterTitle'])}</h2>
-      <p class="section-copy">{h(SITE['newsletterCopy'])}</p>
-    </div>
-    <form class="newsletter-form" data-newsletter-form>
-      <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
-      <button type="submit">Join</button>
-      <p class="newsletter-status" data-newsletter-status></p>
-    </form>
-  </section>
-
-  <section class="trust-strip">
-    <article class="trust-card">
-      <p class="eyebrow eyebrow--tiny">Trust</p>
-      <h2>Visible standards</h2>
-      <p>Every feature ships with visible dates, bylines, source notes, and corrections status.</p>
-    </article>
-    <article class="trust-card">
-      <p class="eyebrow eyebrow--tiny">Images</p>
-      <h2>Local image records</h2>
-      <p>Story art is bundled locally, documented in photo records, and no longer disappears on click-through.</p>
-    </article>
-    <article class="trust-card">
-      <p class="eyebrow eyebrow--tiny">Workflow</p>
-      <h2>Static-first newsroom</h2>
-      <p>The homepage, archive, section pages, feeds, and story pages are all driven from one master edition file.</p>
-    </article>
-  </section>
 </main>
 """.strip()
     return layout(
