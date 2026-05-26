@@ -6548,6 +6548,12 @@ body.page-home .press-live-clock{
   padding:.38rem .72rem;
 }
 
+body.page-home .press-live-clock__date{
+  font-family:var(--serif);
+  font-size:clamp(1.42rem,2.4vw,1.8rem);
+  line-height:1;
+}
+
 body.page-home .masthead-ticker{
   grid-area:ticker;
 }
