@@ -13039,6 +13039,18 @@ html[data-theme="dark"] body.page-article .listen-speed-value{
   color:var(--ink);
   font-family:var(--serif);
 }
+body.page-home .home-grid__main > .below-fold{
+  width:100%;
+  margin-inline:0;
+  box-shadow:none;
+}
+body.page-home .home-grid__main > .on-this-day + .below-fold{
+  margin-top:clamp(.75rem,1.25vw,1rem);
+}
+body.page-home .home-grid__main > .below-fold + .below-fold{
+  margin-top:0;
+  border-top:0;
+}
 .below-fold--makers{
   --fold-red:#8c352c;
   --fold-green:#4a6155;
