@@ -677,7 +677,7 @@ BELOW_FOLD_MAKERS_DIMS = {
     "portrait-elon-musk.jpg": (900, 900),
     "portrait-mark-zuckerberg.jpg": (900, 900),
     "portrait-vlad-tenev.jpg": (900, 900),
-    "portrait-brian-schimpf.jpg": (900, 900),
+    "portrait-palmer-luckey.jpg": (900, 900),
     "portrait-jensen-huang.jpg": (900, 900),
     "makers-object-inevitable.jpg": (900, 1125),
     "makers-chip-engine.jpg": (1200, 800),
@@ -927,12 +927,12 @@ def render_below_fold_makers_register() -> str:
             "copy": "Retail finance interfaces and the question of who gets market machinery.",
         },
         {
-            "name": "Brian Schimpf",
-            "hook": "brian-schimpf",
-            "image": "portrait-brian-schimpf.jpg",
-            "alt": "Etched portrait plate of Brian Schimpf with abstract autonomous defense sensor, drone, and command-map marginalia.",
+            "name": "Palmer Luckey",
+            "hook": "palmer-luckey",
+            "image": "portrait-palmer-luckey.jpg",
+            "alt": "Etched portrait plate of Palmer Luckey with abstract VR headset, autonomous defense sensor, drone, and command-map marginalia.",
             "label": "Autonomy",
-            "copy": "Autonomous defense systems and the industrial turn in software.",
+            "copy": "Immersive hardware, autonomous defense systems, and the industrial turn in software.",
         },
         {
             "name": "Jensen Huang",
@@ -971,7 +971,7 @@ def render_below_fold_makers_register() -> str:
       <p class="below-fold-dek">A portrait-led essay package on the people and objects that turned abstract computation into daily life: personal computers, models, markets, rockets, chips, defense systems, feeds, and rooms made of interface.</p>
       <div class="below-fold-columns">
         <p>The technology story is often told as a sequence of launches. The deeper version is quieter: a designer refusing a seam, an engineer chasing a smaller tolerance, a founder turning infrastructure into a public ritual.</p>
-        <p>Steve Jobs, Sam Altman, Elon Musk, Mark Zuckerberg, Vlad Tenev, Brian Schimpf, and Jensen Huang are not here as celebrity decoration. They stand for pressure systems inside contemporary tech: taste, intelligence, physical scale, social life, finance, defense, and chips.</p>
+        <p>Steve Jobs, Sam Altman, Elon Musk, Mark Zuckerberg, Vlad Tenev, Palmer Luckey, and Jensen Huang are not here as celebrity decoration. They stand for pressure systems inside contemporary tech: taste, intelligence, physical scale, social life, finance, defense, and chips.</p>
         <p>Below the portraits are the things that outlast the keynote: the object, the chip, the camera, the interface. In the end, inventions become culture when they disappear into habit.</p>
       </div>
       <a class="below-fold-makers-link" href="technology-musk-altman-openai-court-battle.html">Read the current technology file</a>
