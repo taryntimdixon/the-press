@@ -898,6 +898,17 @@ def render_below_the_fold() -> str:
     regional_files = places[3:]
     issue_month = BUILD_REFERENCE_DT.strftime("%B %Y")
     lead_caption = "Generated editorial art for the remote-work map: the country as a set of desks, windows, patios, coastlines, mountains, and late trains."
+    remote_signal_bars = [
+        ("Network", 90, "People you can meet without scheduling the whole week."),
+        ("Rooms", 82, "Cafes, libraries, lobbies, patios, and desks between home and office."),
+        ("Texture", 76, "Transit, weather, light, walkability, and the route from call to walk."),
+        ("Payoff", 88, "The reason to close the laptop: culture, trail, coast, music, desert."),
+    ]
+    remote_daybook = [
+        ("Morning", "Find the room that works: cafe window, coworking booth, hotel lobby, kitchen table."),
+        ("Midday", "Move once. A train, bike lane, beach path, campus walk, or neighborhood lunch keeps the day alive."),
+        ("Night", "The ranking rewards a clean ending: gallery, pitch room, trailhead, jazz room, sunset, late train."),
+    ]
 
     return f"""
 <section class="below-fold below-fold--remote" aria-labelledby="below-fold-title" data-below-fold-root data-below-fold-version="2" data-below-fold-package="remote-work-usa">
@@ -936,6 +947,31 @@ def render_below_the_fold() -> str:
       <dl>
         {"".join(f'<div><dt>{place["rank"]:02d}</dt><dd>{h(place["city"])}</dd></div>' for place in places)}
       </dl>
+    </aside>
+    <aside class="below-fold-remote-field-notes" aria-label="Remote work ranking field notes" data-below-fold-slot="field-notes" data-below-fold-hook="remote-work-field-index">
+      <div class="below-fold-remote-compass">
+        <p class="below-fold-kicker">Field index</p>
+        <h4>The Cool Factor Is a Workday System</h4>
+        <p>We ranked the whole remote-work day: where the desk is, who is nearby, how the city moves, what happens after the last call, and whether the tradeoff still feels worth it.</p>
+        <div class="below-fold-remote-compass__stamp" aria-hidden="true">
+          <span>Not cheapest</span>
+          <strong>Coolest</strong>
+          <span>Most alive</span>
+        </div>
+      </div>
+      <div class="below-fold-remote-signal-stack" aria-label="Remote-work signal index">
+        {"".join(f'<article class="below-fold-remote-signal" style="--signal:{h(str(score))}%"><div><span>{h(label)}</span><strong>{score}</strong></div><div class="below-fold-remote-signal__bar" aria-hidden="true"><i></i></div><p>{h(copy)}</p></article>' for label, score, copy in remote_signal_bars)}
+      </div>
+      <div class="below-fold-remote-daybook">
+        <div class="below-fold-remote-route-rule" aria-hidden="true">
+          <span>Desk</span>
+          <i></i>
+          <span>City</span>
+          <i></i>
+          <span>After-hours</span>
+        </div>
+        {"".join(f'<article><p>{h(label)}</p><h4>{h(copy)}</h4></article>' for label, copy in remote_daybook)}
+      </div>
     </aside>
   </section>
 
@@ -1037,6 +1073,14 @@ def render_below_fold_artemis() -> str:
         ("Heat shield", "NASA plans an upgraded Orion heat shield test during Artemis III to support more flexible reentry profiles for later missions."),
         ("Mission control", "The next phase is choreography: multiple spacecraft, commercial partners, docking timelines, and lunar-surface decision making."),
     ]
+    mission_notes = [
+        ("7-hour flyby", "The closest lunar encounter was not a single postcard moment. It was a long observation window built for crew judgment, camera work, and real-time science calls."),
+        ("40 minutes quiet", "Orion passed behind the Moon during a planned loss of signal, leaving the crew and spacecraft briefly out of direct contact with Earth."),
+        ("30 targets", "Before the flyby, the science team sent a final list of lunar surface targets, including the Orientale basin near the Moon's far-side edge."),
+        ("7,000+ images", "NASA says the crew captured more than 7,000 frames of lunar terrain, earthset, earthrise, a solar eclipse, and the Milky Way."),
+        ("Impact flashes", "The astronauts looked for meteoroid impact flashes on the Moon's night side, a small reminder that the surface is still being rewritten."),
+        ("Pericynthion", "Closest approach to the Moon has its own wonderful word: pericynthion. For Artemis II, that point came about 4,067 miles above the surface."),
+    ]
 
     return f"""
 <section class="below-fold below-fold--artemis" aria-labelledby="below-fold-artemis-title" data-below-fold-root data-below-fold-version="1" data-below-fold-package="artemis-future">
@@ -1079,6 +1123,18 @@ def render_below_fold_artemis() -> str:
         <div><dt>Flyby</dt><dd>4,067 miles above the Moon</dd></div>
         <div><dt>Next</dt><dd>Earth-orbit docking test</dd></div>
       </dl>
+    </aside>
+    <aside class="below-fold-artemis-science-notes" aria-label="Artemis flyby science notes" data-below-fold-slot="science-notes" data-below-fold-hook="artemis-flyby-facts">
+      <div class="below-fold-artemis-orbit-rule" aria-hidden="true">
+        <span>Earth</span>
+        <i></i>
+        <span>Moon</span>
+        <i></i>
+        <span>Return</span>
+      </div>
+      <div class="below-fold-artemis-note-grid">
+        {"".join(f'<article class="below-fold-artemis-note"><p>{h(label)}</p><h4>{h(copy)}</h4></article>' for label, copy in mission_notes)}
+      </div>
     </aside>
   </section>
 
