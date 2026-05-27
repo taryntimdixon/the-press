@@ -53,6 +53,8 @@ try:
 except OSError:
   APP_VERSION = "1"
 
+PRESS_FONT_HREF = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Space+Mono:wght@400;700&display=swap"
+
 
 def asset_version(rel_path: str) -> str:
     try:
@@ -669,6 +671,20 @@ BELOW_FOLD_ARTEMIS_DIMS = {
     "moon-base-south-pole.png": (1536, 1024),
 }
 
+BELOW_FOLD_MAKERS_DIMS = {
+    "portrait-steve-jobs.jpg": (900, 900),
+    "portrait-sam-altman.jpg": (900, 900),
+    "portrait-elon-musk.jpg": (900, 900),
+    "portrait-mark-zuckerberg.jpg": (900, 900),
+    "portrait-vlad-tenev.jpg": (900, 900),
+    "portrait-brian-schimpf.jpg": (900, 900),
+    "portrait-jensen-huang.jpg": (900, 900),
+    "makers-object-inevitable.jpg": (900, 1125),
+    "makers-chip-engine.jpg": (1200, 800),
+    "makers-machine-see.jpg": (900, 900),
+    "makers-interface-room.jpg": (900, 900),
+}
+
 
 def below_fold_remote_src(image: str) -> str:
     return f"assets/below-fold/remote-work-usa/{image}"
@@ -732,6 +748,37 @@ def below_fold_image_figure(image: str, alt: str, caption: str, class_name: str 
 """.strip()
 
 
+def below_fold_makers_src(image: str) -> str:
+    return f"assets/below-fold/makers-register/{image}"
+
+
+def below_fold_makers_media(image: str, alt: str, loading: str = "lazy") -> str:
+    src = below_fold_makers_src(image)
+    width, height = BELOW_FOLD_MAKERS_DIMS.get(image, ("", ""))
+    if not (SITE_DIR / src).exists():
+        return f'<span class="below-fold-image-media below-fold-image-media--missing" role="img" aria-label="{h(alt)}"></span>'
+    width_attr = f' width="{width}"' if width else ""
+    height_attr = f' height="{height}"' if height else ""
+    return (
+        f'<span class="below-fold-image-media">'
+        f'<img src="{h(src)}?v={h(asset_version(src))}" alt="{h(alt)}" loading="{h(loading)}" decoding="async"'
+        f'{width_attr}{height_attr} />'
+        f'</span>'
+    )
+
+
+def below_fold_makers_figure(image: str, alt: str, caption: str, class_name: str = "", loading: str = "lazy") -> str:
+    classes = "below-fold-image-frame"
+    if class_name:
+        classes = f"{classes} {class_name}"
+    return f"""
+<figure class="{h(classes)}">
+  {below_fold_makers_media(image, alt, loading)}
+  <figcaption>{h(caption)}</figcaption>
+</figure>
+""".strip()
+
+
 def below_fold_place_card(place: dict, major: bool = False) -> str:
     major_class = " below-fold-place-card--major" if major else ""
     return f"""
@@ -758,6 +805,198 @@ def below_fold_rank_cell(place: dict) -> str:
   <h4>{h(place["city"])}</h4>
   <p>{h(place["short"])}</p>
 </article>
+""".strip()
+
+
+def below_fold_maker_card(story: dict, number: int) -> str:
+    return f"""
+<article class="below-fold-makers-card" data-below-fold-slot="supporting-piece" data-below-fold-hook="{h(story["hook"])}">
+  <a class="below-fold-makers-card__media" href="{h(story["href"])}" aria-label="{h(story["title"])}">
+    {below_fold_makers_media(story["image"], story["alt"])}
+  </a>
+  <div class="below-fold-makers-card__body">
+    <p class="below-fold-kicker">{h(story["kicker"])}</p>
+    <div class="below-fold-makers-card__number" aria-hidden="true">{number:02d}</div>
+    <h4><a href="{h(story["href"])}">{h(story["title"])}</a></h4>
+    <p>{h(story["dek"])}</p>
+    <span>{h(story["rubric"])}</span>
+  </div>
+</article>
+""".strip()
+
+
+def below_fold_maker_portrait(person: dict, number: int) -> str:
+    return f"""
+<article class="below-fold-makers-person" data-below-fold-slot="portrait-card" data-below-fold-hook="{h(person["hook"])}">
+  <figure>
+    {below_fold_makers_media(person["image"], person["alt"])}
+    <figcaption><span>{number:02d}</span>{h(person["name"])}</figcaption>
+  </figure>
+  <div>
+    <p class="below-fold-kicker">{h(person["label"])}</p>
+    <h4>{h(person["name"])}</h4>
+    <p>{h(person["copy"])}</p>
+  </div>
+</article>
+""".strip()
+
+
+def render_below_fold_makers_register() -> str:
+    issue_month = BUILD_REFERENCE_DT.strftime("%B %Y")
+    supporting = [
+        {
+            "title": "The Object Had to Feel Inevitable",
+            "hook": "object-inevitable",
+            "href": "section-technology.html",
+            "image": "makers-object-inevitable.jpg",
+            "alt": "Charcoal product-design study of abstract handheld technology forms, drafting tools, and paper margins.",
+            "kicker": "Design file / Product grammar",
+            "dek": "The best devices do not announce how hard they were to make. They arrive with the strange authority of something that could not have been otherwise.",
+            "rubric": "Objects, ergonomics, taste",
+        },
+        {
+            "title": "The Chip Became a Cultural Engine",
+            "hook": "chip-cultural-engine",
+            "href": "section-technology.html",
+            "image": "makers-chip-engine.jpg",
+            "alt": "Engraved semiconductor plate with wafer forms, circuit traces, and laboratory archive paper.",
+            "kicker": "Hardware file / Silicon",
+            "dek": "The tiny machine under the interface now shapes cities, markets, weapons, studios, classrooms, and the weather of daily attention.",
+            "rubric": "Compute, supply chains, power",
+        },
+        {
+            "title": "The Machine Learned to See",
+            "hook": "machine-learned-to-see",
+            "href": "section-ai.html",
+            "image": "makers-machine-see.jpg",
+            "alt": "Archival illustration of a camera lens, optical diagrams, sensor fragments, and an anatomical eye study.",
+            "kicker": "AI file / Perception",
+            "dek": "Computer vision turned images into infrastructure. The camera stopped being only a witness and became a way of organizing the world.",
+            "rubric": "Vision, sensors, judgment",
+        },
+        {
+            "title": "The Interface Became a Room We Live In",
+            "hook": "interface-room",
+            "href": "section-money.html",
+            "image": "makers-interface-room.jpg",
+            "alt": "Old-print illustration of translucent interface panes merging with room plans, desk light, and screen geometry.",
+            "kicker": "Interface file / Everyday systems",
+            "dek": "From feeds to trading apps to AI chat, software design no longer frames the task. It frames the room around the person doing it.",
+            "rubric": "Screens, finance, social space",
+        },
+    ]
+    makers = [
+        {
+            "name": "Steve Jobs",
+            "hook": "steve-jobs",
+            "image": "portrait-steve-jobs.jpg",
+            "alt": "Etched portrait plate of Steve Jobs with abstract personal-computing and product-design marginalia.",
+            "label": "Design canon",
+            "copy": "Personal computing as object, theater, typography, and taste.",
+        },
+        {
+            "name": "Sam Altman",
+            "hook": "sam-altman",
+            "image": "portrait-sam-altman.jpg",
+            "alt": "Etched portrait plate of Sam Altman with abstract AI systems, chips, and interface marginalia.",
+            "label": "AI systems",
+            "copy": "Machine intelligence and the public argument over who gets to shape it.",
+        },
+        {
+            "name": "Elon Musk",
+            "hook": "elon-musk",
+            "image": "portrait-elon-musk.jpg",
+            "alt": "Etched portrait plate of Elon Musk with abstract rocket, electric motor, battery, and orbital engineering marginalia.",
+            "label": "Physical scale",
+            "copy": "Electric transport, orbital infrastructure, networks, and spectacle as product form.",
+        },
+        {
+            "name": "Mark Zuckerberg",
+            "hook": "mark-zuckerberg",
+            "image": "portrait-mark-zuckerberg.jpg",
+            "alt": "Etched portrait plate of Mark Zuckerberg with abstract social graph, interface grid, and immersive room-plan marginalia.",
+            "label": "Social systems",
+            "copy": "Social graphs, immersive interfaces, and the long afterlife of the feed.",
+        },
+        {
+            "name": "Vlad Tenev",
+            "hook": "vlad-tenev",
+            "image": "portrait-vlad-tenev.jpg",
+            "alt": "Etched portrait plate of Vlad Tenev with abstract retail finance, chart, phone interface, and market-ledger marginalia.",
+            "label": "Market access",
+            "copy": "Retail finance interfaces and the question of who gets market machinery.",
+        },
+        {
+            "name": "Brian Schimpf",
+            "hook": "brian-schimpf",
+            "image": "portrait-brian-schimpf.jpg",
+            "alt": "Etched portrait plate of Brian Schimpf with abstract autonomous defense sensor, drone, and command-map marginalia.",
+            "label": "Autonomy",
+            "copy": "Autonomous defense systems and the industrial turn in software.",
+        },
+        {
+            "name": "Jensen Huang",
+            "hook": "jensen-huang",
+            "image": "portrait-jensen-huang.jpg",
+            "alt": "Etched portrait plate of Jensen Huang with abstract chip wafer, GPU package, circuit, and datacenter marginalia.",
+            "label": "Accelerated compute",
+            "copy": "Chips, datacenters, and the hardware behind the AI century.",
+        },
+    ]
+
+    return f"""
+<section class="below-fold below-fold--makers" aria-labelledby="below-fold-makers-title" data-below-fold-root data-below-fold-version="1" data-below-fold-package="makers-register">
+  <div class="below-fold-folio below-fold-makers-folio" aria-label="Makers Register folio">
+    <span>Technology Review</span>
+    <strong>Below The Fold</strong>
+    <span>Section M / Makers / {h(issue_month)}</span>
+  </div>
+
+  <header class="below-fold-header below-fold-makers-header">
+    <p class="below-fold-kicker">The deep-reading file</p>
+    <h2 id="below-fold-makers-title">The Makers' Register</h2>
+    <p>A literary register of the inventors, designers, systems builders, and executive imaginations that made modern technology feel less like machinery and more like weather.</p>
+  </header>
+
+  <div class="below-fold-quote below-fold-makers-quote" aria-label="Makers Register issue line">
+    <span>Vol. 1 / Section M</span>
+    <p>The future rarely arrives as a thunderclap. More often, someone redraws the ordinary until it becomes unavoidable.</p>
+    <span>Inventors / Designers / CEOs</span>
+  </div>
+
+  <section class="below-fold-spread below-fold-makers-lead" aria-label="Lead Makers Register feature" data-below-fold-slot="lead-feature" data-below-fold-hook="makers-register-lead">
+    <article class="below-fold-lead-copy below-fold-makers-lead-copy">
+      <p class="below-fold-kicker">Lead feature / Public makers</p>
+      <h3>The Makers Who Designed the Present</h3>
+      <p class="below-fold-dek">A portrait-led essay package on the people and objects that turned abstract computation into daily life: personal computers, models, markets, rockets, chips, defense systems, feeds, and rooms made of interface.</p>
+      <div class="below-fold-columns">
+        <p>The technology story is often told as a sequence of launches. The deeper version is quieter: a designer refusing a seam, an engineer chasing a smaller tolerance, a founder turning infrastructure into a public ritual.</p>
+        <p>Steve Jobs, Sam Altman, Elon Musk, Mark Zuckerberg, Vlad Tenev, Brian Schimpf, and Jensen Huang are not here as celebrity decoration. They stand for pressure systems inside contemporary tech: taste, intelligence, physical scale, social life, finance, defense, and chips.</p>
+        <p>Below the portraits are the things that outlast the keynote: the object, the chip, the camera, the interface. In the end, inventions become culture when they disappear into habit.</p>
+      </div>
+      <a class="below-fold-makers-link" href="technology-musk-altman-openai-court-battle.html">Read the current technology file</a>
+    </article>
+    <div class="below-fold-makers-portraits" aria-label="Makers Register portrait ledger" data-below-fold-slot="portrait-ledger" data-below-fold-hook="makers-portrait-ledger">
+      {"".join(below_fold_maker_portrait(person, index) for index, person in enumerate(makers, 1))}
+    </div>
+  </section>
+
+  <section class="below-fold-spread below-fold-makers-support" aria-labelledby="below-fold-makers-support-title" data-below-fold-slot="supporting-grid">
+    <div class="below-fold-section-head">
+      <p class="below-fold-kicker">Four files on the made world</p>
+      <h3 id="below-fold-makers-support-title">Objects After the Breakthrough</h3>
+    </div>
+    <div class="below-fold-makers-grid">
+      {"".join(below_fold_maker_card(story, index) for index, story in enumerate(supporting, 1))}
+    </div>
+  </section>
+
+  <section class="below-fold-ledger below-fold-makers-ledger" aria-label="Makers Register ledger" data-below-fold-slot="ledger">
+    <p><strong>Editorial note:</strong> This is a standalone display package; links route to existing live Press pages until full long-form files are commissioned.</p>
+    <p><strong>Image note:</strong> Portraits and invention plates are generated editorial illustrations, not documentary photographs.</p>
+    <p><strong>Design note:</strong> The module favors print rhythm, fixed image dimensions, and quiet transitions to avoid homepage layout shift.</p>
+  </section>
+</section>
 """.strip()
 
 
@@ -1656,6 +1895,9 @@ def page_head(
   <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/icon-192.png" sizes="192x192" type="image/png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="{h(PRESS_FONT_HREF)}" data-press-fonts />
   <link rel="stylesheet" href="styles.css?v={h(STYLESHEET_VERSION)}" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="alternate" type="application/rss+xml" title="{h(SITE['name'])} feed" href="feed.xml" />{extras_html}
@@ -1834,8 +2076,7 @@ def render_homepage() -> str:
     </div>
   </section>
 
-  <section class="home-grid">
-    <div class="home-grid__main">
+  <section class="home-recency-section" data-home-recency-section>
       <div class="section-heading-row">
         <h2 class="section-heading">More from the edition</h2>
         <a class="section-link" href="archive.html">Open archive</a>
@@ -1850,6 +2091,12 @@ def render_homepage() -> str:
           </div>
         </div>
       </div>
+  </section>
+
+  {render_below_fold_makers_register()}
+
+  <section class="home-grid">
+    <div class="home-grid__main">
       <section class="on-this-day" id="on-this-day" data-on-this-day aria-live="polite">
         <div class="on-this-day__header">
           <div class="on-this-day__intro">
