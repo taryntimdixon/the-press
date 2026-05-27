@@ -2093,8 +2093,6 @@ def render_homepage() -> str:
       </div>
   </section>
 
-  {render_below_fold_makers_register()}
-
   <section class="home-grid">
     <div class="home-grid__main">
       <section class="on-this-day" id="on-this-day" data-on-this-day aria-live="polite">
@@ -2122,6 +2120,7 @@ def render_homepage() -> str:
           </article>
         </div>
       </section>
+      {render_below_fold_makers_register()}
       {render_below_the_fold()}
       {render_below_fold_artemis()}
     </div>
