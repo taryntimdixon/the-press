@@ -850,9 +850,9 @@ def render_below_fold_makers_register() -> str:
             "href": "section-technology.html",
             "image": "makers-object-inevitable.jpg",
             "alt": "Charcoal product-design study of abstract handheld technology forms, drafting tools, and paper margins.",
-            "kicker": "Design file / Product grammar",
-            "dek": "The best devices do not announce how hard they were to make. They arrive with the strange authority of something that could not have been otherwise.",
-            "rubric": "Objects, ergonomics, taste",
+            "kicker": "Design file / Jan. 9, 2007",
+            "dek": "Apple introduced iPhone as three devices at once: iPod, phone, and internet communicator. The 3.5-inch multi-touch screen made the keyboard software, not hardware; the App Store followed in 2008.",
+            "rubric": "Multi-touch, App Store, glass",
         },
         {
             "title": "The Chip Became a Cultural Engine",
@@ -860,9 +860,9 @@ def render_below_fold_makers_register() -> str:
             "href": "section-technology.html",
             "image": "makers-chip-engine.jpg",
             "alt": "Engraved semiconductor plate with wafer forms, circuit traces, and laboratory archive paper.",
-            "kicker": "Hardware file / Silicon",
-            "dek": "The tiny machine under the interface now shapes cities, markets, weapons, studios, classrooms, and the weather of daily attention.",
-            "rubric": "Compute, supply chains, power",
+            "kicker": "Hardware file / 1999 to CUDA",
+            "dek": "Nvidia popularized the GPU in 1999; CUDA arrived in 2006 and let developers use graphics chips for general parallel computing. AI now depends on HBM, packaging, power, and datacenter cooling.",
+            "rubric": "GPU, CUDA, HBM, megawatts",
         },
         {
             "title": "The Machine Learned to See",
@@ -870,9 +870,9 @@ def render_below_fold_makers_register() -> str:
             "href": "section-ai.html",
             "image": "makers-machine-see.jpg",
             "alt": "Archival illustration of a camera lens, optical diagrams, sensor fragments, and an anatomical eye study.",
-            "kicker": "AI file / Perception",
-            "dek": "Computer vision turned images into infrastructure. The camera stopped being only a witness and became a way of organizing the world.",
-            "rubric": "Vision, sensors, judgment",
+            "kicker": "AI file / ImageNet, 2009",
+            "dek": "ImageNet organized more than 14 million labeled images; AlexNet's 2012 win made deep learning the field's new default. The same pattern now reads pallets, tumors, traffic lanes, and faces.",
+            "rubric": "Datasets, labels, cameras",
         },
         {
             "title": "The Interface Became a Room We Live In",
@@ -880,9 +880,9 @@ def render_below_fold_makers_register() -> str:
             "href": "section-money.html",
             "image": "makers-interface-room.jpg",
             "alt": "Old-print illustration of translucent interface panes merging with room plans, desk light, and screen geometry.",
-            "kicker": "Interface file / Everyday systems",
-            "dek": "From feeds to trading apps to AI chat, software design no longer frames the task. It frames the room around the person doing it.",
-            "rubric": "Screens, finance, social space",
+            "kicker": "Interface file / 2006-2022",
+            "dek": "Facebook's News Feed launched in 2006, the App Store in 2008, Robinhood's app in 2015, ChatGPT in 2022. The interface became the market, the media channel, and the command line.",
+            "rubric": "Feeds, apps, prompts",
         },
     ]
     makers = [
@@ -891,56 +891,56 @@ def render_below_fold_makers_register() -> str:
             "hook": "steve-jobs",
             "image": "portrait-steve-jobs.jpg",
             "alt": "Etched portrait plate of Steve Jobs with abstract personal-computing and product-design marginalia.",
-            "label": "Design canon",
-            "copy": "Personal computing as object, theater, typography, and taste.",
+            "label": "1976 / 1984 / 2007",
+            "copy": "Co-founded Apple in 1976, introduced Macintosh in 1984, then unveiled iPhone in 2007 as iPod, phone, and web device in one object.",
         },
         {
             "name": "Sam Altman",
             "hook": "sam-altman",
             "image": "portrait-sam-altman.jpg",
             "alt": "Etched portrait plate of Sam Altman with abstract AI systems, chips, and interface marginalia.",
-            "label": "AI systems",
-            "copy": "Machine intelligence and the public argument over who gets to shape it.",
+            "label": "YC to OpenAI",
+            "copy": "Led Y Combinator after 2014, became OpenAI CEO in 2019, and oversaw ChatGPT's Nov. 30, 2022 public launch.",
         },
         {
             "name": "Elon Musk",
             "hook": "elon-musk",
             "image": "portrait-elon-musk.jpg",
             "alt": "Etched portrait plate of Elon Musk with abstract rocket, electric motor, battery, and orbital engineering marginalia.",
-            "label": "Physical scale",
-            "copy": "Electric transport, orbital infrastructure, networks, and spectacle as product form.",
+            "label": "EVs, reuse, orbit",
+            "copy": "Tesla scaled the Model S and Model 3; SpaceX landed Falcon 9 in 2015 and reused a booster in 2017; Starlink made orbit a broadband network.",
         },
         {
             "name": "Mark Zuckerberg",
             "hook": "mark-zuckerberg",
             "image": "portrait-mark-zuckerberg.jpg",
             "alt": "Etched portrait plate of Mark Zuckerberg with abstract social graph, interface grid, and immersive room-plan marginalia.",
-            "label": "Social systems",
-            "copy": "Social graphs, immersive interfaces, and the long afterlife of the feed.",
+            "label": "3.56B daily people",
+            "copy": "Facebook began at Harvard in 2004; News Feed arrived in 2006; Meta reported 3.56 billion family daily active people for March 2026.",
         },
         {
             "name": "Vlad Tenev",
             "hook": "vlad-tenev",
             "image": "portrait-vlad-tenev.jpg",
             "alt": "Etched portrait plate of Vlad Tenev with abstract retail finance, chart, phone interface, and market-ledger marginalia.",
-            "label": "Market access",
-            "copy": "Retail finance interfaces and the question of who gets market machinery.",
+            "label": "27.6M funded customers",
+            "copy": "Robinhood made zero-commission brokerage phone-native; by April 2026 it reported 27.6 million funded customers.",
         },
         {
             "name": "Palmer Luckey",
             "hook": "palmer-luckey",
             "image": "portrait-palmer-luckey.jpg",
             "alt": "Etched portrait plate of Palmer Luckey with abstract VR headset, autonomous defense sensor, drone, and command-map marginalia.",
-            "label": "Autonomy",
-            "copy": "Immersive hardware, autonomous defense systems, and the industrial turn in software.",
+            "label": "Oculus to Lattice",
+            "copy": "Oculus sold to Facebook in 2014; Luckey co-founded Anduril in 2017, where Lattice links sensors, drones, and command software.",
         },
         {
             "name": "Jensen Huang",
             "hook": "jensen-huang",
             "image": "portrait-jensen-huang.jpg",
             "alt": "Etched portrait plate of Jensen Huang with abstract chip wafer, GPU package, circuit, and datacenter marginalia.",
-            "label": "Accelerated compute",
-            "copy": "Chips, datacenters, and the hardware behind the AI century.",
+            "label": "1993 / 1999 / 2006",
+            "copy": "Co-founded Nvidia in 1993; the company popularized the GPU in 1999 and launched CUDA in 2006, turning graphics silicon into AI infrastructure.",
         },
     ]
 
@@ -955,12 +955,12 @@ def render_below_fold_makers_register() -> str:
   <header class="below-fold-header below-fold-makers-header">
     <p class="below-fold-kicker">The deep-reading file</p>
     <h2 id="below-fold-makers-title">The Makers' Register</h2>
-    <p>A literary register of the inventors, designers, systems builders, and executive imaginations that made modern technology feel less like machinery and more like weather.</p>
+    <p>A register of builders tied to specific turning points: Apple in 1976, Facebook in 2004, iPhone in 2007, Falcon 9 reuse in 2017, ChatGPT in 2022, and the GPU supply chain underneath it all.</p>
   </header>
 
   <div class="below-fold-quote below-fold-makers-quote" aria-label="Makers Register issue line">
     <span>Vol. 1 / Section M</span>
-    <p>The future rarely arrives as a thunderclap. More often, someone redraws the ordinary until it becomes unavoidable.</p>
+    <p>The real invention is the standard everyone else has to design around.</p>
     <span>Inventors / Designers / CEOs</span>
   </div>
 
@@ -968,11 +968,11 @@ def render_below_fold_makers_register() -> str:
     <article class="below-fold-lead-copy below-fold-makers-lead-copy">
       <p class="below-fold-kicker">Lead feature / Public makers</p>
       <h3>The Makers Who Designed the Present</h3>
-      <p class="below-fold-dek">A portrait-led essay package on the people and objects that turned abstract computation into daily life: personal computers, models, markets, rockets, chips, defense systems, feeds, and rooms made of interface.</p>
+      <p class="below-fold-dek">Seven profiles in compressed form: personal computing, social media, EVs, orbital launch, retail brokerage, defense autonomy, and accelerated computing.</p>
       <div class="below-fold-columns">
-        <p>The technology story is often told as a sequence of launches. The deeper version is quieter: a designer refusing a seam, an engineer chasing a smaller tolerance, a founder turning infrastructure into a public ritual.</p>
-        <p>Steve Jobs, Sam Altman, Elon Musk, Mark Zuckerberg, Vlad Tenev, Palmer Luckey, and Jensen Huang are not here as celebrity decoration. They stand for pressure systems inside contemporary tech: taste, intelligence, physical scale, social life, finance, defense, and chips.</p>
-        <p>Below the portraits are the things that outlast the keynote: the object, the chip, the camera, the interface. In the end, inventions become culture when they disappear into habit.</p>
+        <p>Apple's 2007 iPhone launch put phone, music player, and web browser behind one multi-touch screen. Facebook's 2006 News Feed changed the homepage from a profile directory into a ranking machine. Nvidia's CUDA gave developers a way to turn GPUs into general-purpose compute.</p>
+        <p>SpaceX proved orbital-class booster reuse with Falcon 9, while Tesla made over-the-air updates part of the car business. Robinhood pushed commission-free trading onto phones and reported 27.6 million funded customers in April 2026.</p>
+        <p>OpenAI's ChatGPT launch on Nov. 30, 2022 made natural language a mass interface. Anduril's Lattice shows how defense is absorbing the same software pattern: sensors, models, drones, and operators joined into one command layer.</p>
       </div>
       <a class="below-fold-makers-link" href="technology-musk-altman-openai-court-battle.html">Read the current technology file</a>
     </article>
@@ -992,9 +992,9 @@ def render_below_fold_makers_register() -> str:
   </section>
 
   <section class="below-fold-ledger below-fold-makers-ledger" aria-label="Makers Register ledger" data-below-fold-slot="ledger">
-    <p><strong>Editorial note:</strong> This is a standalone display package; links route to existing live Press pages until full long-form files are commissioned.</p>
-    <p><strong>Image note:</strong> Portraits and invention plates are generated editorial illustrations, not documentary photographs.</p>
-    <p><strong>Design note:</strong> The module favors print rhythm, fixed image dimensions, and quiet transitions to avoid homepage layout shift.</p>
+    <p><strong>Fact line:</strong> 1976 Apple, 1993 Nvidia, 2004 Facebook, 2007 iPhone, 2014 Oculus deal, 2017 Falcon 9 reflight, 2022 ChatGPT.</p>
+    <p><strong>Scale line:</strong> Meta reported 3.56 billion family daily active people in March 2026; Robinhood reported 27.6 million funded customers in April 2026.</p>
+    <p><strong>Why it matters:</strong> Each slot marks a standard: graphical desktop, social feed, reusable launch, prompt box, retail trading app, defense OS, GPU compute.</p>
   </section>
 </section>
 """.strip()
@@ -1008,11 +1008,11 @@ def render_below_the_fold() -> str:
             "state": "New York",
             "slug": "new-york-city",
             "image": "new-york-city.png",
-            "label": "Ambition desk",
+            "label": "Capital desk",
             "palette": "Graphite, amber, electric blue",
-            "best": "Best for media, publishing, design, finance, late-night cafes, and the feeling that every room is a network.",
-            "tradeoff": "Tradeoff: the cost of staying close to the action is real.",
-            "short": "The maximum-density desk: culture, clients, coffee, transit, and pressure.",
+            "best": "The subway has 472 stations; finance, publishing, fashion, galleries, universities, and ad agencies sit on the same nervous map.",
+            "tradeoff": "Tradeoff: rent is brutal, but weak ties can become a lunch, panel, pitch, or gallery opening before nightfall.",
+            "short": "472 subway stations plus finance, media, museums, and client density.",
             "alt": "Remote work desk by a tall New York City window with skyline lights and rain-dark reflections.",
         },
         {
@@ -1021,11 +1021,11 @@ def render_below_the_fold() -> str:
             "state": "California",
             "slug": "los-angeles",
             "image": "los-angeles.png",
-            "label": "Creative patio",
+            "label": "Studio city",
             "palette": "Citrus, palm green, pool blue",
-            "best": "Best for creative workers who want film, music, design, wellness, and outdoor workdays in the same week.",
-            "tradeoff": "Tradeoff: the city rewards people who can build their own map.",
-            "short": "A sprawling creative machine with sunlight, studios, patios, and side quests.",
+            "best": "Film studios, streaming offices, music labels, fashion houses, game teams, UCLA, USC, and LAX make LA a creative labor market with global reach.",
+            "tradeoff": "Tradeoff: the 88-city county rewards people who can build a schedule around traffic, geography, and heat.",
+            "short": "Studios, labels, UCLA, USC, LAX: creative work at county scale.",
             "alt": "Los Angeles outdoor patio workspace with laptop, sketchbook, palms, and sun-washed hills.",
         },
         {
@@ -1034,11 +1034,11 @@ def render_below_the_fold() -> str:
             "state": "California",
             "slug": "san-francisco",
             "image": "san-francisco.png",
-            "label": "Founder window",
+            "label": "Model city",
             "palette": "Fog blue, eucalyptus, bridge red",
-            "best": "Best for tech, AI, product work, startup adjacency, Bay views, and conversations that turn into companies.",
-            "tradeoff": "Tradeoff: the rent asks whether the network is worth it.",
-            "short": "The classic high-signal tech city, sharper now because the stakes are higher.",
+            "best": "OpenAI, Anthropic, Databricks, Scale AI, Salesforce, and GitHub make San Francisco the densest conversational map for AI and software work.",
+            "tradeoff": "Tradeoff: the rent asks whether proximity to the frontier is worth paying for twice.",
+            "short": "OpenAI, Anthropic, Databricks, Scale AI, Salesforce, GitHub.",
             "alt": "San Francisco laptop workspace by a foggy bay window with bridge forms and cool morning light.",
         },
         {
@@ -1047,11 +1047,11 @@ def render_below_the_fold() -> str:
             "state": "Colorado",
             "slug": "boulder",
             "image": "boulder.png",
-            "label": "Alpine focus",
+            "label": "Lab air",
             "palette": "Alpine green, granite, sky blue",
-            "best": "Best for mountain-town productivity, outdoor recovery, and a serious remote-work infrastructure.",
-            "tradeoff": "Tradeoff: premium calm still costs premium money.",
-            "short": "A clear-headed mountain desk with trails close enough to change the day.",
+            "best": "CU Boulder sits beside NIST, NOAA labs, NCAR, aerospace contractors, and the Flatirons: science-town density with trailhead access.",
+            "tradeoff": "Tradeoff: the mountain calm is no secret; housing prices learned the same thing.",
+            "short": "CU Boulder, NIST, NOAA, NCAR, aerospace, Flatirons.",
             "alt": "Boulder cafe workspace with laptop, cycling helmet, trail map, and mountain forms outside.",
         },
         {
@@ -1060,11 +1060,11 @@ def render_below_the_fold() -> str:
             "state": "Texas",
             "slug": "austin",
             "image": "austin.png",
-            "label": "Social coworking",
+            "label": "Capital rhythm",
             "palette": "Sunset coral, teal, limestone",
-            "best": "Best for founders, music, warm patios, social coworking, and the no-state-income-tax draw.",
-            "tradeoff": "Tradeoff: growth changed the easy version of the city.",
-            "short": "A warm-weather launchpad where the after-work plan is part of the pitch.",
+            "best": "Austin combines the Texas Capitol, UT Austin, SXSW, Tesla's Gigafactory nearby, live-music infrastructure, and no state income tax.",
+            "tradeoff": "Tradeoff: heat, sprawl, and growth have complicated the old easy version of the city.",
+            "short": "State Capitol, UT Austin, SXSW, Tesla, live music, no income tax.",
             "alt": "Austin patio workspace with laptop, iced coffee, warm street glow, and music-culture shapes.",
         },
         {
@@ -1073,11 +1073,11 @@ def render_below_the_fold() -> str:
             "state": "California",
             "slug": "san-diego",
             "image": "san-diego.png",
-            "label": "Marine morning",
+            "label": "Blue lab",
             "palette": "Ocean cyan, sand, kelp green",
-            "best": "Best for weather, coast, biotech and tech crossover, and a lower-friction California rhythm.",
-            "tradeoff": "Tradeoff: easy living can hide serious expense.",
-            "short": "A clean coastal workday with enough industry nearby to keep it practical.",
+            "best": "UC San Diego, the Salk Institute, Qualcomm, biotech clusters, and one of America's largest naval concentrations sit beside the coast.",
+            "tradeoff": "Tradeoff: paradise still invoices like coastal California.",
+            "short": "UCSD, Salk, Qualcomm, biotech, Navy, and surf-light discipline.",
             "alt": "San Diego coastal laptop workspace with coffee, surfboard, and ocean horizon.",
         },
         {
@@ -1086,11 +1086,11 @@ def render_below_the_fold() -> str:
             "state": "Georgia",
             "slug": "atlanta",
             "image": "atlanta.png",
-            "label": "Connected value",
+            "label": "Airport city",
             "palette": "Emerald, gold, brick red",
-            "best": "Best for big-city value, airport access, coworking depth, business services, and creative momentum.",
-            "tradeoff": "Tradeoff: sprawl makes neighborhood choice the whole game.",
-            "short": "A practical big-city base with reach, warmth, and room to build.",
+            "best": "Hartsfield-Jackson has long ranked among the world's busiest airports; Atlanta adds Georgia Tech, CDC, film production, logistics, and corporate HQs.",
+            "tradeoff": "Tradeoff: sprawl makes neighborhood choice the difference between fluid and exhausting.",
+            "short": "Hartsfield-Jackson, Georgia Tech, CDC, film, logistics, HQs.",
             "alt": "Atlanta coworking lounge with laptop, plants, skyline silhouette, and transit cues.",
         },
         {
@@ -1099,11 +1099,11 @@ def render_below_the_fold() -> str:
             "state": "North Carolina",
             "slug": "asheville",
             "image": "asheville.png",
-            "label": "Blue Ridge reset",
+            "label": "Arts ridge",
             "palette": "Misty blue, moss, clay",
-            "best": "Best for an artsy mountain base, slower pacing, good coffee, and an after-work life that feels handmade.",
-            "tradeoff": "Tradeoff: the dream-town premium has arrived.",
-            "short": "A softer creative desk with mountains outside the window.",
+            "best": "The River Arts District gathers hundreds of working artists along the French Broad River; the Blue Ridge Parkway keeps the city tied to the mountains.",
+            "tradeoff": "Tradeoff: the small-market dream now carries big-market housing pressure.",
+            "short": "River Arts District, French Broad River, Blue Ridge Parkway.",
             "alt": "Asheville artsy mountain cafe workspace with laptop, ceramic mug, sketchbook, and Blue Ridge view.",
         },
         {
@@ -1112,11 +1112,11 @@ def render_below_the_fold() -> str:
             "state": "Oregon",
             "slug": "bend",
             "image": "bend.png",
-            "label": "Trail calendar",
+            "label": "Trail economy",
             "palette": "Pine, slate, river teal",
-            "best": "Best for the outdoor remote-work fantasy: trail access, quiet mornings, and high-focus routines.",
-            "tradeoff": "Tradeoff: fantasy towns attract fantasy-town prices.",
-            "short": "A disciplined outdoors desk, built around early work and late daylight.",
+            "best": "The Deschutes River runs through town, Mount Bachelor anchors ski season, and the outdoor economy turns trail access into scheduling logic.",
+            "tradeoff": "Tradeoff: amenity towns attract amenity-town prices and real infrastructure strain.",
+            "short": "Deschutes River, Mount Bachelor, trails, resort pressure, focus.",
             "alt": "Bend Oregon remote work table with laptop, thermos, trail shoes, forest, and volcanic mountain silhouette.",
         },
         {
@@ -1125,47 +1125,47 @@ def render_below_the_fold() -> str:
             "state": "New Mexico",
             "slug": "santa-fe",
             "image": "santa-fe.png",
-            "label": "Desert studio",
+            "label": "Museum quiet",
             "palette": "Adobe, turquoise, sage",
-            "best": "Best for art, desert light, quiet luxury, serious off-screen time, and work that needs space around it.",
-            "tradeoff": "Tradeoff: slower does not always mean easier.",
-            "short": "A beautiful reset for people whose work improves when the noise drops.",
+            "best": "Founded in 1610, Santa Fe is the nation's oldest capital city; galleries, museums, adobe streets, and Los Alamos nearby give quiet real intellectual weight.",
+            "tradeoff": "Tradeoff: quiet can become isolation if your work needs daily collision.",
+            "short": "Founded 1610, oldest U.S. capital, galleries, Los Alamos nearby.",
             "alt": "Santa Fe adobe courtyard remote-work desk with laptop, ceramic cup, sketchbook, desert plants, and distant mesas.",
         },
     ]
     big_three = places[:3]
     regional_files = places[3:]
     issue_month = BUILD_REFERENCE_DT.strftime("%B %Y")
-    lead_caption = "Generated editorial art for the remote-work map: the country as a set of desks, windows, patios, coastlines, mountains, and late trains."
+    lead_caption = "The list favors places where actual infrastructure changes the day: transit stations, airports, campuses, labs, studios, rivers, mountains, and museums."
     remote_signal_bars = [
-        ("Network", 90, "People you can meet without scheduling the whole week."),
-        ("Rooms", 82, "Cafes, libraries, lobbies, patios, and desks between home and office."),
-        ("Texture", 76, "Transit, weather, light, walkability, and the route from call to walk."),
-        ("Payoff", 88, "The reason to close the laptop: culture, trail, coast, music, desert."),
+        ("Network", 90, "Measured by named anchors: OpenAI in SF, studios in LA, Wall Street in NYC, CDC and Georgia Tech in Atlanta."),
+        ("Rooms", 82, "Third places with actual utility: libraries, campuses, hotel lobbies, coworking rooms, museum cafes, and transit-adjacent desks."),
+        ("Texture", 76, "Friction counted too: LA traffic, Austin heat, SF rent, Atlanta sprawl, Bend housing strain, Santa Fe isolation."),
+        ("Payoff", 88, "The off-clock facts: Broadway, beaches, SXSW, Blue Ridge trails, Mount Bachelor, Canyon Road, and museum density."),
     ]
     remote_daybook = [
-        ("Morning", "Find the room that works: cafe window, coworking booth, hotel lobby, kitchen table."),
-        ("Midday", "Move once. A train, bike lane, beach path, campus walk, or neighborhood lunch keeps the day alive."),
-        ("Night", "The ranking rewards a clean ending: gallery, pitch room, trailhead, jazz room, sunset, late train."),
+        ("Morning", "Best first-call cities have infrastructure: NYC subway access, SF tech corridors, Atlanta airport reach, campus towns with public rooms."),
+        ("Midday", "A useful remote base lets you move without blowing the day: subway, beach path, bike lane, campus walk, trailhead, or river route."),
+        ("Night", "The strongest places have a second shift: Broadway, Hollywood, live music, galleries, trails, ski runs, desert museums, or founder rooms."),
     ]
 
     return f"""
 <section class="below-fold below-fold--remote" aria-labelledby="below-fold-title" data-below-fold-root data-below-fold-version="2" data-below-fold-package="remote-work-usa">
   <div class="below-fold-folio" aria-label="Below the Fold folio">
     <span>Remote Work USA</span>
-    <strong>Below The Fold</strong>
+    <strong>The Remote Work List</strong>
     <span>Pages B1-B10 / {h(issue_month)}</span>
   </div>
 
   <header class="below-fold-header">
     <p class="below-fold-kicker">Ranked travel guide</p>
     <h2 id="below-fold-title">The Remote Work List</h2>
-    <p>Ten places where the workday has a point of view: cultural gravity, real desk life, strong after-hours payoff, and enough friction to keep the ranking honest.</p>
+    <p>Ten places ranked by factual work infrastructure: transit, airports, universities, labs, studios, employers, cultural institutions, outdoor access, and real tradeoffs.</p>
   </header>
 
   <div class="below-fold-quote" aria-label="Below the Fold issue line">
     <span>Vol. 1 / Section B</span>
-    <p>The coolest remote-work base is not always the cheapest one.</p>
+    <p>Cheap rent is not the list. Useful infrastructure is the list.</p>
     <span>Top 10 USA</span>
   </div>
 
@@ -1173,11 +1173,11 @@ def render_below_the_fold() -> str:
     <article class="below-fold-lead-copy">
       <p class="below-fold-kicker">Lead ranking / Work from anywhere</p>
       <h3>The 10 Coolest Places to Work Remote in the USA</h3>
-      <p class="below-fold-dek">A ranked guide for people who want the laptop life without surrendering the city, coast, mountain, desert, or creative scene that makes the work worth doing.</p>
+      <p class="below-fold-dek">A ranked guide built from hard anchors: 472 subway stations, LAX and ATL, OpenAI and Anthropic, CU Boulder labs, UCSD biotech, River Arts studios, Mount Bachelor, Santa Fe's 1610 civic history.</p>
       <div class="below-fold-columns">
-        <p>This is not a cheapest-rent list. It is an editorial map of where remote work feels most alive: where a morning call can become a gallery walk, a trail run, a founder coffee, a late train, or a clean hour beside the water.</p>
-        <p>New York, Los Angeles, and San Francisco sit at the top because network gravity still matters. They are expensive, yes. They are also where entire industries keep their informal offices in cafes, studios, rooftops, and borrowed conference rooms.</p>
-        <p>The rest of the list widens the definition of a serious work base: alpine focus in Boulder, social speed in Austin, coastal ease in San Diego, connected value in Atlanta, mountain-art calm in Asheville, outdoor discipline in Bend, and desert quiet in Santa Fe.</p>
+        <p>New York wins on compression: 472 subway stations, finance, media, museums, publishing, fashion, and clients inside one transit field. Los Angeles wins on creative supply chain: studios, streaming, music, design, UCLA, USC, and LAX.</p>
+        <p>San Francisco remains the AI room because OpenAI, Anthropic, Databricks, Scale AI, GitHub, and Salesforce keep the software conversation physically close. Boulder is not just pretty; CU Boulder, NIST, NOAA, NCAR, and aerospace contractors make it a lab town.</p>
+        <p>The rest are specific: Austin has the Capitol, UT, SXSW, Tesla, and no state income tax; San Diego has UCSD, Salk, Qualcomm, biotech, and Navy depth; Atlanta has ATL, Georgia Tech, CDC, film, and logistics; Asheville, Bend, and Santa Fe carry art, trails, and history.</p>
       </div>
     </article>
     {below_fold_image_figure("lead-collage.png", "Editorial collage of remote work scenes across the United States.", lead_caption, "below-fold-lead-art", "eager")}
@@ -1191,7 +1191,7 @@ def render_below_the_fold() -> str:
       <div class="below-fold-remote-compass">
         <p class="below-fold-kicker">Field index</p>
         <h4>The Cool Factor Is a Workday System</h4>
-        <p>We ranked the whole remote-work day: where the desk is, who is nearby, how the city moves, what happens after the last call, and whether the tradeoff still feels worth it.</p>
+        <p>We ranked named infrastructure: universities, airports, transit, employers, labs, cultural districts, parks, trails, and the cost or sprawl that comes with them.</p>
         <div class="below-fold-remote-compass__stamp" aria-hidden="true">
           <span>Not cheapest</span>
           <strong>Coolest</strong>
@@ -1253,37 +1253,37 @@ def render_below_the_fold() -> str:
       <article class="below-fold-service-panel below-fold-service-panel--wide">
         <p class="below-fold-kicker">Tradeoffs</p>
         <h4>Cool is not the same as easy</h4>
-        <p>NYC, LA, and San Francisco win on professional gravity, cultural velocity, and high-signal rooms. Boulder, Bend, Asheville, and Santa Fe win on air, focus, and the feeling that closing the laptop changes the day.</p>
+        <p>NYC, LA, and San Francisco rank high because their institutions are dense, not because they are easy. Boulder, Bend, Asheville, and Santa Fe rank because labs, trails, art districts, and museums change what closing the laptop means.</p>
       </article>
       <article class="below-fold-service-panel">
         <p class="below-fold-kicker">Scorecard</p>
         <h4>What counted</h4>
         <ul>
           <li>Network density</li>
-          <li>Cafe and coworking depth</li>
-          <li>After-work payoff</li>
+          <li>Named institutions</li>
           <li>Transit or airport reach</li>
-          <li>Cost pressure</li>
+          <li>Universities and labs</li>
+          <li>Cost and sprawl pressure</li>
         </ul>
       </article>
       <article class="below-fold-service-panel">
         <p class="below-fold-kicker">Packing list</p>
-        <h4>Bring the office lightly</h4>
+        <h4>What changes by city</h4>
         <ul>
-          <li>Laptop and compact charger</li>
-          <li>Notebook for bad Wi-Fi moments</li>
-          <li>Headphones that mean it</li>
-          <li>Layer for overcooled rooms</li>
-          <li>One local transit card</li>
+          <li>MetroCard logic in NYC</li>
+          <li>Car math in LA</li>
+          <li>Rent math in SF</li>
+          <li>Heat math in Austin</li>
+          <li>Trail timing in Bend</li>
         </ul>
       </article>
     </div>
   </section>
 
   <section class="below-fold-ledger" aria-label="Remote work ledger" data-below-fold-slot="ledger">
-    <p><strong>Method:</strong> Ranked by editorial cool factor, remote-work practicality, industry gravity, desk culture, and after-hours payoff.</p>
-    <p><strong>Caveat:</strong> Expensive cities remain here because culture and network density still change the work.</p>
-    <p><strong>Desk note:</strong> No old article links or archive images are used in this section.</p>
+    <p><strong>Method:</strong> Ranked by named anchors: transit stations, airports, universities, labs, employers, cultural districts, trails, and usable third places.</p>
+    <p><strong>Caveat:</strong> NYC, LA, and SF stay expensive for a reason; the list penalizes cost, but does not pretend cost erases access.</p>
+    <p><strong>Desk note:</strong> A city rises when the facts around the laptop are better than the room the laptop sits in.</p>
   </section>
 </section>
 """.strip()
@@ -1292,52 +1292,52 @@ def render_below_the_fold() -> str:
 def render_below_fold_artemis() -> str:
     issue_month = BUILD_REFERENCE_DT.strftime("%B %Y")
     crew = [
-        ("Commander", "Reid Wiseman", "A Navy aviator and former International Space Station commander, Wiseman carried the mission's left-seat burden: keep the test flight calm enough to learn from."),
-        ("Pilot", "Victor Glover", "Glover helped turn Orion into a piloted spacecraft, testing handling and crew procedures that future lunar-docking flights will depend on."),
-        ("Mission specialist", "Christina Koch", "Koch brought long-duration station experience to a short but demanding deep-space test, where life support and human factors mattered every hour."),
-        ("Mission specialist", "Jeremy Hansen", "The Canadian Space Agency astronaut made Artemis II an international lunar flight, a preview of how the campaign will be built by partners."),
+        ("Commander", "Reid Wiseman", "Wiseman flew 165 days on the ISS in 2014 and later served as NASA chief astronaut; Artemis II put that station discipline into deep-space command."),
+        ("Pilot", "Victor Glover", "Glover piloted SpaceX Crew-1 in 2020 and spent 167 days on the ISS; on Artemis II he helped prove Orion as a crewed cockpit."),
+        ("Mission specialist", "Christina Koch", "Koch logged 328 continuous days in space and joined the first all-woman spacewalk; Artemis II turned that endurance into lunar test work."),
+        ("Mission specialist", "Jeremy Hansen", "Hansen, a Canadian Space Agency astronaut and former fighter pilot, became the first Canadian assigned to a lunar mission."),
     ]
     roadmap = [
-        ("Artemis II", "April 2026", "A 10-day crewed lunar flyby proved Orion, SLS, life support, manual handling, recovery, and deep-space operations with astronauts aboard."),
-        ("Artemis III", "Target: 2027", "A low-Earth-orbit test is planned to rehearse Orion rendezvous and docking with commercial landers before a surface return."),
-        ("Artemis IV", "Target: early 2028", "NASA is aiming for the first crewed Artemis lunar landing, with astronauts transferring from Orion to a commercial lander."),
-        ("Artemis V", "Target: late 2028", "The next surface mission is expected to begin the base-building cadence: more infrastructure, more surface work, and less one-off spectacle."),
-        ("Mars", "Long horizon", "The lunar campaign remains the proving ground for operations, hardware, logistics, and crew life needed before human Mars missions."),
+        ("Artemis II", "April 2026", "NASA lists the mission at 9 days, 1 hour, 32 minutes: launch, lunar flyby, reentry, splashdown, and recovery with four people aboard."),
+        ("Artemis III", "Target: 2027", "NASA describes the next test as low-Earth-orbit rendezvous and docking between Orion and commercial spacecraft from SpaceX and/or Blue Origin."),
+        ("Artemis IV", "Target: early 2028", "NASA's surface-return plan sends two crew members near the lunar South Pole for about a week before rejoining Orion in lunar orbit."),
+        ("Artemis V", "Target: late 2028", "The next surface campaign is about logistics: cargo, mobility, tools, power, communications, and enough repetition to learn from failure."),
+        ("Mars", "Long horizon", "Moon-to-Mars planning uses the lunar campaign to test autonomy, repair, radiation discipline, crew health, and supply chains far from Earth."),
     ]
     hardware = [
-        ("Orion", "The spacecraft carried four astronauts around the Moon and back, sustaining crew in deep space and returning through Earth's atmosphere."),
-        ("SLS", "The rocket sent Orion and crew from Launch Complex 39B, supplying the lift needed for direct lunar trajectories."),
-        ("Commercial landers", "Blue Origin and SpaceX systems are central to the next tests, where docking and transfer become the campaign's hard center."),
-        ("Spacesuits", "Suit checkouts move from equipment lists to mission architecture: mobility, interfaces, communications, and surface work all depend on them."),
-        ("Heat shield", "NASA plans an upgraded Orion heat shield test during Artemis III to support more flexible reentry profiles for later missions."),
-        ("Mission control", "The next phase is choreography: multiple spacecraft, commercial partners, docking timelines, and lunar-surface decision making."),
+        ("Orion", "Orion is the crew cabin, service module, launch-abort stack, heat shield, parachute system, and ocean-return spacecraft in one architecture."),
+        ("SLS", "NASA's Space Launch System stands 322 feet tall in Block 1 form and produces about 8.8 million pounds of thrust at liftoff."),
+        ("Commercial landers", "SpaceX Starship HLS and Blue Origin Blue Moon Mark 2 make Artemis a docking-and-transfer problem, not only a launch problem."),
+        ("Spacesuits", "A lunar suit must handle dust, cooling, oxygen, communications, gloves, boots, tool use, and hours of walking in one-sixth gravity."),
+        ("Heat shield", "Orion's Avcoat heat shield is roughly 16.5 feet across, the part that has to survive lunar-return reentry before parachutes matter."),
+        ("Mission control", "Artemis now ties Johnson, Kennedy, recovery forces, ESA's service module, commercial landers, suit teams, and science planners into one clock."),
     ]
     mission_notes = [
-        ("7-hour flyby", "The closest lunar encounter was not a single postcard moment. It was a long observation window built for crew judgment, camera work, and real-time science calls."),
-        ("40 minutes quiet", "Orion passed behind the Moon during a planned loss of signal, leaving the crew and spacecraft briefly out of direct contact with Earth."),
-        ("30 targets", "Before the flyby, the science team sent a final list of lunar surface targets, including the Orientale basin near the Moon's far-side edge."),
-        ("7,000+ images", "NASA says the crew captured more than 7,000 frames of lunar terrain, earthset, earthrise, a solar eclipse, and the Milky Way."),
-        ("Impact flashes", "The astronauts looked for meteoroid impact flashes on the Moon's night side, a small reminder that the surface is still being rewritten."),
-        ("Pericynthion", "Closest approach to the Moon has its own wonderful word: pericynthion. For Artemis II, that point came about 4,067 miles above the surface."),
+        ("9d 1h 32m", "NASA lists Artemis II at 9 days, 1 hour, 32 minutes, with four astronauts testing Orion, SLS, recovery, and deep-space operations."),
+        ("40 minutes quiet", "Behind the Moon, radio silence forced Orion and crew outside direct Earth contact; autonomy becomes practical during loss of signal."),
+        ("30 targets", "Before the flyby, science teams refined a lunar target list, including Orientale basin features near the Moon's far-side edge."),
+        ("7,000+ images", "The crew returned thousands of frames: terrain, earthrise, earthset, eclipse geometry, stars, and the procedural evidence future crews will study."),
+        ("Impact flashes", "The astronauts watched for meteoroid flashes on the Moon's night side, proof that even a dead-looking world is still being edited."),
+        ("Pericynthion", "Closest approach has a beautiful technical name: pericynthion. Artemis II's came about 4,067 miles above the lunar surface."),
     ]
 
     return f"""
 <section class="below-fold below-fold--artemis" aria-labelledby="below-fold-artemis-title" data-below-fold-root data-below-fold-version="1" data-below-fold-package="artemis-future">
   <div class="below-fold-folio" aria-label="Artemis Dispatch folio">
     <span>Artemis Dispatch</span>
-    <strong>Below The Fold</strong>
+    <strong>Moon Work</strong>
     <span>Section C / Moon to Mars / {h(issue_month)}</span>
   </div>
 
   <header class="below-fold-header below-fold-artemis-header">
     <p class="below-fold-kicker">Science desk / Moon campaign</p>
     <h2 id="below-fold-artemis-title">After the Moonshot, the Moon Work Begins</h2>
-    <p>Artemis II gave NASA its first crewed lunar flyby in more than 50 years. The next campaign is less about spectacle than choreography: docking, landers, suits, heat shields, surface systems, and people trained to make the Moon ordinary enough to work on.</p>
+    <p>Artemis II was NASA's first crewed lunar flyby in more than 50 years: 9 days, 1 hour, 32 minutes; four astronauts; SLS from Pad 39B; Orion around the Moon; Pacific recovery on April 10, 2026.</p>
   </header>
 
   <div class="below-fold-quote below-fold-artemis-quote" aria-label="Artemis issue line">
     <span>Vol. 1 / Section C</span>
-    <p>It is one thing to go around the Moon. It is another to build a workday there.</p>
+    <p>The hard part after the flyby is docking Orion to commercial landers, then surviving a week of useful work near the lunar South Pole.</p>
     <span>Moon to Mars</span>
   </div>
 
@@ -1345,14 +1345,14 @@ def render_below_fold_artemis() -> str:
     <article class="below-fold-lead-copy">
       <p class="below-fold-kicker">Lead feature / Deep-space return</p>
       <h3>Artemis II Turned the Moon Back Into a Destination</h3>
-      <p class="below-fold-dek">Reid Wiseman, Victor Glover, Christina Koch, and Jeremy Hansen launched April 1, splashed down April 10, and left NASA with a harder assignment: turn a triumphant flyby into a repeatable lunar system.</p>
+      <p class="below-fold-dek">Reid Wiseman, Victor Glover, Christina Koch, and Jeremy Hansen launched April 1, splashed down April 10, and pushed Orion through the first crewed Artemis lunar test.</p>
       <div class="below-fold-columns">
-        <p>The numbers were the front-page kind: a launch from Kennedy, a nearly 10-day journey, a Pacific splashdown, and a farthest distance from Earth of 252,756 miles. But the quieter story was the checklist: life support, exercise, manual flying, emergency equipment, crew suits, recovery, and the discipline of operating Orion with people aboard.</p>
-        <p>During the April 6 lunar flyby, the crew photographed the Moon and pushed Orion through the kind of evaluations that make later missions possible. NASA says the data will guide future rendezvous and docking operations with human-rated landers.</p>
-        <p>The next phase moves the drama closer to home before it moves back to the Moon. Artemis III is being shaped as a 2027 Earth-orbit systems test with commercial landers; Artemis IV is the targeted return to the lunar surface; Artemis V begins the argument for permanence.</p>
+        <p>The mission ledger is concrete: launch from Kennedy Space Center, 9 days 1 hour 32 minutes in flight, farthest distance 252,756 miles from Earth, closest lunar approach about 4,067 miles above the surface, splashdown in the Pacific.</p>
+        <p>The operational tests were the real article: Orion displays, manual handling, life support, exercise, emergency gear, suit behavior, communications loss behind the Moon, reentry heating, parachutes, and Navy-led recovery.</p>
+        <p>Artemis III is not a landing; NASA says it will test rendezvous and docking in low Earth orbit with commercial spacecraft. Artemis IV is the planned surface return, sending two astronauts near the South Pole for roughly a week.</p>
       </div>
     </article>
-    {below_fold_artemis_figure("lead-lunar-future.png", "Editorial collage of Artemis lunar infrastructure, Orion-like spacecraft, mission control, and a distant Mars horizon.", "Generated editorial art: the Artemis campaign as a working system, from lunar orbit to surface infrastructure and Mars planning.", "below-fold-lead-art below-fold-artemis-lead-art", "eager")}
+    {below_fold_artemis_figure("lead-lunar-future.png", "Editorial collage of Artemis lunar infrastructure, Orion-like spacecraft, mission control, and a distant Mars horizon.", "Artemis is now a systems problem: Orion, SLS, commercial landers, suits, power, comms, recovery ships, and Mars planning.", "below-fold-lead-art below-fold-artemis-lead-art", "eager")}
     <aside class="below-fold-index below-fold-artemis-index" data-below-fold-slot="index" data-below-fold-hook="artemis-index">
       <h4>Mission Ledger</h4>
       <dl>
@@ -1383,10 +1383,10 @@ def render_below_fold_artemis() -> str:
       <h3 id="below-fold-artemis-photo-title">The Flight in Four Frames</h3>
     </div>
     <div class="below-fold-artemis-photo-grid">
-      {below_fold_artemis_figure("artemis-ii-liftoff.jpg", "NASA SLS rocket lifting off with Artemis II from Kennedy Space Center.", "NASA image: Artemis II lifts off from Launch Pad 39B at Kennedy Space Center on April 1, 2026.")}
-      {below_fold_artemis_figure("artemis-ii-crew.jpg", "The Artemis II crew in orange launch and entry suits on the crew access arm.", "NASA image: Victor Glover, Reid Wiseman, Christina Koch, and Jeremy Hansen before the first crewed Artemis lunar flyby.")}
-      {below_fold_artemis_figure("orion-moon-flyby.jpg", "The Moon seen from Orion during Artemis II.", "NASA image: Orion's view during the Artemis II lunar flyby, part of the crew's official image downlink.")}
-      {below_fold_artemis_figure("artemis-ii-splashdown.jpg", "Orion splashing down in the Pacific Ocean under parachutes.", "NASA image: Orion splashes down off California on April 10, 2026, closing the Artemis II test flight.")}
+      {below_fold_artemis_figure("artemis-ii-liftoff.jpg", "NASA SLS rocket lifting off with Artemis II from Kennedy Space Center.", "SLS lifted off from Pad 39B on April 1, 2026, the first crewed lunar launch from Kennedy in more than half a century.")}
+      {below_fold_artemis_figure("artemis-ii-crew.jpg", "The Artemis II crew in orange launch and entry suits on the crew access arm.", "The crew combined ISS time, Navy test-pilot discipline, CSA partnership, and long-duration human-spaceflight experience.")}
+      {below_fold_artemis_figure("orion-moon-flyby.jpg", "The Moon seen from Orion during Artemis II.", "Orion's lunar pass supplied navigation, camera, comms-loss, and crew-observation data for later docking and landing missions.")}
+      {below_fold_artemis_figure("artemis-ii-splashdown.jpg", "Orion splashing down in the Pacific Ocean under parachutes.", "Splashdown on April 10 tested the full return chain: heat shield, parachutes, beaconing, recovery crews, and post-flight inspection.")}
     </div>
   </section>
 
@@ -1406,7 +1406,7 @@ def render_below_fold_artemis() -> str:
       <h3 id="below-fold-artemis-roadmap-title">From Flyby to Foothold</h3>
     </div>
     <div class="below-fold-artemis-roadmap-grid">
-      {below_fold_artemis_figure("roadmap-panel.png", "Editorial technical roadmap panel showing Artemis II, Artemis III, Artemis IV, Artemis V, and Mars as linked mission beats.", "Generated technical art: a non-text mission map of Orion, landers, lunar surface work, and the Mars horizon.", "below-fold-artemis-roadmap-art")}
+      {below_fold_artemis_figure("roadmap-panel.png", "Editorial technical roadmap panel showing Artemis II, Artemis III, Artemis IV, Artemis V, and Mars as linked mission beats.", "The roadmap moves from flyby to low-Earth-orbit docking, then to a South Pole landing and the logistics needed for Mars.", "below-fold-artemis-roadmap-art")}
       <div class="below-fold-artemis-timeline">
         {"".join(f'<article class="below-fold-artemis-timeline-card"><span>{h(label)}</span><h4>{h(date)}</h4><p>{h(copy)}</p></article>' for label, date, copy in roadmap)}
       </div>
@@ -1419,7 +1419,7 @@ def render_below_fold_artemis() -> str:
       <h3 id="below-fold-artemis-hardware-title">The Machines Still Have to Agree</h3>
     </div>
     <div class="below-fold-artemis-hardware-layout">
-      {below_fold_artemis_figure("lander-cabin.jpg", "Blue Origin Blue Moon Mark 2 crew cabin trainer inside NASA Johnson Space Center.", "NASA image: a full-scale Blue Moon Mark 2 crew cabin trainer at Johnson Space Center, used for mission simulations and human-in-the-loop testing.")}
+      {below_fold_artemis_figure("lander-cabin.jpg", "Blue Origin Blue Moon Mark 2 crew cabin trainer inside NASA Johnson Space Center.", "Blue Origin's Blue Moon Mark 2 trainer lets crews rehearse the cabin geometry before a real lander ever reaches lunar orbit.")}
       <div class="below-fold-dispatch-grid below-fold-artemis-hardware-grid">
         {"".join(f'<article class="below-fold-brief" data-below-fold-slot="hardware" data-below-fold-hook="{h(title.lower().replace(" ", "-"))}"><p class="below-fold-kicker">System</p><h4>{h(title)}</h4><p>{h(copy)}</p></article>' for title, copy in hardware)}
       </div>
@@ -1435,7 +1435,7 @@ def render_below_fold_artemis() -> str:
       <article class="below-fold-service-panel below-fold-service-panel--wide">
         <p class="below-fold-kicker">Surface return</p>
         <h4>Lander readiness decides the pace</h4>
-        <p>NASA's revised architecture puts a lander-and-docking test before the surface return. That is the plain lesson of Artemis II: proof in deep space is valuable, but every new interface becomes a mission of its own.</p>
+        <p>NASA now puts rendezvous and docking before the surface return. The landing depends on Orion meeting a commercial lander, crew transfer, suit readiness, and a clean path back to Earth.</p>
       </article>
       <article class="below-fold-service-panel">
         <p class="below-fold-kicker">Watch list</p>
@@ -1451,19 +1451,19 @@ def render_below_fold_artemis() -> str:
       <article class="below-fold-service-panel">
         <p class="below-fold-kicker">Moon base</p>
         <h4>From sortie to system</h4>
-        <p>The late-2028 surface mission is where NASA expects base-building to begin: less flag-planting, more tools, training, cargo, and the slow accumulation of things that can survive another night.</p>
+        <p>The late-decade surface campaign becomes real only when cargo, tools, communications, power, rovers, suits, and dust-tolerant procedures survive beyond a single flag-and-photo visit.</p>
       </article>
     </div>
   </section>
 
   <section class="below-fold-spread below-fold-artemis-surface" aria-label="Lunar surface future" data-below-fold-slot="surface-future">
-    {below_fold_artemis_figure("moon-base-south-pole.png", "Generated editorial image of a restrained future Artemis lunar south pole worksite with habitats, rover tracks, astronauts, and instruments.", "Generated editorial art: a plausible early lunar worksite, closer to field station than science-fiction city.", "below-fold-artemis-surface-art")}
+    {below_fold_artemis_figure("moon-base-south-pole.png", "Generated editorial image of a restrained future Artemis lunar south pole worksite with habitats, rover tracks, astronauts, and instruments.", "A credible first lunar worksite is mostly unglamorous: power cables, dust control, suit checks, comms, sample tools, rover tracks, and shelter.", "below-fold-artemis-surface-art")}
   </section>
 
   <section class="below-fold-ledger" aria-label="Artemis source ledger" data-below-fold-slot="ledger">
-    <p><strong>Source note:</strong> Current facts checked against NASA releases and Artemis mission pages in May 2026.</p>
-    <p><strong>Image note:</strong> Flight, crew, Moon, and trainer photos are NASA public imagery; future surface and roadmap panels are generated editorial art.</p>
-    <p><strong>Desk note:</strong> No old article links, archive images, or old article copy are used in this section.</p>
+    <p><strong>Mission note:</strong> Artemis II: April 1-10, 2026; 9 days, 1 hour, 32 minutes; farthest distance 252,756 miles; closest lunar pass about 4,067 miles.</p>
+    <p><strong>Hardware note:</strong> SLS Block 1 is 322 feet tall with about 8.8 million pounds of thrust; Orion returns under parachutes after lunar-speed reentry.</p>
+    <p><strong>Desk note:</strong> The next named problem is docking: Orion plus commercial lander plus suits plus crew transfer before anyone works near the South Pole.</p>
   </section>
 </section>
 """.strip()
