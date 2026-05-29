@@ -996,7 +996,7 @@ def render_below_fold_makers_register(issue_month: str | None = None) -> str:
             "image": "portrait-steve-jobs.jpg",
             "alt": "Etched portrait plate of Steve Jobs with abstract personal-computing and product-design marginalia.",
             "label": "1976 / 1984 / 2007",
-            "copy": "Co-founded Apple in 1976, introduced Macintosh in 1984, then unveiled iPhone in 2007 as iPod, phone, and web device in one object.",
+            "copy": "Co-founded Apple with Steve Wozniak and Ronald Wayne on Apr. 1, 1976; Apple II shipped in 1977 and helped define the consumer microcomputer. Macintosh launched on Jan. 24, 1984 with a graphical interface and mouse as the selling point. Jobs left Apple in 1985, founded NeXT, bought Pixar's computer division from Lucasfilm in 1986, and returned when Apple acquired NeXT in 1997. The second Apple run produced iMac in 1998, iPod in 2001, iTunes Store in 2003, iPhone in 2007, App Store in 2008, and iPad in 2010.",
         },
         {
             "name": "Sam Altman",
