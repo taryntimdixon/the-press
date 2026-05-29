@@ -13511,7 +13511,11 @@
       "Below the Fold",
       "Newsstand",
       "archive"
-    ]
+    ],
+    "newsstandOnly": true,
+    "excludeFromEdition": true,
+    "excludeFromArchive": true,
+    "excludeFromGallery": true
   },
   {
     "title": "After the Moonshot, the Moon Work Begins",
@@ -13531,7 +13535,11 @@
       "Below the Fold",
       "Artemis Dispatch",
       "Section C / Moon to Mars"
-    ]
+    ],
+    "newsstandOnly": true,
+    "excludeFromEdition": true,
+    "excludeFromArchive": true,
+    "excludeFromGallery": true
   },
   {
     "title": "The Remote Work List",
@@ -13551,7 +13559,11 @@
       "Below the Fold",
       "Remote Work USA",
       "Pages B1-B10"
-    ]
+    ],
+    "newsstandOnly": true,
+    "excludeFromEdition": true,
+    "excludeFromArchive": true,
+    "excludeFromGallery": true
   },
   {
     "title": "The Makers' Register",
@@ -13571,6 +13583,10 @@
       "Below the Fold",
       "Technology Review",
       "Section M / Makers"
-    ]
+    ],
+    "newsstandOnly": true,
+    "excludeFromEdition": true,
+    "excludeFromArchive": true,
+    "excludeFromGallery": true
   }
 ]

@@ -26,6 +26,40 @@ function pressSiteAssetUrl(path) {
   return resolved.href;
 }
 
+function pressIndexSlug(value) {
+  return String(value ?? '')
+    .trim()
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function pressIndexPath(value) {
+  return String(value ?? '')
+    .trim()
+    .replace(/^https?:\/\/[^/]+\//i, '')
+    .replace(/^\.\//, '')
+    .replace(/[?#].*$/, '')
+    .toLowerCase();
+}
+
+function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride = '', typeOverride = '') {
+  const url = pressIndexPath(urlOverride || item.url || item.href || item.link || item.filename || item.permalink || '');
+  const section = pressIndexSlug(sectionOverride || item.section || item.section_slug || item.sectionSlug || item.desk || item.category || '');
+  const type = pressIndexSlug(typeOverride || item.type || item.kind || item.story_type || '');
+  return item.newsstandOnly === true
+    || item.excludeFromEdition === true
+    || item.excludeFromArchive === true
+    || item.excludeFromGallery === true
+    || url === 'below-the-fold.html'
+    || url.startsWith('below-the-fold/')
+    || section === 'below-the-fold'
+    || type === 'newsstand';
+}
+
 (() => {
   if (document.querySelector('[data-press-fonts]')) return;
   const script = document.createElement('script');
@@ -829,7 +863,7 @@ function pressSiteAssetUrl(path) {
 
   function normalizeStoryArray(data) {
     const items = Array.isArray(data) ? data.slice() : [];
-    return items.map((item) => ({
+    return items.filter((item) => !pressIsBelowFoldIndexItem(item)).map((item) => ({
       title: item.title || '',
       section: normalizeSectionLabel(item.section || ''),
       type: item.type || 'Report',
@@ -4810,7 +4844,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ]);
 
       const stories = sourceStories
-        .filter((story) => story.title && story.url)
+        .filter((story) => story.title && story.url && !pressIsBelowFoldIndexItem(story.raw || story, story.url, story.section, story.type))
         .sort((a, b) => b.sortValue - a.sortValue || a.title.localeCompare(b.title));
 
       const model = buildPlacementModel(stories, normalizePlacementFile(placementsRaw));
@@ -4909,6 +4943,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const section = titleCaseSection(item.section || item.desk || item.category || inferSectionFromUrl(url) || 'News');
     const type = clean(item.type || item.kind || item.story_type || (url.startsWith('daily/') ? 'Daily Issue' : 'Report'));
+    if (pressIsBelowFoldIndexItem(item, url, section, type)) return null;
     const summary = clean(item.dek || item.summary || item.description || item.excerpt || '');
     const publishedLabel = clean(item.published || item.publishedLabel || item.published_label || item.displayDate || item.date || '');
     const updatedLabel = clean(item.updated || item.updatedLabel || item.updated_label || item.updatedAt || '');
@@ -5717,7 +5752,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!grid) return;
 
-    grid.innerHTML = stories.map((story) => storyCard(story, {
+    const archiveStories = stories.filter((story) => !pressIsBelowFoldIndexItem(story.raw || story, story.url, story.section, story.type));
+
+    grid.innerHTML = archiveStories.map((story) => storyCard(story, {
       archive: true,
       reason: 'Archive card sorted by publication date.',
     })).join('');
@@ -6294,6 +6331,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       '';
 
+    const type = story.type || story.kind || 'Story';
+    if (pressIsBelowFoldIndexItem(story, url, section, type)) return null;
+
     const sortValue = Date.parse(
 
       story.published_iso ||
@@ -6320,7 +6360,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       sectionSlug: story.section_slug || story.sectionSlug || slugify(section),
 
-      type: story.type || story.kind || 'Story',
+      type,
 
       dek: story.dek || story.summary || story.description || story.excerpt || '',
 
@@ -7235,7 +7275,10 @@ document.addEventListener("DOMContentLoaded", () => {
   async function hydrate() {
     const payloads = await Promise.all(DATA_URLS.map(fetchOptionalJson));
     const embedded = readEmbeddedSearchJson();
-    const stories = mergeStories(payloads.concat([embedded]).flatMap(extractStories));
+    const stories = mergeStories(payloads.concat([embedded]).flatMap(extractStories))
+      .filter(function keepEditionStory(story) {
+        return !pressIsBelowFoldIndexItem(story, story.url, story.section, story.type);
+      });
     return buildState(stories);
   }
 
@@ -7277,6 +7320,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const section = titleCase(clean(item.section || item.desk || item.category || inferSection(url) || 'News'));
     const type = clean(item.type || item.kind || item.story_type || (url.includes('/daily/') || url.startsWith('daily/') ? 'Daily Issue' : 'Report'));
+    if (pressIsBelowFoldIndexItem(item, url, section, type)) return null;
     const dek = clean(item.dek || item.summary || item.description || item.excerpt);
     const published = clean(item.published || item.publishedLabel || item.displayDate || item.date);
     const publishedIso = clean(item.publishedIso || item.published_iso || item.publishedAt || item.published_at);

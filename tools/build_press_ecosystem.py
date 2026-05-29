@@ -274,6 +274,20 @@ def normalize_url(url: str) -> str:
     return re.sub(r"[?#].*$", "", clean(url).replace("./", "", 1))
 
 
+def is_below_fold_item(item: dict[str, Any]) -> bool:
+    url = normalize_url(item.get("url") or item.get("href") or item.get("link") or item.get("filename"))
+    section = slugify(item.get("section") or item.get("section_slug") or item.get("sectionSlug"))
+    story_type = slugify(item.get("type") or item.get("kind") or item.get("story_type"))
+    if item.get("newsstandOnly") is True or item.get("excludeFromEdition") is True:
+        return True
+    return (
+        url == "below-the-fold.html"
+        or url.startswith("below-the-fold/")
+        or section == "below-the-fold"
+        or story_type in {"newsstand", "issue"}
+    )
+
+
 @dataclass
 class Story:
     story_id: str
@@ -421,6 +435,8 @@ def extract_source(payload: Any, source: str) -> list[Story]:
 
     for item in rows:
         if isinstance(item, dict):
+            if is_below_fold_item(item):
+                continue
             story = normalize_story(item, source)
 
             if story:

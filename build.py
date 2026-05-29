@@ -78,6 +78,21 @@ BELOW_FOLD_NEWSSTAND_URL = "below-the-fold.html"
 BELOW_FOLD_REGISTRY_PATH = SITE_DIR / "data" / "below-the-fold.json"
 
 
+def is_below_fold_url(value: object) -> bool:
+    path = str(value or "").strip().lower().split("?", 1)[0].split("#", 1)[0].lstrip("./")
+    return path == BELOW_FOLD_NEWSSTAND_URL or path.startswith("below-the-fold/")
+
+
+def is_below_fold_index_item(item: dict) -> bool:
+    section = str(item.get("section") or item.get("section_slug") or item.get("sectionSlug") or "").strip().lower()
+    story_type = str(item.get("type") or item.get("kind") or item.get("story_type") or "").strip().lower()
+    if item.get("newsstandOnly") is True or item.get("excludeFromEdition") is True:
+        return True
+    if is_below_fold_url(item.get("url") or item.get("filename") or item.get("href") or item.get("link")):
+        return True
+    return section in {"below the fold", "below-the-fold"} or story_type in {"newsstand", "issue"}
+
+
 def load_below_fold_issues() -> list[dict]:
     if not BELOW_FOLD_REGISTRY_PATH.exists():
         return []
@@ -310,6 +325,8 @@ def homepage_recency_pool() -> list[dict]:
     for item in index_stories:
         if not isinstance(item, dict):
             continue
+        if is_below_fold_index_item(item):
+            continue
         filename = str(item.get("filename") or item.get("url") or "")
         if not filename or filename in seen:
             continue
@@ -458,7 +475,7 @@ def thumbnail_source_index() -> list[dict]:
             items = payload.get("articles") if isinstance(payload, dict) else []
         if not isinstance(items, list):
             continue
-        rows.extend(normalize_search_item(item) for item in items if isinstance(item, dict))
+        rows.extend(normalize_search_item(item) for item in items if isinstance(item, dict) and not is_below_fold_index_item(item))
 
     return [row for row in rows if row["title"] and row["url"] != "#"]
 
@@ -535,6 +552,8 @@ def gallery_story_rows() -> list[dict]:
 
         for item in items:
             if not isinstance(item, dict):
+                continue
+            if is_below_fold_index_item(item):
                 continue
             filename = item.get("url") or item.get("filename")
             image = item.get("image") or ""
@@ -1771,6 +1790,10 @@ def below_fold_search_index_rows() -> list[dict]:
                 "imageWidth": latest.get("thumbnailWidth"),
                 "imageHeight": latest.get("thumbnailHeight"),
                 "keywords": ["Below the Fold", "Newsstand", "archive"],
+                "newsstandOnly": True,
+                "excludeFromEdition": True,
+                "excludeFromArchive": True,
+                "excludeFromGallery": True,
             }
         )
     for issue in below_fold_issues_newest():
@@ -1790,6 +1813,10 @@ def below_fold_search_index_rows() -> list[dict]:
                 "imageWidth": issue.get("thumbnailWidth"),
                 "imageHeight": issue.get("thumbnailHeight"),
                 "keywords": ["Below the Fold", str(issue.get("rubric") or ""), str(issue.get("sectionLabel") or "")],
+                "newsstandOnly": True,
+                "excludeFromEdition": True,
+                "excludeFromArchive": True,
+                "excludeFromGallery": True,
             }
         )
     return rows
