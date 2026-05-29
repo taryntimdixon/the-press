@@ -57,7 +57,8 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
     || url === 'below-the-fold.html'
     || url.startsWith('below-the-fold/')
     || section === 'below-the-fold'
-    || type === 'newsstand';
+    || type === 'newsstand'
+    || type === 'issue';
 }
 
 (() => {

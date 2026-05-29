@@ -76,6 +76,7 @@ def h(value: object) -> str:
 
 BELOW_FOLD_NEWSSTAND_URL = "below-the-fold.html"
 BELOW_FOLD_REGISTRY_PATH = SITE_DIR / "data" / "below-the-fold.json"
+BELOW_FOLD_SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 
 def is_below_fold_url(value: object) -> bool:
@@ -97,18 +98,55 @@ def load_below_fold_issues() -> list[dict]:
     if not BELOW_FOLD_REGISTRY_PATH.exists():
         return []
     payload = json.loads(BELOW_FOLD_REGISTRY_PATH.read_text(encoding="utf-8"))
-    rows = payload.get("issues", payload if isinstance(payload, list) else [])
+    if isinstance(payload, dict):
+        rows = payload.get("issues", [])
+    elif isinstance(payload, list):
+        rows = payload
+    else:
+        raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: registry must be a JSON object or list")
+    if not isinstance(rows, list):
+        raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: issues must be a list")
     issues = []
+    seen_slugs: set[str] = set()
+    seen_numbers: set[int] = set()
     for index, item in enumerate(rows, 1):
         if not isinstance(item, dict):
-            continue
+            raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: issue row {index} must be an object")
         issue = dict(item)
         slug = str(issue.get("slug") or "").strip()
         if not slug:
-            continue
+            raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: issue row {index} needs a slug")
+        if not BELOW_FOLD_SLUG_RE.fullmatch(slug):
+            raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: issue slug {slug!r} must use lowercase letters, numbers, and hyphens")
+        if slug in seen_slugs:
+            raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: duplicate issue slug {slug!r}")
+        seen_slugs.add(slug)
         issue["slug"] = slug
-        issue["issueNumber"] = int(issue.get("issueNumber") or index)
-        issue["url"] = str(issue.get("url") or f"below-the-fold/{slug}.html").lstrip("/")
+        try:
+            issue_number = int(issue.get("issueNumber") or 0)
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: issue {slug!r} needs a numeric issueNumber") from exc
+        if issue_number < 1:
+            raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: issue {slug!r} needs a positive issueNumber")
+        if issue_number in seen_numbers:
+            raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: duplicate issueNumber {issue_number}")
+        seen_numbers.add(issue_number)
+        issue["issueNumber"] = issue_number
+        expected_url = f"below-the-fold/{slug}.html"
+        issue_url = str(issue.get("url") or expected_url).strip().lstrip("/")
+        if issue_url != expected_url:
+            raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: issue {slug!r} must use url {expected_url!r}")
+        issue["url"] = issue_url
+        body_file = str(issue.get("bodyFile") or "").strip()
+        if body_file:
+            body_path = Path(body_file)
+            if body_path.is_absolute() or ".." in body_path.parts:
+                raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: issue {slug!r} bodyFile must be a safe relative path")
+            if not body_file.startswith("content/below-fold/"):
+                raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: issue {slug!r} bodyFile must live under content/below-fold/")
+            issue["bodyFile"] = body_file
+        if not str(issue.get("renderer") or "").strip() and not body_file:
+            raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: issue {slug!r} needs a renderer or bodyFile")
         issue.setdefault("title", slug.replace("-", " ").title())
         issue.setdefault("kicker", "Below the Fold")
         issue.setdefault("rubric", "Below the Fold")
@@ -1587,27 +1625,42 @@ def below_fold_issue_card(issue: dict, extra_class: str = "", loading: str = "la
 """.strip()
 
 
+BELOW_FOLD_RENDERERS = {
+    "artemis-future": render_below_fold_artemis,
+    "remote-work-usa": render_below_the_fold,
+    "makers-register": render_below_fold_makers_register,
+}
+
+
 def render_below_fold_issue_body(issue: dict) -> str:
     renderer = str(issue.get("renderer") or "").strip()
     issue_month = str(issue.get("dateLabel") or "").strip() or None
-    if renderer == "makers-register":
-        return render_below_fold_makers_register(issue_month)
-    if renderer == "remote-work-usa":
-        return render_below_the_fold(issue_month)
-    if renderer == "artemis-future":
-        return render_below_fold_artemis(issue_month)
+    if renderer:
+        render = BELOW_FOLD_RENDERERS.get(renderer)
+        if render is None:
+            raise ValueError(
+                f"{BELOW_FOLD_REGISTRY_PATH}: issue {issue.get('slug')!r} uses unknown renderer {renderer!r}; "
+                "add it to BELOW_FOLD_RENDERERS or use bodyFile"
+            )
+        return render(issue_month)
     body_file = str(issue.get("bodyFile") or "").strip()
     if body_file:
-        return read_fragment(body_file)
-    return f"""
-<section class="below-fold below-fold--plain" aria-labelledby="below-fold-{h(issue['slug'])}-title">
+        fragment = read_fragment(body_file).strip()
+        if "data-below-fold-package=" in fragment:
+            return fragment
+        return f"""
+<section class="below-fold below-fold--plain" aria-labelledby="below-fold-{h(issue['slug'])}-title" data-below-fold-root data-below-fold-package="{h(issue['slug'])}">
   <header class="below-fold-header">
     <p class="below-fold-kicker">{h(issue.get('kicker') or 'Below the Fold')}</p>
     <h2 id="below-fold-{h(issue['slug'])}-title">{h(issue.get('title') or 'Below the Fold')}</h2>
-    <p>{h(issue.get('dek') or 'This Below the Fold issue is registered, but its body content has not been added yet.')}</p>
+    <p>{h(issue.get('dek') or '')}</p>
   </header>
+  <div class="below-fold-plain-body">
+    {fragment}
+  </div>
 </section>
 """.strip()
+    raise ValueError(f"{BELOW_FOLD_REGISTRY_PATH}: issue {issue.get('slug')!r} needs a renderer or bodyFile")
 
 
 def render_home_below_fold_newsstand() -> str:
@@ -1838,6 +1891,86 @@ def below_fold_lastmod(path: str) -> datetime:
         if issue["url"] == path:
             return parse_iso_datetime(issue.get("publishedIso")) or BUILD_REFERENCE_DT
     return BUILD_REFERENCE_DT
+
+
+def collect_below_fold_json_urls(value: object) -> list[str]:
+    found: list[str] = []
+    url_fields = {"url", "href", "link", "filename", "permalink", "canonicalUrl", "canonical_url"}
+    if isinstance(value, dict):
+        for key, child in value.items():
+            if key in url_fields and is_below_fold_url(child):
+                found.append(str(child))
+            found.extend(collect_below_fold_json_urls(child))
+    elif isinstance(value, list):
+        for child in value:
+            found.extend(collect_below_fold_json_urls(child))
+    return found
+
+
+def validate_below_fold_build_outputs() -> None:
+    if not BELOW_FOLD_ISSUES:
+        return
+
+    latest = below_fold_latest_issue()
+    if latest is None:
+        return
+
+    missing_pages = [
+        issue["url"]
+        for issue in BELOW_FOLD_ISSUES
+        if not (SITE_DIR / issue["url"]).exists()
+    ]
+    if missing_pages:
+        raise RuntimeError(f"Below the Fold issue pages missing after build: {', '.join(missing_pages)}")
+
+    homepage = (SITE_DIR / "index.html").read_text(encoding="utf-8")
+    homepage_issue_markers = set(re.findall(r'data-below-fold-package="([^"]+)"', homepage))
+    if latest["slug"] not in homepage_issue_markers:
+        raise RuntimeError(f"Homepage must render the latest Below the Fold issue open: {latest['slug']}")
+    older_open_issues = sorted(slug for slug in homepage_issue_markers if slug != latest["slug"])
+    if older_open_issues:
+        raise RuntimeError(
+            "Homepage must not stack older Below the Fold issues open: "
+            + ", ".join(older_open_issues)
+        )
+
+    forbidden_pages = ("archive.html", "gallery.html")
+    forbidden_link_re = re.compile(r'href=["\'](?:\./)?(below-the-fold(?:\.html|/[^"\'#?]+))', re.I)
+    for filename in forbidden_pages:
+        page = (SITE_DIR / filename).read_text(encoding="utf-8")
+        matches = sorted(set(forbidden_link_re.findall(page)))
+        if matches:
+            raise RuntimeError(f"{filename} must not list Below the Fold issues: {', '.join(matches)}")
+
+    for filename in ("content-index.json", "live-index.json", "archive-index.json", "placements.json"):
+        path = SITE_DIR / filename
+        if not path.exists():
+            continue
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        matches = sorted(set(collect_below_fold_json_urls(payload)))
+        if matches:
+            raise RuntimeError(f"{filename} must not include Below the Fold issue URLs: {', '.join(matches)}")
+
+    search_path = SITE_DIR / "search-index.json"
+    if search_path.exists():
+        payload = json.loads(search_path.read_text(encoding="utf-8"))
+        rows = payload.get("stories") if isinstance(payload, dict) else payload
+        if isinstance(rows, list):
+            for item in rows:
+                if not isinstance(item, dict) or not is_below_fold_index_item(item):
+                    continue
+                required_flags = ("newsstandOnly", "excludeFromEdition", "excludeFromArchive", "excludeFromGallery")
+                missing_flags = [flag for flag in required_flags if item.get(flag) is not True]
+                if missing_flags:
+                    raise RuntimeError(
+                        f"Below the Fold search row {item.get('url') or item.get('title')} is missing "
+                        + ", ".join(missing_flags)
+                    )
+
+    sitemap = (SITE_DIR / "sitemap.xml").read_text(encoding="utf-8")
+    missing_sitemap_paths = [path for path in below_fold_sitemap_paths() if path not in sitemap]
+    if missing_sitemap_paths:
+        raise RuntimeError("sitemap.xml is missing Below the Fold paths: " + ", ".join(missing_sitemap_paths))
 
 
 def river_item(story: dict) -> str:
@@ -3154,6 +3287,7 @@ def build() -> None:
     write_file(SITE_DIR / "feed.xml", render_feed())
     write_file(SITE_DIR / "sitemap.xml", render_sitemap())
     sanitize_existing_html_outputs()
+    validate_below_fold_build_outputs()
 
 
 if __name__ == "__main__":
