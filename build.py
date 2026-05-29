@@ -74,6 +74,50 @@ def h(value: object) -> str:
     return html.escape("" if value is None else str(value), quote=True)
 
 
+BELOW_FOLD_NEWSSTAND_URL = "below-the-fold.html"
+BELOW_FOLD_REGISTRY_PATH = SITE_DIR / "data" / "below-the-fold.json"
+
+
+def load_below_fold_issues() -> list[dict]:
+    if not BELOW_FOLD_REGISTRY_PATH.exists():
+        return []
+    payload = json.loads(BELOW_FOLD_REGISTRY_PATH.read_text(encoding="utf-8"))
+    rows = payload.get("issues", payload if isinstance(payload, list) else [])
+    issues = []
+    for index, item in enumerate(rows, 1):
+        if not isinstance(item, dict):
+            continue
+        issue = dict(item)
+        slug = str(issue.get("slug") or "").strip()
+        if not slug:
+            continue
+        issue["slug"] = slug
+        issue["issueNumber"] = int(issue.get("issueNumber") or index)
+        issue["url"] = str(issue.get("url") or f"below-the-fold/{slug}.html").lstrip("/")
+        issue.setdefault("title", slug.replace("-", " ").title())
+        issue.setdefault("kicker", "Below the Fold")
+        issue.setdefault("rubric", "Below the Fold")
+        issue.setdefault("sectionLabel", "The Newsstand")
+        issue.setdefault("dateLabel", "")
+        issue.setdefault("publishedIso", "")
+        issue.setdefault("dek", "")
+        issue.setdefault("imageAlt", issue["title"])
+        issues.append(issue)
+    return sorted(issues, key=lambda issue: issue["issueNumber"])
+
+
+BELOW_FOLD_ISSUES = load_below_fold_issues()
+
+
+def below_fold_issues_newest() -> list[dict]:
+    return sorted(BELOW_FOLD_ISSUES, key=lambda issue: issue["issueNumber"], reverse=True)
+
+
+def below_fold_latest_issue() -> dict | None:
+    issues = below_fold_issues_newest()
+    return issues[0] if issues else None
+
+
 PUBLIC_AUTHOR_LABEL = "The Press"
 FOURTH_WALL_RE = re.compile(
     r"ai[- ]generated|ai[- ]written|ai[- ]drafted|written and researched by ai|"
@@ -530,9 +574,10 @@ def gallery_story_rows() -> list[dict]:
 
 def search_index() -> list[dict]:
     master_items = [search_index_row(story) for story in STORIES]
+    below_fold_items = below_fold_search_index_rows()
     existing_items = richer_existing_search_index()
     if not existing_items:
-        return master_items
+        return master_items + below_fold_items
 
     merged = {item["url"]: item for item in existing_items}
     for item in thumbnail_source_index() + master_items:
@@ -540,6 +585,8 @@ def search_index() -> list[dict]:
             merged[item["url"]] = merge_search_row(merged[item["url"]], item)
         else:
             merged[item["url"]] = item
+    for item in below_fold_items:
+        merged[item["url"]] = item
     return list(merged.values())
 
 
@@ -841,8 +888,8 @@ def below_fold_maker_portrait(person: dict, number: int) -> str:
 """.strip()
 
 
-def render_below_fold_makers_register() -> str:
-    issue_month = BUILD_REFERENCE_DT.strftime("%B %Y")
+def render_below_fold_makers_register(issue_month: str | None = None) -> str:
+    issue_month = issue_month or BUILD_REFERENCE_DT.strftime("%B %Y")
     supporting = [
         {
             "title": "The Object Had to Feel Inevitable",
@@ -1000,7 +1047,7 @@ def render_below_fold_makers_register() -> str:
 """.strip()
 
 
-def render_below_the_fold() -> str:
+def render_below_the_fold(issue_month: str | None = None) -> str:
     places = [
         {
             "rank": 1,
@@ -1135,7 +1182,7 @@ def render_below_the_fold() -> str:
     ]
     big_three = places[:3]
     regional_files = places[3:]
-    issue_month = BUILD_REFERENCE_DT.strftime("%B %Y")
+    issue_month = issue_month or BUILD_REFERENCE_DT.strftime("%B %Y")
     lead_caption = "The list favors places where actual infrastructure changes the day: transit stations, airports, campuses, labs, studios, rivers, mountains, and museums."
     remote_signal_bars = [
         ("Network", 90, "Measured by named anchors: OpenAI in SF, studios in LA, Wall Street in NYC, CDC and Georgia Tech in Atlanta."),
@@ -1289,8 +1336,8 @@ def render_below_the_fold() -> str:
 """.strip()
 
 
-def render_below_fold_artemis() -> str:
-    issue_month = BUILD_REFERENCE_DT.strftime("%B %Y")
+def render_below_fold_artemis(issue_month: str | None = None) -> str:
+    issue_month = issue_month or BUILD_REFERENCE_DT.strftime("%B %Y")
     crew = [
         ("Commander", "Reid Wiseman", "Wiseman flew 165 days on the ISS in 2014 and later served as NASA chief astronaut; Artemis II put that station discipline into deep-space command."),
         ("Pilot", "Victor Glover", "Glover piloted SpaceX Crew-1 in 2020 and spent 167 days on the ISS; on Artemis II he helped prove Orion as a crewed cockpit."),
@@ -1467,6 +1514,310 @@ def render_below_fold_artemis() -> str:
   </section>
 </section>
 """.strip()
+
+
+def below_fold_issue_number_label(issue: dict) -> str:
+    try:
+        return f"Issue {int(issue.get('issueNumber') or 0):02d}"
+    except (TypeError, ValueError):
+        return "Issue"
+
+
+def below_fold_issue_thumbnail(issue: dict, loading: str = "lazy") -> str:
+    src = str(issue.get("thumbnail") or "").strip()
+    alt = str(issue.get("imageAlt") or issue.get("title") or "Below the Fold issue").strip()
+    width = issue.get("thumbnailWidth")
+    height = issue.get("thumbnailHeight")
+    if src:
+        remote = bool(re.match(r"^[a-z][a-z0-9+.-]*:", src, re.I))
+        if remote or (SITE_DIR / src).exists():
+            width_attr = f' width="{h(width)}"' if width else ""
+            height_attr = f' height="{h(height)}"' if height else ""
+            return (
+                f'<img src="{h(versioned_asset_url(src))}" alt="{h(alt)}" loading="{h(loading)}" '
+                f'decoding="async"{width_attr}{height_attr} />'
+            )
+    return f'<span class="below-fold-issue-card__image-missing" role="img" aria-label="{h(alt)}"></span>'
+
+
+def below_fold_issue_card(issue: dict, extra_class: str = "", loading: str = "lazy") -> str:
+    classes = "below-fold-issue-card"
+    if extra_class:
+        classes = f"{classes} {extra_class}"
+    title = str(issue.get("title") or "Below the Fold").strip()
+    dek = str(issue.get("dek") or "").strip()
+    date = str(issue.get("dateLabel") or "").strip()
+    rubric = str(issue.get("rubric") or "Below the Fold").strip()
+    section_label = str(issue.get("sectionLabel") or "The Newsstand").strip()
+    meta_bits = [below_fold_issue_number_label(issue), date]
+    meta = " / ".join(bit for bit in meta_bits if bit)
+    return f"""
+<article class="{h(classes)}">
+  <a class="below-fold-issue-card__link" href="{h(issue['url'])}" aria-label="Read {h(title)}">
+    <figure class="below-fold-issue-card__media">
+      {below_fold_issue_thumbnail(issue, loading)}
+    </figure>
+    <div class="below-fold-issue-card__body">
+      <p class="below-fold-issue-card__meta">{h(meta)}</p>
+      <h3>{h(title)}</h3>
+      <p>{h(dek)}</p>
+      <span class="below-fold-issue-card__rubric">{h(rubric)} / {h(section_label)}</span>
+    </div>
+  </a>
+</article>
+""".strip()
+
+
+def render_below_fold_issue_body(issue: dict) -> str:
+    renderer = str(issue.get("renderer") or "").strip()
+    issue_month = str(issue.get("dateLabel") or "").strip() or None
+    if renderer == "makers-register":
+        return render_below_fold_makers_register(issue_month)
+    if renderer == "remote-work-usa":
+        return render_below_the_fold(issue_month)
+    if renderer == "artemis-future":
+        return render_below_fold_artemis(issue_month)
+    body_file = str(issue.get("bodyFile") or "").strip()
+    if body_file:
+        return read_fragment(body_file)
+    return f"""
+<section class="below-fold below-fold--plain" aria-labelledby="below-fold-{h(issue['slug'])}-title">
+  <header class="below-fold-header">
+    <p class="below-fold-kicker">{h(issue.get('kicker') or 'Below the Fold')}</p>
+    <h2 id="below-fold-{h(issue['slug'])}-title">{h(issue.get('title') or 'Below the Fold')}</h2>
+    <p>{h(issue.get('dek') or 'This Below the Fold issue is registered, but its body content has not been added yet.')}</p>
+  </header>
+</section>
+""".strip()
+
+
+def render_home_below_fold_newsstand() -> str:
+    latest = below_fold_latest_issue()
+    if not latest:
+        return ""
+    back_issues = [issue for issue in below_fold_issues_newest() if issue["slug"] != latest["slug"]][:6]
+    back_cards = "\n".join(below_fold_issue_card(issue) for issue in back_issues)
+    shelf = (
+        f"""
+  <section class="below-fold-shelf" aria-labelledby="below-fold-back-issues-title">
+    <div class="below-fold-shelf__head">
+      <div>
+        <p class="below-fold-kicker">Back Issues</p>
+        <h3 id="below-fold-back-issues-title">Old papers in the stack</h3>
+      </div>
+      <a href="{h(BELOW_FOLD_NEWSSTAND_URL)}">Browse all</a>
+    </div>
+    <div class="below-fold-shelf__track" tabindex="0" aria-label="Recent Below the Fold back issues">
+      {back_cards}
+    </div>
+  </section>
+""".rstrip()
+        if back_cards
+        else ""
+    )
+    return f"""
+<section class="below-fold-latest below-fold-latest--open below-fold-latest--paper-only" aria-label="Below the Fold latest issue">
+  <div class="below-fold-latest__open-issue" aria-label="Latest Below the Fold issue">
+    {render_below_fold_issue_body(latest)}
+  </div>
+{shelf}
+</section>
+""".strip()
+
+
+def render_below_fold_newsstand() -> str:
+    issues = below_fold_issues_newest()
+    latest = issues[0] if issues else None
+    cards = "\n".join(below_fold_issue_card(issue) for issue in issues)
+    featured = below_fold_issue_card(latest, "below-fold-issue-card--feature", "eager") if latest else ""
+    latest_intro = (
+        f'<p>{h(latest.get("dek") or "")}</p>'
+        if latest
+        else "<p>No Below the Fold issues have been registered yet.</p>"
+    )
+    main = f"""
+<main class="page below-fold-newsstand">
+  <section class="below-fold-newsstand__masthead">
+    <p class="eyebrow">Below the Fold</p>
+    <h1>The Newsstand</h1>
+    <p>A browsable rack of every Below the Fold issue: the slower files, designed spreads, odd ledgers, and folded-paper experiments that should not vanish from the front page archive.</p>
+  </section>
+  <section class="below-fold-newsstand__latest" aria-labelledby="below-fold-newsstand-latest-title">
+    <div class="below-fold-newsstand__section-head">
+      <div>
+        <p class="below-fold-kicker">Current paper</p>
+        <h2 id="below-fold-newsstand-latest-title">Latest Issue</h2>
+      </div>
+      {latest_intro}
+    </div>
+    {featured}
+  </section>
+  <section class="below-fold-newsstand__issues" aria-labelledby="below-fold-newsstand-issues-title">
+    <div class="below-fold-newsstand__section-head">
+      <div>
+        <p class="below-fold-kicker">Back Issues</p>
+        <h2 id="below-fold-newsstand-issues-title">Every issue on the rack</h2>
+      </div>
+      <p>Newest first, with permanent pages for every edition.</p>
+    </div>
+    <div class="below-fold-newsstand__grid">
+      {cards}
+    </div>
+  </section>
+</main>
+""".strip()
+    social_image = str(latest.get("thumbnail") or "") if latest else ""
+    return layout(
+        f"Below the Fold: The Newsstand — {SITE['name']}",
+        "A browsable archive of every Below the Fold issue from The Press.",
+        BELOW_FOLD_NEWSSTAND_URL,
+        "page-below-fold-newsstand",
+        main,
+        current_aux=BELOW_FOLD_NEWSSTAND_URL,
+        jsonld=jsonld_org(),
+        social_image=social_image,
+        social_image_alt=str(latest.get("imageAlt") or "Below the Fold Newsstand") if latest else "",
+        social_image_width=latest.get("thumbnailWidth", "") if latest else "",
+        social_image_height=latest.get("thumbnailHeight", "") if latest else "",
+        social_title="Below the Fold: The Newsstand",
+    )
+
+
+def below_fold_issue_neighbors(issue: dict) -> tuple[dict | None, dict | None]:
+    issues = sorted(BELOW_FOLD_ISSUES, key=lambda row: row["issueNumber"])
+    for index, row in enumerate(issues):
+        if row["slug"] != issue["slug"]:
+            continue
+        previous_issue = issues[index - 1] if index > 0 else None
+        next_issue = issues[index + 1] if index + 1 < len(issues) else None
+        return previous_issue, next_issue
+    return None, None
+
+
+def render_below_fold_issue_nav(issue: dict) -> str:
+    previous_issue, next_issue = below_fold_issue_neighbors(issue)
+    previous_html = (
+        f'<a href="{h(previous_issue["url"])}" rel="prev">&larr; Previous issue</a>'
+        if previous_issue
+        else '<span aria-disabled="true">&larr; Previous issue</span>'
+    )
+    next_html = (
+        f'<a href="{h(next_issue["url"])}" rel="next">Next issue &rarr;</a>'
+        if next_issue
+        else '<span aria-disabled="true">Next issue &rarr;</span>'
+    )
+    return f"""
+<nav class="below-fold-issue-nav" aria-label="{h(issue.get('title') or 'Below the Fold')} issue navigation">
+  {previous_html}
+  <a href="{h(BELOW_FOLD_NEWSSTAND_URL)}">Back to The Newsstand</a>
+  {next_html}
+</nav>
+""".strip()
+
+
+def render_below_fold_issue_page(issue: dict) -> str:
+    nav = render_below_fold_issue_nav(issue)
+    title = str(issue.get("title") or "Below the Fold").strip()
+    dek = str(issue.get("dek") or "").strip()
+    issue_meta = " / ".join(
+        bit for bit in [below_fold_issue_number_label(issue), str(issue.get("dateLabel") or "").strip()] if bit
+    )
+    main = f"""
+<main class="page below-fold-issue-page">
+  {nav}
+  <article class="below-fold-issue-page__paper" aria-labelledby="below-fold-issue-page-title">
+    <header class="below-fold-issue-page__masthead">
+      <p class="eyebrow">Below the Fold</p>
+      <p class="below-fold-issue-page__meta">{h(issue_meta)}</p>
+      <h1 id="below-fold-issue-page-title">{h(title)}</h1>
+      <p>{h(dek)}</p>
+      <a href="{h(BELOW_FOLD_NEWSSTAND_URL)}">The Newsstand</a>
+    </header>
+    <div class="below-fold-issue-page__content">
+      {render_below_fold_issue_body(issue)}
+    </div>
+  </article>
+  {nav}
+</main>
+""".strip()
+    return layout(
+        f"{title} — Below the Fold — {SITE['name']}",
+        dek or "A permanent Below the Fold issue from The Press.",
+        str(issue["url"]),
+        "page-below-fold-issue",
+        main,
+        current_aux=BELOW_FOLD_NEWSSTAND_URL,
+        jsonld=jsonld_org(),
+        include_progress=True,
+        base_href="../",
+        social_image=str(issue.get("thumbnail") or ""),
+        social_image_alt=str(issue.get("imageAlt") or title),
+        social_image_width=issue.get("thumbnailWidth", ""),
+        social_image_height=issue.get("thumbnailHeight", ""),
+        social_title=f"{title} — Below the Fold",
+    )
+
+
+def below_fold_search_index_rows() -> list[dict]:
+    rows: list[dict] = []
+    latest = below_fold_latest_issue()
+    if latest:
+        rows.append(
+            {
+                "title": "Below the Fold: The Newsstand",
+                "section": "Below the Fold",
+                "type": "Newsstand",
+                "dek": "A browsable archive of every Below the Fold issue from The Press.",
+                "url": BELOW_FOLD_NEWSSTAND_URL,
+                "author": PUBLIC_AUTHOR_LABEL,
+                "published": str(latest.get("dateLabel") or ""),
+                "publishedIso": str(latest.get("publishedIso") or ""),
+                "updatedIso": str(latest.get("publishedIso") or ""),
+                "image": str(latest.get("thumbnail") or ""),
+                "imageAlt": str(latest.get("imageAlt") or "Below the Fold Newsstand"),
+                "imageWidth": latest.get("thumbnailWidth"),
+                "imageHeight": latest.get("thumbnailHeight"),
+                "keywords": ["Below the Fold", "Newsstand", "archive"],
+            }
+        )
+    for issue in below_fold_issues_newest():
+        rows.append(
+            {
+                "title": str(issue.get("title") or "Below the Fold"),
+                "section": "Below the Fold",
+                "type": "Issue",
+                "dek": str(issue.get("dek") or ""),
+                "url": str(issue["url"]),
+                "author": PUBLIC_AUTHOR_LABEL,
+                "published": str(issue.get("dateLabel") or ""),
+                "publishedIso": str(issue.get("publishedIso") or ""),
+                "updatedIso": str(issue.get("publishedIso") or ""),
+                "image": str(issue.get("thumbnail") or ""),
+                "imageAlt": str(issue.get("imageAlt") or issue.get("title") or "Below the Fold issue"),
+                "imageWidth": issue.get("thumbnailWidth"),
+                "imageHeight": issue.get("thumbnailHeight"),
+                "keywords": ["Below the Fold", str(issue.get("rubric") or ""), str(issue.get("sectionLabel") or "")],
+            }
+        )
+    return rows
+
+
+def below_fold_sitemap_paths() -> list[str]:
+    return [BELOW_FOLD_NEWSSTAND_URL] + [issue["url"] for issue in below_fold_issues_newest()]
+
+
+def below_fold_lastmod(path: str) -> datetime:
+    if path == BELOW_FOLD_NEWSSTAND_URL:
+        dates = [
+            parsed
+            for issue in BELOW_FOLD_ISSUES
+            if (parsed := parse_iso_datetime(issue.get("publishedIso")))
+        ]
+        return max(dates) if dates else BUILD_REFERENCE_DT
+    for issue in BELOW_FOLD_ISSUES:
+        if issue["url"] == path:
+            return parse_iso_datetime(issue.get("publishedIso")) or BUILD_REFERENCE_DT
+    return BUILD_REFERENCE_DT
 
 
 def river_item(story: dict) -> str:
@@ -1863,6 +2214,7 @@ def page_head(
     social_image_height: object = "",
     og_type: str = "website",
     social_title: str = "",
+    base_href: str = "",
 ) -> str:
     canonical_url = absolute_url(canonical)
     social = social_meta(
@@ -1875,6 +2227,7 @@ def page_head(
         image_height=social_image_height,
         og_type=og_type,
     )
+    base_html = f'\n  <base href="{h(base_href)}" />' if base_href else ""
     head_extras = "\n".join(
         "\n".join(f"  {line}" for line in block.splitlines())
         for block in (social, jsonld, extra_links)
@@ -1890,7 +2243,7 @@ def page_head(
   <meta name="theme-color" content="#f4f0e8" />
   <meta name="apple-mobile-web-app-title" content="{h(SITE['name'])}" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <link rel="canonical" href="{h(canonical_url)}" />
+  <link rel="canonical" href="{h(canonical_url)}" />{base_html}
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/icon-192.png" sizes="192x192" type="image/png" />
@@ -1969,6 +2322,7 @@ def layout(
     social_image_height: object = "",
     og_type: str = "website",
     social_title: str = "",
+    base_href: str = "",
 ) -> str:
     progress = """
 <div class="reading-progress"><div class="reading-progress__bar" data-reading-progress></div></div>
@@ -1993,6 +2347,7 @@ def layout(
     social_image_height=social_image_height,
     og_type=og_type,
     social_title=social_title,
+    base_href=base_href,
 )}
 <body class="{h(body_class)}">
   {search_overlay()}
@@ -2120,9 +2475,7 @@ def render_homepage() -> str:
           </article>
         </div>
       </section>
-      {render_below_fold_makers_register()}
-      {render_below_the_fold()}
-      {render_below_fold_artemis()}
+      {render_home_below_fold_newsstand()}
     </div>
   </section>
 
@@ -2665,11 +3018,12 @@ def render_feed() -> str:
 
 def render_sitemap() -> str:
     urls = ['index.html', 'archive.html', 'gallery.html', 'authors.html', 'about.html', 'photo-workflow.html', '404.html']
+    urls += below_fold_sitemap_paths()
     urls += [story["filename"] for story in STORIES]
     urlset = []
     for path in urls:
         story = STORY_BY_FILE.get(path)
-        modified = parse_iso_datetime(story.get("updatedIso") or story.get("publishedIso")) if story else None
+        modified = parse_iso_datetime(story.get("updatedIso") or story.get("publishedIso")) if story else below_fold_lastmod(path)
         lastmod = (modified or BUILD_REFERENCE_DT).date().isoformat()
         urlset.append(f"<url><loc>{html.escape(absolute_url(path))}</loc><lastmod>{lastmod}</lastmod></url>")
     return f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -2731,6 +3085,7 @@ def sanitize_public_html(markup: str) -> str:
 
 
 def write_file(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     if path.suffix.lower() == ".html":
         content = sanitize_public_html(content)
     path.write_text(content, encoding="utf-8")
@@ -2741,6 +3096,9 @@ def sanitize_existing_html_outputs() -> None:
     daily_dir = SITE_DIR / "daily"
     if daily_dir.exists():
         paths.extend(daily_dir.glob("*.html"))
+    below_fold_dir = SITE_DIR / "below-the-fold"
+    if below_fold_dir.exists():
+        paths.extend(below_fold_dir.glob("*.html"))
     for path in paths:
         try:
             original = path.read_text(encoding="utf-8")
@@ -2762,6 +3120,9 @@ def build() -> None:
     write_file(SITE_DIR / "archive.html", render_archive())
     write_file(SITE_DIR / "gallery.html", render_gallery())
     write_file(SITE_DIR / "authors.html", render_authors())
+    write_file(SITE_DIR / BELOW_FOLD_NEWSSTAND_URL, render_below_fold_newsstand())
+    for issue in BELOW_FOLD_ISSUES:
+        write_file(SITE_DIR / issue["url"], render_below_fold_issue_page(issue))
     for section in SECTIONS:
         write_file(SITE_DIR / section["filename"], render_section(section))
     for story in STORIES:

@@ -1,0 +1,55 @@
+{
+  "issues": [
+    {
+      "slug": "artemis-future",
+      "issueNumber": 1,
+      "title": "After the Moonshot, the Moon Work Begins",
+      "kicker": "Science desk / Moon campaign",
+      "rubric": "Artemis Dispatch",
+      "sectionLabel": "Section C / Moon to Mars",
+      "dateLabel": "May 2026",
+      "publishedIso": "2026-05-26T09:00:00-04:00",
+      "dek": "Artemis II was NASA's first crewed lunar flyby in more than 50 years: 9 days, 1 hour, 32 minutes; four astronauts; SLS from Pad 39B; Orion around the Moon; Pacific recovery on April 10, 2026.",
+      "thumbnail": "assets/below-fold/artemis-future/lead-lunar-future.png",
+      "thumbnailWidth": 1536,
+      "thumbnailHeight": 1024,
+      "imageAlt": "Editorial collage of Artemis lunar infrastructure, Orion-like spacecraft, mission control, and a distant Mars horizon.",
+      "renderer": "artemis-future",
+      "url": "below-the-fold/artemis-future.html"
+    },
+    {
+      "slug": "remote-work-usa",
+      "issueNumber": 2,
+      "title": "The Remote Work List",
+      "kicker": "Ranked travel guide",
+      "rubric": "Remote Work USA",
+      "sectionLabel": "Pages B1-B10",
+      "dateLabel": "May 2026",
+      "publishedIso": "2026-05-27T09:00:00-04:00",
+      "dek": "Ten places ranked by factual work infrastructure: transit, airports, universities, labs, studios, employers, cultural institutions, outdoor access, and real tradeoffs.",
+      "thumbnail": "assets/below-fold/remote-work-usa/lead-collage.png",
+      "thumbnailWidth": 1558,
+      "thumbnailHeight": 1010,
+      "imageAlt": "Editorial collage of remote work scenes across the United States.",
+      "renderer": "remote-work-usa",
+      "url": "below-the-fold/remote-work-usa.html"
+    },
+    {
+      "slug": "makers-register",
+      "issueNumber": 3,
+      "title": "The Makers' Register",
+      "kicker": "The deep-reading file",
+      "rubric": "Technology Review",
+      "sectionLabel": "Section M / Makers",
+      "dateLabel": "May 2026",
+      "publishedIso": "2026-05-28T09:00:00-04:00",
+      "dek": "A register of builders tied to specific turning points: Apple in 1976, Facebook in 2004, iPhone in 2007, Falcon 9 reuse in 2017, ChatGPT in 2022, and the GPU supply chain underneath it all.",
+      "thumbnail": "assets/below-fold/makers-register/makers-chip-engine.jpg",
+      "thumbnailWidth": 1200,
+      "thumbnailHeight": 800,
+      "imageAlt": "Engraved semiconductor plate with wafer forms, circuit traces, and laboratory archive paper.",
+      "renderer": "makers-register",
+      "url": "below-the-fold/makers-register.html"
+    }
+  ]
+}

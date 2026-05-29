@@ -1,16 +1,16 @@
 const PRESS_SITE_ASSET_BASE = (() => {
   const script = document.currentScript
     || Array.from(document.scripts).reverse().find((item) => /(?:^|\/)app\.js(?:\?|$)/.test(item.getAttribute('src') || ''));
-  const scriptSrc = script?.getAttribute('src') || 'app.js';
-  return new URL('.', new URL(scriptSrc, window.location.href)).href;
+  const scriptSrc = script?.src || script?.getAttribute('src') || 'app.js';
+  return new URL('.', new URL(scriptSrc, document.baseURI || window.location.href)).href;
 })();
 
 const PRESS_SITE_APP_VERSION = (() => {
   const script = document.currentScript
     || Array.from(document.scripts).reverse().find((item) => /(?:^|\/)app\.js(?:\?|$)/.test(item.getAttribute('src') || ''));
-  const scriptSrc = script?.getAttribute('src') || '';
+  const scriptSrc = script?.src || script?.getAttribute('src') || '';
   try {
-    return new URL(scriptSrc, window.location.href).searchParams.get('v') || '';
+    return new URL(scriptSrc, document.baseURI || window.location.href).searchParams.get('v') || '';
   } catch (_) {
     return '';
   }
