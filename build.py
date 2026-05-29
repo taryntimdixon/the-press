@@ -1004,7 +1004,7 @@ def render_below_fold_makers_register(issue_month: str | None = None) -> str:
             "image": "portrait-sam-altman.jpg",
             "alt": "Etched portrait plate of Sam Altman with abstract AI systems, chips, and interface marginalia.",
             "label": "YC to OpenAI",
-            "copy": "Led Y Combinator after 2014, became OpenAI CEO in 2019, and oversaw ChatGPT's Nov. 30, 2022 public launch.",
+            "copy": "Led Y Combinator after 2014, became OpenAI CEO in 2019, and oversaw ChatGPT's Nov. 30, 2022 public launch. OpenAI announced a $1 billion Microsoft partnership in July 2019 to build AI systems on Azure. ChatGPT launched as a research preview connected to the GPT-3.5 line. GPT-4 followed on Mar. 14, 2023 with text and image input.",
         },
         {
             "name": "Elon Musk",
@@ -1012,7 +1012,7 @@ def render_below_fold_makers_register(issue_month: str | None = None) -> str:
             "image": "portrait-elon-musk.jpg",
             "alt": "Etched portrait plate of Elon Musk with abstract rocket, electric motor, battery, and orbital engineering marginalia.",
             "label": "EVs, reuse, orbit",
-            "copy": "Tesla scaled the Model S and Model 3; SpaceX landed Falcon 9 in 2015 and reused a booster in 2017; Starlink made orbit a broadband network.",
+            "copy": "Tesla scaled Model S and Model 3; SpaceX landed Falcon 9 in 2015 and reused a booster in 2017; Starlink made orbit a broadband network. Model S customer deliveries began on June 22, 2012; Model 3 production started in July 2017. Falcon 9 landed at Landing Zone 1 on Dec. 21, 2015 after delivering 11 satellites to orbit. On Mar. 30, 2017, SpaceX achieved the first reflight of an orbital-class rocket.",
         },
         {
             "name": "Mark Zuckerberg",

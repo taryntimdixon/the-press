@@ -13490,8 +13490,9 @@ body.page-home .home-grid__main > .below-fold + .below-fold{
 }
 .below-fold-makers-header h2{
   max-width:12ch;
+  margin-bottom:clamp(.75rem,1.1vw,1.05rem);
   font-size:clamp(3.35rem,7.2vw,6.85rem);
-  line-height:.84;
+  line-height:.9;
 }
 .below-fold-makers-header p:last-child{
   max-width:52rem;
