@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-20T21:44:01.466202+00:00",
+  "generated_at": "2026-05-29T10:29:07.999606+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -19,17 +19,28 @@
       "climate-your-home-insurance-bill-is-the-new-climate-map"
     ],
     "secondary": [
-      "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
-      "memory-the-internet-is-eating-its-own-memory",
-      "education-the-phone-free-school-day-is-a-live-experiment"
+      "makers-register",
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
+      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button"
     ],
     "most_read": [
-      "health-the-next-public-health-system-is-the-room-you-are-in",
-      "technology-the-battery-is-becoming-the-grid",
-      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere"
+      "remote-work-usa",
+      "artemis-future",
+      "below-the-fold",
+      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
+      "2026-04-27-nairobi-s-drains-are-running-out-of-room"
     ],
-    "editors_picks": [],
+    "editors_picks": [
+      "memory-the-internet-is-eating-its-own-memory",
+      "education-the-phone-free-school-day-is-a-live-experiment",
+      "technology-the-battery-is-becoming-the-grid",
+      "sports-texas-holdem-prime-time-moment-back"
+    ],
     "latest": [
+      "below-the-fold",
+      "makers-register",
+      "remote-work-usa",
+      "artemis-future",
       "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
       "memory-the-internet-is-eating-its-own-memory",
       "education-the-phone-free-school-day-is-a-live-experiment",
@@ -40,11 +51,7 @@
       "technology-pentagon-ai-classified-networks",
       "food-atla-noho-closing",
       "technology-musk-altman-openai-court-battle",
-      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
-      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
-      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
-      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class"
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington"
     ],
     "daily": [
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
@@ -59,6 +66,10 @@
       "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
     ],
     "breaking": [
+      "below-the-fold",
+      "makers-register",
+      "remote-work-usa",
+      "artemis-future",
       "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
       "memory-the-internet-is-eating-its-own-memory",
       "education-the-phone-free-school-day-is-a-live-experiment",
@@ -68,33 +79,35 @@
       "sports-texas-holdem-prime-time-moment-back",
       "technology-pentagon-ai-classified-networks",
       "food-atla-noho-closing",
-      "technology-musk-altman-openai-court-battle",
-      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
-      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
-      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-nairobi-s-drains-are-running-out-of-room"
+      "technology-musk-altman-openai-court-battle"
     ],
     "desk_pulse": [
       {
-        "count": 2,
+        "count": 4,
+        "latest_ts": 1779973200.0,
+        "story_id": "makers-register",
+        "section": "Below The Fold"
+      },
+      {
+        "count": 7,
         "latest_ts": 1779282000.0,
         "story_id": "science-wildlife-for-sale",
         "section": "Science"
       },
       {
-        "count": 2,
+        "count": 6,
         "latest_ts": 1778956200.0,
         "story_id": "technology-drones-have-left-the-gadget-era",
         "section": "Technology"
       },
       {
-        "count": 1,
+        "count": 2,
         "latest_ts": 1778504400.0,
         "story_id": "sports-world-cup-game-day-machine",
         "section": "Sports"
       },
       {
-        "count": 2,
+        "count": 10,
         "latest_ts": 1778341500.0,
         "story_id": "world-europes-cocaine-boom-is-hiding-in-plain-sight",
         "section": "World"
@@ -106,7 +119,7 @@
         "section": "Climate"
       },
       {
-        "count": 1,
+        "count": 3,
         "latest_ts": 1778184000.0,
         "story_id": "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
         "section": "Systems"
@@ -118,13 +131,13 @@
         "section": "Memory"
       },
       {
-        "count": 1,
+        "count": 3,
         "latest_ts": 1778175600.0,
         "story_id": "education-the-phone-free-school-day-is-a-live-experiment",
         "section": "Education"
       },
       {
-        "count": 1,
+        "count": 3,
         "latest_ts": 1778171400.0,
         "story_id": "health-the-next-public-health-system-is-the-room-you-are-in",
         "section": "Health"
