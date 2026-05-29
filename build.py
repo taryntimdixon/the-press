@@ -1615,14 +1615,7 @@ def render_home_below_fold_newsstand() -> str:
         if back_cards
         else ""
     )
-    return f"""
-<section class="below-fold-latest below-fold-latest--open below-fold-latest--paper-only" aria-label="Below the Fold latest issue">
-  <div class="below-fold-latest__open-issue" aria-label="Latest Below the Fold issue">
-    {render_below_fold_issue_body(latest)}
-  </div>
-{shelf}
-</section>
-""".strip()
+    return "\n".join(part for part in (render_below_fold_issue_body(latest), shelf) if part).strip()
 
 
 def render_below_fold_newsstand() -> str:

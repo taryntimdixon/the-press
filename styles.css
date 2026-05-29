@@ -13052,6 +13052,7 @@ body.page-home .home-grid__main > .below-fold + .below-fold{
   border-top:0;
 }
 .below-fold-latest,
+.below-fold-shelf,
 .below-fold-newsstand,
 .below-fold-issue-page{
   --newsstand-paper:color-mix(in srgb,var(--surface) 90%,#eadfc9);
@@ -13133,6 +13134,7 @@ body.page-home .home-grid__main > .below-fold + .below-fold{
   grid-column:1 / -1;
   gap:.8rem;
   min-width:0;
+  margin-top:clamp(1rem,2vw,1.35rem);
   padding-top:.95rem;
   border-top:3px double var(--newsstand-rule);
 }
