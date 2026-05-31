@@ -636,7 +636,12 @@ def search_index() -> list[dict]:
     if not existing_items:
         return master_items + below_fold_items
 
-    merged = {item["url"]: item for item in existing_items}
+    current_below_fold_urls = {item["url"] for item in below_fold_items}
+    merged = {
+        item["url"]: item
+        for item in existing_items
+        if not is_below_fold_url(item.get("url")) or item["url"] in current_below_fold_urls
+    }
     for item in thumbnail_source_index() + master_items:
         if item["url"] in merged:
             merged[item["url"]] = merge_search_row(merged[item["url"]], item)
@@ -1664,11 +1669,87 @@ def render_below_fold_issue_body(issue: dict) -> str:
 
 
 def render_home_below_fold_newsstand() -> str:
-    latest = below_fold_latest_issue()
+    issues = below_fold_issues_newest()
+    latest = issues[0] if issues else None
     if not latest:
         return ""
-    back_issues = [issue for issue in below_fold_issues_newest() if issue["slug"] != latest["slug"]][:6]
+    back_issues = [issue for issue in issues if issue["slug"] != latest["slug"]][:6]
     back_cards = "\n".join(below_fold_issue_card(issue) for issue in back_issues)
+    issue_payload = [
+        {
+            "slug": issue["slug"],
+            "title": issue.get("title") or "Below the Fold",
+            "url": issue["url"],
+            "issueLabel": below_fold_issue_number_label(issue),
+            "dateLabel": issue.get("dateLabel") or "",
+            "dek": issue.get("dek") or "",
+            "rubric": issue.get("rubric") or "",
+            "sectionLabel": issue.get("sectionLabel") or "",
+        }
+        for issue in issues
+    ]
+    issue_templates = {issue["slug"]: render_below_fold_issue_body(issue) for issue in issues}
+    issue_deck = json.dumps(
+        {"current": latest["slug"], "issues": issue_payload, "templates": issue_templates},
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).replace("</", "<\\/")
+    older_issue = issues[1] if len(issues) > 1 else None
+
+    def turn_control(kind: str, issue: dict | None) -> str:
+        is_older = kind == "older"
+        label = "Older issue" if is_older else "Newer issue"
+        arrow = "&rsaquo;" if is_older else "&lsaquo;"
+        disabled_class = "" if issue else " is-disabled"
+        disabled_attrs = "" if issue else ' aria-disabled="true" tabindex="-1"'
+        href = issue["url"] if issue else "#"
+        title = issue.get("title") if issue else ("Oldest issue" if is_older else "Newest issue")
+        meta = (
+            " / ".join(bit for bit in [below_fold_issue_number_label(issue), str(issue.get("dateLabel") or "").strip()] if bit)
+            if issue
+            else ("No older issue" if is_older else "You are on the newest issue")
+        )
+        aria_label = (
+            f"Flip to {'older' if is_older else 'newer'} issue: {title}"
+            if issue
+            else ("No older Below the Fold issue" if is_older else "You are on the newest Below the Fold issue")
+        )
+        return f"""
+      <a class="below-fold-flipper__turn below-fold-flipper__turn--{kind}{disabled_class}" href="{h(href)}" data-below-fold-flip="{kind}" aria-label="{h(aria_label)}"{disabled_attrs}>
+        <span class="below-fold-flipper__arrow" aria-hidden="true">{arrow}</span>
+        <span class="below-fold-flipper__turn-label">{h(label)}</span>
+        <strong data-below-fold-turn-title>{h(title)}</strong>
+        <small data-below-fold-turn-meta>{h(meta)}</small>
+      </a>
+""".rstrip()
+
+    latest_meta = " / ".join(
+        bit for bit in [below_fold_issue_number_label(latest), str(latest.get("dateLabel") or "").strip()] if bit
+    )
+    flipper = f"""
+  <section class="below-fold-flipper" data-below-fold-flipper data-current-slug="{h(latest['slug'])}" aria-labelledby="below-fold-flipper-title">
+    <div class="below-fold-flipper__toolbar">
+      <div>
+        <p class="below-fold-kicker">Below the Fold stack</p>
+        <h2 id="below-fold-flipper-title">Flip Through The Issues</h2>
+      </div>
+      <div class="below-fold-flipper__status">
+        <span data-below-fold-counter>{h(latest_meta)}</span>
+        <a href="{h(latest['url'])}" data-below-fold-permalink>Open permanent issue</a>
+      </div>
+    </div>
+    <div class="below-fold-flipper__stage" data-below-fold-stage>
+{turn_control("older", older_issue)}
+      <div class="below-fold-flipper__paper" data-below-fold-paper aria-live="polite" aria-atomic="true">
+        <div class="below-fold-flipper__sheet" data-below-fold-sheet>
+          {issue_templates[latest["slug"]]}
+        </div>
+      </div>
+{turn_control("newer", None)}
+    </div>
+    <script type="application/json" data-below-fold-issue-deck>{issue_deck}</script>
+  </section>
+""".rstrip()
     shelf = (
         f"""
   <section class="below-fold-shelf" aria-labelledby="below-fold-back-issues-title">
@@ -1687,7 +1768,7 @@ def render_home_below_fold_newsstand() -> str:
         if back_cards
         else ""
     )
-    return "\n".join(part for part in (render_below_fold_issue_body(latest), shelf) if part).strip()
+    return "\n".join(part for part in (flipper, shelf) if part).strip()
 
 
 def render_below_fold_newsstand() -> str:
@@ -1956,9 +2037,13 @@ def validate_below_fold_build_outputs() -> None:
         payload = json.loads(search_path.read_text(encoding="utf-8"))
         rows = payload.get("stories") if isinstance(payload, dict) else payload
         if isinstance(rows, list):
+            allowed_below_fold_urls = {BELOW_FOLD_NEWSSTAND_URL, *(issue["url"] for issue in BELOW_FOLD_ISSUES)}
             for item in rows:
                 if not isinstance(item, dict) or not is_below_fold_index_item(item):
                     continue
+                url = item.get("url")
+                if is_below_fold_url(url) and url not in allowed_below_fold_urls:
+                    raise RuntimeError(f"search-index.json includes removed Below the Fold URL: {url}")
                 required_flags = ("newsstandOnly", "excludeFromEdition", "excludeFromArchive", "excludeFromGallery")
                 missing_flags = [flag for flag in required_flags if item.get(flag) is not True]
                 if missing_flags:

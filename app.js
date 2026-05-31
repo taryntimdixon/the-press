@@ -111,6 +111,186 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
 })();
 
 (() => {
+  const flippers = Array.from(document.querySelectorAll('[data-below-fold-flipper]'));
+  if (!flippers.length) return;
+
+  const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+
+  function cleanText(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function issueMeta(issue) {
+    return [issue?.issueLabel, issue?.dateLabel].map(cleanText).filter(Boolean).join(' / ');
+  }
+
+  function readDeck(flipper) {
+    const script = flipper.querySelector('[data-below-fold-issue-deck]');
+    if (!script) return null;
+    try {
+      const data = JSON.parse(script.textContent || '{}');
+      if (!Array.isArray(data.issues) || !data.templates || typeof data.templates !== 'object') return null;
+      return data;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function setDisabled(control, disabled) {
+    if (!control) return;
+    control.classList.toggle('is-disabled', disabled);
+    control.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+    if (disabled) {
+      control.setAttribute('tabindex', '-1');
+    } else {
+      control.removeAttribute('tabindex');
+    }
+  }
+
+  function initFlipper(flipper) {
+    const deck = readDeck(flipper);
+    const sheet = flipper.querySelector('[data-below-fold-sheet]');
+    const paper = flipper.querySelector('[data-below-fold-paper]');
+    if (!deck || !sheet || !paper) return;
+
+    const issues = deck.issues
+      .map((issue) => ({
+        slug: cleanText(issue.slug),
+        title: cleanText(issue.title || 'Below the Fold'),
+        url: cleanText(issue.url || '#'),
+        issueLabel: cleanText(issue.issueLabel),
+        dateLabel: cleanText(issue.dateLabel),
+        dek: cleanText(issue.dek),
+      }))
+      .filter((issue) => issue.slug && deck.templates[issue.slug]);
+
+    if (!issues.length) return;
+
+    const controls = {
+      older: flipper.querySelector('[data-below-fold-flip="older"]'),
+      newer: flipper.querySelector('[data-below-fold-flip="newer"]'),
+    };
+    const counter = flipper.querySelector('[data-below-fold-counter]');
+    const permalink = flipper.querySelector('[data-below-fold-permalink]');
+    let activeIndex = issues.findIndex((issue) => issue.slug === deck.current);
+    if (activeIndex < 0) activeIndex = 0;
+    let turning = false;
+
+    function updateTurnControl(kind, targetIssue) {
+      const control = controls[kind];
+      if (!control) return;
+      const title = control.querySelector('[data-below-fold-turn-title]');
+      const meta = control.querySelector('[data-below-fold-turn-meta]');
+      const disabled = !targetIssue;
+      setDisabled(control, disabled);
+      control.href = targetIssue?.url || '#';
+      if (title) title.textContent = targetIssue?.title || (kind === 'older' ? 'Oldest issue' : 'Newest issue');
+      if (meta) {
+        meta.textContent = targetIssue
+          ? issueMeta(targetIssue)
+          : kind === 'older'
+            ? 'No older issue'
+            : 'You are on the newest issue';
+      }
+      control.setAttribute(
+        'aria-label',
+        targetIssue
+          ? `Flip to ${kind === 'older' ? 'older' : 'newer'} issue: ${targetIssue.title}`
+          : kind === 'older'
+            ? 'No older Below the Fold issue'
+            : 'You are on the newest Below the Fold issue'
+      );
+    }
+
+    function updateChrome() {
+      const active = issues[activeIndex];
+      const older = issues[activeIndex + 1];
+      const newer = issues[activeIndex - 1];
+      flipper.dataset.currentSlug = active.slug;
+      if (counter) counter.textContent = issueMeta(active) || active.title;
+      if (permalink) permalink.href = active.url;
+      updateTurnControl('older', older);
+      updateTurnControl('newer', newer);
+    }
+
+    function scrollToIssueTop() {
+      const root = document.body?.scrollHeight > document.body?.clientHeight
+        ? document.body
+        : document.scrollingElement || document.documentElement;
+      const currentTop = root.scrollTop || window.scrollY || window.pageYOffset || 0;
+      const top = Math.max(0, paper.getBoundingClientRect().top + currentTop - 8);
+      root.scrollTop = top;
+      if (root !== document.documentElement) document.documentElement.scrollTop = top;
+      window.scrollTo(0, top);
+    }
+
+    function applyIssue(nextIndex) {
+      const issue = issues[nextIndex];
+      const html = deck.templates[issue.slug];
+      if (!html) return false;
+      sheet.innerHTML = html;
+      activeIndex = nextIndex;
+      updateChrome();
+      return true;
+    }
+
+    function finishTurn() {
+      turning = false;
+      paper.removeAttribute('aria-busy');
+      flipper.classList.remove('is-flipping', 'is-flipping-older', 'is-flipping-newer', 'is-flipping-out', 'is-flipping-in');
+    }
+
+    function flip(kind) {
+      if (turning) return;
+      const nextIndex = kind === 'older' ? activeIndex + 1 : activeIndex - 1;
+      if (nextIndex < 0 || nextIndex >= issues.length) return;
+
+      if (reduceMotion) {
+        if (applyIssue(nextIndex)) scrollToIssueTop();
+        return;
+      }
+
+      turning = true;
+      paper.setAttribute('aria-busy', 'true');
+      flipper.classList.remove('is-flipping-older', 'is-flipping-newer', 'is-flipping-out', 'is-flipping-in');
+      flipper.classList.add('is-flipping', `is-flipping-${kind}`, 'is-flipping-out');
+
+      window.setTimeout(() => {
+        if (applyIssue(nextIndex)) scrollToIssueTop();
+        flipper.classList.remove('is-flipping-out');
+        flipper.classList.add('is-flipping-in');
+      }, 210);
+
+      window.setTimeout(finishTurn, 520);
+    }
+
+    Object.entries(controls).forEach(([kind, control]) => {
+      control?.addEventListener('click', (event) => {
+        if (control.getAttribute('aria-disabled') === 'true') return;
+        event.preventDefault();
+        flip(kind);
+      });
+    });
+
+    flipper.addEventListener('keydown', (event) => {
+      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) return;
+      if (event.target?.closest?.('input, textarea, select, [contenteditable=""], [contenteditable="true"]')) return;
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        flip('newer');
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        flip('older');
+      }
+    });
+
+    updateChrome();
+  }
+
+  flippers.forEach(initFlipper);
+})();
+
+(() => {
   const IMAGE_LINK_SELECTOR = '.drone-article-visual__media[href]';
   let activeLightbox = null;
 
