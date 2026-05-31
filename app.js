@@ -171,7 +171,6 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
       newer: flipper.querySelector('[data-below-fold-flip="newer"]'),
     };
     const counter = flipper.querySelector('[data-below-fold-counter]');
-    const permalink = flipper.querySelector('[data-below-fold-permalink]');
     let activeIndex = issues.findIndex((issue) => issue.slug === deck.current);
     if (activeIndex < 0) activeIndex = 0;
     let turning = false;
@@ -208,7 +207,6 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
       const newer = issues[activeIndex - 1];
       flipper.dataset.currentSlug = active.slug;
       if (counter) counter.textContent = issueMeta(active) || active.title;
-      if (permalink) permalink.href = active.url;
       updateTurnControl('older', older);
       updateTurnControl('newer', newer);
     }
@@ -7174,25 +7172,40 @@ document.addEventListener("DOMContentLoaded", () => {
     button.innerHTML = '<span aria-hidden="true">↑</span> Top';
     document.body.appendChild(button);
 
+    const scrollRoot = () => (
+      document.body?.scrollHeight > document.body?.clientHeight
+        ? document.body
+        : document.scrollingElement || document.documentElement
+    );
+    const scrollTop = () => scrollRoot().scrollTop || window.scrollY || window.pageYOffset || 0;
+
     button.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: prefersReducedMotion() ? 'auto' : 'smooth'
-      });
+      const root = scrollRoot();
+      if (typeof root.scrollTo === 'function') {
+        root.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+      } else {
+        root.scrollTop = 0;
+      }
+      if (root !== document.documentElement) document.documentElement.scrollTop = 0;
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
     });
 
     let ticking = false;
     const update = () => {
       ticking = false;
-      button.classList.toggle('is-visible', window.scrollY > 640);
+      button.classList.toggle('is-visible', scrollTop() > Math.max(640, window.innerHeight * .9));
     };
 
     update();
-    window.addEventListener('scroll', () => {
+    const requestUpdate = () => {
       if (ticking) return;
       ticking = true;
       window.requestAnimationFrame(update);
-    }, { passive: true });
+    };
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    document.body?.addEventListener('scroll', requestUpdate, { passive: true });
+    document.documentElement?.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate, { passive: true });
   }
 
   function watchDynamicContent(revealObserver) {

@@ -1731,11 +1731,11 @@ def render_home_below_fold_newsstand() -> str:
     <div class="below-fold-flipper__toolbar">
       <div>
         <p class="below-fold-kicker">Below the Fold stack</p>
-        <h2 id="below-fold-flipper-title">Flip Through The Issues</h2>
+        <h2 id="below-fold-flipper-title">Issues</h2>
       </div>
       <div class="below-fold-flipper__status">
         <span data-below-fold-counter>{h(latest_meta)}</span>
-        <a href="{h(latest['url'])}" data-below-fold-permalink>Open permanent issue</a>
+        <a href="{h(BELOW_FOLD_NEWSSTAND_URL)}">Browse the Below the Fold stack archive</a>
       </div>
     </div>
     <div class="below-fold-flipper__stage" data-below-fold-stage>
