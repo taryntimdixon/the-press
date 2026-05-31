@@ -13867,6 +13867,42 @@ body.page-home .home-grid__main > .below-fold + .below-fold{
   min-width:0;
   padding:.78rem;
 }
+.below-fold-automation-field-ledger{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0;
+  min-width:0;
+  margin:.18rem 0 0;
+  border-top:2px solid color-mix(in srgb,var(--fold-red) 68%,var(--ink));
+  border-left:1px solid var(--fold-rule);
+}
+.below-fold-automation-field-ledger div{
+  display:grid;
+  align-content:start;
+  gap:.08rem;
+  min-width:0;
+  min-height:3.5rem;
+  padding:.28rem .32rem .32rem;
+  border-right:1px solid var(--fold-rule);
+  border-bottom:1px solid var(--fold-rule);
+  background:color-mix(in srgb,var(--fold-paper-deep) 34%,transparent);
+}
+.below-fold-automation-field-ledger dt{
+  margin:0;
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:1.12rem;
+  font-weight:950;
+  letter-spacing:0;
+  line-height:.92;
+}
+.below-fold-automation-field-ledger dd{
+  margin:0;
+  color:var(--muted);
+  font-size:.56rem;
+  font-weight:820;
+  line-height:1.08;
+}
 .below-fold-automation-field h4,
 .below-fold-automation-humanoid-notes h4,
 .below-fold-automation-stack-copy h4{
