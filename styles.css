@@ -13262,6 +13262,12 @@ body.page-home .home-grid__main > .below-fold + .below-fold{
   text-decoration:none;
   transform:translateY(-50%) scale(1.16);
 }
+.below-fold-flipper:not(.is-turns-ready) .below-fold-flipper__turn{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  filter:none;
+}
 .below-fold-flipper__turn:focus-visible{
   outline:2px solid color-mix(in srgb,var(--newsstand-red) 58%,transparent);
   outline-offset:.28rem;

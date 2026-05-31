@@ -116,6 +116,12 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
 
   const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
 
+  function getScrollRoot() {
+    return document.body?.scrollHeight > document.body?.clientHeight
+      ? document.body
+      : document.scrollingElement || document.documentElement;
+  }
+
   function cleanText(value) {
     return String(value || '').replace(/\s+/g, ' ').trim();
   }
@@ -174,6 +180,19 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
     let activeIndex = issues.findIndex((issue) => issue.slug === deck.current);
     if (activeIndex < 0) activeIndex = 0;
     let turning = false;
+    let turnVisibilityFrame = 0;
+
+    function updateTurnVisibility() {
+      turnVisibilityFrame = 0;
+      flipper.classList.toggle('is-turns-ready', paper.getBoundingClientRect().top <= 2);
+    }
+
+    function requestTurnVisibilityUpdate() {
+      if (turnVisibilityFrame) return;
+      turnVisibilityFrame = window.requestAnimationFrame
+        ? window.requestAnimationFrame(updateTurnVisibility)
+        : window.setTimeout(updateTurnVisibility, 16);
+    }
 
     function updateTurnControl(kind, targetIssue) {
       const control = controls[kind];
@@ -212,14 +231,13 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
     }
 
     function scrollToIssueTop() {
-      const root = document.body?.scrollHeight > document.body?.clientHeight
-        ? document.body
-        : document.scrollingElement || document.documentElement;
+      const root = getScrollRoot();
       const currentTop = root.scrollTop || window.scrollY || window.pageYOffset || 0;
       const top = Math.max(0, paper.getBoundingClientRect().top + currentTop - 8);
       root.scrollTop = top;
       if (root !== document.documentElement) document.documentElement.scrollTop = top;
       window.scrollTo(0, top);
+      requestTurnVisibilityUpdate();
     }
 
     function applyIssue(nextIndex) {
@@ -282,7 +300,13 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
       }
     });
 
+    const scrollRoot = getScrollRoot();
+    scrollRoot.addEventListener('scroll', requestTurnVisibilityUpdate, { passive: true });
+    if (scrollRoot !== window) window.addEventListener('scroll', requestTurnVisibilityUpdate, { passive: true });
+    window.addEventListener('resize', requestTurnVisibilityUpdate, { passive: true });
+
     updateChrome();
+    updateTurnVisibility();
   }
 
   flippers.forEach(initFlipper);
