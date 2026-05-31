@@ -13142,8 +13142,8 @@ body.page-home .home-grid__main > .below-fold + .below-fold{
   min-width:0;
 }
 .below-fold-flipper__toolbar{
-  display:flex;
-  justify-content:space-between;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
   gap:.75rem;
   align-items:center;
   min-width:0;
@@ -13151,6 +13151,10 @@ body.page-home .home-grid__main > .below-fold + .below-fold{
   border-top:3px double var(--ink);
   border-bottom:1px solid color-mix(in srgb,var(--ink) 55%,var(--newsstand-rule));
   background:var(--newsstand-paper);
+}
+.below-fold-flipper__toolbar > div:first-child{
+  justify-self:start;
+  min-width:0;
 }
 .below-fold-flipper__toolbar h2{
   display:inline;
@@ -13163,22 +13167,28 @@ body.page-home .home-grid__main > .below-fold + .below-fold{
   text-transform:uppercase;
 }
 .below-fold-flipper__status{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-  gap:.18rem .65rem;
-  align-items:center;
+  display:contents;
   color:var(--muted);
   font-size:.62rem;
   font-weight:950;
   letter-spacing:.08em;
   line-height:1;
-  text-align:right;
   text-transform:uppercase;
 }
+.below-fold-flipper__status [data-below-fold-counter]{
+  grid-column:2;
+  justify-self:center;
+  min-width:0;
+  text-align:center;
+  white-space:nowrap;
+}
 .below-fold-flipper__status a{
+  grid-column:3;
+  justify-self:end;
   color:var(--newsstand-red);
   text-decoration:none;
+  text-align:right;
+  white-space:nowrap;
 }
 .below-fold-flipper__status a:hover,
 .below-fold-flipper__status a:focus-visible{
@@ -15973,11 +15983,22 @@ html[data-theme="dark"] .below-fold-issue-page{
   }
   .below-fold-flipper__toolbar{
     display:flex;
+    justify-content:space-between;
     align-items:center;
   }
   .below-fold-flipper__status{
+    justify-self:auto;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.18rem .65rem;
+    align-items:center;
     justify-content:flex-end;
     text-align:right;
+  }
+  .below-fold-flipper__status [data-below-fold-counter],
+  .below-fold-flipper__status a{
+    grid-column:auto;
+    justify-self:auto;
   }
   .below-fold-flipper__stage{
     display:grid;
