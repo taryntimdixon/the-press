@@ -184,7 +184,7 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
 
     function updateTurnVisibility() {
       turnVisibilityFrame = 0;
-      flipper.classList.toggle('is-turns-ready', paper.getBoundingClientRect().top <= 2);
+      flipper.classList.add('is-turns-ready');
     }
 
     function requestTurnVisibilityUpdate() {
@@ -306,6 +306,7 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
     window.addEventListener('resize', requestTurnVisibilityUpdate, { passive: true });
 
     updateChrome();
+    flipper.classList.add('is-turns-ready');
     updateTurnVisibility();
   }
 
@@ -987,6 +988,7 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
     extendSectionNavigation();
     setupDarkMode();
     injectShareButtons();
+    injectBelowFoldFlipperStoryButtons();
     setupShareButtonRefresh();
     bindSourceNoteExternalLinks(document);
     applyDailyCardHover();
@@ -3164,15 +3166,19 @@ function enhanceBreakingStrip(stories) {
   const HOMEPAGE_SOCIAL_SHARE_STORAGE_PREFIX = 'press-homepage-social-share';
 
   function injectShareButtons() {
+    const belowFoldIssueHeader = document.querySelector('.page-below-fold-issue .below-fold-issue-page__masthead');
+    const belowFoldIssueNav = document.querySelector('.page-below-fold-issue .below-fold-issue-nav');
     const articleHero = document.querySelector('.article-hero');
     const articleMeta = articleHero?.querySelector('.article-meta');
     const articleBody = document.querySelector('[data-article-body], .article-body, .generated-story');
     const articleHeadline = document.querySelector('.article-headline, .article-title, h1');
     const homeIntro = document.querySelector('.page-home .home-hero__intro');
-    const contextType = (articleHero || articleBody || articleHeadline) && !document.body.classList.contains('page-home')
+    const contextType = belowFoldIssueHeader
+      ? 'belowFoldIssue'
+      : (articleHero || articleBody || articleHeadline) && !document.body.classList.contains('page-home')
       ? 'article'
       : (homeIntro ? 'site' : '');
-    const target = articleMeta || articleBody || homeIntro;
+    const target = belowFoldIssueNav || belowFoldIssueHeader || articleMeta || articleBody || homeIntro;
     if (!contextType || !target) return;
 
     const context = buildShareContext(contextType);
@@ -3185,13 +3191,15 @@ function enhanceBreakingStrip(stories) {
     if (document.querySelector('[data-press-share-row]')) return;
 
     const shareRow = document.createElement('nav');
-    shareRow.className = `share-row share-row--${contextType}`;
+    shareRow.className = `share-row share-row--${shareContextClassName(contextType)}`;
     shareRow.setAttribute('aria-label', context.ariaLabel);
     shareRow.setAttribute('data-press-share-row', contextType);
     shareRow.setAttribute('data-share-url', context.url);
     shareRow.innerHTML = buildShareRowMarkup(context);
 
-    if (articleMeta) {
+    if (belowFoldIssueHeader) {
+      target.appendChild(shareRow);
+    } else if (articleMeta) {
       articleMeta.insertAdjacentElement('afterend', shareRow);
     } else if (articleBody) {
       articleBody.insertAdjacentElement('afterend', shareRow);
@@ -3202,30 +3210,74 @@ function enhanceBreakingStrip(stories) {
     bindShareRow(shareRow, context);
   }
 
+  function injectBelowFoldFlipperStoryButtons() {
+    document.querySelectorAll('[data-below-fold-flipper]').forEach((flipper) => {
+      if (flipper.querySelector('[data-below-fold-story-share]')) return;
+      const toolbar = flipper.querySelector('.below-fold-flipper__toolbar');
+      if (!toolbar) return;
+
+      const shareBar = document.createElement('div');
+      shareBar.className = 'below-fold-flipper__story-share';
+      shareBar.setAttribute('data-below-fold-story-share', '');
+      shareBar.innerHTML = `
+        <span class="below-fold-flipper__story-label">Share scroll</span>
+        <div class="below-fold-flipper__story-buttons">
+          ${buildBelowFoldScrollStoryButtons('below-fold-flipper__story-button', 'data-below-fold-scroll-story')}
+        </div>
+      `;
+
+      shareBar.querySelectorAll('[data-below-fold-scroll-story]').forEach((button) => button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const context = buildBelowFoldFlipperShareContext(flipper);
+        if (!context) return;
+        openInstagramStoryStudio(shareBar, withScrollStoryPlatform(context, button.dataset.belowFoldScrollStory));
+      }));
+
+      toolbar.insertAdjacentElement('afterend', shareBar);
+    });
+  }
+
+  function shareContextClassName(type) {
+    return type === 'belowFoldIssue' ? 'below-fold-issue' : type;
+  }
+
   function setupShareButtonRefresh() {
     let timer = 0;
     const refresh = () => {
       window.clearTimeout(timer);
-      timer = window.setTimeout(injectShareButtons, 80);
+      timer = window.setTimeout(() => {
+        injectShareButtons();
+        injectBelowFoldFlipperStoryButtons();
+      }, 80);
     };
     window.addEventListener('pageshow', refresh);
     window.addEventListener('popstate', refresh);
     document.addEventListener('click', (event) => {
       const link = event.target.closest?.('a[href]');
       if (!link || link.target || link.origin !== window.location.origin) return;
-      window.setTimeout(injectShareButtons, 180);
-      window.setTimeout(injectShareButtons, 600);
+      window.setTimeout(() => {
+        injectShareButtons();
+        injectBelowFoldFlipperStoryButtons();
+      }, 180);
+      window.setTimeout(() => {
+        injectShareButtons();
+        injectBelowFoldFlipperStoryButtons();
+      }, 600);
     });
   }
 
   function buildShareContext(type) {
-    const headline = document.querySelector('.article-headline')?.textContent
+    const headline = (type === 'belowFoldIssue'
+      ? document.querySelector('#below-fold-issue-page-title')?.textContent
+      : '')
+      || document.querySelector('.article-headline')?.textContent
       || document.querySelector('meta[property="og:title"]')?.content
       || document.title
       || 'The Press';
     const title = collapseWhitespace(headline.replace(/\s+[—-]\s+The Press.*$/i, '')) || 'The Press';
     const description = collapseWhitespace(document.querySelector('meta[name="description"]')?.content || '');
     const url = getCleanShareUrl();
+    const issueMeta = collapseWhitespace(document.querySelector('.below-fold-issue-page__meta')?.textContent || '');
     return {
       type,
       title: type === 'site' ? 'The Press' : title,
@@ -3235,8 +3287,62 @@ function enhanceBreakingStrip(stories) {
       externalImageUrl: getShareImageUrl({ preferPublic: true }),
       storyItems: type === 'site' ? getHomepageShareItems(4) : [],
       returnUrl: window.location.href,
-      ariaLabel: type === 'site' ? 'Share this page' : 'Share this article',
+      issueMeta,
+      ariaLabel: type === 'site'
+        ? 'Share this page'
+        : (type === 'belowFoldIssue' ? 'Share this issue' : 'Share this article'),
     };
+  }
+
+  function buildBelowFoldFlipperShareContext(flipper) {
+    const root = flipper?.querySelector('[data-below-fold-sheet] [data-below-fold-root]');
+    if (!root) return null;
+    const deck = readBelowFoldFlipperDeck(flipper);
+    const currentSlug = collapseWhitespace(flipper.dataset.currentSlug || '');
+    const activeIssue = deck?.issues?.find((issue) => issue.slug === currentSlug) || null;
+    const title = collapseWhitespace(activeIssue?.title || root.querySelector('h2, h3')?.textContent || 'Below the Fold');
+    const text = collapseWhitespace(
+      activeIssue?.dek
+      || root.querySelector('.below-fold-header p:not(.below-fold-kicker), header p:not(.below-fold-kicker)')?.textContent
+      || 'A scrollable Below the Fold issue from The Press.'
+    );
+    const issueMeta = [activeIssue?.issueLabel, activeIssue?.dateLabel]
+      .map(collapseWhitespace)
+      .filter(Boolean)
+      .join(' / ')
+      || collapseWhitespace(flipper.querySelector('[data-below-fold-counter]')?.textContent || '');
+    const issuePath = collapseWhitespace(activeIssue?.url || 'below-the-fold.html');
+    const shareBase = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(window.location.hostname)
+      ? 'https://thepress.live/'
+      : window.location.href;
+    const url = new URL(issuePath, shareBase).href;
+    const imageNode = root.querySelector('img');
+    const imageUrl = normalizeShareAssetUrl(imageNode?.currentSrc || imageNode?.getAttribute('src') || '');
+
+    return {
+      type: 'belowFoldIssue',
+      title,
+      text,
+      url,
+      imageUrl,
+      externalImageUrl: imageUrl,
+      storyItems: [],
+      returnUrl: window.location.href,
+      issueMeta,
+      belowFoldRoot: root.cloneNode(true),
+      ariaLabel: 'Share this issue',
+    };
+  }
+
+  function readBelowFoldFlipperDeck(flipper) {
+    const script = flipper?.querySelector('[data-below-fold-issue-deck]');
+    if (!script) return null;
+    try {
+      const data = JSON.parse(script.textContent || '{}');
+      return Array.isArray(data.issues) ? data : null;
+    } catch (_) {
+      return null;
+    }
   }
 
   function getCleanShareUrl() {
@@ -3257,6 +3363,8 @@ function enhanceBreakingStrip(stories) {
       'meta[name="twitter:image"]',
     ];
     const visibleImageSelectors = [
+      '.page-below-fold-issue [data-below-fold-root] img',
+      '.page-below-fold-issue .below-fold-issue-page__paper img',
       '.article-hero .hero-figure img',
       '.article-hero img',
       '.lead-panel.is-active img',
@@ -3319,11 +3427,11 @@ function enhanceBreakingStrip(stories) {
   function normalizeShareAssetUrl(rawUrl, options = {}) {
     if (!rawUrl) return '';
     try {
-      const parsed = new URL(rawUrl, window.location.href);
+      const parsed = new URL(rawUrl, document.baseURI || window.location.href);
       const isPressLiveAsset = /(^|\.)thepress\.live$/i.test(parsed.hostname);
       const isLocalPreview = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(window.location.hostname);
       if (isPressLiveAsset && isLocalPreview && !options.preferPublic) {
-        return new URL(`${parsed.pathname}${parsed.search}`, window.location.href).href;
+        return new URL(`${parsed.pathname}${parsed.search}`, document.baseURI || window.location.href).href;
       }
       return parsed.href;
     } catch (_) {
@@ -3333,18 +3441,59 @@ function enhanceBreakingStrip(stories) {
 
   function buildShareRowMarkup(context) {
     const intent = buildShareIntents(context);
+    if (context.type === 'belowFoldIssue') return buildBelowFoldIssueShareRowMarkup();
+    const instagramLabel = context.type === 'belowFoldIssue'
+      ? 'Make an Instagram Story scroll video'
+      : 'Make an Instagram Story image';
+    const instagramTitle = context.type === 'belowFoldIssue' ? 'Instagram Story scroll' : 'Instagram Story';
     return `
       <div class="share-row__buttons">
         <a class="share-btn share-btn--x" href="${escapeAttribute(intent.x)}" target="_blank" rel="noopener noreferrer" data-share-platform="x" data-share-target="${escapeAttribute(intent.x)}" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
-        <button class="share-btn share-btn--instagram" type="button" data-share-platform="instagram" aria-label="Make an Instagram Story image" title="Instagram Story">${sharePlatformIcon('instagram')}<span class="sr-only">Instagram Story</span></button>
+        <button class="share-btn share-btn--instagram" type="button" data-share-platform="instagram" aria-label="${escapeAttribute(instagramLabel)}" title="${escapeAttribute(instagramTitle)}">${sharePlatformIcon('instagram')}<span class="sr-only">${escapeHtml(instagramTitle)}</span></button>
         <a class="share-btn share-btn--facebook" href="${escapeAttribute(intent.facebook)}" target="_blank" rel="noopener noreferrer" data-share-platform="facebook" data-share-target="${escapeAttribute(intent.facebook)}" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
         <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(intent.whatsapp)}" target="_blank" rel="noopener noreferrer" data-share-platform="whatsapp" data-share-target="${escapeAttribute(intent.whatsapp)}" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
+        <a class="share-btn share-btn--sms" href="${escapeAttribute(intent.sms)}" target="_blank" rel="noopener noreferrer" data-share-platform="sms" data-share-target="${escapeAttribute(intent.sms)}" aria-label="Share by message" title="Messages">${sharePlatformIcon('sms')}<span class="sr-only">Messages</span></a>
         <a class="share-btn share-btn--reddit" href="${escapeAttribute(intent.reddit)}" target="_blank" rel="noopener noreferrer" data-share-platform="reddit" data-share-target="${escapeAttribute(intent.reddit)}" aria-label="Share on Reddit" title="Reddit">${sharePlatformIcon('reddit')}<span class="sr-only">Reddit</span></a>
         <a class="share-btn share-btn--discord" href="${escapeAttribute(intent.discord)}" target="_blank" rel="noopener noreferrer" data-share-platform="discord" data-share-target="${escapeAttribute(intent.discord)}" aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></a>
         <button class="share-btn share-btn--copy" type="button" data-share-platform="copy" aria-label="Copy share link" title="Copy link">${sharePlatformIcon('copy')}<span class="sr-only">Copy link</span></button>
       </div>
       <p class="share-row__status" data-share-status aria-live="polite"></p>
     `;
+  }
+
+  function buildBelowFoldIssueShareRowMarkup() {
+    return `
+      <div class="share-row__buttons share-row__buttons--scroll-video" aria-label="Share scrolling issue video">
+        ${buildBelowFoldScrollStoryButtons('share-btn', 'data-share-scroll-story')}
+        <button class="share-btn share-btn--copy" type="button" data-share-platform="copy" aria-label="Copy issue link" title="Copy link">${sharePlatformIcon('copy')}<span class="sr-only">Copy link</span></button>
+      </div>
+      <p class="share-row__status" data-share-status aria-live="polite"></p>
+    `;
+  }
+
+  function buildBelowFoldScrollStoryButtons(buttonClassName, dataAttributeName) {
+    return getBelowFoldScrollStoryPlatforms().map((item) => `
+      <button class="${escapeAttribute(buttonClassName)} ${escapeAttribute(buttonClassName === 'share-btn' ? `share-btn--${item.platform}` : `${buttonClassName}--${item.platform}`)}" type="button" data-share-platform="${escapeAttribute(item.platform)}" ${dataAttributeName}="${escapeAttribute(item.platform)}" aria-label="${escapeAttribute(item.ariaLabel)}" title="${escapeAttribute(item.title)}">
+        ${sharePlatformIcon(item.platform)}
+        <span class="sr-only">${escapeHtml(item.title)}</span>
+      </button>
+    `).join('');
+  }
+
+  function getBelowFoldScrollStoryPlatforms() {
+    return [
+      { platform: 'x', title: 'X scroll video', ariaLabel: 'Make a scrolling issue video for X or Twitter' },
+      { platform: 'instagram', title: 'Instagram Story scroll', ariaLabel: 'Make a scrolling issue video for Instagram Stories' },
+      { platform: 'facebook', title: 'Facebook scroll video', ariaLabel: 'Make a scrolling issue video for Facebook' },
+      { platform: 'sms', title: 'Message scroll video', ariaLabel: 'Make a scrolling issue video for Messages' },
+    ];
+  }
+
+  function withScrollStoryPlatform(context, platform) {
+    return {
+      ...context,
+      scrollStoryPlatform: getScrollStoryPlatformMeta(platform).platform,
+    };
   }
 
   function sharePlatformIcon(platform) {
@@ -3374,6 +3523,7 @@ function enhanceBreakingStrip(stories) {
       x: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedXUrl}`,
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedFacebookUrl}`,
       whatsapp: `https://api.whatsapp.com/send?text=${encodedText}`,
+      sms: `sms:?&body=${encodedText}`,
       reddit: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
       discord: 'https://discord.com/channels/@me',
     };
@@ -3436,6 +3586,11 @@ function enhanceBreakingStrip(stories) {
     row.querySelectorAll('[data-share-platform]').forEach((control) => {
       control.addEventListener('click', async (event) => {
         if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+        if (control.dataset.shareScrollStory) {
+          event.preventDefault();
+          openInstagramStoryStudio(row, withScrollStoryPlatform(context, control.dataset.shareScrollStory));
+          return;
+        }
         if (control.dataset.sharePlatform === 'copy') {
           event.preventDefault();
           const copied = await copyShareText(context);
@@ -3487,6 +3642,7 @@ function enhanceBreakingStrip(stories) {
       instagram: 'Instagram',
       facebook: 'Facebook',
       whatsapp: 'WhatsApp',
+      sms: 'Messages',
       reddit: 'Reddit',
       discord: 'Discord',
     };
@@ -3509,30 +3665,51 @@ function enhanceBreakingStrip(stories) {
     clearManualCopyText(row);
     const storyContext = context.type === 'site' ? buildShareContext('site') : context;
     const modal = ensureInstagramStoryStudio();
+    modal._pressInstagramStoryContext = storyContext;
     const canvas = modal.querySelector('[data-instagram-story-canvas]');
+    const video = modal.querySelector('[data-instagram-story-video]');
     const status = modal.querySelector('[data-instagram-story-status]');
+    const scrollStoryMode = isBelowFoldScrollStoryContext(storyContext);
+    configureInstagramStoryStudioMode(modal, storyContext);
     modal.hidden = false;
     document.documentElement.classList.add('press-instagram-story-open');
     modal.querySelector('[data-instagram-story-close]')?.focus({ preventScroll: true });
-    renderInstagramStoryPreview(modal, storyContext, canvas, status, modal._pressInstagramStoryStyle || getDefaultInstagramStoryStyleKey());
+    if (scrollStoryMode) {
+      renderBelowFoldScrollStoryPreview(modal, storyContext, canvas, video, status);
+    } else {
+      renderInstagramStoryPreview(modal, storyContext, canvas, status, modal._pressInstagramStoryStyle || getDefaultInstagramStoryStyleKey());
+    }
 
     modal.querySelectorAll('[data-instagram-story-style]').forEach((button) => {
       button.onclick = () => {
+        if (isBelowFoldScrollStoryContext(storyContext)) return;
         renderInstagramStoryPreview(modal, storyContext, canvas, status, button.dataset.instagramStoryStyle || getDefaultInstagramStoryStyleKey());
       };
     });
 
     modal.querySelector('[data-instagram-story-download]').onclick = async () => {
       await ensureInstagramStoryReady(modal, status);
+      if (isBelowFoldScrollStoryContext(storyContext)) {
+        await saveInstagramStoryStudioAsset(modal, canvas, storyContext, status);
+        return;
+      }
       await saveInstagramStoryCanvas(canvas, storyContext, status);
     };
     modal.querySelector('[data-instagram-story-native]').onclick = async () => {
       await ensureInstagramStoryReady(modal, status);
+      if (isBelowFoldScrollStoryContext(storyContext)) {
+        await nativeShareInstagramStoryStudioAsset(modal, canvas, storyContext, status);
+        return;
+      }
       await nativeShareInstagramStoryCanvas(canvas, storyContext, status);
     };
     modal.querySelector('[data-instagram-story-open]').onclick = async (event) => {
       event.preventDefault();
       await ensureInstagramStoryReady(modal, status);
+      if (isBelowFoldScrollStoryContext(storyContext)) {
+        await openInstagramStoryWithStudioAsset(modal, canvas, storyContext, status);
+        return;
+      }
       const isMobile = isMobileShareDevice();
       if (isMobile) {
         const shared = await shareInstagramStoryFile(canvas, storyContext, status);
@@ -3556,6 +3733,89 @@ function enhanceBreakingStrip(stories) {
     };
   }
 
+  function isBelowFoldScrollStoryContext(context) {
+    return context?.type === 'belowFoldIssue';
+  }
+
+  function getScrollStoryPlatformMeta(platform) {
+    const key = String(platform || 'instagram').toLowerCase();
+    const platforms = {
+      instagram: {
+        platform: 'instagram',
+        label: 'Instagram',
+        kicker: 'Instagram scroll video',
+        openLabel: 'Instagram Story',
+        fallbackUrl: 'https://www.instagram.com/',
+      },
+      facebook: {
+        platform: 'facebook',
+        label: 'Facebook',
+        kicker: 'Facebook scroll video',
+        openLabel: 'Facebook',
+        fallbackUrl: 'https://www.facebook.com/',
+      },
+      x: {
+        platform: 'x',
+        label: 'X / Twitter',
+        kicker: 'X / Twitter scroll video',
+        openLabel: 'X / Twitter',
+        fallbackUrl: 'https://twitter.com/compose/tweet',
+      },
+      sms: {
+        platform: 'sms',
+        label: 'Messages',
+        kicker: 'Message scroll video',
+        openLabel: 'Messages',
+        fallbackUrl: '',
+      },
+    };
+    return platforms[key] || platforms.instagram;
+  }
+
+  function configureInstagramStoryStudioMode(modal, context) {
+    if (!modal) return;
+    const scrollStoryMode = isBelowFoldScrollStoryContext(context);
+    const platform = getScrollStoryPlatformMeta(context?.scrollStoryPlatform);
+    const kicker = modal.querySelector('[data-instagram-story-kicker]');
+    modal.classList.toggle('press-instagram-story--video', scrollStoryMode);
+    modal.classList.toggle('press-instagram-story--still', !scrollStoryMode);
+    modal.classList.toggle('press-instagram-story--issue-video', scrollStoryMode);
+    const title = modal.querySelector('#instagram-story-title');
+    const nativeButton = modal.querySelector('[data-instagram-story-native]');
+    const downloadButton = modal.querySelector('[data-instagram-story-download]');
+    const openButton = modal.querySelector('[data-instagram-story-open]');
+    const canvas = modal.querySelector('[data-instagram-story-canvas]');
+    const video = modal.querySelector('[data-instagram-story-video]');
+
+    if (kicker) kicker.textContent = scrollStoryMode ? platform.kicker : 'Instagram Story';
+    if (title) title.textContent = scrollStoryMode ? 'Scroll Preview' : 'Story Preview';
+    if (nativeButton) nativeButton.textContent = scrollStoryMode ? 'Share video' : 'Share image';
+    if (downloadButton) downloadButton.textContent = scrollStoryMode ? 'Save video' : 'Save to device';
+    if (openButton) openButton.textContent = scrollStoryMode ? platform.openLabel : 'Instagram Story';
+    if (canvas) canvas.hidden = false;
+    if (video) {
+      video.hidden = true;
+      video.pause?.();
+      video.removeAttribute('src');
+      video.load?.();
+    }
+
+    if (modal._pressInstagramStoryVideoUrl) {
+      URL.revokeObjectURL(modal._pressInstagramStoryVideoUrl);
+      modal._pressInstagramStoryVideoUrl = '';
+    }
+    modal._pressInstagramStoryAsset = null;
+  }
+
+  function getBelowFoldScrollVideoProfile() {
+    return {
+      canvasWidth: 1080,
+      canvasHeight: 1920,
+      viewportWidth: 430,
+      orientation: 'story',
+    };
+  }
+
   function ensureInstagramStoryStudio() {
     let modal = document.querySelector('[data-instagram-story-modal]');
     if (modal) return modal;
@@ -3572,7 +3832,7 @@ function enhanceBreakingStrip(stories) {
       <div class="press-instagram-story__panel" role="document">
         <div class="press-instagram-story__header">
           <div>
-            <p>Instagram Story</p>
+            <p data-instagram-story-kicker>Instagram Story</p>
             <h2 id="instagram-story-title">Story Preview</h2>
           </div>
           <button class="press-instagram-story__close" type="button" data-instagram-story-close>Close</button>
@@ -3580,6 +3840,7 @@ function enhanceBreakingStrip(stories) {
         <div class="press-instagram-story__body">
           <div class="press-instagram-story__preview">
             <canvas width="1080" height="1920" data-instagram-story-canvas></canvas>
+            <video controls autoplay playsinline muted hidden data-instagram-story-video></video>
           </div>
           <div class="press-instagram-story__side">
             <div class="press-instagram-story__styles" role="group" aria-label="Preview style">
@@ -3658,10 +3919,1634 @@ function enhanceBreakingStrip(stories) {
 
   async function ensureInstagramStoryReady(modal, status) {
     if (!modal?._pressInstagramStoryReady) return true;
-    setInstagramStoryStatus(status, 'Preparing story image...');
+    setInstagramStoryStatus(status, modal.classList.contains('press-instagram-story--video')
+      ? 'Preparing scroll video...'
+      : 'Preparing story image...');
     const ready = await modal._pressInstagramStoryReady;
-    if (ready) setInstagramStoryStatus(status, 'Story image ready.');
+    if (ready) {
+      const asset = modal._pressInstagramStoryAsset;
+      setInstagramStoryStatus(status, asset?.kind === 'video' ? 'Full scroll video ready.' : 'Story image ready.');
+    }
     return ready;
+  }
+
+  function renderBelowFoldScrollStoryPreview(modal, context, canvas, video, status) {
+    if (!modal || !canvas) return;
+    const renderId = (modal._pressInstagramStoryRenderId || 0) + 1;
+    modal._pressInstagramStoryRenderId = renderId;
+    modal._pressInstagramStoryStyle = getDefaultInstagramStoryStyleKey();
+    setInstagramStoryStatus(status, 'Recording full issue scroll...');
+    setInstagramStoryActionsDisabled(modal, true);
+    canvas.hidden = true;
+    if (video) video.hidden = true;
+    showBelowFoldLiveScrollPreview(modal, context);
+    modal._pressInstagramStoryReady = createBelowFoldScrollStoryAsset(modal, context, canvas, video).then((asset) => {
+      if (modal._pressInstagramStoryRenderId !== renderId) return true;
+      hideBelowFoldLiveScrollPreview(modal);
+      modal._pressInstagramStoryAsset = asset;
+      setInstagramStoryAssetActionLabels(modal, asset?.kind || 'image');
+      setInstagramStoryStatus(status, asset?.kind === 'video'
+        ? 'Full scroll video ready.'
+        : 'Scroll video unavailable here. Story image ready.');
+      return true;
+    }).catch(async (error) => {
+      console.warn('Below the Fold scroll story recording fell back to a still image.', error);
+      if (modal._pressInstagramStoryRenderId !== renderId) return false;
+      hideBelowFoldLiveScrollPreview(modal);
+      await drawInstagramStoryCanvas(context, canvas, 'edition');
+      if (video) video.hidden = true;
+      canvas.hidden = false;
+      modal._pressInstagramStoryAsset = { kind: 'image', canvas };
+      setInstagramStoryAssetActionLabels(modal, 'image');
+      setInstagramStoryStatus(status, 'Story image ready with fallback art.');
+      return false;
+    }).finally(() => {
+      if (modal._pressInstagramStoryRenderId === renderId) setInstagramStoryActionsDisabled(modal, false);
+    });
+  }
+
+  async function createBelowFoldScrollStoryAsset(modal, context, canvas, video) {
+    const profile = getBelowFoldScrollVideoProfile(context);
+    canvas.width = profile.canvasWidth;
+    canvas.height = profile.canvasHeight;
+    canvas.hidden = true;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (video) {
+      video.hidden = true;
+      video.pause?.();
+      video.removeAttribute('src');
+      video.load?.();
+    }
+
+    const strip = await buildBelowFoldScrollStrip(context, { profile });
+    const timing = getBelowFoldScrollTiming(strip, canvas);
+    drawBelowFoldScrollFrame(ctx, strip, 0);
+
+    const videoType = getSupportedInstagramStoryVideoType();
+    if (!canvas.captureStream || typeof MediaRecorder === 'undefined') {
+      hideBelowFoldLiveScrollPreview(modal);
+      canvas.hidden = false;
+      await animateBelowFoldScrollStrip(canvas, strip, timing);
+      return { kind: 'image', canvas };
+    }
+
+    const streamFrameRate = Math.max(12, Math.min(30, timing.frameRate || 24));
+    const stream = canvas.captureStream(streamFrameRate);
+    const streamVideoTrack = stream.getVideoTracks?.()[0] || null;
+    const chunks = [];
+    const recorderOptions = { videoBitsPerSecond: 10000000 };
+    if (videoType) recorderOptions.mimeType = videoType;
+    const recorder = new MediaRecorder(stream, recorderOptions);
+    const stopped = new Promise((resolve, reject) => {
+      recorder.ondataavailable = (event) => {
+        if (event.data?.size) chunks.push(event.data);
+      };
+      recorder.onerror = (event) => reject(event.error || event);
+      recorder.onstop = () => resolve();
+    });
+
+    recorder.start(1000);
+    drawBelowFoldScrollFrame(ctx, strip, 0);
+    streamVideoTrack?.requestFrame?.();
+    await waitForNextScrollPreviewFrame();
+    await animateBelowFoldScrollStrip(canvas, strip, {
+      ...timing,
+      onFrame: () => streamVideoTrack?.requestFrame?.(),
+    });
+    if (recorder.state !== 'inactive') recorder.stop();
+    await stopped;
+    stream.getTracks().forEach((track) => track.stop());
+
+    const mimeType = recorder.mimeType || videoType || 'video/webm';
+    const blob = new Blob(chunks, { type: mimeType });
+    if (!blob.size) {
+      hideBelowFoldLiveScrollPreview(modal);
+      canvas.hidden = false;
+      return { kind: 'image', canvas };
+    }
+
+    const url = URL.createObjectURL(blob);
+    if (modal._pressInstagramStoryVideoUrl) URL.revokeObjectURL(modal._pressInstagramStoryVideoUrl);
+    modal._pressInstagramStoryVideoUrl = url;
+
+    if (video) {
+      hideBelowFoldLiveScrollPreview(modal);
+      video.src = url;
+      video.hidden = false;
+      video.loop = true;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('autoplay', '');
+      video.setAttribute('playsinline', '');
+      canvas.hidden = true;
+      try {
+        video.currentTime = 0;
+        await waitForBelowFoldVideoReady(video);
+        await video.play();
+      } catch (_) {}
+    }
+
+    return {
+      kind: 'video',
+      blob,
+      url,
+      mimeType,
+      filename: getInstagramStoryVideoFilename(context, mimeType),
+    };
+  }
+
+  async function buildBelowFoldScrollStrip(context, callbacks = {}) {
+    const domStrip = await buildBelowFoldDomScrollStrip(context, callbacks).catch((error) => {
+      console.warn('Below the Fold DOM scroll capture unavailable.', error);
+      return null;
+    });
+    if (domStrip) return domStrip;
+
+    const model = collectBelowFoldScrollStoryModel(context);
+    const loadedSections = await Promise.all(model.sections.map(async (section) => {
+      if (!section.imageUrl) return section;
+      try {
+        return { ...section, image: await loadShareImage(section.imageUrl) };
+      } catch (_) {
+        return section;
+      }
+    }));
+    let coverImage = null;
+    if (model.coverImageUrl) {
+      try {
+        coverImage = await loadShareImage(model.coverImageUrl);
+      } catch (_) {}
+    }
+    try {
+      await document.fonts?.ready;
+    } catch (_) {}
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 1080;
+    canvas.height = Math.min(9600, 1800 + loadedSections.length * 840 + 420);
+    const ctx = canvas.getContext('2d');
+    const height = drawBelowFoldScrollStrip(ctx, { ...model, sections: loadedSections, coverImage });
+    return { canvas, height, kind: 'generated', width: canvas.width };
+  }
+
+  function showBelowFoldLiveScrollPreview(modal, context) {
+    const preview = modal?.querySelector('.press-instagram-story__preview');
+    const sourceRoot = getBelowFoldScrollSourceRoot(context);
+    if (!preview || !sourceRoot) return;
+    hideBelowFoldLiveScrollPreview(modal);
+    modal.classList.add('press-instagram-story--live-previewing');
+    preview.querySelector('[data-instagram-story-canvas]')?.setAttribute('hidden', '');
+    preview.querySelector('[data-instagram-story-video]')?.setAttribute('hidden', '');
+
+    const profile = getBelowFoldScrollVideoProfile(context);
+    const viewportWidth = profile.viewportWidth;
+    const clone = sourceRoot.cloneNode(true);
+    sanitizeBelowFoldScrollClone(clone);
+    prepareBelowFoldLivePreviewMedia(clone);
+
+    const livePreview = document.createElement('div');
+    livePreview.className = 'press-instagram-story__live-preview';
+    livePreview.setAttribute('data-below-fold-live-preview', '');
+    livePreview.setAttribute('aria-hidden', 'true');
+
+    const livePhone = document.createElement('div');
+    livePhone.className = 'press-instagram-story__live-phone';
+
+    const liveScreen = document.createElement('div');
+    liveScreen.className = 'press-instagram-story__live-screen';
+    liveScreen.style.width = `${viewportWidth}px`;
+
+    const captureStyle = document.createElement('style');
+    captureStyle.textContent = getBelowFoldCaptureStyles(viewportWidth);
+
+    const capturePage = document.createElement('div');
+    capturePage.className = 'press-scroll-capture-shell page-below-fold-issue';
+    capturePage.style.transform = 'translateY(0)';
+    capturePage.style.transition = 'none';
+    capturePage.appendChild(clone);
+
+    liveScreen.appendChild(captureStyle);
+    liveScreen.appendChild(capturePage);
+    livePhone.appendChild(liveScreen);
+    livePreview.appendChild(livePhone);
+    preview.appendChild(livePreview);
+
+    let liveScrollAnimation = null;
+    let liveScrollStarted = false;
+    let liveScrollStartAt = 0;
+    const updateScale = () => {
+      const phoneRect = livePhone.getBoundingClientRect();
+      if (!phoneRect.width) return;
+      const scale = phoneRect.width / viewportWidth;
+      liveScreen.style.transform = `scale(${scale})`;
+      liveScreen.style.height = `${Math.ceil(phoneRect.height / scale)}px`;
+    };
+    const armLiveScrollStart = () => {
+      if (liveScrollStartAt || liveScrollStarted || !livePreview.isConnected) return;
+      liveScrollStartAt = getBelowFoldPreviewNow() + 2400;
+      waitForBelowFoldLivePreviewMedia(capturePage, 1300).then(startLiveScroll);
+      window.setTimeout(startLiveScroll, 2700);
+    };
+    const startLiveScroll = () => {
+      if (liveScrollStarted || !livePreview.isConnected) return;
+      if (!liveScrollStartAt) {
+        armLiveScrollStart();
+        return;
+      }
+      const delay = liveScrollStartAt - getBelowFoldPreviewNow();
+      if (delay > 0) {
+        window.setTimeout(startLiveScroll, delay);
+        return;
+      }
+      updateScale();
+      const phoneRect = livePhone.getBoundingClientRect();
+      if (!phoneRect.width) return;
+      const scale = phoneRect.width / viewportWidth;
+      const visibleHeight = Math.max(1, phoneRect.height / scale);
+      const maxScroll = Math.max(0, capturePage.scrollHeight - visibleHeight);
+      if (maxScroll <= 8) return;
+      liveScrollStarted = true;
+      liveScrollAnimation?.cancel?.();
+      capturePage.style.transform = 'translateY(0)';
+      capturePage.style.transition = 'none';
+      capturePage.style.willChange = 'transform';
+      const duration = getBelowFoldLivePreviewScrollDuration(maxScroll);
+      const runAnimation = () => {
+        if (!livePreview.isConnected) return;
+        if (typeof capturePage.animate === 'function') {
+          liveScrollAnimation = capturePage.animate(
+            [
+              { transform: 'translateY(0)' },
+              { transform: `translateY(-${maxScroll}px)` },
+            ],
+            { duration, easing: 'linear', fill: 'forwards' }
+          );
+        } else {
+          capturePage.style.transition = `transform ${duration}ms linear`;
+          capturePage.style.transform = `translateY(-${maxScroll}px)`;
+        }
+      };
+      if (window.requestAnimationFrame) {
+        window.requestAnimationFrame(() => window.requestAnimationFrame(runAnimation));
+      } else {
+        window.setTimeout(runAnimation, 34);
+      }
+    };
+    updateScale();
+    window.requestAnimationFrame?.(updateScale);
+    if (window.requestAnimationFrame) {
+      window.requestAnimationFrame(() => window.requestAnimationFrame(armLiveScrollStart));
+    } else {
+      window.setTimeout(armLiveScrollStart, 80);
+    }
+    window.setTimeout(armLiveScrollStart, 1200);
+  }
+
+  function hideBelowFoldLiveScrollPreview(modal) {
+    modal?.querySelectorAll('[data-below-fold-live-preview]').forEach((node) => {
+      node.getAnimations?.({ subtree: true }).forEach((animation) => animation.cancel());
+      node.remove();
+    });
+    modal?.classList.remove('press-instagram-story--live-previewing');
+  }
+
+  function getBelowFoldLivePreviewScrollDuration(maxScroll) {
+    return Math.round(Math.max(24000, Math.min(44000, maxScroll * 3.8)));
+  }
+
+  function getBelowFoldPreviewNow() {
+    return window.performance?.now?.() || Date.now();
+  }
+
+  function waitForBelowFoldLivePreviewMedia(root, timeoutMs = 1200) {
+    const images = Array.from(root?.querySelectorAll('img') || []);
+    const pending = images.filter((img) => !img.complete || !img.naturalWidth);
+    if (!pending.length) return Promise.resolve();
+    return new Promise((resolve) => {
+      let settled = false;
+      let remaining = pending.length;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeout);
+        pending.forEach((img) => {
+          img.removeEventListener('load', markDone);
+          img.removeEventListener('error', markDone);
+        });
+        resolve();
+      };
+      const markDone = () => {
+        remaining -= 1;
+        if (remaining <= 0) finish();
+      };
+      const timeout = window.setTimeout(finish, timeoutMs);
+      pending.forEach((img) => {
+        img.addEventListener('load', markDone, { once: true });
+        img.addEventListener('error', markDone, { once: true });
+      });
+    });
+  }
+
+  function getBelowFoldScrollSourceRoot(context) {
+    return context?.belowFoldRoot
+      || document.querySelector('.page-below-fold-issue [data-below-fold-root]')
+      || document.querySelector('.page-below-fold-issue .below-fold-issue-page__paper [data-below-fold-root]');
+  }
+
+  function sanitizeBelowFoldScrollClone(clone) {
+    clone.querySelectorAll('script, style, .share-row, [data-below-fold-story-share]').forEach((node) => node.remove());
+    clone.querySelectorAll('[id]').forEach((node, index) => {
+      node.id = `scroll-story-${index}-${node.id}`;
+    });
+  }
+
+  function prepareBelowFoldLivePreviewMedia(root) {
+    root.querySelectorAll('img').forEach((img) => {
+      const raw = img.currentSrc || img.getAttribute('src') || '';
+      const url = normalizeShareAssetUrl(raw);
+      if (url) img.setAttribute('src', url);
+      img.removeAttribute('srcset');
+      img.removeAttribute('sizes');
+      img.setAttribute('loading', 'eager');
+      img.setAttribute('decoding', 'async');
+    });
+  }
+
+  function getBelowFoldLayoutHeight(element) {
+    if (!element) return 0;
+    const rootRect = element.getBoundingClientRect?.();
+    const rootTop = rootRect?.top || 0;
+    let height = Math.max(
+      Number(element.scrollHeight) || 0,
+      Number(element.offsetHeight) || 0,
+      Number(rootRect?.height) || 0
+    );
+    element.querySelectorAll?.('*').forEach((node) => {
+      const rect = node.getBoundingClientRect?.();
+      if (!rect) return;
+      height = Math.max(height, rect.bottom - rootTop);
+    });
+    return Math.ceil(height);
+  }
+
+  async function buildBelowFoldDomScrollStrip(context, callbacks = {}) {
+    const sourceRoot = getBelowFoldScrollSourceRoot(context);
+    if (!sourceRoot) return null;
+    const sourceMeasuredHeight = getBelowFoldLayoutHeight(sourceRoot);
+
+    const profile = callbacks.profile || getBelowFoldScrollVideoProfile(context);
+    const viewportWidth = profile.viewportWidth || 430;
+    const clone = sourceRoot.cloneNode(true);
+    sanitizeBelowFoldScrollClone(clone);
+    await normalizeBelowFoldCaptureMedia(clone);
+
+    const captureHost = document.createElement('div');
+    captureHost.className = 'press-scroll-capture-host';
+    captureHost.style.cssText = [
+      'position:absolute',
+      'left:-10000px',
+      'top:0',
+      `width:${viewportWidth}px`,
+      'min-height:1px',
+      'pointer-events:none',
+      'z-index:-1',
+      'background:#f4f0e8',
+    ].join(';');
+    captureHost.setAttribute('aria-hidden', 'true');
+
+    const captureStyle = document.createElement('style');
+    captureStyle.textContent = getBelowFoldCaptureStyles(viewportWidth);
+
+    const capturePage = document.createElement('div');
+    capturePage.className = 'press-scroll-capture-shell page-below-fold-issue';
+    capturePage.appendChild(clone);
+    captureHost.appendChild(captureStyle);
+    captureHost.appendChild(capturePage);
+    document.body.appendChild(captureHost);
+
+    try {
+      try {
+        await document.fonts?.ready;
+      } catch (_) {}
+      await waitForBelowFoldCaptureAssets(captureHost);
+      await waitForNextScrollPreviewFrame();
+      await waitForNextScrollPreviewFrame();
+
+      const measuredHeight = Math.ceil(Math.max(
+        sourceMeasuredHeight,
+        getBelowFoldLayoutHeight(clone),
+        getBelowFoldLayoutHeight(capturePage),
+        captureHost.scrollHeight,
+        1200
+      ));
+      const captureScale = getBelowFoldCaptureScale(measuredHeight, viewportWidth);
+      const html2canvas = await ensureHtml2Canvas();
+      const chunks = await captureBelowFoldDomChunks(html2canvas, capturePage, {
+        captureScale,
+        measuredHeight,
+        onFirstChunk: callbacks.onFirstFrame,
+        viewportWidth,
+      });
+      return {
+        chunks,
+        height: Math.ceil(measuredHeight * captureScale),
+        width: Math.round(viewportWidth * captureScale),
+        kind: 'dom',
+      };
+    } finally {
+      captureHost.remove();
+    }
+  }
+
+  async function captureBelowFoldDomChunks(html2canvas, capturePage, options) {
+    const viewportWidth = options.viewportWidth || 390;
+    const measuredHeight = Math.max(1, options.measuredHeight || 1200);
+    const captureScale = options.captureScale || 1;
+    const chunkCssHeight = Math.max(1100, Math.min(1800, Math.floor(2400 / captureScale)));
+    const chunks = [];
+
+    capturePage.style.willChange = 'transform';
+    capturePage.parentElement.style.overflow = 'hidden';
+    const fullCanvasArea = viewportWidth * measuredHeight * captureScale * captureScale;
+    const canCaptureWholeIssue = viewportWidth >= 720
+      && fullCanvasArea <= 30000000
+      && measuredHeight * captureScale <= 26000;
+    if (canCaptureWholeIssue) {
+      try {
+        capturePage.style.transform = '';
+        capturePage.style.willChange = '';
+        capturePage.parentElement.style.height = `${measuredHeight}px`;
+        const canvas = await withBelowFoldTimeout(html2canvas(capturePage.parentElement, {
+          allowTaint: false,
+          backgroundColor: '#f4f0e8',
+          height: measuredHeight,
+          logging: false,
+          scale: captureScale,
+          scrollX: 0,
+          scrollY: 0,
+          useCORS: true,
+          width: viewportWidth,
+          windowHeight: measuredHeight,
+          windowWidth: viewportWidth,
+        }), 28000, 'Full issue capture timed out');
+        return [{
+          canvas,
+          y: 0,
+          height: canvas.height,
+        }];
+      } catch (error) {
+        console.warn('Full issue capture fell back to slices.', error);
+        capturePage.style.willChange = 'transform';
+      }
+    }
+    capturePage.parentElement.style.height = `${chunkCssHeight}px`;
+
+    for (let offset = 0; offset < measuredHeight; offset += chunkCssHeight) {
+      if (offset > 0 && chunks.length === 1) {
+        await waitForBelowFoldCaptureAssets(capturePage.parentElement);
+      }
+      const height = Math.min(chunkCssHeight, measuredHeight - offset);
+      capturePage.parentElement.style.height = `${height}px`;
+      capturePage.style.transform = `translateY(-${offset}px)`;
+      const canvas = await withBelowFoldTimeout(html2canvas(capturePage.parentElement, {
+        allowTaint: false,
+        backgroundColor: '#f4f0e8',
+        height,
+        logging: false,
+        scale: captureScale,
+        scrollX: 0,
+        scrollY: 0,
+        useCORS: true,
+        width: viewportWidth,
+        windowHeight: height,
+        windowWidth: viewportWidth,
+      }), 18000, 'Issue slice capture timed out');
+      chunks.push({
+        canvas,
+        y: Math.round(offset * captureScale),
+        height: canvas.height,
+      });
+      if (chunks.length === 1 && typeof options.onFirstChunk === 'function') {
+        try {
+          options.onFirstChunk({
+            chunks: chunks.slice(),
+            height: Math.ceil(measuredHeight * captureScale),
+            width: Math.round(viewportWidth * captureScale),
+            kind: 'dom',
+          });
+        } catch (_) {}
+        await waitForNextScrollPreviewFrame();
+      }
+    }
+
+    capturePage.style.transform = '';
+    capturePage.style.willChange = '';
+    return chunks;
+  }
+
+  function withBelowFoldTimeout(promise, timeoutMs, message) {
+    let timeoutId;
+    const guarded = Promise.resolve(promise).finally(() => {
+      window.clearTimeout(timeoutId);
+    });
+    guarded.catch(() => {});
+    return Promise.race([
+      guarded,
+      new Promise((_, reject) => {
+        timeoutId = window.setTimeout(() => reject(new Error(message)), timeoutMs);
+      }),
+    ]);
+  }
+
+  function getBelowFoldCaptureScale(measuredHeight, viewportWidth) {
+    const deviceScale = Number(window.devicePixelRatio) || 1;
+    if ((viewportWidth || 0) >= 720) {
+      const height = Math.max(1, measuredHeight || 1);
+      const areaScale = Math.sqrt(30000000 / Math.max(1, viewportWidth * height));
+      return Math.max(1.25, Math.min(1.55, deviceScale, areaScale));
+    }
+    return Math.min(2.35, Math.max(2.2, deviceScale));
+  }
+
+  function ensureHtml2Canvas() {
+    const existing = getHtml2CanvasInstance();
+    if (existing) return Promise.resolve(existing);
+    if (window.__pressHtml2CanvasPromise) return window.__pressHtml2CanvasPromise;
+    window.__pressHtml2CanvasPromise = new Promise((resolve, reject) => {
+      const sources = [
+        'assets/vendor/html2canvas.min.js?v=1.4.1',
+        'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js',
+      ];
+      const loadNext = () => {
+        const src = sources.shift();
+        if (!src) {
+          reject(new Error('Could not load html2canvas'));
+          return;
+        }
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        script.onload = () => {
+          const loaded = getHtml2CanvasInstance();
+          if (loaded) {
+            resolve(loaded);
+          } else {
+            loadNext();
+          }
+        };
+        script.onerror = loadNext;
+        document.head.appendChild(script);
+      };
+      loadNext();
+    });
+    return window.__pressHtml2CanvasPromise;
+  }
+
+  function getHtml2CanvasInstance() {
+    const candidates = [
+      window.html2canvas,
+      window.module?.exports,
+      window.exports?.html2canvas,
+      window.exports,
+    ];
+    const found = candidates.find((candidate) => typeof candidate === 'function');
+    if (found && !window.html2canvas) window.html2canvas = found;
+    return found || null;
+  }
+
+  async function normalizeBelowFoldCaptureMedia(root) {
+    const images = Array.from(root.querySelectorAll('img'));
+    await Promise.all(images.map(async (img) => {
+      const raw = img.currentSrc || img.getAttribute('src') || '';
+      const url = normalizeShareAssetUrl(raw);
+      if (url) {
+        const shouldEmbed = shouldEmbedBelowFoldCaptureImage(url);
+        const embedded = shouldEmbed ? await loadImageAsDataUrl(url).catch(() => '') : '';
+        img.setAttribute('src', embedded || url);
+      }
+      img.removeAttribute('srcset');
+      img.removeAttribute('sizes');
+      img.setAttribute('loading', 'eager');
+      img.setAttribute('decoding', 'sync');
+    }));
+  }
+
+  function shouldEmbedBelowFoldCaptureImage(url) {
+    try {
+      const parsed = new URL(url, document.baseURI || window.location.href);
+      if (/^(data|blob):$/i.test(parsed.protocol)) return false;
+      return parsed.origin !== window.location.origin;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  async function loadImageAsDataUrl(url) {
+    const response = await fetch(url, { cache: 'force-cache' });
+    if (!response.ok) return '';
+    const blob = await response.blob();
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result || ''));
+      reader.onerror = () => resolve('');
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  async function waitForBelowFoldCaptureAssets(root) {
+    const images = Array.from(root.querySelectorAll('img'));
+    await Promise.all(images.map((img) => {
+      if (img.complete) return Promise.resolve();
+      return new Promise((resolve) => {
+        img.addEventListener('load', resolve, { once: true });
+        img.addEventListener('error', resolve, { once: true });
+      });
+    }));
+    await Promise.all(images.map((img) => img.decode?.().catch(() => {}) || Promise.resolve()));
+  }
+
+  function getBelowFoldCaptureStyles(viewportWidth) {
+    return `
+      .press-scroll-capture-shell{
+        width:${viewportWidth}px;
+        min-height:100%;
+        margin:0;
+        background:#f4f0e8;
+        color:#1f1f1b;
+        overflow:hidden;
+      }
+      .press-scroll-capture-shell,
+      .press-scroll-capture-shell *{
+        box-sizing:border-box;
+        border-color:#c7bda9 !important;
+        caret-color:#1f1f1b !important;
+        color:#1f1f1b !important;
+        column-rule-color:#c7bda9 !important;
+        outline-color:#c7bda9 !important;
+        text-decoration-color:#9d3a2d !important;
+      }
+      .press-scroll-capture-shell *,
+      .press-scroll-capture-shell *::before,
+      .press-scroll-capture-shell *::after{
+        background-color:transparent !important;
+        background-image:none !important;
+        box-shadow:none !important;
+        fill:#1f1f1b !important;
+        stroke:#1f1f1b !important;
+        text-shadow:none !important;
+      }
+      .press-scroll-capture-shell .below-fold,
+      .press-scroll-capture-shell .below-fold *{
+        border-color:#c7bda9 !important;
+      }
+      .press-scroll-capture-shell .below-fold{
+        --fold-paper:#f4f0e8;
+        --fold-paper-deep:#e7dece;
+        --fold-rule:#c7bda9;
+        --ink:#1f1f1b;
+        --muted:#5f5a52;
+        --fold-red:#9d3a2d;
+        --fold-green:#4a6155;
+        --fold-blue:#304f63;
+        width:${viewportWidth}px;
+        max-width:none;
+        margin:0;
+        padding:18px 14px 24px;
+        border-top:0;
+        box-shadow:none;
+        background:#f4f0e8 !important;
+      }
+      .press-scroll-capture-shell p,
+      .press-scroll-capture-shell dd,
+      .press-scroll-capture-shell li,
+      .press-scroll-capture-shell figcaption{
+        line-height:1.42 !important;
+        overflow-wrap:break-word !important;
+      }
+      .press-scroll-capture-shell h2,
+      .press-scroll-capture-shell h3,
+      .press-scroll-capture-shell h4{
+        line-height:1.04 !important;
+        overflow-wrap:break-word !important;
+      }
+      .press-scroll-capture-shell .below-fold-kicker,
+      .press-scroll-capture-shell .below-fold-place-card__state,
+      .press-scroll-capture-shell .below-fold-makers-card__body > span,
+      .press-scroll-capture-shell .below-fold-remote-signal span,
+      .press-scroll-capture-shell .below-fold-artemis-note p,
+      .press-scroll-capture-shell .below-fold-artemis-timeline-card span{
+        white-space:normal !important;
+        line-height:1.22 !important;
+        overflow-wrap:break-word !important;
+      }
+      .press-scroll-capture-shell .below-fold-spread,
+      .press-scroll-capture-shell .below-fold-index,
+      .press-scroll-capture-shell .below-fold-brief,
+      .press-scroll-capture-shell .below-fold-letter,
+      .press-scroll-capture-shell .below-fold-notice,
+      .press-scroll-capture-shell .below-fold-service-panel,
+      .press-scroll-capture-shell .below-fold-place-card,
+      .press-scroll-capture-shell .below-fold-rank-cell,
+      .press-scroll-capture-shell .below-fold-automation-field,
+      .press-scroll-capture-shell .below-fold-automation-field-ledger,
+      .press-scroll-capture-shell .below-fold-automation-field-ledger div,
+      .press-scroll-capture-shell .below-fold-automation-stat-strip article,
+      .press-scroll-capture-shell .below-fold-automation-humanoid-notes article,
+      .press-scroll-capture-shell .below-fold-automation-stack-copy article,
+      .press-scroll-capture-shell .below-fold-automation-labor-grid article,
+      .press-scroll-capture-shell .below-fold-automation-stack-signal,
+      .press-scroll-capture-shell .below-fold-automation-loop,
+      .press-scroll-capture-shell .below-fold-automation-loop div,
+      .press-scroll-capture-shell .below-fold-automation-fact-wall,
+      .press-scroll-capture-shell .below-fold-automation-fact-wall div,
+      .press-scroll-capture-shell .below-fold-automation-company-board,
+      .press-scroll-capture-shell .below-fold-automation-company-board__grid article,
+      .press-scroll-capture-shell .below-fold-remote-field-notes,
+      .press-scroll-capture-shell .below-fold-remote-compass,
+      .press-scroll-capture-shell .below-fold-remote-signal,
+      .press-scroll-capture-shell .below-fold-remote-daybook article,
+      .press-scroll-capture-shell .below-fold-makers-person,
+      .press-scroll-capture-shell .below-fold-makers-card,
+      .press-scroll-capture-shell .below-fold-artemis-index,
+      .press-scroll-capture-shell .below-fold-artemis-note,
+      .press-scroll-capture-shell .below-fold-artemis-crew-card,
+      .press-scroll-capture-shell .below-fold-artemis-timeline-card{
+        background:#fffdf9 !important;
+      }
+      .press-scroll-capture-shell .below-fold-folio,
+      .press-scroll-capture-shell .below-fold-quote{
+        grid-template-columns:1fr !important;
+        gap:.4rem;
+        font-size:9px;
+        text-align:left !important;
+      }
+      .press-scroll-capture-shell .below-fold-folio strong,
+      .press-scroll-capture-shell .below-fold-folio span,
+      .press-scroll-capture-shell .below-fold-quote p,
+      .press-scroll-capture-shell .below-fold-quote span{
+        text-align:left !important;
+      }
+      .press-scroll-capture-shell .below-fold-header{
+        padding:14px 0 8px;
+      }
+      .press-scroll-capture-shell .below-fold-header h2{
+        font-size:clamp(42px,16vw,68px);
+        line-height:.88;
+      }
+      .press-scroll-capture-shell .below-fold-header p:last-child{
+        max-width:100%;
+        font-size:16px;
+      }
+      .press-scroll-capture-shell .below-fold-section-head{
+        display:block;
+      }
+      .press-scroll-capture-shell .below-fold-section-head h3{
+        font-size:29px;
+        line-height:1.02;
+      }
+      .press-scroll-capture-shell .below-fold-spread,
+      .press-scroll-capture-shell .below-fold-spread--lead,
+      .press-scroll-capture-shell .below-fold-automation-orbit,
+      .press-scroll-capture-shell .below-fold-automation-humanoid-layout,
+      .press-scroll-capture-shell .below-fold-automation-sort-layout,
+      .press-scroll-capture-shell .below-fold-automation-stack-layout,
+      .press-scroll-capture-shell .below-fold-makers-lead,
+      .press-scroll-capture-shell .below-fold-makers-grid,
+      .press-scroll-capture-shell .below-fold-artemis-lead,
+      .press-scroll-capture-shell .below-fold-artemis-roadmap-grid,
+      .press-scroll-capture-shell .below-fold-artemis-hardware-layout,
+      .press-scroll-capture-shell .below-fold-spread--big-three,
+      .press-scroll-capture-shell .below-fold-spread--ranking,
+      .press-scroll-capture-shell .below-fold-spread--regional,
+      .press-scroll-capture-shell .below-fold-spread--service,
+      .press-scroll-capture-shell .below-fold-remote-field-notes{
+        display:grid;
+        grid-template-columns:1fr !important;
+        gap:14px;
+      }
+      .press-scroll-capture-shell .below-fold-spread{
+        padding:18px 0;
+      }
+      .press-scroll-capture-shell .below-fold-image-frame,
+      .press-scroll-capture-shell .below-fold-automation-field,
+      .press-scroll-capture-shell .below-fold-brief,
+      .press-scroll-capture-shell .below-fold-letter,
+      .press-scroll-capture-shell .below-fold-notice,
+      .press-scroll-capture-shell .below-fold-service-panel,
+      .press-scroll-capture-shell .below-fold-place-card,
+      .press-scroll-capture-shell .below-fold-rank-cell,
+      .press-scroll-capture-shell .below-fold-remote-signal,
+      .press-scroll-capture-shell .below-fold-remote-daybook article,
+      .press-scroll-capture-shell .below-fold-index,
+      .press-scroll-capture-shell .below-fold-ledger,
+      .press-scroll-capture-shell .below-fold-makers-person,
+      .press-scroll-capture-shell .below-fold-makers-card,
+      .press-scroll-capture-shell .below-fold-artemis-note,
+      .press-scroll-capture-shell .below-fold-artemis-crew-card,
+      .press-scroll-capture-shell .below-fold-artemis-timeline-card{
+        break-inside:avoid;
+      }
+      .press-scroll-capture-shell img{
+        max-width:100%;
+        height:auto;
+      }
+      .press-scroll-capture-shell .below-fold-image-media{
+        display:block;
+        width:100%;
+        height:auto !important;
+        min-height:0 !important;
+        aspect-ratio:auto !important;
+        overflow:visible !important;
+        background:#e7dece !important;
+      }
+      .press-scroll-capture-shell .below-fold-image-media img{
+        display:block;
+        width:100%;
+        height:auto !important;
+        object-fit:contain !important;
+        filter:none !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-lead-art .below-fold-image-media{
+        border-radius:8px !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-field,
+      .press-scroll-capture-shell .below-fold-automation-field--wide{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        grid-template-rows:auto auto !important;
+        grid-column:auto !important;
+        grid-row:auto !important;
+        gap:0 !important;
+        overflow:visible !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-field .below-fold-image-frame{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:6px !important;
+        margin:0 !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-field .below-fold-image-media,
+      .press-scroll-capture-shell .below-fold-automation-field--wide .below-fold-image-media{
+        aspect-ratio:4 / 3 !important;
+        height:auto !important;
+        min-height:0 !important;
+        overflow:hidden !important;
+        border-right:0 !important;
+        border-bottom:1px solid #c7bda9 !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-field .below-fold-image-media img{
+        width:100% !important;
+        height:100% !important;
+        object-fit:cover !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-field figcaption{
+        padding:0 10px 8px !important;
+        font-size:12px !important;
+        line-height:1.24 !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-field > div{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        align-content:start !important;
+        gap:7px !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-field-grid,
+      .press-scroll-capture-shell .below-fold-automation-labor-grid,
+      .press-scroll-capture-shell .below-fold-automation-fact-wall,
+      .press-scroll-capture-shell .below-fold-automation-company-board,
+      .press-scroll-capture-shell .below-fold-automation-company-board__grid,
+      .press-scroll-capture-shell .below-fold-automation-stat-strip,
+      .press-scroll-capture-shell .below-fold-automation-loop,
+      .press-scroll-capture-shell .below-fold-brief-grid,
+      .press-scroll-capture-shell .below-fold-dispatch-grid,
+      .press-scroll-capture-shell .below-fold-ledger,
+      .press-scroll-capture-shell .below-fold-photo-strip,
+      .press-scroll-capture-shell .below-fold-big-three-grid,
+      .press-scroll-capture-shell .below-fold-ranking-grid,
+      .press-scroll-capture-shell .below-fold-regional-grid,
+      .press-scroll-capture-shell .below-fold-service-grid,
+      .press-scroll-capture-shell .below-fold-artemis-photo-grid,
+      .press-scroll-capture-shell .below-fold-artemis-crew-grid,
+      .press-scroll-capture-shell .below-fold-artemis-note-grid,
+      .press-scroll-capture-shell .below-fold-makers-portraits,
+      .press-scroll-capture-shell .below-fold-letter-grid,
+      .press-scroll-capture-shell .below-fold-notice-grid,
+      .press-scroll-capture-shell .below-fold-artemis-hardware-grid{
+        display:grid;
+        grid-template-columns:1fr !important;
+        gap:10px;
+      }
+      .press-scroll-capture-shell .below-fold-automation-stat-strip article,
+      .press-scroll-capture-shell .below-fold-automation-field > div,
+      .press-scroll-capture-shell .below-fold-automation-humanoid-notes article,
+      .press-scroll-capture-shell .below-fold-automation-stack-copy article,
+      .press-scroll-capture-shell .below-fold-automation-labor-grid article,
+      .press-scroll-capture-shell .below-fold-automation-loop div,
+      .press-scroll-capture-shell .below-fold-automation-fact-wall div,
+      .press-scroll-capture-shell .below-fold-automation-company-board__head,
+      .press-scroll-capture-shell .below-fold-automation-company-board__grid article{
+        padding:10px !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-stat-strip,
+      .press-scroll-capture-shell .below-fold-automation-field-ledger,
+      .press-scroll-capture-shell .below-fold-automation-loop,
+      .press-scroll-capture-shell .below-fold-automation-fact-wall,
+      .press-scroll-capture-shell .below-fold-automation-company-board__grid,
+      .press-scroll-capture-shell .below-fold-automation-labor-grid{
+        gap:8px !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-stat-strip strong,
+      .press-scroll-capture-shell .below-fold-automation-fact-wall strong,
+      .press-scroll-capture-shell .below-fold-automation-company-board__grid strong{
+        font-size:30px !important;
+        line-height:1 !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-field-ledger dt{
+        font-size:20px !important;
+        line-height:1 !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-field-ledger dd,
+      .press-scroll-capture-shell .below-fold-automation-loop p,
+      .press-scroll-capture-shell .below-fold-automation-company-board__grid p{
+        font-size:13px !important;
+        line-height:1.3 !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-stack-signal__head{
+        display:grid !important;
+        justify-items:start !important;
+        align-items:start !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-stack-signal__head h4{
+        max-width:none !important;
+        font-size:25px !important;
+        line-height:1.02 !important;
+        text-align:left !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-orbit__copy h3,
+      .press-scroll-capture-shell .below-fold-automation-field h4,
+      .press-scroll-capture-shell .below-fold-automation-humanoid-notes h4,
+      .press-scroll-capture-shell .below-fold-automation-stack-copy h4,
+      .press-scroll-capture-shell .below-fold-automation-company-board__head h4{
+        font-size:24px !important;
+        line-height:1.04 !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-stat-strip p,
+      .press-scroll-capture-shell .below-fold-automation-orbit__copy p,
+      .press-scroll-capture-shell .below-fold-automation-field p,
+      .press-scroll-capture-shell .below-fold-automation-sort-copy p,
+      .press-scroll-capture-shell .below-fold-automation-humanoid-notes p,
+      .press-scroll-capture-shell .below-fold-automation-stack-copy p,
+      .press-scroll-capture-shell .below-fold-automation-labor-grid p{
+        font-size:15px !important;
+        line-height:1.38 !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-lead-art,
+      .press-scroll-capture-shell .below-fold-makers-grid > *,
+      .press-scroll-capture-shell .below-fold-artemis-lead > *,
+      .press-scroll-capture-shell .below-fold--remote .below-fold-spread--lead > *,
+      .press-scroll-capture-shell .below-fold-place-card,
+      .press-scroll-capture-shell .below-fold-place-card--major,
+      .press-scroll-capture-shell .below-fold-service-panel,
+      .press-scroll-capture-shell .below-fold-service-panel--wide,
+      .press-scroll-capture-shell .below-fold-remote-field-notes,
+      .press-scroll-capture-shell .below-fold-remote-compass,
+      .press-scroll-capture-shell .below-fold-remote-signal-stack,
+      .press-scroll-capture-shell .below-fold-remote-daybook{
+        grid-column:auto !important;
+        grid-row:auto !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-orbit__copy--left,
+      .press-scroll-capture-shell .below-fold-automation-orbit__copy--right{
+        padding-left:0;
+        padding-right:0;
+      }
+      .press-scroll-capture-shell .below-fold-automation-orbit__copy--left::after,
+      .press-scroll-capture-shell .below-fold-automation-orbit__copy--right::before{
+        display:none;
+      }
+      .press-scroll-capture-shell .below-fold-automation-stack-signal::before,
+      .press-scroll-capture-shell .below-fold-automation-loop div:not(:last-child)::after,
+      .press-scroll-capture-shell .below-fold-remote-route-rule i::after,
+      .press-scroll-capture-shell .below-fold-service-panel li::before{
+        content:none !important;
+        display:none !important;
+      }
+      .press-scroll-capture-shell .below-fold-automation-sort-copy p:first-child::first-letter{
+        float:none;
+        margin:0;
+        font-size:inherit;
+        line-height:inherit;
+      }
+      .press-scroll-capture-shell .below-fold-columns{
+        columns:auto !important;
+        column-count:1 !important;
+        column-gap:0 !important;
+        column-rule:0 !important;
+        display:grid !important;
+        gap:.7rem !important;
+      }
+      .press-scroll-capture-shell .below-fold-columns p{
+        margin:0 !important;
+      }
+      .press-scroll-capture-shell .below-fold-index{
+        padding-left:0;
+        border-left:0;
+        border-top:1px solid var(--fold-rule,#c7bda9);
+        padding-top:.75rem;
+      }
+      .press-scroll-capture-shell .below-fold-index div,
+      .press-scroll-capture-shell .below-fold-artemis-index div{
+        grid-template-columns:1fr !important;
+        gap:.22rem !important;
+      }
+      .press-scroll-capture-shell .below-fold-index dt,
+      .press-scroll-capture-shell .below-fold-artemis-index dt{
+        white-space:normal !important;
+        font-size:12px !important;
+        line-height:1.18 !important;
+      }
+      .press-scroll-capture-shell .below-fold-index dd,
+      .press-scroll-capture-shell .below-fold-artemis-index dd{
+        font-size:18px !important;
+        line-height:1.18 !important;
+        overflow-wrap:break-word !important;
+      }
+      .press-scroll-capture-shell .below-fold-makers-person:first-child,
+      .press-scroll-capture-shell .below-fold-makers-grid > *,
+      .press-scroll-capture-shell .below-fold-artemis-lead > *,
+      .press-scroll-capture-shell .below-fold--remote .below-fold-spread--lead > *{
+        grid-column:auto !important;
+        grid-row:auto !important;
+      }
+      .press-scroll-capture-shell .below-fold-makers-person figcaption,
+      .press-scroll-capture-shell .below-fold-place-card figcaption{
+        display:grid !important;
+        grid-template-columns:auto minmax(0,1fr);
+        align-items:start !important;
+      }
+      .press-scroll-capture-shell .below-fold-makers-card__number{
+        position:static !important;
+        justify-self:start !important;
+        width:auto !important;
+        min-width:2.05rem !important;
+        height:auto !important;
+        min-height:1.85rem !important;
+        margin:0 0 .1rem !important;
+        padding:.28rem .48rem !important;
+        font-size:1rem !important;
+      }
+      .press-scroll-capture-shell .below-fold-makers-card h4{
+        padding-right:0 !important;
+        font-size:26px !important;
+        line-height:1.06 !important;
+      }
+      .press-scroll-capture-shell .below-fold-makers-person h4,
+      .press-scroll-capture-shell .below-fold-place-card h4,
+      .press-scroll-capture-shell .below-fold-rank-cell h4,
+      .press-scroll-capture-shell .below-fold-service-panel h4{
+        font-size:24px !important;
+        line-height:1.06 !important;
+      }
+      .press-scroll-capture-shell .below-fold-place-card__state,
+      .press-scroll-capture-shell .below-fold-rank-cell span{
+        font-size:13px !important;
+        line-height:1.2 !important;
+      }
+      .press-scroll-capture-shell .below-fold-remote-signal > div:first-child{
+        display:grid !important;
+        grid-template-columns:minmax(0,1fr) auto !important;
+        gap:.25rem .5rem !important;
+        align-items:end !important;
+      }
+      .press-scroll-capture-shell .below-fold-remote-signal strong{
+        font-size:28px !important;
+        line-height:1 !important;
+      }
+      .press-scroll-capture-shell .below-fold-remote-route-rule,
+      .press-scroll-capture-shell .below-fold-artemis-orbit-rule{
+        grid-template-columns:1fr !important;
+        justify-items:start !important;
+        gap:6px !important;
+      }
+      .press-scroll-capture-shell .below-fold-remote-route-rule i,
+      .press-scroll-capture-shell .below-fold-artemis-orbit-rule i{
+        display:none !important;
+      }
+      .press-scroll-capture-shell .below-fold-artemis-timeline-card{
+        grid-template-columns:1fr !important;
+      }
+      .press-scroll-capture-shell .below-fold-artemis-timeline-card span{
+        grid-row:auto !important;
+      }
+      .press-scroll-capture-shell h3,
+      .press-scroll-capture-shell h4{
+        overflow-wrap:anywhere;
+      }
+    `;
+  }
+
+  function collectBelowFoldScrollStoryModel(context) {
+    const root = context.belowFoldRoot
+      || document.querySelector('.page-below-fold-issue [data-below-fold-root]')
+      || document.querySelector('.page-below-fold-issue .below-fold-issue-page__paper');
+    const masthead = document.querySelector('.page-below-fold-issue .below-fold-issue-page__masthead');
+    const title = collapseWhitespace(context.title || masthead?.querySelector('h1')?.textContent || 'Below the Fold');
+    const issueMeta = collapseWhitespace(context.issueMeta || masthead?.querySelector('.below-fold-issue-page__meta')?.textContent || 'Below the Fold');
+    const dek = collapseWhitespace(context.text || masthead?.querySelector('p:not(.eyebrow):not(.below-fold-issue-page__meta)')?.textContent || '');
+    const sections = dedupeBelowFoldSectionImages(Array.from(root?.querySelectorAll('.below-fold-spread') || [])
+      .map((section, index) => {
+        const heading = collapseWhitespace(section.querySelector('.below-fold-section-head h3, h3, h4, h2')?.textContent || section.getAttribute('aria-label') || '');
+        const kicker = collapseWhitespace(section.querySelector('.below-fold-kicker')?.textContent || `Page ${index + 1}`);
+        const texts = Array.from(section.querySelectorAll('p'))
+          .filter((paragraph) => !paragraph.classList.contains('below-fold-kicker') && !paragraph.closest('figcaption'))
+          .map((paragraph) => collapseWhitespace(paragraph.textContent || ''))
+          .filter((text) => text.length > 34)
+          .slice(0, 2);
+        const facts = Array.from(section.querySelectorAll('dt, article strong'))
+          .map((node) => collapseWhitespace(node.textContent || ''))
+          .filter((text) => text.length > 1 && text.length < 18)
+          .slice(0, 3);
+        const img = section.querySelector('img');
+        const imageUrl = normalizeShareAssetUrl(img?.currentSrc || img?.getAttribute('src') || '');
+        return {
+          kicker,
+          heading,
+          texts,
+          facts,
+          imageUrl,
+        };
+      })
+      .filter((section) => section.heading || section.texts.length || section.imageUrl)
+      .slice(0, 8));
+
+    return {
+      title,
+      issueMeta,
+      dek,
+      coverImageUrl: '',
+      sections,
+      url: context.url,
+    };
+  }
+
+  function dedupeBelowFoldSectionImages(sections) {
+    const seen = new Set();
+    return sections.map((section) => {
+      const key = getShareAssetDedupeKey(section.imageUrl);
+      if (!key) return section;
+      if (seen.has(key)) return { ...section, imageUrl: '' };
+      seen.add(key);
+      return section;
+    });
+  }
+
+  function getShareAssetDedupeKey(url) {
+    if (!url) return '';
+    try {
+      const parsed = new URL(url, window.location.href);
+      return `${parsed.origin}${parsed.pathname}`.toLowerCase();
+    } catch (_) {
+      return String(url).split('?')[0].toLowerCase();
+    }
+  }
+
+  function drawBelowFoldScrollStrip(ctx, model) {
+    const width = ctx.canvas.width;
+    const height = ctx.canvas.height;
+    ctx.fillStyle = '#f4f0e8';
+    ctx.fillRect(0, 0, width, height);
+    drawPaperGrain(ctx, width, height, '#1f1f1b', 0.025);
+
+    let y = 92;
+    drawPressCanvasBrand(ctx, 92, y, { scale: 0.88 });
+    y += 174;
+    ctx.fillStyle = '#9d3a2d';
+    ctx.fillRect(92, y, 896, 8);
+    y += 68;
+    ctx.fillStyle = '#5f5a52';
+    ctx.font = '900 26px Inter, ui-sans-serif, system-ui, sans-serif';
+    fillTrackedCanvasText(ctx, (model.issueMeta || 'Below the Fold').toUpperCase(), 92, y, 3);
+    y += 100;
+    ctx.fillStyle = '#1f1f1b';
+    ctx.font = '800 96px "Playfair Display", Georgia, "Times New Roman", serif';
+    y = wrapShareCanvasText(ctx, model.title, 92, y, 896, 102, 3, { minFontSize: 72 }) + 28;
+    ctx.fillStyle = '#5f5a52';
+    ctx.font = '400 33px "Playfair Display", Georgia, "Times New Roman", serif';
+    y = wrapShareCanvasText(ctx, model.dek, 92, y, 860, 45, 3, { minFontSize: 27 }) + 56;
+
+    if (model.coverImage) {
+      drawShadowedPanel(ctx, 70, y, 940, 590, 24, '#fffdf9', 'rgba(31,31,27,.18)', 0, 26, 46);
+      drawInstagramStoryImage(ctx, model.coverImage, 102, y + 32, 876, 526, 18, '#d9d2c5', '#9d3a2d');
+      y += 654;
+    }
+
+    model.sections.forEach((section, index) => {
+      y = drawBelowFoldScrollSection(ctx, section, y, index);
+    });
+
+    drawShadowedPanel(ctx, 86, y + 6, 908, 250, 22, '#1f1f1b', 'rgba(31,31,27,.18)', 0, 22, 42);
+    ctx.fillStyle = '#fffdf9';
+    ctx.font = '900 30px Inter, ui-sans-serif, system-ui, sans-serif';
+    fillTrackedCanvasText(ctx, 'READ THE FULL ISSUE', 126, y + 82, 3);
+    ctx.fillStyle = '#e7dece';
+    ctx.font = '700 34px "Playfair Display", Georgia, "Times New Roman", serif';
+    wrapShareCanvasText(ctx, model.url || 'thepress.live', 126, y + 145, 820, 42, 2, { minFontSize: 24 });
+    return Math.min(ctx.canvas.height, y + 320);
+  }
+
+  function drawBelowFoldScrollSection(ctx, section, y, index) {
+    const x = 70;
+    const width = 940;
+    const hasImage = Boolean(section.image);
+    const panelHeight = hasImage ? 835 : 565;
+    drawShadowedPanel(ctx, x, y, width, panelHeight, 24, '#fffdf9', 'rgba(31,31,27,.14)', 0, 24, 42);
+
+    let cursor = y + 42;
+    if (hasImage) {
+      drawBelowFoldScrollImage(ctx, section.image, x + 34, cursor, width - 68, 400, 18, '#d9d2c5', '#9d3a2d');
+      cursor += 458;
+    }
+
+    ctx.fillStyle = '#9d3a2d';
+    ctx.font = '900 22px Inter, ui-sans-serif, system-ui, sans-serif';
+    fillTrackedCanvasText(ctx, `${String(index + 1).padStart(2, '0')} / ${shortenShareCanvasText(section.kicker || 'Below the Fold', 34).toUpperCase()}`, x + 42, cursor, 2.4);
+    cursor += 60;
+
+    ctx.fillStyle = '#1f1f1b';
+    ctx.font = '800 56px "Playfair Display", Georgia, "Times New Roman", serif';
+    cursor = wrapShareCanvasText(ctx, section.heading || 'The file continues', x + 42, cursor, width - 84, 62, 2, { minFontSize: 42 }) + 22;
+
+    ctx.fillStyle = '#514d46';
+    ctx.font = '400 28px "Playfair Display", Georgia, "Times New Roman", serif';
+    section.texts.slice(0, 2).forEach((text) => {
+      cursor = wrapShareCanvasText(ctx, text, x + 42, cursor, width - 84, 38, 2, { minFontSize: 24 }) + 12;
+    });
+
+    return y + panelHeight + 44;
+  }
+
+  function drawBelowFoldScrollImage(ctx, image, x, y, width, height, radius, fallback, accent) {
+    ctx.save();
+    roundRectPath(ctx, x, y, width, height, radius);
+    ctx.clip();
+    ctx.fillStyle = fallback || '#d9d2c5';
+    ctx.fillRect(x, y, width, height);
+    if (image) {
+      drawShareImageContain(ctx, image, x, y, width, height);
+    } else {
+      drawInstagramImageFallback(ctx, x, y, width, height, accent);
+    }
+    ctx.restore();
+  }
+
+  function drawBelowFoldFactChips(ctx, facts, x, y, maxWidth) {
+    let cursor = x;
+    facts.forEach((fact) => {
+      const label = shortenShareCanvasText(fact, 12).toUpperCase();
+      ctx.font = '900 21px Inter, ui-sans-serif, system-ui, sans-serif';
+      const chipWidth = Math.min(maxWidth, Math.max(96, ctx.measureText(label).width + 44));
+      if (cursor + chipWidth > x + maxWidth) return;
+      ctx.fillStyle = '#efe7d9';
+      roundRectPath(ctx, cursor, y, chipWidth, 42, 21);
+      ctx.fill();
+      ctx.fillStyle = '#1f1f1b';
+      fillTrackedCanvasText(ctx, label, cursor + 22, y + 28, 1.6);
+      cursor += chipWidth + 12;
+    });
+  }
+
+  function drawBelowFoldScrollFrame(ctx, strip, progress) {
+    const width = ctx.canvas.width;
+    const height = ctx.canvas.height;
+    if (strip.kind === 'dom') {
+      drawBelowFoldDomScrollFrame(ctx, strip, progress);
+      return;
+    }
+
+    const stripHeight = strip.height || strip.canvas.height;
+    const stripWidth = strip.width || strip.canvas.width || width;
+    const scale = width / stripWidth;
+    const sourceHeight = height / scale;
+    const maxScroll = Math.max(0, stripHeight - sourceHeight);
+    const scrollY = maxScroll * Math.max(0, Math.min(1, progress || 0));
+    ctx.fillStyle = '#14120f';
+    ctx.fillRect(0, 0, width, height);
+    ctx.drawImage(strip.canvas, 0, scrollY, stripWidth, Math.min(sourceHeight, stripHeight - scrollY), 0, 0, width, height);
+
+    const topFade = ctx.createLinearGradient(0, 0, 0, 180);
+    topFade.addColorStop(0, 'rgba(20,18,15,.34)');
+    topFade.addColorStop(1, 'rgba(20,18,15,0)');
+    ctx.fillStyle = topFade;
+    ctx.fillRect(0, 0, width, 180);
+
+    const bottomFade = ctx.createLinearGradient(0, height - 220, 0, height);
+    bottomFade.addColorStop(0, 'rgba(20,18,15,0)');
+    bottomFade.addColorStop(1, 'rgba(20,18,15,.38)');
+    ctx.fillStyle = bottomFade;
+    ctx.fillRect(0, height - 220, width, 220);
+
+    ctx.fillStyle = 'rgba(255,253,249,.86)';
+    roundRectPath(ctx, 92, height - 86, 896, 8, 4);
+    ctx.fill();
+    ctx.fillStyle = '#9d3a2d';
+    roundRectPath(ctx, 92, height - 86, 896 * Math.max(0.04, Math.min(1, progress || 0)), 8, 4);
+    ctx.fill();
+  }
+
+  function getBelowFoldDomScrollGeometry(strip, canvas) {
+    const phone = getBelowFoldScrollPhoneFrame(canvas);
+    const stripWidth = strip.width || strip.canvas.width || 390;
+    const stripHeight = strip.height || strip.canvas.height || 2400;
+    const scale = phone.width / stripWidth;
+    const sourceHeight = phone.height / scale;
+    const maxScroll = Math.max(0, stripHeight - sourceHeight);
+    return {
+      phone,
+      stripWidth,
+      stripHeight,
+      scale,
+      sourceHeight,
+      maxScroll,
+    };
+  }
+
+  function getBelowFoldScrollPhoneFrame(canvas) {
+    const canvasWidth = canvas?.width || 1080;
+    const canvasHeight = canvas?.height || 1920;
+    if (canvasWidth >= canvasHeight) {
+      return {
+        x: 44,
+        y: 42,
+        width: canvasWidth - 88,
+        height: canvasHeight - 84,
+        radius: 24,
+      };
+    }
+    return {
+      x: 76,
+      y: 64,
+      width: 928,
+      height: 1790,
+      radius: 42,
+    };
+  }
+
+  function drawBelowFoldDomScrollFrame(ctx, strip, progress) {
+    const width = ctx.canvas.width;
+    const height = ctx.canvas.height;
+    const { phone, stripWidth, stripHeight, scale, sourceHeight, maxScroll } = getBelowFoldDomScrollGeometry(strip, ctx.canvas);
+    const sourceY = maxScroll * Math.max(0, Math.min(1, progress || 0));
+
+    const backdrop = getBelowFoldDomFrameBackdrop(strip, width, height, phone);
+    ctx.drawImage(backdrop, 0, 0);
+
+    ctx.save();
+    roundRectPath(ctx, phone.x, phone.y, phone.width, phone.height, phone.radius);
+    ctx.clip();
+    drawBelowFoldDomStripSlice(ctx, strip, {
+      sourceY,
+      sourceHeight: Math.min(sourceHeight, stripHeight - sourceY),
+      destX: phone.x,
+      destY: phone.y,
+      destWidth: phone.width,
+      scale,
+      stripWidth,
+    });
+    ctx.restore();
+  }
+
+  function getBelowFoldDomFrameBackdrop(strip, width, height, phone) {
+    const key = `${width}x${height}:${phone.x},${phone.y},${phone.width},${phone.height},${phone.radius}`;
+    if (strip._frameBackdrop?.key === key) return strip._frameBackdrop.canvas;
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    const bg = ctx.createLinearGradient(0, 0, width, height);
+    bg.addColorStop(0, '#111820');
+    bg.addColorStop(0.52, '#241726');
+    bg.addColorStop(1, '#10272a');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, width, height);
+    drawPaperGrain(ctx, width, height, '#fffdf9', 0.012);
+
+    ctx.save();
+    ctx.shadowColor = 'rgba(0,0,0,.38)';
+    ctx.shadowOffsetY = 26;
+    ctx.shadowBlur = 48;
+    roundRectPath(ctx, phone.x - 10, phone.y - 10, phone.width + 20, phone.height + 20, phone.radius + 12);
+    ctx.fillStyle = '#11110f';
+    ctx.fill();
+    ctx.restore();
+
+    ctx.save();
+    roundRectPath(ctx, phone.x, phone.y, phone.width, phone.height, phone.radius);
+    ctx.clip();
+    ctx.fillStyle = '#f4f0e8';
+    ctx.fillRect(phone.x, phone.y, phone.width, phone.height);
+    ctx.restore();
+    strip._frameBackdrop = { key, canvas };
+    return canvas;
+  }
+
+  function drawBelowFoldDomStripSlice(ctx, strip, options) {
+    const sourceY = options.sourceY || 0;
+    const sourceHeight = Math.max(0, options.sourceHeight || 0);
+    const destX = options.destX || 0;
+    const destY = options.destY || 0;
+    const destWidth = options.destWidth || 0;
+    const scale = options.scale || 1;
+    const stripWidth = options.stripWidth || strip.width || strip.canvas?.width || 390;
+
+    if (!sourceHeight) return;
+    if (!Array.isArray(strip.chunks) || !strip.chunks.length) {
+      ctx.drawImage(
+        strip.canvas,
+        0,
+        sourceY,
+        stripWidth,
+        sourceHeight,
+        destX,
+        destY,
+        destWidth,
+        sourceHeight * scale
+      );
+      return;
+    }
+
+    const sourceEnd = sourceY + sourceHeight;
+    const startIndex = getBelowFoldFirstVisibleChunkIndex(strip.chunks, sourceY);
+    for (let index = startIndex; index < strip.chunks.length; index += 1) {
+      const chunk = strip.chunks[index];
+      const chunkY = chunk.y || 0;
+      const chunkHeight = chunk.height || chunk.canvas?.height || 0;
+      if (chunkY > sourceEnd) break;
+      const overlapTop = Math.max(sourceY, chunkY);
+      const overlapBottom = Math.min(sourceEnd, chunkY + chunkHeight);
+      if (overlapBottom <= overlapTop) continue;
+
+      const sliceY = overlapTop - chunkY;
+      const sliceHeight = overlapBottom - overlapTop;
+      ctx.drawImage(
+        chunk.canvas,
+        0,
+        sliceY,
+        stripWidth,
+        sliceHeight,
+        destX,
+        destY + ((overlapTop - sourceY) * scale),
+        destWidth,
+        sliceHeight * scale
+      );
+    }
+  }
+
+  function getBelowFoldFirstVisibleChunkIndex(chunks, sourceY) {
+    let low = 0;
+    let high = chunks.length - 1;
+    let result = chunks.length;
+    while (low <= high) {
+      const mid = Math.floor((low + high) / 2);
+      const chunk = chunks[mid];
+      const chunkEnd = (chunk.y || 0) + (chunk.height || chunk.canvas?.height || 0);
+      if (chunkEnd > sourceY) {
+        result = mid;
+        high = mid - 1;
+      } else {
+        low = mid + 1;
+      }
+    }
+    return result;
+  }
+
+  function waitForNextScrollPreviewFrame() {
+    return new Promise((resolve) => {
+      if (window.requestAnimationFrame) {
+        window.requestAnimationFrame(() => resolve());
+      } else {
+        window.setTimeout(resolve, 34);
+      }
+    });
+  }
+
+  function getBelowFoldScrollTiming(strip, canvas) {
+    const metrics = getBelowFoldScrollMetrics(strip, canvas);
+    const seconds = metrics.maxScroll > 0
+      ? Math.max(30, Math.min(58, metrics.maxScroll / 430))
+      : 14;
+    const duration = Math.round(seconds * 1000);
+    return {
+      duration,
+      holdStart: 2600,
+      holdBottom: 1000,
+      returnDuration: 0,
+      holdEnd: 450,
+      frameRate: 18,
+    };
+  }
+
+  function getBelowFoldScrollMetrics(strip, canvas) {
+    if (strip?.kind === 'dom') {
+      const geometry = getBelowFoldDomScrollGeometry(strip, canvas);
+      return {
+        maxScroll: geometry.maxScroll,
+        viewportHeight: geometry.sourceHeight,
+      };
+    }
+    const stripHeight = strip?.height || strip?.canvas?.height || 0;
+    const viewportHeight = canvas?.height || 1920;
+    return {
+      maxScroll: Math.max(0, stripHeight - viewportHeight),
+      viewportHeight,
+    };
+  }
+
+  function animateBelowFoldScrollStrip(canvas, strip, options = {}) {
+    const ctx = canvas.getContext('2d');
+    const duration = options.duration || 7600;
+    const holdStart = options.holdStart || 400;
+    const holdBottom = options.holdBottom || 0;
+    const returnDuration = options.returnDuration || 0;
+    const holdEnd = options.holdEnd || 500;
+    const total = holdStart + duration + holdBottom + returnDuration + holdEnd;
+    const frameRate = Math.max(18, Math.min(30, options.frameRate || 30));
+    const frameDelay = 1000 / frameRate;
+    const totalFrames = Math.max(1, Math.ceil(total / frameDelay));
+    const startedAt = performance.now();
+
+    return (async () => {
+      for (let frame = 0; frame <= totalFrames; frame += 1) {
+        const elapsed = Math.min(total, frame * frameDelay);
+        const progress = getBelowFoldScrollAnimationProgress(elapsed, {
+          duration,
+          holdStart,
+          holdBottom,
+          returnDuration,
+        });
+        drawBelowFoldScrollFrame(ctx, strip, progress);
+        options.onFrame?.();
+        if (elapsed >= total) break;
+
+        const nextTarget = startedAt + ((frame + 1) * frameDelay);
+        const delay = Math.max(0, nextTarget - performance.now());
+        await waitForBelowFoldAnimationDelay(delay);
+      }
+      drawBelowFoldScrollFrame(ctx, strip, returnDuration ? 0 : 1);
+      options.onFrame?.();
+    })();
+  }
+
+  function waitForBelowFoldAnimationDelay(delay) {
+    return new Promise((resolve) => {
+      window.setTimeout(resolve, Math.max(0, delay));
+    });
+  }
+
+  function waitForBelowFoldVideoReady(video) {
+    if (!video || video.readyState >= 2) return Promise.resolve();
+    return new Promise((resolve) => {
+      const done = () => {
+        video.removeEventListener('loadeddata', done);
+        video.removeEventListener('canplay', done);
+        window.clearTimeout(timeout);
+        resolve();
+      };
+      const timeout = window.setTimeout(done, 900);
+      video.addEventListener('loadeddata', done, { once: true });
+      video.addEventListener('canplay', done, { once: true });
+    });
+  }
+
+  function getBelowFoldScrollAnimationProgress(elapsed, options) {
+    const holdStart = options.holdStart || 0;
+    const duration = Math.max(1, options.duration || 1);
+    const holdBottom = options.holdBottom || 0;
+    const returnDuration = options.returnDuration || 0;
+    if (elapsed < holdStart) return 0;
+    if (elapsed < holdStart + duration) {
+      return (elapsed - holdStart) / duration;
+    }
+    if (elapsed < holdStart + duration + holdBottom) return 1;
+    if (!returnDuration) return 1;
+    const returnElapsed = elapsed - holdStart - duration - holdBottom;
+    if (returnElapsed < returnDuration) {
+      return 1 - easeInOutCubic(returnElapsed / returnDuration);
+    }
+    return 0;
+  }
+
+  function easeInOutCubic(value) {
+    return value < 0.5
+      ? 4 * value * value * value
+      : 1 - Math.pow(-2 * value + 2, 3) / 2;
+  }
+
+  function easeOutCubic(value) {
+    return 1 - Math.pow(1 - Math.max(0, Math.min(1, value)), 3);
   }
 
   async function drawInstagramStoryCanvas(context, canvas, styleKey = getDefaultInstagramStoryStyleKey()) {
@@ -3675,7 +5560,9 @@ function enhanceBreakingStrip(stories) {
     const theme = getInstagramStoryTheme(context, styleKey);
     const accent = theme.accent;
     const title = context.type === 'site' ? "Today's Front Page" : context.title;
-    const label = context.type === 'site' ? 'Front Page' : 'Article';
+    const label = context.type === 'site'
+      ? 'Front Page'
+      : (context.type === 'belowFoldIssue' ? 'Below the Fold' : 'Article');
     const dek = context.type === 'site'
       ? 'Four stories from the latest edition.'
       : (context.text || 'Source-forward reporting from The Press.');
@@ -4087,6 +5974,16 @@ function enhanceBreakingStrip(stories) {
     ctx.drawImage(img, x + (width - drawWidth) / 2, y + (height - drawHeight) / 2, drawWidth, drawHeight);
   }
 
+  function drawShareImageContain(ctx, img, x, y, width, height) {
+    const naturalWidth = img.naturalWidth || img.width;
+    const naturalHeight = img.naturalHeight || img.height;
+    if (!naturalWidth || !naturalHeight) return;
+    const scale = Math.min(width / naturalWidth, height / naturalHeight);
+    const drawWidth = naturalWidth * scale;
+    const drawHeight = naturalHeight * scale;
+    ctx.drawImage(img, x + (width - drawWidth) / 2, y + (height - drawHeight) / 2, drawWidth, drawHeight);
+  }
+
   function wrapShareCanvasText(ctx, text, x, y, maxWidth, lineHeight, maxLines, options = {}) {
     const layout = layoutShareCanvasText(ctx, text, maxWidth, lineHeight, maxLines, options);
     return drawShareCanvasTextLines(ctx, layout.lines, x, y, layout.lineHeight, layout.font);
@@ -4250,6 +6147,213 @@ function enhanceBreakingStrip(stories) {
       }
       canvas.toBlob((blob) => resolve(blob), 'image/png');
     });
+  }
+
+  function setInstagramStoryAssetActionLabels(modal, kind) {
+    if (!modal) return;
+    const isVideo = kind === 'video';
+    const nativeButton = modal.querySelector('[data-instagram-story-native]');
+    const downloadButton = modal.querySelector('[data-instagram-story-download]');
+    if (nativeButton) nativeButton.textContent = isVideo ? 'Share video' : 'Share image';
+    if (downloadButton) downloadButton.textContent = isVideo ? 'Save video' : 'Save to device';
+  }
+
+  async function saveInstagramStoryStudioAsset(modal, canvas, context, status) {
+    const asset = modal?._pressInstagramStoryAsset;
+    if (asset?.kind === 'video' && asset.blob) {
+      if (isMobileShareDevice()) {
+        setInstagramStoryStatus(status, 'Opening save options...');
+        const shared = await shareInstagramStoryBlob(asset.blob, asset.filename, context, status, {
+          successMessage: 'Choose Save Video to save it to Photos.',
+          cancelMessage: 'Save sheet closed. Starting a device download.',
+        });
+        if (shared) return true;
+      }
+      return downloadInstagramStoryBlobAsset(asset, status, isMobileShareDevice()
+        ? 'Device download started. For Photos, use Share video and choose Save Video.'
+        : 'Video download started.');
+    }
+    return saveInstagramStoryCanvas(canvas, context, status);
+  }
+
+  async function nativeShareInstagramStoryStudioAsset(modal, canvas, context, status) {
+    const asset = modal?._pressInstagramStoryAsset;
+    if (asset?.kind === 'video' && asset.blob) {
+      const platform = getScrollStoryPlatformMeta(context.scrollStoryPlatform);
+      const shared = await shareInstagramStoryBlob(asset.blob, asset.filename, context, status, {
+        successMessage: `Share sheet opened. Choose ${platform.label} if it appears.`,
+        cancelMessage: 'Video share did not open. Starting download.',
+      });
+      if (shared) return true;
+      return downloadInstagramStoryBlobAsset(asset, status, 'Video sharing was blocked here, so the download started.');
+    }
+    return nativeShareInstagramStoryCanvas(canvas, context, status);
+  }
+
+  async function openInstagramStoryWithStudioAsset(modal, canvas, context, status) {
+    if (isBelowFoldScrollStoryContext(context) && getScrollStoryPlatformMeta(context.scrollStoryPlatform).platform !== 'instagram') {
+      return openScrollVideoPlatformWithStudioAsset(modal, canvas, context, status);
+    }
+    const asset = modal?._pressInstagramStoryAsset;
+    if (asset?.kind === 'video' && asset.blob) {
+      const isMobile = isMobileShareDevice();
+      if (isMobile) {
+        const shared = await shareInstagramStoryBlob(asset.blob, asset.filename, context, status);
+        if (shared) return true;
+        const copied = await copyShareText(context);
+        downloadInstagramStoryBlobAsset(asset, status, 'Scroll video download started.');
+        window.location.href = 'instagram://story-camera';
+        window.setTimeout(() => {
+          if (!document.hidden) openShareWindow('https://www.instagram.com/');
+        }, 900);
+        setInstagramStoryStatus(status, copied
+          ? 'Instagram opened. Video saved and link copied for a sticker.'
+          : 'Instagram opened. Upload the saved scroll video.');
+        return true;
+      }
+
+      downloadInstagramStoryBlobAsset(asset, status, 'Scroll video download started. Instagram is opening.');
+      const copied = await copyShareText(context);
+      openShareWindow('https://www.instagram.com/');
+      setInstagramStoryStatus(status, copied
+        ? 'Instagram opened. Scroll video downloaded and link copied for a sticker.'
+        : 'Instagram opened. Scroll video downloaded; upload it from your device.');
+      return true;
+    }
+
+    const isMobile = isMobileShareDevice();
+    if (isMobile) {
+      const shared = await shareInstagramStoryFile(canvas, context, status);
+      if (shared) return true;
+      const copied = await copyShareText(context);
+      window.location.href = 'instagram://story-camera';
+      window.setTimeout(() => {
+        if (!document.hidden) openShareWindow('https://www.instagram.com/');
+      }, 900);
+      setInstagramStoryStatus(status, copied
+        ? 'Instagram Story opened. Link copied for a sticker.'
+        : 'Instagram Story opened. Use Save image if the image is not attached.');
+      return true;
+    }
+
+    startInstagramStoryDownloadFromCanvas(canvas, getInstagramStoryFilename(context), status, 'Story PNG download started. Instagram is opening.');
+    const copied = await copyShareText(context);
+    openShareWindow('https://www.instagram.com/');
+    setInstagramStoryStatus(status, copied
+      ? 'Instagram opened. PNG downloaded and link copied for a sticker.'
+      : 'Instagram opened. PNG downloaded; upload it from your device.');
+    return true;
+  }
+
+  async function openScrollVideoPlatformWithStudioAsset(modal, canvas, context, status) {
+    const asset = modal?._pressInstagramStoryAsset;
+    const platform = getScrollStoryPlatformMeta(context.scrollStoryPlatform);
+    const isMobile = isMobileShareDevice();
+
+    if (asset?.kind === 'video' && asset.blob && (isMobile || platform.platform === 'sms')) {
+      const shared = await shareInstagramStoryBlob(asset.blob, asset.filename, context, status, {
+        successMessage: `Share sheet opened. Choose ${platform.label} if it appears.`,
+        cancelMessage: `${platform.label} share did not open. Preparing fallback.`,
+      });
+      if (shared) return true;
+    }
+
+    if (asset?.kind === 'video' && asset.blob) {
+      downloadInstagramStoryBlobAsset(asset, status, `Scroll video downloaded for ${platform.label}.`);
+    } else {
+      await downloadInstagramStoryCanvas(canvas, context, status, {
+        statusMessage: `Scroll image downloaded for ${platform.label}.`,
+      });
+    }
+
+    const copied = await copyShareText(context);
+    if (platform.platform === 'sms') {
+      const opened = openSmsShare(context);
+      setInstagramStoryStatus(status, opened
+        ? (copied ? 'Messages opened. Link copied and scroll video downloaded.' : 'Messages opened. Scroll video downloaded.')
+        : (copied ? 'Link copied. Scroll video downloaded for Messages.' : 'Scroll video downloaded for Messages.'));
+      return opened;
+    }
+
+    const target = getScrollStoryPlatformShareUrl(platform.platform, context);
+    const opened = target ? openShareWindow(target) : false;
+    setInstagramStoryStatus(status, opened
+      ? (copied ? `${platform.label} opened. Scroll video downloaded and link copied.` : `${platform.label} opened. Scroll video downloaded.`)
+      : (copied ? `Link copied. Scroll video downloaded for ${platform.label}.` : `Scroll video downloaded for ${platform.label}.`));
+    return opened;
+  }
+
+  function getScrollStoryPlatformShareUrl(platform, context) {
+    const meta = getScrollStoryPlatformMeta(platform);
+    const encodedTitle = encodeURIComponent(context.title || 'The Press');
+    const encodedUrl = encodeURIComponent(context.url || window.location.href);
+    if (meta.platform === 'x') return `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+    if (meta.platform === 'facebook') return `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+    return meta.fallbackUrl;
+  }
+
+  function openSmsShare(context) {
+    const url = `sms:?&body=${encodeURIComponent(`${context.title || 'The Press'} ${context.url || window.location.href}`)}`;
+    try {
+      if (isMobileShareDevice()) {
+        window.location.href = url;
+        return true;
+      }
+      return openShareWindow(url);
+    } catch (_) {
+      return false;
+    }
+  }
+
+  async function shareInstagramStoryBlob(blob, filename, context, status, options = {}) {
+    if (!blob || typeof File === 'undefined' || !navigator.share) return false;
+    const file = new File([blob], filename || 'the-press-instagram-story.webm', { type: blob.type || 'video/webm' });
+    const shareData = {
+      files: [file],
+      title: context.title,
+      text: context.url,
+    };
+
+    const canAskForFileShare = !navigator.canShare || navigator.canShare({ files: [file] });
+    if (!canAskForFileShare) return false;
+
+    try {
+      await navigator.share(shareData);
+      setInstagramStoryStatus(status, options.successMessage || 'Share sheet opened. Choose Instagram Stories if it appears.');
+      return true;
+    } catch (_) {
+      setInstagramStoryStatus(status, options.cancelMessage || 'Video share did not open. Starting download.');
+      return false;
+    }
+  }
+
+  function downloadInstagramStoryBlobAsset(asset, status, message) {
+    if (!asset?.blob) return false;
+    const url = asset.url || URL.createObjectURL(asset.blob);
+    const started = triggerTemporaryDownload(url, asset.filename || 'the-press-instagram-story.webm');
+    if (!asset.url) window.setTimeout(() => URL.revokeObjectURL(url), 2000);
+    setInstagramStoryStatus(status, started
+      ? (message || 'Video download started.')
+      : 'Save was blocked. Try Share video.');
+    return started;
+  }
+
+  function getSupportedInstagramStoryVideoType() {
+    if (typeof MediaRecorder === 'undefined' || !MediaRecorder.isTypeSupported) return '';
+    return [
+      'video/mp4;codecs=avc1.42E01E',
+      'video/mp4',
+      'video/webm;codecs=vp9',
+      'video/webm;codecs=vp8',
+      'video/webm',
+    ].find((type) => MediaRecorder.isTypeSupported(type)) || '';
+  }
+
+  function getInstagramStoryVideoFilename(context, mimeType) {
+    const extension = /mp4/i.test(mimeType || '') ? 'mp4' : 'webm';
+    const platform = getScrollStoryPlatformMeta(context?.scrollStoryPlatform).platform;
+    const suffix = platform === 'instagram' ? 'instagram-scroll' : `${platform}-scroll-video`;
+    return `${slugifyShareFilename(context.title || 'the-press')}-${suffix}.${extension}`;
   }
 
   async function downloadInstagramStoryCanvas(canvas, context, status, options = {}) {
