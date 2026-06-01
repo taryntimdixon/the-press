@@ -3177,9 +3177,9 @@ function enhanceBreakingStrip(stories) {
     maxTextBlocks: 2,
     maxFactChips: 3,
     minDurationSeconds: 9,
-    maxDurationSeconds: 11,
-    scrollPixelsPerSecond: 980,
-    frameRate: 2,
+    maxDurationSeconds: 16,
+    scrollPixelsPerSecond: 820,
+    frameRate: 20,
   });
 
   function injectShareButtons() {
@@ -4147,11 +4147,16 @@ function enhanceBreakingStrip(stories) {
       video.load?.();
     }
 
-    setInstagramStoryStatus(status, 'Collecting issue images...');
-    const strip = await buildBelowFoldScrollStrip(context, { profile });
+    setInstagramStoryStatus(status, 'Capturing live issue layout...');
+    const strip = await buildBelowFoldActualScrollStrip(context, {
+      profile,
+      onFirstFrame: (partialStrip) => {
+        drawBelowFoldScrollFrame(ctx, partialStrip, 0);
+      },
+    });
     const timing = getBelowFoldScrollTiming(strip, canvas);
     drawBelowFoldScrollFrame(ctx, strip, 0);
-    setInstagramStoryStatus(status, 'Recording issue tour video...');
+    setInstagramStoryStatus(status, strip.kind === 'dom' ? 'Recording live page scroll...' : 'Recording issue tour video...');
 
     const videoType = getSupportedInstagramStoryVideoType();
     if (!canvas.captureStream || typeof MediaRecorder === 'undefined') {
@@ -4232,6 +4237,16 @@ function enhanceBreakingStrip(stories) {
       mimeType,
       filename: getInstagramStoryVideoFilename(context, mimeType),
     };
+  }
+
+  async function buildBelowFoldActualScrollStrip(context, callbacks = {}) {
+    try {
+      const domStrip = await buildBelowFoldDomScrollStrip(context, callbacks);
+      if (domStrip?.chunks?.length) return domStrip;
+    } catch (error) {
+      console.warn('Below the Fold live page capture fell back to generated cards.', error);
+    }
+    return buildBelowFoldScrollStrip(context, callbacks);
   }
 
   async function applyBelowFoldScrollStoryAssetToModal(modal, context, canvas, video, asset) {
@@ -4649,6 +4664,7 @@ function enhanceBreakingStrip(stories) {
             height: Math.ceil(measuredHeight * captureScale),
             width: Math.round(viewportWidth * captureScale),
             kind: 'dom',
+            theme: colorway,
           });
         } catch (_) {}
         await waitForNextScrollPreviewFrame();
@@ -4692,7 +4708,7 @@ function enhanceBreakingStrip(stories) {
       const areaScale = Math.sqrt(30000000 / Math.max(1, viewportWidth * height));
       return Math.max(1.25, Math.min(1.55, deviceScale, areaScale));
     }
-    return Math.min(2.35, Math.max(2.2, deviceScale));
+    return Math.min(1.7, Math.max(1.55, deviceScale));
   }
 
   function ensureHtml2Canvas() {
@@ -5810,10 +5826,10 @@ function enhanceBreakingStrip(stories) {
     const duration = Math.round(seconds * 1000);
     return {
       duration,
-      holdStart: 700,
-      holdBottom: 520,
+      holdStart: 260,
+      holdBottom: 300,
       returnDuration: 0,
-      holdEnd: 520,
+      holdEnd: 260,
       frameRate: BELOW_FOLD_SCROLL_STORY_CRITERIA.frameRate,
     };
   }
