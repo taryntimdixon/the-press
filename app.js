@@ -3177,8 +3177,8 @@ function enhanceBreakingStrip(stories) {
     maxTextBlocks: 2,
     maxFactChips: 3,
     minDurationSeconds: 9,
-    maxDurationSeconds: 16,
-    scrollPixelsPerSecond: 820,
+    maxDurationSeconds: 20,
+    scrollPixelsPerSecond: 656,
     frameRate: 20,
   });
 
