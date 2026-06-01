@@ -3164,6 +3164,23 @@ function enhanceBreakingStrip(stories) {
     'share-homepage-6.html',
   ];
   const HOMEPAGE_SOCIAL_SHARE_STORAGE_PREFIX = 'press-homepage-social-share';
+  const BELOW_FOLD_SCROLL_STORY_ASSET_CACHE = new Map();
+  const BELOW_FOLD_SCROLL_STORY_CRITERIA = Object.freeze({
+    maxCards: 12,
+    maxStripHeight: 10800,
+    baseStripHeight: 1450,
+    perCardStripHeight: 690,
+    stripEndPadding: 360,
+    imageCardHeight: 710,
+    textCardHeight: 520,
+    cardImageHeight: 260,
+    maxTextBlocks: 2,
+    maxFactChips: 3,
+    minDurationSeconds: 9,
+    maxDurationSeconds: 11,
+    scrollPixelsPerSecond: 980,
+    frameRate: 2,
+  });
 
   function injectShareButtons() {
     const belowFoldIssueHeader = document.querySelector('.page-below-fold-issue .below-fold-issue-page__masthead');
@@ -3584,6 +3601,12 @@ function enhanceBreakingStrip(stories) {
 
   function bindShareRow(row, context) {
     row.querySelectorAll('[data-share-platform]').forEach((control) => {
+      if (control.dataset.shareScrollStory) {
+        const prewarm = () => scheduleBelowFoldScrollStoryPrewarm(withScrollStoryPlatform(context, control.dataset.shareScrollStory));
+        control.addEventListener('pointerenter', prewarm, { once: true });
+        control.addEventListener('focus', prewarm, { once: true });
+        control.addEventListener('touchstart', prewarm, { once: true, passive: true });
+      }
       control.addEventListener('click', async (event) => {
         if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
         if (control.dataset.shareScrollStory) {
@@ -3634,6 +3657,7 @@ function enhanceBreakingStrip(stories) {
         }
       });
     });
+    scheduleBelowFoldScrollStoryPrewarm(context);
   }
 
   function getSharePlatformLabel(platform) {
@@ -3663,27 +3687,35 @@ function enhanceBreakingStrip(stories) {
 
   function openInstagramStoryStudio(row, context) {
     clearManualCopyText(row);
-    const storyContext = context.type === 'site' ? buildShareContext('site') : context;
+    let storyContext = context.type === 'site' ? buildShareContext('site') : context;
     const modal = ensureInstagramStoryStudio();
-    modal._pressInstagramStoryContext = storyContext;
     const canvas = modal.querySelector('[data-instagram-story-canvas]');
     const video = modal.querySelector('[data-instagram-story-video]');
     const status = modal.querySelector('[data-instagram-story-status]');
     const scrollStoryMode = isBelowFoldScrollStoryContext(storyContext);
     configureInstagramStoryStudioMode(modal, storyContext);
+    const initialStyleKey = getInstagramStorySelectedStyleKey(modal, storyContext);
+    if (scrollStoryMode) storyContext = withBelowFoldScrollStoryColorway(storyContext, initialStyleKey);
+    modal._pressInstagramStoryContext = storyContext;
     modal.hidden = false;
     document.documentElement.classList.add('press-instagram-story-open');
     modal.querySelector('[data-instagram-story-close]')?.focus({ preventScroll: true });
     if (scrollStoryMode) {
-      renderBelowFoldScrollStoryPreview(modal, storyContext, canvas, video, status);
+      renderBelowFoldScrollStoryPreview(modal, storyContext, canvas, video, status, initialStyleKey);
     } else {
-      renderInstagramStoryPreview(modal, storyContext, canvas, status, modal._pressInstagramStoryStyle || getDefaultInstagramStoryStyleKey());
+      renderInstagramStoryPreview(modal, storyContext, canvas, status, initialStyleKey);
     }
 
     modal.querySelectorAll('[data-instagram-story-style]').forEach((button) => {
       button.onclick = () => {
-        if (isBelowFoldScrollStoryContext(storyContext)) return;
-        renderInstagramStoryPreview(modal, storyContext, canvas, status, button.dataset.instagramStoryStyle || getDefaultInstagramStoryStyleKey());
+        const styleKey = button.dataset.instagramStoryStyle || getInstagramStorySelectedStyleKey(modal, storyContext);
+        if (isBelowFoldScrollStoryContext(storyContext)) {
+          storyContext = withBelowFoldScrollStoryColorway(storyContext, styleKey);
+          modal._pressInstagramStoryContext = storyContext;
+          renderBelowFoldScrollStoryPreview(modal, storyContext, canvas, video, status, styleKey);
+          return;
+        }
+        renderInstagramStoryPreview(modal, storyContext, canvas, status, styleKey);
       };
     });
 
@@ -3737,6 +3769,14 @@ function enhanceBreakingStrip(stories) {
     return context?.type === 'belowFoldIssue';
   }
 
+  function withBelowFoldScrollStoryColorway(context, colorwayKey) {
+    const colorway = getBelowFoldScrollStoryColorway(colorwayKey);
+    return {
+      ...context,
+      scrollStoryColorway: colorway.key,
+    };
+  }
+
   function getScrollStoryPlatformMeta(platform) {
     const key = String(platform || 'instagram').toLowerCase();
     const platforms = {
@@ -3772,6 +3812,82 @@ function enhanceBreakingStrip(stories) {
     return platforms[key] || platforms.instagram;
   }
 
+  function getBelowFoldScrollStoryAssetCacheKey(context) {
+    const platform = getScrollStoryPlatformMeta(context?.scrollStoryPlatform).platform;
+    const colorway = getBelowFoldScrollStoryColorway(context?.scrollStoryColorway);
+    return [
+      context?.url || window.location.href,
+      context?.title || document.title || 'The Press',
+      platform,
+      colorway.key,
+    ].join('::');
+  }
+
+  function getCachedBelowFoldScrollStoryAssetPromise(context) {
+    const entry = BELOW_FOLD_SCROLL_STORY_ASSET_CACHE.get(getBelowFoldScrollStoryAssetCacheKey(context));
+    if (!entry) return null;
+    if (entry.asset) return Promise.resolve(entry.asset);
+    if (!entry.promise) return null;
+    return Promise.race([
+      entry.promise,
+      new Promise((resolve) => window.setTimeout(() => resolve(null), 900)),
+    ]);
+  }
+
+  function copyBelowFoldScrollStoryAssetForCache(asset) {
+    if (!asset || asset.kind !== 'video' || !asset.blob?.size) return null;
+    return {
+      kind: 'video',
+      blob: asset.blob,
+      mimeType: asset.mimeType || asset.blob.type || 'video/webm',
+      filename: asset.filename,
+    };
+  }
+
+  function rememberBelowFoldScrollStoryAsset(context, asset) {
+    const cachedAsset = copyBelowFoldScrollStoryAssetForCache(asset);
+    if (!cachedAsset) return;
+    BELOW_FOLD_SCROLL_STORY_ASSET_CACHE.set(getBelowFoldScrollStoryAssetCacheKey(context), { asset: cachedAsset });
+  }
+
+  function scheduleBelowFoldScrollStoryPrewarm(context) {
+    if (!isBelowFoldScrollStoryContext(context)) return;
+    const platform = getScrollStoryPlatformMeta(context?.scrollStoryPlatform).platform;
+    const colorContext = withBelowFoldScrollStoryColorway(
+      withScrollStoryPlatform(context, platform),
+      getDefaultBelowFoldScrollStoryColorwayKey()
+    );
+    const key = getBelowFoldScrollStoryAssetCacheKey(colorContext);
+    if (BELOW_FOLD_SCROLL_STORY_ASSET_CACHE.has(key)) return;
+
+    const start = () => prewarmBelowFoldScrollStoryAsset(key, colorContext);
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(start, { timeout: 10000 });
+    } else {
+      window.setTimeout(start, 8000);
+    }
+  }
+
+  function prewarmBelowFoldScrollStoryAsset(key, context) {
+    if (BELOW_FOLD_SCROLL_STORY_ASSET_CACHE.has(key)) return;
+    const canvas = document.createElement('canvas');
+    const promise = createBelowFoldScrollStoryAsset(null, context, canvas, null).then((asset) => {
+      const cachedAsset = copyBelowFoldScrollStoryAssetForCache(asset);
+      if (asset?.url) URL.revokeObjectURL(asset.url);
+      if (cachedAsset) {
+        BELOW_FOLD_SCROLL_STORY_ASSET_CACHE.set(key, { asset: cachedAsset });
+        return cachedAsset;
+      }
+      BELOW_FOLD_SCROLL_STORY_ASSET_CACHE.delete(key);
+      return null;
+    }).catch((error) => {
+      BELOW_FOLD_SCROLL_STORY_ASSET_CACHE.delete(key);
+      console.warn('Below the Fold scroll story prebuild unavailable.', error);
+      return null;
+    });
+    BELOW_FOLD_SCROLL_STORY_ASSET_CACHE.set(key, { promise });
+  }
+
   function configureInstagramStoryStudioMode(modal, context) {
     if (!modal) return;
     const scrollStoryMode = isBelowFoldScrollStoryContext(context);
@@ -3805,6 +3921,7 @@ function enhanceBreakingStrip(stories) {
       modal._pressInstagramStoryVideoUrl = '';
     }
     modal._pressInstagramStoryAsset = null;
+    configureInstagramStoryStyleControls(modal, context);
   }
 
   function getBelowFoldScrollVideoProfile() {
@@ -3843,7 +3960,7 @@ function enhanceBreakingStrip(stories) {
             <video controls autoplay playsinline muted hidden data-instagram-story-video></video>
           </div>
           <div class="press-instagram-story__side">
-            <div class="press-instagram-story__styles" role="group" aria-label="Preview style">
+            <div class="press-instagram-story__styles" role="group" aria-label="Preview style" data-instagram-story-styles>
               ${buildInstagramStoryStyleButtons()}
             </div>
             <div class="press-instagram-story__actions">
@@ -3874,10 +3991,28 @@ function enhanceBreakingStrip(stories) {
     document.documentElement.classList.remove('press-instagram-story-open');
   }
 
-  function buildInstagramStoryStyleButtons() {
-    const defaultStyle = getDefaultInstagramStoryStyleKey();
-    return getInstagramStoryStyles().map((style) => `
-      <button class="press-instagram-story__style" type="button" data-instagram-story-style="${escapeAttribute(style.key)}" aria-label="${escapeAttribute(style.label)} style" aria-pressed="${style.key === defaultStyle ? 'true' : 'false'}" title="${escapeAttribute(style.label)}">
+  function configureInstagramStoryStyleControls(modal, context) {
+    const group = modal?.querySelector('[data-instagram-story-styles]');
+    if (!group) return;
+    const scrollStoryMode = isBelowFoldScrollStoryContext(context);
+    const styles = scrollStoryMode ? getBelowFoldScrollStoryColorways() : getInstagramStoryStyles();
+    const selectedStyle = getInstagramStorySelectedStyleKey(modal, context);
+    group.setAttribute('aria-label', scrollStoryMode ? 'Scroll video colorway' : 'Preview style');
+    group.innerHTML = buildInstagramStoryStyleButtons(styles, selectedStyle, scrollStoryMode ? 'colorway' : 'style');
+  }
+
+  function getInstagramStorySelectedStyleKey(modal, context) {
+    if (isBelowFoldScrollStoryContext(context)) {
+      const colorway = getBelowFoldScrollStoryColorway(modal?._pressBelowFoldScrollStyle || context?.scrollStoryColorway);
+      return colorway.key;
+    }
+    const style = getInstagramStoryStyle(modal?._pressInstagramStoryStyle || getDefaultInstagramStoryStyleKey());
+    return style.key;
+  }
+
+  function buildInstagramStoryStyleButtons(styles = getInstagramStoryStyles(), selectedStyle = getDefaultInstagramStoryStyleKey(), labelSuffix = 'style') {
+    return styles.map((style) => `
+      <button class="press-instagram-story__style" type="button" data-instagram-story-style="${escapeAttribute(style.key)}" aria-label="${escapeAttribute(style.label)} ${escapeAttribute(labelSuffix)}" aria-pressed="${style.key === selectedStyle ? 'true' : 'false'}" title="${escapeAttribute(style.label)}">
         <span class="press-instagram-story__swatch press-instagram-story__swatch--${escapeAttribute(style.key)}" aria-hidden="true"></span>
         <span class="press-instagram-story__style-name">${escapeHtml(style.label)}</span>
       </button>
@@ -3917,6 +4052,13 @@ function enhanceBreakingStrip(stories) {
     });
   }
 
+  function setInstagramStoryStyleControlsDisabled(modal, disabled) {
+    if (!modal) return;
+    modal.querySelectorAll('[data-instagram-story-style]').forEach((button) => {
+      button.disabled = Boolean(disabled);
+    });
+  }
+
   async function ensureInstagramStoryReady(modal, status) {
     if (!modal?._pressInstagramStoryReady) return true;
     setInstagramStoryStatus(status, modal.classList.contains('press-instagram-story--video')
@@ -3925,35 +4067,57 @@ function enhanceBreakingStrip(stories) {
     const ready = await modal._pressInstagramStoryReady;
     if (ready) {
       const asset = modal._pressInstagramStoryAsset;
-      setInstagramStoryStatus(status, asset?.kind === 'video' ? 'Full scroll video ready.' : 'Story image ready.');
+      setInstagramStoryStatus(status, asset?.kind === 'video' ? 'Quick scroll video ready.' : 'Story image ready.');
     }
     return ready;
   }
 
-  function renderBelowFoldScrollStoryPreview(modal, context, canvas, video, status) {
+  function renderBelowFoldScrollStoryPreview(modal, context, canvas, video, status, styleKey) {
     if (!modal || !canvas) return;
+    const colorContext = withBelowFoldScrollStoryColorway(context, styleKey || context?.scrollStoryColorway);
+    const colorway = getBelowFoldScrollStoryColorway(colorContext.scrollStoryColorway);
     const renderId = (modal._pressInstagramStoryRenderId || 0) + 1;
     modal._pressInstagramStoryRenderId = renderId;
-    modal._pressInstagramStoryStyle = getDefaultInstagramStoryStyleKey();
-    setInstagramStoryStatus(status, 'Recording full issue scroll...');
+    modal._pressBelowFoldScrollStyle = colorway.key;
+    modal._pressInstagramStoryContext = colorContext;
+    updateInstagramStoryStyleButtons(modal, colorway.key);
+    setInstagramStoryStatus(status, 'Building quick scroll video...');
     setInstagramStoryActionsDisabled(modal, true);
+    setInstagramStoryStyleControlsDisabled(modal, true);
     canvas.hidden = true;
-    if (video) video.hidden = true;
-    showBelowFoldLiveScrollPreview(modal, context);
-    modal._pressInstagramStoryReady = createBelowFoldScrollStoryAsset(modal, context, canvas, video).then((asset) => {
+    if (modal._pressInstagramStoryVideoUrl) {
+      URL.revokeObjectURL(modal._pressInstagramStoryVideoUrl);
+      modal._pressInstagramStoryVideoUrl = '';
+    }
+    modal._pressInstagramStoryAsset = null;
+    if (video) {
+      video.hidden = true;
+      video.pause?.();
+      video.removeAttribute('src');
+      video.load?.();
+    }
+    showBelowFoldLiveScrollPreview(modal, colorContext);
+    const cachedAssetPromise = getCachedBelowFoldScrollStoryAssetPromise(colorContext);
+    const assetPromise = (cachedAssetPromise
+      ? cachedAssetPromise.then((asset) => asset
+        ? applyBelowFoldScrollStoryAssetToModal(modal, colorContext, canvas, video, asset)
+        : createBelowFoldScrollStoryAsset(modal, colorContext, canvas, video))
+      : createBelowFoldScrollStoryAsset(modal, colorContext, canvas, video));
+    modal._pressInstagramStoryReady = assetPromise.then((asset) => {
       if (modal._pressInstagramStoryRenderId !== renderId) return true;
       hideBelowFoldLiveScrollPreview(modal);
       modal._pressInstagramStoryAsset = asset;
+      rememberBelowFoldScrollStoryAsset(colorContext, asset);
       setInstagramStoryAssetActionLabels(modal, asset?.kind || 'image');
       setInstagramStoryStatus(status, asset?.kind === 'video'
-        ? 'Full scroll video ready.'
-        : 'Scroll video unavailable here. Story image ready.');
+        ? 'Quick scroll video ready.'
+        : 'Video unavailable here. Story image ready.');
       return true;
     }).catch(async (error) => {
       console.warn('Below the Fold scroll story recording fell back to a still image.', error);
       if (modal._pressInstagramStoryRenderId !== renderId) return false;
       hideBelowFoldLiveScrollPreview(modal);
-      await drawInstagramStoryCanvas(context, canvas, 'edition');
+      await drawInstagramStoryCanvas(colorContext, canvas, getInstagramFallbackStyleForScrollColorway(colorway.key));
       if (video) video.hidden = true;
       canvas.hidden = false;
       modal._pressInstagramStoryAsset = { kind: 'image', canvas };
@@ -3961,11 +4125,15 @@ function enhanceBreakingStrip(stories) {
       setInstagramStoryStatus(status, 'Story image ready with fallback art.');
       return false;
     }).finally(() => {
-      if (modal._pressInstagramStoryRenderId === renderId) setInstagramStoryActionsDisabled(modal, false);
+      if (modal._pressInstagramStoryRenderId === renderId) {
+        setInstagramStoryActionsDisabled(modal, false);
+        setInstagramStoryStyleControlsDisabled(modal, false);
+      }
     });
   }
 
   async function createBelowFoldScrollStoryAsset(modal, context, canvas, video) {
+    const status = modal?.querySelector('[data-instagram-story-status]');
     const profile = getBelowFoldScrollVideoProfile(context);
     canvas.width = profile.canvasWidth;
     canvas.height = profile.canvasHeight;
@@ -3979,9 +4147,11 @@ function enhanceBreakingStrip(stories) {
       video.load?.();
     }
 
+    setInstagramStoryStatus(status, 'Collecting issue images...');
     const strip = await buildBelowFoldScrollStrip(context, { profile });
     const timing = getBelowFoldScrollTiming(strip, canvas);
     drawBelowFoldScrollFrame(ctx, strip, 0);
+    setInstagramStoryStatus(status, 'Recording issue tour video...');
 
     const videoType = getSupportedInstagramStoryVideoType();
     if (!canvas.captureStream || typeof MediaRecorder === 'undefined') {
@@ -3991,7 +4161,7 @@ function enhanceBreakingStrip(stories) {
       return { kind: 'image', canvas };
     }
 
-    const streamFrameRate = Math.max(12, Math.min(30, timing.frameRate || 24));
+    const streamFrameRate = Math.max(2, Math.min(24, timing.frameRate || 12));
     const stream = canvas.captureStream(streamFrameRate);
     const streamVideoTrack = stream.getVideoTracks?.()[0] || null;
     const chunks = [];
@@ -4014,8 +4184,13 @@ function enhanceBreakingStrip(stories) {
       ...timing,
       onFrame: () => streamVideoTrack?.requestFrame?.(),
     });
+    setInstagramStoryStatus(status, 'Finalizing scroll video...');
+    recorder.requestData?.();
     if (recorder.state !== 'inactive') recorder.stop();
-    await stopped;
+    await Promise.race([
+      stopped,
+      new Promise((resolve) => window.setTimeout(resolve, 1800)),
+    ]);
     stream.getTracks().forEach((track) => track.stop());
 
     const mimeType = recorder.mimeType || videoType || 'video/webm';
@@ -4027,8 +4202,8 @@ function enhanceBreakingStrip(stories) {
     }
 
     const url = URL.createObjectURL(blob);
-    if (modal._pressInstagramStoryVideoUrl) URL.revokeObjectURL(modal._pressInstagramStoryVideoUrl);
-    modal._pressInstagramStoryVideoUrl = url;
+    if (modal?._pressInstagramStoryVideoUrl) URL.revokeObjectURL(modal._pressInstagramStoryVideoUrl);
+    if (modal) modal._pressInstagramStoryVideoUrl = url;
 
     if (video) {
       hideBelowFoldLiveScrollPreview(modal);
@@ -4059,13 +4234,42 @@ function enhanceBreakingStrip(stories) {
     };
   }
 
-  async function buildBelowFoldScrollStrip(context, callbacks = {}) {
-    const domStrip = await buildBelowFoldDomScrollStrip(context, callbacks).catch((error) => {
-      console.warn('Below the Fold DOM scroll capture unavailable.', error);
-      return null;
-    });
-    if (domStrip) return domStrip;
+  async function applyBelowFoldScrollStoryAssetToModal(modal, context, canvas, video, asset) {
+    if (!asset) return asset;
+    if (asset.kind === 'video' && asset.blob?.size && video) {
+      const mimeType = asset.mimeType || asset.blob.type || 'video/webm';
+      const url = URL.createObjectURL(asset.blob);
+      if (modal?._pressInstagramStoryVideoUrl) URL.revokeObjectURL(modal._pressInstagramStoryVideoUrl);
+      if (modal) modal._pressInstagramStoryVideoUrl = url;
+      hideBelowFoldLiveScrollPreview(modal);
+      video.src = url;
+      video.hidden = false;
+      video.loop = true;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('autoplay', '');
+      video.setAttribute('playsinline', '');
+      if (canvas) canvas.hidden = true;
+      try {
+        video.currentTime = 0;
+        await waitForBelowFoldVideoReady(video);
+        await video.play();
+      } catch (_) {}
+      return {
+        ...asset,
+        url,
+        mimeType,
+        filename: asset.filename || getInstagramStoryVideoFilename(context, mimeType),
+      };
+    }
+    return asset;
+  }
 
+  async function buildBelowFoldScrollStrip(context, callbacks = {}) {
+    const colorway = getBelowFoldScrollStoryColorway(context?.scrollStoryColorway);
     const model = collectBelowFoldScrollStoryModel(context);
     const loadedSections = await Promise.all(model.sections.map(async (section) => {
       if (!section.imageUrl) return section;
@@ -4081,16 +4285,19 @@ function enhanceBreakingStrip(stories) {
         coverImage = await loadShareImage(model.coverImageUrl);
       } catch (_) {}
     }
-    try {
-      await document.fonts?.ready;
-    } catch (_) {}
+    await waitForShareFontsReady();
 
     const canvas = document.createElement('canvas');
     canvas.width = 1080;
-    canvas.height = Math.min(9600, 1800 + loadedSections.length * 840 + 420);
+    canvas.height = Math.min(
+      BELOW_FOLD_SCROLL_STORY_CRITERIA.maxStripHeight,
+      BELOW_FOLD_SCROLL_STORY_CRITERIA.baseStripHeight
+        + loadedSections.length * BELOW_FOLD_SCROLL_STORY_CRITERIA.perCardStripHeight
+        + BELOW_FOLD_SCROLL_STORY_CRITERIA.stripEndPadding
+    );
     const ctx = canvas.getContext('2d');
-    const height = drawBelowFoldScrollStrip(ctx, { ...model, sections: loadedSections, coverImage });
-    return { canvas, height, kind: 'generated', width: canvas.width };
+    const height = drawBelowFoldScrollStrip(ctx, { ...model, sections: loadedSections, coverImage, theme: colorway });
+    return { canvas, height, kind: 'generated', width: canvas.width, theme: colorway };
   }
 
   function showBelowFoldLiveScrollPreview(modal, context) {
@@ -4103,6 +4310,7 @@ function enhanceBreakingStrip(stories) {
     preview.querySelector('[data-instagram-story-video]')?.setAttribute('hidden', '');
 
     const profile = getBelowFoldScrollVideoProfile(context);
+    const colorway = getBelowFoldScrollStoryColorway(context?.scrollStoryColorway);
     const viewportWidth = profile.viewportWidth;
     const clone = sourceRoot.cloneNode(true);
     sanitizeBelowFoldScrollClone(clone);
@@ -4112,16 +4320,18 @@ function enhanceBreakingStrip(stories) {
     livePreview.className = 'press-instagram-story__live-preview';
     livePreview.setAttribute('data-below-fold-live-preview', '');
     livePreview.setAttribute('aria-hidden', 'true');
+    livePreview.style.background = getBelowFoldColorwayBackdropCss(colorway);
 
     const livePhone = document.createElement('div');
     livePhone.className = 'press-instagram-story__live-phone';
+    livePhone.style.background = colorway.screen;
 
     const liveScreen = document.createElement('div');
     liveScreen.className = 'press-instagram-story__live-screen';
     liveScreen.style.width = `${viewportWidth}px`;
 
     const captureStyle = document.createElement('style');
-    captureStyle.textContent = getBelowFoldCaptureStyles(viewportWidth);
+    captureStyle.textContent = getBelowFoldCaptureStyles(viewportWidth, colorway);
 
     const capturePage = document.createElement('div');
     capturePage.className = 'press-scroll-capture-shell page-below-fold-issue';
@@ -4299,6 +4509,7 @@ function enhanceBreakingStrip(stories) {
     const sourceMeasuredHeight = getBelowFoldLayoutHeight(sourceRoot);
 
     const profile = callbacks.profile || getBelowFoldScrollVideoProfile(context);
+    const colorway = getBelowFoldScrollStoryColorway(context?.scrollStoryColorway);
     const viewportWidth = profile.viewportWidth || 430;
     const clone = sourceRoot.cloneNode(true);
     sanitizeBelowFoldScrollClone(clone);
@@ -4314,12 +4525,12 @@ function enhanceBreakingStrip(stories) {
       'min-height:1px',
       'pointer-events:none',
       'z-index:-1',
-      'background:#f4f0e8',
+      `background:${colorway.screen}`,
     ].join(';');
     captureHost.setAttribute('aria-hidden', 'true');
 
     const captureStyle = document.createElement('style');
-    captureStyle.textContent = getBelowFoldCaptureStyles(viewportWidth);
+    captureStyle.textContent = getBelowFoldCaptureStyles(viewportWidth, colorway);
 
     const capturePage = document.createElement('div');
     capturePage.className = 'press-scroll-capture-shell page-below-fold-issue';
@@ -4329,9 +4540,7 @@ function enhanceBreakingStrip(stories) {
     document.body.appendChild(captureHost);
 
     try {
-      try {
-        await document.fonts?.ready;
-      } catch (_) {}
+      await waitForShareFontsReady();
       await waitForBelowFoldCaptureAssets(captureHost);
       await waitForNextScrollPreviewFrame();
       await waitForNextScrollPreviewFrame();
@@ -4349,6 +4558,7 @@ function enhanceBreakingStrip(stories) {
         captureScale,
         measuredHeight,
         onFirstChunk: callbacks.onFirstFrame,
+        theme: colorway,
         viewportWidth,
       });
       return {
@@ -4356,6 +4566,7 @@ function enhanceBreakingStrip(stories) {
         height: Math.ceil(measuredHeight * captureScale),
         width: Math.round(viewportWidth * captureScale),
         kind: 'dom',
+        theme: colorway,
       };
     } finally {
       captureHost.remove();
@@ -4366,6 +4577,7 @@ function enhanceBreakingStrip(stories) {
     const viewportWidth = options.viewportWidth || 390;
     const measuredHeight = Math.max(1, options.measuredHeight || 1200);
     const captureScale = options.captureScale || 1;
+    const colorway = options.theme || getBelowFoldScrollStoryColorway();
     const chunkCssHeight = Math.max(1100, Math.min(1800, Math.floor(2400 / captureScale)));
     const chunks = [];
 
@@ -4382,7 +4594,7 @@ function enhanceBreakingStrip(stories) {
         capturePage.parentElement.style.height = `${measuredHeight}px`;
         const canvas = await withBelowFoldTimeout(html2canvas(capturePage.parentElement, {
           allowTaint: false,
-          backgroundColor: '#f4f0e8',
+          backgroundColor: colorway.screen,
           height: measuredHeight,
           logging: false,
           scale: captureScale,
@@ -4414,7 +4626,7 @@ function enhanceBreakingStrip(stories) {
       capturePage.style.transform = `translateY(-${offset}px)`;
       const canvas = await withBelowFoldTimeout(html2canvas(capturePage.parentElement, {
         allowTaint: false,
-        backgroundColor: '#f4f0e8',
+        backgroundColor: colorway.screen,
         height,
         logging: false,
         scale: captureScale,
@@ -4460,6 +4672,17 @@ function enhanceBreakingStrip(stories) {
         timeoutId = window.setTimeout(() => reject(new Error(message)), timeoutMs);
       }),
     ]);
+  }
+
+  async function waitForShareFontsReady(timeoutMs = 1600) {
+    const ready = document.fonts?.ready;
+    if (!ready) return;
+    try {
+      await Promise.race([
+        ready,
+        new Promise((resolve) => window.setTimeout(resolve, timeoutMs)),
+      ]);
+    } catch (_) {}
   }
 
   function getBelowFoldCaptureScale(measuredHeight, viewportWidth) {
@@ -4562,32 +4785,56 @@ function enhanceBreakingStrip(stories) {
     await Promise.all(images.map((img) => {
       if (img.complete) return Promise.resolve();
       return new Promise((resolve) => {
-        img.addEventListener('load', resolve, { once: true });
-        img.addEventListener('error', resolve, { once: true });
+        let timeout = 0;
+        const done = () => {
+          window.clearTimeout(timeout);
+          img.removeEventListener('error', done);
+          img.removeEventListener('load', done);
+          resolve();
+        };
+        timeout = window.setTimeout(done, 1800);
+        img.addEventListener('error', done, { once: true });
+        img.addEventListener('load', done, { once: true });
       });
     }));
-    await Promise.all(images.map((img) => img.decode?.().catch(() => {}) || Promise.resolve()));
+    await Promise.all(images.map((img) => {
+      const decode = img.decode?.().catch(() => {}) || Promise.resolve();
+      return Promise.race([
+        decode,
+        new Promise((resolve) => window.setTimeout(resolve, 900)),
+      ]);
+    }));
   }
 
-  function getBelowFoldCaptureStyles(viewportWidth) {
+  function getBelowFoldCaptureStyles(viewportWidth, colorway = getBelowFoldScrollStoryColorway()) {
     return `
       .press-scroll-capture-shell{
+        --scroll-paper:${colorway.paper};
+        --scroll-paper-deep:${colorway.paperDeep};
+        --scroll-rule:${colorway.rule};
+        --scroll-ink:${colorway.ink};
+        --scroll-muted:${colorway.muted};
+        --scroll-accent:${colorway.accent};
+        --scroll-card:${colorway.card};
+        --scroll-card-alt:${colorway.cardAlt};
+        --scroll-green:${colorway.green};
+        --scroll-blue:${colorway.blue};
         width:${viewportWidth}px;
         min-height:100%;
         margin:0;
-        background:#f4f0e8;
-        color:#1f1f1b;
+        background:var(--scroll-paper);
+        color:var(--scroll-ink);
         overflow:hidden;
       }
       .press-scroll-capture-shell,
       .press-scroll-capture-shell *{
         box-sizing:border-box;
-        border-color:#c7bda9 !important;
-        caret-color:#1f1f1b !important;
-        color:#1f1f1b !important;
-        column-rule-color:#c7bda9 !important;
-        outline-color:#c7bda9 !important;
-        text-decoration-color:#9d3a2d !important;
+        border-color:var(--scroll-rule) !important;
+        caret-color:var(--scroll-ink) !important;
+        color:var(--scroll-ink) !important;
+        column-rule-color:var(--scroll-rule) !important;
+        outline-color:var(--scroll-rule) !important;
+        text-decoration-color:var(--scroll-accent) !important;
       }
       .press-scroll-capture-shell *,
       .press-scroll-capture-shell *::before,
@@ -4595,30 +4842,30 @@ function enhanceBreakingStrip(stories) {
         background-color:transparent !important;
         background-image:none !important;
         box-shadow:none !important;
-        fill:#1f1f1b !important;
-        stroke:#1f1f1b !important;
+        fill:var(--scroll-ink) !important;
+        stroke:var(--scroll-ink) !important;
         text-shadow:none !important;
       }
       .press-scroll-capture-shell .below-fold,
       .press-scroll-capture-shell .below-fold *{
-        border-color:#c7bda9 !important;
+        border-color:var(--scroll-rule) !important;
       }
       .press-scroll-capture-shell .below-fold{
-        --fold-paper:#f4f0e8;
-        --fold-paper-deep:#e7dece;
-        --fold-rule:#c7bda9;
-        --ink:#1f1f1b;
-        --muted:#5f5a52;
-        --fold-red:#9d3a2d;
-        --fold-green:#4a6155;
-        --fold-blue:#304f63;
+        --fold-paper:var(--scroll-paper);
+        --fold-paper-deep:var(--scroll-paper-deep);
+        --fold-rule:var(--scroll-rule);
+        --ink:var(--scroll-ink);
+        --muted:var(--scroll-muted);
+        --fold-red:var(--scroll-accent);
+        --fold-green:var(--scroll-green);
+        --fold-blue:var(--scroll-blue);
         width:${viewportWidth}px;
         max-width:none;
         margin:0;
         padding:18px 14px 24px;
         border-top:0;
         box-shadow:none;
-        background:#f4f0e8 !important;
+        background:var(--scroll-paper) !important;
       }
       .press-scroll-capture-shell p,
       .press-scroll-capture-shell dd,
@@ -4675,7 +4922,7 @@ function enhanceBreakingStrip(stories) {
       .press-scroll-capture-shell .below-fold-artemis-note,
       .press-scroll-capture-shell .below-fold-artemis-crew-card,
       .press-scroll-capture-shell .below-fold-artemis-timeline-card{
-        background:#fffdf9 !important;
+        background:var(--scroll-card) !important;
       }
       .press-scroll-capture-shell .below-fold-folio,
       .press-scroll-capture-shell .below-fold-quote{
@@ -4761,7 +5008,7 @@ function enhanceBreakingStrip(stories) {
         min-height:0 !important;
         aspect-ratio:auto !important;
         overflow:visible !important;
-        background:#e7dece !important;
+        background:var(--scroll-paper-deep) !important;
       }
       .press-scroll-capture-shell .below-fold-image-media img{
         display:block;
@@ -4796,7 +5043,7 @@ function enhanceBreakingStrip(stories) {
         min-height:0 !important;
         overflow:hidden !important;
         border-right:0 !important;
-        border-bottom:1px solid #c7bda9 !important;
+        border-bottom:1px solid var(--scroll-rule) !important;
       }
       .press-scroll-capture-shell .below-fold-automation-field .below-fold-image-media img{
         width:100% !important;
@@ -4955,7 +5202,7 @@ function enhanceBreakingStrip(stories) {
       .press-scroll-capture-shell .below-fold-index{
         padding-left:0;
         border-left:0;
-        border-top:1px solid var(--fold-rule,#c7bda9);
+        border-top:1px solid var(--fold-rule,var(--scroll-rule));
         padding-top:.75rem;
       }
       .press-scroll-capture-shell .below-fold-index div,
@@ -5057,31 +5304,7 @@ function enhanceBreakingStrip(stories) {
     const title = collapseWhitespace(context.title || masthead?.querySelector('h1')?.textContent || 'Below the Fold');
     const issueMeta = collapseWhitespace(context.issueMeta || masthead?.querySelector('.below-fold-issue-page__meta')?.textContent || 'Below the Fold');
     const dek = collapseWhitespace(context.text || masthead?.querySelector('p:not(.eyebrow):not(.below-fold-issue-page__meta)')?.textContent || '');
-    const sections = dedupeBelowFoldSectionImages(Array.from(root?.querySelectorAll('.below-fold-spread') || [])
-      .map((section, index) => {
-        const heading = collapseWhitespace(section.querySelector('.below-fold-section-head h3, h3, h4, h2')?.textContent || section.getAttribute('aria-label') || '');
-        const kicker = collapseWhitespace(section.querySelector('.below-fold-kicker')?.textContent || `Page ${index + 1}`);
-        const texts = Array.from(section.querySelectorAll('p'))
-          .filter((paragraph) => !paragraph.classList.contains('below-fold-kicker') && !paragraph.closest('figcaption'))
-          .map((paragraph) => collapseWhitespace(paragraph.textContent || ''))
-          .filter((text) => text.length > 34)
-          .slice(0, 2);
-        const facts = Array.from(section.querySelectorAll('dt, article strong'))
-          .map((node) => collapseWhitespace(node.textContent || ''))
-          .filter((text) => text.length > 1 && text.length < 18)
-          .slice(0, 3);
-        const img = section.querySelector('img');
-        const imageUrl = normalizeShareAssetUrl(img?.currentSrc || img?.getAttribute('src') || '');
-        return {
-          kicker,
-          heading,
-          texts,
-          facts,
-          imageUrl,
-        };
-      })
-      .filter((section) => section.heading || section.texts.length || section.imageUrl)
-      .slice(0, 8));
+    const sections = collectBelowFoldScrollStorySections(root).slice(0, BELOW_FOLD_SCROLL_STORY_CRITERIA.maxCards);
 
     return {
       title,
@@ -5090,6 +5313,121 @@ function enhanceBreakingStrip(stories) {
       coverImageUrl: '',
       sections,
       url: context.url,
+    };
+  }
+
+  function collectBelowFoldScrollStorySections(root) {
+    if (!root) return [];
+    const sections = [];
+    const usedNodes = new Set();
+
+    getBelowFoldScrollStoryCandidateNodes(root).forEach((node) => {
+      if (isBelowFoldScrollStoryNodeCovered(node, usedNodes)) return;
+      const section = buildBelowFoldScrollStorySection(node, sections.length);
+      if (!section.heading && !section.texts.length && !section.imageUrl) return;
+      sections.push(section);
+      usedNodes.add(node);
+    });
+
+    Array.from(root.querySelectorAll('.below-fold-spread')).forEach((spread) => {
+      if (isBelowFoldScrollStoryNodeCovered(spread, usedNodes)) return;
+      const section = buildBelowFoldScrollStorySection(spread, sections.length);
+      if (section.heading || section.texts.length || section.imageUrl) sections.push(section);
+    });
+
+    return dedupeBelowFoldSectionImages(sections);
+  }
+
+  function getBelowFoldScrollStoryCandidateNodes(root) {
+    const selectors = [
+      '[data-below-fold-story-card]',
+      '[data-below-fold-card]',
+      '.below-fold-lead-copy',
+      '[data-below-fold-slot="portrait-card"]',
+      '[data-below-fold-slot="supporting-piece"]',
+      '.below-fold-makers-person',
+      '.below-fold-makers-card',
+      '.below-fold-place-card',
+      '.below-fold-service-panel',
+      '.below-fold-brief',
+      '.below-fold-letter',
+      '.below-fold-notice',
+      '.below-fold-dispatch-card',
+      '.below-fold-ranking-card',
+      '.below-fold-regional-card',
+      '.below-fold-big-three-card',
+      '.below-fold-artemis-crew-card',
+      '.below-fold-artemis-hardware-card',
+      '.below-fold-artemis-note-card',
+      '.below-fold-artemis-timeline-card',
+      '.below-fold-automation-field',
+      '.below-fold-automation-stack-copy article',
+      '.below-fold-automation-humanoid-notes article',
+      '.below-fold-automation-labor-grid article',
+      '.below-fold-automation-company-board__grid article',
+      '.below-fold-automation-layer-grid article',
+      '.below-fold-ledger',
+      '.below-fold-spread article',
+      '.below-fold-spread figure',
+      '.below-fold-spread aside',
+      'article[data-below-fold-hook]',
+      'figure[data-below-fold-hook]',
+      'aside[data-below-fold-hook]',
+    ];
+    const seen = new Set();
+    const nodes = [];
+    selectors.forEach((selector) => {
+      root.querySelectorAll(selector).forEach((node) => {
+        if (seen.has(node) || !isBelowFoldScrollStoryCandidateNode(node)) return;
+        seen.add(node);
+        nodes.push(node);
+      });
+    });
+    return nodes;
+  }
+
+  function isBelowFoldScrollStoryCandidateNode(node) {
+    if (!node || node.matches?.('.below-fold-header, .below-fold-folio, .below-fold-quote, .below-fold-section-head, nav, script, style')) return false;
+    if (node.closest?.('.share-row, [data-below-fold-story-share]')) return false;
+    return Boolean(
+      node.querySelector?.('img, h2, h3, h4, p, dt, dd, strong, figcaption')
+      || node.matches?.('img, h2, h3, h4, p, dt, dd, strong, figcaption')
+    );
+  }
+
+  function isBelowFoldScrollStoryNodeCovered(node, usedNodes) {
+    return Array.from(usedNodes).some((usedNode) => usedNode.contains(node) || node.contains(usedNode));
+  }
+
+  function buildBelowFoldScrollStorySection(node, index) {
+    const heading = collapseWhitespace(
+      node.querySelector('.below-fold-section-head h3, h3, h4, h2, figcaption')?.textContent
+      || node.getAttribute('aria-label')
+      || ''
+    );
+    const kicker = collapseWhitespace(
+      node.querySelector('.below-fold-kicker, .below-fold-place-card__state, .below-fold-rank-cell span')?.textContent
+      || node.getAttribute('data-below-fold-hook')
+      || node.getAttribute('data-below-fold-slot')
+      || `Page ${index + 1}`
+    );
+    const texts = Array.from(node.querySelectorAll('p'))
+      .filter((paragraph) => !paragraph.classList.contains('below-fold-kicker') && !paragraph.closest('figcaption'))
+      .map((paragraph) => collapseWhitespace(paragraph.textContent || ''))
+      .filter((text) => text.length > 28)
+      .slice(0, BELOW_FOLD_SCROLL_STORY_CRITERIA.maxTextBlocks);
+    const facts = Array.from(node.querySelectorAll('dt, strong, .below-fold-makers-card__body span, .below-fold-automation-stack-signal__note'))
+      .map((factNode) => collapseWhitespace(factNode.textContent || ''))
+      .filter((text) => text.length > 1 && text.length < 34)
+      .slice(0, BELOW_FOLD_SCROLL_STORY_CRITERIA.maxFactChips);
+    const img = node.querySelector('img');
+    const imageUrl = normalizeShareAssetUrl(img?.currentSrc || img?.getAttribute('src') || '');
+    return {
+      kicker,
+      heading,
+      texts,
+      facts,
+      imageUrl,
     };
   }
 
@@ -5117,72 +5455,80 @@ function enhanceBreakingStrip(stories) {
   function drawBelowFoldScrollStrip(ctx, model) {
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
-    ctx.fillStyle = '#f4f0e8';
+    const theme = model.theme || getBelowFoldScrollStoryColorway();
+    ctx.fillStyle = theme.paper;
     ctx.fillRect(0, 0, width, height);
-    drawPaperGrain(ctx, width, height, '#1f1f1b', 0.025);
+    drawPaperGrain(ctx, width, height, theme.ink, 0.025);
 
     let y = 92;
-    drawPressCanvasBrand(ctx, 92, y, { scale: 0.88 });
+    drawPressCanvasBrand(ctx, 92, y, { scale: 0.88, ink: theme.ink, accent: theme.accent });
     y += 174;
-    ctx.fillStyle = '#9d3a2d';
+    ctx.fillStyle = theme.accent;
     ctx.fillRect(92, y, 896, 8);
     y += 68;
-    ctx.fillStyle = '#5f5a52';
+    ctx.fillStyle = theme.muted;
     ctx.font = '900 26px Inter, ui-sans-serif, system-ui, sans-serif';
     fillTrackedCanvasText(ctx, (model.issueMeta || 'Below the Fold').toUpperCase(), 92, y, 3);
     y += 100;
-    ctx.fillStyle = '#1f1f1b';
+    ctx.fillStyle = theme.ink;
     ctx.font = '800 96px "Playfair Display", Georgia, "Times New Roman", serif';
     y = wrapShareCanvasText(ctx, model.title, 92, y, 896, 102, 3, { minFontSize: 72 }) + 28;
-    ctx.fillStyle = '#5f5a52';
+    ctx.fillStyle = theme.muted;
     ctx.font = '400 33px "Playfair Display", Georgia, "Times New Roman", serif';
     y = wrapShareCanvasText(ctx, model.dek, 92, y, 860, 45, 3, { minFontSize: 27 }) + 56;
 
     if (model.coverImage) {
-      drawShadowedPanel(ctx, 70, y, 940, 590, 24, '#fffdf9', 'rgba(31,31,27,.18)', 0, 26, 46);
-      drawInstagramStoryImage(ctx, model.coverImage, 102, y + 32, 876, 526, 18, '#d9d2c5', '#9d3a2d');
+      drawShadowedPanel(ctx, 70, y, 940, 590, 24, theme.card, theme.shadow, 0, 26, 46);
+      drawInstagramStoryImage(ctx, model.coverImage, 102, y + 32, 876, 526, 18, theme.paperDeep, theme.accent);
       y += 654;
     }
 
     model.sections.forEach((section, index) => {
-      y = drawBelowFoldScrollSection(ctx, section, y, index);
+      y = drawBelowFoldScrollSection(ctx, section, y, index, theme);
     });
 
-    drawShadowedPanel(ctx, 86, y + 6, 908, 250, 22, '#1f1f1b', 'rgba(31,31,27,.18)', 0, 22, 42);
-    ctx.fillStyle = '#fffdf9';
+    drawShadowedPanel(ctx, 86, y + 6, 908, 250, 22, theme.footer, theme.shadow, 0, 22, 42);
+    ctx.fillStyle = theme.footerInk;
     ctx.font = '900 30px Inter, ui-sans-serif, system-ui, sans-serif';
     fillTrackedCanvasText(ctx, 'READ THE FULL ISSUE', 126, y + 82, 3);
-    ctx.fillStyle = '#e7dece';
+    ctx.fillStyle = theme.footerMuted;
     ctx.font = '700 34px "Playfair Display", Georgia, "Times New Roman", serif';
     wrapShareCanvasText(ctx, model.url || 'thepress.live', 126, y + 145, 820, 42, 2, { minFontSize: 24 });
     return Math.min(ctx.canvas.height, y + 320);
   }
 
-  function drawBelowFoldScrollSection(ctx, section, y, index) {
+  function drawBelowFoldScrollSection(ctx, section, y, index, theme = getBelowFoldScrollStoryColorway()) {
     const x = 70;
     const width = 940;
     const hasImage = Boolean(section.image);
-    const panelHeight = hasImage ? 835 : 565;
-    drawShadowedPanel(ctx, x, y, width, panelHeight, 24, '#fffdf9', 'rgba(31,31,27,.14)', 0, 24, 42);
+    const visibleTexts = section.texts.slice(0, BELOW_FOLD_SCROLL_STORY_CRITERIA.maxTextBlocks);
+    const panelHeight = hasImage
+      ? BELOW_FOLD_SCROLL_STORY_CRITERIA.imageCardHeight
+      : BELOW_FOLD_SCROLL_STORY_CRITERIA.textCardHeight;
+    drawShadowedPanel(ctx, x, y, width, panelHeight, 24, theme.card, theme.shadow, 0, 24, 42);
 
     let cursor = y + 42;
     if (hasImage) {
-      drawBelowFoldScrollImage(ctx, section.image, x + 34, cursor, width - 68, 400, 18, '#d9d2c5', '#9d3a2d');
-      cursor += 458;
+      drawBelowFoldScrollImage(ctx, section.image, x + 34, cursor, width - 68, BELOW_FOLD_SCROLL_STORY_CRITERIA.cardImageHeight, 18, theme.paperDeep, theme.accent);
+      cursor += BELOW_FOLD_SCROLL_STORY_CRITERIA.cardImageHeight + 58;
     }
 
-    ctx.fillStyle = '#9d3a2d';
+    ctx.fillStyle = theme.accent;
     ctx.font = '900 22px Inter, ui-sans-serif, system-ui, sans-serif';
     fillTrackedCanvasText(ctx, `${String(index + 1).padStart(2, '0')} / ${shortenShareCanvasText(section.kicker || 'Below the Fold', 34).toUpperCase()}`, x + 42, cursor, 2.4);
     cursor += 60;
 
-    ctx.fillStyle = '#1f1f1b';
+    ctx.fillStyle = theme.ink;
     ctx.font = '800 56px "Playfair Display", Georgia, "Times New Roman", serif';
     cursor = wrapShareCanvasText(ctx, section.heading || 'The file continues', x + 42, cursor, width - 84, 62, 2, { minFontSize: 42 }) + 22;
 
-    ctx.fillStyle = '#514d46';
+    if (section.facts?.length) {
+      cursor = drawBelowFoldFactChips(ctx, section.facts, x + 42, cursor, width - 84, theme) + 24;
+    }
+
+    ctx.fillStyle = theme.muted;
     ctx.font = '400 28px "Playfair Display", Georgia, "Times New Roman", serif';
-    section.texts.slice(0, 2).forEach((text) => {
+    visibleTexts.forEach((text) => {
       cursor = wrapShareCanvasText(ctx, text, x + 42, cursor, width - 84, 38, 2, { minFontSize: 24 }) + 12;
     });
 
@@ -5203,25 +5549,34 @@ function enhanceBreakingStrip(stories) {
     ctx.restore();
   }
 
-  function drawBelowFoldFactChips(ctx, facts, x, y, maxWidth) {
+  function drawBelowFoldFactChips(ctx, facts, x, y, maxWidth, theme = getBelowFoldScrollStoryColorway()) {
     let cursor = x;
+    let rowY = y;
+    let rows = 1;
     facts.forEach((fact) => {
       const label = shortenShareCanvasText(fact, 12).toUpperCase();
       ctx.font = '900 21px Inter, ui-sans-serif, system-ui, sans-serif';
       const chipWidth = Math.min(maxWidth, Math.max(96, ctx.measureText(label).width + 44));
-      if (cursor + chipWidth > x + maxWidth) return;
-      ctx.fillStyle = '#efe7d9';
-      roundRectPath(ctx, cursor, y, chipWidth, 42, 21);
+      if (cursor + chipWidth > x + maxWidth) {
+        if (rows >= 2) return;
+        rows += 1;
+        cursor = x;
+        rowY += 52;
+      }
+      ctx.fillStyle = theme.cardAlt || theme.paperDeep || '#efe7d9';
+      roundRectPath(ctx, cursor, rowY, chipWidth, 42, 21);
       ctx.fill();
-      ctx.fillStyle = '#1f1f1b';
-      fillTrackedCanvasText(ctx, label, cursor + 22, y + 28, 1.6);
+      ctx.fillStyle = theme.ink || '#1f1f1b';
+      fillTrackedCanvasText(ctx, label, cursor + 22, rowY + 28, 1.6);
       cursor += chipWidth + 12;
     });
+    return y + rows * 52;
   }
 
   function drawBelowFoldScrollFrame(ctx, strip, progress) {
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
+    const theme = strip.theme || getBelowFoldScrollStoryColorway();
     if (strip.kind === 'dom') {
       drawBelowFoldDomScrollFrame(ctx, strip, progress);
       return;
@@ -5233,26 +5588,26 @@ function enhanceBreakingStrip(stories) {
     const sourceHeight = height / scale;
     const maxScroll = Math.max(0, stripHeight - sourceHeight);
     const scrollY = maxScroll * Math.max(0, Math.min(1, progress || 0));
-    ctx.fillStyle = '#14120f';
+    ctx.fillStyle = theme.frameStart;
     ctx.fillRect(0, 0, width, height);
     ctx.drawImage(strip.canvas, 0, scrollY, stripWidth, Math.min(sourceHeight, stripHeight - scrollY), 0, 0, width, height);
 
     const topFade = ctx.createLinearGradient(0, 0, 0, 180);
-    topFade.addColorStop(0, 'rgba(20,18,15,.34)');
-    topFade.addColorStop(1, 'rgba(20,18,15,0)');
+    topFade.addColorStop(0, theme.fadeStart);
+    topFade.addColorStop(1, theme.fadeEnd);
     ctx.fillStyle = topFade;
     ctx.fillRect(0, 0, width, 180);
 
     const bottomFade = ctx.createLinearGradient(0, height - 220, 0, height);
-    bottomFade.addColorStop(0, 'rgba(20,18,15,0)');
-    bottomFade.addColorStop(1, 'rgba(20,18,15,.38)');
+    bottomFade.addColorStop(0, theme.fadeEnd);
+    bottomFade.addColorStop(1, theme.fadeBottom);
     ctx.fillStyle = bottomFade;
     ctx.fillRect(0, height - 220, width, 220);
 
-    ctx.fillStyle = 'rgba(255,253,249,.86)';
+    ctx.fillStyle = theme.progressTrack;
     roundRectPath(ctx, 92, height - 86, 896, 8, 4);
     ctx.fill();
-    ctx.fillStyle = '#9d3a2d';
+    ctx.fillStyle = theme.accent;
     roundRectPath(ctx, 92, height - 86, 896 * Math.max(0.04, Math.min(1, progress || 0)), 8, 4);
     ctx.fill();
   }
@@ -5320,33 +5675,34 @@ function enhanceBreakingStrip(stories) {
   }
 
   function getBelowFoldDomFrameBackdrop(strip, width, height, phone) {
-    const key = `${width}x${height}:${phone.x},${phone.y},${phone.width},${phone.height},${phone.radius}`;
+    const theme = strip.theme || getBelowFoldScrollStoryColorway();
+    const key = `${theme.key}:${width}x${height}:${phone.x},${phone.y},${phone.width},${phone.height},${phone.radius}`;
     if (strip._frameBackdrop?.key === key) return strip._frameBackdrop.canvas;
     const canvas = document.createElement('canvas');
     canvas.width = width;
     canvas.height = height;
     const ctx = canvas.getContext('2d');
     const bg = ctx.createLinearGradient(0, 0, width, height);
-    bg.addColorStop(0, '#111820');
-    bg.addColorStop(0.52, '#241726');
-    bg.addColorStop(1, '#10272a');
+    bg.addColorStop(0, theme.frameStart);
+    bg.addColorStop(0.52, theme.frameMid);
+    bg.addColorStop(1, theme.frameEnd);
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, width, height);
-    drawPaperGrain(ctx, width, height, '#fffdf9', 0.012);
+    drawPaperGrain(ctx, width, height, theme.frameGrain, theme.frameGrainAlpha);
 
     ctx.save();
-    ctx.shadowColor = 'rgba(0,0,0,.38)';
+    ctx.shadowColor = theme.phoneShadow;
     ctx.shadowOffsetY = 26;
     ctx.shadowBlur = 48;
     roundRectPath(ctx, phone.x - 10, phone.y - 10, phone.width + 20, phone.height + 20, phone.radius + 12);
-    ctx.fillStyle = '#11110f';
+    ctx.fillStyle = theme.phoneFrame;
     ctx.fill();
     ctx.restore();
 
     ctx.save();
     roundRectPath(ctx, phone.x, phone.y, phone.width, phone.height, phone.radius);
     ctx.clip();
-    ctx.fillStyle = '#f4f0e8';
+    ctx.fillStyle = theme.screen;
     ctx.fillRect(phone.x, phone.y, phone.width, phone.height);
     ctx.restore();
     strip._frameBackdrop = { key, canvas };
@@ -5425,10 +5781,17 @@ function enhanceBreakingStrip(stories) {
 
   function waitForNextScrollPreviewFrame() {
     return new Promise((resolve) => {
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        resolve();
+      };
       if (window.requestAnimationFrame) {
-        window.requestAnimationFrame(() => resolve());
+        window.requestAnimationFrame(finish);
+        window.setTimeout(finish, 120);
       } else {
-        window.setTimeout(resolve, 34);
+        window.setTimeout(finish, 34);
       }
     });
   }
@@ -5436,16 +5799,22 @@ function enhanceBreakingStrip(stories) {
   function getBelowFoldScrollTiming(strip, canvas) {
     const metrics = getBelowFoldScrollMetrics(strip, canvas);
     const seconds = metrics.maxScroll > 0
-      ? Math.max(30, Math.min(58, metrics.maxScroll / 430))
-      : 14;
+      ? Math.max(
+        BELOW_FOLD_SCROLL_STORY_CRITERIA.minDurationSeconds,
+        Math.min(
+          BELOW_FOLD_SCROLL_STORY_CRITERIA.maxDurationSeconds,
+          metrics.maxScroll / BELOW_FOLD_SCROLL_STORY_CRITERIA.scrollPixelsPerSecond
+        )
+      )
+      : 6;
     const duration = Math.round(seconds * 1000);
     return {
       duration,
-      holdStart: 2600,
-      holdBottom: 1000,
+      holdStart: 700,
+      holdBottom: 520,
       returnDuration: 0,
-      holdEnd: 450,
-      frameRate: 18,
+      holdEnd: 520,
+      frameRate: BELOW_FOLD_SCROLL_STORY_CRITERIA.frameRate,
     };
   }
 
@@ -5473,7 +5842,7 @@ function enhanceBreakingStrip(stories) {
     const returnDuration = options.returnDuration || 0;
     const holdEnd = options.holdEnd || 500;
     const total = holdStart + duration + holdBottom + returnDuration + holdEnd;
-    const frameRate = Math.max(18, Math.min(30, options.frameRate || 30));
+    const frameRate = Math.max(2, Math.min(30, options.frameRate || 30));
     const frameDelay = 1000 / frameRate;
     const totalFrames = Math.max(1, Math.ceil(total / frameDelay));
     const startedAt = performance.now();
@@ -5579,9 +5948,7 @@ function enhanceBreakingStrip(stories) {
       storyItems = await loadHomepageStoryImages(context.storyItems);
       if (storyItems[0]?.image) image = storyItems[0].image;
     }
-    try {
-      await document.fonts?.ready;
-    } catch (_) {}
+    await waitForShareFontsReady();
 
     drawInstagramStoryLayout(ctx, { width, height, theme, accent, title, label, dek, image, storyItems });
   }
@@ -5880,6 +6247,218 @@ function enhanceBreakingStrip(stories) {
     ctx.fillRect(x + 42, y + 42, width - 84, height - 84);
   }
 
+  function getBelowFoldScrollStoryColorways() {
+    return [
+      {
+        key: 'paper',
+        label: 'Paper',
+        frameStart: '#111820',
+        frameMid: '#241726',
+        frameEnd: '#10272a',
+        phoneFrame: '#11110f',
+        phoneShadow: 'rgba(0,0,0,.38)',
+        screen: '#f4f0e8',
+        paper: '#f4f0e8',
+        paperDeep: '#e7dece',
+        card: '#fffdf9',
+        cardAlt: '#efe7d9',
+        rule: '#c7bda9',
+        ink: '#1f1f1b',
+        muted: '#5f5a52',
+        accent: '#9d3a2d',
+        green: '#4a6155',
+        blue: '#304f63',
+        footer: '#1f1f1b',
+        footerInk: '#fffdf9',
+        footerMuted: '#e7dece',
+        shadow: 'rgba(31,31,27,.18)',
+        fadeStart: 'rgba(20,18,15,.34)',
+        fadeBottom: 'rgba(20,18,15,.38)',
+        fadeEnd: 'rgba(20,18,15,0)',
+        progressTrack: 'rgba(255,253,249,.86)',
+        frameGrain: '#fffdf9',
+        frameGrainAlpha: 0.012,
+      },
+      {
+        key: 'ink',
+        label: 'Ink',
+        frameStart: '#050607',
+        frameMid: '#16100f',
+        frameEnd: '#111b1d',
+        phoneFrame: '#050607',
+        phoneShadow: 'rgba(0,0,0,.52)',
+        screen: '#14120f',
+        paper: '#14120f',
+        paperDeep: '#211d18',
+        card: '#201c18',
+        cardAlt: '#2d261f',
+        rule: '#51473b',
+        ink: '#fff4e2',
+        muted: '#c9b9a2',
+        accent: '#e06b5b',
+        green: '#8bb39b',
+        blue: '#8daec5',
+        footer: '#fff4e2',
+        footerInk: '#14120f',
+        footerMuted: '#5f4f40',
+        shadow: 'rgba(0,0,0,.32)',
+        fadeStart: 'rgba(5,6,7,.38)',
+        fadeBottom: 'rgba(5,6,7,.44)',
+        fadeEnd: 'rgba(5,6,7,0)',
+        progressTrack: 'rgba(255,244,226,.72)',
+        frameGrain: '#fff4e2',
+        frameGrainAlpha: 0.014,
+      },
+      {
+        key: 'crimson',
+        label: 'Crimson',
+        frameStart: '#2b0f13',
+        frameMid: '#4a161d',
+        frameEnd: '#221112',
+        phoneFrame: '#210b0f',
+        phoneShadow: 'rgba(43,15,19,.46)',
+        screen: '#f8eee6',
+        paper: '#f8eee6',
+        paperDeep: '#ead4c7',
+        card: '#fffaf5',
+        cardAlt: '#f1ded1',
+        rule: '#d2a996',
+        ink: '#271813',
+        muted: '#6d4e43',
+        accent: '#b33a32',
+        green: '#5d7763',
+        blue: '#506b80',
+        footer: '#3a1115',
+        footerInk: '#fffaf5',
+        footerMuted: '#f1ded1',
+        shadow: 'rgba(75,28,20,.2)',
+        fadeStart: 'rgba(43,15,19,.32)',
+        fadeBottom: 'rgba(43,15,19,.42)',
+        fadeEnd: 'rgba(43,15,19,0)',
+        progressTrack: 'rgba(255,250,245,.86)',
+        frameGrain: '#fffaf5',
+        frameGrainAlpha: 0.012,
+      },
+      {
+        key: 'sage',
+        label: 'Sage',
+        frameStart: '#12231a',
+        frameMid: '#25392a',
+        frameEnd: '#102427',
+        phoneFrame: '#101811',
+        phoneShadow: 'rgba(16,24,17,.44)',
+        screen: '#eff2ea',
+        paper: '#eff2ea',
+        paperDeep: '#dce5d5',
+        card: '#fbfff8',
+        cardAlt: '#e4eadc',
+        rule: '#b7c5ad',
+        ink: '#1d2820',
+        muted: '#566559',
+        accent: '#4f7d5a',
+        green: '#3f6d4b',
+        blue: '#386676',
+        footer: '#1d2820',
+        footerInk: '#fbfff8',
+        footerMuted: '#dce5d5',
+        shadow: 'rgba(29,40,32,.18)',
+        fadeStart: 'rgba(18,35,26,.32)',
+        fadeBottom: 'rgba(18,35,26,.42)',
+        fadeEnd: 'rgba(18,35,26,0)',
+        progressTrack: 'rgba(251,255,248,.86)',
+        frameGrain: '#fbfff8',
+        frameGrainAlpha: 0.012,
+      },
+      {
+        key: 'blueprint',
+        label: 'Blueprint',
+        frameStart: '#071421',
+        frameMid: '#15324b',
+        frameEnd: '#0b2630',
+        phoneFrame: '#071421',
+        phoneShadow: 'rgba(7,20,33,.48)',
+        screen: '#eaf1f6',
+        paper: '#eaf1f6',
+        paperDeep: '#d2e1eb',
+        card: '#fbfdff',
+        cardAlt: '#ddebf4',
+        rule: '#a9bdcb',
+        ink: '#172431',
+        muted: '#506374',
+        accent: '#2f6f9f',
+        green: '#4d7b68',
+        blue: '#2f6f9f',
+        footer: '#0c263b',
+        footerInk: '#fbfdff',
+        footerMuted: '#d2e1eb',
+        shadow: 'rgba(23,36,49,.2)',
+        fadeStart: 'rgba(7,20,33,.34)',
+        fadeBottom: 'rgba(7,20,33,.44)',
+        fadeEnd: 'rgba(7,20,33,0)',
+        progressTrack: 'rgba(251,253,255,.86)',
+        frameGrain: '#fbfdff',
+        frameGrainAlpha: 0.012,
+      },
+      {
+        key: 'gold',
+        label: 'Gold',
+        frameStart: '#301d0d',
+        frameMid: '#5a3514',
+        frameEnd: '#262018',
+        phoneFrame: '#20140a',
+        phoneShadow: 'rgba(48,29,13,.45)',
+        screen: '#f6edd8',
+        paper: '#f6edd8',
+        paperDeep: '#e8d6af',
+        card: '#fffaf0',
+        cardAlt: '#eee0bf',
+        rule: '#ccb27a',
+        ink: '#2d2418',
+        muted: '#6f6048',
+        accent: '#b36b27',
+        green: '#62734c',
+        blue: '#546c7b',
+        footer: '#2d2418',
+        footerInk: '#fffaf0',
+        footerMuted: '#e8d6af',
+        shadow: 'rgba(45,36,24,.2)',
+        fadeStart: 'rgba(48,29,13,.32)',
+        fadeBottom: 'rgba(48,29,13,.42)',
+        fadeEnd: 'rgba(48,29,13,0)',
+        progressTrack: 'rgba(255,250,240,.86)',
+        frameGrain: '#fffaf0',
+        frameGrainAlpha: 0.012,
+      },
+    ];
+  }
+
+  function getDefaultBelowFoldScrollStoryColorwayKey() {
+    return getBelowFoldScrollStoryColorways()[0]?.key || 'paper';
+  }
+
+  function getBelowFoldScrollStoryColorway(colorwayKey = getDefaultBelowFoldScrollStoryColorwayKey()) {
+    const key = String(colorwayKey || '').toLowerCase();
+    return getBelowFoldScrollStoryColorways().find((colorway) => colorway.key === key)
+      || getBelowFoldScrollStoryColorways()[0];
+  }
+
+  function getBelowFoldColorwayBackdropCss(colorway) {
+    const theme = colorway || getBelowFoldScrollStoryColorway();
+    return `linear-gradient(135deg, ${theme.frameStart}, ${theme.frameMid} 54%, ${theme.frameEnd})`;
+  }
+
+  function getInstagramFallbackStyleForScrollColorway(colorwayKey) {
+    const fallbackStyles = {
+      paper: 'edition',
+      ink: 'briefing',
+      crimson: 'gallery',
+      sage: 'frontpage',
+      blueprint: 'spotlight',
+      gold: 'edition',
+    };
+    return fallbackStyles[getBelowFoldScrollStoryColorway(colorwayKey).key] || 'edition';
+  }
+
   function getInstagramStoryStyles() {
     return [
       {
@@ -5958,8 +6537,16 @@ function enhanceBreakingStrip(stories) {
   function loadShareImage(src) {
     return new Promise((resolve, reject) => {
       const img = new Image();
-      img.onload = () => resolve(img);
-      img.onerror = reject;
+      let timeout = 0;
+      const finish = (callback, value) => {
+        window.clearTimeout(timeout);
+        img.onload = null;
+        img.onerror = null;
+        callback(value);
+      };
+      timeout = window.setTimeout(() => finish(reject, new Error('Share image load timed out.')), 2400);
+      img.onload = () => finish(resolve, img);
+      img.onerror = () => finish(reject, new Error('Share image failed to load.'));
       img.src = src;
     });
   }
@@ -6352,8 +6939,9 @@ function enhanceBreakingStrip(stories) {
   function getInstagramStoryVideoFilename(context, mimeType) {
     const extension = /mp4/i.test(mimeType || '') ? 'mp4' : 'webm';
     const platform = getScrollStoryPlatformMeta(context?.scrollStoryPlatform).platform;
+    const colorway = getBelowFoldScrollStoryColorway(context?.scrollStoryColorway);
     const suffix = platform === 'instagram' ? 'instagram-scroll' : `${platform}-scroll-video`;
-    return `${slugifyShareFilename(context.title || 'the-press')}-${suffix}.${extension}`;
+    return `${slugifyShareFilename(context.title || 'the-press')}-${suffix}-${colorway.key}.${extension}`;
   }
 
   async function downloadInstagramStoryCanvas(canvas, context, status, options = {}) {
