@@ -3179,7 +3179,8 @@ function enhanceBreakingStrip(stories) {
     minDurationSeconds: 14,
     maxDurationSeconds: 44,
     scrollPixelsPerSecond: 305,
-    frameRate: 20,
+    frameRate: 60,
+    videoBitsPerSecond: 52000000,
   });
 
   function injectShareButtons() {
@@ -4067,7 +4068,7 @@ function enhanceBreakingStrip(stories) {
     const ready = await modal._pressInstagramStoryReady;
     if (ready) {
       const asset = modal._pressInstagramStoryAsset;
-      setInstagramStoryStatus(status, asset?.kind === 'video' ? 'Quick scroll video ready.' : 'Story image ready.');
+      setInstagramStoryStatus(status, asset?.kind === 'video' ? 'High-quality scroll video ready.' : 'Story image ready.');
     }
     return ready;
   }
@@ -4081,7 +4082,7 @@ function enhanceBreakingStrip(stories) {
     modal._pressBelowFoldScrollStyle = colorway.key;
     modal._pressInstagramStoryContext = colorContext;
     updateInstagramStoryStyleButtons(modal, colorway.key);
-    setInstagramStoryStatus(status, 'Building quick scroll video...');
+    setInstagramStoryStatus(status, 'Building high-quality scroll video...');
     setInstagramStoryActionsDisabled(modal, true);
     setInstagramStoryStyleControlsDisabled(modal, true);
     canvas.hidden = true;
@@ -4110,7 +4111,7 @@ function enhanceBreakingStrip(stories) {
       rememberBelowFoldScrollStoryAsset(colorContext, asset);
       setInstagramStoryAssetActionLabels(modal, asset?.kind || 'image');
       setInstagramStoryStatus(status, asset?.kind === 'video'
-        ? 'Quick scroll video ready.'
+        ? 'High-quality scroll video ready.'
         : 'Video unavailable here. Story image ready.');
       return true;
     }).catch(async (error) => {
@@ -4166,11 +4167,13 @@ function enhanceBreakingStrip(stories) {
       return { kind: 'image', canvas };
     }
 
-    const streamFrameRate = Math.max(2, Math.min(24, timing.frameRate || 12));
+    const streamFrameRate = Math.max(24, Math.min(60, timing.frameRate || 60));
     const stream = canvas.captureStream(streamFrameRate);
     const streamVideoTrack = stream.getVideoTracks?.()[0] || null;
     const chunks = [];
-    const recorderOptions = { videoBitsPerSecond: 10000000 };
+    const recorderOptions = {
+      videoBitsPerSecond: BELOW_FOLD_SCROLL_STORY_CRITERIA.videoBitsPerSecond,
+    };
     if (videoType) recorderOptions.mimeType = videoType;
     const recorder = new MediaRecorder(stream, recorderOptions);
     const stopped = new Promise((resolve, reject) => {
@@ -4708,7 +4711,7 @@ function enhanceBreakingStrip(stories) {
       const areaScale = Math.sqrt(30000000 / Math.max(1, viewportWidth * height));
       return Math.max(1.25, Math.min(1.55, deviceScale, areaScale));
     }
-    return Math.min(1.7, Math.max(1.55, deviceScale));
+    return Math.min(2.6, Math.max(2.35, deviceScale));
   }
 
   function ensureHtml2Canvas() {
@@ -5593,6 +5596,8 @@ function enhanceBreakingStrip(stories) {
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
     const theme = strip.theme || getBelowFoldScrollStoryColorway();
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     if (strip.kind === 'dom') {
       drawBelowFoldDomScrollFrame(ctx, strip, progress);
       return;
@@ -5858,14 +5863,15 @@ function enhanceBreakingStrip(stories) {
     const returnDuration = options.returnDuration || 0;
     const holdEnd = options.holdEnd || 500;
     const total = holdStart + duration + holdBottom + returnDuration + holdEnd;
-    const frameRate = Math.max(2, Math.min(30, options.frameRate || 30));
+    const frameRate = Math.max(2, Math.min(60, options.frameRate || 60));
     const frameDelay = 1000 / frameRate;
-    const totalFrames = Math.max(1, Math.ceil(total / frameDelay));
     const startedAt = performance.now();
 
     return (async () => {
-      for (let frame = 0; frame <= totalFrames; frame += 1) {
-        const elapsed = Math.min(total, frame * frameDelay);
+      let nextFrameAt = startedAt;
+      while (true) {
+        const now = performance.now();
+        const elapsed = Math.min(total, now - startedAt);
         const progress = getBelowFoldScrollAnimationProgress(elapsed, {
           duration,
           holdStart,
@@ -5876,9 +5882,11 @@ function enhanceBreakingStrip(stories) {
         options.onFrame?.();
         if (elapsed >= total) break;
 
-        const nextTarget = startedAt + ((frame + 1) * frameDelay);
-        const delay = Math.max(0, nextTarget - performance.now());
-        await waitForBelowFoldAnimationDelay(delay);
+        nextFrameAt += frameDelay;
+        if (nextFrameAt < performance.now() - frameDelay) {
+          nextFrameAt = performance.now() + frameDelay;
+        }
+        await waitForBelowFoldAnimationDelay(Math.max(0, nextFrameAt - performance.now()));
       }
       drawBelowFoldScrollFrame(ctx, strip, returnDuration ? 0 : 1);
       options.onFrame?.();
@@ -5887,7 +5895,18 @@ function enhanceBreakingStrip(stories) {
 
   function waitForBelowFoldAnimationDelay(delay) {
     return new Promise((resolve) => {
-      window.setTimeout(resolve, Math.max(0, delay));
+      const done = () => {
+        if (window.requestAnimationFrame) {
+          window.requestAnimationFrame(resolve);
+        } else {
+          resolve();
+        }
+      };
+      if (window.requestAnimationFrame && delay <= 20) {
+        window.requestAnimationFrame(resolve);
+        return;
+      }
+      window.setTimeout(done, Math.max(0, delay));
     });
   }
 
