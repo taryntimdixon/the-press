@@ -3176,9 +3176,9 @@ function enhanceBreakingStrip(stories) {
     cardImageHeight: 260,
     maxTextBlocks: 2,
     maxFactChips: 3,
-    minDurationSeconds: 9,
-    maxDurationSeconds: 29,
-    scrollPixelsPerSecond: 457,
+    minDurationSeconds: 14,
+    maxDurationSeconds: 44,
+    scrollPixelsPerSecond: 305,
     frameRate: 20,
   });
 
@@ -4440,7 +4440,7 @@ function enhanceBreakingStrip(stories) {
   }
 
   function getBelowFoldLivePreviewScrollDuration(maxScroll) {
-    return Math.round(Math.max(24000, Math.min(44000, maxScroll * 3.8)));
+    return Math.round(Math.max(36000, Math.min(66000, maxScroll * 5.7)));
   }
 
   function getBelowFoldPreviewNow() {
