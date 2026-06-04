@@ -1,0 +1,992 @@
+[
+  {
+    "number": 1,
+    "id": "source-001-eia-electric-power-annual-table-2-2-work",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA Electric Power Annual Table 2.2 workbook",
+    "url": "https://www.eia.gov/electricity/annual/xls/epa_02_02.xlsx",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 2,
+    "id": "source-002-eia-electric-power-annual-table-2-2",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA Electric Power Annual Table 2.2",
+    "url": "https://www.eia.gov/electricity/annual/html/epa_02_02.html",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 3,
+    "id": "source-003-eia-electric-power-annual-table-2-8-work",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA Electric Power Annual Table 2.8 workbook",
+    "url": "https://www.eia.gov/electricity/annual/xls/epa_02_08.xlsx",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 4,
+    "id": "source-004-eia-electric-power-annual-table-2-8",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA Electric Power Annual Table 2.8",
+    "url": "https://www.eia.gov/electricity/annual/html/epa_02_08.html",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 5,
+    "id": "source-005-eia-electric-power-annual-table-2-4-work",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA Electric Power Annual Table 2.4 workbook",
+    "url": "https://www.eia.gov/electricity/annual/xls/epa_02_04.xlsx",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 6,
+    "id": "source-006-eia-electric-power-annual-table-2-4",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA Electric Power Annual Table 2.4",
+    "url": "https://www.eia.gov/electricity/annual/html/epa_02_04.html",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 7,
+    "id": "source-007-eia-monthly-sales-and-revenue-workbook",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA monthly sales and revenue workbook",
+    "url": "https://www.eia.gov/electricity/data/eia861m/xls/sales_revenue.xlsx",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 8,
+    "id": "source-008-eia-short-term-energy-outlook",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA Short-Term Energy Outlook",
+    "url": "https://www.eia.gov/outlooks/steo",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 9,
+    "id": "source-009-eia-annual-energy-outlook",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA Annual Energy Outlook",
+    "url": "https://www.eia.gov/outlooks/aeo",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 10,
+    "id": "source-010-eia-jan-13-2026-press-release",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA Jan. 13, 2026 press release",
+    "url": "https://www.eia.gov/pressroom/releases/press582.php",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 11,
+    "id": "source-011-eia-annual-energy-outlook-2026-narrative",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA Annual Energy Outlook 2026 narrative",
+    "url": "https://www.eia.gov/outlooks/aeo/pdf/AEO_Narrative.pdf",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 12,
+    "id": "source-012-eia-short-term-energy-outlook-jan-2026",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA Short-Term Energy Outlook, Jan. 2026",
+    "url": "https://www.eia.gov/outlooks/steo/archives/jan26.pdf",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 13,
+    "id": "source-013-eia-electricity-explained",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA Electricity Explained",
+    "url": "https://www.eia.gov/energyexplained/electricity/use-of-electricity.php",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 14,
+    "id": "source-014-eia-steo-electricity-coal-and-renewables",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA STEO electricity, coal and renewables outlook",
+    "url": "https://www.eia.gov/outlooks/steo/report/elec_coal_renew.php",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 15,
+    "id": "source-015-eia-full-short-term-energy-outlook-pdf",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA full Short-Term Energy Outlook PDF",
+    "url": "https://www.eia.gov/outlooks/steo/pdf/steo_full.pdf",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 16,
+    "id": "source-016-eia-pilot-data-center-survey",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA pilot data-center survey",
+    "url": "https://www.eia.gov/pressroom/releases/press585.php",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 17,
+    "id": "source-017-eia-april-2026-steo-pdf",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA April 2026 STEO PDF",
+    "url": "https://www.eia.gov/outlooks/steo/archives/apr26.pdf",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 18,
+    "id": "source-018-eia-aeo-narrative-page",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA AEO narrative page",
+    "url": "https://www.eia.gov/outlooks/aeo/narrative/index.php",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 19,
+    "id": "source-019-eia-analysis-hub",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA analysis hub",
+    "url": "https://www.eia.gov/analysis",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 20,
+    "id": "source-020-eia-annual-energy-outlook-2026",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA: Annual Energy Outlook 2026",
+    "url": "https://www.eia.gov/pressroom/releases/press587.php",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 21,
+    "id": "source-021-eia-residential-utility-disconnections-a",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA residential utility disconnections analysis",
+    "url": "https://www.eia.gov/analysis/requests/residential/utility",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 22,
+    "id": "source-022-eia-residential-utility-disconnections-r",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA residential utility disconnections report PDF",
+    "url": "https://www.eia.gov/analysis/requests/residential/utility/pdf/Residential%20Utility%20Disconnections%20Report%20-%20April%202026.pdf",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 23,
+    "id": "source-023-detail-php-id-65284",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA: U.S. electricity prices continue steady increase",
+    "url": "https://www.eia.gov/todayinenergy/detail.php?id=65284",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 24,
+    "id": "source-024-detail-php-id-67344",
+    "outlet": "U.S. Energy Information Administration",
+    "title": "EIA: fossil generation could rise with faster-than-expected data-center demand",
+    "url": "https://www.eia.gov/todayinenergy/detail.php?id=67344",
+    "category": "EIA data",
+    "status": "200"
+  },
+  {
+    "number": 25,
+    "id": "source-025-iea-energy-and-ai",
+    "outlet": "International Energy Agency",
+    "title": "IEA Energy and AI",
+    "url": "https://www.iea.org/reports/energy-and-ai",
+    "category": "Global energy",
+    "status": "200"
+  },
+  {
+    "number": 26,
+    "id": "source-026-iea-executive-summary",
+    "outlet": "International Energy Agency",
+    "title": "IEA executive summary",
+    "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+    "category": "Global energy",
+    "status": "200"
+  },
+  {
+    "number": 27,
+    "id": "source-027-iea-energy-demand-from-ai",
+    "outlet": "International Energy Agency",
+    "title": "IEA energy demand from AI",
+    "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+    "category": "Global energy",
+    "status": "200"
+  },
+  {
+    "number": 28,
+    "id": "source-028-iea-energy-supply-for-ai",
+    "outlet": "International Energy Agency",
+    "title": "IEA energy supply for AI",
+    "url": "https://www.iea.org/reports/energy-and-ai/energy-supply-for-ai",
+    "category": "Global energy",
+    "status": "200"
+  },
+  {
+    "number": 29,
+    "id": "source-029-iea-key-questions-on-energy-and-ai",
+    "outlet": "International Energy Agency",
+    "title": "IEA key questions on energy and AI",
+    "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+    "category": "Global energy",
+    "status": "200"
+  },
+  {
+    "number": 30,
+    "id": "source-030-iea-ai-and-climate-change",
+    "outlet": "International Energy Agency",
+    "title": "IEA AI and climate change",
+    "url": "https://www.iea.org/reports/energy-and-ai/ai-and-climate-change",
+    "category": "Global energy",
+    "status": "200"
+  },
+  {
+    "number": 31,
+    "id": "source-031-demand-global-electricity-use-to-grow-st",
+    "outlet": "International Energy Agency",
+    "title": "demand global electricity use to grow strongly in 2025 and 2026",
+    "url": "https://www.iea.org/reports/electricity-mid-year-update-2025/demand-global-electricity-use-to-grow-strongly-in-2025-and-2026",
+    "category": "Global energy",
+    "status": "200"
+  },
+  {
+    "number": 32,
+    "id": "source-032-iea-energy-ai-nexus-explainer",
+    "outlet": "International Energy Agency",
+    "title": "IEA energy-AI nexus explainer",
+    "url": "https://www.iea.org/reports/energy-and-ai/understanding-the-energy-ai-nexus",
+    "category": "Global energy",
+    "status": "200"
+  },
+  {
+    "number": 33,
+    "id": "source-033-iea-electricity-2026-demand-outlook",
+    "outlet": "International Energy Agency",
+    "title": "IEA Electricity 2026 demand outlook",
+    "url": "https://www.iea.org/reports/electricity-2026/demand",
+    "category": "Global energy",
+    "status": "200"
+  },
+  {
+    "number": 34,
+    "id": "source-034-iea-ai-energy-observatory-launch",
+    "outlet": "International Energy Agency",
+    "title": "IEA AI-energy observatory launch",
+    "url": "https://www.iea.org/news/as-energy-and-ai-links-grow-new-iea-observatory-provides-latest-data-and-analysis",
+    "category": "Global energy",
+    "status": "200"
+  },
+  {
+    "number": 35,
+    "id": "source-035-iea-conference-report",
+    "outlet": "International Energy Agency",
+    "title": "IEA conference report",
+    "url": "https://www.iea.org/news/at-major-iea-conference-decision-makers-from-tech-energy-and-government-underscore-ais-implications-for-energy-security-and-transitions",
+    "category": "Global energy",
+    "status": "200"
+  },
+  {
+    "number": 36,
+    "id": "source-036-international-energy-agency-data-centre",
+    "outlet": "International Energy Agency",
+    "title": "International Energy Agency, data-centre electricity use surged in 2025",
+    "url": "https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions",
+    "category": "Global energy",
+    "status": "200"
+  },
+  {
+    "number": 37,
+    "id": "source-037-doe-data-center-electricity-demand-repor",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE data center electricity demand report release",
+    "url": "https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 38,
+    "id": "source-038-femp-data-centers-fact-sheet-2025-pdf",
+    "outlet": "U.S. Department of Energy",
+    "title": "femp data centers fact sheet 2025.pdf",
+    "url": "https://www.energy.gov/sites/default/files/2025-08/femp-data-centers-fact-sheet-2025.pdf",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 39,
+    "id": "source-039-geothermal-and-data-centers",
+    "outlet": "U.S. Department of Energy",
+    "title": "geothermal and data centers",
+    "url": "https://www.energy.gov/eere/geothermal/geothermal-and-data-centers",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 40,
+    "id": "source-040-data-centers-and-servers",
+    "outlet": "U.S. Department of Energy",
+    "title": "data centers and servers",
+    "url": "https://www.energy.gov/eere/buildings/data-centers-and-servers",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 41,
+    "id": "source-041-clean-energy-resources-meet-data-center",
+    "outlet": "U.S. Department of Energy",
+    "title": "clean energy resources meet data center electricity demand",
+    "url": "https://www.energy.gov/oe/clean-energy-resources-meet-data-center-electricity-demand",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 42,
+    "id": "source-042-electricity-rate-designs-large-loads-evo",
+    "outlet": "U.S. Department of Energy",
+    "title": "electricity rate designs large loads evolving practices and opportunities",
+    "url": "https://www.energy.gov/policy/articles/electricity-rate-designs-large-loads-evolving-practices-and-opportunities",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 43,
+    "id": "source-043-4850616",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE: advantages and challenges of nuclear-powered data centers",
+    "url": "https://www.energy.gov/node/4850616",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 44,
+    "id": "source-044-marvel-microreactor-project",
+    "outlet": "U.S. Department of Energy",
+    "title": "marvel microreactor project",
+    "url": "https://www.energy.gov/ne/marvel-microreactor-project",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 45,
+    "id": "source-045-oak-ridge-national-laboratory-and-elemen",
+    "outlet": "U.S. Department of Energy",
+    "title": "oak ridge national laboratory and elementl power partner accelerate siting nuclear",
+    "url": "https://www.energy.gov/ne/articles/oak-ridge-national-laboratory-and-elementl-power-partner-accelerate-siting-nuclear",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 46,
+    "id": "source-046-4853136",
+    "outlet": "U.S. Department of Energy",
+    "title": "NNSA seeks AI data-center and energy-project proposals at Savannah River Site",
+    "url": "https://www.energy.gov/node/4853136",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 47,
+    "id": "source-047-4853139",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE seeks AI data-center and energy-project proposals at Oak Ridge",
+    "url": "https://www.energy.gov/node/4853139",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 48,
+    "id": "source-048-4850502",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE identifies 16 federal sites for data-center and AI infrastructure development",
+    "url": "https://www.energy.gov/node/4850502",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 49,
+    "id": "source-049-doe-announces-site-selection-ai-data-cen",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE: site selection for AI data-center and energy infrastructure on federal lands",
+    "url": "https://www.energy.gov/articles/doe-announces-site-selection-ai-data-center-and-energy-infrastructure-development-federal",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 50,
+    "id": "source-050-fact-sheet-department-energy-ensuring-af",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE fact sheet: affordable energy access in Ohio and AI power demand",
+    "url": "https://www.energy.gov/articles/fact-sheet-department-energy-ensuring-affordable-energy-access-ohio-while-powering-future",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 51,
+    "id": "source-051-energy-department-announces-partnership",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE partnership to power America\u2019s AI future",
+    "url": "https://www.energy.gov/articles/energy-department-announces-partnership-ensure-affordable-energy-and-power-americas-ai",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 52,
+    "id": "source-052-energy-department-announces-1715-million",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE announces $171.5 million to expand U.S. geothermal energy",
+    "url": "https://www.energy.gov/articles/energy-department-announces-1715-million-expand-us-geothermal-energy",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 53,
+    "id": "source-053-doe-large-load-anopr-letter",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE large-load ANOPR letter",
+    "url": "https://www.energy.gov/sites/default/files/2025-10/403%20Large%20Loads%20Letter.pdf",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 54,
+    "id": "source-054-doe-spark-transmission-initiative",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE SPARK transmission initiative",
+    "url": "https://www.energy.gov/oe/speed-power-through-accelerated-reconductoring-and-other-key-advanced-transmission-technology",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 55,
+    "id": "source-055-doe-energy-efficiency-in-data-centers",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE energy efficiency in data centers",
+    "url": "https://www.energy.gov/eere/femp/energy-efficiency-data-centers",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 56,
+    "id": "source-056-doe-data-center-efficiency-event",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE data-center efficiency event",
+    "url": "https://www.energy.gov/femp/events/optimizing-data-centers-practical-guide-key-performance-metrics",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 57,
+    "id": "source-057-doe-femp-winter-workshops",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE FEMP winter workshops",
+    "url": "https://www.energy.gov/cmei/femp/events/femp-winter-workshops",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 58,
+    "id": "source-058-doe-conditional-commitment-for-transmiss",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE LPO conditional commitment for PacifiCorp transmission expansion",
+    "url": "https://www.energy.gov/edf/articles/lpo-announces-conditional-commitment-pacificorp-expand-transmission-several-western",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 59,
+    "id": "source-059-doe-transmission-tools-article",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE transmission tools article",
+    "url": "https://www.energy.gov/eere/wind/articles/smart-transmission-tools-modernize-americas-power-grid",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 60,
+    "id": "source-060-doe-permitting-and-infrastructure-recomm",
+    "outlet": "U.S. Department of Energy",
+    "title": "DOE recommendations for powering AI and data-center infrastructure",
+    "url": "https://www.energy.gov/sites/default/files/2024-11/Powering%20AI%20and%20Data%20Center%20Infrastructure%20Recommendations%20July%202024.pdf",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 61,
+    "id": "source-061-doe-better-buildings-data-centers",
+    "outlet": "betterbuildingssolutioncenter.energy.gov",
+    "title": "DOE Better Buildings: Data Centers sector page",
+    "url": "https://betterbuildingssolutioncenter.energy.gov/sectors/data-centers",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 62,
+    "id": "source-062-epri-powering-intelligence-executive-sum",
+    "outlet": "Electric Power Research Institute",
+    "title": "EPRI Powering Intelligence executive summary",
+    "url": "https://powering-intelligence.epri.com/executive-summary.html",
+    "category": "Utility scenarios",
+    "status": "200"
+  },
+  {
+    "number": 63,
+    "id": "source-063-epri-powering-intelligence",
+    "outlet": "Electric Power Research Institute",
+    "title": "EPRI Powering Intelligence",
+    "url": "https://powering-intelligence.epri.com",
+    "category": "Utility scenarios",
+    "status": "200"
+  },
+  {
+    "number": 64,
+    "id": "source-064-epri-powering-intelligence-2026-faqs",
+    "outlet": "Electric Power Research Institute",
+    "title": "EPRI Powering Intelligence 2026 FAQs",
+    "url": "https://restservice.epri.com/publicattachment/96784",
+    "category": "Utility scenarios",
+    "status": "200"
+  },
+  {
+    "number": 65,
+    "id": "source-065-epri-dcflex-homepage",
+    "outlet": "Electric Power Research Institute",
+    "title": "EPRI DCFlex homepage",
+    "url": "https://dcflex.epri.com",
+    "category": "Utility scenarios",
+    "status": "200"
+  },
+  {
+    "number": 66,
+    "id": "source-066-berkeley-lab-report-news-release",
+    "outlet": "Lawrence Berkeley National Laboratory",
+    "title": "Berkeley Lab report news release",
+    "url": "https://newscenter.lbl.gov/2025/01/15/berkeley-lab-report-evaluates-increase-in-electricity-demand-from-data-centers",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 67,
+    "id": "source-067-ornl-workshop-on-ai-data-center-power",
+    "outlet": "Oak Ridge National Laboratory",
+    "title": "ORNL workshop on AI data center power",
+    "url": "https://www.ornl.gov/news/workshop-tackles-ai-data-center-power-security-challenges",
+    "category": "Federal lab",
+    "status": "200"
+  },
+  {
+    "number": 68,
+    "id": "source-068-26-state-of-the-market-0324-1430-pdf",
+    "outlet": "Federal Energy Regulatory Commission",
+    "title": "FERC State of the Market presentation PDF",
+    "url": "https://www.ferc.gov/sites/default/files/2026-03/26_State-of-the-Market_0324_1430.pdf",
+    "category": "Federal regulation",
+    "status": "200"
+  },
+  {
+    "number": 69,
+    "id": "source-069-ferc-testimony-by-judy-w-chang",
+    "outlet": "Federal Energy Regulatory Commission",
+    "title": "FERC testimony by Judy W. Chang",
+    "url": "https://www.ferc.gov/sites/default/files/2026-02/witness_testimony_chang_02.03.2026.pdf",
+    "category": "Federal regulation",
+    "status": "200"
+  },
+  {
+    "number": 70,
+    "id": "source-070-pjm-board-large-load-integration-pdf",
+    "outlet": "PJM Interconnection",
+    "title": "PJM board large-load integration PDF",
+    "url": "https://www.pjm.com/-/media/DotCom/about-pjm/newsroom/2026-releases/20260116-pjm-board-outlines-plans-to-integrate-large-loads-reliably.pdf",
+    "category": "Grid operator",
+    "status": "200"
+  },
+  {
+    "number": 71,
+    "id": "source-071-pjm-updated-20-year-forecast",
+    "outlet": "PJM Interconnection",
+    "title": "PJM updated 20-year forecast",
+    "url": "https://insidelines.pjm.com/pjms-updated-20-year-forecast-continues-to-see-significant-long-term-load-growth",
+    "category": "Grid operator",
+    "status": "200"
+  },
+  {
+    "number": 72,
+    "id": "source-072-pjm-inside-lines-2025-planning-review",
+    "outlet": "PJM Interconnection",
+    "title": "PJM Inside Lines: 2025 planning review",
+    "url": "https://insidelines.pjm.com/2025-year-in-review-planning-prepares-for-burgeoning-electricity-demand",
+    "category": "Grid operator",
+    "status": "200"
+  },
+  {
+    "number": 73,
+    "id": "source-073-pjm-load-forecast-development-process",
+    "outlet": "PJM Interconnection",
+    "title": "PJM, Load Forecast Development Process",
+    "url": "https://www.pjm.com/en/planning/resource-adequacy-planning/load-forecast-dev-process",
+    "category": "Grid operator",
+    "status": "200"
+  },
+  {
+    "number": 74,
+    "id": "source-074-pjm-2026-load-forecast-report",
+    "outlet": "PJM Interconnection",
+    "title": "PJM, 2026 Load Forecast Report",
+    "url": "https://www.pjm.com/-/media/DotCom/library/reports-notices/load-forecast/2026-load-report.pdf",
+    "category": "Grid operator",
+    "status": "200"
+  },
+  {
+    "number": 75,
+    "id": "source-075-pjm-2026-long-term-load-forecast-supplem",
+    "outlet": "PJM Interconnection",
+    "title": "PJM, 2026 Long-Term Load Forecast supplement",
+    "url": "https://www.pjm.com/-/media/DotCom/planning/res-adeq/load-forecast/load-forecast-supplement-2026.pdf",
+    "category": "Grid operator",
+    "status": "200"
+  },
+  {
+    "number": 76,
+    "id": "source-076-ercot-preliminary-long-term-load-forecas",
+    "outlet": "ERCOT",
+    "title": "ERCOT preliminary long-term load forecast",
+    "url": "https://www.ercot.com/news/release/04152026-ercot-releases-preliminary",
+    "category": "Grid operator",
+    "status": "200"
+  },
+  {
+    "number": 77,
+    "id": "source-077-ercot-constraints-and-needs-report",
+    "outlet": "ERCOT",
+    "title": "ERCOT constraints and needs report",
+    "url": "https://www.ercot.com/files/docs/2025/12/23/2025-Report-on-Existing-and-Potential-Electric-System-Constraints-and-Needs.pdf",
+    "category": "Grid operator",
+    "status": "200"
+  },
+  {
+    "number": 78,
+    "id": "source-078-nerc-2025-2026-winter-reliability-assess",
+    "outlet": "North American Electric Reliability Corporation",
+    "title": "NERC 2025-2026 Winter Reliability Assessment",
+    "url": "https://www.nerc.com/globalassets/our-work/assessments/nerc_wra_2025.pdf",
+    "category": "Grid operator",
+    "status": "200"
+  },
+  {
+    "number": 79,
+    "id": "source-079-nerc-large-loads-task-force-page",
+    "outlet": "North American Electric Reliability Corporation",
+    "title": "NERC Large Loads Task Force page",
+    "url": "https://www.nerc.com/comm/RSTC/Pages/LLTF-Initiative.aspx",
+    "category": "Grid operator",
+    "status": "200"
+  },
+  {
+    "number": 80,
+    "id": "source-080-nerc-march-2026-white-paper",
+    "outlet": "North American Electric Reliability Corporation",
+    "title": "NERC March 2026 white paper",
+    "url": "https://www.nerc.com/globalassets/our-work/reports/white-papers/draft-nerc-lltf-white-paper---assessment-of-gaps_forreview.pdf",
+    "category": "Grid operator",
+    "status": "200"
+  },
+  {
+    "number": 81,
+    "id": "source-081-jlarc-data-centers-in-virginia-landing-p",
+    "outlet": "Virginia JLARC",
+    "title": "JLARC Data Centers in Virginia landing page",
+    "url": "https://jlarc.virginia.gov/landing-2024-data-centers-in-virginia.asp",
+    "category": "State record",
+    "status": "200"
+  },
+  {
+    "number": 82,
+    "id": "source-082-jlarc-data-centers-in-virginia-pdf",
+    "outlet": "Virginia JLARC",
+    "title": "JLARC Data Centers in Virginia PDF",
+    "url": "https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+    "category": "State record",
+    "status": "200"
+  },
+  {
+    "number": 83,
+    "id": "source-083-jlarc-presentation-data-centers-in-virgi",
+    "outlet": "Virginia JLARC",
+    "title": "JLARC presentation, Data Centers in Virginia",
+    "url": "https://jlarc.virginia.gov/pdfs/presentations/Rpt598Pres-1.pdf",
+    "category": "State record",
+    "status": "200"
+  },
+  {
+    "number": 84,
+    "id": "source-084-virginia-rd40-data-center-report-pdf",
+    "outlet": "Virginia Reports to the General Assembly",
+    "title": "Virginia RD40 data center report PDF",
+    "url": "https://rga.lis.virginia.gov/Published/2026/RD40/PDF",
+    "category": "State record",
+    "status": "200"
+  },
+  {
+    "number": 85,
+    "id": "source-085-virginia-reports-to-the-general-assembly",
+    "outlet": "Virginia Reports to the General Assembly",
+    "title": "Virginia Reports to the General Assembly, RD40 report page",
+    "url": "https://rga.lis.virginia.gov/Published/2026/RD40",
+    "category": "State record",
+    "status": "200"
+  },
+  {
+    "number": 86,
+    "id": "source-086-virginia-economic-development-partnershi",
+    "outlet": "Virginia Economic Development Partnership",
+    "title": "Virginia Economic Development Partnership, Data Center Retail Sales and Use Tax Exemption",
+    "url": "https://www.vedp.org/incentive/data-center-retail-sales-use-tax-exemption",
+    "category": "State record",
+    "status": "200"
+  },
+  {
+    "number": 87,
+    "id": "source-087-brattle-the-untapped-grid-pdf",
+    "outlet": "The Brattle Group",
+    "title": "Brattle The Untapped Grid PDF",
+    "url": "https://www.brattle.com/wp-content/uploads/2026/03/The-Untapped-Grid-Mar-2026.pdf",
+    "category": "Flexibility",
+    "status": "200"
+  },
+  {
+    "number": 88,
+    "id": "source-088-brattle-press-release-on-the-untapped-gr",
+    "outlet": "The Brattle Group",
+    "title": "Brattle press release on The Untapped Grid",
+    "url": "https://www.brattle.com/insights-events/news/new-brattle-report-finds-better-utilization-of-existing-power-grid-could-save-us-consumers-more-than-100-billion-in-the-next-decade",
+    "category": "Flexibility",
+    "status": "200"
+  },
+  {
+    "number": 89,
+    "id": "source-089-google-data-center-efficiency",
+    "outlet": "Google",
+    "title": "Google data center efficiency",
+    "url": "https://www.google.com/about/datacenters/efficiency",
+    "category": "Company record",
+    "status": "200"
+  },
+  {
+    "number": 90,
+    "id": "source-090-google-2025-environmental-report-pdf",
+    "outlet": "Google",
+    "title": "Google 2025 Environmental Report PDF",
+    "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+    "category": "Company record",
+    "status": "200"
+  },
+  {
+    "number": 91,
+    "id": "source-091-microsoft-sustainability-report",
+    "outlet": "Microsoft",
+    "title": "Microsoft sustainability report",
+    "url": "https://www.microsoft.com/en-us/corporate-responsibility/sustainability/report",
+    "category": "Company record",
+    "status": "200"
+  },
+  {
+    "number": 92,
+    "id": "source-092-amazon-2024-sustainability-report-pdf",
+    "outlet": "Amazon",
+    "title": "Amazon 2024 Sustainability Report PDF",
+    "url": "https://sustainability.aboutamazon.com/2024-amazon-sustainability-report.pdf",
+    "category": "Company record",
+    "status": "200"
+  },
+  {
+    "number": 93,
+    "id": "source-093-meta-2024-sustainability-report",
+    "outlet": "Meta",
+    "title": "Meta 2024 Sustainability Report",
+    "url": "https://sustainability.fb.com/2024-sustainability-report",
+    "category": "Company record",
+    "status": "200"
+  },
+  {
+    "number": 94,
+    "id": "source-094-21fa7b957664d5dca6788e35ab43b88e",
+    "outlet": "Associated Press",
+    "title": "AP: communities increasingly defeat proposed data centers",
+    "url": "https://apnews.com/article/21fa7b957664d5dca6788e35ab43b88e",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 95,
+    "id": "source-095-3c6988c44455d34c0e8db6dd63fdfd57",
+    "outlet": "Associated Press",
+    "title": "AP: Microsoft president says Big Tech should pay its way for AI data centers",
+    "url": "https://apnews.com/article/3c6988c44455d34c0e8db6dd63fdfd57",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 96,
+    "id": "source-096-ap-maine-data-center-moratorium-and-loca",
+    "outlet": "Associated Press",
+    "title": "AP: Maine data-center moratorium and local backlash",
+    "url": "https://apnews.com/article/aa63ba087d5ad53ab0735893646e7357",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 97,
+    "id": "source-097-ap-data-center-moratorium-debate",
+    "outlet": "Associated Press",
+    "title": "AP: data-center moratorium debate",
+    "url": "https://apnews.com/article/65651bd28c3d911d18eeb46cd54f4c75",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 98,
+    "id": "source-098-ap-georgia-regulators-approve-large-util",
+    "outlet": "Associated Press",
+    "title": "AP: Georgia regulators approve large utility capacity increase",
+    "url": "https://apnews.com/article/0b377d6a4a57c9353c0eb577b8951af3",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 99,
+    "id": "source-099-ap-data-centers-and-u-s-power-grid-press",
+    "outlet": "Associated Press",
+    "title": "AP: data centers and U.S. power-grid pressure",
+    "url": "https://apnews.com/article/9cd8c6b29914c377d4961a78f1fa00b2",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 100,
+    "id": "source-100-ap-on-the-georgia-alabama-power-expansio",
+    "outlet": "Associated Press",
+    "title": "AP on the Georgia-Alabama power expansion loan",
+    "url": "https://apnews.com/article/3aa78ffb7e67ae8e5ce3c42b7d4d3134",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 101,
+    "id": "source-101-ap-on-georgia-power-freezing-base-rates",
+    "outlet": "Associated Press",
+    "title": "AP on Georgia Power freezing base rates",
+    "url": "https://apnews.com/article/59faeeeceba07fbe5bdcc48a3b1c3d0d",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 102,
+    "id": "source-102-ap-on-meta-nuclear-deals",
+    "outlet": "Associated Press",
+    "title": "AP on Meta nuclear deals",
+    "url": "https://apnews.com/article/0eb051a9a11d96f7ce200e186ad13476",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 103,
+    "id": "source-103-ap-virginia-data-center-tax-break-debate",
+    "outlet": "Associated Press",
+    "title": "AP: Virginia data-center tax-break debate",
+    "url": "https://apnews.com/article/fb9e6dbe61fbf03c467d1301f00bafb7",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 104,
+    "id": "source-104-ap-xai-mississippi-data-center-investmen",
+    "outlet": "Associated Press",
+    "title": "AP: xAI Mississippi data-center investment",
+    "url": "https://apnews.com/article/433691ace945708a04762b4791602f3d",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 105,
+    "id": "source-105-ap-pollution-concerns-around-xai-in-memp",
+    "outlet": "Associated Press",
+    "title": "AP: pollution concerns around xAI in Memphis",
+    "url": "https://apnews.com/article/571c16950259b382f9eae61bd59260ef",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 106,
+    "id": "source-106-ap-on-anthropic-and-google-chip-deal",
+    "outlet": "Associated Press",
+    "title": "AP on Anthropic and Google chip deal",
+    "url": "https://apnews.com/article/275df9e291bbb361962dfc6ba868506c",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 107,
+    "id": "source-107-ap-on-u-s-copyright-office-ai-assisted-w",
+    "outlet": "Associated Press",
+    "title": "AP on U.S. copyright office AI-assisted works report",
+    "url": "https://apnews.com/article/363f1c537eb86b624bf5e81bed70d459",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 108,
+    "id": "source-108-ap-microsoft-takes-over-texas-data-cente",
+    "outlet": "Associated Press",
+    "title": "AP: Microsoft takes over Texas data-center expansion",
+    "url": "https://apnews.com/article/f4f74c3a4617d8cfab5b933fc31ccc6e",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 109,
+    "id": "source-109-ap-ohio-10-gw-data-center-project",
+    "outlet": "Associated Press",
+    "title": "AP: Ohio 10-GW data-center project",
+    "url": "https://apnews.com/article/4667fa1442ec1c652228337ab4eb68ee",
+    "category": "Local reporting",
+    "status": "200"
+  },
+  {
+    "number": 110,
+    "id": "source-110-ap-on-pjm-fast-track-power-proposal",
+    "outlet": "Associated Press",
+    "title": "AP: fast-tracking power plants in the PJM region",
+    "url": "https://apnews.com/article/08ed707897fa5274663649bb2c372849",
+    "category": "Local reporting",
+    "status": "200"
+  }
+]

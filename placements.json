@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-31T16:19:10.636035+00:00",
+  "generated_at": "2026-06-04T01:38:32.351548+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -10,13 +10,13 @@
   "home": {
     "hero_slots": 7,
     "hero": [
+      "technology-the-data-center-is-the-new-utility-bill",
       "science-wildlife-for-sale",
       "technology-drones-have-left-the-gadget-era",
       "sports-world-cup-game-day-machine",
       "world-europes-cocaine-boom-is-hiding-in-plain-sight",
       "world-americas-military-year-is-a-map-of-force",
-      "climate-the-mountain-that-fell-into-the-sea",
-      "climate-your-home-insurance-bill-is-the-new-climate-map"
+      "climate-the-mountain-that-fell-into-the-sea"
     ],
     "secondary": [
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
@@ -34,7 +34,7 @@
       "memory-the-internet-is-eating-its-own-memory",
       "education-the-phone-free-school-day-is-a-live-experiment",
       "technology-the-battery-is-becoming-the-grid",
-      "sports-texas-holdem-prime-time-moment-back"
+      "climate-your-home-insurance-bill-is-the-new-climate-map"
     ],
     "latest": [
       "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
@@ -43,6 +43,7 @@
       "health-the-next-public-health-system-is-the-room-you-are-in",
       "technology-the-battery-is-becoming-the-grid",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
+      "climate-your-home-insurance-bill-is-the-new-climate-map",
       "sports-texas-holdem-prime-time-moment-back",
       "technology-pentagon-ai-classified-networks",
       "food-atla-noho-closing",
@@ -50,8 +51,7 @@
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
-      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class"
+      "2026-04-27-nairobi-s-drains-are-running-out-of-room"
     ],
     "daily": [
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
@@ -72,27 +72,27 @@
       "health-the-next-public-health-system-is-the-room-you-are-in",
       "technology-the-battery-is-becoming-the-grid",
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
+      "climate-your-home-insurance-bill-is-the-new-climate-map",
       "sports-texas-holdem-prime-time-moment-back",
       "technology-pentagon-ai-classified-networks",
       "food-atla-noho-closing",
       "technology-musk-altman-openai-court-battle",
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
-      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-nairobi-s-drains-are-running-out-of-room"
+      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map"
     ],
     "desk_pulse": [
+      {
+        "count": 7,
+        "latest_ts": 1780493400.0,
+        "story_id": "technology-the-data-center-is-the-new-utility-bill",
+        "section": "Technology"
+      },
       {
         "count": 7,
         "latest_ts": 1779282000.0,
         "story_id": "science-wildlife-for-sale",
         "section": "Science"
-      },
-      {
-        "count": 6,
-        "latest_ts": 1778956200.0,
-        "story_id": "technology-drones-have-left-the-gadget-era",
-        "section": "Technology"
       },
       {
         "count": 2,

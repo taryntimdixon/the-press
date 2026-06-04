@@ -1,0 +1,478 @@
+{
+  "available_crops": 110,
+  "complete_groups": 22,
+  "groups": [
+    {
+      "group": 1,
+      "sources": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scenes": {
+        "001": "a rain-slick substation reflected in a puddle, with a distant data-center campus glowing beyond the fence",
+        "002": "a dense apartment block at night with staggered lit windows under high-voltage lines, shot from street level",
+        "003": "a utility service alley behind restaurants where conduit, transformers, and steam vents crowd the frame",
+        "004": "a drone-like overlook of a city edge where warehouses, homes, and transmission towers collide at sunset",
+        "005": "a macro editorial photo of copper busbars inside an industrial electrical cabinet, lit by inspection lamps"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 2,
+      "sources": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "scenes": {
+        "006": "a roadside transformer bank under storm clouds with a bright modern server building visible far behind it",
+        "007": "a night utility truck scene where workers' headlamps illuminate underground cable vaults, no logos",
+        "008": "a gritty close view of a spinning smart-meter bank with rain beads, neon reflections, and no readable digits",
+        "009": "a utility pole corridor cutting between small houses and a warehouse-scale compute campus at blue hour",
+        "010": "a control-room wall showing abstract blurred load curves while a silhouetted operator watches the screens"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 3,
+      "sources": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "scenes": {
+        "011": "a transformer cooling fan array blasting mist in early morning light near industrial power equipment",
+        "012": "a suburban cul-de-sac photographed from low angle with overhead distribution wires leading toward a data center",
+        "013": "a frozen winter street where service lines, porch lights, and a distant substation create a tense grid scene",
+        "014": "an industrial switchgear room with red warning beacons, thick cables, and cinematic maintenance lighting",
+        "015": "a summer heat-wave city block with window AC units, sagging distribution lines, and heat shimmer"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 4,
+      "sources": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "scenes": {
+        "016": "a wide shot of freight-rail power infrastructure passing a fenced data-center construction site",
+        "017": "a close-up of weathered transformer fins with condensation and orange sodium streetlight reflections",
+        "018": "an electrical vault opened in a downtown sidewalk with cable bundles glowing under portable work lights",
+        "019": "a neighborhood feeder line running past a school, gas station canopy, and distant substation lights",
+        "020": "a night aerial-feeling view of a utility yard where rows of breakers look like a mechanical city"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 5,
+      "sources": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "scenes": {
+        "021": "a dramatic storm-afterglow scene with utility poles, wet asphalt, and a far-off warehouse data hall",
+        "022": "a compact municipal power plant exterior with stacks, switchyard, and cooling plume at dawn",
+        "023": "a highway interchange where transmission towers stride past big-box roofs and a low data-center campus",
+        "024": "a close industrial portrait of current transformers and ceramic insulators under crisp inspection light",
+        "025": "a colossal transmission corridor crossing open country at dusk, with red aircraft lights in the haze"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 6,
+      "sources": [
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "scenes": {
+        "026": "a data-center cooling plant beside a high-voltage substation, steam curling through cold morning air",
+        "027": "a grid-scale battery yard glowing with small status lights under a bruised sunset sky",
+        "028": "a regional grid control room shot from behind operators, with giant blurred maps and no readable text",
+        "029": "a natural-gas turbine hall with polished metal, heat shimmer, and workers dwarfed by the machinery",
+        "030": "a solar farm and substation framing a warehouse-like data center in harsh midday light"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 7,
+      "sources": [
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "scenes": {
+        "031": "a misty mountain power corridor where transmission lines disappear toward distant industrial buildings",
+        "032": "a coastal converter station at twilight with cables, fencing, and a cool ocean haze",
+        "033": "an arid desert switchyard near a cluster of data-center buildings, dust hanging in the late sun",
+        "034": "a hydroelectric dam control gallery with wet concrete textures and heavy electrical cabinets",
+        "035": "a port-side power station with container cranes, substations, and data halls under sodium lights"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 8,
+      "sources": [
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "scenes": {
+        "036": "a snowy northern transmission yard with battery containers and a low, blue industrial sky",
+        "037": "a national-lab server room where test racks glow behind thick glass and warning lights, no logos",
+        "038": "engineers around a high-voltage power-electronics bench, faces obscured by equipment and task lighting",
+        "039": "a chip cleanroom corridor with reflective floors, wafer tools, and sterile blue-white light",
+        "040": "a thermal test chamber connected to server racks by silver ducts and thick sensor cables"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 9,
+      "sources": [
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "scenes": {
+        "041": "a grid-modeling room with floor-to-ceiling abstract power-flow screens and silhouetted researchers",
+        "042": "a macro shot of power modules, liquid-cooled plates, and fiber cables under laboratory spotlights",
+        "043": "a chilled-water loop test rig snaking through a lab toward a row of server racks",
+        "044": "a research bay with robotic cable arms testing rack power supplies in dramatic side light",
+        "045": "a geothermal test site at dawn with pipes, steam, and a small modular data hall nearby"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 10,
+      "sources": [
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "scenes": {
+        "046": "a nuclear microreactor-style test facility exterior at night, fenced and cinematic but not branded",
+        "047": "a heat-reuse greenhouse attached to a data-center lab, vapor on glass and server glow behind it",
+        "048": "a concrete laboratory bunker with transformer pads and cooling equipment under stormy skies",
+        "049": "a close view of immersion-cooled server hardware with rippling fluid and blue inspection light",
+        "050": "a rack-scale battery backup room with cables overhead and reflective safety floor markings"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 11,
+      "sources": [
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "scenes": {
+        "051": "a cyber-physical grid simulator lab with miniature substations, cables, and blurred monitors",
+        "052": "a wind-tunnel-like airflow lab testing server rack cooling, with smoke visualization beams",
+        "053": "a loading dock where experimental cooling skids are being moved into a research data center",
+        "054": "a rooftop mechanical yard above a lab data center with fans, pipes, and dawn condensation",
+        "055": "a buried-cable test trench beside a research campus, with instruments under work lights"
+      },
+      "repeated_scene_tokens": [
+        {
+          "token": "lab",
+          "count": 3
+        }
+      ],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 12,
+      "sources": [
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "scenes": {
+        "056": "a high-bay lab full of transformers, flexible conduits, and suspended cable trays",
+        "057": "a darkened instrument room where oscilloscopes and rack LEDs create an electric night scene",
+        "058": "a modular data-center container being instrumented in a lab yard after rain",
+        "059": "a laboratory microgrid island with solar canopy, battery containers, and a small data hall",
+        "060": "a high-voltage cage around power electronics with amber warning lamps and no readable signs"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 13,
+      "sources": [
+        61,
+        62,
+        63,
+        64,
+        65
+      ],
+      "scenes": {
+        "061": "a cooling-tower test platform with vapor, fans, and a server-building facade in the background",
+        "062": "a utility planning room transformed into a wall-size grid model, with cables, magnetic tokens, and blurred load maps",
+        "063": "a sunset battery yard beside a data-center campus, with one technician silhouetted against container lights",
+        "064": "an industrial load-control room where HVAC dampers, meters, and server-rack feeds converge in one frame",
+        "065": "a dark data-center operations floor during a grid event, with noncritical aisles dimmed and monitors glowing"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 14,
+      "sources": [
+        66,
+        67,
+        68,
+        69,
+        70
+      ],
+      "scenes": {
+        "066": "a quiet lab corridor lined with power cabinets, glass reflections, and emergency-red spill light",
+        "067": "a researcher silhouette inspecting fiber trunks above dense server racks from a rolling ladder",
+        "068": "a federal hearing room seen from the witness table, microphones silhouetted against a wall of blurred power maps",
+        "069": "a marble hallway outside an energy hearing where rolling cases of evidence pass beneath cold overhead light",
+        "070": "a grid dispatch center at night with operators facing enormous abstract load curves, no readable labels"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 15,
+      "sources": [
+        71,
+        72,
+        73,
+        74,
+        75
+      ],
+      "scenes": {
+        "071": "a rain-wet substation yard with transformers, breakers, and transmission towers glowing at golden hour",
+        "072": "a battery-storage control console with colored power-flow graphics reflected in glass, no readable text",
+        "073": "a lone night-shift operator silhouetted before a regional grid wall, coffee steam caught in monitor glow",
+        "074": "a transmission maintenance staging area with insulated gear, cable reels, and storm clouds rolling in",
+        "075": "a data-center interconnection substation after rain, shot low through the fence with reflections on gravel"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 16,
+      "sources": [
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "scenes": {
+        "076": "a close-up of gloved hands on a control-room console, blurred grid screens towering in the background",
+        "077": "a sunrise helicopter-view feeling of transmission lines converging on a major switching station",
+        "078": "a black-start drill scene in a utility control center with emergency lighting and tense quiet",
+        "079": "a wide winter scene of breakers, steel lattice, and a distant data-center campus under pale light",
+        "080": "a field engineer opening a relay cabinet while a maze of power lines fills the background"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 17,
+      "sources": [
+        81,
+        82,
+        83,
+        84,
+        85
+      ],
+      "scenes": {
+        "081": "a county planning map projected across a dark meeting room while residents' silhouettes watch, no readable text",
+        "082": "a Virginia roadside where forest, new grading, and a fenced data-center pad meet under construction lights",
+        "083": "a suburban street at dusk with utility poles leading toward warehouse-scale data halls over the hill",
+        "084": "a state records archive room where rolled infrastructure maps spill from shelves under dramatic side light",
+        "085": "a packed community meeting seen from the back row, faces indistinct, bright projector glow on the wall"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 18,
+      "sources": [
+        86,
+        87,
+        88,
+        89,
+        90
+      ],
+      "scenes": {
+        "086": "a rural substation beside fresh industrial construction with red clay, temporary fencing, and storm light",
+        "087": "a data-center operations room during a demand-response event, half the aisle lights dimmed while battery screens glow",
+        "088": "a battery-storage operator framed by container rows and a tablet of abstract controls, no readable text",
+        "089": "a hyperscale data-center loading dock at night where cooling skids and electrical gear arrive under floodlights",
+        "090": "a server hall with a technician on a ladder checking overhead cable trays, deep rows receding behind them"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 19,
+      "sources": [
+        91,
+        92,
+        93,
+        94,
+        95
+      ],
+      "scenes": {
+        "091": "a construction site for a data-center power yard where massive transformers hang from a crane at dusk",
+        "092": "a facilities plant room where chilled-water pipes, power meters, and valves create a dense industrial maze",
+        "093": "a close cinematic view of a cooling manifold beside server infrastructure, condensation and tool marks visible",
+        "094": "a neighborhood street after a storm where a utility crew works under portable lights near service lines",
+        "095": "a tense town-hall hallway outside a data-center vote, residents in silhouette beneath fluorescent light"
+      },
+      "repeated_scene_tokens": [
+        {
+          "token": "where",
+          "count": 3
+        }
+      ],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 20,
+      "sources": [
+        96,
+        97,
+        98,
+        99,
+        100
+      ],
+      "scenes": {
+        "096": "a driveway view where a quiet house faces a newly cleared transmission corridor in the distance",
+        "097": "a local road torn open for conduit trenching beside a data-center construction fence at dawn",
+        "098": "a small-town planning table with a 3D terrain model, hard hat, cable samples, and blurred permit maps",
+        "099": "a homeowner silhouetted in a kitchen window while data-center construction lights glow on the horizon",
+        "100": "a utility crew replacing a residential transformer in heavy rain, sparks of work lights on wet asphalt"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 21,
+      "sources": [
+        101,
+        102,
+        103,
+        104,
+        105
+      ],
+      "scenes": {
+        "101": "a wide suburban edge where backyards end abruptly at a warehouse-scale technology campus wall",
+        "102": "a rural crossroads with protest signs turned away from camera, power lines, and distant construction cranes",
+        "103": "a muddy construction entrance with tire tracks, temporary power poles, and a low server-building shell",
+        "104": "a night scene of dump trucks queuing outside a data-center site while nearby porch lights remain small",
+        "105": "a roadside substation expansion seen through chain-link fence with homes just beyond the equipment"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    },
+    {
+      "group": 22,
+      "sources": [
+        106,
+        107,
+        108,
+        109,
+        110
+      ],
+      "scenes": {
+        "106": "a local diner window reflecting transmission towers and construction cranes across the street",
+        "107": "a school-bus stop under utility wires near a new industrial power corridor, photographed at sunrise",
+        "108": "a county road bordered by buried-conduit markers, orange fencing, and misty tree line",
+        "109": "a quiet living-room interior with blue data-center glow visible through the curtains, no papers or bills",
+        "110": "a field of temporary generators and cable ramps powering an unfinished data-center shell at blue hour"
+      },
+      "repeated_scene_tokens": [],
+      "within_group_flags": [],
+      "prior_group_flags": [],
+      "passed": true
+    }
+  ]
+}

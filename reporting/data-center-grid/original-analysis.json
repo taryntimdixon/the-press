@@ -1,0 +1,411 @@
+{
+  "national_eia": {
+    "2014": {
+      "residential_mwh": 1407208311,
+      "commercial_mwh": 1352158263,
+      "industrial_mwh": 997576138,
+      "transportation_mwh": 7757555,
+      "sales_mwh": 3764700267,
+      "direct_use_mwh": 138573884,
+      "total_end_use_mwh": 3903274151
+    },
+    "2015": {
+      "residential_mwh": 1404096499,
+      "commercial_mwh": 1360751527,
+      "industrial_mwh": 986507732,
+      "transportation_mwh": 7636632,
+      "sales_mwh": 3758992390,
+      "direct_use_mwh": 141167519,
+      "total_end_use_mwh": 3900159909
+    },
+    "2016": {
+      "residential_mwh": 1411058153,
+      "commercial_mwh": 1367191386,
+      "industrial_mwh": 976715181,
+      "transportation_mwh": 7496910,
+      "sales_mwh": 3762461630,
+      "direct_use_mwh": 139836699,
+      "total_end_use_mwh": 3902298329
+    },
+    "2017": {
+      "residential_mwh": 1378647742,
+      "commercial_mwh": 1352887694,
+      "industrial_mwh": 984297945,
+      "transportation_mwh": 7522593,
+      "sales_mwh": 3723355974,
+      "direct_use_mwh": 140959389,
+      "total_end_use_mwh": 3864315363
+    },
+    "2018": {
+      "residential_mwh": 1469093059,
+      "commercial_mwh": 1381754845,
+      "industrial_mwh": 1000672553,
+      "transportation_mwh": 7664804,
+      "sales_mwh": 3859185261,
+      "direct_use_mwh": 143903731,
+      "total_end_use_mwh": 4003088992
+    },
+    "2019": {
+      "residential_mwh": 1440288909,
+      "commercial_mwh": 1360876555,
+      "industrial_mwh": 1002352849,
+      "transportation_mwh": 7632150,
+      "sales_mwh": 3811150463,
+      "direct_use_mwh": 143270338,
+      "total_end_use_mwh": 3954420801
+    },
+    "2020": {
+      "residential_mwh": 1464605046,
+      "commercial_mwh": 1287439583,
+      "industrial_mwh": 959082028,
+      "transportation_mwh": 6547824,
+      "sales_mwh": 3717674481,
+      "direct_use_mwh": 138702540,
+      "total_end_use_mwh": 3856377021
+    },
+    "2021": {
+      "residential_mwh": 1470486882,
+      "commercial_mwh": 1328439498,
+      "industrial_mwh": 1000613490,
+      "transportation_mwh": 6334383,
+      "sales_mwh": 3805874253,
+      "direct_use_mwh": 138915068,
+      "total_end_use_mwh": 3944789321
+    },
+    "2022": {
+      "residential_mwh": 1509233162,
+      "commercial_mwh": 1390872813,
+      "industrial_mwh": 1020463986,
+      "transportation_mwh": 6599108,
+      "sales_mwh": 3927169069,
+      "direct_use_mwh": 139725701,
+      "total_end_use_mwh": 4066894770
+    },
+    "2023": {
+      "residential_mwh": 1450025184,
+      "commercial_mwh": 1408108755,
+      "industrial_mwh": 1009255634,
+      "transportation_mwh": 6863789,
+      "sales_mwh": 3874253362,
+      "direct_use_mwh": 136918155,
+      "total_end_use_mwh": 4011171517
+    },
+    "2024": {
+      "residential_mwh": 1482873586,
+      "commercial_mwh": 1450941216,
+      "industrial_mwh": 1034584190,
+      "transportation_mwh": 6982840,
+      "sales_mwh": 3975381832,
+      "direct_use_mwh": 135040521,
+      "total_end_use_mwh": 4110422353
+    }
+  },
+  "loads": [
+    {
+      "mw": 100,
+      "capacity_factor": 0.85,
+      "twh": 0.7446
+    },
+    {
+      "mw": 100,
+      "capacity_factor": 0.95,
+      "twh": 0.8322
+    },
+    {
+      "mw": 100,
+      "capacity_factor": 1.0,
+      "twh": 0.876
+    },
+    {
+      "mw": 250,
+      "capacity_factor": 0.85,
+      "twh": 1.8615
+    },
+    {
+      "mw": 250,
+      "capacity_factor": 0.95,
+      "twh": 2.0805
+    },
+    {
+      "mw": 250,
+      "capacity_factor": 1.0,
+      "twh": 2.19
+    },
+    {
+      "mw": 500,
+      "capacity_factor": 0.85,
+      "twh": 3.723
+    },
+    {
+      "mw": 500,
+      "capacity_factor": 0.95,
+      "twh": 4.161
+    },
+    {
+      "mw": 500,
+      "capacity_factor": 1.0,
+      "twh": 4.38
+    },
+    {
+      "mw": 1000,
+      "capacity_factor": 0.85,
+      "twh": 7.446
+    },
+    {
+      "mw": 1000,
+      "capacity_factor": 0.95,
+      "twh": 8.322
+    },
+    {
+      "mw": 1000,
+      "capacity_factor": 1.0,
+      "twh": 8.76
+    },
+    {
+      "mw": 2500,
+      "capacity_factor": 0.85,
+      "twh": 18.615
+    },
+    {
+      "mw": 2500,
+      "capacity_factor": 0.95,
+      "twh": 20.805
+    },
+    {
+      "mw": 2500,
+      "capacity_factor": 1.0,
+      "twh": 21.9
+    },
+    {
+      "mw": 5000,
+      "capacity_factor": 0.85,
+      "twh": 37.23
+    },
+    {
+      "mw": 5000,
+      "capacity_factor": 0.95,
+      "twh": 41.61
+    },
+    {
+      "mw": 5000,
+      "capacity_factor": 1.0,
+      "twh": 43.8
+    },
+    {
+      "mw": 10000,
+      "capacity_factor": 0.85,
+      "twh": 74.46
+    },
+    {
+      "mw": 10000,
+      "capacity_factor": 0.95,
+      "twh": 83.22
+    },
+    {
+      "mw": 10000,
+      "capacity_factor": 1.0,
+      "twh": 87.6
+    }
+  ],
+  "projection_comparisons": {
+    "LBNL_2023_data_centers_twh": {
+      "twh": 176,
+      "pct_2023_us_sales": 4.542810796172189,
+      "pct_2023_us_total_end_use": 4.387745556481025,
+      "pct_2023_commercial_sales": 12.499034564982873,
+      "pct_2023_residential_sales": 12.137720223209586
+    },
+    "LBNL_2028_low_twh": {
+      "twh": 325,
+      "pct_2023_us_sales": 8.3887131179316,
+      "pct_2023_us_total_end_use": 8.102371056001893,
+      "pct_2023_commercial_sales": 23.08060360011042,
+      "pct_2023_residential_sales": 22.4134038212677
+    },
+    "LBNL_2028_high_twh": {
+      "twh": 580,
+      "pct_2023_us_sales": 14.970626487385621,
+      "pct_2023_us_total_end_use": 14.459616038403375,
+      "pct_2023_commercial_sales": 41.19000027096629,
+      "pct_2023_residential_sales": 39.99930528103159
+    },
+    "EPRI_2024_low_twh": {
+      "twh": 177,
+      "pct_2024_us_sales": 4.452402498175929,
+      "pct_2024_us_total_end_use": 4.306126835623502,
+      "pct_2024_commercial_sales": 12.19897801841753,
+      "pct_2024_residential_sales": 11.93628382561263
+    },
+    "EPRI_2024_high_twh": {
+      "twh": 192,
+      "pct_2024_us_sales": 4.829724743784059,
+      "pct_2024_us_total_end_use": 4.671052838642443,
+      "pct_2024_commercial_sales": 13.232789714893592,
+      "pct_2024_residential_sales": 12.947833302359463
+    },
+    "EPRI_2030_low_twh": {
+      "twh": 380,
+      "pct_2024_us_sales": 9.558830222072615,
+      "pct_2024_us_total_end_use": 9.244792076479836,
+      "pct_2024_commercial_sales": 26.1898963107269,
+      "pct_2024_residential_sales": 25.62592007758644
+    },
+    "EPRI_2030_high_twh": {
+      "twh": 790,
+      "pct_2024_us_sales": 19.87230493536149,
+      "pct_2024_us_total_end_use": 19.219436158997553,
+      "pct_2024_commercial_sales": 54.447416014405924,
+      "pct_2024_residential_sales": 53.274939108666544
+    },
+    "IEA_global_2024_twh": {
+      "twh": 415,
+      "pct_2024_us_sales": 10.439248795158251,
+      "pct_2024_us_total_end_use": 10.096286083524031,
+      "pct_2024_commercial_sales": 28.602123602504374,
+      "pct_2024_residential_sales": 27.98620218999572
+    },
+    "IEA_global_2030_twh": {
+      "twh": 945,
+      "pct_2024_us_sales": 23.77130147331216,
+      "pct_2024_us_total_end_use": 22.990338190193274,
+      "pct_2024_commercial_sales": 65.1301368779919,
+      "pct_2024_residential_sales": 63.727617035050486
+    }
+  },
+  "state_comparisons": [
+    {
+      "state": "Virginia",
+      "all_sales_2024_twh": 138.045,
+      "commercial_sales_2024_twh": 78.711,
+      "one_gw_95pct_as_pct_all_sales": 6.028468977507335,
+      "ten_gw_95pct_as_pct_all_sales": 60.28468977507335,
+      "one_gw_95pct_as_pct_commercial_sales": 10.572855128253991
+    },
+    {
+      "state": "Texas",
+      "all_sales_2024_twh": 505.431,
+      "commercial_sales_2024_twh": 164.233,
+      "one_gw_95pct_as_pct_all_sales": 1.64651554811636,
+      "ten_gw_95pct_as_pct_all_sales": 16.465155481163603,
+      "one_gw_95pct_as_pct_commercial_sales": 5.067191124804394
+    },
+    {
+      "state": "Georgia",
+      "all_sales_2024_twh": 150.004,
+      "commercial_sales_2024_twh": 55.173,
+      "one_gw_95pct_as_pct_all_sales": 5.547852057278472,
+      "ten_gw_95pct_as_pct_all_sales": 55.47852057278473,
+      "one_gw_95pct_as_pct_commercial_sales": 15.083464738187155
+    },
+    {
+      "state": "Ohio",
+      "all_sales_2024_twh": 153.707,
+      "commercial_sales_2024_twh": 50.814,
+      "one_gw_95pct_as_pct_all_sales": 5.414197141314318,
+      "ten_gw_95pct_as_pct_all_sales": 54.14197141314319,
+      "one_gw_95pct_as_pct_commercial_sales": 16.377376313614356
+    },
+    {
+      "state": "Illinois",
+      "all_sales_2024_twh": 133.227,
+      "commercial_sales_2024_twh": 45.24,
+      "one_gw_95pct_as_pct_all_sales": 6.246481569051317,
+      "ten_gw_95pct_as_pct_all_sales": 62.464815690513184,
+      "one_gw_95pct_as_pct_commercial_sales": 18.39522546419098
+    },
+    {
+      "state": "Oregon",
+      "all_sales_2024_twh": 59.681,
+      "commercial_sales_2024_twh": 24.662,
+      "one_gw_95pct_as_pct_all_sales": 13.944136324793485,
+      "ten_gw_95pct_as_pct_all_sales": 139.44136324793485,
+      "one_gw_95pct_as_pct_commercial_sales": 33.7442218798151
+    },
+    {
+      "state": "Arizona",
+      "all_sales_2024_twh": 90.843,
+      "commercial_sales_2024_twh": 36.1,
+      "one_gw_95pct_as_pct_all_sales": 9.160859945180144,
+      "ten_gw_95pct_as_pct_all_sales": 91.60859945180145,
+      "one_gw_95pct_as_pct_commercial_sales": 23.052631578947366
+    },
+    {
+      "state": "Indiana",
+      "all_sales_2024_twh": 99.22,
+      "commercial_sales_2024_twh": 23.664,
+      "one_gw_95pct_as_pct_all_sales": 8.387421890747833,
+      "ten_gw_95pct_as_pct_all_sales": 83.87421890747832,
+      "one_gw_95pct_as_pct_commercial_sales": 35.16734279918863
+    },
+    {
+      "state": "Iowa",
+      "all_sales_2024_twh": 54.93,
+      "commercial_sales_2024_twh": 12.815,
+      "one_gw_95pct_as_pct_all_sales": 15.15019115237575,
+      "ten_gw_95pct_as_pct_all_sales": 151.5019115237575,
+      "one_gw_95pct_as_pct_commercial_sales": 64.93952399531798
+    },
+    {
+      "state": "Nebraska",
+      "all_sales_2024_twh": 35.191,
+      "commercial_sales_2024_twh": 12.885,
+      "one_gw_95pct_as_pct_all_sales": 23.64809184166406,
+      "ten_gw_95pct_as_pct_all_sales": 236.48091841664058,
+      "one_gw_95pct_as_pct_commercial_sales": 64.58672875436554
+    },
+    {
+      "state": "Nevada",
+      "all_sales_2024_twh": 40.665,
+      "commercial_sales_2024_twh": 14.259,
+      "one_gw_95pct_as_pct_all_sales": 20.464773146440425,
+      "ten_gw_95pct_as_pct_all_sales": 204.64773146440427,
+      "one_gw_95pct_as_pct_commercial_sales": 58.36313907006101
+    },
+    {
+      "state": "Wyoming",
+      "all_sales_2024_twh": 17.217,
+      "commercial_sales_2024_twh": 5.275,
+      "one_gw_95pct_as_pct_all_sales": 48.335947029099145,
+      "ten_gw_95pct_as_pct_all_sales": 483.3594702909915,
+      "one_gw_95pct_as_pct_commercial_sales": 157.76303317535542
+    },
+    {
+      "state": "Maine",
+      "all_sales_2024_twh": 11.342,
+      "commercial_sales_2024_twh": 4.118,
+      "one_gw_95pct_as_pct_all_sales": 73.37330276847116,
+      "ten_gw_95pct_as_pct_all_sales": 733.7330276847116,
+      "one_gw_95pct_as_pct_commercial_sales": 202.08839242350655
+    },
+    {
+      "state": "Washington",
+      "all_sales_2024_twh": 89.982,
+      "commercial_sales_2024_twh": 33.102,
+      "one_gw_95pct_as_pct_all_sales": 9.248516369940655,
+      "ten_gw_95pct_as_pct_all_sales": 92.48516369940654,
+      "one_gw_95pct_as_pct_commercial_sales": 25.140474895776688
+    },
+    {
+      "state": "California",
+      "all_sales_2024_twh": 245.717,
+      "commercial_sales_2024_twh": 115.126,
+      "one_gw_95pct_as_pct_all_sales": 3.3868230525360468,
+      "ten_gw_95pct_as_pct_all_sales": 33.868230525360474,
+      "one_gw_95pct_as_pct_commercial_sales": 7.228601705956951
+    },
+    {
+      "state": "Pennsylvania",
+      "all_sales_2024_twh": 142.147,
+      "commercial_sales_2024_twh": 38.548,
+      "one_gw_95pct_as_pct_all_sales": 5.854502733086171,
+      "ten_gw_95pct_as_pct_all_sales": 58.54502733086172,
+      "one_gw_95pct_as_pct_commercial_sales": 21.588668672823488
+    }
+  ],
+  "implied_totals": {
+    "EPRI_177TWh_at_4pct_total_TWh": 4425.0,
+    "EPRI_192TWh_at_5pct_total_TWh": 3840.0,
+    "EPRI_380TWh_at_9pct_total_TWh": 4222.222222222223,
+    "EPRI_790TWh_at_17pct_total_TWh": 4647.058823529412
+  }
+}

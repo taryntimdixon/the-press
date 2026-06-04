@@ -1,0 +1,1326 @@
+[
+  {
+    "sheet": 1,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-001.png",
+    "sources": [
+      {
+        "number": 1,
+        "id": "source-001-eia-electric-power-annual-table-2-2-work",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA Electric Power Annual Table 2.2 workbook",
+        "url": "https://www.eia.gov/electricity/annual/xls/epa_02_02.xlsx",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 0
+      },
+      {
+        "number": 2,
+        "id": "source-002-eia-electric-power-annual-table-2-2",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA Electric Power Annual Table 2.2",
+        "url": "https://www.eia.gov/electricity/annual/html/epa_02_02.html",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 1
+      },
+      {
+        "number": 3,
+        "id": "source-003-eia-electric-power-annual-table-2-8-work",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA Electric Power Annual Table 2.8 workbook",
+        "url": "https://www.eia.gov/electricity/annual/xls/epa_02_08.xlsx",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 2
+      },
+      {
+        "number": 4,
+        "id": "source-004-eia-electric-power-annual-table-2-8",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA Electric Power Annual Table 2.8",
+        "url": "https://www.eia.gov/electricity/annual/html/epa_02_08.html",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 3
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 001, EIA data. Create a rain-slick substation reflected in a puddle, with a distant data-center campus glowing beyond the fence. Connect it visually to EIA Electric Power Annual Table 2.2 workbook from U.S. Energy Information Administration. Use macro industrial detail with shallow depth of field, hard summer heat haze with realistic contrast, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\ntop-right: Source 002, EIA data. Create a dense apartment block at night with staggered lit windows under high-voltage lines, shot from street level. Connect it visually to EIA Electric Power Annual Table 2.2 from U.S. Energy Information Administration. Use over-the-shoulder investigative newsroom perspective, dramatic side light through dust and vapor, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-left: Source 003, EIA data. Create a utility service alley behind restaurants where conduit, transformers, and steam vents crowd the frame. Connect it visually to EIA Electric Power Annual Table 2.8 workbook from U.S. Energy Information Administration. Use rain-reflection foreground with deep background scale, cold fluorescent interior light with one warm practical glow, and concrete, copper, and pale green equipment tones. Do not render readable text.\nbottom-right: Source 004, EIA data. Create a drone-like overlook of a city edge where warehouses, homes, and transmission towers collide at sunset. Connect it visually to EIA Electric Power Annual Table 2.8 from U.S. Energy Information Administration. Use symmetrical control-room composition with human figures as silhouettes, hard summer heat haze with realistic contrast, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 2,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-002.png",
+    "sources": [
+      {
+        "number": 5,
+        "id": "source-005-eia-electric-power-annual-table-2-4-work",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA Electric Power Annual Table 2.4 workbook",
+        "url": "https://www.eia.gov/electricity/annual/xls/epa_02_04.xlsx",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 4
+      },
+      {
+        "number": 6,
+        "id": "source-006-eia-electric-power-annual-table-2-4",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA Electric Power Annual Table 2.4",
+        "url": "https://www.eia.gov/electricity/annual/html/epa_02_04.html",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 5
+      },
+      {
+        "number": 7,
+        "id": "source-007-eia-monthly-sales-and-revenue-workbook",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA monthly sales and revenue workbook",
+        "url": "https://www.eia.gov/electricity/data/eia861m/xls/sales_revenue.xlsx",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 6
+      },
+      {
+        "number": 8,
+        "id": "source-008-eia-short-term-energy-outlook",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA Short-Term Energy Outlook",
+        "url": "https://www.eia.gov/outlooks/steo",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 7
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 005, EIA data. Create a macro editorial photo of copper busbars inside an industrial electrical cabinet, lit by inspection lamps. Connect it visually to EIA Electric Power Annual Table 2.4 workbook from U.S. Energy Information Administration. Use rain-reflection foreground with deep background scale, dramatic side light through dust and vapor, and steel gray, wet asphalt, and utility amber. Do not render readable text.\ntop-right: Source 006, EIA data. Create a roadside transformer bank under storm clouds with a bright modern server building visible far behind it. Connect it visually to EIA Electric Power Annual Table 2.4 from U.S. Energy Information Administration. Use wide environmental documentary framing, night-shift monitor glow and restrained shadows, and deep blue monitor glow with small red warning lights. Do not render readable text.\nbottom-left: Source 007, EIA data. Create a night utility truck scene where workers' headlamps illuminate underground cable vaults, no logos. Connect it visually to EIA monthly sales and revenue workbook from U.S. Energy Information Administration. Use low-angle industrial editorial framing, early-morning mist with crisp power-line silhouettes, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-right: Source 008, EIA data. Create a gritty close view of a spinning smart-meter bank with rain beads, neon reflections, and no readable digits. Connect it visually to EIA Short-Term Energy Outlook from U.S. Energy Information Administration. Use wide environmental documentary framing, overcast documentary daylight with rich texture, and deep blue monitor glow with small red warning lights. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 3,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-003.png",
+    "sources": [
+      {
+        "number": 9,
+        "id": "source-009-eia-annual-energy-outlook",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA Annual Energy Outlook",
+        "url": "https://www.eia.gov/outlooks/aeo",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 8
+      },
+      {
+        "number": 10,
+        "id": "source-010-eia-jan-13-2026-press-release",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA Jan. 13, 2026 press release",
+        "url": "https://www.eia.gov/pressroom/releases/press582.php",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 9
+      },
+      {
+        "number": 11,
+        "id": "source-011-eia-annual-energy-outlook-2026-narrative",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA Annual Energy Outlook 2026 narrative",
+        "url": "https://www.eia.gov/outlooks/aeo/pdf/AEO_Narrative.pdf",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 10
+      },
+      {
+        "number": 12,
+        "id": "source-012-eia-short-term-energy-outlook-jan-2026",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA Short-Term Energy Outlook, Jan. 2026",
+        "url": "https://www.eia.gov/outlooks/steo/archives/jan26.pdf",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 11
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 009, EIA data. Create a utility pole corridor cutting between small houses and a warehouse-scale compute campus at blue hour. Connect it visually to EIA Annual Energy Outlook from U.S. Energy Information Administration. Use wide environmental documentary framing, storm-cleared sunset with wet reflective surfaces, and deep blue monitor glow with small red warning lights. Do not render readable text.\ntop-right: Source 010, EIA data. Create a control-room wall showing abstract blurred load curves while a silhouetted operator watches the screens. Connect it visually to EIA Jan. 13, 2026 press release from U.S. Energy Information Administration. Use macro industrial detail with shallow depth of field, overcast documentary daylight with rich texture, and deep blue monitor glow with small red warning lights. Do not render readable text.\nbottom-left: Source 011, EIA data. Create a transformer cooling fan array blasting mist in early morning light near industrial power equipment. Connect it visually to EIA Annual Energy Outlook 2026 narrative from U.S. Energy Information Administration. Use over-the-shoulder investigative newsroom perspective, blue-hour sodium-vapor industrial light, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-right: Source 012, EIA data. Create a suburban cul-de-sac photographed from low angle with overhead distribution wires leading toward a data center. Connect it visually to EIA Short-Term Energy Outlook, Jan. 2026 from U.S. Energy Information Administration. Use wide environmental documentary framing, overcast documentary daylight with rich texture, and deep blue monitor glow with small red warning lights. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 4,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-004.png",
+    "sources": [
+      {
+        "number": 13,
+        "id": "source-013-eia-electricity-explained",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA Electricity Explained",
+        "url": "https://www.eia.gov/energyexplained/electricity/use-of-electricity.php",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 12
+      },
+      {
+        "number": 14,
+        "id": "source-014-eia-steo-electricity-coal-and-renewables",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA STEO electricity, coal and renewables outlook",
+        "url": "https://www.eia.gov/outlooks/steo/report/elec_coal_renew.php",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 13
+      },
+      {
+        "number": 15,
+        "id": "source-015-eia-full-short-term-energy-outlook-pdf",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA full Short-Term Energy Outlook PDF",
+        "url": "https://www.eia.gov/outlooks/steo/pdf/steo_full.pdf",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 14
+      },
+      {
+        "number": 16,
+        "id": "source-016-eia-pilot-data-center-survey",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA pilot data-center survey",
+        "url": "https://www.eia.gov/pressroom/releases/press585.php",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 15
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 013, EIA data. Create a frozen winter street where service lines, porch lights, and a distant substation create a tense grid scene. Connect it visually to EIA Electricity Explained from U.S. Energy Information Administration. Use low-angle industrial editorial framing, blue-hour sodium-vapor industrial light, and concrete, copper, and pale green equipment tones. Do not render readable text.\ntop-right: Source 014, EIA data. Create an industrial switchgear room with red warning beacons, thick cables, and cinematic maintenance lighting. Connect it visually to EIA STEO electricity, coal and renewables outlook from U.S. Energy Information Administration. Use symmetrical control-room composition with human figures as silhouettes, storm-cleared sunset with wet reflective surfaces, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\nbottom-left: Source 015, EIA data. Create a summer heat-wave city block with window AC units, sagging distribution lines, and heat shimmer. Connect it visually to EIA full Short-Term Energy Outlook PDF from U.S. Energy Information Administration. Use macro industrial detail with shallow depth of field, storm-cleared sunset with wet reflective surfaces, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\nbottom-right: Source 016, EIA data. Create a wide shot of freight-rail power infrastructure passing a fenced data-center construction site. Connect it visually to EIA pilot data-center survey from U.S. Energy Information Administration. Use over-the-shoulder investigative newsroom perspective, cold fluorescent interior light with one warm practical glow, and concrete, copper, and pale green equipment tones. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 5,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-005.png",
+    "sources": [
+      {
+        "number": 17,
+        "id": "source-017-eia-april-2026-steo-pdf",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA April 2026 STEO PDF",
+        "url": "https://www.eia.gov/outlooks/steo/archives/apr26.pdf",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 16
+      },
+      {
+        "number": 18,
+        "id": "source-018-eia-aeo-narrative-page",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA AEO narrative page",
+        "url": "https://www.eia.gov/outlooks/aeo/narrative/index.php",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 17
+      },
+      {
+        "number": 19,
+        "id": "source-019-eia-analysis-hub",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA analysis hub",
+        "url": "https://www.eia.gov/analysis",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 18
+      },
+      {
+        "number": 20,
+        "id": "source-020-eia-annual-energy-outlook-2026",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA: Annual Energy Outlook 2026",
+        "url": "https://www.eia.gov/pressroom/releases/press587.php",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 19
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 017, EIA data. Create a close-up of weathered transformer fins with condensation and orange sodium streetlight reflections. Connect it visually to EIA April 2026 STEO PDF from U.S. Energy Information Administration. Use rain-reflection foreground with deep background scale, dramatic side light through dust and vapor, and concrete, copper, and pale green equipment tones. Do not render readable text.\ntop-right: Source 018, EIA data. Create an electrical vault opened in a downtown sidewalk with cable bundles glowing under portable work lights. Connect it visually to EIA AEO narrative page from U.S. Energy Information Administration. Use rain-reflection foreground with deep background scale, blue-hour sodium-vapor industrial light, and cool glass reflections with muted civic-interior colors. Do not render readable text.\nbottom-left: Source 019, EIA data. Create a neighborhood feeder line running past a school, gas station canopy, and distant substation lights. Connect it visually to EIA analysis hub from U.S. Energy Information Administration. Use symmetrical control-room composition with human figures as silhouettes, night-shift monitor glow and restrained shadows, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\nbottom-right: Source 020, EIA data. Create a night aerial-feeling view of a utility yard where rows of breakers look like a mechanical city. Connect it visually to EIA: Annual Energy Outlook 2026 from U.S. Energy Information Administration. Use macro industrial detail with shallow depth of field, night-shift monitor glow and restrained shadows, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 6,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-006.png",
+    "sources": [
+      {
+        "number": 21,
+        "id": "source-021-eia-residential-utility-disconnections-a",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA residential utility disconnections analysis",
+        "url": "https://www.eia.gov/analysis/requests/residential/utility",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 20
+      },
+      {
+        "number": 22,
+        "id": "source-022-eia-residential-utility-disconnections-r",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA residential utility disconnections report PDF",
+        "url": "https://www.eia.gov/analysis/requests/residential/utility/pdf/Residential%20Utility%20Disconnections%20Report%20-%20April%202026.pdf",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 21
+      },
+      {
+        "number": 23,
+        "id": "source-023-detail-php-id-65284",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA: U.S. electricity prices continue steady increase",
+        "url": "https://www.eia.gov/todayinenergy/detail.php?id=65284",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 22
+      },
+      {
+        "number": 24,
+        "id": "source-024-detail-php-id-67344",
+        "outlet": "U.S. Energy Information Administration",
+        "title": "EIA: fossil generation could rise with faster-than-expected data-center demand",
+        "url": "https://www.eia.gov/todayinenergy/detail.php?id=67344",
+        "category": "EIA data",
+        "status": "200",
+        "category_index": 23
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 021, EIA data. Create a dramatic storm-afterglow scene with utility poles, wet asphalt, and a far-off warehouse data hall. Connect it visually to EIA residential utility disconnections analysis from U.S. Energy Information Administration. Use wide environmental documentary framing, storm-cleared sunset with wet reflective surfaces, and deep blue monitor glow with small red warning lights. Do not render readable text.\ntop-right: Source 022, EIA data. Create a compact municipal power plant exterior with stacks, switchyard, and cooling plume at dawn. Connect it visually to EIA residential utility disconnections report PDF from U.S. Energy Information Administration. Use compressed telephoto layers of infrastructure, early-morning mist with crisp power-line silhouettes, and cool glass reflections with muted civic-interior colors. Do not render readable text.\nbottom-left: Source 023, EIA data. Create a highway interchange where transmission towers stride past big-box roofs and a low data-center campus. Connect it visually to EIA: U.S. electricity prices continue steady increase from U.S. Energy Information Administration. Use wide environmental documentary framing, hard summer heat haze with realistic contrast, and deep blue monitor glow with small red warning lights. Do not render readable text.\nbottom-right: Source 024, EIA data. Create a close industrial portrait of current transformers and ceramic insulators under crisp inspection light. Connect it visually to EIA: fossil generation could rise with faster-than-expected data-center demand from U.S. Energy Information Administration. Use over-the-shoulder investigative newsroom perspective, cold fluorescent interior light with one warm practical glow, and cool glass reflections with muted civic-interior colors. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 7,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-007.png",
+    "sources": [
+      {
+        "number": 25,
+        "id": "source-025-iea-energy-and-ai",
+        "outlet": "International Energy Agency",
+        "title": "IEA Energy and AI",
+        "url": "https://www.iea.org/reports/energy-and-ai",
+        "category": "Global energy",
+        "status": "200",
+        "category_index": 0
+      },
+      {
+        "number": 26,
+        "id": "source-026-iea-executive-summary",
+        "outlet": "International Energy Agency",
+        "title": "IEA executive summary",
+        "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+        "category": "Global energy",
+        "status": "200",
+        "category_index": 1
+      },
+      {
+        "number": 27,
+        "id": "source-027-iea-energy-demand-from-ai",
+        "outlet": "International Energy Agency",
+        "title": "IEA energy demand from AI",
+        "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+        "category": "Global energy",
+        "status": "200",
+        "category_index": 2
+      },
+      {
+        "number": 28,
+        "id": "source-028-iea-energy-supply-for-ai",
+        "outlet": "International Energy Agency",
+        "title": "IEA energy supply for AI",
+        "url": "https://www.iea.org/reports/energy-and-ai/energy-supply-for-ai",
+        "category": "Global energy",
+        "status": "200",
+        "category_index": 3
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 025, Global energy. Create a colossal transmission corridor crossing open country at dusk, with red aircraft lights in the haze. Connect it visually to IEA Energy and AI from International Energy Agency. Use macro industrial detail with shallow depth of field, hard summer heat haze with realistic contrast, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\ntop-right: Source 026, Global energy. Create a data-center cooling plant beside a high-voltage substation, steam curling through cold morning air. Connect it visually to IEA executive summary from International Energy Agency. Use compressed telephoto layers of infrastructure, early-morning mist with crisp power-line silhouettes, and cool glass reflections with muted civic-interior colors. Do not render readable text.\nbottom-left: Source 027, Global energy. Create a grid-scale battery yard glowing with small status lights under a bruised sunset sky. Connect it visually to IEA energy demand from AI from International Energy Agency. Use rain-reflection foreground with deep background scale, cold fluorescent interior light with one warm practical glow, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-right: Source 028, Global energy. Create a regional grid control room shot from behind operators, with giant blurred maps and no readable text. Connect it visually to IEA energy supply for AI from International Energy Agency. Use low-angle industrial editorial framing, dramatic side light through dust and vapor, and concrete, copper, and pale green equipment tones. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 8,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-008.png",
+    "sources": [
+      {
+        "number": 29,
+        "id": "source-029-iea-key-questions-on-energy-and-ai",
+        "outlet": "International Energy Agency",
+        "title": "IEA key questions on energy and AI",
+        "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+        "category": "Global energy",
+        "status": "200",
+        "category_index": 4
+      },
+      {
+        "number": 30,
+        "id": "source-030-iea-ai-and-climate-change",
+        "outlet": "International Energy Agency",
+        "title": "IEA AI and climate change",
+        "url": "https://www.iea.org/reports/energy-and-ai/ai-and-climate-change",
+        "category": "Global energy",
+        "status": "200",
+        "category_index": 5
+      },
+      {
+        "number": 31,
+        "id": "source-031-demand-global-electricity-use-to-grow-st",
+        "outlet": "International Energy Agency",
+        "title": "demand global electricity use to grow strongly in 2025 and 2026",
+        "url": "https://www.iea.org/reports/electricity-mid-year-update-2025/demand-global-electricity-use-to-grow-strongly-in-2025-and-2026",
+        "category": "Global energy",
+        "status": "200",
+        "category_index": 6
+      },
+      {
+        "number": 32,
+        "id": "source-032-iea-energy-ai-nexus-explainer",
+        "outlet": "International Energy Agency",
+        "title": "IEA energy-AI nexus explainer",
+        "url": "https://www.iea.org/reports/energy-and-ai/understanding-the-energy-ai-nexus",
+        "category": "Global energy",
+        "status": "200",
+        "category_index": 7
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 029, Global energy. Create a natural-gas turbine hall with polished metal, heat shimmer, and workers dwarfed by the machinery. Connect it visually to IEA key questions on energy and AI from International Energy Agency. Use symmetrical control-room composition with human figures as silhouettes, overcast documentary daylight with rich texture, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\ntop-right: Source 030, Global energy. Create a solar farm and substation framing a warehouse-like data center in harsh midday light. Connect it visually to IEA AI and climate change from International Energy Agency. Use low-angle industrial editorial framing, cold fluorescent interior light with one warm practical glow, and concrete, copper, and pale green equipment tones. Do not render readable text.\nbottom-left: Source 031, Global energy. Create a misty mountain power corridor where transmission lines disappear toward distant industrial buildings. Connect it visually to demand global electricity use to grow strongly in 2025 and 2026 from International Energy Agency. Use compressed telephoto layers of infrastructure, dramatic side light through dust and vapor, and concrete, copper, and pale green equipment tones. Do not render readable text.\nbottom-right: Source 032, Global energy. Create a coastal converter station at twilight with cables, fencing, and a cool ocean haze. Connect it visually to IEA energy-AI nexus explainer from International Energy Agency. Use over-the-shoulder investigative newsroom perspective, cold fluorescent interior light with one warm practical glow, and concrete, copper, and pale green equipment tones. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 9,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-009.png",
+    "sources": [
+      {
+        "number": 33,
+        "id": "source-033-iea-electricity-2026-demand-outlook",
+        "outlet": "International Energy Agency",
+        "title": "IEA Electricity 2026 demand outlook",
+        "url": "https://www.iea.org/reports/electricity-2026/demand",
+        "category": "Global energy",
+        "status": "200",
+        "category_index": 8
+      },
+      {
+        "number": 34,
+        "id": "source-034-iea-ai-energy-observatory-launch",
+        "outlet": "International Energy Agency",
+        "title": "IEA AI-energy observatory launch",
+        "url": "https://www.iea.org/news/as-energy-and-ai-links-grow-new-iea-observatory-provides-latest-data-and-analysis",
+        "category": "Global energy",
+        "status": "200",
+        "category_index": 9
+      },
+      {
+        "number": 35,
+        "id": "source-035-iea-conference-report",
+        "outlet": "International Energy Agency",
+        "title": "IEA conference report",
+        "url": "https://www.iea.org/news/at-major-iea-conference-decision-makers-from-tech-energy-and-government-underscore-ais-implications-for-energy-security-and-transitions",
+        "category": "Global energy",
+        "status": "200",
+        "category_index": 10
+      },
+      {
+        "number": 36,
+        "id": "source-036-international-energy-agency-data-centre",
+        "outlet": "International Energy Agency",
+        "title": "International Energy Agency, data-centre electricity use surged in 2025",
+        "url": "https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions",
+        "category": "Global energy",
+        "status": "200",
+        "category_index": 11
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 033, Global energy. Create an arid desert switchyard near a cluster of data-center buildings, dust hanging in the late sun. Connect it visually to IEA Electricity 2026 demand outlook from International Energy Agency. Use symmetrical control-room composition with human figures as silhouettes, overcast documentary daylight with rich texture, and deep blue monitor glow with small red warning lights. Do not render readable text.\ntop-right: Source 034, Global energy. Create a hydroelectric dam control gallery with wet concrete textures and heavy electrical cabinets. Connect it visually to IEA AI-energy observatory launch from International Energy Agency. Use macro industrial detail with shallow depth of field, overcast documentary daylight with rich texture, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\nbottom-left: Source 035, Global energy. Create a port-side power station with container cranes, substations, and data halls under sodium lights. Connect it visually to IEA conference report from International Energy Agency. Use symmetrical control-room composition with human figures as silhouettes, night-shift monitor glow and restrained shadows, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\nbottom-right: Source 036, Global energy. Create a snowy northern transmission yard with battery containers and a low, blue industrial sky. Connect it visually to International Energy Agency, data-centre electricity use surged in 2025 from International Energy Agency. Use 35mm cinematic street-level perspective, storm-cleared sunset with wet reflective surfaces, and deep blue monitor glow with small red warning lights. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 10,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-010.png",
+    "sources": [
+      {
+        "number": 37,
+        "id": "source-037-doe-data-center-electricity-demand-repor",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE data center electricity demand report release",
+        "url": "https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 0
+      },
+      {
+        "number": 38,
+        "id": "source-038-femp-data-centers-fact-sheet-2025-pdf",
+        "outlet": "U.S. Department of Energy",
+        "title": "femp data centers fact sheet 2025.pdf",
+        "url": "https://www.energy.gov/sites/default/files/2025-08/femp-data-centers-fact-sheet-2025.pdf",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 1
+      },
+      {
+        "number": 39,
+        "id": "source-039-geothermal-and-data-centers",
+        "outlet": "U.S. Department of Energy",
+        "title": "geothermal and data centers",
+        "url": "https://www.energy.gov/eere/geothermal/geothermal-and-data-centers",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 2
+      },
+      {
+        "number": 40,
+        "id": "source-040-data-centers-and-servers",
+        "outlet": "U.S. Department of Energy",
+        "title": "data centers and servers",
+        "url": "https://www.energy.gov/eere/buildings/data-centers-and-servers",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 3
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 037, Federal lab. Create a national-lab server room where test racks glow behind thick glass and warning lights, no logos. Connect it visually to DOE data center electricity demand report release from U.S. Department of Energy. Use symmetrical control-room composition with human figures as silhouettes, overcast documentary daylight with rich texture, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\ntop-right: Source 038, Federal lab. Create engineers around a high-voltage power-electronics bench, faces obscured by equipment and task lighting. Connect it visually to femp data centers fact sheet 2025.pdf from U.S. Department of Energy. Use symmetrical control-room composition with human figures as silhouettes, storm-cleared sunset with wet reflective surfaces, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\nbottom-left: Source 039, Federal lab. Create a chip cleanroom corridor with reflective floors, wafer tools, and sterile blue-white light. Connect it visually to geothermal and data centers from U.S. Department of Energy. Use over-the-shoulder investigative newsroom perspective, blue-hour sodium-vapor industrial light, and concrete, copper, and pale green equipment tones. Do not render readable text.\nbottom-right: Source 040, Federal lab. Create a thermal test chamber connected to server racks by silver ducts and thick sensor cables. Connect it visually to data centers and servers from U.S. Department of Energy. Use 35mm cinematic street-level perspective, storm-cleared sunset with wet reflective surfaces, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 11,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-011.png",
+    "sources": [
+      {
+        "number": 41,
+        "id": "source-041-clean-energy-resources-meet-data-center",
+        "outlet": "U.S. Department of Energy",
+        "title": "clean energy resources meet data center electricity demand",
+        "url": "https://www.energy.gov/oe/clean-energy-resources-meet-data-center-electricity-demand",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 4
+      },
+      {
+        "number": 42,
+        "id": "source-042-electricity-rate-designs-large-loads-evo",
+        "outlet": "U.S. Department of Energy",
+        "title": "electricity rate designs large loads evolving practices and opportunities",
+        "url": "https://www.energy.gov/policy/articles/electricity-rate-designs-large-loads-evolving-practices-and-opportunities",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 5
+      },
+      {
+        "number": 43,
+        "id": "source-043-4850616",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE: advantages and challenges of nuclear-powered data centers",
+        "url": "https://www.energy.gov/node/4850616",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 6
+      },
+      {
+        "number": 44,
+        "id": "source-044-marvel-microreactor-project",
+        "outlet": "U.S. Department of Energy",
+        "title": "marvel microreactor project",
+        "url": "https://www.energy.gov/ne/marvel-microreactor-project",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 7
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 041, Federal lab. Create a grid-modeling room with floor-to-ceiling abstract power-flow screens and silhouetted researchers. Connect it visually to clean energy resources meet data center electricity demand from U.S. Department of Energy. Use compressed telephoto layers of infrastructure, cold fluorescent interior light with one warm practical glow, and cool glass reflections with muted civic-interior colors. Do not render readable text.\ntop-right: Source 042, Federal lab. Create a macro shot of power modules, liquid-cooled plates, and fiber cables under laboratory spotlights. Connect it visually to electricity rate designs large loads evolving practices and opportunities from U.S. Department of Energy. Use rain-reflection foreground with deep background scale, blue-hour sodium-vapor industrial light, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-left: Source 043, Federal lab. Create a chilled-water loop test rig snaking through a lab toward a row of server racks. Connect it visually to DOE: advantages and challenges of nuclear-powered data centers from U.S. Department of Energy. Use symmetrical control-room composition with human figures as silhouettes, night-shift monitor glow and restrained shadows, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\nbottom-right: Source 044, Federal lab. Create a research bay with robotic cable arms testing rack power supplies in dramatic side light. Connect it visually to marvel microreactor project from U.S. Department of Energy. Use over-the-shoulder investigative newsroom perspective, cold fluorescent interior light with one warm practical glow, and concrete, copper, and pale green equipment tones. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 12,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-012.png",
+    "sources": [
+      {
+        "number": 45,
+        "id": "source-045-oak-ridge-national-laboratory-and-elemen",
+        "outlet": "U.S. Department of Energy",
+        "title": "oak ridge national laboratory and elementl power partner accelerate siting nuclear",
+        "url": "https://www.energy.gov/ne/articles/oak-ridge-national-laboratory-and-elementl-power-partner-accelerate-siting-nuclear",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 8
+      },
+      {
+        "number": 46,
+        "id": "source-046-4853136",
+        "outlet": "U.S. Department of Energy",
+        "title": "NNSA seeks AI data-center and energy-project proposals at Savannah River Site",
+        "url": "https://www.energy.gov/node/4853136",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 9
+      },
+      {
+        "number": 47,
+        "id": "source-047-4853139",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE seeks AI data-center and energy-project proposals at Oak Ridge",
+        "url": "https://www.energy.gov/node/4853139",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 10
+      },
+      {
+        "number": 48,
+        "id": "source-048-4850502",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE identifies 16 federal sites for data-center and AI infrastructure development",
+        "url": "https://www.energy.gov/node/4850502",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 11
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 045, Federal lab. Create a geothermal test site at dawn with pipes, steam, and a small modular data hall nearby. Connect it visually to oak ridge national laboratory and elementl power partner accelerate siting nuclear from U.S. Department of Energy. Use macro industrial detail with shallow depth of field, hard summer heat haze with realistic contrast, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\ntop-right: Source 046, Federal lab. Create a nuclear microreactor-style test facility exterior at night, fenced and cinematic but not branded. Connect it visually to NNSA seeks AI data-center and energy-project proposals at Savannah River Site from U.S. Department of Energy. Use compressed telephoto layers of infrastructure, early-morning mist with crisp power-line silhouettes, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-left: Source 047, Federal lab. Create a heat-reuse greenhouse attached to a data-center lab, vapor on glass and server glow behind it. Connect it visually to DOE seeks AI data-center and energy-project proposals at Oak Ridge from U.S. Department of Energy. Use over-the-shoulder investigative newsroom perspective, blue-hour sodium-vapor industrial light, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-right: Source 048, Federal lab. Create a concrete laboratory bunker with transformer pads and cooling equipment under stormy skies. Connect it visually to DOE identifies 16 federal sites for data-center and AI infrastructure development from U.S. Department of Energy. Use symmetrical control-room composition with human figures as silhouettes, hard summer heat haze with realistic contrast, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 13,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-013.png",
+    "sources": [
+      {
+        "number": 49,
+        "id": "source-049-doe-announces-site-selection-ai-data-cen",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE: site selection for AI data-center and energy infrastructure on federal lands",
+        "url": "https://www.energy.gov/articles/doe-announces-site-selection-ai-data-center-and-energy-infrastructure-development-federal",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 12
+      },
+      {
+        "number": 50,
+        "id": "source-050-fact-sheet-department-energy-ensuring-af",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE fact sheet: affordable energy access in Ohio and AI power demand",
+        "url": "https://www.energy.gov/articles/fact-sheet-department-energy-ensuring-affordable-energy-access-ohio-while-powering-future",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 13
+      },
+      {
+        "number": 51,
+        "id": "source-051-energy-department-announces-partnership",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE partnership to power America\u2019s AI future",
+        "url": "https://www.energy.gov/articles/energy-department-announces-partnership-ensure-affordable-energy-and-power-americas-ai",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 14
+      },
+      {
+        "number": 52,
+        "id": "source-052-energy-department-announces-1715-million",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE announces $171.5 million to expand U.S. geothermal energy",
+        "url": "https://www.energy.gov/articles/energy-department-announces-1715-million-expand-us-geothermal-energy",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 15
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 049, Federal lab. Create a close view of immersion-cooled server hardware with rippling fluid and blue inspection light. Connect it visually to DOE: site selection for AI data-center and energy infrastructure on federal lands from U.S. Department of Energy. Use macro industrial detail with shallow depth of field, hard summer heat haze with realistic contrast, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\ntop-right: Source 050, Federal lab. Create a rack-scale battery backup room with cables overhead and reflective safety floor markings. Connect it visually to DOE fact sheet: affordable energy access in Ohio and AI power demand from U.S. Department of Energy. Use wide environmental documentary framing, night-shift monitor glow and restrained shadows, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\nbottom-left: Source 051, Federal lab. Create a cyber-physical grid simulator lab with miniature substations, cables, and blurred monitors. Connect it visually to DOE partnership to power America\u2019s AI future from U.S. Department of Energy. Use 35mm cinematic street-level perspective, overcast documentary daylight with rich texture, and deep blue monitor glow with small red warning lights. Do not render readable text.\nbottom-right: Source 052, Federal lab. Create a wind-tunnel-like airflow lab testing server rack cooling, with smoke visualization beams. Connect it visually to DOE announces $171.5 million to expand U.S. geothermal energy from U.S. Department of Energy. Use compressed telephoto layers of infrastructure, blue-hour sodium-vapor industrial light, and cool glass reflections with muted civic-interior colors. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 14,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-014.png",
+    "sources": [
+      {
+        "number": 53,
+        "id": "source-053-doe-large-load-anopr-letter",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE large-load ANOPR letter",
+        "url": "https://www.energy.gov/sites/default/files/2025-10/403%20Large%20Loads%20Letter.pdf",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 16
+      },
+      {
+        "number": 54,
+        "id": "source-054-doe-spark-transmission-initiative",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE SPARK transmission initiative",
+        "url": "https://www.energy.gov/oe/speed-power-through-accelerated-reconductoring-and-other-key-advanced-transmission-technology",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 17
+      },
+      {
+        "number": 55,
+        "id": "source-055-doe-energy-efficiency-in-data-centers",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE energy efficiency in data centers",
+        "url": "https://www.energy.gov/eere/femp/energy-efficiency-data-centers",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 18
+      },
+      {
+        "number": 56,
+        "id": "source-056-doe-data-center-efficiency-event",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE data-center efficiency event",
+        "url": "https://www.energy.gov/femp/events/optimizing-data-centers-practical-guide-key-performance-metrics",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 19
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 053, Federal lab. Create a loading dock where experimental cooling skids are being moved into a research data center. Connect it visually to DOE large-load ANOPR letter from U.S. Department of Energy. Use wide environmental documentary framing, storm-cleared sunset with wet reflective surfaces, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\ntop-right: Source 054, Federal lab. Create a rooftop mechanical yard above a lab data center with fans, pipes, and dawn condensation. Connect it visually to DOE SPARK transmission initiative from U.S. Department of Energy. Use wide environmental documentary framing, night-shift monitor glow and restrained shadows, and deep blue monitor glow with small red warning lights. Do not render readable text.\nbottom-left: Source 055, Federal lab. Create a buried-cable test trench beside a research campus, with instruments under work lights. Connect it visually to DOE energy efficiency in data centers from U.S. Department of Energy. Use low-angle industrial editorial framing, early-morning mist with crisp power-line silhouettes, and cool glass reflections with muted civic-interior colors. Do not render readable text.\nbottom-right: Source 056, Federal lab. Create a high-bay lab full of transformers, flexible conduits, and suspended cable trays. Connect it visually to DOE data-center efficiency event from U.S. Department of Energy. Use 35mm cinematic street-level perspective, storm-cleared sunset with wet reflective surfaces, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 15,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-015.png",
+    "sources": [
+      {
+        "number": 57,
+        "id": "source-057-doe-femp-winter-workshops",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE FEMP winter workshops",
+        "url": "https://www.energy.gov/cmei/femp/events/femp-winter-workshops",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 20
+      },
+      {
+        "number": 58,
+        "id": "source-058-doe-conditional-commitment-for-transmiss",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE LPO conditional commitment for PacifiCorp transmission expansion",
+        "url": "https://www.energy.gov/edf/articles/lpo-announces-conditional-commitment-pacificorp-expand-transmission-several-western",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 21
+      },
+      {
+        "number": 59,
+        "id": "source-059-doe-transmission-tools-article",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE transmission tools article",
+        "url": "https://www.energy.gov/eere/wind/articles/smart-transmission-tools-modernize-americas-power-grid",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 22
+      },
+      {
+        "number": 60,
+        "id": "source-060-doe-permitting-and-infrastructure-recomm",
+        "outlet": "U.S. Department of Energy",
+        "title": "DOE recommendations for powering AI and data-center infrastructure",
+        "url": "https://www.energy.gov/sites/default/files/2024-11/Powering%20AI%20and%20Data%20Center%20Infrastructure%20Recommendations%20July%202024.pdf",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 23
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 057, Federal lab. Create a darkened instrument room where oscilloscopes and rack LEDs create an electric night scene. Connect it visually to DOE FEMP winter workshops from U.S. Department of Energy. Use compressed telephoto layers of infrastructure, cold fluorescent interior light with one warm practical glow, and steel gray, wet asphalt, and utility amber. Do not render readable text.\ntop-right: Source 058, Federal lab. Create a modular data-center container being instrumented in a lab yard after rain. Connect it visually to DOE LPO conditional commitment for PacifiCorp transmission expansion from U.S. Department of Energy. Use over-the-shoulder investigative newsroom perspective, dramatic side light through dust and vapor, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-left: Source 059, Federal lab. Create a laboratory microgrid island with solar canopy, battery containers, and a small data hall. Connect it visually to DOE transmission tools article from U.S. Department of Energy. Use wide environmental documentary framing, hard summer heat haze with realistic contrast, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\nbottom-right: Source 060, Federal lab. Create a high-voltage cage around power electronics with amber warning lamps and no readable signs. Connect it visually to DOE recommendations for powering AI and data-center infrastructure from U.S. Department of Energy. Use symmetrical control-room composition with human figures as silhouettes, hard summer heat haze with realistic contrast, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 16,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-016.png",
+    "sources": [
+      {
+        "number": 61,
+        "id": "source-061-doe-better-buildings-data-centers",
+        "outlet": "betterbuildingssolutioncenter.energy.gov",
+        "title": "DOE Better Buildings: Data Centers sector page",
+        "url": "https://betterbuildingssolutioncenter.energy.gov/sectors/data-centers",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 24
+      },
+      {
+        "number": 62,
+        "id": "source-062-epri-powering-intelligence-executive-sum",
+        "outlet": "Electric Power Research Institute",
+        "title": "EPRI Powering Intelligence executive summary",
+        "url": "https://powering-intelligence.epri.com/executive-summary.html",
+        "category": "Utility scenarios",
+        "status": "200",
+        "category_index": 0
+      },
+      {
+        "number": 63,
+        "id": "source-063-epri-powering-intelligence",
+        "outlet": "Electric Power Research Institute",
+        "title": "EPRI Powering Intelligence",
+        "url": "https://powering-intelligence.epri.com",
+        "category": "Utility scenarios",
+        "status": "200",
+        "category_index": 1
+      },
+      {
+        "number": 64,
+        "id": "source-064-epri-powering-intelligence-2026-faqs",
+        "outlet": "Electric Power Research Institute",
+        "title": "EPRI Powering Intelligence 2026 FAQs",
+        "url": "https://restservice.epri.com/publicattachment/96784",
+        "category": "Utility scenarios",
+        "status": "200",
+        "category_index": 2
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 061, Federal lab. Create a cooling-tower test platform with vapor, fans, and a server-building facade in the background. Connect it visually to DOE Better Buildings: Data Centers sector page from betterbuildingssolutioncenter.energy.gov. Use compressed telephoto layers of infrastructure, cold fluorescent interior light with one warm practical glow, and steel gray, wet asphalt, and utility amber. Do not render readable text.\ntop-right: Source 062, Utility scenarios. Create a utility planning room transformed into a wall-size grid model, with cables, magnetic tokens, and blurred load maps. Connect it visually to EPRI Powering Intelligence executive summary from Electric Power Research Institute. Use compressed telephoto layers of infrastructure, cold fluorescent interior light with one warm practical glow, and concrete, copper, and pale green equipment tones. Do not render readable text.\nbottom-left: Source 063, Utility scenarios. Create a sunset battery yard beside a data-center campus, with one technician silhouetted against container lights. Connect it visually to EPRI Powering Intelligence from Electric Power Research Institute. Use symmetrical control-room composition with human figures as silhouettes, storm-cleared sunset with wet reflective surfaces, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\nbottom-right: Source 064, Utility scenarios. Create an industrial load-control room where HVAC dampers, meters, and server-rack feeds converge in one frame. Connect it visually to EPRI Powering Intelligence 2026 FAQs from Electric Power Research Institute. Use over-the-shoulder investigative newsroom perspective, blue-hour sodium-vapor industrial light, and concrete, copper, and pale green equipment tones. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 17,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-017.png",
+    "sources": [
+      {
+        "number": 65,
+        "id": "source-065-epri-dcflex-homepage",
+        "outlet": "Electric Power Research Institute",
+        "title": "EPRI DCFlex homepage",
+        "url": "https://dcflex.epri.com",
+        "category": "Utility scenarios",
+        "status": "200",
+        "category_index": 3
+      },
+      {
+        "number": 66,
+        "id": "source-066-berkeley-lab-report-news-release",
+        "outlet": "Lawrence Berkeley National Laboratory",
+        "title": "Berkeley Lab report news release",
+        "url": "https://newscenter.lbl.gov/2025/01/15/berkeley-lab-report-evaluates-increase-in-electricity-demand-from-data-centers",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 25
+      },
+      {
+        "number": 67,
+        "id": "source-067-ornl-workshop-on-ai-data-center-power",
+        "outlet": "Oak Ridge National Laboratory",
+        "title": "ORNL workshop on AI data center power",
+        "url": "https://www.ornl.gov/news/workshop-tackles-ai-data-center-power-security-challenges",
+        "category": "Federal lab",
+        "status": "200",
+        "category_index": 26
+      },
+      {
+        "number": 68,
+        "id": "source-068-26-state-of-the-market-0324-1430-pdf",
+        "outlet": "Federal Energy Regulatory Commission",
+        "title": "FERC State of the Market presentation PDF",
+        "url": "https://www.ferc.gov/sites/default/files/2026-03/26_State-of-the-Market_0324_1430.pdf",
+        "category": "Federal regulation",
+        "status": "200",
+        "category_index": 0
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 065, Utility scenarios. Create a dark data-center operations floor during a grid event, with noncritical aisles dimmed and monitors glowing. Connect it visually to EPRI DCFlex homepage from Electric Power Research Institute. Use 35mm cinematic street-level perspective, storm-cleared sunset with wet reflective surfaces, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\ntop-right: Source 066, Federal lab. Create a quiet lab corridor lined with power cabinets, glass reflections, and emergency-red spill light. Connect it visually to Berkeley Lab report news release from Lawrence Berkeley National Laboratory. Use rain-reflection foreground with deep background scale, blue-hour sodium-vapor industrial light, and concrete, copper, and pale green equipment tones. Do not render readable text.\nbottom-left: Source 067, Federal lab. Create a researcher silhouette inspecting fiber trunks above dense server racks from a rolling ladder. Connect it visually to ORNL workshop on AI data center power from Oak Ridge National Laboratory. Use wide environmental documentary framing, hard summer heat haze with realistic contrast, and deep blue monitor glow with small red warning lights. Do not render readable text.\nbottom-right: Source 068, Federal regulation. Create a federal hearing room seen from the witness table, microphones silhouetted against a wall of blurred power maps. Connect it visually to FERC State of the Market presentation PDF from Federal Energy Regulatory Commission. Use macro industrial detail with shallow depth of field, hard summer heat haze with realistic contrast, and deep blue monitor glow with small red warning lights. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 18,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-018.png",
+    "sources": [
+      {
+        "number": 69,
+        "id": "source-069-ferc-testimony-by-judy-w-chang",
+        "outlet": "Federal Energy Regulatory Commission",
+        "title": "FERC testimony by Judy W. Chang",
+        "url": "https://www.ferc.gov/sites/default/files/2026-02/witness_testimony_chang_02.03.2026.pdf",
+        "category": "Federal regulation",
+        "status": "200",
+        "category_index": 1
+      },
+      {
+        "number": 70,
+        "id": "source-070-pjm-board-large-load-integration-pdf",
+        "outlet": "PJM Interconnection",
+        "title": "PJM board large-load integration PDF",
+        "url": "https://www.pjm.com/-/media/DotCom/about-pjm/newsroom/2026-releases/20260116-pjm-board-outlines-plans-to-integrate-large-loads-reliably.pdf",
+        "category": "Grid operator",
+        "status": "200",
+        "category_index": 0
+      },
+      {
+        "number": 71,
+        "id": "source-071-pjm-updated-20-year-forecast",
+        "outlet": "PJM Interconnection",
+        "title": "PJM updated 20-year forecast",
+        "url": "https://insidelines.pjm.com/pjms-updated-20-year-forecast-continues-to-see-significant-long-term-load-growth",
+        "category": "Grid operator",
+        "status": "200",
+        "category_index": 1
+      },
+      {
+        "number": 72,
+        "id": "source-072-pjm-inside-lines-2025-planning-review",
+        "outlet": "PJM Interconnection",
+        "title": "PJM Inside Lines: 2025 planning review",
+        "url": "https://insidelines.pjm.com/2025-year-in-review-planning-prepares-for-burgeoning-electricity-demand",
+        "category": "Grid operator",
+        "status": "200",
+        "category_index": 2
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 069, Federal regulation. Create a marble hallway outside an energy hearing where rolling cases of evidence pass beneath cold overhead light. Connect it visually to FERC testimony by Judy W. Chang from Federal Energy Regulatory Commission. Use low-angle industrial editorial framing, cold fluorescent interior light with one warm practical glow, and concrete, copper, and pale green equipment tones. Do not render readable text.\ntop-right: Source 070, Grid operator. Create a grid dispatch center at night with operators facing enormous abstract load curves, no readable labels. Connect it visually to PJM board large-load integration PDF from PJM Interconnection. Use compressed telephoto layers of infrastructure, cold fluorescent interior light with one warm practical glow, and concrete, copper, and pale green equipment tones. Do not render readable text.\nbottom-left: Source 071, Grid operator. Create a rain-wet substation yard with transformers, breakers, and transmission towers glowing at golden hour. Connect it visually to PJM updated 20-year forecast from PJM Interconnection. Use over-the-shoulder investigative newsroom perspective, dramatic side light through dust and vapor, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-right: Source 072, Grid operator. Create a battery-storage control console with colored power-flow graphics reflected in glass, no readable text. Connect it visually to PJM Inside Lines: 2025 planning review from PJM Interconnection. Use symmetrical control-room composition with human figures as silhouettes, night-shift monitor glow and restrained shadows, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 19,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-019.png",
+    "sources": [
+      {
+        "number": 73,
+        "id": "source-073-pjm-load-forecast-development-process",
+        "outlet": "PJM Interconnection",
+        "title": "PJM, Load Forecast Development Process",
+        "url": "https://www.pjm.com/en/planning/resource-adequacy-planning/load-forecast-dev-process",
+        "category": "Grid operator",
+        "status": "200",
+        "category_index": 3
+      },
+      {
+        "number": 74,
+        "id": "source-074-pjm-2026-load-forecast-report",
+        "outlet": "PJM Interconnection",
+        "title": "PJM, 2026 Load Forecast Report",
+        "url": "https://www.pjm.com/-/media/DotCom/library/reports-notices/load-forecast/2026-load-report.pdf",
+        "category": "Grid operator",
+        "status": "200",
+        "category_index": 4
+      },
+      {
+        "number": 75,
+        "id": "source-075-pjm-2026-long-term-load-forecast-supplem",
+        "outlet": "PJM Interconnection",
+        "title": "PJM, 2026 Long-Term Load Forecast supplement",
+        "url": "https://www.pjm.com/-/media/DotCom/planning/res-adeq/load-forecast/load-forecast-supplement-2026.pdf",
+        "category": "Grid operator",
+        "status": "200",
+        "category_index": 5
+      },
+      {
+        "number": 76,
+        "id": "source-076-ercot-preliminary-long-term-load-forecas",
+        "outlet": "ERCOT",
+        "title": "ERCOT preliminary long-term load forecast",
+        "url": "https://www.ercot.com/news/release/04152026-ercot-releases-preliminary",
+        "category": "Grid operator",
+        "status": "200",
+        "category_index": 6
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 073, Grid operator. Create a lone night-shift operator silhouetted before a regional grid wall, coffee steam caught in monitor glow. Connect it visually to PJM, Load Forecast Development Process from PJM Interconnection. Use rain-reflection foreground with deep background scale, early-morning mist with crisp power-line silhouettes, and cool glass reflections with muted civic-interior colors. Do not render readable text.\ntop-right: Source 074, Grid operator. Create a transmission maintenance staging area with insulated gear, cable reels, and storm clouds rolling in. Connect it visually to PJM, 2026 Load Forecast Report from PJM Interconnection. Use symmetrical control-room composition with human figures as silhouettes, overcast documentary daylight with rich texture, and deep blue monitor glow with small red warning lights. Do not render readable text.\nbottom-left: Source 075, Grid operator. Create a data-center interconnection substation after rain, shot low through the fence with reflections on gravel. Connect it visually to PJM, 2026 Long-Term Load Forecast supplement from PJM Interconnection. Use rain-reflection foreground with deep background scale, blue-hour sodium-vapor industrial light, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-right: Source 076, Grid operator. Create a close-up of gloved hands on a control-room console, blurred grid screens towering in the background. Connect it visually to ERCOT preliminary long-term load forecast from ERCOT. Use over-the-shoulder investigative newsroom perspective, blue-hour sodium-vapor industrial light, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 20,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-020.png",
+    "sources": [
+      {
+        "number": 77,
+        "id": "source-077-ercot-constraints-and-needs-report",
+        "outlet": "ERCOT",
+        "title": "ERCOT constraints and needs report",
+        "url": "https://www.ercot.com/files/docs/2025/12/23/2025-Report-on-Existing-and-Potential-Electric-System-Constraints-and-Needs.pdf",
+        "category": "Grid operator",
+        "status": "200",
+        "category_index": 7
+      },
+      {
+        "number": 78,
+        "id": "source-078-nerc-2025-2026-winter-reliability-assess",
+        "outlet": "North American Electric Reliability Corporation",
+        "title": "NERC 2025-2026 Winter Reliability Assessment",
+        "url": "https://www.nerc.com/globalassets/our-work/assessments/nerc_wra_2025.pdf",
+        "category": "Grid operator",
+        "status": "200",
+        "category_index": 8
+      },
+      {
+        "number": 79,
+        "id": "source-079-nerc-large-loads-task-force-page",
+        "outlet": "North American Electric Reliability Corporation",
+        "title": "NERC Large Loads Task Force page",
+        "url": "https://www.nerc.com/comm/RSTC/Pages/LLTF-Initiative.aspx",
+        "category": "Grid operator",
+        "status": "200",
+        "category_index": 9
+      },
+      {
+        "number": 80,
+        "id": "source-080-nerc-march-2026-white-paper",
+        "outlet": "North American Electric Reliability Corporation",
+        "title": "NERC March 2026 white paper",
+        "url": "https://www.nerc.com/globalassets/our-work/reports/white-papers/draft-nerc-lltf-white-paper---assessment-of-gaps_forreview.pdf",
+        "category": "Grid operator",
+        "status": "200",
+        "category_index": 10
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 077, Grid operator. Create a sunrise helicopter-view feeling of transmission lines converging on a major switching station. Connect it visually to ERCOT constraints and needs report from ERCOT. Use symmetrical control-room composition with human figures as silhouettes, hard summer heat haze with realistic contrast, and deep blue monitor glow with small red warning lights. Do not render readable text.\ntop-right: Source 078, Grid operator. Create a black-start drill scene in a utility control center with emergency lighting and tense quiet. Connect it visually to NERC 2025-2026 Winter Reliability Assessment from North American Electric Reliability Corporation. Use compressed telephoto layers of infrastructure, cold fluorescent interior light with one warm practical glow, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-left: Source 079, Grid operator. Create a wide winter scene of breakers, steel lattice, and a distant data-center campus under pale light. Connect it visually to NERC Large Loads Task Force page from North American Electric Reliability Corporation. Use rain-reflection foreground with deep background scale, blue-hour sodium-vapor industrial light, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-right: Source 080, Grid operator. Create a field engineer opening a relay cabinet while a maze of power lines fills the background. Connect it visually to NERC March 2026 white paper from North American Electric Reliability Corporation. Use compressed telephoto layers of infrastructure, dramatic side light through dust and vapor, and cool glass reflections with muted civic-interior colors. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 21,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-021.png",
+    "sources": [
+      {
+        "number": 81,
+        "id": "source-081-jlarc-data-centers-in-virginia-landing-p",
+        "outlet": "Virginia JLARC",
+        "title": "JLARC Data Centers in Virginia landing page",
+        "url": "https://jlarc.virginia.gov/landing-2024-data-centers-in-virginia.asp",
+        "category": "State record",
+        "status": "200",
+        "category_index": 0
+      },
+      {
+        "number": 82,
+        "id": "source-082-jlarc-data-centers-in-virginia-pdf",
+        "outlet": "Virginia JLARC",
+        "title": "JLARC Data Centers in Virginia PDF",
+        "url": "https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+        "category": "State record",
+        "status": "200",
+        "category_index": 1
+      },
+      {
+        "number": 83,
+        "id": "source-083-jlarc-presentation-data-centers-in-virgi",
+        "outlet": "Virginia JLARC",
+        "title": "JLARC presentation, Data Centers in Virginia",
+        "url": "https://jlarc.virginia.gov/pdfs/presentations/Rpt598Pres-1.pdf",
+        "category": "State record",
+        "status": "200",
+        "category_index": 2
+      },
+      {
+        "number": 84,
+        "id": "source-084-virginia-rd40-data-center-report-pdf",
+        "outlet": "Virginia Reports to the General Assembly",
+        "title": "Virginia RD40 data center report PDF",
+        "url": "https://rga.lis.virginia.gov/Published/2026/RD40/PDF",
+        "category": "State record",
+        "status": "200",
+        "category_index": 3
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 081, State record. Create a county planning map projected across a dark meeting room while residents' silhouettes watch, no readable text. Connect it visually to JLARC Data Centers in Virginia landing page from Virginia JLARC. Use over-the-shoulder investigative newsroom perspective, early-morning mist with crisp power-line silhouettes, and concrete, copper, and pale green equipment tones. Do not render readable text.\ntop-right: Source 082, State record. Create a Virginia roadside where forest, new grading, and a fenced data-center pad meet under construction lights. Connect it visually to JLARC Data Centers in Virginia PDF from Virginia JLARC. Use 35mm cinematic street-level perspective, hard summer heat haze with realistic contrast, and deep blue monitor glow with small red warning lights. Do not render readable text.\nbottom-left: Source 083, State record. Create a suburban street at dusk with utility poles leading toward warehouse-scale data halls over the hill. Connect it visually to JLARC presentation, Data Centers in Virginia from Virginia JLARC. Use symmetrical control-room composition with human figures as silhouettes, night-shift monitor glow and restrained shadows, and deep blue monitor glow with small red warning lights. Do not render readable text.\nbottom-right: Source 084, State record. Create a state records archive room where rolled infrastructure maps spill from shelves under dramatic side light. Connect it visually to Virginia RD40 data center report PDF from Virginia Reports to the General Assembly. Use low-angle industrial editorial framing, dramatic side light through dust and vapor, and cool glass reflections with muted civic-interior colors. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 22,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-022.png",
+    "sources": [
+      {
+        "number": 85,
+        "id": "source-085-virginia-reports-to-the-general-assembly",
+        "outlet": "Virginia Reports to the General Assembly",
+        "title": "Virginia Reports to the General Assembly, RD40 report page",
+        "url": "https://rga.lis.virginia.gov/Published/2026/RD40",
+        "category": "State record",
+        "status": "200",
+        "category_index": 4
+      },
+      {
+        "number": 86,
+        "id": "source-086-virginia-economic-development-partnershi",
+        "outlet": "Virginia Economic Development Partnership",
+        "title": "Virginia Economic Development Partnership, Data Center Retail Sales and Use Tax Exemption",
+        "url": "https://www.vedp.org/incentive/data-center-retail-sales-use-tax-exemption",
+        "category": "State record",
+        "status": "200",
+        "category_index": 5
+      },
+      {
+        "number": 87,
+        "id": "source-087-brattle-the-untapped-grid-pdf",
+        "outlet": "The Brattle Group",
+        "title": "Brattle The Untapped Grid PDF",
+        "url": "https://www.brattle.com/wp-content/uploads/2026/03/The-Untapped-Grid-Mar-2026.pdf",
+        "category": "Flexibility",
+        "status": "200",
+        "category_index": 0
+      },
+      {
+        "number": 88,
+        "id": "source-088-brattle-press-release-on-the-untapped-gr",
+        "outlet": "The Brattle Group",
+        "title": "Brattle press release on The Untapped Grid",
+        "url": "https://www.brattle.com/insights-events/news/new-brattle-report-finds-better-utilization-of-existing-power-grid-could-save-us-consumers-more-than-100-billion-in-the-next-decade",
+        "category": "Flexibility",
+        "status": "200",
+        "category_index": 1
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 085, State record. Create a packed community meeting seen from the back row, faces indistinct, bright projector glow on the wall. Connect it visually to Virginia Reports to the General Assembly, RD40 report page from Virginia Reports to the General Assembly. Use wide environmental documentary framing, storm-cleared sunset with wet reflective surfaces, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\ntop-right: Source 086, State record. Create a rural substation beside fresh industrial construction with red clay, temporary fencing, and storm light. Connect it visually to Virginia Economic Development Partnership, Data Center Retail Sales and Use Tax Exemption from Virginia Economic Development Partnership. Use rain-reflection foreground with deep background scale, blue-hour sodium-vapor industrial light, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-left: Source 087, Flexibility. Create a data-center operations room during a demand-response event, half the aisle lights dimmed while battery screens glow. Connect it visually to Brattle The Untapped Grid PDF from The Brattle Group. Use symmetrical control-room composition with human figures as silhouettes, overcast documentary daylight with rich texture, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\nbottom-right: Source 088, Flexibility. Create a battery-storage operator framed by container rows and a tablet of abstract controls, no readable text. Connect it visually to Brattle press release on The Untapped Grid from The Brattle Group. Use macro industrial detail with shallow depth of field, overcast documentary daylight with rich texture, and deep blue monitor glow with small red warning lights. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 23,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-023.png",
+    "sources": [
+      {
+        "number": 89,
+        "id": "source-089-google-data-center-efficiency",
+        "outlet": "Google",
+        "title": "Google data center efficiency",
+        "url": "https://www.google.com/about/datacenters/efficiency",
+        "category": "Company record",
+        "status": "200",
+        "category_index": 0
+      },
+      {
+        "number": 90,
+        "id": "source-090-google-2025-environmental-report-pdf",
+        "outlet": "Google",
+        "title": "Google 2025 Environmental Report PDF",
+        "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+        "category": "Company record",
+        "status": "200",
+        "category_index": 1
+      },
+      {
+        "number": 91,
+        "id": "source-091-microsoft-sustainability-report",
+        "outlet": "Microsoft",
+        "title": "Microsoft sustainability report",
+        "url": "https://www.microsoft.com/en-us/corporate-responsibility/sustainability/report",
+        "category": "Company record",
+        "status": "200",
+        "category_index": 2
+      },
+      {
+        "number": 92,
+        "id": "source-092-amazon-2024-sustainability-report-pdf",
+        "outlet": "Amazon",
+        "title": "Amazon 2024 Sustainability Report PDF",
+        "url": "https://sustainability.aboutamazon.com/2024-amazon-sustainability-report.pdf",
+        "category": "Company record",
+        "status": "200",
+        "category_index": 3
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 089, Company record. Create a hyperscale data-center loading dock at night where cooling skids and electrical gear arrive under floodlights. Connect it visually to Google data center efficiency from Google. Use 35mm cinematic street-level perspective, night-shift monitor glow and restrained shadows, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\ntop-right: Source 090, Company record. Create a server hall with a technician on a ladder checking overhead cable trays, deep rows receding behind them. Connect it visually to Google 2025 Environmental Report PDF from Google. Use low-angle industrial editorial framing, cold fluorescent interior light with one warm practical glow, and cool glass reflections with muted civic-interior colors. Do not render readable text.\nbottom-left: Source 091, Company record. Create a construction site for a data-center power yard where massive transformers hang from a crane at dusk. Connect it visually to Microsoft sustainability report from Microsoft. Use macro industrial detail with shallow depth of field, storm-cleared sunset with wet reflective surfaces, and deep blue monitor glow with small red warning lights. Do not render readable text.\nbottom-right: Source 092, Company record. Create a facilities plant room where chilled-water pipes, power meters, and valves create a dense industrial maze. Connect it visually to Amazon 2024 Sustainability Report PDF from Amazon. Use macro industrial detail with shallow depth of field, night-shift monitor glow and restrained shadows, and deep blue monitor glow with small red warning lights. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 24,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-024.png",
+    "sources": [
+      {
+        "number": 93,
+        "id": "source-093-meta-2024-sustainability-report",
+        "outlet": "Meta",
+        "title": "Meta 2024 Sustainability Report",
+        "url": "https://sustainability.fb.com/2024-sustainability-report",
+        "category": "Company record",
+        "status": "200",
+        "category_index": 4
+      },
+      {
+        "number": 94,
+        "id": "source-094-21fa7b957664d5dca6788e35ab43b88e",
+        "outlet": "Associated Press",
+        "title": "AP: communities increasingly defeat proposed data centers",
+        "url": "https://apnews.com/article/21fa7b957664d5dca6788e35ab43b88e",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 0
+      },
+      {
+        "number": 95,
+        "id": "source-095-3c6988c44455d34c0e8db6dd63fdfd57",
+        "outlet": "Associated Press",
+        "title": "AP: Microsoft president says Big Tech should pay its way for AI data centers",
+        "url": "https://apnews.com/article/3c6988c44455d34c0e8db6dd63fdfd57",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 1
+      },
+      {
+        "number": 96,
+        "id": "source-096-ap-maine-data-center-moratorium-and-loca",
+        "outlet": "Associated Press",
+        "title": "AP: Maine data-center moratorium and local backlash",
+        "url": "https://apnews.com/article/aa63ba087d5ad53ab0735893646e7357",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 2
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 093, Company record. Create a close cinematic view of a cooling manifold beside server infrastructure, condensation and tool marks visible. Connect it visually to Meta 2024 Sustainability Report from Meta. Use compressed telephoto layers of infrastructure, cold fluorescent interior light with one warm practical glow, and cool glass reflections with muted civic-interior colors. Do not render readable text.\ntop-right: Source 094, Local reporting. Create a neighborhood street after a storm where a utility crew works under portable lights near service lines. Connect it visually to AP: communities increasingly defeat proposed data centers from Associated Press. Use low-angle industrial editorial framing, blue-hour sodium-vapor industrial light, and concrete, copper, and pale green equipment tones. Do not render readable text.\nbottom-left: Source 095, Local reporting. Create a tense town-hall hallway outside a data-center vote, residents in silhouette beneath fluorescent light. Connect it visually to AP: Microsoft president says Big Tech should pay its way for AI data centers from Associated Press. Use macro industrial detail with shallow depth of field, overcast documentary daylight with rich texture, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\nbottom-right: Source 096, Local reporting. Create a driveway view where a quiet house faces a newly cleared transmission corridor in the distance. Connect it visually to AP: Maine data-center moratorium and local backlash from Associated Press. Use compressed telephoto layers of infrastructure, dramatic side light through dust and vapor, and concrete, copper, and pale green equipment tones. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 25,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-025.png",
+    "sources": [
+      {
+        "number": 97,
+        "id": "source-097-ap-data-center-moratorium-debate",
+        "outlet": "Associated Press",
+        "title": "AP: data-center moratorium debate",
+        "url": "https://apnews.com/article/65651bd28c3d911d18eeb46cd54f4c75",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 3
+      },
+      {
+        "number": 98,
+        "id": "source-098-ap-georgia-regulators-approve-large-util",
+        "outlet": "Associated Press",
+        "title": "AP: Georgia regulators approve large utility capacity increase",
+        "url": "https://apnews.com/article/0b377d6a4a57c9353c0eb577b8951af3",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 4
+      },
+      {
+        "number": 99,
+        "id": "source-099-ap-data-centers-and-u-s-power-grid-press",
+        "outlet": "Associated Press",
+        "title": "AP: data centers and U.S. power-grid pressure",
+        "url": "https://apnews.com/article/9cd8c6b29914c377d4961a78f1fa00b2",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 5
+      },
+      {
+        "number": 100,
+        "id": "source-100-ap-on-the-georgia-alabama-power-expansio",
+        "outlet": "Associated Press",
+        "title": "AP on the Georgia-Alabama power expansion loan",
+        "url": "https://apnews.com/article/3aa78ffb7e67ae8e5ce3c42b7d4d3134",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 6
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 097, Local reporting. Create a local road torn open for conduit trenching beside a data-center construction fence at dawn. Connect it visually to AP: data-center moratorium debate from Associated Press. Use 35mm cinematic street-level perspective, storm-cleared sunset with wet reflective surfaces, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\ntop-right: Source 098, Local reporting. Create a small-town planning table with a 3D terrain model, hard hat, cable samples, and blurred permit maps. Connect it visually to AP: Georgia regulators approve large utility capacity increase from Associated Press. Use over-the-shoulder investigative newsroom perspective, early-morning mist with crisp power-line silhouettes, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-left: Source 099, Local reporting. Create a homeowner silhouetted in a kitchen window while data-center construction lights glow on the horizon. Connect it visually to AP: data centers and U.S. power-grid pressure from Associated Press. Use 35mm cinematic street-level perspective, hard summer heat haze with realistic contrast, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\nbottom-right: Source 100, Local reporting. Create a utility crew replacing a residential transformer in heavy rain, sparks of work lights on wet asphalt. Connect it visually to AP on the Georgia-Alabama power expansion loan from Associated Press. Use macro industrial detail with shallow depth of field, storm-cleared sunset with wet reflective surfaces, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 26,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-026.png",
+    "sources": [
+      {
+        "number": 101,
+        "id": "source-101-ap-on-georgia-power-freezing-base-rates",
+        "outlet": "Associated Press",
+        "title": "AP on Georgia Power freezing base rates",
+        "url": "https://apnews.com/article/59faeeeceba07fbe5bdcc48a3b1c3d0d",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 7
+      },
+      {
+        "number": 102,
+        "id": "source-102-ap-on-meta-nuclear-deals",
+        "outlet": "Associated Press",
+        "title": "AP on Meta nuclear deals",
+        "url": "https://apnews.com/article/0eb051a9a11d96f7ce200e186ad13476",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 8
+      },
+      {
+        "number": 103,
+        "id": "source-103-ap-virginia-data-center-tax-break-debate",
+        "outlet": "Associated Press",
+        "title": "AP: Virginia data-center tax-break debate",
+        "url": "https://apnews.com/article/fb9e6dbe61fbf03c467d1301f00bafb7",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 9
+      },
+      {
+        "number": 104,
+        "id": "source-104-ap-xai-mississippi-data-center-investmen",
+        "outlet": "Associated Press",
+        "title": "AP: xAI Mississippi data-center investment",
+        "url": "https://apnews.com/article/433691ace945708a04762b4791602f3d",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 10
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 101, Local reporting. Create a wide suburban edge where backyards end abruptly at a warehouse-scale technology campus wall. Connect it visually to AP on Georgia Power freezing base rates from Associated Press. Use macro industrial detail with shallow depth of field, night-shift monitor glow and restrained shadows, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\ntop-right: Source 102, Local reporting. Create a rural crossroads with protest signs turned away from camera, power lines, and distant construction cranes. Connect it visually to AP on Meta nuclear deals from Associated Press. Use over-the-shoulder investigative newsroom perspective, early-morning mist with crisp power-line silhouettes, and steel gray, wet asphalt, and utility amber. Do not render readable text.\nbottom-left: Source 103, Local reporting. Create a muddy construction entrance with tire tracks, temporary power poles, and a low server-building shell. Connect it visually to AP: Virginia data-center tax-break debate from Associated Press. Use 35mm cinematic street-level perspective, hard summer heat haze with realistic contrast, and deep blue monitor glow with small red warning lights. Do not render readable text.\nbottom-right: Source 104, Local reporting. Create a night scene of dump trucks queuing outside a data-center site while nearby porch lights remain small. Connect it visually to AP: xAI Mississippi data-center investment from Associated Press. Use over-the-shoulder investigative newsroom perspective, blue-hour sodium-vapor industrial light, and cool glass reflections with muted civic-interior colors. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 27,
+    "layout": "quad",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-027.png",
+    "sources": [
+      {
+        "number": 105,
+        "id": "source-105-ap-pollution-concerns-around-xai-in-memp",
+        "outlet": "Associated Press",
+        "title": "AP: pollution concerns around xAI in Memphis",
+        "url": "https://apnews.com/article/571c16950259b382f9eae61bd59260ef",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 11
+      },
+      {
+        "number": 106,
+        "id": "source-106-ap-on-anthropic-and-google-chip-deal",
+        "outlet": "Associated Press",
+        "title": "AP on Anthropic and Google chip deal",
+        "url": "https://apnews.com/article/275df9e291bbb361962dfc6ba868506c",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 12
+      },
+      {
+        "number": 107,
+        "id": "source-107-ap-on-u-s-copyright-office-ai-assisted-w",
+        "outlet": "Associated Press",
+        "title": "AP on U.S. copyright office AI-assisted works report",
+        "url": "https://apnews.com/article/363f1c537eb86b624bf5e81bed70d459",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 13
+      },
+      {
+        "number": 108,
+        "id": "source-108-ap-microsoft-takes-over-texas-data-cente",
+        "outlet": "Associated Press",
+        "title": "AP: Microsoft takes over Texas data-center expansion",
+        "url": "https://apnews.com/article/f4f74c3a4617d8cfab5b933fc31ccc6e",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 14
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact 2x2 grid of four equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\ntop-left: Source 105, Local reporting. Create a roadside substation expansion seen through chain-link fence with homes just beyond the equipment. Connect it visually to AP: pollution concerns around xAI in Memphis from Associated Press. Use macro industrial detail with shallow depth of field, night-shift monitor glow and restrained shadows, and deep blue monitor glow with small red warning lights. Do not render readable text.\ntop-right: Source 106, Local reporting. Create a local diner window reflecting transmission towers and construction cranes across the street. Connect it visually to AP on Anthropic and Google chip deal from Associated Press. Use 35mm cinematic street-level perspective, night-shift monitor glow and restrained shadows, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\nbottom-left: Source 107, Local reporting. Create a school-bus stop under utility wires near a new industrial power corridor, photographed at sunrise. Connect it visually to AP on U.S. copyright office AI-assisted works report from Associated Press. Use wide environmental documentary framing, night-shift monitor glow and restrained shadows, and storm-sky blue, sodium orange, and white work lamps. Do not render readable text.\nbottom-right: Source 108, Local reporting. Create a county road bordered by buried-conduit markers, orange fencing, and misty tree line. Connect it visually to AP: Microsoft takes over Texas data-center expansion from Associated Press. Use 35mm cinematic street-level perspective, overcast documentary daylight with rich texture, and black cable bundles, galvanized metal, and orange work lights. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  },
+  {
+    "sheet": 28,
+    "layout": "diptych",
+    "image": "assets/data-center-grid/rail-imagegen-sheets/sheet-028.png",
+    "sources": [
+      {
+        "number": 109,
+        "id": "source-109-ap-ohio-10-gw-data-center-project",
+        "outlet": "Associated Press",
+        "title": "AP: Ohio 10-GW data-center project",
+        "url": "https://apnews.com/article/4667fa1442ec1c652228337ab4eb68ee",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 15
+      },
+      {
+        "number": 110,
+        "id": "source-110-ap-on-pjm-fast-track-power-proposal",
+        "outlet": "Associated Press",
+        "title": "AP: fast-tracking power plants in the PJM region",
+        "url": "https://apnews.com/article/08ed707897fa5274663649bb2c372849",
+        "category": "Local reporting",
+        "status": "200",
+        "category_index": 16
+      }
+    ],
+    "prompt": "Use case: photorealistic-natural\nAsset type: contact sheet for cropping into individual side-rail source-card photos\nPrimary request: Create an exact two-panel horizontal diptych of two equal photorealistic photos. Each panel must look like a separate original cinematic news-magazine photograph: cool, creative, specific, and visually energetic, not a boring desk still life, not an outlet close-up, not an illustration, not a collage, not CGI.\nleft: Source 109, Local reporting. Create a quiet living-room interior with blue data-center glow visible through the curtains, no papers or bills. Connect it visually to AP: Ohio 10-GW data-center project from Associated Press. Use low-angle industrial editorial framing, dramatic side light through dust and vapor, and cool glass reflections with muted civic-interior colors. Do not render readable text.\nright: Source 110, Local reporting. Create a field of temporary generators and cable ramps powering an unfinished data-center shell at blue hour. Connect it visually to AP: fast-tracking power plants in the PJM region from Associated Press. Use rain-reflection foreground with deep background scale, dramatic side light through dust and vapor, and cool glass reflections with muted civic-interior colors. Do not render readable text.\nStyle/medium: photorealistic editorial documentary photography with true camera texture, realistic depth of field, real industrial materials, believable human scale, and cinematic but plausible light.\nComposition/framing: each panel should fill its own equal area edge to edge; keep the subject centered enough that it survives a horizontal 800 by 520 crop.\nLighting/mood: investigative, high-energy, atmospheric, and grounded in real utility/data-center infrastructure.\nConstraints: brand-new original images generated from scratch; no reused article assets; no stock-photo look; no paper bills as the main subject; no generic wall outlets; no logos; no watermarks; no readable words; no readable numbers; no fake document layouts; no visible panel labels; no public figures. Every panel must be visibly different in setting, camera angle, lighting, and subject."
+  }
+]

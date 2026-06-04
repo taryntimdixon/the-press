@@ -1,7 +1,45 @@
 {
-  "generated_at": "2026-05-31T16:19:10.636035+00:00",
-  "story_count": 383,
+  "generated_at": "2026-06-04T01:38:32.351548+00:00",
+  "story_count": 384,
   "stories": [
+    {
+      "story_id": "technology-the-data-center-is-the-new-utility-bill",
+      "cluster_id": "technology-data-center-utility-bill-centers-electric",
+      "title": "The Data Center Is the New Utility Bill",
+      "section": "Technology",
+      "section_slug": "technology",
+      "type": "Investigation",
+      "dek": "AI data centers are no longer just a cloud story. A new Press analysis of EIA electricity data shows why the hard fight is now over megawatts, water, utility bills, local consent, and who pays when private compute demand lands on public grids.",
+      "url": "technology-the-data-center-is-the-new-utility-bill.html",
+      "author": "The Press",
+      "published": "June 3, 2026 • 9:30 a.m. EDT",
+      "published_iso": "2026-06-03T13:30:00+00:00",
+      "updated": "June 3, 2026 • 9:30 a.m. EDT",
+      "updated_iso": "2026-06-03T13:30:00+00:00",
+      "image": "assets/data-center-grid/data-center-cooling-campus-thumbnail.png",
+      "image_alt": "Data-center cooling towers and pipes beside a desert water basin, with nearby neighborhoods and mountains in the distance",
+      "keywords": [
+        "AI data centers",
+        "electric grid",
+        "EIA",
+        "EPRI",
+        "PJM",
+        "ERCOT",
+        "FERC",
+        "utility bills",
+        "rate design",
+        "water use",
+        "large loads",
+        "data center electricity"
+      ],
+      "read_time": "16 min read",
+      "word_count": "3,024 words",
+      "status": "published",
+      "priority": 0,
+      "hero_eligible": true,
+      "source": "master-edition",
+      "is_daily": false
+    },
     {
       "story_id": "science-wildlife-for-sale",
       "cluster_id": "science-wildlife-sale-trafficking-illegal-trade-cites",
@@ -108,7 +146,7 @@
       "read_time": "46 min read",
       "word_count": "9,149 words",
       "status": "published",
-      "priority": 20,
+      "priority": 0,
       "hero_eligible": true,
       "source": "master-edition",
       "is_daily": false
@@ -1899,7 +1937,7 @@
       "updated": "April 26, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-26T12:00:00+00:00",
       "image": "",
-      "image_alt": "First Fix the Hospital Bill. Then Talk About Collection",
+      "image_alt": "First Fix the Hospital Bill. Then Talk About Collection.",
       "keywords": [
         "medical debt",
         "credit reports",
@@ -2244,7 +2282,7 @@
       "updated": "April 25, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-25T12:00:00+00:00",
       "image": "",
-      "image_alt": "The Cheese Was Aged. The Warning Still Had to Catch Up",
+      "image_alt": "The Cheese Was Aged. The Warning Still Had to Catch Up.",
       "keywords": [
         "raw milk",
         "E. coli O157:H7",
@@ -2402,7 +2440,7 @@
       "updated": "April 25, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-25T12:00:00+00:00",
       "image": "",
-      "image_alt": "A Batch Record Met an AI Agent. FDA Asked Who Checked It",
+      "image_alt": "A Batch Record Met an AI Agent. FDA Asked Who Checked It.",
       "keywords": [
         "FDA",
         "AI agents",
@@ -2592,7 +2630,7 @@
       "updated": "April 24, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-24T12:00:00+00:00",
       "image": "",
-      "image_alt": "The Queue Looks Cleaner Now. The Work of Letting People In Has Not Changed Hands",
+      "image_alt": "The Queue Looks Cleaner Now. The Work of Letting People In Has Not Changed Hands.",
       "keywords": [
         "concert ticketing",
         "live music labor",
@@ -2808,7 +2846,7 @@
       "updated": "April 24, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-24T12:00:00+00:00",
       "image": "",
-      "image_alt": "The Stamp Is Gone. The Friction Is Not",
+      "image_alt": "The Stamp Is Gone. The Friction Is Not.",
       "keywords": [
         "Schengen",
         "Entry/Exit System",
@@ -2870,7 +2908,7 @@
       "updated": "April 24, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-24T12:00:00+00:00",
       "image": "",
-      "image_alt": "The Note Is Getting Smarter. The Waiting Room Is Getting More Expensive",
+      "image_alt": "The Note Is Getting Smarter. The Waiting Room Is Getting More Expensive.",
       "keywords": [
         "health care AI",
         "ambient scribes",
@@ -3054,7 +3092,7 @@
       "updated": "April 24, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-24T12:00:00+00:00",
       "image": "",
-      "image_alt": "The Hold List Is a Labor Story. Illinois Is Trying to Rewrite the Terms of Digital Reading",
+      "image_alt": "The Hold List Is a Labor Story. Illinois Is Trying to Rewrite the Terms of Digital Reading.",
       "keywords": [
         "libraries",
         "ebooks",
@@ -3328,7 +3366,7 @@
       "updated": "April 24, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-24T12:00:00+00:00",
       "image": "",
-      "image_alt": "The Meeting Is in Session. So Is the AI Stack",
+      "image_alt": "The Meeting Is in Session. So Is the AI Stack.",
       "keywords": [
         "AI",
         "local government",
@@ -3726,7 +3764,7 @@
       "updated": "April 24, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-24T12:00:00+00:00",
       "image": "",
-      "image_alt": "The camp is built to hold people. The sea is built to move them",
+      "image_alt": "The camp is built to hold people. The sea is built to move them.",
       "keywords": [
         "Rohingya",
         "Bangladesh",
@@ -3882,7 +3920,7 @@
       "updated": "April 24, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-24T12:00:00+00:00",
       "image": "",
-      "image_alt": "Concert tickets are still a culture tax. The monopoly verdict just made that harder to deny",
+      "image_alt": "Concert tickets are still a culture tax. The monopoly verdict just made that harder to deny.",
       "keywords": [
         "concert ticketing",
         "Live Nation",
@@ -4207,7 +4245,7 @@
       "updated": "April 22, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-22T12:00:00+00:00",
       "image": "",
-      "image_alt": "The Fed should wait. Trump’s inflation shock isn’t over",
+      "image_alt": "The Fed should wait. Trump’s inflation shock isn’t over.",
       "keywords": [
         "Federal Reserve",
         "inflation",
@@ -6388,7 +6426,7 @@
       "updated": "April 20, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-20T12:00:00+00:00",
       "image": "",
-      "image_alt": "Trump’s tariff refunds are not a technical fix. They are a confession",
+      "image_alt": "Trump’s tariff refunds are not a technical fix. They are a confession.",
       "keywords": [
         "tariffs",
         "Supreme Court",
@@ -6678,7 +6716,7 @@
       "updated": "April 19, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-19T12:00:00+00:00",
       "image": "",
-      "image_alt": "Workforce Pell Is About to Land. Colleges and students are racing to prepare",
+      "image_alt": "Workforce Pell Is About to Land. Colleges and students are racing to prepare.",
       "keywords": [
         "higher education",
         "Pell Grants",
@@ -6824,7 +6862,7 @@
       "updated": "April 19, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-19T12:00:00+00:00",
       "image": "",
-      "image_alt": "Trump’s tariff machine is no longer trade policy. Congress should say so",
+      "image_alt": "Trump’s tariff machine is no longer trade policy. Congress should say so.",
       "keywords": [
         "tariffs",
         "congress",
@@ -10043,7 +10081,7 @@
       "updated": "April 13, 2026 • 12:00 p.m. UTC",
       "updated_iso": "2026-04-13T12:00:00+00:00",
       "image": "",
-      "image_alt": "Artemis II’s moon flyby is over. What the mission has already changed for science",
+      "image_alt": "Artemis II’s moon flyby is over. What the mission has already changed for science.",
       "keywords": [
         "Artemis II",
         "NASA",

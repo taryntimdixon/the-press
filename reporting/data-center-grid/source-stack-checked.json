@@ -1,0 +1,932 @@
+[
+  {
+    "url": "https://www.eia.gov/electricity/annual/xls/epa_02_02.xlsx",
+    "title": "EIA Electric Power Annual Table 2.2 workbook",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/electricity/annual/html/epa_02_02.html",
+    "title": "EIA Electric Power Annual Table 2.2",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/electricity/annual/xls/epa_02_08.xlsx",
+    "title": "EIA Electric Power Annual Table 2.8 workbook",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/electricity/annual/html/epa_02_08.html",
+    "title": "EIA Electric Power Annual Table 2.8",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/electricity/annual/xls/epa_02_04.xlsx",
+    "title": "EIA Electric Power Annual Table 2.4 workbook",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/electricity/annual/html/epa_02_04.html",
+    "title": "EIA Electric Power Annual Table 2.4",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/electricity/data/eia861m/xls/sales_revenue.xlsx",
+    "title": "EIA monthly sales and revenue workbook",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/outlooks/steo/",
+    "title": "EIA Short-Term Energy Outlook",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/outlooks/aeo/",
+    "title": "EIA Annual Energy Outlook",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/pressroom/releases/press582.php",
+    "title": "EIA Jan. 13, 2026 press release",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/outlooks/aeo/pdf/AEO_Narrative.pdf",
+    "title": "EIA Annual Energy Outlook 2026 narrative",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/outlooks/steo/archives/jan26.pdf",
+    "title": "EIA Short-Term Energy Outlook, Jan. 2026",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/energyexplained/electricity/use-of-electricity.php",
+    "title": "EIA Electricity Explained",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/outlooks/steo/report/elec_coal_renew.php",
+    "title": "https://www.eia.gov/outlooks/steo/report/elec_coal_renew.php",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/outlooks/steo/pdf/steo_full.pdf",
+    "title": "https://www.eia.gov/outlooks/steo/pdf/steo_full.pdf",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/pressroom/releases/press585.php",
+    "title": "EIA pilot data-center survey",
+    "origin": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/outlooks/steo/archives/apr26.pdf",
+    "title": "EIA April 2026 STEO PDF",
+    "origin": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/outlooks/aeo/narrative/index.php",
+    "title": "EIA AEO narrative page",
+    "origin": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/analysis",
+    "title": "EIA analysis hub",
+    "origin": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/pressroom/releases/press587.php",
+    "title": "EIA: Annual Energy Outlook 2026",
+    "origin": "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/analysis/requests/residential/utility",
+    "title": "https://www.eia.gov/analysis/requests/residential/utility/",
+    "origin": "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/analysis/requests/residential/utility/pdf/Residential%20Utility%20Disconnections%20Report%20-%20April%202026.pdf",
+    "title": "https://www.eia.gov/analysis/requests/residential/utility/pdf/Residential%20Utility%20Disconnections%20Report%20-%20April%202026.pdf",
+    "origin": "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/todayinenergy/detail.php?id=65284",
+    "title": "https://www.eia.gov/todayinenergy/detail.php?id=65284",
+    "origin": "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.eia.gov/todayinenergy/detail.php?id=67344",
+    "title": "https://www.eia.gov/todayinenergy/detail.php?id=67344",
+    "origin": "2026-04-24-the-utility-bill-is-emerging-as-2026-s-hard-to-escape-cost-squeeze.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.iea.org/reports/energy-and-ai",
+    "title": "IEA Energy and AI",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+    "title": "IEA executive summary",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+    "title": "IEA energy demand from AI",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.iea.org/reports/energy-and-ai/energy-supply-for-ai",
+    "title": "IEA energy supply for AI",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+    "title": "IEA key questions on energy and AI",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.iea.org/reports/energy-and-ai/ai-and-climate-change",
+    "title": "IEA AI and climate change",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.iea.org/reports/electricity-mid-year-update-2025/demand-global-electricity-use-to-grow-strongly-in-2025-and-2026",
+    "title": "https://www.iea.org/reports/electricity-mid-year-update-2025/demand-global-electricity-use-to-grow-strongly-in-2025-and-2026",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.iea.org/reports/energy-and-ai/understanding-the-energy-ai-nexus",
+    "title": "IEA energy-AI nexus explainer",
+    "origin": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.iea.org/reports/electricity-2026/demand",
+    "title": "IEA Electricity 2026 demand outlook",
+    "origin": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.iea.org/news/as-energy-and-ai-links-grow-new-iea-observatory-provides-latest-data-and-analysis",
+    "title": "IEA AI-energy observatory launch",
+    "origin": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.iea.org/news/at-major-iea-conference-decision-makers-from-tech-energy-and-government-underscore-ais-implications-for-energy-security-and-transitions",
+    "title": "IEA conference report",
+    "origin": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions",
+    "title": "International Energy Agency, data-centre electricity use surged in 2025",
+    "origin": "2026-04-27-richmond-reprices-the-cloud.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/sites/default/files/2024-12/LBNL-2024-United-States-Data-Center-Energy-Usage-Report.pdf",
+    "title": "LBNL 2024 U.S. Data Center Energy Usage Report PDF",
+    "origin": "manual",
+    "status": "404"
+  },
+  {
+    "url": "https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers",
+    "title": "DOE data center electricity demand report release",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/sites/default/files/2025-08/femp-data-centers-fact-sheet-2025.pdf",
+    "title": "https://www.energy.gov/sites/default/files/2025-08/femp-data-centers-fact-sheet-2025.pdf",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/eere/geothermal/geothermal-and-data-centers",
+    "title": "https://www.energy.gov/eere/geothermal/geothermal-and-data-centers",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/eere/buildings/data-centers-and-servers",
+    "title": "https://www.energy.gov/eere/buildings/data-centers-and-servers",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/oe/clean-energy-resources-meet-data-center-electricity-demand",
+    "title": "https://www.energy.gov/oe/clean-energy-resources-meet-data-center-electricity-demand",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/policy/articles/electricity-rate-designs-large-loads-evolving-practices-and-opportunities",
+    "title": "https://www.energy.gov/policy/articles/electricity-rate-designs-large-loads-evolving-practices-and-opportunities",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/node/4850616",
+    "title": "https://www.energy.gov/node/4850616",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/ne/marvel-microreactor-project",
+    "title": "https://www.energy.gov/ne/marvel-microreactor-project",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/ne/articles/oak-ridge-national-laboratory-and-elementl-power-partner-accelerate-siting-nuclear",
+    "title": "https://www.energy.gov/ne/articles/oak-ridge-national-laboratory-and-elementl-power-partner-accelerate-siting-nuclear",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/node/4853136",
+    "title": "https://www.energy.gov/node/4853136",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/node/4853139",
+    "title": "https://www.energy.gov/node/4853139",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/node/4850502",
+    "title": "https://www.energy.gov/node/4850502",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/articles/doe-announces-site-selection-ai-data-center-and-energy-infrastructure-development-federal",
+    "title": "https://www.energy.gov/articles/doe-announces-site-selection-ai-data-center-and-energy-infrastructure-development-federal",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/articles/fact-sheet-department-energy-ensuring-affordable-energy-access-ohio-while-powering-future",
+    "title": "https://www.energy.gov/articles/fact-sheet-department-energy-ensuring-affordable-energy-access-ohio-while-powering-future",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/articles/energy-department-announces-partnership-ensure-affordable-energy-and-power-americas-ai",
+    "title": "https://www.energy.gov/articles/energy-department-announces-partnership-ensure-affordable-energy-and-power-americas-ai",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/articles/energy-department-announces-1715-million-expand-us-geothermal-energy",
+    "title": "https://www.energy.gov/articles/energy-department-announces-1715-million-expand-us-geothermal-energy",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/sites/default/files/2025-10/403%20Large%20Loads%20Letter.pdf",
+    "title": "DOE large-load ANOPR letter",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/oe/speed-power-through-accelerated-reconductoring-and-other-key-advanced-transmission-technology",
+    "title": "DOE SPARK transmission initiative",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/eere/femp/energy-efficiency-data-centers",
+    "title": "DOE energy efficiency in data centers",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/femp/events/optimizing-data-centers-practical-guide-key-performance-metrics",
+    "title": "DOE data-center efficiency event",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/cmei/femp/events/femp-winter-workshops",
+    "title": "DOE FEMP winter workshops",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/oe/articles/doe-selects-15m-projects-advancing-energy-storage-and-critical-infrastructure-resiliency",
+    "title": "DOE storage and resiliency projects",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "404"
+  },
+  {
+    "url": "https://www.energy.gov/edf/articles/lpo-announces-conditional-commitment-pacificorp-expand-transmission-several-western",
+    "title": "DOE conditional commitment for transmission expansion",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.betterbuildingssolutioncenter.energy.gov/sites/default/files/2025-05/2025Summit-Powering_the_Future_Data_Centers-Slides.pdf",
+    "title": "DOE Better Buildings presentation on data centers",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "000"
+  },
+  {
+    "url": "https://www.energy.gov/outlooks/aeo/narrative/index.php",
+    "title": "EIA AEO narrative page",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "404"
+  },
+  {
+    "url": "https://www.energy.gov/eere/wind/articles/smart-transmission-tools-modernize-americas-power-grid",
+    "title": "DOE transmission tools article",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.energy.gov/sites/default/files/2024-11/Powering%20AI%20and%20Data%20Center%20Infrastructure%20Recommendations%20July%202024.pdf",
+    "title": "DOE permitting and infrastructure recommendations",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "200"
+  },
+  {
+    "url": "https://betterbuildingssolutioncenter.energy.gov/sectors/data-centers",
+    "title": "DOE Better Buildings data centers",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "200"
+  },
+  {
+    "url": "https://powering-intelligence.epri.com/executive-summary.html",
+    "title": "EPRI Powering Intelligence executive summary",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://powering-intelligence.epri.com/",
+    "title": "EPRI Powering Intelligence",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://restservice.epri.com/publicattachment/96784",
+    "title": "EPRI Powering Intelligence 2026 FAQs",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://dcflex.epri.com",
+    "title": "EPRI DCFlex homepage",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "200"
+  },
+  {
+    "url": "https://newscenter.lbl.gov/2025/01/15/berkeley-lab-report-evaluates-increase-in-electricity-demand-from-data-centers/",
+    "title": "Berkeley Lab report news release",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://eta-publications.lbl.gov/publications/electricity-rate-designs-large-loads",
+    "title": "LBNL large-load rate designs page",
+    "origin": "manual",
+    "status": "403"
+  },
+  {
+    "url": "https://eta-publications.lbl.gov/sites/default/files/2025-01/electricity_rate_designs_for_large_loads_evolving_practices_and_opportunities_final.pdf",
+    "title": "LBNL large-load rate designs PDF",
+    "origin": "manual",
+    "status": "403"
+  },
+  {
+    "url": "https://eta-publications.lbl.gov/sites/default/files/2026-01/lbnl_lllreview_dec_update_2025_final.pdf",
+    "title": "LBNL large-load literature review PDF",
+    "origin": "manual",
+    "status": "403"
+  },
+  {
+    "url": "https://eta.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report",
+    "title": "LBNL report page",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.nrel.gov/computational-science/chip-to-grid-data-center-initiative",
+    "title": "https://www.nrel.gov/computational-science/chip-to-grid-data-center-initiative",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "000"
+  },
+  {
+    "url": "https://www.nrel.gov/news/detail/features/2025/nrel-researchers-construct-worlds-fastest-low-cost-ultra-efficient-silicon-carbide-power-module",
+    "title": "https://www.nrel.gov/news/detail/features/2025/nrel-researchers-construct-worlds-fastest-low-cost-ultra-efficient-silicon-carbide-power-module",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "000"
+  },
+  {
+    "url": "https://research-hub.nrel.gov/en/publications/modeling-framework-for-data-center",
+    "title": "https://research-hub.nrel.gov/en/publications/modeling-framework-for-data-center/",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "000"
+  },
+  {
+    "url": "https://www.nrel.gov/docs/fy23osti/85195.pdf",
+    "title": "https://www.nrel.gov/docs/fy23osti/85195.pdf",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "000"
+  },
+  {
+    "url": "https://www.nrel.gov/west-gate/michael-solomentsev-data-center-power-conversion",
+    "title": "https://www.nrel.gov/west-gate/michael-solomentsev-data-center-power-conversion",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "000"
+  },
+  {
+    "url": "https://www.nrel.gov/docs/fy25osti/92076.pdf",
+    "title": "https://www.nrel.gov/docs/fy25osti/92076.pdf",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "000"
+  },
+  {
+    "url": "https://www.ornl.gov/news/workshop-tackles-ai-data-center-power-security-challenges",
+    "title": "ORNL workshop on AI data center power",
+    "origin": "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.ornl.gov/ai-initiative",
+    "title": "ORNL AI Initiative",
+    "origin": "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers.html",
+    "status": "404"
+  },
+  {
+    "url": "https://www.ferc.gov/rm26-4",
+    "title": "FERC RM26-4 large load docket",
+    "origin": "manual",
+    "status": "403"
+  },
+  {
+    "url": "https://www.ferc.gov/news-events/news/ferc-act-large-load-interconnection-docket-june-2026",
+    "title": "FERC large load interconnection docket",
+    "origin": "manual",
+    "status": "403"
+  },
+  {
+    "url": "https://www.ferc.gov/news-events/news/ferc-releases-2025-summer-assessment",
+    "title": "https://www.ferc.gov/news-events/news/ferc-releases-2025-summer-assessment",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.ferc.gov/sites/default/files/2026-03/26_State-of-the-Market_0324_1430.pdf",
+    "title": "https://www.ferc.gov/sites/default/files/2026-03/26_State-of-the-Market_0324_1430.pdf",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.ferc.gov/media/summer-assessment-2025",
+    "title": "https://www.ferc.gov/media/summer-assessment-2025",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.ferc.gov/sites/default/files/2026-02/witness_testimony_chang_02.03.2026.pdf",
+    "title": "FERC testimony by Judy W. Chang",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.ferc.gov/news-events/news/energized-2026",
+    "title": "FERC: Energized for 2026",
+    "origin": "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.ferc.gov/news-events/news/ferc-directs-nations-largest-grid-operator-create-new-rules-embrace-innovation-and",
+    "title": "FERC directs PJM to create new rules",
+    "origin": "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.ferc.gov/news-events/news/summaries-march-2026-commission-meeting",
+    "title": "FERC March 2026 commission meeting summary",
+    "origin": "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.pjm.com/-/media/DotCom/about-pjm/newsroom/2026-releases/20260116-pjm-board-outlines-plans-to-integrate-large-loads-reliably.pdf",
+    "title": "PJM board large-load integration PDF",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://insidelines.pjm.com/pjms-updated-20-year-forecast-continues-to-see-significant-long-term-load-growth/",
+    "title": "PJM updated 20-year forecast",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://insidelines.pjm.com/2025-year-in-review-planning-prepares-for-burgeoning-electricity-demand",
+    "title": "PJM Inside Lines: 2025 planning review",
+    "origin": "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.pjm.com/en/planning/resource-adequacy-planning/load-forecast-dev-process",
+    "title": "PJM, Load Forecast Development Process",
+    "origin": "2026-04-27-richmond-reprices-the-cloud.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.pjm.com/-/media/DotCom/library/reports-notices/load-forecast/2026-load-report.pdf",
+    "title": "PJM, 2026 Load Forecast Report",
+    "origin": "2026-04-27-richmond-reprices-the-cloud.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.pjm.com/-/media/DotCom/planning/res-adeq/load-forecast/load-forecast-supplement-2026.pdf",
+    "title": "PJM, 2026 Long-Term Load Forecast supplement",
+    "origin": "2026-04-27-richmond-reprices-the-cloud.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.ercot.com/news/release/04152026-ercot-releases-preliminary",
+    "title": "ERCOT preliminary long-term load forecast",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.ercot.com/files/docs/2025/12/23/2025-Report-on-Existing-and-Potential-Electric-System-Constraints-and-Needs.pdf",
+    "title": "ERCOT constraints and needs report",
+    "origin": "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.nerc.com/globalassets/our-work/assessments/nerc_wra_2025.pdf",
+    "title": "NERC 2025-2026 Winter Reliability Assessment",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.nerc.com/comm/RSTC/Pages/LLTF-Initiative.aspx",
+    "title": "NERC Large Loads Task Force page",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.nerc.com/globalassets/our-work/reports/white-papers/draft-nerc-lltf-white-paper---assessment-of-gaps_forreview.pdf",
+    "title": "NERC March 2026 white paper",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://jlarc.virginia.gov/landing-2024-data-centers-in-virginia.asp",
+    "title": "JLARC Data Centers in Virginia landing page",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+    "title": "JLARC Data Centers in Virginia PDF",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://jlarc.virginia.gov/pdfs/presentations/Rpt598Pres-1.pdf",
+    "title": "JLARC presentation, Data Centers in Virginia",
+    "origin": "2026-04-27-richmond-reprices-the-cloud.html",
+    "status": "200"
+  },
+  {
+    "url": "https://rga.lis.virginia.gov/Published/2026/RD40/PDF",
+    "title": "Virginia RD40 data center report PDF",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://rga.lis.virginia.gov/Published/2026/RD40",
+    "title": "Virginia Reports to the General Assembly, RD40 report page",
+    "origin": "2026-04-27-richmond-reprices-the-cloud.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.vedp.org/incentive/data-center-retail-sales-use-tax-exemption",
+    "title": "Virginia Economic Development Partnership, Data Center Retail Sales and Use Tax Exemption",
+    "origin": "2026-04-27-richmond-reprices-the-cloud.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.brattle.com/wp-content/uploads/2026/03/The-Untapped-Grid-Mar-2026.pdf",
+    "title": "Brattle The Untapped Grid PDF",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.brattle.com/insights-events/news/new-brattle-report-finds-better-utilization-of-existing-power-grid-could-save-us-consumers-more-than-100-billion-in-the-next-decade",
+    "title": "Brattle press release on The Untapped Grid",
+    "origin": "2026-04-22-america-should-stop-pretending-data-centers-are-just-warehouses-with-servers.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.google.com/about/datacenters/efficiency/",
+    "title": "Google data center efficiency",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+    "title": "Google 2025 Environmental Report PDF",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://www.microsoft.com/en-us/corporate-responsibility/sustainability/report",
+    "title": "Microsoft sustainability report",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW1pMEx",
+    "title": "Microsoft sustainability report PDF",
+    "origin": "manual",
+    "status": "404"
+  },
+  {
+    "url": "https://sustainability.aboutamazon.com/2024-amazon-sustainability-report.pdf",
+    "title": "Amazon 2024 Sustainability Report PDF",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://sustainability.fb.com/2024-sustainability-report/",
+    "title": "Meta 2024 Sustainability Report",
+    "origin": "manual",
+    "status": "200"
+  },
+  {
+    "url": "https://sustainability.fb.com/wp-content/uploads/2025/06/Meta-2024-Sustainability-Report.pdf",
+    "title": "Meta 2024 Sustainability Report PDF",
+    "origin": "manual",
+    "status": "404"
+  },
+  {
+    "url": "https://www.sec.gov/ixviewer/doc/actiondoc/0000950170-25-087843/msft-20250630.htm",
+    "title": "Microsoft 2025 Form 10-K",
+    "origin": "manual",
+    "status": "403"
+  },
+  {
+    "url": "https://www.sec.gov/ixviewer/doc/actiondoc/0001018724-25-000004/amzn-20241231.htm",
+    "title": "Amazon 2024 Form 10-K",
+    "origin": "manual",
+    "status": "403"
+  },
+  {
+    "url": "https://www.sec.gov/ixviewer/doc/actiondoc/0001652044-25-000014/goog-20241231.htm",
+    "title": "Alphabet 2024 Form 10-K",
+    "origin": "manual",
+    "status": "403"
+  },
+  {
+    "url": "https://www.sec.gov/ixviewer/doc/actiondoc/0001326801-25-000017/meta-20241231.htm",
+    "title": "Meta 2024 Form 10-K",
+    "origin": "manual",
+    "status": "403"
+  },
+  {
+    "url": "https://www.sec.gov/Archives/edgar/data/1878848/000187884825000079/q1fy26resultspressreleas.htm",
+    "title": "IREN Microsoft contract filing",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.sec.gov/Archives/edgar/data/0001854368/000121390026037677/ea0283764-10k_digipower.htm",
+    "title": "Digi Power X 10-K",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000098/finalforfiling-2025xannual.pdf",
+    "title": "NVIDIA 2025 annual review",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.sec.gov/Archives/edgar/data/1132924/000119312526073270/d67626dex991.htm",
+    "title": "Example SEC filing referencing data-center power supply chain risks",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.sec.gov/Archives/edgar/data/1878848/000114036125040072/ef20058139_ex99-1.htm",
+    "title": "IREN/Microsoft contract exhibit",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.sec.gov/Archives/edgar/data/1878848/000187884825000081/iren-20250930.htm",
+    "title": "IREN quarterly filing",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086325000052/a2024arsform10-k.pdf",
+    "title": "Utility annual report",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.apnews.com/article/21fa7b957664d5dca6788e35ab43b88e",
+    "title": "https://www.apnews.com/article/21fa7b957664d5dca6788e35ab43b88e",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.apnews.com/article/3c6988c44455d34c0e8db6dd63fdfd57",
+    "title": "https://www.apnews.com/article/3c6988c44455d34c0e8db6dd63fdfd57",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.apnews.com/article/aa63ba087d5ad53ab0735893646e7357",
+    "title": "https://www.apnews.com/article/aa63ba087d5ad53ab0735893646e7357",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.apnews.com/article/65651bd28c3d911d18eeb46cd54f4c75",
+    "title": "https://www.apnews.com/article/65651bd28c3d911d18eeb46cd54f4c75",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.apnews.com/article/0b377d6a4a57c9353c0eb577b8951af3",
+    "title": "https://www.apnews.com/article/0b377d6a4a57c9353c0eb577b8951af3",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://apnews.com/article/9cd8c6b29914c377d4961a78f1fa00b2",
+    "title": "https://apnews.com/article/9cd8c6b29914c377d4961a78f1fa00b2",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "200"
+  },
+  {
+    "url": "https://apnews.com/article/0b377d6a4a57c9353c0eb577b8951af3",
+    "title": "AP on Georgia regulators approving a 50% capacity increase",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://apnews.com/article/3aa78ffb7e67ae8e5ce3c42b7d4d3134",
+    "title": "AP on the Georgia-Alabama power expansion loan",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://apnews.com/article/59faeeeceba07fbe5bdcc48a3b1c3d0d",
+    "title": "AP on Georgia Power freezing base rates",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://apnews.com/article/0eb051a9a11d96f7ce200e186ad13476",
+    "title": "AP on Meta nuclear deals",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.apnews.com/article/fb9e6dbe61fbf03c467d1301f00bafb7",
+    "title": "https://www.apnews.com/article/fb9e6dbe61fbf03c467d1301f00bafb7",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.apnews.com/article/433691ace945708a04762b4791602f3d",
+    "title": "https://www.apnews.com/article/433691ace945708a04762b4791602f3d",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.apnews.com/article/571c16950259b382f9eae61bd59260ef",
+    "title": "https://www.apnews.com/article/571c16950259b382f9eae61bd59260ef",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.apnews.com/article/275df9e291bbb361962dfc6ba868506c",
+    "title": "AP on Anthropic and Google chip deal",
+    "origin": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.apnews.com/article/4a127c5b7e8bb76c844bf5e81bed70d459",
+    "title": "AP on Thomson Reuters copyright case",
+    "origin": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone.html",
+    "status": "404"
+  },
+  {
+    "url": "https://www.apnews.com/article/363f1c537eb86b624bf5e81bed70d459",
+    "title": "AP on U.S. copyright office AI-assisted works report",
+    "origin": "2026-04-21-ai-s-power-problem-the-new-bottleneck-is-no-longer-chips-alone.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.apnews.com/article/f4f74c3a4617d8cfab5b933fc31ccc6e",
+    "title": "AP on Microsoft taking over Texas expansion",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "200"
+  },
+  {
+    "url": "https://apnews.com/article/4667fa1442ec1c652228337ab4eb68ee",
+    "title": "AP on Ohio 10-GW data center project",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "200"
+  },
+  {
+    "url": "https://apnews.com/article/08ed707897fa5274663649bb2c372849",
+    "title": "AP on PJM fast-track power proposal",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "200"
+  },
+  {
+    "url": "https://apnews.com/article/65651bd28c3d911d18eeb46cd54f4c75",
+    "title": "AP on AI data-center moratorium bill",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.apnews.com/article/446babea4e88330a7c493412644fa3f3",
+    "title": "AP on ASML 2025 profit and China sales",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.apnews.com/article/62e8118b069f36aa9d0844f904047933",
+    "title": "AP on White House and governors pressuring PJM",
+    "origin": "2026-04-21-america-s-ai-power-crunch-is-no-longer-hypothetical.html",
+    "status": "200"
+  },
+  {
+    "url": "https://www.axios.com/2026/03/23/utilities-nvidia-emerald-ai-data-centers",
+    "title": "https://www.axios.com/2026/03/23/utilities-nvidia-emerald-ai-data-centers",
+    "origin": "2026-04-19-inside-the-new-bottleneck-shaping-ai-power-permits-and-chips.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.axios.com/local/denver/2026/04/14/what-are-large-load-tariffs",
+    "title": "Axios on large-load tariffs",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.axios.com/2026/02/06/data-centers-dominate-rising-us-demand",
+    "title": "Axios on data centers dominating rising U.S. demand",
+    "origin": "2026-04-20-how-ai-data-centers-became-an-electric-grid-problem.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.axios.com/2026/04/03/data-centers-concerns-ai-electricity-harvard-mit",
+    "title": "https://www.axios.com/2026/04/03/data-centers-concerns-ai-electricity-harvard-mit",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "403"
+  },
+  {
+    "url": "https://www.axios.com/2026/04/05/data-centers-midterms-state-bans-bills-ai",
+    "title": "https://www.axios.com/2026/04/05/data-centers-midterms-state-bans-bills-ai",
+    "origin": "2026-04-20-as-ai-data-centers-spread-the-real-fight-is-over-power-water-and-who-pays.html",
+    "status": "403"
+  }
+]
