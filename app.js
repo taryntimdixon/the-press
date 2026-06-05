@@ -61,6 +61,12 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
     || type === 'issue';
 }
 
+function pressIsCartoonIndexItem(item = {}, urlOverride = '', sectionOverride = '') {
+  const url = pressIndexPath(urlOverride || item.url || item.href || item.link || item.filename || item.permalink || '');
+  const section = pressIndexSlug(sectionOverride || item.section || item.section_slug || item.sectionSlug || item.desk || item.category || '');
+  return section === 'cartoons' || url.startsWith('cartoons-') || url.includes('/cartoons-');
+}
+
 (() => {
   if (document.querySelector('[data-press-fonts]')) return;
   const script = document.createElement('script');
@@ -1829,7 +1835,7 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
 
     const seen = new Set();
     const headlines = rotateMastheadHeadlines(stories
-      .filter((story) => story?.title && story?.url)
+      .filter((story) => story?.title && story?.url && !pressIsCartoonIndexItem(story, story.url, story.section))
       .filter((story) => {
         const key = `${story.title}|${story.url}`;
         if (seen.has(key)) return false;
@@ -2766,6 +2772,7 @@ function pressIsBelowFoldIndexItem(item = {}, urlOverride = '', sectionOverride 
       { label: 'Geopolitics', href: 'section-geopolitics.html' },
       { label: 'Film', href: 'section-film.html' },
       { label: 'Pop Culture', href: 'section-pop-culture.html' },
+      { label: 'Cartoons', href: 'section-cartoons.html' },
       { label: 'Niche', href: 'section-niche.html' },
     ];
     document.querySelectorAll('.section-nav__inner').forEach((nav) => {
@@ -2794,8 +2801,11 @@ function enhanceBreakingStrip(stories) {
   const strip = document.querySelector('.breaking-strip');
   const itemsBox = strip?.querySelector('.breaking-strip__items');
   if (!strip || !itemsBox) return;
+  const storySource = document.body.classList.contains('page-home')
+    ? stories.filter((story) => !pressIsCartoonIndexItem(story, story.url, story.section))
+    : stories;
   const existing = Array.from(itemsBox.querySelectorAll('a')).map((a) => ({ title: collapseWhitespace(a.textContent), url: a.getAttribute('href') }));
-  const extra = stories.slice(0, 12).map((story) => ({ title: story.title, url: story.url }));
+  const extra = storySource.slice(0, 12).map((story) => ({ title: story.title, url: story.url }));
   const seen = new Set();
   const merged = [...existing, ...extra].filter((item) => {
     const key = `${item.title}|${item.url}`;
@@ -2813,14 +2823,16 @@ function enhanceBreakingStrip(stories) {
 
   function injectEditionRadar(stories) {
     if (!document.body.classList.contains('page-home')) return;
+    const eligibleStories = stories.filter((story) => !pressIsCartoonIndexItem(story, story.url, story.section));
+    if (!eligibleStories.length) return;
     const main = document.querySelector('.home-grid__main');
     const anchor = document.querySelector('.home-grid__main .cards-grid');
     if (!main || !anchor || document.querySelector('.edition-radar')) return;
 
     const used = new Set(Array.from(document.querySelectorAll('.home-grid a[href]')).map((a) => a.getAttribute('href')));
-    const picks = stories.filter((story) => !used.has(story.url)).slice(0, 3);
-    const desks = [...new Set(stories.slice(0, 10).map((story) => story.section))];
-    const updated = stories[0]?.published || 'Updated recently';
+    const picks = eligibleStories.filter((story) => !used.has(story.url)).slice(0, 3);
+    const desks = [...new Set(eligibleStories.slice(0, 10).map((story) => story.section))];
+    const updated = eligibleStories[0]?.published || 'Updated recently';
 
     const block = document.createElement('section');
     block.className = 'edition-radar';
@@ -2834,7 +2846,7 @@ function enhanceBreakingStrip(stories) {
       </div>
       <div class="edition-radar__grid">
         <div class="edition-radar__stack">
-          ${(picks.length ? picks : stories.slice(0, 3)).map((story) => `
+          ${(picks.length ? picks : eligibleStories.slice(0, 3)).map((story) => `
             <article class="edition-radar__item">
               <p class="eyebrow eyebrow--tiny">${escapeHtml(story.section)} • ${escapeHtml(story.type)}</p>
               <h3><a href="${escapeAttribute(story.url)}">${escapeHtml(story.title)}</a></h3>
@@ -2844,7 +2856,7 @@ function enhanceBreakingStrip(stories) {
         </div>
         <aside class="edition-radar__aside">
           <div class="edition-radar__stat"><span>Updated</span><strong>${escapeHtml(updated)}</strong></div>
-          <div class="edition-radar__stat"><span>Stories tracked</span><strong>${stories.length}</strong></div>
+          <div class="edition-radar__stat"><span>Stories tracked</span><strong>${eligibleStories.length}</strong></div>
           <div class="edition-radar__stat"><span>Desks in play</span><strong>${desks.length}</strong></div>
           <div class="edition-radar__desks">${desks.slice(0, 8).map((desk) => `<span>${escapeHtml(desk)}</span>`).join('')}</div>
         </aside>
@@ -7683,6 +7695,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SECTION_COPY = {
     ai: 'Model labs, compute, safety, infrastructure, and the business systems underneath artificial intelligence.',
+    cartoons: 'Editorial cartoons, visual satire, and drawn commentary, clearly labeled.',
     culture: 'Institutions, labor, audiences, and the economics under the room.',
     economics: 'Indicators translated back into rent, wages, spending, and shelter.',
     education: 'Schools, campuses, attendance, learning, and public-system capacity.',
@@ -7777,10 +7790,13 @@ document.addEventListener("DOMContentLoaded", () => {
         .filter((story) => story.title && story.url && !pressIsBelowFoldIndexItem(story.raw || story, story.url, story.section, story.type))
         .sort((a, b) => b.sortValue - a.sortValue || a.title.localeCompare(b.title));
 
-      const model = buildPlacementModel(stories, normalizePlacementFile(placementsRaw));
+      const visibleStories = document.body.classList.contains('page-home')
+        ? stories.filter((story) => !pressIsCartoonIndexItem(story.raw || story, story.url, story.section))
+        : stories;
+      const model = buildPlacementModel(visibleStories, normalizePlacementFile(placementsRaw));
 
       return {
-        stories,
+        stories: visibleStories,
         model,
         generatedAt: new Date().toISOString(),
       };
@@ -10031,6 +10047,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function rerouteSectionLinksToArchive() {
     document.querySelectorAll('a[href]').forEach((anchor) => {
+      if (anchor.hasAttribute('data-preserve-section-link')) return;
       if (!looksLikeSectionLink(anchor)) return;
       anchor.setAttribute('href', 'archive.html');
       if (/^\s*More\s+/i.test(anchor.textContent || '')) {

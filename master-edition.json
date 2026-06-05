@@ -4,7 +4,7 @@
     "tagline": "AI Powered Journalism",
     "baseUrl": "https://thepress.live",
     "editionNote": "Issue Six • Monday, May 11, 2026 • Game Time World Cup special",
-    "description": "Source-forward news across politics, culture, technology, economics, education, health, philosophy, science, world, and opinion.",
+    "description": "Source-forward news across politics, culture, technology, economics, education, health, philosophy, science, world, opinion, and cartoons.",
     "contactEmail": "tips@thepress.example",
     "newsletterTitle": "Get the front page without the noise.",
     "newsletterCopy": "A calm digest from every desk, with visible dates, clear bylines, and transparent source notes.",
@@ -194,6 +194,15 @@
       "copy": "Arguments anchored in public facts, not hot air.",
       "eyebrow": "Opinion Desk",
       "artwork": "assets/section-opinion.svg"
+    },
+    {
+      "slug": "cartoons",
+      "name": "Cartoons",
+      "filename": "section-cartoons.html",
+      "headline": "Cartoons",
+      "copy": "Editorial cartoons, visual satire, and drawn commentary, clearly labeled.",
+      "eyebrow": "Cartoon Desk",
+      "artwork": "assets/section-cartoons.svg"
     },
     {
       "slug": "climate",
@@ -403,6 +412,7 @@
       ],
       "stories": [
         "technology-the-data-center-is-the-new-utility-bill.html",
+        "cartoons-the-cartoon-desk-opens-its-notebook.html",
         "sports-world-cup-game-day-machine.html",
         "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world.html",
         "sports-texas-holdem-prime-time-moment-back.html"
@@ -410,6 +420,51 @@
     }
   ],
   "stories": [
+    {
+      "slug": "cartoons-the-cartoon-desk-opens-its-notebook",
+      "filename": "cartoons-the-cartoon-desk-opens-its-notebook.html",
+      "title": "The Cartoon Desk Opens Its Notebook",
+      "section": "Cartoons",
+      "sectionSlug": "cartoons",
+      "type": "Editor's Note",
+      "author": "The Press",
+      "authorSlug": "the-press",
+      "authorRole": "Cartoon Desk",
+      "publishedLabel": "June 4, 2026 • 9:00 a.m. EDT",
+      "updatedLabel": "June 4, 2026 • 9:00 a.m. EDT",
+      "publishedIso": "2026-06-04T09:00:00-04:00",
+      "updatedIso": "2026-06-04T09:00:00-04:00",
+      "wordCount": "640 words",
+      "wordCountNumber": 640,
+      "readTime": "3 min read",
+      "dek": "The Press is adding a Cartoon Desk for editorial cartoons, visual satire, and drawn commentary. The rule is simple: make the joke sharp, make the label clear, and never ask readers to mistake invention for reporting.",
+      "image": "assets/cartoons-launch-thumbnail.svg",
+      "heroImage": "assets/cartoons-launch-thumbnail.svg",
+      "heroImageWidth": 1200,
+      "heroImageHeight": 675,
+      "imageAlt": "Cartoon desk illustration with comic panels, a pencil, speech balloons, and a red editorial stamp",
+      "imageCaptionHtml": "Original editorial illustration for The Press Cartoon Desk.",
+      "imageCreditPlain": "Original editorial illustration for The Press",
+      "keywords": [
+        "editorial cartoons",
+        "satire",
+        "visual commentary",
+        "cartoon desk",
+        "opinion",
+        "media standards"
+      ],
+      "asideFile": "content/asides/cartoons-the-cartoon-desk-opens-its-notebook.html",
+      "bodyFile": "content/bodies/cartoons-the-cartoon-desk-opens-its-notebook.html",
+      "excerpt": "The new Cartoon Desk gives The Press a place for visual commentary and satire while keeping the boundary between reporting and invention visible.",
+      "related": [
+        "opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html",
+        "philosophy-the-missing-word-in-the-ai-debate-is-judgment.html",
+        "culture-streaming-grew-up-and-became-tv-again.html"
+      ],
+      "heroEligible": false,
+      "imageWidth": 1200,
+      "imageHeight": 675
+    },
     {
       "slug": "technology-the-data-center-is-the-new-utility-bill",
       "filename": "technology-the-data-center-is-the-new-utility-bill.html",

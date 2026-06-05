@@ -368,8 +368,17 @@ def homepage_recency_pool() -> list[dict]:
         filename = str(item.get("filename") or item.get("url") or "")
         if not filename or filename in seen:
             continue
-        seen.add(filename)
         canonical = STORY_BY_FILE.get(filename)
+        section_slug = str(
+            item.get("section_slug")
+            or item.get("sectionSlug")
+            or (canonical or {}).get("sectionSlug")
+            or ""
+        ).strip().lower()
+        section_name = str(item.get("section") or (canonical or {}).get("section") or "").strip().lower()
+        if section_slug == "cartoons" or section_name == "cartoons":
+            continue
+        seen.add(filename)
         if canonical:
             pool.append(canonical)
             continue
@@ -459,6 +468,27 @@ def search_index_row(story: dict) -> dict:
         "imageHeight": story.get("imageHeight"),
         "keywords": story.get("keywords", []),
     }
+
+
+def compact_search_index_row(item: dict) -> dict:
+    row = {
+        "title": item.get("title", ""),
+        "section": item.get("section", ""),
+        "type": item.get("type", ""),
+        "dek": item.get("dek", ""),
+        "url": item.get("url", ""),
+        "author": public_author(item.get("author")),
+        "published": item.get("published") or item.get("publishedLabel") or "",
+        "keywords": item.get("keywords") if isinstance(item.get("keywords"), list) else [],
+    }
+    for flag in ("newsstandOnly", "excludeFromEdition", "excludeFromArchive", "excludeFromGallery"):
+        if flag in item:
+            row[flag] = item[flag]
+    return row
+
+
+def compact_search_index_rows(items: list[dict]) -> list[dict]:
+    return [compact_search_index_row(item) for item in items]
 
 
 def normalize_search_item(item: dict) -> dict:
@@ -634,7 +664,7 @@ def search_index() -> list[dict]:
     below_fold_items = below_fold_search_index_rows()
     existing_items = richer_existing_search_index()
     if not existing_items:
-        return master_items + below_fold_items
+        return compact_search_index_rows(master_items + below_fold_items)
 
     current_below_fold_urls = {item["url"] for item in below_fold_items}
     merged = {
@@ -649,7 +679,7 @@ def search_index() -> list[dict]:
             merged[item["url"]] = item
     for item in below_fold_items:
         merged[item["url"]] = item
-    return list(merged.values())
+    return compact_search_index_rows(list(merged.values()))
 
 
 def edition_export() -> list[dict]:
@@ -695,6 +725,15 @@ def photo_records() -> list[dict]:
 
 def section_stories(section_slug: str) -> list[dict]:
     return [story for story in STORIES if story["sectionSlug"] == section_slug]
+
+
+def homepage_cartoon_stories(limit: int = 4) -> list[dict]:
+    cartoons = [
+        story
+        for story in STORIES
+        if story.get("sectionSlug") == "cartoons" and story.get("filename") and story.get("image")
+    ]
+    return cartoons[:limit]
 
 
 def related_stories(story: dict) -> list[dict]:
@@ -752,6 +791,40 @@ def recency_ticker_item(story: dict, duplicate: bool = False) -> str:
     <span class="home-recency-card__meta">{h(story.get('publishedLabel'))}</span>
   </span>
 </a>
+""".strip()
+
+
+def render_home_cartoons() -> str:
+    cartoons = homepage_cartoon_stories()
+    if not cartoons:
+        return ""
+    featured = cartoons[0]
+    supporting = cartoons[1:4]
+    supporting_markup = (
+        f"""
+    <div class="home-cartoons__stack">
+      {"".join(story_card(story, "home-cartoons__card") for story in supporting)}
+    </div>
+""".rstrip()
+        if supporting
+        else ""
+    )
+    solo_class = " home-cartoons__layout--solo" if not supporting else ""
+    return f"""
+  <section class="home-cartoons" aria-labelledby="home-cartoons-title">
+    <div class="home-cartoons__head section-heading-row">
+      <div>
+        <p class="eyebrow">Cartoon Desk</p>
+        <h2 class="section-heading" id="home-cartoons-title">Cartoons</h2>
+      </div>
+      <a class="section-link" href="section-cartoons.html" data-preserve-section-link>Open cartoons</a>
+    </div>
+    <p class="home-cartoons__copy">Popular-topic cartoons, visual satire, and creative one-offs, whether or not they begin with a Press story.</p>
+    <div class="home-cartoons__layout{solo_class}">
+      {story_card(featured, "story-card--lead home-cartoons__featured")}
+{supporting_markup}
+    </div>
+  </section>
 """.strip()
 
 
@@ -2714,6 +2787,7 @@ def render_homepage() -> str:
         </div>
       </section>
       {render_home_below_fold_newsstand()}
+      {render_home_cartoons()}
     </div>
   </section>
 
@@ -3256,6 +3330,7 @@ def render_feed() -> str:
 
 def render_sitemap() -> str:
     urls = ['index.html', 'archive.html', 'gallery.html', 'authors.html', 'about.html', 'photo-workflow.html', '404.html']
+    urls += [section["filename"] for section in SECTIONS]
     urls += below_fold_sitemap_paths()
     urls += [story["filename"] for story in STORIES]
     urlset = []

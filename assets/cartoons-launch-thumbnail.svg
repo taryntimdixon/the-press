@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">The Cartoon Desk Opens Its Notebook</title>
+  <desc id="desc">Cartoon desk illustration with comic panels, a pencil, speech balloons, and a red editorial stamp</desc>
+  <rect width="1200" height="675" fill="#f4f0e8" />
+  <rect x="52" y="48" width="1096" height="579" rx="8" fill="#fffdf9" stroke="#1f1f1b" stroke-width="3" />
+  <g stroke="#1f1f1b" stroke-width="10" fill="#fffdf9">
+    <rect x="102" y="104" width="296" height="190" rx="8" />
+    <rect x="452" y="104" width="296" height="190" rx="8" />
+    <rect x="802" y="104" width="296" height="190" rx="8" />
+    <rect x="102" y="340" width="474" height="190" rx="8" />
+    <rect x="626" y="340" width="472" height="190" rx="8" />
+  </g>
+  <path d="M154 205c54-42 128-42 182 0" fill="none" stroke="#a63b2e" stroke-width="16" stroke-linecap="round" />
+  <path d="M190 232h112" stroke="#1f1f1b" stroke-width="14" stroke-linecap="round" />
+  <path d="M502 176h158c30 0 54 21 54 48s-24 48-54 48h-52l-44 42 10-42h-72c-30 0-54-21-54-48s24-48 54-48z" fill="#f7df6e" stroke="#1f1f1b" stroke-width="10" />
+  <path d="M850 194h192M850 228h150M850 262h96" stroke="#1f1f1b" stroke-width="14" stroke-linecap="round" />
+  <path d="M170 424h260M170 468h198" stroke="#1f1f1b" stroke-width="14" stroke-linecap="round" />
+  <path d="M698 438l214-86 78 60-214 86z" fill="#a63b2e" opacity=".18" stroke="#a63b2e" stroke-width="12" stroke-linejoin="round" />
+  <path d="M892 366l102 80" stroke="#1f1f1b" stroke-width="14" stroke-linecap="round" />
+  <path d="M818 506c54 24 128 24 182 0" fill="none" stroke="#1f1f1b" stroke-width="12" stroke-linecap="round" />
+  <g transform="translate(118 556) rotate(-4)">
+    <rect x="0" y="0" width="372" height="48" rx="8" fill="#a63b2e" />
+    <text x="24" y="33" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="2" fill="#fffdf9">SATIRE CLEARLY LABELED</text>
+  </g>
+  <text x="626" y="588" font-family="Georgia, serif" font-size="56" fill="#1f1f1b">Cartoons</text>
+</svg>

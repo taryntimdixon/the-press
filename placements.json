@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T01:38:32.351548+00:00",
+  "generated_at": "2026-06-05T11:45:31.473571+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -19,16 +19,16 @@
       "climate-the-mountain-that-fell-into-the-sea"
     ],
     "secondary": [
+      "cartoons-the-cartoon-desk-opens-its-notebook",
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
-      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
-      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class"
+      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button"
     ],
     "most_read": [
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
       "2026-04-27-nairobi-s-drains-are-running-out-of-room",
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
       "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
-      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
-      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test"
+      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight"
     ],
     "editors_picks": [
       "memory-the-internet-is-eating-its-own-memory",
@@ -37,35 +37,7 @@
       "climate-your-home-insurance-bill-is-the-new-climate-map"
     ],
     "latest": [
-      "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
-      "memory-the-internet-is-eating-its-own-memory",
-      "education-the-phone-free-school-day-is-a-live-experiment",
-      "health-the-next-public-health-system-is-the-room-you-are-in",
-      "technology-the-battery-is-becoming-the-grid",
-      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
-      "climate-your-home-insurance-bill-is-the-new-climate-map",
-      "sports-texas-holdem-prime-time-moment-back",
-      "technology-pentagon-ai-classified-networks",
-      "food-atla-noho-closing",
-      "technology-musk-altman-openai-court-battle",
-      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
-      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
-      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-nairobi-s-drains-are-running-out-of-room"
-    ],
-    "daily": [
-      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
-      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
-      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
-      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
-      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
-      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
-      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
-      "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
-      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
-    ],
-    "breaking": [
+      "cartoons-the-cartoon-desk-opens-its-notebook",
       "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
       "memory-the-internet-is-eating-its-own-memory",
       "education-the-phone-free-school-day-is-a-live-experiment",
@@ -81,7 +53,41 @@
       "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map"
     ],
+    "daily": [
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
+      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
+      "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
+      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class",
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
+      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
+      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test",
+      "2026-04-27-baidoa-s-water-trucks-keep-moving-while-geneva-s-ledger-lags",
+      "2026-04-27-imf-s-19-energy-shock-reaches-the-checkout-line"
+    ],
+    "breaking": [
+      "cartoons-the-cartoon-desk-opens-its-notebook",
+      "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
+      "memory-the-internet-is-eating-its-own-memory",
+      "education-the-phone-free-school-day-is-a-live-experiment",
+      "health-the-next-public-health-system-is-the-room-you-are-in",
+      "technology-the-battery-is-becoming-the-grid",
+      "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
+      "climate-your-home-insurance-bill-is-the-new-climate-map",
+      "sports-texas-holdem-prime-time-moment-back",
+      "technology-pentagon-ai-classified-networks",
+      "food-atla-noho-closing",
+      "technology-musk-altman-openai-court-battle",
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
+      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button"
+    ],
     "desk_pulse": [
+      {
+        "count": 1,
+        "latest_ts": 1780578000.0,
+        "story_id": "cartoons-the-cartoon-desk-opens-its-notebook",
+        "section": "Cartoons"
+      },
       {
         "count": 7,
         "latest_ts": 1780493400.0,
@@ -135,12 +141,6 @@
         "latest_ts": 1778171400.0,
         "story_id": "health-the-next-public-health-system-is-the-room-you-are-in",
         "section": "Health"
-      },
-      {
-        "count": 6,
-        "latest_ts": 1777813200.0,
-        "story_id": "food-atla-noho-closing",
-        "section": "Culture"
       }
     ]
   }

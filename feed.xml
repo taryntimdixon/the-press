@@ -3,9 +3,21 @@
   <channel>
     <title>The Press</title>
     <link>https://thepress.live/index.html</link>
-    <description>Source-forward news across politics, culture, technology, economics, education, health, philosophy, science, world, and opinion.</description>
-    <lastBuildDate>Wed, 20 May 2026 09:00:00 -0400</lastBuildDate>
+    <description>Source-forward news across politics, culture, technology, economics, education, health, philosophy, science, world, opinion, and cartoons.</description>
+    <lastBuildDate>Thu, 04 Jun 2026 09:00:00 -0400</lastBuildDate>
     <item>
+  <title>The Cartoon Desk Opens Its Notebook</title>
+  <link>https://thepress.live/cartoons-the-cartoon-desk-opens-its-notebook.html</link>
+  <guid>https://thepress.live/cartoons-the-cartoon-desk-opens-its-notebook.html</guid>
+  <pubDate>Thu, 04 Jun 2026 09:00:00 -0400</pubDate>
+  <description>The Press is adding a Cartoon Desk for editorial cartoons, visual satire, and drawn commentary. The rule is simple: make the joke sharp, make the label clear, and never ask readers to mistake invention for reporting.</description>
+</item> <item>
+  <title>The Data Center Is the New Utility Bill</title>
+  <link>https://thepress.live/technology-the-data-center-is-the-new-utility-bill.html</link>
+  <guid>https://thepress.live/technology-the-data-center-is-the-new-utility-bill.html</guid>
+  <pubDate>Wed, 03 Jun 2026 09:30:00 -0400</pubDate>
+  <description>AI data centers have moved from cloud strategy into utility-bill math. A new Press analysis of EIA electricity data tracks the fight over megawatts, water, local consent, and who pays when private compute demand lands on public grids.</description>
+</item> <item>
   <title>Wildlife for Sale</title>
   <link>https://thepress.live/science-wildlife-for-sale.html</link>
   <guid>https://thepress.live/science-wildlife-for-sale.html</guid>
@@ -113,18 +125,6 @@
   <guid>https://thepress.live/opinion-a-country-that-cannot-measure-itself-cannot-govern-itself.html</guid>
   <pubDate>Tue, 07 Apr 2026 16:10:00 -0400</pubDate>
   <description>Public statistics are not bureaucratic garnish. They are the information infrastructure that lets a democratic state know its labor markets, neighborhoods, businesses, and population well enough to act without governing by mood.</description>
-</item> <item>
-  <title>Streaming Grew Up and Became TV Again.</title>
-  <link>https://thepress.live/culture-streaming-grew-up-and-became-tv-again.html</link>
-  <guid>https://thepress.live/culture-streaming-grew-up-and-became-tv-again.html</guid>
-  <pubDate>Tue, 07 Apr 2026 14:15:00 -0400</pubDate>
-  <description>Streaming still dominates attention, but its business now looks far less like disruption and far more like television: ad tiers, sports, bundles, labor formulas, and arguments over who shares in the success of a hit.</description>
-</item> <item>
-  <title>Bird Flu Changed Farm Policy Before It Changed Human Medicine.</title>
-  <link>https://thepress.live/health-bird-flu-changed-farm-policy-before-it-changed-human-medicine.html</link>
-  <guid>https://thepress.live/health-bird-flu-changed-farm-policy-before-it-changed-human-medicine.html</guid>
-  <pubDate>Tue, 07 Apr 2026 12:35:00 -0400</pubDate>
-  <description>H5N1 remains a low public-health risk for the general public, but it has already redrawn dairy surveillance, farm biosecurity, and the line between agricultural disease control and health preparedness.</description>
 </item>
   </channel>
 </rss>

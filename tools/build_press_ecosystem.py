@@ -413,7 +413,7 @@ def normalize_story(item: dict[str, Any], source: str) -> Story | None:
         word_count=clean(item.get("wordCount") or item.get("word_count")),
         status=clean(item.get("status") or "published"),
         priority=int(item.get("priority") or item.get("editorial_priority") or 0),
-        hero_eligible=item.get("hero_eligible", True) is not False,
+        hero_eligible=item.get("hero_eligible", item.get("heroEligible", True)) is not False,
         source=source,
         sort_ts=published_dt.timestamp() if published_dt else 0.0,
         is_daily=url.startswith("daily/") or "daily" in story_type.lower(),

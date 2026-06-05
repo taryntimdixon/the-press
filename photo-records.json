@@ -1,5 +1,21 @@
 [
   {
+    "story": "The Cartoon Desk Opens Its Notebook",
+    "page": "cartoons-the-cartoon-desk-opens-its-notebook.html",
+    "section": "Cartoons",
+    "image": "assets/cartoons-launch-thumbnail.svg",
+    "alt": "Cartoon desk illustration with comic panels, a pencil, speech balloons, and a red editorial stamp",
+    "credit": "Original editorial illustration for The Press"
+  },
+  {
+    "story": "The Data Center Is the New Utility Bill",
+    "page": "technology-the-data-center-is-the-new-utility-bill.html",
+    "section": "Technology",
+    "image": "assets/data-center-grid/data-center-cooling-campus-thumbnail.png",
+    "alt": "Data-center cooling towers and pipes beside a desert water basin, with nearby neighborhoods and mountains in the distance",
+    "credit": "The Press photorealistic editorial visual"
+  },
+  {
     "story": "Wildlife for Sale",
     "page": "science-wildlife-for-sale.html",
     "section": "Science",

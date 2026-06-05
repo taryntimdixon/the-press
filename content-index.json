@@ -1,7 +1,39 @@
 {
-  "generated_at": "2026-06-04T01:38:32.351548+00:00",
-  "story_count": 384,
+  "generated_at": "2026-06-05T11:45:31.473571+00:00",
+  "story_count": 385,
   "stories": [
+    {
+      "story_id": "cartoons-the-cartoon-desk-opens-its-notebook",
+      "cluster_id": "cartoons-cartoon-desk-opens-notebook-editorial-cartoons",
+      "title": "The Cartoon Desk Opens Its Notebook",
+      "section": "Cartoons",
+      "section_slug": "cartoons",
+      "type": "Editor's Note",
+      "dek": "The Press is adding a Cartoon Desk for editorial cartoons, visual satire, and drawn commentary. The rule is simple: make the joke sharp, make the label clear, and never ask readers to mistake invention for reporting.",
+      "url": "cartoons-the-cartoon-desk-opens-its-notebook.html",
+      "author": "The Press",
+      "published": "June 4, 2026 • 9:00 a.m. EDT",
+      "published_iso": "2026-06-04T13:00:00+00:00",
+      "updated": "June 4, 2026 • 9:00 a.m. EDT",
+      "updated_iso": "2026-06-04T13:00:00+00:00",
+      "image": "assets/cartoons-launch-thumbnail.svg",
+      "image_alt": "Cartoon desk illustration with comic panels, a pencil, speech balloons, and a red editorial stamp",
+      "keywords": [
+        "editorial cartoons",
+        "satire",
+        "visual commentary",
+        "cartoon desk",
+        "opinion",
+        "media standards"
+      ],
+      "read_time": "3 min read",
+      "word_count": "640 words",
+      "status": "published",
+      "priority": 0,
+      "hero_eligible": false,
+      "source": "master-edition",
+      "is_daily": false
+    },
     {
       "story_id": "technology-the-data-center-is-the-new-utility-bill",
       "cluster_id": "technology-data-center-utility-bill-centers-electric",

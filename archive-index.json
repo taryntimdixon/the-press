@@ -1,7 +1,39 @@
 {
-  "generated_at": "2026-06-04T01:38:32.351548+00:00",
-  "story_count": 304,
+  "generated_at": "2026-06-05T11:45:31.473571+00:00",
+  "story_count": 305,
   "stories": [
+    {
+      "story_id": "2026-04-25-a-violin-bow-now-has-to-prove-its-tree",
+      "cluster_id": "niche-violin-bow-prove-tree-pernambuco-cites",
+      "title": "A Violin Bow Now Has to Prove Its Tree",
+      "section": "Niche",
+      "section_slug": "niche",
+      "type": "Daily Issue",
+      "dek": "CITES did not ban musicians from touring with pernambuco bows. It did make cross-border sales, consignments and stock histories harder to treat as informal shop business. The craft now depends on planes, calipers and camber — and on invoices, inventories, photographs and proof that the wood’s story can survive a border.",
+      "url": "daily/2026-04-25-a-violin-bow-now-has-to-prove-its-tree.html",
+      "author": "The Press",
+      "published": "April 25, 2026 • 7:21 p.m.",
+      "published_iso": "2026-04-25T19:21:00+00:00",
+      "updated": "April 25, 2026 • 12:00 p.m. UTC",
+      "updated_iso": "2026-04-25T12:00:00+00:00",
+      "image": "",
+      "image_alt": "A Violin Bow Now Has to Prove Its Tree",
+      "keywords": [
+        "pernambuco",
+        "CITES",
+        "bow makers",
+        "classical music",
+        "Brazilwood",
+        "instrument trade"
+      ],
+      "read_time": "",
+      "word_count": "",
+      "status": "published",
+      "priority": 0,
+      "hero_eligible": true,
+      "source": "search-index",
+      "is_daily": true
+    },
     {
       "story_id": "2026-04-24-the-postmark-is-no-longer-the-whole-story",
       "cluster_id": "politics-postmark-longer-whole-story-election-administration",
