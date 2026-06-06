@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-02"] = {
     },
     {
       "label": "Scene",
-      "value": "Surveyor 1 on the lunar surface, proving that a robotic spacecraft could soft-land and send back information needed..."
+      "value": "Surveyor 1 on the lunar surface, proving that a robotic spacecraft could soft-land and send back information needed."
     },
     {
       "label": "Why it mattered",

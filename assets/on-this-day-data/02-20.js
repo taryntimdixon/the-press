@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-20"] = {
   "year": 1846,
   "title": "Austrian Empire",
   "topic": "Austrian Empire",
-  "headline": "Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national...",
+  "headline": "Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national independence that was put down by the Austrian Empire nine days later.",
   "text": "Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national independence that was put down by the Austrian Empire nine days later.",
   "source": "https://en.wikipedia.org/wiki/Austrian_Empire",
   "sourceLabel": "Wikipedia: Austrian Empire",
   "sourceDescription": "Empire in Europe from 1804 to 1867",
   "visual": "protest",
   "palette": "public-square",
-  "dek": "Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national... The deeper story is how this protest moment changed what people could expect from the world around them.",
+  "dek": "Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national independence that was put down by the Austrian Empire nine days later. The deeper story is how this protest moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-20"] = {
   ],
   "summary": [
     "February 20, 1846, is not just a date label for Austrian Empire. It is the point where a larger protest story becomes visible enough to study. Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national independence that was put down by the Austrian Empire nine days later. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national independence that was put down by the Austrian Empire nine days later. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a street, square, prison, factory gate, school, or public building where ordinary people made power answer back. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1900,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-20"] = {
       ]
     },
     {
-      "text": "Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national independence that was put down by the Austrian Empire nine days later. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-20"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On February 20, 1846, Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national independence that was put down by the Austrian Empire nine days later. Why it mattered: Austrian Empire matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies Austrian Empire as empire in Europe from 1804 to 1867. Related subjects include Free City of Cracow (Polish city state (1815–1846)), Kraków Uprising (1846 attempt at Polish independence), Austrian Empire (Empire in Europe from 1804 to 1867). The lasting consequence... The related trail points to Free City of Cracow, Kraków Uprising, Austrian Empire, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On February 20, 1846, Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national independence that was put down by the Austrian Empire nine days later. Why it mattered: Austrian Empire matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies Austrian Empire as empire in Europe from 1804 to 1867. Related subjects include Free City of Cracow (Polish city state (1815–1846)), Kraków Uprising (1846 attempt at Polish independence), Austrian Empire (Empire in Europe from 1804 to 1867). The lasting consequence. The related trail points to Free City of Cracow, Kraków Uprising, Austrian Empire, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

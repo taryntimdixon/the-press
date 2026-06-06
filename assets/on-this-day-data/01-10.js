@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-10"] = {
   "year": 2007,
   "title": "Lansana Conté",
   "topic": "Lansana Conté",
-  "headline": "A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting...",
+  "headline": "A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting in the appointment of two new prime ministers.",
   "text": "A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting in the appointment of two new prime ministers.",
   "source": "https://en.wikipedia.org/wiki/Lansana_Cont%C3%A9",
   "sourceLabel": "Wikipedia: Lansana Conté",
   "sourceDescription": "President of Guinea from 1984 to 2008",
   "visual": "protest",
   "palette": "public-square",
-  "dek": "A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting... The deeper story is how this protest moment changed what people could expect from the world around them.",
+  "dek": "A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting in the appointment of two new prime ministers. The deeper story is how this protest moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-10"] = {
   ],
   "summary": [
     "January 10, 2007, is not just a date label for Lansana Conté. It is the point where a larger protest story becomes visible enough to study. A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting in the appointment of two new prime ministers. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting in the appointment of two new prime ministers. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a street, square, prison, factory gate, school, or public building where ordinary people made power answer back. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1874,
@@ -109,7 +109,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-10"] = {
       ]
     },
     {
-      "text": "A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting in the appointment of two new prime ministers. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -152,7 +152,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-10"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On January 10, 2007, a general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting in the appointment of two new prime ministers. Why it mattered: Lansana Conté matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies Lansana Conté as president of Guinea from 1984 to 2008. Related subjects include 2007 Guinean general strike (2007 general strike in Guinea), Lansana Conté (President of Guinea from 1984 to 2008). The lasting consequence was pressure made visible: crowds, workers... The related trail points to 2007 Guinean general strike, Lansana Conté, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On January 10, 2007, a general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting in the appointment of two new prime ministers. Why it mattered: Lansana Conté matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies Lansana Conté as president of Guinea from 1984 to 2008. Related subjects include 2007 Guinean general strike (2007 general strike in Guinea), Lansana Conté (President of Guinea from 1984 to 2008). The lasting consequence was pressure made visible: crowds, workers. The related trail points to 2007 Guinean general strike, Lansana Conté, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

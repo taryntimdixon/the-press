@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-10"] = {
     },
     {
       "label": "Scene",
-      "value": "the final ceasefire of the Six-Day War, after territorial capture transformed the map around Israel, Egypt, Jordan, Syria..."
+      "value": "the final ceasefire of the Six-Day War, after territorial capture transformed the map around Israel, Egypt, Jordan, Syria."
     },
     {
       "label": "Why it mattered",

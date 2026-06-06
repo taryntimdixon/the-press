@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-22"] = {
   "year": 2003,
   "title": "Roy Moore",
   "topic": "Roy Moore",
-  "headline": "Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to...",
+  "headline": "Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme Court of Alabama building.",
   "text": "Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme Court of Alabama building.",
   "source": "https://en.wikipedia.org/wiki/Roy_Moore",
   "sourceLabel": "Wikipedia: Roy Moore",
   "sourceDescription": "American politician and jurist (born 1947)",
   "visual": "civic",
   "palette": "civic",
-  "dek": "Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to... The deeper story is how this government and civic power moment changed what people could expect from the world around them.",
+  "dek": "Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme Court of Alabama building. The deeper story is how this government and civic power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-22"] = {
   ],
   "summary": [
     "August 22, 2003, is not just a date label for Roy Moore. It is the point where a larger government and civic power story becomes visible enough to study. Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme Court of Alabama building. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme Court of Alabama building. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a formal place where documents, offices, ceremonies, laws, and public legitimacy became the center of the story. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1931,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-22"] = {
       ]
     },
     {
-      "text": "Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme Court of Alabama building. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-22"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On August 22, 2003, Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme Court of Alabama building. Why it mattered: Roy Moore turned an argument into a formal rule, and it changed how an institution, law, government, treaty, or public office worked. In the wider civic story, it changed how an institution, law, government, treaty, or public office worked. The source record identifies Roy Moore as american politician and jurist (born 1947). Related subjects include Roy Moore (American politician and jurist (born 1947)), Ten Commandments (Biblical principles relating to ethics and worship), Supreme Court of Alabama (Highest court in the U.S. state of... The related trail points to Roy Moore, Ten Commandments, Supreme Court of Alabama, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On August 22, 2003, Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme Court of Alabama building. Why it mattered: Roy Moore turned an argument into a formal rule, and it changed how an institution, law, government, treaty, or public office worked. In the wider civic story, it changed how an institution, law, government, treaty, or public office worked. The source record identifies Roy Moore as american politician and jurist (born 1947). Related subjects include Roy Moore (American politician and jurist (born 1947)), Ten Commandments (Biblical principles relating to ethics and worship), Supreme Court of Alabama (Highest court in the U.S. state of. The related trail points to Roy Moore, Ten Commandments, Supreme Court of Alabama, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4
@@ -241,7 +241,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-22"] = {
       ]
     },
     {
-      "text": "For Roy Moore, the detail work starts with the nouns inside the event itself: Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme... Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
+      "text": "For Roy Moore, the detail work starts with the nouns inside the event itself: Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme. Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
       "sources": [
         1,
         2,
@@ -253,7 +253,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-22"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of August 22 is easy: Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme Court of... The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of August 22 is easy: Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme Court of. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

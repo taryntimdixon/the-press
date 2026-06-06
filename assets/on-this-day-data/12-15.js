@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-15"] = {
   "year": 2019,
   "title": "Citizenship Amendment Act protests",
   "topic": "Citizenship Amendment Act protests",
-  "headline": "Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest...",
+  "headline": "Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest the exclusion of Muslims from the amended Citizenship Act.",
   "text": "Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest the exclusion of Muslims from the amended Citizenship Act.",
   "source": "https://en.wikipedia.org/wiki/Citizenship_Amendment_Act_protests",
   "sourceLabel": "Wikipedia: Citizenship Amendment Act protests",
   "sourceDescription": "2019–2020 protests in India",
   "visual": "rights",
   "palette": "public-square",
-  "dek": "Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest... The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
+  "dek": "Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest the exclusion of Muslims from the amended Citizenship Act. The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-15"] = {
   ],
   "summary": [
     "December 15, 2019, is not just a date label for Citizenship Amendment Act protests. It is the point where a larger rights and public power story becomes visible enough to study. Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest the exclusion of Muslims from the amended Citizenship Act. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest the exclusion of Muslims from the amended Citizenship Act. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a public institution or street-level confrontation where law, identity, courage, and pressure met in the open. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1917,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-15"] = {
       ]
     },
     {
-      "text": "Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest the exclusion of Muslims from the amended Citizenship Act. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-15"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On December 15, 2019, Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest the exclusion of Muslims from the amended Citizenship Act. Why it mattered: Citizenship Amendment Act protests turned an argument into a formal rule, and it changed the legal or public meaning of citizenship. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies Citizenship Amendment Act protests as 2019–2020 protests in India. Related subjects include Citizenship Amendment Act protests (2019–2020 protests in India), Shaheen Bagh protest (2019–20 sit-in protest in Delhi, India), Delhi (Megacity and union territory of India), Citizenship (Amendment) Act, 2019... The related trail points to Citizenship Amendment Act protests, Shaheen Bagh protest, Delhi, Citizenship (Amendment) Act, 2019, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On December 15, 2019, Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest the exclusion of Muslims from the amended Citizenship Act. Why it mattered: Citizenship Amendment Act protests turned an argument into a formal rule, and it changed the legal or public meaning of citizenship. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies Citizenship Amendment Act protests as 2019–2020 protests in India. Related subjects include Citizenship Amendment Act protests (2019–2020 protests in India), Shaheen Bagh protest (2019–20 sit-in protest in Delhi, India), Delhi (Megacity and union territory of India), Citizenship (Amendment) Act, 2019. The related trail points to Citizenship Amendment Act protests, Shaheen Bagh protest, Delhi, Citizenship (Amendment) Act, 2019, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

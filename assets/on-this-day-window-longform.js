@@ -619,7 +619,7 @@
   }
 
   function buildDek(moment, lane) {
-    const opening = trimSentence(moment.headline || moment.text || moment.title, 28);
+    const opening = firstCompleteSentence(moment.text || moment.headline || moment.title);
     return `${opening} The deeper story is how this ${lane.label} moment changed what people could expect from the world around them.`;
   }
 
@@ -730,7 +730,7 @@
 
   function buildArticle(moment, lane, specific = {}, context) {
     const eventText = ensureSentence(moment.text || moment.headline || context.title);
-    const headline = ensureSentence(moment.headline || moment.text || context.title);
+    const headline = ensureSentence(/\.\.\./.test(moment.headline || '') ? (moment.text || context.title) : (moment.headline || moment.text || context.title));
     const sourcePhrase = context.sourceDescription
       ? `The main source record describes the subject as ${lowerFirst(ensureSentence(context.sourceDescription))}`
       : `The main source record gives the reader the first stable trail into the event.`;
@@ -862,19 +862,27 @@
   }
 
   function trimWords(value, maxWords) {
-    const words = String(value || '').replace(/\s+/g, ' ').trim().split(/\s+/).filter(Boolean);
+    const text = String(value || '').replace(/\s+/g, ' ').trim();
+    const words = text.split(/\s+/).filter(Boolean);
     if (words.length <= maxWords) return words.join(' ');
-    return `${words.slice(0, maxWords).join(' ').replace(/[,:;]$/, '')}...`;
+    return firstCompleteSentence(text);
   }
 
   function trimSentence(value, maxWords) {
-    const words = String(value || '').replace(/\s+/g, ' ').trim().split(/\s+/).filter(Boolean);
-    const text = words.length > maxWords ? `${words.slice(0, maxWords).join(' ').replace(/[,:;]$/, '')}...` : words.join(' ');
-    return ensureSentence(text);
+    const text = String(value || '').replace(/\s+/g, ' ').trim();
+    const words = text.split(/\s+/).filter(Boolean);
+    return ensureSentence(words.length > maxWords ? firstCompleteSentence(text) : text);
+  }
+
+  function firstCompleteSentence(value) {
+    const text = String(value || '').replace(/\s+/g, ' ').trim().replace(/\.\.\./g, '.');
+    if (!text) return '';
+    const sentence = text.match(/^.{12,420}?[.!?](?:\s|$)/);
+    return ensureSentence(sentence ? sentence[0] : text);
   }
 
   function ensureSentence(value) {
-    const text = String(value || '').replace(/\s+/g, ' ').trim();
+    const text = String(value || '').replace(/\s+/g, ' ').trim().replace(/\.\.\./g, '.');
     if (!text) return '';
     return /[.!?]$/.test(text) ? text : `${text}.`;
   }

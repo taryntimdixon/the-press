@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-21"] = {
     },
     {
       "label": "Scene",
-      "value": "midnight bookstore lines in 2007, where secrecy, spoilers, costumes, global publishing logistics, and childhood attachment converged around the..."
+      "value": "midnight bookstore lines in 2007, where secrecy, spoilers, costumes, global publishing logistics, and childhood attachment converged around the."
     },
     {
       "label": "Why it mattered",

@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-30"] = {
     },
     {
       "label": "Scene",
-      "value": "Leopoldville/Kinshasa at independence, with Belgian colonial rule ending amid ceremony, speeches, mineral wealth, Cold War pressure, and Congolese..."
+      "value": "Leopoldville/Kinshasa at independence, with Belgian colonial rule ending amid ceremony, speeches, mineral wealth, Cold War pressure, and Congolese."
     },
     {
       "label": "Why it mattered",

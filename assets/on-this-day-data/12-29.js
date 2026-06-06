@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-29"] = {
   "year": 1890,
   "title": "Wounded Knee Massacre",
   "topic": "Wounded Knee Massacre",
-  "headline": "Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded...",
+  "headline": "Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded Knee Massacre, beginning the Ghost Dance War.",
   "text": "Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded Knee Massacre, beginning the Ghost Dance War.",
   "source": "https://en.wikipedia.org/wiki/Wounded_Knee_Massacre",
   "sourceLabel": "Wikipedia: Wounded Knee Massacre",
   "sourceDescription": "1890 South Dakota massacre of Lakota",
   "visual": "rights",
   "palette": "public-square",
-  "dek": "Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded... The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
+  "dek": "Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded Knee Massacre, beginning the Ghost Dance War. The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-29"] = {
   ],
   "summary": [
     "December 29, 1890, is not just a date label for Wounded Knee Massacre. It is the point where a larger rights and public power story becomes visible enough to study. Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded Knee Massacre, beginning the Ghost Dance War. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded Knee Massacre, beginning the Ghost Dance War. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a public institution or street-level confrontation where law, identity, courage, and pressure met in the open. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1895,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-29"] = {
       ]
     },
     {
-      "text": "Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded Knee Massacre, beginning the Ghost Dance War. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-29"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On December 29, 1890, Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded Knee Massacre, beginning the Ghost Dance War. Why it mattered: Wounded Knee Massacre matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies Wounded Knee Massacre as 1890 South Dakota massacre of Lakota. Related subjects include Sioux Wars (1854–1891 conflicts in the United States), United States Army (Land service branch of the U.S. military), Lakota people (Indigenous people of the Great Plains), Wounded... The related trail points to Sioux Wars, United States Army, Lakota people, Wounded Knee Massacre, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On December 29, 1890, Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded Knee Massacre, beginning the Ghost Dance War. Why it mattered: Wounded Knee Massacre matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies Wounded Knee Massacre as 1890 South Dakota massacre of Lakota. Related subjects include Sioux Wars (1854–1891 conflicts in the United States), United States Army (Land service branch of the U.S. military), Lakota people (Indigenous people of the Great Plains), Wounded. The related trail points to Sioux Wars, United States Army, Lakota people, Wounded Knee Massacre, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

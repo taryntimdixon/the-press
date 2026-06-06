@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-29"] = {
   "year": 2009,
   "title": "Supreme Constitutional Court (Egypt)",
   "topic": "Supreme Constitutional Court (Egypt)",
-  "headline": "The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three...",
+  "headline": "The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three government-recognised religions were also eligible to receive government identity documents.",
   "text": "The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three government-recognised religions were also eligible to receive government identity documents.",
   "source": "https://en.wikipedia.org/wiki/Supreme_Constitutional_Court_(Egypt)",
   "sourceLabel": "Wikipedia: Supreme Constitutional Court (Egypt)",
   "sourceDescription": "Highest judiciary body in Egypt",
   "visual": "civic",
   "palette": "civic",
-  "dek": "The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three... The deeper story is how this government and civic power moment changed what people could expect from the world around them.",
+  "dek": "The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three government-recognised religions were also eligible to receive government identity documents. The deeper story is how this government and civic power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-29"] = {
   ],
   "summary": [
     "January 29, 2009, is not just a date label for Supreme Constitutional Court (Egypt). It is the point where a larger government and civic power story becomes visible enough to study. The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three government-recognised religions were also eligible to receive government identity documents. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three government-recognised religions were also eligible to receive government identity documents. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a formal place where documents, offices, ceremonies, laws, and public legitimacy became the center of the story. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1923,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-29"] = {
       ]
     },
     {
-      "text": "The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three government-recognised religions were also eligible to receive government identity documents. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-29"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On January 29, 2009, the Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three government-recognised religions were also eligible to receive government identity documents. Why it mattered: Supreme Constitutional Court (Egypt) turned an argument into a formal rule, and it changed how an institution, law, government, treaty. In the wider civic story, it changed how an institution, law, government, treaty, or public office worked. The source record identifies Supreme Constitutional Court (Egypt) as highest judiciary body in Egypt. Related subjects include Supreme Constitutional Court (Egypt) (Highest judiciary body in Egypt), Religion in Egypt, Egyptian identification card controversy (Egyptian ID card dispute), Identity document (Document used to identify a... The related trail points to Supreme Constitutional Court (Egypt), Religion in Egypt, Egyptian identification card controversy, Identity document, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On January 29, 2009, the Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three government-recognised religions were also eligible to receive government identity documents. Why it mattered: Supreme Constitutional Court (Egypt) turned an argument into a formal rule, and it changed how an institution, law, government, treaty. In the wider civic story, it changed how an institution, law, government, treaty, or public office worked. The source record identifies Supreme Constitutional Court (Egypt) as highest judiciary body in Egypt. Related subjects include Supreme Constitutional Court (Egypt) (Highest judiciary body in Egypt), Religion in Egypt, Egyptian identification card controversy (Egyptian ID card dispute), Identity document (Document used to identify a. The related trail points to Supreme Constitutional Court (Egypt), Religion in Egypt, Egyptian identification card controversy, Identity document, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

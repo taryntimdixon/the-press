@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-14"] = {
     },
     {
       "label": "Scene",
-      "value": "Paris at the Bastille, where fortress, prison, arms, crowds, royal authority, rumor, and revolutionary violence became a founding..."
+      "value": "Paris at the Bastille, where fortress, prison, arms, crowds, royal authority, rumor, and revolutionary violence became a founding."
     },
     {
       "label": "Why it mattered",

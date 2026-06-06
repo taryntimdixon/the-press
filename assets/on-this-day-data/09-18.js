@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-18"] = {
   "year": 1870,
   "title": "Nathaniel P. Langford",
   "topic": "Nathaniel P. Langford",
-  "headline": "Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular...",
+  "headline": "Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular intervals, naming it Old Faithful (video featured).",
   "text": "Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular intervals, naming it Old Faithful (video featured).",
   "source": "https://en.wikipedia.org/wiki/Nathaniel_P._Langford",
   "sourceLabel": "Wikipedia: Nathaniel P. Langford",
   "sourceDescription": "American explorer, businessman, historian and vigilante",
   "visual": "transport",
   "palette": "voyage",
-  "dek": "Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular... The deeper story is how this transportation moment changed what people could expect from the world around them.",
+  "dek": "Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular intervals, naming it Old Faithful (video featured). The deeper story is how this transportation moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-18"] = {
   ],
   "summary": [
     "September 18, 1870, is not just a date label for Nathaniel P. Langford. It is the point where a larger transportation story becomes visible enough to study. Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular intervals, naming it Old Faithful (video featured). The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular intervals, naming it Old Faithful (video featured). That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a route, vehicle, station, bridge, port, or horizon where distance started to feel different. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1900,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-18"] = {
       ]
     },
     {
-      "text": "Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular intervals, naming it Old Faithful (video featured). That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-18"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On September 18, 1870, Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular intervals, naming it Old Faithful (video featured). Why it mattered: Nathaniel P. Langford marked a first, and it changed how people, goods, risk, distance, or rescue moved across the world. In the wider transport story, it changed how people, goods, risk, distance, or rescue moved across the world. The source record identifies Nathaniel P. Langford as american explorer, businessman, historian and vigilante. Related subjects include Nathaniel P. Langford (American explorer, businessman, historian and vigilante), Washburn–Langford–Doane Expedition (Research expedition in the US), Geyser (Natural explosive eruption of hot water), Wyoming Territory (Former organized... The related trail points to Nathaniel P. Langford, Washburn–Langford–Doane Expedition, Geyser, Wyoming Territory, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On September 18, 1870, Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular intervals, naming it Old Faithful (video featured). Why it mattered: Nathaniel P. Langford marked a first, and it changed how people, goods, risk, distance, or rescue moved across the world. In the wider transport story, it changed how people, goods, risk, distance, or rescue moved across the world. The source record identifies Nathaniel P. Langford as american explorer, businessman, historian and vigilante. Related subjects include Nathaniel P. Langford (American explorer, businessman, historian and vigilante), Washburn–Langford–Doane Expedition (Research expedition in the US), Geyser (Natural explosive eruption of hot water), Wyoming Territory (Former organized. The related trail points to Nathaniel P. Langford, Washburn–Langford–Doane Expedition, Geyser, Wyoming Territory, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

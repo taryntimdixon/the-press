@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-27"] = {
   "year": 1848,
   "title": "National Assembly (France)",
   "topic": "National Assembly (France)",
-  "headline": "The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following...",
+  "headline": "The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following the February Revolution.",
   "text": "The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following the February Revolution.",
   "source": "https://en.wikipedia.org/wiki/National_Assembly_(France)",
   "sourceLabel": "Wikipedia: National Assembly (France)",
   "sourceDescription": "Lower house of the French Parliament",
   "visual": "rights",
   "palette": "public-square",
-  "dek": "The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following... The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
+  "dek": "The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following the February Revolution. The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-27"] = {
   ],
   "summary": [
     "April 27, 1848, is not just a date label for National Assembly (France). It is the point where a larger rights and public power story becomes visible enough to study. The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following the February Revolution. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following the February Revolution. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a public institution or street-level confrontation where law, identity, courage, and pressure met in the open. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1885,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-27"] = {
       ]
     },
     {
-      "text": "The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following the February Revolution. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-27"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On April 27, 1848, the French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following the February Revolution. Why it mattered: National Assembly (France) matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies National Assembly (France) as lower house of the French Parliament. Related subjects include National Assembly (France) (Lower house of the French Parliament), Victor Schœlcher (19th-century French abolitionist), French Second Republic (Government of France from 1848 to 1852), French Revolution of... The related trail points to National Assembly (France), Victor Schœlcher, French Second Republic, French Revolution of 1848, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On April 27, 1848, the French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following the February Revolution. Why it mattered: National Assembly (France) matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies National Assembly (France) as lower house of the French Parliament. Related subjects include National Assembly (France) (Lower house of the French Parliament), Victor Schœlcher (19th-century French abolitionist), French Second Republic (Government of France from 1848 to 1852), French Revolution of. The related trail points to National Assembly (France), Victor Schœlcher, French Second Republic, French Revolution of 1848, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

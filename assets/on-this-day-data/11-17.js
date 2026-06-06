@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-17"] = {
   "year": 1968,
   "title": "NBC",
   "topic": "NBC",
-  "headline": "NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to...",
+  "headline": "NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to broadcast Heidi, causing viewers in the Eastern United States to miss the game's dramatic ending.",
   "text": "NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to broadcast Heidi, causing viewers in the Eastern United States to miss the game's dramatic ending.",
   "source": "https://en.wikipedia.org/wiki/NBC",
   "sourceLabel": "Wikipedia: NBC",
   "sourceDescription": "American broadcast television network",
   "visual": "sports",
   "palette": "public-square",
-  "dek": "NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to... The deeper story is how this history moment changed what people could expect from the world around them.",
+  "dek": "NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to broadcast Heidi, causing viewers in the Eastern United States to miss the game's dramatic ending. The deeper story is how this history moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-17"] = {
   ],
   "summary": [
     "November 17, 1968, is not just a date label for NBC. It is the point where a larger history story becomes visible enough to study. NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to broadcast Heidi, causing viewers in the Eastern United States to miss the game's dramatic ending. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to broadcast Heidi, causing viewers in the Eastern United States to miss the game's dramatic ending. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1896,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-17"] = {
       ]
     },
     {
-      "text": "NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to broadcast Heidi, causing viewers in the Eastern United States to miss the game's dramatic ending. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-17"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On November 17, 1968, NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to broadcast Heidi, causing viewers in the Eastern United States to miss the game's dramatic ending. Why it mattered: NBC matters because it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood its own limits. The source record identifies NBC as american broadcast television network. Related subjects include NBC (American broadcast television network), Heidi Game (1968 American Football League game), Oakland Raiders (Former American football franchise in Oakland, California (1960–1981; 1995–2019)), New York Jets (National Football League franchise in... The related trail points to NBC, Heidi Game, Oakland Raiders, New York Jets, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On November 17, 1968, NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to broadcast Heidi, causing viewers in the Eastern United States to miss the game's dramatic ending. Why it mattered: NBC matters because it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood its own limits. The source record identifies NBC as american broadcast television network. Related subjects include NBC (American broadcast television network), Heidi Game (1968 American Football League game), Oakland Raiders (Former American football franchise in Oakland, California (1960–1981; 1995–2019)), New York Jets (National Football League franchise in. The related trail points to NBC, Heidi Game, Oakland Raiders, New York Jets, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4
@@ -246,7 +246,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-17"] = {
       ]
     },
     {
-      "text": "For NBC, the detail work starts with the nouns inside the event itself: NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to broadcast Heidi, causing viewers in the Eastern United States to miss the game's dramatic... Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
+      "text": "For NBC, the detail work starts with the nouns inside the event itself: NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to broadcast Heidi, causing viewers in the Eastern United States to miss the game's dramatic ending. Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
       "sources": [
         1,
         2,

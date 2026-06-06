@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-15"] = {
   "year": 2011,
   "title": "15 October 2011 global protests",
   "topic": "15 October 2011 global protests",
-  "headline": "Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950...",
+  "headline": "Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950 cities in 82 countries.",
   "text": "Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950 cities in 82 countries.",
   "source": "https://en.wikipedia.org/wiki/15_October_2011_global_protests",
   "sourceLabel": "Wikipedia: 15 October 2011 global protests",
   "sourceDescription": "Series of protests",
   "visual": "protest",
   "palette": "public-square",
-  "dek": "Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950... The deeper story is how this protest moment changed what people could expect from the world around them.",
+  "dek": "Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950 cities in 82 countries. The deeper story is how this protest moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-15"] = {
   ],
   "summary": [
     "October 15, 2011, is not just a date label for 15 October 2011 global protests. It is the point where a larger protest story becomes visible enough to study. Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950 cities in 82 countries. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950 cities in 82 countries. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a street, square, prison, factory gate, school, or public building where ordinary people made power answer back. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1887,
@@ -104,7 +104,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-15"] = {
       ]
     },
     {
-      "text": "Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950 cities in 82 countries. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]

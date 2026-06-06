@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-20"] = {
   "year": 1909,
   "title": "Pluto",
   "topic": "Pluto",
-  "headline": "Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years...",
+  "headline": "Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years before it was officially discovered by Clyde Tombaugh.",
   "text": "Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years before it was officially discovered by Clyde Tombaugh.",
   "source": "https://en.wikipedia.org/wiki/Pluto",
   "sourceLabel": "Wikipedia: Pluto",
   "sourceDescription": "Largest dwarf planet",
   "visual": "science",
   "palette": "laboratory",
-  "dek": "Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years... The deeper story is how this science moment changed what people could expect from the world around them.",
+  "dek": "Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years before it was officially discovered by Clyde Tombaugh. The deeper story is how this science moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-20"] = {
   ],
   "summary": [
     "August 20, 1909, is not just a date label for Pluto. It is the point where a larger science story becomes visible enough to study. Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years before it was officially discovered by Clyde Tombaugh. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years before it was officially discovered by Clyde Tombaugh. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a field site, lab, observatory, instrument room, or announcement where evidence forced people to update the picture of reality. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1863,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-20"] = {
       ]
     },
     {
-      "text": "Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years before it was officially discovered by Clyde Tombaugh. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-20"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On August 20, 1909, Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years before it was officially discovered by Clyde Tombaugh. Why it mattered: Pluto marked a first, and it changed what researchers could observe, prove, measure, or explain. In the wider science story, it changed what researchers could observe, prove, measure, or explain. The source record identifies Pluto as the largest dwarf planet. Related subjects include Pluto (Largest dwarf planet), Yerkes Observatory (Astronomical observatory in Wisconsin, USA), Williams Bay, Wisconsin (Village in Wisconsin, United States), Clyde Tombaugh (American astronomer (1906–1997)). The lasting consequence was knowledge: evidence, instruments... The related trail points to Pluto, Yerkes Observatory, Williams Bay, Wisconsin, Clyde Tombaugh, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On August 20, 1909, Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years before it was officially discovered by Clyde Tombaugh. Why it mattered: Pluto marked a first, and it changed what researchers could observe, prove, measure, or explain. In the wider science story, it changed what researchers could observe, prove, measure, or explain. The source record identifies Pluto as the largest dwarf planet. Related subjects include Pluto (Largest dwarf planet), Yerkes Observatory (Astronomical observatory in Wisconsin, USA), Williams Bay, Wisconsin (Village in Wisconsin, United States), Clyde Tombaugh (American astronomer (1906–1997)). The lasting consequence was knowledge: evidence, instruments. The related trail points to Pluto, Yerkes Observatory, Williams Bay, Wisconsin, Clyde Tombaugh, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

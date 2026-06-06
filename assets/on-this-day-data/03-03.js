@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["03-03"] = {
   "year": 1972,
   "title": "Jethro Tull (band)",
   "topic": "Jethro Tull (band)",
-  "headline": "The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from...",
+  "headline": "The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from an eight-year-old boy's epic poem.",
   "text": "The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from an eight-year-old boy's epic poem.",
   "source": "https://en.wikipedia.org/wiki/Jethro_Tull_(band)",
   "sourceLabel": "Wikipedia: Jethro Tull (band)",
   "sourceDescription": "British rock band",
   "visual": "music",
   "palette": "stage",
-  "dek": "The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from... The deeper story is how this music and broadcast culture moment changed what people could expect from the world around them.",
+  "dek": "The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from an eight-year-old boy's epic poem. The deeper story is how this music and broadcast culture moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["03-03"] = {
   ],
   "summary": [
     "March 3, 1972, is not just a date label for Jethro Tull (band). It is the point where a larger music and broadcast culture story becomes visible enough to study. The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from an eight-year-old boy's epic poem. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from an eight-year-old boy's epic poem. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a performance, studio, stadium, record shop, broadcast booth, or crowd where sound became a public event. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1877,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["03-03"] = {
       ]
     },
     {
-      "text": "The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from an eight-year-old boy's epic poem. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["03-03"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On March 3, 1972, the British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from an eight-year-old boy's epic poem. Why it mattered: Jethro Tull (band) matters because it changed the sound, business, audience, or shared memory of popular music. In the wider music story, it changed the sound, business, audience, or shared memory of popular music. The source record identifies Jethro Tull (band) as british rock band. Related subjects include Jethro Tull (band) (British rock band), Thick as a Brick (1972 studio album by Jethro Tull), Concept album (Album that tells a self-contained story), Epic poetry (Lengthy poem dealing with... The related trail points to Jethro Tull (band), Thick as a Brick, Concept album, Epic poetry, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On March 3, 1972, the British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from an eight-year-old boy's epic poem. Why it mattered: Jethro Tull (band) matters because it changed the sound, business, audience, or shared memory of popular music. In the wider music story, it changed the sound, business, audience, or shared memory of popular music. The source record identifies Jethro Tull (band) as british rock band. Related subjects include Jethro Tull (band) (British rock band), Thick as a Brick (1972 studio album by Jethro Tull), Concept album (Album that tells a self-contained story), Epic poetry (Lengthy poem dealing with. The related trail points to Jethro Tull (band), Thick as a Brick, Concept album, Epic poetry, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

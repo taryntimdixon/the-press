@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-08"] = {
     },
     {
       "label": "Scene",
-      "value": "the Laki fissure eruption in Iceland, where lava, gases, livestock death, crop failure, haze, and climate effects made..."
+      "value": "the Laki fissure eruption in Iceland, where lava, gases, livestock death, crop failure, haze, and climate effects made."
     },
     {
       "label": "Why it mattered",

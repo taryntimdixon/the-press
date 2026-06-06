@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-30"] = {
   "year": 2005,
   "title": "Jyllands-Posten",
   "topic": "Jyllands-Posten",
-  "headline": "The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many...",
+  "headline": "The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many who viewed them as Islamophobic and blasphemous.",
   "text": "The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many who viewed them as Islamophobic and blasphemous.",
   "source": "https://en.wikipedia.org/wiki/Jyllands-Posten",
   "sourceLabel": "Wikipedia: Jyllands-Posten",
   "sourceDescription": "Daily newspaper in Denmark",
   "visual": "protest",
   "palette": "public-square",
-  "dek": "The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many... The deeper story is how this protest moment changed what people could expect from the world around them.",
+  "dek": "The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many who viewed them as Islamophobic and blasphemous. The deeper story is how this protest moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-30"] = {
   ],
   "summary": [
     "September 30, 2005, is not just a date label for Jyllands-Posten. It is the point where a larger protest story becomes visible enough to study. The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many who viewed them as Islamophobic and blasphemous. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many who viewed them as Islamophobic and blasphemous. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a street, square, prison, factory gate, school, or public building where ordinary people made power answer back. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1858,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-30"] = {
       ]
     },
     {
-      "text": "The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many who viewed them as Islamophobic and blasphemous. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-30"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On September 30, 2005, the Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many who viewed them as Islamophobic and blasphemous. Why it mattered: Jyllands-Posten matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies Jyllands-Posten as daily newspaper in Denmark. Related subjects include Jyllands-Posten (Daily newspaper in Denmark), Jyllands-Posten Muhammad cartoons controversy (2005 controversy surrounding the depiction of Muhammad), Muhammad (Founder of Islam (c. 570–632)), Islamic world (Muslim-majority countries, states, districts, or towns). The... The related trail points to Jyllands-Posten, Jyllands-Posten Muhammad cartoons controversy, Muhammad, Islamic world, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On September 30, 2005, the Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many who viewed them as Islamophobic and blasphemous. Why it mattered: Jyllands-Posten matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies Jyllands-Posten as daily newspaper in Denmark. Related subjects include Jyllands-Posten (Daily newspaper in Denmark), Jyllands-Posten Muhammad cartoons controversy (2005 controversy surrounding the depiction of Muhammad), Muhammad (Founder of Islam (c. 570–632)), Islamic world (Muslim-majority countries, states, districts, or towns). The. The related trail points to Jyllands-Posten, Jyllands-Posten Muhammad cartoons controversy, Muhammad, Islamic world, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

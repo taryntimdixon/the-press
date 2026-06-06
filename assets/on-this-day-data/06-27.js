@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-27"] = {
     },
     {
       "label": "Scene",
-      "value": "early-1970s California electronics and arcade culture as Atari turned coin-operated video games into a new youth and entertainment..."
+      "value": "early-1970s California electronics and arcade culture as Atari turned coin-operated video games into a new youth and entertainment."
     },
     {
       "label": "Why it mattered",

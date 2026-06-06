@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-14"] = {
   "year": 1972,
   "title": "Apollo 17",
   "topic": "Apollo 17",
-  "headline": "Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to...",
+  "headline": "Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to date to walk on the Moon.",
   "text": "Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to date to walk on the Moon.",
   "source": "https://en.wikipedia.org/wiki/Apollo_17",
   "sourceLabel": "Wikipedia: Apollo 17",
   "sourceDescription": "Sixth and most recent crewed Moon landing",
   "visual": "space",
   "palette": "lunar",
-  "dek": "Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to... The deeper story is how this space exploration moment changed what people could expect from the world around them.",
+  "dek": "Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to date to walk on the Moon. The deeper story is how this space exploration moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-14"] = {
   ],
   "summary": [
     "December 14, 1972, is not just a date label for Apollo 17. It is the point where a larger space exploration story becomes visible enough to study. Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to date to walk on the Moon. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to date to walk on the Moon. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a mission environment where hardware, risk, mathematics, weather, and public imagination had to line up. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1884,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-14"] = {
       ]
     },
     {
-      "text": "Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to date to walk on the Moon. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-14"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On December 14, 1972, Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to date to walk on the Moon. Why it mattered: Apollo 17 matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and public imagination... The source record identifies Apollo 17 as sixth and most recent crewed Moon landing. Related subjects include Extravehicular activity (Activity done by an astronaut outside a spacecraft), Apollo 17 (Sixth and most recent crewed Moon landing), Gene Cernan (American astronaut and lunar explorer (1934–2017))... The related trail points to Extravehicular activity, Apollo 17, Gene Cernan, List of Apollo astronauts, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On December 14, 1972, Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to date to walk on the Moon. Why it mattered: Apollo 17 matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and public imagination. The source record identifies Apollo 17 as sixth and most recent crewed Moon landing. Related subjects include Extravehicular activity (Activity done by an astronaut outside a spacecraft), Apollo 17 (Sixth and most recent crewed Moon landing), Gene Cernan (American astronaut and lunar explorer (1934–2017)). The related trail points to Extravehicular activity, Apollo 17, Gene Cernan, List of Apollo astronauts, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

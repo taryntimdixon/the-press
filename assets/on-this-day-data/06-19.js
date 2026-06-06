@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-19"] = {
     },
     {
       "label": "Scene",
-      "value": "Galveston in 1865, where General Order No. 3 announced freedom after slavery had already legally ended elsewhere but..."
+      "value": "Galveston in 1865, where General Order No. 3 announced freedom after slavery had already legally ended elsewhere but."
     },
     {
       "label": "Why it mattered",

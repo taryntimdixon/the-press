@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-11"] = {
   "year": 1778,
   "title": "American Revolutionary War",
   "topic": "American Revolutionary War",
-  "headline": "American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley...",
+  "headline": "American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley, New York, killing 14 soldiers and 30 civilians.",
   "text": "American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley, New York, killing 14 soldiers and 30 civilians.",
   "source": "https://en.wikipedia.org/wiki/American_Revolutionary_War",
   "sourceLabel": "Wikipedia: American Revolutionary War",
   "sourceDescription": "1775–1783 conflict in North America",
   "visual": "conflict",
   "palette": "dispatch",
-  "dek": "American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley... The deeper story is how this war and crisis moment changed what people could expect from the world around them.",
+  "dek": "American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley, New York, killing 14 soldiers and 30 civilians. The deeper story is how this war and crisis moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-11"] = {
   ],
   "summary": [
     "November 11, 1778, is not just a date label for American Revolutionary War. It is the point where a larger war and crisis story becomes visible enough to study. American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley, New York, killing 14 soldiers and 30 civilians. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley, New York, killing 14 soldiers and 30 civilians. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a dangerous setting where command decisions, civilians, soldiers, geography, and timing collided. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1898,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-11"] = {
       ]
     },
     {
-      "text": "American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley, New York, killing 14 soldiers and 30 civilians. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-11"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On November 11, 1778, American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley, New York, killing 14 soldiers and 30 civilians. Why it mattered: American Revolutionary War matters because it altered power, territory, memory, or civilian life through war and its consequences. In the wider conflict story, it altered power, territory, memory, or civilian life through war and its consequences. The source record identifies American Revolutionary War as 1775–1783 conflict in North America. Related subjects include American Revolutionary War (1775–1783 conflict in North America), Haudenosaunee (Indigenous confederacy in North America), Cherry Valley massacre (1778 American Revolutionary War attack), Cherry Valley (village), New York (Village... The related trail points to American Revolutionary War, Haudenosaunee, Cherry Valley massacre, Cherry Valley (village), New York, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On November 11, 1778, American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley, New York, killing 14 soldiers and 30 civilians. Why it mattered: American Revolutionary War matters because it altered power, territory, memory, or civilian life through war and its consequences. In the wider conflict story, it altered power, territory, memory, or civilian life through war and its consequences. The source record identifies American Revolutionary War as 1775–1783 conflict in North America. Related subjects include American Revolutionary War (1775–1783 conflict in North America), Haudenosaunee (Indigenous confederacy in North America), Cherry Valley massacre (1778 American Revolutionary War attack), Cherry Valley (village), New York (Village. The related trail points to American Revolutionary War, Haudenosaunee, Cherry Valley massacre, Cherry Valley (village), New York, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

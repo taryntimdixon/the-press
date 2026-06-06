@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-22"] = {
   "year": 1980,
   "title": "Lake Placid, New York",
   "topic": "Lake Placid, New York",
-  "headline": "At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet...",
+  "headline": "At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet team in an unlikely victory that became known as the Miracle on Ice.",
   "text": "At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet team in an unlikely victory that became known as the Miracle on Ice.",
   "source": "https://en.wikipedia.org/wiki/Lake_Placid%2C_New_York",
   "sourceLabel": "Wikipedia: Lake Placid, New York",
   "sourceDescription": "Village in New York State, United States",
   "visual": "chronicle",
   "palette": "archive",
-  "dek": "At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet... The deeper story is how this history moment changed what people could expect from the world around them.",
+  "dek": "At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet team in an unlikely victory that became known as the Miracle on Ice. The deeper story is how this history moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-22"] = {
   ],
   "summary": [
     "February 22, 1980, is not just a date label for Lake Placid, New York. It is the point where a larger history story becomes visible enough to study. At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet team in an unlikely victory that became known as the Miracle on Ice. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet team in an unlikely victory that became known as the Miracle on Ice. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1937,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-22"] = {
       ]
     },
     {
-      "text": "At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet team in an unlikely victory that became known as the Miracle on Ice. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-22"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On February 22, 1980, At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet team in an unlikely victory that became known as the Miracle on Ice. Why it mattered: Lake Placid, New York matters because it became a durable marker in the public record because it changed an institution, community. In the wider chronicle story, it became a durable marker in the public record because it changed an institution, community... The source record identifies Lake Placid, New York as village in New York State, United States. Related subjects include 1980 Winter Olympics (Multi-sport event in Lake Placid, New York, US), Lake Placid, New York (Village in New York State, United States), United States men's... The related trail points to 1980 Winter Olympics, Lake Placid, New York, United States men's national ice hockey team, Soviet Union men's national ice hockey team, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On February 22, 1980, At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet team in an unlikely victory that became known as the Miracle on Ice. Why it mattered: Lake Placid, New York matters because it became a durable marker in the public record because it changed an institution, community. In the wider chronicle story, it became a durable marker in the public record because it changed an institution, community. The source record identifies Lake Placid, New York as village in New York State, United States. Related subjects include 1980 Winter Olympics (Multi-sport event in Lake Placid, New York, US), Lake Placid, New York (Village in New York State, United States), United States men's. The related trail points to 1980 Winter Olympics, Lake Placid, New York, United States men's national ice hockey team, Soviet Union men's national ice hockey team, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-18"] = {
     },
     {
       "label": "Scene",
-      "value": "a 1968 semiconductor startup world of silicon wafers, memory chips, venture capital, engineering notebooks, and Santa Clara Valley..."
+      "value": "a 1968 semiconductor startup world of silicon wafers, memory chips, venture capital, engineering notebooks, and Santa Clara Valley."
     },
     {
       "label": "Why it mattered",

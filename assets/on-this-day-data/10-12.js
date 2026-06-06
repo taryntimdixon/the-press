@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-12"] = {
   "year": 1960,
   "title": "Nikita Khrushchev",
   "topic": "Nikita Khrushchev",
-  "headline": "Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations...",
+  "headline": "Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations General Assembly in protest at a speech by Philippine delegate Lorenzo Sumulong.",
   "text": "Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations General Assembly in protest at a speech by Philippine delegate Lorenzo Sumulong.",
   "source": "https://en.wikipedia.org/wiki/Nikita_Khrushchev",
   "sourceLabel": "Wikipedia: Nikita Khrushchev",
   "sourceDescription": "Leader of the Soviet Union from 1953 to 1964",
   "visual": "protest",
   "palette": "public-square",
-  "dek": "Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations... The deeper story is how this protest moment changed what people could expect from the world around them.",
+  "dek": "Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations General Assembly in protest at a speech by Philippine delegate Lorenzo Sumulong. The deeper story is how this protest moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-12"] = {
   ],
   "summary": [
     "October 12, 1960, is not just a date label for Nikita Khrushchev. It is the point where a larger protest story becomes visible enough to study. Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations General Assembly in protest at a speech by Philippine delegate Lorenzo Sumulong. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations General Assembly in protest at a speech by Philippine delegate Lorenzo Sumulong. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a street, square, prison, factory gate, school, or public building where ordinary people made power answer back. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1896,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-12"] = {
       ]
     },
     {
-      "text": "Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations General Assembly in protest at a speech by Philippine delegate Lorenzo Sumulong. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-12"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On October 12, 1960, Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations General Assembly in protest at a speech by Philippine delegate Lorenzo Sumulong. Why it mattered: Nikita Khrushchev matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies Nikita Khrushchev as leader of the Soviet Union from 1953 to 1964. Related subjects include Nikita Khrushchev (Leader of the Soviet Union from 1953 to 1964), Shoe-banging incident (1960 act by Nikita Khrushchev in the UN), United Nations General Assembly... The related trail points to Nikita Khrushchev, Shoe-banging incident, United Nations General Assembly, Lorenzo Sumulong, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On October 12, 1960, Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations General Assembly in protest at a speech by Philippine delegate Lorenzo Sumulong. Why it mattered: Nikita Khrushchev matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies Nikita Khrushchev as leader of the Soviet Union from 1953 to 1964. Related subjects include Nikita Khrushchev (Leader of the Soviet Union from 1953 to 1964), Shoe-banging incident (1960 act by Nikita Khrushchev in the UN), United Nations General Assembly. The related trail points to Nikita Khrushchev, Shoe-banging incident, United Nations General Assembly, Lorenzo Sumulong, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

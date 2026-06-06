@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-23"] = {
     },
     {
       "label": "Scene",
-      "value": "Telstar’s live transatlantic television link, where satellite orbit, ground stations, broadcast control rooms, presidents, and viewers shared a..."
+      "value": "Telstar’s live transatlantic television link, where satellite orbit, ground stations, broadcast control rooms, presidents, and viewers shared a."
     },
     {
       "label": "Why it mattered",

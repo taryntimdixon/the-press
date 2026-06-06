@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-17"] = {
   "year": 2000,
   "title": "2000 UEFA Cup semi-final violence",
   "topic": "2000 UEFA Cup semi-final violence",
-  "headline": "Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish...",
+  "headline": "Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish hooligans rioted on the day of the UEFA Cup Final in Copenhagen, Denmark.",
   "text": "Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish hooligans rioted on the day of the UEFA Cup Final in Copenhagen, Denmark.",
   "source": "https://en.wikipedia.org/wiki/2000_UEFA_Cup_semi-final_violence",
   "sourceLabel": "Wikipedia: 2000 UEFA Cup semi-final violence",
   "sourceDescription": "Fights between English and Turkish football fans",
   "visual": "sports",
   "palette": "public-square",
-  "dek": "Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish... The deeper story is how this history moment changed what people could expect from the world around them.",
+  "dek": "Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish hooligans rioted on the day of the UEFA Cup Final in Copenhagen, Denmark. The deeper story is how this history moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-17"] = {
   ],
   "summary": [
     "May 17, 2000, is not just a date label for 2000 UEFA Cup semi-final violence. It is the point where a larger history story becomes visible enough to study. Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish hooligans rioted on the day of the UEFA Cup Final in Copenhagen, Denmark. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish hooligans rioted on the day of the UEFA Cup Final in Copenhagen, Denmark. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1944,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-17"] = {
       ]
     },
     {
-      "text": "Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish hooligans rioted on the day of the UEFA Cup Final in Copenhagen, Denmark. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-17"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On May 17, 2000, Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish hooligans rioted on the day of the UEFA Cup Final in Copenhagen, Denmark. Why it mattered: 2000 UEFA Cup semi-final violence matters because it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood... The source record identifies 2000 UEFA Cup semi-final violence as fights between English and Turkish football fans. Related subjects include 2000 UEFA Cup semi-final violence (Fights between English and Turkish football fans), Galatasaray S.K. (football) (Turkish professional football club), Football hooliganism (Violent behaviour by... The related trail points to 2000 UEFA Cup semi-final violence, Galatasaray S.K. (football), Football hooliganism, 2000 UEFA Cup final riots, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On May 17, 2000, Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish hooligans rioted on the day of the UEFA Cup Final in Copenhagen, Denmark. Why it mattered: 2000 UEFA Cup semi-final violence matters because it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood. The source record identifies 2000 UEFA Cup semi-final violence as fights between English and Turkish football fans. Related subjects include 2000 UEFA Cup semi-final violence (Fights between English and Turkish football fans), Galatasaray S.K. (football) (Turkish professional football club), Football hooliganism (Violent behaviour by. The related trail points to 2000 UEFA Cup semi-final violence, Galatasaray S.K. (football), Football hooliganism, 2000 UEFA Cup final riots, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

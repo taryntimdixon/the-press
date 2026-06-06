@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-10"] = {
   "year": 1960,
   "title": "Abebe Bikila",
   "topic": "Abebe Bikila",
-  "headline": "Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan...",
+  "headline": "Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan Africa to win an Olympic gold medal.",
   "text": "Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan Africa to win an Olympic gold medal.",
   "source": "https://en.wikipedia.org/wiki/Abebe_Bikila",
   "sourceLabel": "Wikipedia: Abebe Bikila",
   "sourceDescription": "Ethiopian marathon runner (1932–1973)",
   "visual": "sports",
   "palette": "public-square",
-  "dek": "Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan... The deeper story is how this history moment changed what people could expect from the world around them.",
+  "dek": "Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan Africa to win an Olympic gold medal. The deeper story is how this history moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-10"] = {
   ],
   "summary": [
     "September 10, 1960, is not just a date label for Abebe Bikila. It is the point where a larger history story becomes visible enough to study. Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan Africa to win an Olympic gold medal. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan Africa to win an Olympic gold medal. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1884,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-10"] = {
       ]
     },
     {
-      "text": "Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan Africa to win an Olympic gold medal. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-10"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On September 10, 1960, Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan Africa to win an Olympic gold medal. Why it mattered: Abebe Bikila marked a first, and it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood its... The source record identifies Abebe Bikila as ethiopian marathon runner (1932–1973). Related subjects include Athletics at the 1960 Summer Olympics – Men's marathon, 1960 Summer Olympics (Multi-sport event in Rome, Italy), Abebe Bikila (Ethiopian marathon runner (1932–1973)), Sub-Saharan Africa (Regions south of the Sahara).... The related trail points to Athletics at the 1960 Summer Olympics – Men's marathon, 1960 Summer Olympics, Abebe Bikila, Sub-Saharan Africa, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On September 10, 1960, Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan Africa to win an Olympic gold medal. Why it mattered: Abebe Bikila marked a first, and it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood its. The source record identifies Abebe Bikila as ethiopian marathon runner (1932–1973). Related subjects include Athletics at the 1960 Summer Olympics – Men's marathon, 1960 Summer Olympics (Multi-sport event in Rome, Italy), Abebe Bikila (Ethiopian marathon runner (1932–1973)), Sub-Saharan Africa (Regions south of the Sahara).. The related trail points to Athletics at the 1960 Summer Olympics – Men's marathon, 1960 Summer Olympics, Abebe Bikila, Sub-Saharan Africa, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

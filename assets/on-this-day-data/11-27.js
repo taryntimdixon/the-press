@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-27"] = {
   "year": 1989,
   "title": "Medellín Cartel",
   "topic": "Medellín Cartel",
-  "headline": "A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed...",
+  "headline": "A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the flight.",
   "text": "A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the flight.",
   "source": "https://en.wikipedia.org/wiki/Medell%C3%ADn_Cartel",
   "sourceLabel": "Wikipedia: Medellín Cartel",
   "sourceDescription": "Former Colombian drug cartel",
   "visual": "crime",
   "palette": "dispatch",
-  "dek": "A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed... The deeper story is how this crime and accountability moment changed what people could expect from the world around them.",
+  "dek": "A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the flight. The deeper story is how this crime and accountability moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-27"] = {
   ],
   "summary": [
     "November 27, 1989, is not just a date label for Medellín Cartel. It is the point where a larger crime and accountability story becomes visible enough to study. A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the flight. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the flight. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a hallway, office, courtroom, evidence table, newsroom, or police setting where a case became bigger than the act itself. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1935,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-27"] = {
       ]
     },
     {
-      "text": "A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the flight. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-27"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On November 27, 1989, a bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the flight. Why it mattered: Medellín Cartel matters because it exposed how law, evidence, fear, media attention, and state power collided in public. In the wider crime story, it exposed how law, evidence, fear, media attention, and state power collided in public. The source record identifies Medellín Cartel as former Colombian drug cartel. Related subjects include Medellín Cartel (Former Colombian drug cartel), César Gaviria (Colombian economist and politician (born 1947)), Avianca Flight 203 (1989 airliner bombing in Colombia). The lasting consequence was a public test of... The related trail points to Medellín Cartel, César Gaviria, Avianca Flight 203, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On November 27, 1989, a bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the flight. Why it mattered: Medellín Cartel matters because it exposed how law, evidence, fear, media attention, and state power collided in public. In the wider crime story, it exposed how law, evidence, fear, media attention, and state power collided in public. The source record identifies Medellín Cartel as former Colombian drug cartel. Related subjects include Medellín Cartel (Former Colombian drug cartel), César Gaviria (Colombian economist and politician (born 1947)), Avianca Flight 203 (1989 airliner bombing in Colombia). The lasting consequence was a public test of. The related trail points to Medellín Cartel, César Gaviria, Avianca Flight 203, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4
@@ -241,7 +241,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-27"] = {
       ]
     },
     {
-      "text": "For Medellín Cartel, the detail work starts with the nouns inside the event itself: A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not... Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
+      "text": "For Medellín Cartel, the detail work starts with the nouns inside the event itself: A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the flight. Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
       "sources": [
         1,
         2,
@@ -253,7 +253,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-27"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of November 27 is easy: A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the... The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of November 27 is easy: A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the flight. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

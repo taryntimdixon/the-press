@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-09"] = {
   "year": 1981,
   "title": "Mumia Abu-Jamal",
   "topic": "Mumia Abu-Jamal",
-  "headline": "Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death...",
+  "headline": "Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death sentence generated controversy in the United States.",
   "text": "Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death sentence generated controversy in the United States.",
   "source": "https://en.wikipedia.org/wiki/Mumia_Abu-Jamal",
   "sourceLabel": "Wikipedia: Mumia Abu-Jamal",
   "sourceDescription": "American incarcerated activist (born 1954)",
   "visual": "crime",
   "palette": "dispatch",
-  "dek": "Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death... The deeper story is how this crime and accountability moment changed what people could expect from the world around them.",
+  "dek": "Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death sentence generated controversy in the United States. The deeper story is how this crime and accountability moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-09"] = {
   ],
   "summary": [
     "December 9, 1981, is not just a date label for Mumia Abu-Jamal. It is the point where a larger crime and accountability story becomes visible enough to study. Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death sentence generated controversy in the United States. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death sentence generated controversy in the United States. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a hallway, office, courtroom, evidence table, newsroom, or police setting where a case became bigger than the act itself. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1871,
@@ -109,7 +109,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-09"] = {
       ]
     },
     {
-      "text": "Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death sentence generated controversy in the United States. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -152,7 +152,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-09"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On December 9, 1981, Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death sentence generated controversy in the United States. Why it mattered: Mumia Abu-Jamal matters because it exposed how law, evidence, fear, media attention, and state power collided in public. In the wider crime story, it exposed how law, evidence, fear, media attention, and state power collided in public. The source record identifies Mumia Abu-Jamal as american incarcerated activist (born 1954). Related subjects include Mumia Abu-Jamal (American incarcerated activist (born 1954)), Commonwealth v. Abu-Jamal (1982 murder trial in Pennsylvania). The lasting consequence was a public test of law, evidence, security, policing, courts, or... The related trail points to Mumia Abu-Jamal, Commonwealth v. Abu-Jamal, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On December 9, 1981, Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death sentence generated controversy in the United States. Why it mattered: Mumia Abu-Jamal matters because it exposed how law, evidence, fear, media attention, and state power collided in public. In the wider crime story, it exposed how law, evidence, fear, media attention, and state power collided in public. The source record identifies Mumia Abu-Jamal as american incarcerated activist (born 1954). Related subjects include Mumia Abu-Jamal (American incarcerated activist (born 1954)), Commonwealth v. Abu-Jamal (1982 murder trial in Pennsylvania). The lasting consequence was a public test of law, evidence, security, policing, courts, or. The related trail points to Mumia Abu-Jamal, Commonwealth v. Abu-Jamal, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

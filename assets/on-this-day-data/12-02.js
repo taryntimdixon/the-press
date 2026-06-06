@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-02"] = {
   "year": 1993,
   "title": "Pablo Escobar",
   "topic": "Pablo Escobar",
-  "headline": "Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel...",
+  "headline": "Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel boss.",
   "text": "Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel boss.",
   "source": "https://en.wikipedia.org/wiki/Pablo_Escobar",
   "sourceLabel": "Wikipedia: Pablo Escobar",
   "sourceDescription": "Colombian drug lord and narcoterrorist",
   "visual": "crime",
   "palette": "dispatch",
-  "dek": "Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel... The deeper story is how this crime and accountability moment changed what people could expect from the world around them.",
+  "dek": "Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel boss. The deeper story is how this crime and accountability moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-02"] = {
   ],
   "summary": [
     "December 2, 1993, is not just a date label for Pablo Escobar. It is the point where a larger crime and accountability story becomes visible enough to study. Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel boss. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel boss. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a hallway, office, courtroom, evidence table, newsroom, or police setting where a case became bigger than the act itself. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1848,
@@ -104,7 +104,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-02"] = {
       ]
     },
     {
-      "text": "Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel boss. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]

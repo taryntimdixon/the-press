@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-12"] = {
     },
     {
       "label": "Scene",
-      "value": "Paris and Stade de France in 1998, where France’s diverse team, Zidane’s goals, Brazil’s pressure, and national celebration..."
+      "value": "Paris and Stade de France in 1998, where France’s diverse team, Zidane’s goals, Brazil’s pressure, and national celebration."
     },
     {
       "label": "Why it mattered",

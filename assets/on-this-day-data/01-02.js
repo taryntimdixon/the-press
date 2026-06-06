@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-02"] = {
   "year": 1959,
   "title": "Luna 1",
   "topic": "Luna 1",
-  "headline": "The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a...",
+  "headline": "The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a Vostok rocket from the Baikonur Cosmodrome.",
   "text": "The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a Vostok rocket from the Baikonur Cosmodrome.",
   "source": "https://en.wikipedia.org/wiki/Luna_1",
   "sourceLabel": "Wikipedia: Luna 1",
   "sourceDescription": "Soviet spacecraft",
   "visual": "space",
   "palette": "lunar",
-  "dek": "The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a... The deeper story is how this space exploration moment changed what people could expect from the world around them.",
+  "dek": "The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a Vostok rocket from the Baikonur Cosmodrome. The deeper story is how this space exploration moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-02"] = {
   ],
   "summary": [
     "January 2, 1959, is not just a date label for Luna 1. It is the point where a larger space exploration story becomes visible enough to study. The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a Vostok rocket from the Baikonur Cosmodrome. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a Vostok rocket from the Baikonur Cosmodrome. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a mission environment where hardware, risk, mathematics, weather, and public imagination had to line up. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1875,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-02"] = {
       ]
     },
     {
-      "text": "The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a Vostok rocket from the Baikonur Cosmodrome. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-02"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On January 2, 1959, the Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a Vostok rocket from the Baikonur Cosmodrome. Why it mattered: Luna 1 marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and... The source record identifies Luna 1 as soviet spacecraft. Related subjects include Luna 1 (Soviet spacecraft), Vostok (rocket family) (Series of six manned and unmanned Soviet orbiting spacecraft), Baikonur Cosmodrome (Spaceport in Kazakhstan leased to Russia). The lasting consequence was a larger map of... The related trail points to Luna 1, Vostok (rocket family), Baikonur Cosmodrome, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On January 2, 1959, the Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a Vostok rocket from the Baikonur Cosmodrome. Why it mattered: Luna 1 marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and. The source record identifies Luna 1 as soviet spacecraft. Related subjects include Luna 1 (Soviet spacecraft), Vostok (rocket family) (Series of six manned and unmanned Soviet orbiting spacecraft), Baikonur Cosmodrome (Spaceport in Kazakhstan leased to Russia). The lasting consequence was a larger map of. The related trail points to Luna 1, Vostok (rocket family), Baikonur Cosmodrome, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

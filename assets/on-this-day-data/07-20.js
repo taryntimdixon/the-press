@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-20"] = {
     },
     {
       "label": "Scene",
-      "value": "the Lunar Module Eagle on the Sea of Tranquility, where landing alarms, fuel margins, crew calm, television, and..."
+      "value": "the Lunar Module Eagle on the Sea of Tranquility, where landing alarms, fuel margins, crew calm, television, and."
     },
     {
       "label": "Why it mattered",

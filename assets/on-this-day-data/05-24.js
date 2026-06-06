@@ -6,7 +6,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-24"] = {
   "year": 1844,
   "title": "First Telegraph Message",
   "topic": "Electrical telegraph",
-  "headline": "Samuel Morse sent the first long-distance telegraph message from Washington to Baltimore: \"What hath God wrought.\"",
+  "headline": "Samuel Morse sent the first long-distance telegraph message from Washington to Baltimore: \"What hath God wrought.\".",
   "text": "On May 24, 1844, Samuel Morse opened the Washington-to-Baltimore telegraph line by sending \"What hath God wrought,\" proving that information could move faster than any train, horse, ship, or messenger.",
   "source": "https://www.loc.gov/item/mcc.019/",
   "sourceLabel": "Library of Congress: First telegraph message",

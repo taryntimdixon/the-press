@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-31"] = {
     },
     {
       "label": "Scene",
-      "value": "Tulsa’s Greenwood District as racial terror, white mobs, law enforcement failure, aerial attack claims, fire, and displacement destroyed..."
+      "value": "Tulsa’s Greenwood District as racial terror, white mobs, law enforcement failure, aerial attack claims, fire, and displacement destroyed."
     },
     {
       "label": "Why it mattered",
@@ -256,7 +256,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-31"] = {
       ]
     },
     {
-      "text": "For Tulsa Race Massacre Begins, the detail work starts with the nouns inside the event itself: The Tulsa race massacre began in Oklahoma, destroying much of the Greenwood District, killing Black residents, displacing thousands, and becoming one of the starkest examples of racial terror and economic destruction in... Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
+      "text": "For Tulsa Race Massacre Begins, the detail work starts with the nouns inside the event itself: The Tulsa race massacre began in Oklahoma, destroying much of the Greenwood District, killing Black residents, displacing thousands, and becoming one of the starkest examples of racial terror and economic destruction in American history. Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
       "sources": [
         1,
         2,

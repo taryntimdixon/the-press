@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-31"] = {
   "year": 1972,
   "title": "Roberto Clemente",
   "topic": "Roberto Clemente",
-  "headline": "Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims...",
+  "headline": "Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims of that year's Nicaragua earthquake.",
   "text": "Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims of that year's Nicaragua earthquake.",
   "source": "https://en.wikipedia.org/wiki/Roberto_Clemente",
   "sourceLabel": "Wikipedia: Roberto Clemente",
   "sourceDescription": "Puerto Rican baseball player (1934–1972)",
   "visual": "sports",
   "palette": "public-square",
-  "dek": "Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims... The deeper story is how this history moment changed what people could expect from the world around them.",
+  "dek": "Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims of that year's Nicaragua earthquake. The deeper story is how this history moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-31"] = {
   ],
   "summary": [
     "December 31, 1972, is not just a date label for Roberto Clemente. It is the point where a larger history story becomes visible enough to study. Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims of that year's Nicaragua earthquake. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims of that year's Nicaragua earthquake. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1873,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-31"] = {
       ]
     },
     {
-      "text": "Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims of that year's Nicaragua earthquake. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-31"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On December 31, 1972, Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims of that year's Nicaragua earthquake. Why it mattered: Roberto Clemente matters because it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood its own limits. The source record identifies Roberto Clemente as puerto Rican baseball player (1934–1972). Related subjects include Roberto Clemente (Puerto Rican baseball player (1934–1972)), 1972 Puerto Rico DC-7 crash (Aviation accident), 1972 Nicaragua earthquake (Earthquake in Nicaragua). The lasting consequence was public memory: a contest, athlete... The related trail points to Roberto Clemente, 1972 Puerto Rico DC-7 crash, 1972 Nicaragua earthquake, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On December 31, 1972, Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims of that year's Nicaragua earthquake. Why it mattered: Roberto Clemente matters because it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood its own limits. The source record identifies Roberto Clemente as puerto Rican baseball player (1934–1972). Related subjects include Roberto Clemente (Puerto Rican baseball player (1934–1972)), 1972 Puerto Rico DC-7 crash (Aviation accident), 1972 Nicaragua earthquake (Earthquake in Nicaragua). The lasting consequence was public memory: a contest, athlete. The related trail points to Roberto Clemente, 1972 Puerto Rico DC-7 crash, 1972 Nicaragua earthquake, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

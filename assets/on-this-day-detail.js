@@ -46,6 +46,7 @@
     ? `<img src="${escapeAttribute(assetUrl(imageSrc))}" alt="${escapeAttribute(imageAlt)}" decoding="async" fetchpriority="high">`
     : '<div class="history-detail-image__missing">Image coming soon</div>';
   const summary = Array.isArray(moment.summary) ? moment.summary : [];
+  const displayDek = historyDisplayDek(moment);
   const articleBlocks = Array.isArray(moment.article) ? moment.article : summary;
   const facts = Array.isArray(moment.facts) ? moment.facts : [];
   const related = Array.isArray(moment.related) ? moment.related : [];
@@ -70,7 +71,7 @@
     <section class="history-detail-hero">
       <p class="eyebrow">On This Day History</p>
       <h1>${escapeHtml(moment.title || 'Historical moment')}</h1>
-      <p class="history-detail-dek">${escapeHtml(moment.dek || moment.text || '')}</p>
+      <p class="history-detail-dek">${escapeHtml(displayDek)}</p>
       <div class="history-detail-meta">
         <span>${escapeHtml(moment.displayDate || resolvedKey)}</span>
         <span>${escapeHtml(year)}</span>
@@ -167,7 +168,7 @@
       }
 
       const script = document.createElement('script');
-      script.src = assetUrl(`assets/on-this-day-data/${key}.js?v=1779691000`);
+      script.src = assetUrl(`assets/on-this-day-data/${key}.js?v=1780755531`);
       script.async = true;
       script.dataset.historyDetailPayload = key;
       script.addEventListener('load', finish, { once: true });
@@ -211,6 +212,22 @@
     const cleaned = cleanHistoryImageText(value).replace(/\s+The deeper story is\b.*$/i, '');
     const sentence = cleaned.match(/^.{24,260}?[.!?](?:\s|$)/);
     return trimCaption(sentence ? sentence[0] : cleaned);
+  }
+
+  function historyDisplayDek(moment = {}) {
+    const dek = collapseWhitespace(moment.dek || '');
+    if (dek && !dek.includes('...')) return dek;
+
+    const event = firstHistorySentence(moment.text || moment.headline || moment.title || '');
+    const deeperMatch = dek.match(/\bThe deeper story is\b.*$/i);
+    const fallback = [event, deeperMatch ? ensureSentence(deeperMatch[0]) : ''].filter(Boolean).join(' ');
+    return collapseWhitespace(fallback || dek.replace(/\.\.\./g, '.'));
+  }
+
+  function ensureSentence(value) {
+    const text = collapseWhitespace(value);
+    if (!text) return '';
+    return /[.!?]$/.test(text) ? text : `${text}.`;
   }
 
   function cleanHistoryImageText(value) {

@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-29"] = {
     },
     {
       "label": "Scene",
-      "value": "Apple retail stores in 2007, where lines, glass storefronts, touchscreens, cameras, maps, music, and phone contracts announced pocket..."
+      "value": "Apple retail stores in 2007, where lines, glass storefronts, touchscreens, cameras, maps, music, and phone contracts announced pocket."
     },
     {
       "label": "Why it mattered",

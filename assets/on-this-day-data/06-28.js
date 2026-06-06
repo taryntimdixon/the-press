@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-28"] = {
     },
     {
       "label": "Scene",
-      "value": "Greenwich Village outside the Stonewall Inn after a police raid, where queer resistance, street anger, nightlife, and press..."
+      "value": "Greenwich Village outside the Stonewall Inn after a police raid, where queer resistance, street anger, nightlife, and press."
     },
     {
       "label": "Why it mattered",

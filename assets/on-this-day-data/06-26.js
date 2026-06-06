@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-26"] = {
     },
     {
       "label": "Scene",
-      "value": "a 1997 British publishing launch for Harry Potter and the Philosopher’s Stone before the series became a worldwide..."
+      "value": "a 1997 British publishing launch for Harry Potter and the Philosopher’s Stone before the series became a worldwide."
     },
     {
       "label": "Why it mattered",

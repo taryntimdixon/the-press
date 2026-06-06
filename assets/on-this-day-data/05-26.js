@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-26"] = {
     },
     {
       "label": "Scene",
-      "value": "the beaches and harbor approaches around Dunkirk as Operation Dynamo began moving stranded Allied soldiers toward warships and..."
+      "value": "the beaches and harbor approaches around Dunkirk as Operation Dynamo began moving stranded Allied soldiers toward warships and."
     },
     {
       "label": "Why it mattered",

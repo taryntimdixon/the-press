@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-22"] = {
     },
     {
       "label": "Scene",
-      "value": "Wiley Post’s airfield arrival after a solo circumnavigation, with Winnie Mae, navigation, fatigue, fuel stops, and..."
+      "value": "Wiley Post’s airfield arrival after a solo circumnavigation, with Winnie Mae, navigation, fatigue, fuel stops, and."
     },
     {
       "label": "Why it mattered",

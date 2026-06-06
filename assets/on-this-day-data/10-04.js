@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-04"] = {
   "year": 1925,
   "title": "Great Syrian Revolt",
   "topic": "Great Syrian Revolt",
-  "headline": "Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of...",
+  "headline": "Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of Syria.",
   "text": "Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of Syria.",
   "source": "https://en.wikipedia.org/wiki/Great_Syrian_Revolt",
   "sourceLabel": "Wikipedia: Great Syrian Revolt",
   "sourceDescription": "1925–27 uprising against French rule in Mandatory Syria and Lebanon",
   "visual": "protest",
   "palette": "public-square",
-  "dek": "Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of... The deeper story is how this protest moment changed what people could expect from the world around them.",
+  "dek": "Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of Syria. The deeper story is how this protest moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-04"] = {
   ],
   "summary": [
     "October 4, 1925, is not just a date label for Great Syrian Revolt. It is the point where a larger protest story becomes visible enough to study. Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of Syria. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of Syria. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a street, square, prison, factory gate, school, or public building where ordinary people made power answer back. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1868,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-04"] = {
       ]
     },
     {
-      "text": "Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of Syria. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-04"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On October 4, 1925, Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of Syria. Why it mattered: Great Syrian Revolt matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies Great Syrian Revolt as 1925–27 uprising against French rule in Mandatory Syria and Lebanon. Related subjects include Great Syrian Revolt (1925–27 uprising against French rule in Mandatory Syria and Lebanon), Fawzi al-Qawuqji (Arab Liberation Army commander (1890–1977)), 1925 Hama uprising... The related trail points to Great Syrian Revolt, Fawzi al-Qawuqji, 1925 Hama uprising, Hama, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On October 4, 1925, Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of Syria. Why it mattered: Great Syrian Revolt matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies Great Syrian Revolt as 1925–27 uprising against French rule in Mandatory Syria and Lebanon. Related subjects include Great Syrian Revolt (1925–27 uprising against French rule in Mandatory Syria and Lebanon), Fawzi al-Qawuqji (Arab Liberation Army commander (1890–1977)), 1925 Hama uprising. The related trail points to Great Syrian Revolt, Fawzi al-Qawuqji, 1925 Hama uprising, Hama, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

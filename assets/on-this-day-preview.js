@@ -123,6 +123,32 @@
       .replace(/'/g, '&#39;');
   }
 
+  function displayDek(moment = {}) {
+    const dek = cleanText(moment.dek || '');
+    if (dek && !dek.includes('...')) return dek;
+
+    const event = firstCompleteSentence(moment.text || moment.headline || moment.title || '');
+    const deeperMatch = dek.match(/\bThe deeper story is\b.*$/i);
+    const fallback = [event, deeperMatch ? ensureSentence(deeperMatch[0]) : ''].filter(Boolean).join(' ');
+    return cleanText(fallback || dek.replace(/\.\.\./g, '.'));
+  }
+
+  function firstCompleteSentence(value) {
+    const text = cleanText(value).replace(/\.\.\./g, '.');
+    const match = text.match(/^.{12,360}?[.!?](?:\s|$)/);
+    return ensureSentence(match ? match[0] : text);
+  }
+
+  function ensureSentence(value) {
+    const text = cleanText(value);
+    if (!text) return '';
+    return /[.!?]$/.test(text) ? text : `${text}.`;
+  }
+
+  function cleanText(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+
   function textBlob(moment) {
     return [
       moment.date,
@@ -235,7 +261,7 @@
             <span>${escapeHtml(laneLabels[moment.visual] || moment.visual || 'History')}</span>
           </div>
           <h2>${escapeHtml(moment.title || 'Historical moment')}</h2>
-          <p class="history-preview-card__dek">${escapeHtml(moment.dek || '')}</p>
+          <p class="history-preview-card__dek">${escapeHtml(displayDek(moment))}</p>
           <p class="history-preview-card__text">${escapeHtml(moment.text || '')}</p>
           <ul class="history-preview-card__facts">${factItems}</ul>
           <a class="history-preview-card__more" href="on-this-day-event.html?date=${escapeHtml(moment.date || '')}">Read more about this</a>

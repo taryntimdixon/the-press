@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-20"] = {
   "year": 1820,
   "title": "Essex (whaleship)",
   "topic": "Essex (whaleship)",
-  "headline": "The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America...",
+  "headline": "The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by Herman Melville.",
   "text": "The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by Herman Melville.",
   "source": "https://en.wikipedia.org/wiki/Essex_(whaleship)",
   "sourceLabel": "Wikipedia: Essex (whaleship)",
   "sourceDescription": "American ship sunk by a whale (1799–1820)",
   "visual": "culture",
   "palette": "stage",
-  "dek": "The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America... The deeper story is how this culture moment changed what people could expect from the world around them.",
+  "dek": "The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by Herman Melville. The deeper story is how this culture moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-20"] = {
   ],
   "summary": [
     "November 20, 1820, is not just a date label for Essex (whaleship). It is the point where a larger culture story becomes visible enough to study. The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by Herman Melville. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by Herman Melville. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a theater, shop, studio, page, screen, or public crowd where an idea moved from private work into mass imagination. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1927,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-20"] = {
       ]
     },
     {
-      "text": "The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by Herman Melville. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-20"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On November 20, 1820, the American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by Herman Melville. Why it mattered: Essex (whaleship) matters because it changed what audiences read, watched, collected, celebrated, or argued about together. In the wider culture story, it changed what audiences read, watched, collected, celebrated, or argued about together. The source record identifies Essex (whaleship) as american ship sunk by a whale (1799–1820). Related subjects include Essex (whaleship) (American ship sunk by a whale (1799–1820)), Sperm whale (Largest species of toothed whale), Moby-Dick (1851 novel by Herman Melville), Herman Melville (American writer and... The related trail points to Essex (whaleship), Sperm whale, Moby-Dick, Herman Melville, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On November 20, 1820, the American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by Herman Melville. Why it mattered: Essex (whaleship) matters because it changed what audiences read, watched, collected, celebrated, or argued about together. In the wider culture story, it changed what audiences read, watched, collected, celebrated, or argued about together. The source record identifies Essex (whaleship) as american ship sunk by a whale (1799–1820). Related subjects include Essex (whaleship) (American ship sunk by a whale (1799–1820)), Sperm whale (Largest species of toothed whale), Moby-Dick (1851 novel by Herman Melville), Herman Melville (American writer and. The related trail points to Essex (whaleship), Sperm whale, Moby-Dick, Herman Melville, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4
@@ -246,7 +246,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-20"] = {
       ]
     },
     {
-      "text": "For Essex (whaleship), the detail work starts with the nouns inside the event itself: The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel... Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
+      "text": "For Essex (whaleship), the detail work starts with the nouns inside the event itself: The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by Herman Melville. Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
       "sources": [
         1,
         2,
@@ -258,7 +258,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-20"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of November 20 is easy: The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by... The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of November 20 is easy: The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by Herman Melville. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

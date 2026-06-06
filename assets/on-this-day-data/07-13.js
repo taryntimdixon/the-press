@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-13"] = {
     },
     {
       "label": "Scene",
-      "value": "London and Philadelphia stadiums in 1985, where Live Aid turned rock performance, television, famine relief, and celebrity activism..."
+      "value": "London and Philadelphia stadiums in 1985, where Live Aid turned rock performance, television, famine relief, and celebrity activism."
     },
     {
       "label": "Why it mattered",

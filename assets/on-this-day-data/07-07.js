@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-07"] = {
     },
     {
       "label": "Scene",
-      "value": "Live Earth’s synchronized 2007 concerts, where climate messaging moved through stadiums, broadcast feeds, celebrities, pop spectacle, and online..."
+      "value": "Live Earth’s synchronized 2007 concerts, where climate messaging moved through stadiums, broadcast feeds, celebrities, pop spectacle, and online."
     },
     {
       "label": "Why it mattered",

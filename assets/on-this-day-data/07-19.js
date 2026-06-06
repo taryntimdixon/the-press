@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-19"] = {
     },
     {
       "label": "Scene",
-      "value": "Cassini looking back from Saturn, with Earth reduced to a tiny point inside a planetary portrait and a..."
+      "value": "Cassini looking back from Saturn, with Earth reduced to a tiny point inside a planetary portrait and a."
     },
     {
       "label": "Why it mattered",

@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-14"] = {
     },
     {
       "label": "Scene",
-      "value": "Paris under German occupation in June 1940, with military columns, civilian shock, abandoned institutions, and the symbolic fall..."
+      "value": "Paris under German occupation in June 1940, with military columns, civilian shock, abandoned institutions, and the symbolic fall."
     },
     {
       "label": "Why it mattered",

@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-28"] = {
     },
     {
       "label": "Scene",
-      "value": "the Chagai test range in Balochistan, where Pakistan answered India’s nuclear tests and made nuclear status a public..."
+      "value": "the Chagai test range in Balochistan, where Pakistan answered India’s nuclear tests and made nuclear status a public."
     },
     {
       "label": "Why it mattered",

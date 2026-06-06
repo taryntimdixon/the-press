@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-25"] = {
     },
     {
       "label": "Scene",
-      "value": "the global news shock after Michael Jackson’s death, with Los Angeles, television, radio, internet traffic, fans, and celebrity..."
+      "value": "the global news shock after Michael Jackson’s death, with Los Angeles, television, radio, internet traffic, fans, and celebrity."
     },
     {
       "label": "Why it mattered",

@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-21"] = {
   "year": 1867,
   "title": "Medicine Lodge, Kansas",
   "topic": "Medicine Lodge, Kansas",
-  "headline": "The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal...",
+  "headline": "The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in present-day western Oklahoma.",
   "text": "The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in present-day western Oklahoma.",
   "source": "https://en.wikipedia.org/wiki/Medicine_Lodge%2C_Kansas",
   "sourceLabel": "Wikipedia: Medicine Lodge, Kansas",
   "sourceDescription": "City in Kiowa County, Kansas",
   "visual": "medicine",
   "palette": "laboratory",
-  "dek": "The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal... The deeper story is how this medicine and public health moment changed what people could expect from the world around them.",
+  "dek": "The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in present-day western Oklahoma. The deeper story is how this medicine and public health moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-21"] = {
   ],
   "summary": [
     "October 21, 1867, is not just a date label for Medicine Lodge, Kansas. It is the point where a larger medicine and public health story becomes visible enough to study. The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in present-day western Oklahoma. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in present-day western Oklahoma. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a clinic, lab, hospital, farm, health office, or research institute where bodies and evidence changed the argument. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1929,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-21"] = {
       ]
     },
     {
-      "text": "The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in present-day western Oklahoma. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-21"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On October 21, 1867, the first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in present-day western Oklahoma. Why it mattered: Medicine Lodge, Kansas marked a first, and it changed how doctors, patients, public-health officials, or researchers understood disease. In the wider medicine story, it changed how doctors, patients, public-health officials, or researchers understood disease and treatment. The source record identifies Medicine Lodge, Kansas as city in Kiowa County, Kansas. Related subjects include Medicine Lodge Treaty (1867 resettlement agreement between the US government and southern Plains Indian tribes), Medicine Lodge, Kansas (City in Kiowa County, Kansas), Plains Indians (Native Americans/First Nations... The related trail points to Medicine Lodge Treaty, Medicine Lodge, Kansas, Plains Indians, Oklahoma, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On October 21, 1867, the first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in present-day western Oklahoma. Why it mattered: Medicine Lodge, Kansas marked a first, and it changed how doctors, patients, public-health officials, or researchers understood disease. In the wider medicine story, it changed how doctors, patients, public-health officials, or researchers understood disease and treatment. The source record identifies Medicine Lodge, Kansas as city in Kiowa County, Kansas. Related subjects include Medicine Lodge Treaty (1867 resettlement agreement between the US government and southern Plains Indian tribes), Medicine Lodge, Kansas (City in Kiowa County, Kansas), Plains Indians (Native Americans/First Nations. The related trail points to Medicine Lodge Treaty, Medicine Lodge, Kansas, Plains Indians, Oklahoma, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4
@@ -246,7 +246,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-21"] = {
       ]
     },
     {
-      "text": "For Medicine Lodge, Kansas, the detail work starts with the nouns inside the event itself: The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate... Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
+      "text": "For Medicine Lodge, Kansas, the detail work starts with the nouns inside the event itself: The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in present-day western Oklahoma. Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
       "sources": [
         1,
         2,
@@ -258,7 +258,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-21"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of October 21 is easy: The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas... The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of October 21 is easy: The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in present-day western Oklahoma. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

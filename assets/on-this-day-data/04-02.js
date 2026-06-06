@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-02"] = {
   "year": 1968,
   "title": "2001: A Space Odyssey",
   "topic": "2001: A Space Odyssey",
-  "headline": "2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the...",
+  "headline": "2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the Uptown Theater in Washington, D.C.",
   "text": "2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the Uptown Theater in Washington, D.C.",
   "source": "https://en.wikipedia.org/wiki/2001%3A_A_Space_Odyssey",
   "sourceLabel": "Wikipedia: 2001: A Space Odyssey",
   "sourceDescription": "1968 film by Stanley Kubrick",
   "visual": "space",
   "palette": "lunar",
-  "dek": "2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the... The deeper story is how this space exploration moment changed what people could expect from the world around them.",
+  "dek": "2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the Uptown Theater in Washington, D.C. The deeper story is how this space exploration moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-02"] = {
   ],
   "summary": [
     "April 2, 1968, is not just a date label for 2001: A Space Odyssey. It is the point where a larger space exploration story becomes visible enough to study. 2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the Uptown Theater in Washington, D.C. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the Uptown Theater in Washington, D.C. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a mission environment where hardware, risk, mathematics, weather, and public imagination had to line up. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1909,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-02"] = {
       ]
     },
     {
-      "text": "2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the Uptown Theater in Washington, D.C. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-02"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On April 2, 1968, 2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the Uptown Theater in Washington, D.C. Why it mattered: 2001: A Space Odyssey matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and... The source record identifies 2001: A Space Odyssey as 1968 film by Stanley Kubrick. Related subjects include 2001: A Space Odyssey (1968 film by Stanley Kubrick), Science fiction film (Film genre), Stanley Kubrick (American filmmaker and photographer (1928–1999)), Uptown Theater (Washington, D.C.) (United States... The related trail points to 2001: A Space Odyssey, Science fiction film, Stanley Kubrick, Uptown Theater (Washington, D.C.), which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On April 2, 1968, 2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the Uptown Theater in Washington, D.C. Why it mattered: 2001: A Space Odyssey matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and. The source record identifies 2001: A Space Odyssey as 1968 film by Stanley Kubrick. Related subjects include 2001: A Space Odyssey (1968 film by Stanley Kubrick), Science fiction film (Film genre), Stanley Kubrick (American filmmaker and photographer (1928–1999)), Uptown Theater (Washington, D.C.) (United States. The related trail points to 2001: A Space Odyssey, Science fiction film, Stanley Kubrick, Uptown Theater (Washington, D.C.), which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

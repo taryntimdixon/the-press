@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-09"] = {
     },
     {
       "label": "Scene",
-      "value": "Rome at the end of Nero’s rule, as flight, military defection, Senate politics, and succession crisis broke the..."
+      "value": "Rome at the end of Nero’s rule, as flight, military defection, Senate politics, and succession crisis broke the."
     },
     {
       "label": "Why it mattered",

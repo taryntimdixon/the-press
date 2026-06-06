@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-06"] = {
   "year": 1991,
   "title": "Programmer",
   "topic": "Programmer",
-  "headline": "British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents...",
+  "headline": "British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents accessible via the Internet, known as the World Wide Web.",
   "text": "British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents accessible via the Internet, known as the World Wide Web.",
   "source": "https://en.wikipedia.org/wiki/Programmer",
   "sourceLabel": "Wikipedia: Programmer",
   "sourceDescription": "Person who writes computer software",
   "visual": "tech",
   "palette": "laboratory",
-  "dek": "British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents... The deeper story is how this technology moment changed what people could expect from the world around them.",
+  "dek": "British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents accessible via the Internet, known as the World Wide Web. The deeper story is how this technology moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-06"] = {
   ],
   "summary": [
     "August 6, 1991, is not just a date label for Programmer. It is the point where a larger technology story becomes visible enough to study. British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents accessible via the Internet, known as the World Wide Web. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents accessible via the Internet, known as the World Wide Web. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a workspace where machines, investors, users, engineers, and public curiosity started pulling in the same direction. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1871,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-06"] = {
       ]
     },
     {
-      "text": "British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents accessible via the Internet, known as the World Wide Web. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-06"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On August 6, 1991, British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents accessible via the Internet, known as the World Wide Web. Why it mattered: Programmer matters because it changed how people used machines, networks, media, or information in everyday life. In the wider tech story, it changed how people used machines, networks, media, or information in everyday life. The source record identifies Programmer as person who writes computer software. Related subjects include Programmer (Person who writes computer software), Tim Berners-Lee (English computer scientist (born 1955)), Hypertext (Text with references (links) to other text that the reader can immediately access), Internet (Global system... The related trail points to Programmer, Tim Berners-Lee, Hypertext, Internet, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On August 6, 1991, British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents accessible via the Internet, known as the World Wide Web. Why it mattered: Programmer matters because it changed how people used machines, networks, media, or information in everyday life. In the wider tech story, it changed how people used machines, networks, media, or information in everyday life. The source record identifies Programmer as person who writes computer software. Related subjects include Programmer (Person who writes computer software), Tim Berners-Lee (English computer scientist (born 1955)), Hypertext (Text with references (links) to other text that the reader can immediately access), Internet (Global system. The related trail points to Programmer, Tim Berners-Lee, Hypertext, Internet, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-22"] = {
   "year": 1984,
   "title": "Super Bowl XVIII",
   "topic": "Super Bowl XVIII",
-  "headline": "During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical...",
+  "headline": "During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical user interface, with the television commercial \"1984\".",
   "text": "During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical user interface, with the television commercial \"1984\".",
   "source": "https://en.wikipedia.org/wiki/Super_Bowl_XVIII",
   "sourceLabel": "Wikipedia: Super Bowl XVIII",
   "sourceDescription": "1984 edition of the Super Bowl",
   "visual": "tech",
   "palette": "laboratory",
-  "dek": "During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical... The deeper story is how this technology moment changed what people could expect from the world around them.",
+  "dek": "During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical user interface, with the television commercial \"1984\". The deeper story is how this technology moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-22"] = {
   ],
   "summary": [
     "January 22, 1984, is not just a date label for Super Bowl XVIII. It is the point where a larger technology story becomes visible enough to study. During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical user interface, with the television commercial \"1984\". The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical user interface, with the television commercial \"1984\". That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a workspace where machines, investors, users, engineers, and public curiosity started pulling in the same direction. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1890,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-22"] = {
       ]
     },
     {
-      "text": "During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical user interface, with the television commercial \"1984\". That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-22"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On January 22, 1984, During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical user interface, with the television commercial \"1984\". Why it mattered: Super Bowl XVIII marked a first, and it changed how people used machines, networks, media, or information in everyday life. In the wider tech story, it changed how people used machines, networks, media, or information in everyday life. The source record identifies Super Bowl XVIII as 1984 edition of the Super Bowl. Related subjects include Super Bowl XVIII (1984 edition of the Super Bowl), Apple Inc. (American multinational technology company), Mac (computer) (Family of personal computers made by Apple), Personal computer (Computer... The related trail points to Super Bowl XVIII, Apple Inc., Mac (computer), Personal computer, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On January 22, 1984, During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical user interface, with the television commercial \"1984\". Why it mattered: Super Bowl XVIII marked a first, and it changed how people used machines, networks, media, or information in everyday life. In the wider tech story, it changed how people used machines, networks, media, or information in everyday life. The source record identifies Super Bowl XVIII as 1984 edition of the Super Bowl. Related subjects include Super Bowl XVIII (1984 edition of the Super Bowl), Apple Inc. (American multinational technology company), Mac (computer) (Family of personal computers made by Apple), Personal computer (Computer. The related trail points to Super Bowl XVIII, Apple Inc., Mac (computer), Personal computer, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

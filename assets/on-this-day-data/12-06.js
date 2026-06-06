@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-06"] = {
   "year": 1865,
   "title": "Slavery in the United States",
   "topic": "Slavery in the United States",
-  "headline": "Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S....",
+  "headline": "Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S. Constitution.",
   "text": "Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S. Constitution.",
   "source": "https://en.wikipedia.org/wiki/Slavery_in_the_United_States",
   "sourceLabel": "Wikipedia: Slavery in the United States",
   "sourceDescription": "",
   "visual": "rights",
   "palette": "public-square",
-  "dek": "Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S.... The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
+  "dek": "Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S. Constitution. The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-06"] = {
   ],
   "summary": [
     "December 6, 1865, is not just a date label for Slavery in the United States. It is the point where a larger rights and public power story becomes visible enough to study. Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S. Constitution. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S.... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S. Constitution. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a public institution or street-level confrontation where law, identity, courage, and pressure met in the open. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1917,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-06"] = {
       ]
     },
     {
-      "text": "Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S.... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S. Constitution. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -148,7 +148,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-06"] = {
       ]
     },
     {
-      "text": "The main source record describes the subject as slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S.... That kind of source description is useful because it anchors the story before interpretation begins. From there, the reader can move outward into archive searches, museum collections, press coverage, and reference histories. No single source should carry the whole event. The richer version lives in the overlap: the main record for the fact pattern, image archives for visual evidence, institutional pages for context, and later coverage for how memory changed. A serious history feature should make that trail visible instead of hiding it behind a polished paragraph.",
+      "text": "The main source record describes the subject as slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S.. That kind of source description is useful because it anchors the story before interpretation begins. From there, the reader can move outward into archive searches, museum collections, press coverage, and reference histories. No single source should carry the whole event. The richer version lives in the overlap: the main record for the fact pattern, image archives for visual evidence, institutional pages for context, and later coverage for how memory changed. A serious history feature should make that trail visible instead of hiding it behind a polished paragraph.",
       "sources": [
         1,
         2,
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-06"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On December 6, 1865, Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S. Constitution. Why it mattered: Slavery in the United States matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. Related subjects include Slavery in the United States, Thirteenth Amendment to the United States Constitution (1865 amendment abolishing slavery), Constitution of the United States (Supreme law of the United States). The lasting consequence was a shift in who could claim protection, recognition, participation, or... The related trail points to Slavery in the United States, Thirteenth Amendment to the United States Constitution, Constitution of the United States, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On December 6, 1865, Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S. Constitution. Why it mattered: Slavery in the United States matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. Related subjects include Slavery in the United States, Thirteenth Amendment to the United States Constitution (1865 amendment abolishing slavery), Constitution of the United States (Supreme law of the United States). The lasting consequence was a shift in who could claim protection, recognition, participation, or. The related trail points to Slavery in the United States, Thirteenth Amendment to the United States Constitution, Constitution of the United States, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

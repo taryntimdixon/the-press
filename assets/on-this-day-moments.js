@@ -20,7 +20,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2019,
     "title": "NASA",
     "topic": "NASA",
-    "headline": "The NASA space probe New Horizons flew by the trans-Neptunian object Arrokoth, making it the farthest object visited...",
+    "headline": "The NASA space probe New Horizons flew by the trans-Neptunian object Arrokoth, making it the farthest object visited by a spacecraft.",
     "text": "The NASA space probe New Horizons flew by the trans-Neptunian object Arrokoth, making it the farthest object visited by a spacecraft.",
     "source": "https://en.wikipedia.org/wiki/NASA",
     "sourceLabel": "Wikipedia: NASA",
@@ -43,7 +43,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "NASA matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications..."
+        "value": "NASA matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications."
       },
       {
         "label": "Connected to",
@@ -93,7 +93,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1959,
     "title": "Luna 1",
     "topic": "Luna 1",
-    "headline": "The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a...",
+    "headline": "The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a Vostok rocket from the Baikonur Cosmodrome.",
     "text": "The Soviet Luna 1, the first spacecraft to reach the vicinity of the Moon, was launched by a Vostok rocket from the Baikonur Cosmodrome.",
     "source": "https://en.wikipedia.org/wiki/Luna_1",
     "sourceLabel": "Wikipedia: Luna 1",
@@ -116,7 +116,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Luna 1 marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "Luna 1 marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -161,7 +161,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1973,
     "title": "CBS",
     "topic": "CBS",
-    "headline": "CBS announced the sale of the New York Yankees professional baseball team to a group of investors headed...",
+    "headline": "CBS announced the sale of the New York Yankees professional baseball team to a group of investors headed by American businessman George Steinbrenner.",
     "text": "CBS announced the sale of the New York Yankees professional baseball team to a group of investors headed by American businessman George Steinbrenner.",
     "source": "https://en.wikipedia.org/wiki/CBS",
     "sourceLabel": "Wikipedia: CBS",
@@ -252,7 +252,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Spirit (rover) marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "Spirit (rover) marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -302,7 +302,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2003,
     "title": "Metropolitan Police",
     "topic": "Metropolitan Police",
-    "headline": "The Metropolitan Police arrested six people in conjunction with an alleged terrorist plot to release ricin on the...",
+    "headline": "The Metropolitan Police arrested six people in conjunction with an alleged terrorist plot to release ricin on the London Underground, although no toxin was found.",
     "text": "The Metropolitan Police arrested six people in conjunction with an alleged terrorist plot to release ricin on the London Underground, although no toxin was found.",
     "source": "https://en.wikipedia.org/wiki/Metropolitan_Police",
     "sourceLabel": "Wikipedia: Metropolitan Police",
@@ -375,7 +375,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1907,
     "title": "Maria Montessori",
     "topic": "Maria Montessori",
-    "headline": "Italian educator Maria Montessori opened her first school and day-care centre for working-class children in Rome, employing a...",
+    "headline": "Italian educator Maria Montessori opened her first school and day-care centre for working-class children in Rome, employing a philosophy of education that now bears her name.",
     "text": "Italian educator Maria Montessori opened her first school and day-care centre for working-class children in Rome, employing a philosophy of education that now bears her name.",
     "source": "https://en.wikipedia.org/wiki/Maria_Montessori",
     "sourceLabel": "Wikipedia: Maria Montessori",
@@ -398,7 +398,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Maria Montessori marked a first, and it became a durable marker in the public record because it changed an institution, community..."
+        "value": "Maria Montessori marked a first, and it became a durable marker in the public record because it changed an institution, community."
       },
       {
         "label": "Connected to",
@@ -438,7 +438,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1782,
     "title": "Bank of North America",
     "topic": "Bank of North America",
-    "headline": "The Bank of North America opened in Philadelphia as the de facto first central bank of the United...",
+    "headline": "The Bank of North America opened in Philadelphia as the de facto first central bank of the United States.",
     "text": "The Bank of North America opened in Philadelphia as the de facto first central bank of the United States.",
     "source": "https://en.wikipedia.org/wiki/Bank_of_North_America",
     "sourceLabel": "Wikipedia: Bank of North America",
@@ -461,7 +461,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Bank of North America marked a first, and it became a durable marker in the public record because it changed an institution, community..."
+        "value": "Bank of North America marked a first, and it became a durable marker in the public record because it changed an institution, community."
       },
       {
         "label": "Connected to",
@@ -501,7 +501,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2016,
     "title": "Joaquín \"El Chapo\" Guzmán",
     "topic": "Joaquín \"El Chapo\" Guzmán",
-    "headline": "Mexican marines recaptured Joaquín \"El Chapo\" Guzmán in Los Mochis after the Sinaloa Cartel leader had escaped from...",
+    "headline": "Mexican marines recaptured Joaquín \"El Chapo\" Guzmán in Los Mochis after the Sinaloa Cartel leader had escaped from a maximum-security prison through a tunnel months earlier.",
     "text": "Mexican marines recaptured Joaquín \"El Chapo\" Guzmán in Los Mochis after the Sinaloa Cartel leader had escaped from a maximum-security prison through a tunnel months earlier.",
     "source": "https://en.wikipedia.org/wiki/Joaqu%C3%ADn_%22El_Chapo%22_Guzm%C3%A1n",
     "sourceLabel": "Wikipedia: Joaquín \"El Chapo\" Guzmán",
@@ -559,7 +559,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2007,
     "title": "iPhone (1st generation)",
     "topic": "iPhone (1st generation)",
-    "headline": "Steve Jobs introduced the first iPhone at Macworld in San Francisco, presenting a touch-screen phone, iPod, and internet...",
+    "headline": "Steve Jobs introduced the first iPhone at Macworld in San Francisco, presenting a touch-screen phone, iPod, and internet communicator as one device.",
     "text": "Steve Jobs introduced the first iPhone at Macworld in San Francisco, presenting a touch-screen phone, iPod, and internet communicator as one device.",
     "source": "https://en.wikipedia.org/wiki/IPhone_(1st_generation)",
     "sourceLabel": "Wikipedia: iPhone (1st generation)",
@@ -617,7 +617,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2007,
     "title": "Lansana Conté",
     "topic": "Lansana Conté",
-    "headline": "A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting...",
+    "headline": "A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting in the appointment of two new prime ministers.",
     "text": "A general strike began in Guinea as an attempt to force President Lansana Conté to resign, eventually resulting in the appointment of two new prime ministers.",
     "source": "https://en.wikipedia.org/wiki/Lansana_Cont%C3%A9",
     "sourceLabel": "Wikipedia: Lansana Conté",
@@ -680,7 +680,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1927,
     "title": "Louis B. Mayer",
     "topic": "Louis B. Mayer",
-    "headline": "Louis B. Mayer, head of Metro-Goldwyn-Mayer, hosted 36 people involved in the film industry at a banquet, where...",
+    "headline": "Louis B. Mayer, head of Metro-Goldwyn-Mayer, hosted 36 people involved in the film industry at a banquet, where he announced the creation of what would become the Academy of Motion Picture Arts and Sciences.",
     "text": "Louis B. Mayer, head of Metro-Goldwyn-Mayer, hosted 36 people involved in the film industry at a banquet, where he announced the creation of what would become the Academy of Motion Picture Arts and Sciences.",
     "source": "https://en.wikipedia.org/wiki/Louis_B._Mayer",
     "sourceLabel": "Wikipedia: Louis B. Mayer",
@@ -771,7 +771,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "James Bedford marked a first, and it became a durable marker in the public record because it changed an institution, community, practice..."
+        "value": "James Bedford marked a first, and it became a durable marker in the public record because it changed an institution, community, practice."
       },
       {
         "label": "Connected to",
@@ -1010,7 +1010,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1964,
     "title": "Hello, Dolly! (musical)",
     "topic": "Hello, Dolly! (musical)",
-    "headline": "The musical Hello, Dolly! opened at the St. James Theatre on Broadway, and went on to win ten...",
+    "headline": "The musical Hello, Dolly! opened at the St. James Theatre on Broadway, and went on to win ten Tony Awards, a record that stood for 37 years.",
     "text": "The musical Hello, Dolly! opened at the St. James Theatre on Broadway, and went on to win ten Tony Awards, a record that stood for 37 years.",
     "source": "https://en.wikipedia.org/wiki/Hello%2C_Dolly!_(musical)",
     "sourceLabel": "Wikipedia: Hello, Dolly! (musical)",
@@ -1033,7 +1033,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Hello, Dolly! (musical) opened a public doorway into a larger change, and it changed what audiences read, watched, collected, celebrated..."
+        "value": "Hello, Dolly! (musical) opened a public doorway into a larger change, and it changed what audiences read, watched, collected, celebrated."
       },
       {
         "label": "Connected to",
@@ -1083,7 +1083,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1999,
     "title": "Ho Chi Minh",
     "topic": "Ho Chi Minh",
-    "headline": "In Little Saigon, California, a series of protests began when the owner of a video rental store displayed...",
+    "headline": "In Little Saigon, California, a series of protests began when the owner of a video rental store displayed an image of Ho Chi Minh.",
     "text": "In Little Saigon, California, a series of protests began when the owner of a video rental store displayed an image of Ho Chi Minh.",
     "source": "https://en.wikipedia.org/wiki/Ho_Chi_Minh",
     "sourceLabel": "Wikipedia: Ho Chi Minh",
@@ -1151,7 +1151,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1990,
     "title": "Sting operation",
     "topic": "Sting operation",
-    "headline": "In a sting operation conducted by the FBI, Marion Barry, the mayor of Washington, D.C., was arrested for...",
+    "headline": "In a sting operation conducted by the FBI, Marion Barry, the mayor of Washington, D.C., was arrested for possession of crack cocaine.",
     "text": "In a sting operation conducted by the FBI, Marion Barry, the mayor of Washington, D.C., was arrested for possession of crack cocaine.",
     "source": "https://en.wikipedia.org/wiki/Sting_operation",
     "sourceLabel": "Wikipedia: Sting operation",
@@ -1287,7 +1287,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1968,
     "title": "College basketball",
     "topic": "College basketball",
-    "headline": "The Houston Cougars upset the UCLA Bruins in what became known as the \"Game of the Century\", ending...",
+    "headline": "The Houston Cougars upset the UCLA Bruins in what became known as the \"Game of the Century\", ending the Bruins' 47-game winning streak and establishing college basketball as a sports commodity on American television.",
     "text": "The Houston Cougars upset the UCLA Bruins in what became known as the \"Game of the Century\", ending the Bruins' 47-game winning streak and establishing college basketball as a sports commodity on American television.",
     "source": "https://en.wikipedia.org/wiki/College_basketball",
     "sourceLabel": "Wikipedia: College basketball",
@@ -1360,7 +1360,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2017,
     "title": "Washington, D.C.",
     "topic": "Washington, D.C.",
-    "headline": "Millions of people participated in the Women's March in Washington, D.C., and around the world to advocate for...",
+    "headline": "Millions of people participated in the Women's March in Washington, D.C., and around the world to advocate for legislation and policies on human rights and other issues.",
     "text": "Millions of people participated in the Women's March in Washington, D.C., and around the world to advocate for legislation and policies on human rights and other issues.",
     "source": "https://en.wikipedia.org/wiki/Washington%2C_D.C.",
     "sourceLabel": "Wikipedia: Washington, D.C.",
@@ -1423,7 +1423,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1984,
     "title": "Super Bowl XVIII",
     "topic": "Super Bowl XVIII",
-    "headline": "During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical...",
+    "headline": "During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical user interface, with the television commercial \"1984\".",
     "text": "During Super Bowl XVIII, Apple Computer introduced the Macintosh, the first successful personal computer to use a graphical user interface, with the television commercial \"1984\".",
     "source": "https://en.wikipedia.org/wiki/Super_Bowl_XVIII",
     "sourceLabel": "Wikipedia: Super Bowl XVIII",
@@ -1496,7 +1496,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2003,
     "title": "NASA",
     "topic": "NASA",
-    "headline": "The final signal was detected from the NASA space probe Pioneer 10, then about 12 billion kilometres (7.5...",
+    "headline": "The final signal was detected from the NASA space probe Pioneer 10, then about 12 billion kilometres (7.5 billion miles) from Earth.",
     "text": "The final signal was detected from the NASA space probe Pioneer 10, then about 12 billion kilometres (7.5 billion miles) from Earth.",
     "source": "https://en.wikipedia.org/wiki/NASA",
     "sourceLabel": "Wikipedia: NASA",
@@ -1519,7 +1519,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "NASA matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications..."
+        "value": "NASA matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications."
       },
       {
         "label": "Connected to",
@@ -1622,7 +1622,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2004,
     "title": "Mars Exploration Rover",
     "topic": "Mars Exploration Rover",
-    "headline": "Mars Exploration Rover Opportunity landed on Mars and rolled into Eagle crater, a small crater on the Meridiani...",
+    "headline": "Mars Exploration Rover Opportunity landed on Mars and rolled into Eagle crater, a small crater on the Meridiani Planum.",
     "text": "Mars Exploration Rover Opportunity landed on Mars and rolled into Eagle crater, a small crater on the Meridiani Planum.",
     "source": "https://en.wikipedia.org/wiki/Mars_Exploration_Rover",
     "sourceLabel": "Wikipedia: Mars Exploration Rover",
@@ -1645,7 +1645,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Mars Exploration Rover matters because it pushed space exploration into a new technical or symbolic frontier, testing machines..."
+        "value": "Mars Exploration Rover matters because it pushed space exploration into a new technical or symbolic frontier, testing machines."
       },
       {
         "label": "Connected to",
@@ -1695,7 +1695,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1934,
     "title": "Apollo Theater",
     "topic": "Apollo Theater",
-    "headline": "Hurtig & Seamon's New Burlesque Theater in New York City reopened as the Apollo Theater, becoming one of...",
+    "headline": "Hurtig & Seamon's New Burlesque Theater in New York City reopened as the Apollo Theater, becoming one of the nation's premier venues for African-American performers.",
     "text": "Hurtig & Seamon's New Burlesque Theater in New York City reopened as the Apollo Theater, becoming one of the nation's premier venues for African-American performers.",
     "source": "https://en.wikipedia.org/wiki/Apollo_Theater",
     "sourceLabel": "Wikipedia: Apollo Theater",
@@ -1889,7 +1889,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2009,
     "title": "Supreme Constitutional Court (Egypt)",
     "topic": "Supreme Constitutional Court (Egypt)",
-    "headline": "The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three...",
+    "headline": "The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three government-recognised religions were also eligible to receive government identity documents.",
     "text": "The Supreme Constitutional Court of Egypt ruled that people who did not adhere to one of the three government-recognised religions were also eligible to receive government identity documents.",
     "source": "https://en.wikipedia.org/wiki/Supreme_Constitutional_Court_(Egypt)",
     "sourceLabel": "Wikipedia: Supreme Constitutional Court (Egypt)",
@@ -1912,7 +1912,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Supreme Constitutional Court (Egypt) turned an argument into a formal rule, and it changed how an institution, law, government, treaty..."
+        "value": "Supreme Constitutional Court (Egypt) turned an argument into a formal rule, and it changed how an institution, law, government, treaty."
       },
       {
         "label": "Connected to",
@@ -1962,7 +1962,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2013,
     "title": "Korea Aerospace Research Institute",
     "topic": "Korea Aerospace Research Institute",
-    "headline": "The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to...",
+    "headline": "The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to achieve Earth orbit.",
     "text": "The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to achieve Earth orbit.",
     "source": "https://en.wikipedia.org/wiki/Korea_Aerospace_Research_Institute",
     "sourceLabel": "Wikipedia: Korea Aerospace Research Institute",
@@ -1985,7 +1985,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Korea Aerospace Research Institute marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing..."
+        "value": "Korea Aerospace Research Institute marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing."
       },
       {
         "label": "Connected to",
@@ -2053,7 +2053,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -2103,7 +2103,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1960,
     "title": "Civil rights movement",
     "topic": "Civil rights movement",
-    "headline": "Civil rights movement: Four African-American students staged the first of more than five months of sit-ins at an...",
+    "headline": "Civil rights movement: Four African-American students staged the first of more than five months of sit-ins at an F. W. Woolworth lunch counter in Greensboro, North Carolina, to protest the company's policy of racial segregation.",
     "text": "Civil rights movement: Four African-American students staged the first of more than five months of sit-ins at an F. W. Woolworth lunch counter in Greensboro, North Carolina, to protest the company's policy of racial segregation.",
     "source": "https://en.wikipedia.org/wiki/Civil_rights_movement",
     "sourceLabel": "Wikipedia: Civil rights movement",
@@ -2126,7 +2126,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Civil rights movement marked a first, and it changed the legal or public meaning of citizenship, equality, personal freedom, or human..."
+        "value": "Civil rights movement marked a first, and it changed the legal or public meaning of citizenship, equality, personal freedom, or human."
       },
       {
         "label": "Connected to",
@@ -2176,7 +2176,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2004,
     "title": "Roger Federer",
     "topic": "Roger Federer",
-    "headline": "Swiss tennis player Roger Federer became the top-ranked men's singles player, a position he held for a record...",
+    "headline": "Swiss tennis player Roger Federer became the top-ranked men's singles player, a position he held for a record 237 consecutive weeks.",
     "text": "Swiss tennis player Roger Federer became the top-ranked men's singles player, a position he held for a record 237 consecutive weeks.",
     "source": "https://en.wikipedia.org/wiki/Roger_Federer",
     "sourceLabel": "Wikipedia: Roger Federer",
@@ -2262,7 +2262,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Steve Jobs put a new mission, institution, product, or public force into motion, and it changed how people used machines, networks, media..."
+        "value": "Steve Jobs put a new mission, institution, product, or public force into motion, and it changed how people used machines, networks, media."
       },
       {
         "label": "Connected to",
@@ -2312,7 +2312,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1801,
     "title": "John Marshall",
     "topic": "John Marshall",
-    "headline": "John Marshall, whose court opinions helped lay the basis for U.S. constitutional law and made the Supreme Court...",
+    "headline": "John Marshall, whose court opinions helped lay the basis for U.S. constitutional law and made the Supreme Court a coequal branch of government, took office as chief justice.",
     "text": "John Marshall, whose court opinions helped lay the basis for U.S. constitutional law and made the Supreme Court a coequal branch of government, took office as chief justice.",
     "source": "https://en.wikipedia.org/wiki/John_Marshall",
     "sourceLabel": "Wikipedia: John Marshall",
@@ -2339,7 +2339,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Connected to",
-        "value": "Constitutional law of the United States, Supreme Court of the United States, Separation of powers under the..."
+        "value": "Constitutional law of the United States, Supreme Court of the United States, Separation of powers under the."
       }
     ],
     "summary": [
@@ -2385,7 +2385,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2004,
     "title": "Gonaïves",
     "topic": "Gonaïves",
-    "headline": "The National Revolutionary Front for the Liberation of Haiti captured the city of Gonaïves, starting a coup d'état...",
+    "headline": "The National Revolutionary Front for the Liberation of Haiti captured the city of Gonaïves, starting a coup d'état against President Jean-Bertrand Aristide's government.",
     "text": "The National Revolutionary Front for the Liberation of Haiti captured the city of Gonaïves, starting a coup d'état against President Jean-Bertrand Aristide's government.",
     "source": "https://en.wikipedia.org/wiki/Gona%C3%AFves",
     "sourceLabel": "Wikipedia: Gonaïves",
@@ -2412,7 +2412,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Connected to",
-        "value": "National Revolutionary Front for the Liberation and Reconstruction of Haiti, 2004 Haitian coup d'état..."
+        "value": "National Revolutionary Front for the Liberation and Reconstruction of Haiti, 2004 Haitian coup d'état."
       }
     ],
     "summary": [
@@ -2458,7 +2458,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1778,
     "title": "Treaty of Amity and Commerce (France–United States)",
     "topic": "Treaty of Amity and Commerce (France–United States)",
-    "headline": "France and the United States signed the Treaty of Amity and Commerce and the Treaty of Alliance, respectively...",
+    "headline": "France and the United States signed the Treaty of Amity and Commerce and the Treaty of Alliance, respectively establishing commercial and military ties between the two nations.",
     "text": "France and the United States signed the Treaty of Amity and Commerce and the Treaty of Alliance, respectively establishing commercial and military ties between the two nations.",
     "source": "https://en.wikipedia.org/wiki/Treaty_of_Amity_and_Commerce_(France%E2%80%93United_States)",
     "sourceLabel": "Wikipedia: Treaty of Amity and Commerce (France–United States)",
@@ -2481,7 +2481,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Treaty of Amity and Commerce (France–United States) turned an argument into a formal rule, and it changed how an institution, law..."
+        "value": "Treaty of Amity and Commerce (France–United States) turned an argument into a formal rule, and it changed how an institution, law."
       },
       {
         "label": "Connected to",
@@ -2521,7 +2521,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1984,
     "title": "Space Shuttle Challenger",
     "topic": "Space Shuttle Challenger",
-    "headline": "During the Space Shuttle Challenger mission STS-41-B, astronauts Bruce McCandless II and Robert L. Stewart performed the first...",
+    "headline": "During the Space Shuttle Challenger mission STS-41-B, astronauts Bruce McCandless II and Robert L. Stewart performed the first untethered spacewalk.",
     "text": "During the Space Shuttle Challenger mission STS-41-B, astronauts Bruce McCandless II and Robert L. Stewart performed the first untethered spacewalk.",
     "source": "https://en.wikipedia.org/wiki/Space_Shuttle_Challenger",
     "sourceLabel": "Wikipedia: Space Shuttle Challenger",
@@ -2544,7 +2544,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Space Shuttle Challenger marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines..."
+        "value": "Space Shuttle Challenger marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines."
       },
       {
         "label": "Connected to",
@@ -2594,7 +2594,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1837,
     "title": "Richard Mentor Johnson",
     "topic": "Richard Mentor Johnson",
-    "headline": "Richard Mentor Johnson became the only person ever to be elected Vice President of the United States by...",
+    "headline": "Richard Mentor Johnson became the only person ever to be elected Vice President of the United States by the Senate.",
     "text": "Richard Mentor Johnson became the only person ever to be elected Vice President of the United States by the Senate.",
     "source": "https://en.wikipedia.org/wiki/Richard_Mentor_Johnson",
     "sourceLabel": "Wikipedia: Richard Mentor Johnson",
@@ -2662,7 +2662,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1964,
     "title": "Beatlemania",
     "topic": "Beatlemania",
-    "headline": "As Beatlemania swept the United States, the Beatles made their first appearance on The Ed Sullivan Show before...",
+    "headline": "As Beatlemania swept the United States, the Beatles made their first appearance on The Ed Sullivan Show before a record-breaking audience, beginning a musical phenomenon known as the British Invasion.",
     "text": "As Beatlemania swept the United States, the Beatles made their first appearance on The Ed Sullivan Show before a record-breaking audience, beginning a musical phenomenon known as the British Invasion.",
     "source": "https://en.wikipedia.org/wiki/Beatlemania",
     "sourceLabel": "Wikipedia: Beatlemania",
@@ -2735,7 +2735,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1962,
     "title": "Roy Lichtenstein",
     "topic": "Roy Lichtenstein",
-    "headline": "The first solo exhibition by Roy Lichtenstein opened, including the painting Look Mickey, which featured his first use...",
+    "headline": "The first solo exhibition by Roy Lichtenstein opened, including the painting Look Mickey, which featured his first use of Ben Day dots, speech balloons, and comic imagery sourcing.",
     "text": "The first solo exhibition by Roy Lichtenstein opened, including the painting Look Mickey, which featured his first use of Ben Day dots, speech balloons, and comic imagery sourcing.",
     "source": "https://en.wikipedia.org/wiki/Roy_Lichtenstein",
     "sourceLabel": "Wikipedia: Roy Lichtenstein",
@@ -2808,7 +2808,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1990,
     "title": "Nelson Mandela",
     "topic": "Nelson Mandela",
-    "headline": "Anti-apartheid activist Nelson Mandela, having been a political prisoner for 27 years, was released from Victor Verster Prison...",
+    "headline": "Anti-apartheid activist Nelson Mandela, having been a political prisoner for 27 years, was released from Victor Verster Prison near Paarl, South Africa.",
     "text": "Anti-apartheid activist Nelson Mandela, having been a political prisoner for 27 years, was released from Victor Verster Prison near Paarl, South Africa.",
     "source": "https://en.wikipedia.org/wiki/Nelson_Mandela",
     "sourceLabel": "Wikipedia: Nelson Mandela",
@@ -2871,7 +2871,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2001,
     "title": "NASA",
     "topic": "NASA",
-    "headline": "The NASA space probe NEAR Shoemaker touched down on Eros, becoming the first spacecraft to land on an...",
+    "headline": "The NASA space probe NEAR Shoemaker touched down on Eros, becoming the first spacecraft to land on an asteroid.",
     "text": "The NASA space probe NEAR Shoemaker touched down on Eros, becoming the first spacecraft to land on an asteroid.",
     "source": "https://en.wikipedia.org/wiki/NASA",
     "sourceLabel": "Wikipedia: NASA",
@@ -2894,7 +2894,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -2967,7 +2967,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "European Space Agency marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines..."
+        "value": "European Space Agency marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines."
       },
       {
         "label": "Connected to",
@@ -3085,7 +3085,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1995,
     "title": "Kevin Mitnick",
     "topic": "Kevin Mitnick",
-    "headline": "Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with...",
+    "headline": "Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with computer fraud and wire fraud.",
     "text": "Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with computer fraud and wire fraud.",
     "source": "https://en.wikipedia.org/wiki/Kevin_Mitnick",
     "sourceLabel": "Wikipedia: Kevin Mitnick",
@@ -3158,7 +3158,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1859,
     "title": "Musical note",
     "topic": "Musical note",
-    "headline": "The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in...",
+    "headline": "The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in the first attempt to standardize concert pitch.",
     "text": "The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in the first attempt to standardize concert pitch.",
     "source": "https://en.wikipedia.org/wiki/Musical_note",
     "sourceLabel": "Wikipedia: Musical note",
@@ -3226,7 +3226,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2011,
     "title": "Arab Spring",
     "topic": "Arab Spring",
-    "headline": "Arab Spring: Bahraini security forces killed four protesters in a pre-dawn raid at the Pearl Roundabout in Manama...",
+    "headline": "Arab Spring: Bahraini security forces killed four protesters in a pre-dawn raid at the Pearl Roundabout in Manama, while the \"Day of Rage\" took place in Libya with nationwide protests against Muammar Gaddafi's government.",
     "text": "Arab Spring: Bahraini security forces killed four protesters in a pre-dawn raid at the Pearl Roundabout in Manama, while the \"Day of Rage\" took place in Libya with nationwide protests against Muammar Gaddafi's government.",
     "source": "https://en.wikipedia.org/wiki/Arab_Spring",
     "sourceLabel": "Wikipedia: Arab Spring",
@@ -3322,7 +3322,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -3372,7 +3372,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2012,
     "title": "Mexican drug war",
     "topic": "Mexican drug war",
-    "headline": "Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas...",
+    "headline": "Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas and the Gulf Cartel.",
     "text": "Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas and the Gulf Cartel.",
     "source": "https://en.wikipedia.org/wiki/Mexican_drug_war",
     "sourceLabel": "Wikipedia: Mexican drug war",
@@ -3445,7 +3445,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1846,
     "title": "Austrian Empire",
     "topic": "Austrian Empire",
-    "headline": "Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national...",
+    "headline": "Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national independence that was put down by the Austrian Empire nine days later.",
     "text": "Polish insurgents in the Free City of Kraków led an uprising attempting to incite a fight for national independence that was put down by the Austrian Empire nine days later.",
     "source": "https://en.wikipedia.org/wiki/Austrian_Empire",
     "sourceLabel": "Wikipedia: Austrian Empire",
@@ -3586,7 +3586,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1980,
     "title": "Lake Placid, New York",
     "topic": "Lake Placid, New York",
-    "headline": "At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet...",
+    "headline": "At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet team in an unlikely victory that became known as the Miracle on Ice.",
     "text": "At the Winter Olympics in Lake Placid, New York, the United States ice hockey team defeated the Soviet team in an unlikely victory that became known as the Miracle on Ice.",
     "source": "https://en.wikipedia.org/wiki/Lake_Placid%2C_New_York",
     "sourceLabel": "Wikipedia: Lake Placid, New York",
@@ -3609,11 +3609,11 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Lake Placid, New York matters because it became a durable marker in the public record because it changed an institution, community..."
+        "value": "Lake Placid, New York matters because it became a durable marker in the public record because it changed an institution, community."
       },
       {
         "label": "Connected to",
-        "value": "1980 Winter Olympics, United States men's national ice hockey team, Soviet Union men's national ice hockey..."
+        "value": "1980 Winter Olympics, United States men's national ice hockey team, Soviet Union men's national ice hockey."
       }
     ],
     "summary": [
@@ -3659,7 +3659,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1739,
     "title": "Highwayman",
     "topic": "Highwayman",
-    "headline": "The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading...",
+    "headline": "The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading to Turpin's trial.",
     "text": "The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading to Turpin's trial.",
     "source": "https://en.wikipedia.org/wiki/Highwayman",
     "sourceLabel": "Wikipedia: Highwayman",
@@ -3727,7 +3727,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1803,
     "title": "Marbury v. Madison",
     "topic": "Marbury v. Madison",
-    "headline": "In Marbury v. Madison, the Supreme Court declared an act of Congress unconstitutional for the first time, forming...",
+    "headline": "In Marbury v. Madison, the Supreme Court declared an act of Congress unconstitutional for the first time, forming the basis of judicial review in the United States.",
     "text": "In Marbury v. Madison, the Supreme Court declared an act of Congress unconstitutional for the first time, forming the basis of judicial review in the United States.",
     "source": "https://en.wikipedia.org/wiki/Marbury_v._Madison",
     "sourceLabel": "Wikipedia: Marbury v. Madison",
@@ -3873,7 +3873,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2008,
     "title": "Korean War",
     "topic": "Korean War",
-    "headline": "In the first significant cultural visit from the United States to North Korea since the Korean War, the...",
+    "headline": "In the first significant cultural visit from the United States to North Korea since the Korean War, the New York Philharmonic Orchestra performed in Pyongyang.",
     "text": "In the first significant cultural visit from the United States to North Korea since the Korean War, the New York Philharmonic Orchestra performed in Pyongyang.",
     "source": "https://en.wikipedia.org/wiki/Korean_War",
     "sourceLabel": "Wikipedia: Korean War",
@@ -3941,7 +3941,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1972,
     "title": "Sunday People",
     "topic": "Sunday People",
-    "headline": "The Sunday People revealed that James Humphreys, a notorious pornographer, had bribed a senior London police officer with...",
+    "headline": "The Sunday People revealed that James Humphreys, a notorious pornographer, had bribed a senior London police officer with a holiday to Cyprus and Beirut.",
     "text": "The Sunday People revealed that James Humphreys, a notorious pornographer, had bribed a senior London police officer with a holiday to Cyprus and Beirut.",
     "source": "https://en.wikipedia.org/wiki/Sunday_People",
     "sourceLabel": "Wikipedia: Sunday People",
@@ -4004,7 +4004,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1928,
     "title": "C. V. Raman",
     "topic": "C. V. Raman",
-    "headline": "Indian physicist C. V. Raman and his colleagues discovered what is now known as Raman scattering, for which...",
+    "headline": "Indian physicist C. V. Raman and his colleagues discovered what is now known as Raman scattering, for which he later became the first Asian to win the Nobel Prize in Physics.",
     "text": "Indian physicist C. V. Raman and his colleagues discovered what is now known as Raman scattering, for which he later became the first Asian to win the Nobel Prize in Physics.",
     "source": "https://en.wikipedia.org/wiki/C._V._Raman",
     "sourceLabel": "Wikipedia: C. V. Raman",
@@ -4135,7 +4135,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1962,
     "title": "Wilt Chamberlain",
     "topic": "Wilt Chamberlain",
-    "headline": "Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the...",
+    "headline": "Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the New York Knicks, which remains an NBA record.",
     "text": "Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the New York Knicks, which remains an NBA record.",
     "source": "https://en.wikipedia.org/wiki/Wilt_Chamberlain",
     "sourceLabel": "Wikipedia: Wilt Chamberlain",
@@ -4208,7 +4208,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1972,
     "title": "Jethro Tull (band)",
     "topic": "Jethro Tull (band)",
-    "headline": "The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from...",
+    "headline": "The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from an eight-year-old boy's epic poem.",
     "text": "The British rock band Jethro Tull released Thick as a Brick, a parody concept album allegedly adapted from an eight-year-old boy's epic poem.",
     "source": "https://en.wikipedia.org/wiki/Jethro_Tull_(band)",
     "sourceLabel": "Wikipedia: Jethro Tull (band)",
@@ -4281,7 +4281,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1979,
     "title": "Voyager 1",
     "topic": "Voyager 1",
-    "headline": "The space probe Voyager 1 discovered the rings of Jupiter, the third ring system to be discovered in...",
+    "headline": "The space probe Voyager 1 discovered the rings of Jupiter, the third ring system to be discovered in the Solar System, after those of Saturn and Uranus.",
     "text": "The space probe Voyager 1 discovered the rings of Jupiter, the third ring system to be discovered in the Solar System, after those of Saturn and Uranus.",
     "source": "https://en.wikipedia.org/wiki/Voyager_1",
     "sourceLabel": "Wikipedia: Voyager 1",
@@ -4304,7 +4304,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Voyager 1 changed what could be known or verified, and it pushed space exploration into a new technical or symbolic frontier, testing..."
+        "value": "Voyager 1 changed what could be known or verified, and it pushed space exploration into a new technical or symbolic frontier, testing."
       },
       {
         "label": "Connected to",
@@ -4427,7 +4427,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1964,
     "title": "Nation of Islam",
     "topic": "Nation of Islam",
-    "headline": "In a radio broadcast, Nation of Islam leader Elijah Muhammad announced that American boxer Cassius Clay would change...",
+    "headline": "In a radio broadcast, Nation of Islam leader Elijah Muhammad announced that American boxer Cassius Clay would change his name to Muhammad Ali.",
     "text": "In a radio broadcast, Nation of Islam leader Elijah Muhammad announced that American boxer Cassius Clay would change his name to Muhammad Ali.",
     "source": "https://en.wikipedia.org/wiki/Nation_of_Islam",
     "sourceLabel": "Wikipedia: Nation of Islam",
@@ -4596,7 +4596,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Voyager 1 changed what could be known or verified, and it pushed space exploration into a new technical or symbolic frontier, testing..."
+        "value": "Voyager 1 changed what could be known or verified, and it pushed space exploration into a new technical or symbolic frontier, testing."
       },
       {
         "label": "Connected to",
@@ -4669,7 +4669,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Barbie matters because it became a durable marker in the public record because it changed an institution, community, practice, or shared..."
+        "value": "Barbie matters because it became a durable marker in the public record because it changed an institution, community, practice, or shared."
       },
       {
         "label": "Connected to",
@@ -4732,7 +4732,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Mars Reconnaissance Orbiter matters because it pushed space exploration into a new technical or symbolic frontier, testing machines..."
+        "value": "Mars Reconnaissance Orbiter matters because it pushed space exploration into a new technical or symbolic frontier, testing machines."
       },
       {
         "label": "Connected to",
@@ -4777,7 +4777,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2010,
     "title": "Sebastián Piñera",
     "topic": "Sebastián Piñera",
-    "headline": "During the inauguration of Chilean president Sebastián Piñera, earthquakes registering 6.9 and 7.0.mw-parser-output.tooltip-dotted{border-bottom:1px dotted;cursor:help}Mw struck the O'Higgins Region...",
+    "headline": "During the inauguration of Chilean president Sebastián Piñera, earthquakes registering 6.9 and 7.0.mw-parser-output.tooltip-dotted{border-bottom:1px dotted;cursor:help}Mw struck the O'Higgins Region near the city of Pichilemu, causing widespread damage.",
     "text": "During the inauguration of Chilean president Sebastián Piñera, earthquakes registering 6.9 and 7.0.mw-parser-output.tooltip-dotted{border-bottom:1px dotted;cursor:help}Mw struck the O'Higgins Region near the city of Pichilemu, causing widespread damage.",
     "source": "https://en.wikipedia.org/wiki/Sebasti%C3%A1n_Pi%C3%B1era",
     "sourceLabel": "Wikipedia: Sebastián Piñera",
@@ -4850,7 +4850,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1930,
     "title": "Mahatma Gandhi",
     "topic": "Mahatma Gandhi",
-    "headline": "Mahatma Gandhi began the Salt March, a 24-day nonviolent walk to defy the British salt tax in colonial...",
+    "headline": "Mahatma Gandhi began the Salt March, a 24-day nonviolent walk to defy the British salt tax in colonial India.",
     "text": "Mahatma Gandhi began the Salt March, a 24-day nonviolent walk to defy the British salt tax in colonial India.",
     "source": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
     "sourceLabel": "Wikipedia: Mahatma Gandhi",
@@ -4923,7 +4923,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1985,
     "title": "Football hooliganism",
     "topic": "Football hooliganism",
-    "headline": "One of England's worst incidents of football hooliganism occurred when supporters of Luton Town and Millwall rioted before...",
+    "headline": "One of England's worst incidents of football hooliganism occurred when supporters of Luton Town and Millwall rioted before a match at Kenilworth Road stadium.",
     "text": "One of England's worst incidents of football hooliganism occurred when supporters of Luton Town and Millwall rioted before a match at Kenilworth Road stadium.",
     "source": "https://en.wikipedia.org/wiki/Football_hooliganism",
     "sourceLabel": "Wikipedia: Football hooliganism",
@@ -5092,7 +5092,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Transvestism and Transsexualism in Modern Society marked a first, and it changed the legal or public meaning of citizenship, equality..."
+        "value": "Transvestism and Transsexualism in Modern Society marked a first, and it changed the legal or public meaning of citizenship, equality."
       },
       {
         "label": "Connected to",
@@ -5205,7 +5205,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1973,
     "title": "Vietnam War",
     "topic": "Vietnam War",
-    "headline": "Slava Veder took his Pulitzer Prize-winning photograph Burst of Joy, which came to symbolize the end of United...",
+    "headline": "Slava Veder took his Pulitzer Prize-winning photograph Burst of Joy, which came to symbolize the end of United States involvement in the Vietnam War.",
     "text": "Slava Veder took his Pulitzer Prize-winning photograph Burst of Joy, which came to symbolize the end of United States involvement in the Vietnam War.",
     "source": "https://en.wikipedia.org/wiki/Vietnam_War",
     "sourceLabel": "Wikipedia: Vietnam War",
@@ -5273,7 +5273,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1977,
     "title": "The Clash",
     "topic": "The Clash",
-    "headline": "The punk group the Clash released their first single, \"White Riot\", described as their \"most controversial song\" due...",
+    "headline": "The punk group the Clash released their first single, \"White Riot\", described as their \"most controversial song\" due to its lyrics about class economics and race.",
     "text": "The punk group the Clash released their first single, \"White Riot\", described as their \"most controversial song\" due to its lyrics about class economics and race.",
     "source": "https://en.wikipedia.org/wiki/The_Clash",
     "sourceLabel": "Wikipedia: The Clash",
@@ -5482,7 +5482,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1960,
     "title": "Sharpeville",
     "topic": "Sharpeville",
-    "headline": "Police in Sharpeville, South Africa, opened fire on a group of unarmed black demonstrators who were protesting pass...",
+    "headline": "Police in Sharpeville, South Africa, opened fire on a group of unarmed black demonstrators who were protesting pass laws, killing 69 people and wounding 180 others.",
     "text": "Police in Sharpeville, South Africa, opened fire on a group of unarmed black demonstrators who were protesting pass laws, killing 69 people and wounding 180 others.",
     "source": "https://en.wikipedia.org/wiki/Sharpeville",
     "sourceLabel": "Wikipedia: Sharpeville",
@@ -5505,7 +5505,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Sharpeville opened a public doorway into a larger change, and it showed public pressure becoming a political force rather than background..."
+        "value": "Sharpeville opened a public doorway into a larger change, and it showed public pressure becoming a political force rather than background."
       },
       {
         "label": "Connected to",
@@ -5613,7 +5613,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1977,
     "title": "David Frost",
     "topic": "David Frost",
-    "headline": "British journalist David Frost began a series of interviews with former U.S. president Richard Nixon, starting with the...",
+    "headline": "British journalist David Frost began a series of interviews with former U.S. president Richard Nixon, starting with the Watergate scandal.",
     "text": "British journalist David Frost began a series of interviews with former U.S. president Richard Nixon, starting with the Watergate scandal.",
     "source": "https://en.wikipedia.org/wiki/David_Frost",
     "sourceLabel": "Wikipedia: David Frost",
@@ -5686,7 +5686,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1921,
     "title": "Women's sports",
     "topic": "Women's sports",
-    "headline": "The inaugural Women's Olympiad, the first international women's sports event, opened at the International Sporting Club of Monaco...",
+    "headline": "The inaugural Women's Olympiad, the first international women's sports event, opened at the International Sporting Club of Monaco in Monte Carlo.",
     "text": "The inaugural Women's Olympiad, the first international women's sports event, opened at the International Sporting Club of Monaco in Monte Carlo.",
     "source": "https://en.wikipedia.org/wiki/Women's_sports",
     "sourceLabel": "Wikipedia: Women's sports",
@@ -5822,7 +5822,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1885,
     "title": "Métis",
     "topic": "Métis",
-    "headline": "Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel...",
+    "headline": "Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel began the North-West Rebellion.",
     "text": "Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel began the North-West Rebellion.",
     "source": "https://en.wikipedia.org/wiki/M%C3%A9tis",
     "sourceLabel": "Wikipedia: Métis",
@@ -5890,7 +5890,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1998,
     "title": "Food and Drug Administration",
     "topic": "Food and Drug Administration",
-    "headline": "The Food and Drug Administration approved the drug sildenafil, better known by the trade name Viagra, as the...",
+    "headline": "The Food and Drug Administration approved the drug sildenafil, better known by the trade name Viagra, as the first treatment approved in the United States for erectile dysfunction.",
     "text": "The Food and Drug Administration approved the drug sildenafil, better known by the trade name Viagra, as the first treatment approved in the United States for erectile dysfunction.",
     "source": "https://en.wikipedia.org/wiki/Food_and_Drug_Administration",
     "sourceLabel": "Wikipedia: Food and Drug Administration",
@@ -5913,7 +5913,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Food and Drug Administration marked a first, and it changed how doctors, patients, public-health officials, or researchers understood..."
+        "value": "Food and Drug Administration marked a first, and it changed how doctors, patients, public-health officials, or researchers understood."
       },
       {
         "label": "Connected to",
@@ -6049,7 +6049,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -6099,7 +6099,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1977,
     "title": "Annie Hall",
     "topic": "Annie Hall",
-    "headline": "Annie Hall had its first screening at the LA Film Festival; it was voted the funniest screenplay ever...",
+    "headline": "Annie Hall had its first screening at the LA Film Festival; it was voted the funniest screenplay ever by members of the Writers Guild of America.",
     "text": "Annie Hall had its first screening at the LA Film Festival; it was voted the funniest screenplay ever by members of the Writers Guild of America.",
     "source": "https://en.wikipedia.org/wiki/Annie_Hall",
     "sourceLabel": "Wikipedia: Annie Hall",
@@ -6167,7 +6167,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2023,
     "title": "Belvidere, Illinois",
     "topic": "Belvidere, Illinois",
-    "headline": "A tornado caused the collapse of a venue hosting a sold-out concert in Belvidere, Illinois, United States, resulting...",
+    "headline": "A tornado caused the collapse of a venue hosting a sold-out concert in Belvidere, Illinois, United States, resulting in one death and 48 injuries.",
     "text": "A tornado caused the collapse of a venue hosting a sold-out concert in Belvidere, Illinois, United States, resulting in one death and 48 injuries.",
     "source": "https://en.wikipedia.org/wiki/Belvidere%2C_Illinois",
     "sourceLabel": "Wikipedia: Belvidere, Illinois",
@@ -6298,7 +6298,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1968,
     "title": "2001: A Space Odyssey",
     "topic": "2001: A Space Odyssey",
-    "headline": "2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the...",
+    "headline": "2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the Uptown Theater in Washington, D.C.",
     "text": "2001: A Space Odyssey, the epic science fiction film produced and directed by Stanley Kubrick, premiered at the Uptown Theater in Washington, D.C.",
     "source": "https://en.wikipedia.org/wiki/2001%3A_A_Space_Odyssey",
     "sourceLabel": "Wikipedia: 2001: A Space Odyssey",
@@ -6321,7 +6321,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "2001: A Space Odyssey matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "2001: A Space Odyssey matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -6525,7 +6525,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Birkenhead Park marked a first, and it became a durable marker in the public record because it changed an institution, community..."
+        "value": "Birkenhead Park marked a first, and it became a durable marker in the public record because it changed an institution, community."
       },
       {
         "label": "Connected to",
@@ -6565,7 +6565,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2011,
     "title": "Mexican drug war",
     "topic": "Mexican drug war",
-    "headline": "Mexican drug war: Authorities discovered 59 bodies in clandestine mass graves linked to earlier bus hijackings in San...",
+    "headline": "Mexican drug war: Authorities discovered 59 bodies in clandestine mass graves linked to earlier bus hijackings in San Fernando, Tamaulipas.",
     "text": "Mexican drug war: Authorities discovered 59 bodies in clandestine mass graves linked to earlier bus hijackings in San Fernando, Tamaulipas.",
     "source": "https://en.wikipedia.org/wiki/Mexican_drug_war",
     "sourceLabel": "Wikipedia: Mexican drug war",
@@ -6588,7 +6588,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Mexican drug war changed what could be known or verified, and it exposed how law, evidence, fear, media attention, and state power..."
+        "value": "Mexican drug war changed what could be known or verified, and it exposed how law, evidence, fear, media attention, and state power."
       },
       {
         "label": "Connected to",
@@ -6638,7 +6638,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2001,
     "title": "NASA",
     "topic": "NASA",
-    "headline": "NASA's 2001 Mars Odyssey, the longest-surviving continually active spacecraft in orbit around a planet other than Earth, launched...",
+    "headline": "NASA's 2001 Mars Odyssey, the longest-surviving continually active spacecraft in orbit around a planet other than Earth, launched from Cape Canaveral.",
     "text": "NASA's 2001 Mars Odyssey, the longest-surviving continually active spacecraft in orbit around a planet other than Earth, launched from Cape Canaveral.",
     "source": "https://en.wikipedia.org/wiki/NASA",
     "sourceLabel": "Wikipedia: NASA",
@@ -6661,7 +6661,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "NASA put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new technical or..."
+        "value": "NASA put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new technical or."
       },
       {
         "label": "Connected to",
@@ -6729,7 +6729,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Soyuz TMA-12 marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "Soyuz TMA-12 marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -6769,7 +6769,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1939,
     "title": "Daughters of the American Revolution",
     "topic": "Daughters of the American Revolution",
-    "headline": "After being denied permission to perform at Constitution Hall by the Daughters of the American Revolution, African-American singer...",
+    "headline": "After being denied permission to perform at Constitution Hall by the Daughters of the American Revolution, African-American singer Marian Anderson gave an open-air concert on the steps of the Lincoln Memorial in Washington, D.C.",
     "text": "After being denied permission to perform at Constitution Hall by the Daughters of the American Revolution, African-American singer Marian Anderson gave an open-air concert on the steps of the Lincoln Memorial in Washington, D.C.",
     "source": "https://en.wikipedia.org/wiki/Daughters_of_the_American_Revolution",
     "sourceLabel": "Wikipedia: Daughters of the American Revolution",
@@ -6963,7 +6963,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1822,
     "title": "Greek War of Independence",
     "topic": "Greek War of Independence",
-    "headline": "Greek War of Independence: Ottoman troops began a massacre of tens of thousands of Greeks on the island...",
+    "headline": "Greek War of Independence: Ottoman troops began a massacre of tens of thousands of Greeks on the island of Chios.",
     "text": "Greek War of Independence: Ottoman troops began a massacre of tens of thousands of Greeks on the island of Chios.",
     "source": "https://en.wikipedia.org/wiki/Greek_War_of_Independence",
     "sourceLabel": "Wikipedia: Greek War of Independence",
@@ -7104,7 +7104,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1970,
     "title": "Apollo 13",
     "topic": "Apollo 13",
-    "headline": "After an oxygen tank aboard Apollo 13 exploded, disabling the spacecraft's electrical and life-support systems, astronaut Jack Swigert...",
+    "headline": "After an oxygen tank aboard Apollo 13 exploded, disabling the spacecraft's electrical and life-support systems, astronaut Jack Swigert reported: \"Houston, we've had a problem here\".",
     "text": "After an oxygen tank aboard Apollo 13 exploded, disabling the spacecraft's electrical and life-support systems, astronaut Jack Swigert reported: \"Houston, we've had a problem here\".",
     "source": "https://en.wikipedia.org/wiki/Apollo_13",
     "sourceLabel": "Wikipedia: Apollo 13",
@@ -7127,7 +7127,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Apollo 13 matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "Apollo 13 matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -7177,7 +7177,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1947,
     "title": "Jackie Robinson",
     "topic": "Jackie Robinson",
-    "headline": "Jackie Robinson, the first African American to break the baseball color line, played his first game in Major...",
+    "headline": "Jackie Robinson, the first African American to break the baseball color line, played his first game in Major League Baseball.",
     "text": "Jackie Robinson, the first African American to break the baseball color line, played his first game in Major League Baseball.",
     "source": "https://en.wikipedia.org/wiki/Jackie_Robinson",
     "sourceLabel": "Wikipedia: Jackie Robinson",
@@ -7273,7 +7273,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "District of Columbia Compensated Emancipation Act turned an argument into a formal rule, and it changed the legal or public meaning of..."
+        "value": "District of Columbia Compensated Emancipation Act turned an argument into a formal rule, and it changed the legal or public meaning of."
       },
       {
         "label": "Connected to",
@@ -7313,7 +7313,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2014,
     "title": "NASA",
     "topic": "NASA",
-    "headline": "NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the...",
+    "headline": "NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the habitable zone of another star.",
     "text": "NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the habitable zone of another star.",
     "source": "https://en.wikipedia.org/wiki/NASA",
     "sourceLabel": "Wikipedia: NASA",
@@ -7336,7 +7336,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -7386,7 +7386,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1996,
     "title": "Operation Grapes of Wrath",
     "topic": "Operation Grapes of Wrath",
-    "headline": "Operation Grapes of Wrath: Israeli forces shelled Qana, Lebanon, killing at least 100 civilians and injuring more than...",
+    "headline": "Operation Grapes of Wrath: Israeli forces shelled Qana, Lebanon, killing at least 100 civilians and injuring more than 110 others at a United Nations compound.",
     "text": "Operation Grapes of Wrath: Israeli forces shelled Qana, Lebanon, killing at least 100 civilians and injuring more than 110 others at a United Nations compound.",
     "source": "https://en.wikipedia.org/wiki/Operation_Grapes_of_Wrath",
     "sourceLabel": "Wikipedia: Operation Grapes of Wrath",
@@ -7595,7 +7595,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1789,
     "title": "George Washington",
     "topic": "George Washington",
-    "headline": "The Ladies of Trenton social club hosted a reception for President-elect George Washington as he journeyed to New...",
+    "headline": "The Ladies of Trenton social club hosted a reception for President-elect George Washington as he journeyed to New York City for his first inauguration.",
     "text": "The Ladies of Trenton social club hosted a reception for President-elect George Washington as he journeyed to New York City for his first inauguration.",
     "source": "https://en.wikipedia.org/wiki/George_Washington",
     "sourceLabel": "Wikipedia: George Washington",
@@ -7663,7 +7663,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2022,
     "title": "United States Supreme Court Building",
     "topic": "United States Supreme Court Building",
-    "headline": "American climate activist Wynn Bruce set himself on fire outside the United States Supreme Court Building in an...",
+    "headline": "American climate activist Wynn Bruce set himself on fire outside the United States Supreme Court Building in an apparent protest against the climate crisis.",
     "text": "American climate activist Wynn Bruce set himself on fire outside the United States Supreme Court Building in an apparent protest against the climate crisis.",
     "source": "https://en.wikipedia.org/wiki/United_States_Supreme_Court_Building",
     "sourceLabel": "Wikipedia: United States Supreme Court Building",
@@ -7686,7 +7686,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "United States Supreme Court Building turned an argument into a formal rule, and it showed public pressure becoming a political force..."
+        "value": "United States Supreme Court Building turned an argument into a formal rule, and it showed public pressure becoming a political force."
       },
       {
         "label": "Connected to",
@@ -7822,7 +7822,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Hubble Space Telescope put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new..."
+        "value": "Hubble Space Telescope put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new."
       },
       {
         "label": "Connected to",
@@ -7925,7 +7925,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1989,
     "title": "People's Daily",
     "topic": "People's Daily",
-    "headline": "An editorial was published in the People's Daily denouncing the growing unrest in Tiananmen Square in Beijing which...",
+    "headline": "An editorial was published in the People's Daily denouncing the growing unrest in Tiananmen Square in Beijing which would remain contentious through the remainder of the protests.",
     "text": "An editorial was published in the People's Daily denouncing the growing unrest in Tiananmen Square in Beijing which would remain contentious through the remainder of the protests.",
     "source": "https://en.wikipedia.org/wiki/People's_Daily",
     "sourceLabel": "Wikipedia: People's Daily",
@@ -7998,7 +7998,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1848,
     "title": "National Assembly (France)",
     "topic": "National Assembly (France)",
-    "headline": "The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following...",
+    "headline": "The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following the February Revolution.",
     "text": "The French National Assembly under Victor Schœlcher proclaims the abolition of slavery within France and it's colonies following the February Revolution.",
     "source": "https://en.wikipedia.org/wiki/National_Assembly_(France)",
     "sourceLabel": "Wikipedia: National Assembly (France)",
@@ -8021,7 +8021,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "National Assembly (France) matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human..."
+        "value": "National Assembly (France) matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human."
       },
       {
         "label": "Connected to",
@@ -8071,7 +8071,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1973,
     "title": "The Dark Side of the Moon",
     "topic": "The Dark Side of the Moon",
-    "headline": "The album The Dark Side of the Moon by the British progressive rock band Pink Floyd entered the...",
+    "headline": "The album The Dark Side of the Moon by the British progressive rock band Pink Floyd entered the Billboard Top LPs & Tape chart, on which it spent a record 942 weeks.",
     "text": "The album The Dark Side of the Moon by the British progressive rock band Pink Floyd entered the Billboard Top LPs & Tape chart, on which it spent a record 942 weeks.",
     "source": "https://en.wikipedia.org/wiki/The_Dark_Side_of_the_Moon",
     "sourceLabel": "Wikipedia: The Dark Side of the Moon",
@@ -8144,7 +8144,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2015,
     "title": "Bali Nine",
     "topic": "Bali Nine",
-    "headline": "The ringleaders of the Bali Nine were executed in Indonesia for attempting to smuggle 8.3 kg (18 lb)...",
+    "headline": "The ringleaders of the Bali Nine were executed in Indonesia for attempting to smuggle 8.3 kg (18 lb) of heroin to Australia in 2005.",
     "text": "The ringleaders of the Bali Nine were executed in Indonesia for attempting to smuggle 8.3 kg (18 lb) of heroin to Australia in 2005.",
     "source": "https://en.wikipedia.org/wiki/Bali_Nine",
     "sourceLabel": "Wikipedia: Bali Nine",
@@ -8207,7 +8207,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2004,
     "title": "The New Yorker",
     "topic": "The New Yorker",
-    "headline": "The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military...",
+    "headline": "The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military personnel of Iraqi prisoners held at Abu Ghraib prison in Baghdad.",
     "text": "The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military personnel of Iraqi prisoners held at Abu Ghraib prison in Baghdad.",
     "source": "https://en.wikipedia.org/wiki/The_New_Yorker",
     "sourceLabel": "Wikipedia: The New Yorker",
@@ -8298,7 +8298,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Chicago Board of Trade Building opened a public doorway into a larger change, and it became a durable marker in the public record because..."
+        "value": "Chicago Board of Trade Building opened a public doorway into a larger change, and it became a durable marker in the public record because."
       },
       {
         "label": "Connected to",
@@ -8333,7 +8333,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1889,
     "title": "Treaty of Wuchale",
     "topic": "Treaty of Wuchale",
-    "headline": "The Treaty of Wuchale was signed, ending the Italo-Ethiopian War, but differences in translation later led to another...",
+    "headline": "The Treaty of Wuchale was signed, ending the Italo-Ethiopian War, but differences in translation later led to another war.",
     "text": "The Treaty of Wuchale was signed, ending the Italo-Ethiopian War, but differences in translation later led to another war.",
     "source": "https://en.wikipedia.org/wiki/Treaty_of_Wuchale",
     "sourceLabel": "Wikipedia: Treaty of Wuchale",
@@ -8401,7 +8401,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1963,
     "title": "Birmingham, Alabama",
     "topic": "Birmingham, Alabama",
-    "headline": "Police in Birmingham, Alabama, used high-pressure water hoses and dogs against civil-rights protesters, bringing scrutiny on racial segregation...",
+    "headline": "Police in Birmingham, Alabama, used high-pressure water hoses and dogs against civil-rights protesters, bringing scrutiny on racial segregation in the southern United States.",
     "text": "Police in Birmingham, Alabama, used high-pressure water hoses and dogs against civil-rights protesters, bringing scrutiny on racial segregation in the southern United States.",
     "source": "https://en.wikipedia.org/wiki/Birmingham%2C_Alabama",
     "sourceLabel": "Wikipedia: Birmingham, Alabama",
@@ -8474,7 +8474,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2019,
     "title": "W Series (championship)",
     "topic": "W Series (championship)",
-    "headline": "The inaugural race of the W Series took place at Hockenheimring, Germany, and was won by Jamie Chadwick...",
+    "headline": "The inaugural race of the W Series took place at Hockenheimring, Germany, and was won by Jamie Chadwick, who later became the season's champion.",
     "text": "The inaugural race of the W Series took place at Hockenheimring, Germany, and was won by Jamie Chadwick, who later became the season's champion.",
     "source": "https://en.wikipedia.org/wiki/W_Series_(championship)",
     "sourceLabel": "Wikipedia: W Series (championship)",
@@ -8497,7 +8497,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "W Series (championship) matters because it became a durable marker in the public record because it changed an institution, community..."
+        "value": "W Series (championship) matters because it became a durable marker in the public record because it changed an institution, community."
       },
       {
         "label": "Connected to",
@@ -8547,7 +8547,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1891,
     "title": "Carnegie Hall",
     "topic": "Carnegie Hall",
-    "headline": "Carnegie Hall in New York City, built by the philanthropist Andrew Carnegie, officially opened with a concert conducted...",
+    "headline": "Carnegie Hall in New York City, built by the philanthropist Andrew Carnegie, officially opened with a concert conducted by Pyotr Ilyich Tchaikovsky.",
     "text": "Carnegie Hall in New York City, built by the philanthropist Andrew Carnegie, officially opened with a concert conducted by Pyotr Ilyich Tchaikovsky.",
     "source": "https://en.wikipedia.org/wiki/Carnegie_Hall",
     "sourceLabel": "Wikipedia: Carnegie Hall",
@@ -8678,7 +8678,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1937,
     "title": "Fleischer Studios",
     "topic": "Fleischer Studios",
-    "headline": "Employees at Fleischer Studios in New York City went on strike in the animation industry's first major labor...",
+    "headline": "Employees at Fleischer Studios in New York City went on strike in the animation industry's first major labor strike.",
     "text": "Employees at Fleischer Studios in New York City went on strike in the animation industry's first major labor strike.",
     "source": "https://en.wikipedia.org/wiki/Fleischer_Studios",
     "sourceLabel": "Wikipedia: Fleischer Studios",
@@ -8741,7 +8741,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1927,
     "title": "Charles Nungesser",
     "topic": "Charles Nungesser",
-    "headline": "French aviators Charles Nungesser and François Coli aboard the biplane L'Oiseau Blanc took off from Paris, attempting to...",
+    "headline": "French aviators Charles Nungesser and François Coli aboard the biplane L'Oiseau Blanc took off from Paris, attempting to make the first non-stop flight to New York, only to disappear before arrival.",
     "text": "French aviators Charles Nungesser and François Coli aboard the biplane L'Oiseau Blanc took off from Paris, attempting to make the first non-stop flight to New York, only to disappear before arrival.",
     "source": "https://en.wikipedia.org/wiki/Charles_Nungesser",
     "sourceLabel": "Wikipedia: Charles Nungesser",
@@ -8814,7 +8814,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1960,
     "title": "Food and Drug Administration",
     "topic": "Food and Drug Administration",
-    "headline": "The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first...",
+    "headline": "The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first combined oral contraceptive pill.",
     "text": "The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first combined oral contraceptive pill.",
     "source": "https://en.wikipedia.org/wiki/Food_and_Drug_Administration",
     "sourceLabel": "Wikipedia: Food and Drug Administration",
@@ -8837,7 +8837,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Food and Drug Administration marked a first, and it changed how doctors, patients, public-health officials, or researchers understood..."
+        "value": "Food and Drug Administration marked a first, and it changed how doctors, patients, public-health officials, or researchers understood."
       },
       {
         "label": "Connected to",
@@ -8887,7 +8887,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1849,
     "title": "Edwin Forrest",
     "topic": "Edwin Forrest",
-    "headline": "A personal dispute between actors Edwin Forrest and William Macready in New York City devolved into a riot...",
+    "headline": "A personal dispute between actors Edwin Forrest and William Macready in New York City devolved into a riot that left at least 22 dead and more than 120 injured.",
     "text": "A personal dispute between actors Edwin Forrest and William Macready in New York City devolved into a riot that left at least 22 dead and more than 120 injured.",
     "source": "https://en.wikipedia.org/wiki/Edwin_Forrest",
     "sourceLabel": "Wikipedia: Edwin Forrest",
@@ -8955,7 +8955,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1894,
     "title": "Illinois",
     "topic": "Illinois",
-    "headline": "In response to a 28-percent wage cut, 4,000 Pullman Palace Car Company workers went on strike in Illinois...",
+    "headline": "In response to a 28-percent wage cut, 4,000 Pullman Palace Car Company workers went on strike in Illinois, bringing rail traffic west of Chicago to a halt.",
     "text": "In response to a 28-percent wage cut, 4,000 Pullman Palace Car Company workers went on strike in Illinois, bringing rail traffic west of Chicago to a halt.",
     "source": "https://en.wikipedia.org/wiki/Illinois",
     "sourceLabel": "Wikipedia: Illinois",
@@ -9086,7 +9086,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2017,
     "title": "Amar pelos dois",
     "topic": "Amar pelos dois",
-    "headline": "Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed...",
+    "headline": "Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed by Salvador Sobral.",
     "text": "Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed by Salvador Sobral.",
     "source": "https://en.wikipedia.org/wiki/Amar_pelos_dois",
     "sourceLabel": "Wikipedia: Amar pelos dois",
@@ -9182,7 +9182,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Salem, Massachusetts opened a public doorway into a larger change, and it exposed how law, evidence, fear, media attention, and state..."
+        "value": "Salem, Massachusetts opened a public doorway into a larger change, and it exposed how law, evidence, fear, media attention, and state."
       },
       {
         "label": "Connected to",
@@ -9222,7 +9222,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1862,
     "title": "Fertilisation of Orchids",
     "topic": "Fertilisation of Orchids",
-    "headline": "Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail...",
+    "headline": "Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail, was published.",
     "text": "Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail, was published.",
     "source": "https://en.wikipedia.org/wiki/Fertilisation_of_Orchids",
     "sourceLabel": "Wikipedia: Fertilisation of Orchids",
@@ -9290,7 +9290,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1777,
     "title": "United States Declaration of Independence",
     "topic": "United States Declaration of Independence",
-    "headline": "Button Gwinnett, a signer of the United States Declaration of Independence, is wounded in a duel with Continental...",
+    "headline": "Button Gwinnett, a signer of the United States Declaration of Independence, is wounded in a duel with Continental Army officer Lachlan McIntosh, dying of his injuries several days later.",
     "text": "Button Gwinnett, a signer of the United States Declaration of Independence, is wounded in a duel with Continental Army officer Lachlan McIntosh, dying of his injuries several days later.",
     "source": "https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence",
     "sourceLabel": "Wikipedia: United States Declaration of Independence",
@@ -9363,7 +9363,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2000,
     "title": "2000 UEFA Cup semi-final violence",
     "topic": "2000 UEFA Cup semi-final violence",
-    "headline": "Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish...",
+    "headline": "Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish hooligans rioted on the day of the UEFA Cup Final in Copenhagen, Denmark.",
     "text": "Following the killing of two English football fans by Galatasaray supporters in the previous month, British and Turkish hooligans rioted on the day of the UEFA Cup Final in Copenhagen, Denmark.",
     "source": "https://en.wikipedia.org/wiki/2000_UEFA_Cup_semi-final_violence",
     "sourceLabel": "Wikipedia: 2000 UEFA Cup semi-final violence",
@@ -9499,7 +9499,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2010,
     "title": "2010 Thai military crackdown",
     "topic": "2010 Thai military crackdown",
-    "headline": "In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition...",
+    "headline": "In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition leaders.",
     "text": "In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition leaders.",
     "source": "https://en.wikipedia.org/wiki/2010_Thai_military_crackdown",
     "sourceLabel": "Wikipedia: 2010 Thai military crackdown",
@@ -9572,7 +9572,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1996,
     "title": "Romer v. Evans",
     "topic": "Romer v. Evans",
-    "headline": "In deciding Romer v. Evans, the U.S. Supreme Court struck down a constitutional amendment in Colorado that prevented...",
+    "headline": "In deciding Romer v. Evans, the U.S. Supreme Court struck down a constitutional amendment in Colorado that prevented protected status under the law for homosexuals or bisexuals.",
     "text": "In deciding Romer v. Evans, the U.S. Supreme Court struck down a constitutional amendment in Colorado that prevented protected status under the law for homosexuals or bisexuals.",
     "source": "https://en.wikipedia.org/wiki/Romer_v._Evans",
     "sourceLabel": "Wikipedia: Romer v. Evans",
@@ -9645,7 +9645,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1927,
     "title": "Spirit of St. Louis",
     "topic": "Spirit of St. Louis",
-    "headline": "Aboard the Spirit of St. Louis, American aviator Charles Lindbergh completed the first solo non-stop transatlantic flight, flying...",
+    "headline": "Aboard the Spirit of St. Louis, American aviator Charles Lindbergh completed the first solo non-stop transatlantic flight, flying from Roosevelt Field near New York City to Paris–Le Bourget Airport.",
     "text": "Aboard the Spirit of St. Louis, American aviator Charles Lindbergh completed the first solo non-stop transatlantic flight, flying from Roosevelt Field near New York City to Paris–Le Bourget Airport.",
     "source": "https://en.wikipedia.org/wiki/Spirit_of_St._Louis",
     "sourceLabel": "Wikipedia: Spirit of St. Louis",
@@ -9718,7 +9718,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1980,
     "title": "Pac-Man",
     "topic": "Pac-Man",
-    "headline": "Location testing for Pac-Man, a Japanese arcade game that became an icon of 1980s popular culture, began in...",
+    "headline": "Location testing for Pac-Man, a Japanese arcade game that became an icon of 1980s popular culture, began in Shibuya, Tokyo.",
     "text": "Location testing for Pac-Man, a Japanese arcade game that became an icon of 1980s popular culture, began in Shibuya, Tokyo.",
     "source": "https://en.wikipedia.org/wiki/Pac-Man",
     "sourceLabel": "Wikipedia: Pac-Man",
@@ -9791,7 +9791,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1980,
     "title": "Stanley Kubrick",
     "topic": "Stanley Kubrick",
-    "headline": "The Shining, the psychological horror film directed by Stanley Kubrick, was premiered on 10 screens in New York...",
+    "headline": "The Shining, the psychological horror film directed by Stanley Kubrick, was premiered on 10 screens in New York City and Los Angeles.",
     "text": "The Shining, the psychological horror film directed by Stanley Kubrick, was premiered on 10 screens in New York City and Los Angeles.",
     "source": "https://en.wikipedia.org/wiki/Stanley_Kubrick",
     "sourceLabel": "Wikipedia: Stanley Kubrick",
@@ -9864,7 +9864,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1844,
     "title": "First Telegraph Message",
     "topic": "Electrical telegraph",
-    "headline": "Samuel Morse sent the first long-distance telegraph message from Washington to Baltimore: \"What hath God wrought.\"",
+    "headline": "Samuel Morse sent the first long-distance telegraph message from Washington to Baltimore: \"What hath God wrought.\".",
     "text": "Samuel Morse sent the first long-distance telegraph message from Washington, D.C., to Baltimore, turning electricity into a practical communications system and shrinking political, financial, and social time.",
     "source": "https://en.wikipedia.org/wiki/What_hath_God_wrought",
     "sourceLabel": "Wikipedia: What hath God wrought",
@@ -13235,7 +13235,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Symphony matters because it became a durable marker in the public record because it changed an institution, community, practice, or..."
+        "value": "Symphony matters because it became a durable marker in the public record because it changed an institution, community, practice, or."
       },
       {
         "label": "Connected to",
@@ -13308,7 +13308,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "L. L. Zamenhof marked a first, and it became a durable marker in the public record because it changed an institution, community, practice..."
+        "value": "L. L. Zamenhof marked a first, and it became a durable marker in the public record because it changed an institution, community, practice."
       },
       {
         "label": "Connected to",
@@ -13358,7 +13358,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1983,
     "title": "Madonna",
     "topic": "Madonna",
-    "headline": "American musician Madonna released her self-titled debut album, which set the standard for the genre of dance-pop for...",
+    "headline": "American musician Madonna released her self-titled debut album, which set the standard for the genre of dance-pop for decades.",
     "text": "American musician Madonna released her self-titled debut album, which set the standard for the genre of dance-pop for decades.",
     "source": "https://en.wikipedia.org/wiki/Madonna",
     "sourceLabel": "Wikipedia: Madonna",
@@ -13426,7 +13426,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1866,
     "title": "Vinnie Ream",
     "topic": "Vinnie Ream",
-    "headline": "Aged 18, Vinnie Ream became the youngest artist and first woman to receive a United States government commission...",
+    "headline": "Aged 18, Vinnie Ream became the youngest artist and first woman to receive a United States government commission for a statue—that of Abraham Lincoln currently in the Capitol rotunda.",
     "text": "Aged 18, Vinnie Ream became the youngest artist and first woman to receive a United States government commission for a statue—that of Abraham Lincoln currently in the Capitol rotunda.",
     "source": "https://en.wikipedia.org/wiki/Vinnie_Ream",
     "sourceLabel": "Wikipedia: Vinnie Ream",
@@ -13494,7 +13494,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1954,
     "title": "The Fellowship of the Ring",
     "topic": "The Fellowship of the Ring",
-    "headline": "The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the...",
+    "headline": "The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the Rings, was published by Allen & Unwin.",
     "text": "The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the Rings, was published by Allen & Unwin.",
     "source": "https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring",
     "sourceLabel": "Wikipedia: The Fellowship of the Ring",
@@ -13567,7 +13567,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1724,
     "title": "Psalm 124",
     "topic": "Psalm 124",
-    "headline": "Bach's chorale cantata Wo Gott der Herr nicht bei uns hält, a paraphrase of Psalm 124 based on...",
+    "headline": "Bach's chorale cantata Wo Gott der Herr nicht bei uns hält, a paraphrase of Psalm 124 based on a 1524 hymn by Justus Jonas, was first performed in Leipzig.",
     "text": "Bach's chorale cantata Wo Gott der Herr nicht bei uns hält, a paraphrase of Psalm 124 based on a 1524 hymn by Justus Jonas, was first performed in Leipzig.",
     "source": "https://en.wikipedia.org/wiki/Psalm_124",
     "sourceLabel": "Wikipedia: Psalm 124",
@@ -13640,7 +13640,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1964,
     "title": "Ranger 7",
     "topic": "Ranger 7",
-    "headline": "The space probe Ranger 7 captured thousands of close-up photographs of the Moon over its final minutes of...",
+    "headline": "The space probe Ranger 7 captured thousands of close-up photographs of the Moon over its final minutes of flight and transmitted them to Earth before crashing on the lunar surface.",
     "text": "The space probe Ranger 7 captured thousands of close-up photographs of the Moon over its final minutes of flight and transmitted them to Earth before crashing on the lunar surface.",
     "source": "https://en.wikipedia.org/wiki/Ranger_7",
     "sourceLabel": "Wikipedia: Ranger 7",
@@ -13708,7 +13708,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1981,
     "title": "Video Killed the Radio Star",
     "topic": "Video Killed the Radio Star",
-    "headline": "\"Video Killed the Radio Star\" by the Buggles became the first music video broadcast on the American cable...",
+    "headline": "\"Video Killed the Radio Star\" by the Buggles became the first music video broadcast on the American cable television network MTV.",
     "text": "\"Video Killed the Radio Star\" by the Buggles became the first music video broadcast on the American cable television network MTV.",
     "source": "https://en.wikipedia.org/wiki/Video_Killed_the_Radio_Star",
     "sourceLabel": "Wikipedia: Video Killed the Radio Star",
@@ -13849,7 +13849,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1936,
     "title": "Jesse Owens",
     "topic": "Jesse Owens",
-    "headline": "African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi...",
+    "headline": "African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi leaders' hopes of Aryan domination at the games.",
     "text": "African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi leaders' hopes of Aryan domination at the games.",
     "source": "https://en.wikipedia.org/wiki/Jesse_Owens",
     "sourceLabel": "Wikipedia: Jesse Owens",
@@ -14008,7 +14008,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Juno (spacecraft) put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new..."
+        "value": "Juno (spacecraft) put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new."
       },
       {
         "label": "Connected to",
@@ -14053,7 +14053,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1991,
     "title": "Programmer",
     "topic": "Programmer",
-    "headline": "British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents...",
+    "headline": "British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents accessible via the Internet, known as the World Wide Web.",
     "text": "British computer programmer Tim Berners-Lee posted a public invitation to collaborate on a system of interlinked, hypertext documents accessible via the Internet, known as the World Wide Web.",
     "source": "https://en.wikipedia.org/wiki/Programmer",
     "sourceLabel": "Wikipedia: Programmer",
@@ -14126,7 +14126,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1850,
     "title": "East Coast Main Line",
     "topic": "East Coast Main Line",
-    "headline": "The first section of the Great Northern Railway, now the southern section of the East Coast Main Line...",
+    "headline": "The first section of the Great Northern Railway, now the southern section of the East Coast Main Line, opened between London and Peterborough.",
     "text": "The first section of the Great Northern Railway, now the southern section of the East Coast Main Line, opened between London and Peterborough.",
     "source": "https://en.wikipedia.org/wiki/East_Coast_Main_Line",
     "sourceLabel": "Wikipedia: East Coast Main Line",
@@ -14189,7 +14189,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1969,
     "title": "Zebra crossing",
     "topic": "Zebra crossing",
-    "headline": "At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for...",
+    "headline": "At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for the cover of the Beatles' album Abbey Road.",
     "text": "At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for the cover of the Beatles' album Abbey Road.",
     "source": "https://en.wikipedia.org/wiki/Zebra_crossing",
     "sourceLabel": "Wikipedia: Zebra crossing",
@@ -14262,7 +14262,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1956,
     "title": "Pretoria",
     "topic": "Pretoria",
-    "headline": "About 20,000 women marched on Pretoria, South Africa, to protest the introduction of pass laws for black women...",
+    "headline": "About 20,000 women marched on Pretoria, South Africa, to protest the introduction of pass laws for black women under apartheid.",
     "text": "About 20,000 women marched on Pretoria, South Africa, to protest the introduction of pass laws for black women under apartheid.",
     "source": "https://en.wikipedia.org/wiki/Pretoria",
     "sourceLabel": "Wikipedia: Pretoria",
@@ -14285,7 +14285,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Pretoria turned an argument into a formal rule, and it changed the legal or public meaning of citizenship, equality, personal freedom, or..."
+        "value": "Pretoria turned an argument into a formal rule, and it changed the legal or public meaning of citizenship, equality, personal freedom, or."
       },
       {
         "label": "Connected to",
@@ -14335,7 +14335,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2019,
     "title": "Jeffrey Epstein",
     "topic": "Jeffrey Epstein",
-    "headline": "Jeffrey Epstein, an American financier and convicted sex offender, was found dead in his cell at the Metropolitan...",
+    "headline": "Jeffrey Epstein, an American financier and convicted sex offender, was found dead in his cell at the Metropolitan Correctional Center, New York.",
     "text": "Jeffrey Epstein, an American financier and convicted sex offender, was found dead in his cell at the Metropolitan Correctional Center, New York.",
     "source": "https://en.wikipedia.org/wiki/Jeffrey_Epstein",
     "sourceLabel": "Wikipedia: Jeffrey Epstein",
@@ -14403,7 +14403,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1973,
     "title": "DJ Kool Herc",
     "topic": "DJ Kool Herc",
-    "headline": "At a party in New York City, Jamaican musician DJ Kool Herc began rapping during an extended break...",
+    "headline": "At a party in New York City, Jamaican musician DJ Kool Herc began rapping during an extended break, laying the foundation for hip hop music.",
     "text": "At a party in New York City, Jamaican musician DJ Kool Herc began rapping during an extended break, laying the foundation for hip hop music.",
     "source": "https://en.wikipedia.org/wiki/DJ_Kool_Herc",
     "sourceLabel": "Wikipedia: DJ Kool Herc",
@@ -14476,7 +14476,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1985,
     "title": "Japan Air Lines Flight 123",
     "topic": "Japan Air Lines Flight 123",
-    "headline": "Japan Air Lines Flight 123 crashed into Mount Takamagahara in Gunma Prefecture, killing 520 of 524 people on...",
+    "headline": "Japan Air Lines Flight 123 crashed into Mount Takamagahara in Gunma Prefecture, killing 520 of 524 people on board, including singer Kyu Sakamoto, in the world's worst single-aircraft aviation disaster.",
     "text": "Japan Air Lines Flight 123 crashed into Mount Takamagahara in Gunma Prefecture, killing 520 of 524 people on board, including singer Kyu Sakamoto, in the world's worst single-aircraft aviation disaster.",
     "source": "https://en.wikipedia.org/wiki/Japan_Air_Lines_Flight_123",
     "sourceLabel": "Wikipedia: Japan Air Lines Flight 123",
@@ -14572,7 +14572,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Opha May Johnson marked a first, and it became a durable marker in the public record because it changed an institution, community..."
+        "value": "Opha May Johnson marked a first, and it became a durable marker in the public record because it changed an institution, community."
       },
       {
         "label": "Connected to",
@@ -14612,7 +14612,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1888,
     "title": "Arthur Sullivan",
     "topic": "Arthur Sullivan",
-    "headline": "One of the first recordings of music, of Arthur Sullivan's \"The Lost Chord\", was played at a press...",
+    "headline": "One of the first recordings of music, of Arthur Sullivan's \"The Lost Chord\", was played at a press conference in London to introduce Thomas Edison's phonograph.",
     "text": "One of the first recordings of music, of Arthur Sullivan's \"The Lost Chord\", was played at a press conference in London to introduce Thomas Edison's phonograph.",
     "source": "https://en.wikipedia.org/wiki/Arthur_Sullivan",
     "sourceLabel": "Wikipedia: Arthur Sullivan",
@@ -14748,7 +14748,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2009,
     "title": "Usain Bolt",
     "topic": "Usain Bolt",
-    "headline": "At the World Championships in Athletics in Berlin, Usain Bolt ran the 100 metres in 9.58 seconds, breaking...",
+    "headline": "At the World Championships in Athletics in Berlin, Usain Bolt ran the 100 metres in 9.58 seconds, breaking his own record set a year earlier.",
     "text": "At the World Championships in Athletics in Berlin, Usain Bolt ran the 100 metres in 9.58 seconds, breaking his own record set a year earlier.",
     "source": "https://en.wikipedia.org/wiki/Usain_Bolt",
     "sourceLabel": "Wikipedia: Usain Bolt",
@@ -14821,7 +14821,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2008,
     "title": "Michael Phelps",
     "topic": "Michael Phelps",
-    "headline": "Michael Phelps won his eighth gold medal of the Summer Olympics in Beijing, setting the record for the...",
+    "headline": "Michael Phelps won his eighth gold medal of the Summer Olympics in Beijing, setting the record for the most gold medals won by an athlete at a single games.",
     "text": "Michael Phelps won his eighth gold medal of the Summer Olympics in Beijing, setting the record for the most gold medals won by an athlete at a single games.",
     "source": "https://en.wikipedia.org/wiki/Michael_Phelps",
     "sourceLabel": "Wikipedia: Michael Phelps",
@@ -14907,7 +14907,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Nineteenth Amendment to the United States Constitution turned an argument into a formal rule, and it changed the legal or public meaning..."
+        "value": "Nineteenth Amendment to the United States Constitution turned an argument into a formal rule, and it changed the legal or public meaning."
       },
       {
         "label": "Connected to",
@@ -14952,7 +14952,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1725,
     "title": "Lobe den Herren, den mächtigen König der Ehren, BWV 137",
     "topic": "Lobe den Herren, den mächtigen König der Ehren, BWV 137",
-    "headline": "J. S. Bach led the first performance of Lobe den Herren, den mächtigen König der Ehren, BWV 137...",
+    "headline": "J. S. Bach led the first performance of Lobe den Herren, den mächtigen König der Ehren, BWV 137, a cantata setting the unchanged text of Neander's hymn.",
     "text": "J. S. Bach led the first performance of Lobe den Herren, den mächtigen König der Ehren, BWV 137, a cantata setting the unchanged text of Neander's hymn.",
     "source": "https://en.wikipedia.org/wiki/Lobe_den_Herren%2C_den_m%C3%A4chtigen_K%C3%B6nig_der_Ehren%2C_BWV_137",
     "sourceLabel": "Wikipedia: Lobe den Herren, den mächtigen König der Ehren, BWV 137",
@@ -14975,7 +14975,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Lobe den Herren, den mächtigen König der Ehren, BWV 137 marked a first, and it became a durable marker in the public record because it..."
+        "value": "Lobe den Herren, den mächtigen König der Ehren, BWV 137 marked a first, and it became a durable marker in the public record because it."
       },
       {
         "label": "Connected to",
@@ -15025,7 +15025,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1909,
     "title": "Pluto",
     "topic": "Pluto",
-    "headline": "Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years...",
+    "headline": "Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years before it was officially discovered by Clyde Tombaugh.",
     "text": "Pluto was photographed for the first time at the Yerkes Observatory in Williams Bay, Wisconsin, U.S., 21 years before it was officially discovered by Clyde Tombaugh.",
     "source": "https://en.wikipedia.org/wiki/Pluto",
     "sourceLabel": "Wikipedia: Pluto",
@@ -15098,7 +15098,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2007,
     "title": "BioShock",
     "topic": "BioShock",
-    "headline": "BioShock was released in North America, becoming a critical success and a demonstration of video games as an...",
+    "headline": "BioShock was released in North America, becoming a critical success and a demonstration of video games as an art form.",
     "text": "BioShock was released in North America, becoming a critical success and a demonstration of video games as an art form.",
     "source": "https://en.wikipedia.org/wiki/BioShock",
     "sourceLabel": "Wikipedia: BioShock",
@@ -15161,7 +15161,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2003,
     "title": "Roy Moore",
     "topic": "Roy Moore",
-    "headline": "Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to...",
+    "headline": "Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme Court of Alabama building.",
     "text": "Roy Moore, Alabama's chief justice, was suspended after refusing to comply with a U.S. federal court order to remove a rock inscribed with the Ten Commandments from the lobby of the Supreme Court of Alabama building.",
     "source": "https://en.wikipedia.org/wiki/Roy_Moore",
     "sourceLabel": "Wikipedia: Roy Moore",
@@ -15252,7 +15252,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "World Wide Web opened a public doorway into a larger change, and it changed how people used machines, networks, media, or information in..."
+        "value": "World Wide Web opened a public doorway into a larger change, and it changed how people used machines, networks, media, or information in."
       },
       {
         "label": "Connected to",
@@ -15287,7 +15287,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1781,
     "title": "American Revolutionary War",
     "topic": "American Revolutionary War",
-    "headline": "American Revolutionary War: Near present-day Aurora, Indiana, American Indians led by Joseph Brant killed or captured all members...",
+    "headline": "American Revolutionary War: Near present-day Aurora, Indiana, American Indians led by Joseph Brant killed or captured all members of a Pennsylvania militia.",
     "text": "American Revolutionary War: Near present-day Aurora, Indiana, American Indians led by Joseph Brant killed or captured all members of a Pennsylvania militia.",
     "source": "https://en.wikipedia.org/wiki/American_Revolutionary_War",
     "sourceLabel": "Wikipedia: American Revolutionary War",
@@ -15383,7 +15383,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -15428,7 +15428,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1970,
     "title": "Betty Friedan",
     "topic": "Betty Friedan",
-    "headline": "Betty Friedan and the National Organization for Women organized the Women's Strike for Equality in New York City...",
+    "headline": "Betty Friedan and the National Organization for Women organized the Women's Strike for Equality in New York City, in which 50,000 women protested the continuing lack of gender equality.",
     "text": "Betty Friedan and the National Organization for Women organized the Women's Strike for Equality in New York City, in which 50,000 women protested the continuing lack of gender equality.",
     "source": "https://en.wikipedia.org/wiki/Betty_Friedan",
     "sourceLabel": "Wikipedia: Betty Friedan",
@@ -15645,7 +15645,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Casbah Coffee Club opened a public doorway into a larger change, and it changed the sound, business, audience, or shared memory of..."
+        "value": "Casbah Coffee Club opened a public doorway into a larger change, and it changed the sound, business, audience, or shared memory of."
       },
       {
         "label": "Connected to",
@@ -15695,7 +15695,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1984,
     "title": "Space Shuttle program",
     "topic": "Space Shuttle program",
-    "headline": "Discovery, the third orbiter of NASA's Space Shuttle program, lifted off on its maiden voyage from Kennedy Space...",
+    "headline": "Discovery, the third orbiter of NASA's Space Shuttle program, lifted off on its maiden voyage from Kennedy Space Center, Florida.",
     "text": "Discovery, the third orbiter of NASA's Space Shuttle program, lifted off on its maiden voyage from Kennedy Space Center, Florida.",
     "source": "https://en.wikipedia.org/wiki/Space_Shuttle_program",
     "sourceLabel": "Wikipedia: Space Shuttle program",
@@ -15718,7 +15718,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Space Shuttle program matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "Space Shuttle program matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -15826,7 +15826,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1952,
     "title": "Ernest Hemingway",
     "topic": "Ernest Hemingway",
-    "headline": "Ernest Hemingway's novel The Old Man and the Sea, which later won the Pulitzer Prize for Fiction, was...",
+    "headline": "Ernest Hemingway's novel The Old Man and the Sea, which later won the Pulitzer Prize for Fiction, was first published.",
     "text": "Ernest Hemingway's novel The Old Man and the Sea, which later won the Pulitzer Prize for Fiction, was first published.",
     "source": "https://en.wikipedia.org/wiki/Ernest_Hemingway",
     "sourceLabel": "Wikipedia: Ernest Hemingway",
@@ -15957,7 +15957,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1942,
     "title": "The Holocaust",
     "topic": "The Holocaust",
-    "headline": "The Holocaust: In possibly the first Jewish ghetto uprising, residents of the Łachwa Ghetto in occupied Poland, informed...",
+    "headline": "The Holocaust: In possibly the first Jewish ghetto uprising, residents of the Łachwa Ghetto in occupied Poland, informed of the upcoming \"liquidation\" of the ghetto, unsuccessfully fought against their Nazi captors.",
     "text": "The Holocaust: In possibly the first Jewish ghetto uprising, residents of the Łachwa Ghetto in occupied Poland, informed of the upcoming \"liquidation\" of the ghetto, unsuccessfully fought against their Nazi captors.",
     "source": "https://en.wikipedia.org/wiki/The_Holocaust",
     "sourceLabel": "Wikipedia: The Holocaust",
@@ -16093,7 +16093,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1882,
     "title": "Bobby Buckle",
     "topic": "Bobby Buckle",
-    "headline": "A group of London schoolboys led by Bobby Buckle founded Hotspur Football Club to continue to play sports...",
+    "headline": "A group of London schoolboys led by Bobby Buckle founded Hotspur Football Club to continue to play sports during the winter months.",
     "text": "A group of London schoolboys led by Bobby Buckle founded Hotspur Football Club to continue to play sports during the winter months.",
     "source": "https://en.wikipedia.org/wiki/Bobby_Buckle",
     "sourceLabel": "Wikipedia: Bobby Buckle",
@@ -16224,7 +16224,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1996,
     "title": "Tupac Shakur",
     "topic": "Tupac Shakur",
-    "headline": "American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six...",
+    "headline": "American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six days later.",
     "text": "American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six days later.",
     "source": "https://en.wikipedia.org/wiki/Tupac_Shakur",
     "sourceLabel": "Wikipedia: Tupac Shakur",
@@ -16315,7 +16315,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "French Revolutionary Wars matters because it became a durable marker in the public record because it changed an institution, community..."
+        "value": "French Revolutionary Wars matters because it became a durable marker in the public record because it changed an institution, community."
       },
       {
         "label": "Connected to",
@@ -16365,7 +16365,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1957,
     "title": "Civil Rights Act of 1957",
     "topic": "Civil Rights Act of 1957",
-    "headline": "U.S. president Dwight D. Eisenhower signed the Civil Rights Act of 1957, the first civil rights bill since...",
+    "headline": "U.S. president Dwight D. Eisenhower signed the Civil Rights Act of 1957, the first civil rights bill since Reconstruction.",
     "text": "U.S. president Dwight D. Eisenhower signed the Civil Rights Act of 1957, the first civil rights bill since Reconstruction.",
     "source": "https://en.wikipedia.org/wiki/Civil_Rights_Act_of_1957",
     "sourceLabel": "Wikipedia: Civil Rights Act of 1957",
@@ -16388,7 +16388,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Civil Rights Act of 1957 marked a first, and it changed the legal or public meaning of citizenship, equality, personal freedom, or human..."
+        "value": "Civil Rights Act of 1957 marked a first, and it changed the legal or public meaning of citizenship, equality, personal freedom, or human."
       },
       {
         "label": "Connected to",
@@ -16428,7 +16428,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1960,
     "title": "Abebe Bikila",
     "topic": "Abebe Bikila",
-    "headline": "Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan...",
+    "headline": "Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan Africa to win an Olympic gold medal.",
     "text": "Running barefoot in the marathon event at the Rome Olympics, Abebe Bikila became the first athlete from sub-Saharan Africa to win an Olympic gold medal.",
     "source": "https://en.wikipedia.org/wiki/Abebe_Bikila",
     "sourceLabel": "Wikipedia: Abebe Bikila",
@@ -16501,7 +16501,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1893,
     "title": "Swami Vivekananda",
     "topic": "Swami Vivekananda",
-    "headline": "Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's...",
+    "headline": "Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's Religions in Chicago.",
     "text": "Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's Religions in Chicago.",
     "source": "https://en.wikipedia.org/wiki/Swami_Vivekananda",
     "sourceLabel": "Wikipedia: Swami Vivekananda",
@@ -16627,7 +16627,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1993,
     "title": "Nirvana (band)",
     "topic": "Nirvana (band)",
-    "headline": "Nirvana released their third and final studio album, In Utero, which went on to sell more than 15...",
+    "headline": "Nirvana released their third and final studio album, In Utero, which went on to sell more than 15 million copies.",
     "text": "Nirvana released their third and final studio album, In Utero, which went on to sell more than 15 million copies.",
     "source": "https://en.wikipedia.org/wiki/Nirvana_(band)",
     "sourceLabel": "Wikipedia: Nirvana (band)",
@@ -16713,7 +16713,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Croatian Republic of Herzeg-Bosnia turned an argument into a formal rule, and it changed how an institution, law, government, treaty, or..."
+        "value": "Croatian Republic of Herzeg-Bosnia turned an argument into a formal rule, and it changed how an institution, law, government, treaty, or."
       },
       {
         "label": "Connected to",
@@ -16748,7 +16748,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1791,
     "title": "Declaration of the Rights of Woman and of the Female Citizen",
     "topic": "Declaration of the Rights of Woman and of the Female Citizen",
-    "headline": "French playwright Olympe de Gouges published the Declaration of the Rights of Woman and of the Female Citizen...",
+    "headline": "French playwright Olympe de Gouges published the Declaration of the Rights of Woman and of the Female Citizen, hoping to expose the failures of the French Revolution in the recognition of gender equality.",
     "text": "French playwright Olympe de Gouges published the Declaration of the Rights of Woman and of the Female Citizen, hoping to expose the failures of the French Revolution in the recognition of gender equality.",
     "source": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Woman_and_of_the_Female_Citizen",
     "sourceLabel": "Wikipedia: Declaration of the Rights of Woman and of the Female Citizen",
@@ -16771,7 +16771,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Declaration of the Rights of Woman and of the Female Citizen matters because it changed the legal or public meaning of citizenship..."
+        "value": "Declaration of the Rights of Woman and of the Female Citizen matters because it changed the legal or public meaning of citizenship."
       },
       {
         "label": "Connected to",
@@ -16844,7 +16844,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Felix Mendelssohn matters because it became a durable marker in the public record because it changed an institution, community, practice..."
+        "value": "Felix Mendelssohn matters because it became a durable marker in the public record because it changed an institution, community, practice."
       },
       {
         "label": "Connected to",
@@ -16912,7 +16912,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "NASA matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications..."
+        "value": "NASA matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications."
       },
       {
         "label": "Connected to",
@@ -16962,7 +16962,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1870,
     "title": "Nathaniel P. Langford",
     "topic": "Nathaniel P. Langford",
-    "headline": "Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular...",
+    "headline": "Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular intervals, naming it Old Faithful (video featured).",
     "text": "Nathaniel P. Langford of the Washburn–Langford–Doane Expedition first observed a geyser in the Wyoming Territory erupting at regular intervals, naming it Old Faithful (video featured).",
     "source": "https://en.wikipedia.org/wiki/Nathaniel_P._Langford",
     "sourceLabel": "Wikipedia: Nathaniel P. Langford",
@@ -17035,7 +17035,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1893,
     "title": "Universal suffrage",
     "topic": "Universal suffrage",
-    "headline": "New Zealand became the first country to introduce universal suffrage following the women's suffrage movement led by Kate...",
+    "headline": "New Zealand became the first country to introduce universal suffrage following the women's suffrage movement led by Kate Sheppard.",
     "text": "New Zealand became the first country to introduce universal suffrage following the women's suffrage movement led by Kate Sheppard.",
     "source": "https://en.wikipedia.org/wiki/Universal_suffrage",
     "sourceLabel": "Wikipedia: Universal suffrage",
@@ -17108,7 +17108,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1973,
     "title": "Billie Jean King",
     "topic": "Billie Jean King",
-    "headline": "Billie Jean King defeated Bobby Riggs in straight sets at the Astrodome in Houston, Texas, in an internationally...",
+    "headline": "Billie Jean King defeated Bobby Riggs in straight sets at the Astrodome in Houston, Texas, in an internationally televised tennis match dubbed the \"Battle of the Sexes\".",
     "text": "Billie Jean King defeated Bobby Riggs in straight sets at the Astrodome in Houston, Texas, in an internationally televised tennis match dubbed the \"Battle of the Sexes\".",
     "source": "https://en.wikipedia.org/wiki/Billie_Jean_King",
     "sourceLabel": "Wikipedia: Billie Jean King",
@@ -17181,7 +17181,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1968,
     "title": "Zond 5",
     "topic": "Zond 5",
-    "headline": "The Soviet Union's Zond 5 landed in the Indian Ocean, becoming the first spacecraft to safely return to...",
+    "headline": "The Soviet Union's Zond 5 landed in the Indian Ocean, becoming the first spacecraft to safely return to Earth after travelling around the Moon.",
     "text": "The Soviet Union's Zond 5 landed in the Indian Ocean, becoming the first spacecraft to safely return to Earth after travelling around the Moon.",
     "source": "https://en.wikipedia.org/wiki/Zond_5",
     "sourceLabel": "Wikipedia: Zond 5",
@@ -17204,7 +17204,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Zond 5 marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "Zond 5 marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -17307,7 +17307,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1952,
     "title": "Richard Nixon",
     "topic": "Richard Nixon",
-    "headline": "U.S. vice-presidential candidate Richard Nixon delivered the Checkers speech, one of the first political uses of television to...",
+    "headline": "U.S. vice-presidential candidate Richard Nixon delivered the Checkers speech, one of the first political uses of television to appeal directly to the populace.",
     "text": "U.S. vice-presidential candidate Richard Nixon delivered the Checkers speech, one of the first political uses of television to appeal directly to the populace.",
     "source": "https://en.wikipedia.org/wiki/Richard_Nixon",
     "sourceLabel": "Wikipedia: Richard Nixon",
@@ -17370,7 +17370,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1789,
     "title": "Judiciary Act of 1789",
     "topic": "Judiciary Act of 1789",
-    "headline": "The Judiciary Act of 1789 was signed into law, establishing the U.S. federal judiciary and setting the number...",
+    "headline": "The Judiciary Act of 1789 was signed into law, establishing the U.S. federal judiciary and setting the number of Supreme Court justices at six.",
     "text": "The Judiciary Act of 1789 was signed into law, establishing the U.S. federal judiciary and setting the number of Supreme Court justices at six.",
     "source": "https://en.wikipedia.org/wiki/Judiciary_Act_of_1789",
     "sourceLabel": "Wikipedia: Judiciary Act of 1789",
@@ -17393,7 +17393,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Judiciary Act of 1789 turned an argument into a formal rule, and it changed how an institution, law, government, treaty, or public office..."
+        "value": "Judiciary Act of 1789 turned an argument into a formal rule, and it changed how an institution, law, government, treaty, or public office."
       },
       {
         "label": "Connected to",
@@ -17501,7 +17501,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1968,
     "title": "The Beatles",
     "topic": "The Beatles",
-    "headline": "The Beatles completed the recording of John Lennon's song \"Happiness Is a Warm Gun\", regarded by all the...",
+    "headline": "The Beatles completed the recording of John Lennon's song \"Happiness Is a Warm Gun\", regarded by all the band members as their favourite on the album The Beatles.",
     "text": "The Beatles completed the recording of John Lennon's song \"Happiness Is a Warm Gun\", regarded by all the band members as their favourite on the album The Beatles.",
     "source": "https://en.wikipedia.org/wiki/The_Beatles",
     "sourceLabel": "Wikipedia: The Beatles",
@@ -17574,7 +17574,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1964,
     "title": "Cold War",
     "topic": "Cold War",
-    "headline": "The British Aircraft Corporation TSR-2, an advanced Cold War tactical strike and reconnaissance aircraft that was later cancelled...",
+    "headline": "The British Aircraft Corporation TSR-2, an advanced Cold War tactical strike and reconnaissance aircraft that was later cancelled, made its maiden flight.",
     "text": "The British Aircraft Corporation TSR-2, an advanced Cold War tactical strike and reconnaissance aircraft that was later cancelled, made its maiden flight.",
     "source": "https://en.wikipedia.org/wiki/Cold_War",
     "sourceLabel": "Wikipedia: Cold War",
@@ -17637,7 +17637,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1821,
     "title": "Declaration of Independence (Mexico)",
     "topic": "Declaration of Independence (Mexico)",
-    "headline": "The Declaration of Independence of the Mexican Empire from Spain was drafted in the National Palace in Mexico...",
+    "headline": "The Declaration of Independence of the Mexican Empire from Spain was drafted in the National Palace in Mexico City.",
     "text": "The Declaration of Independence of the Mexican Empire from Spain was drafted in the National Palace in Mexico City.",
     "source": "https://en.wikipedia.org/wiki/Declaration_of_Independence_(Mexico)",
     "sourceLabel": "Wikipedia: Declaration of Independence (Mexico)",
@@ -17763,7 +17763,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2005,
     "title": "Jyllands-Posten",
     "topic": "Jyllands-Posten",
-    "headline": "The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many...",
+    "headline": "The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many who viewed them as Islamophobic and blasphemous.",
     "text": "The Danish newspaper Jyllands-Posten published controversial editorial cartoons depicting Muhammad, sparking protests across the Islamic world by many who viewed them as Islamophobic and blasphemous.",
     "source": "https://en.wikipedia.org/wiki/Jyllands-Posten",
     "sourceLabel": "Wikipedia: Jyllands-Posten",
@@ -17967,7 +17967,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1962,
     "title": "Mercury-Atlas 8",
     "topic": "Mercury-Atlas 8",
-    "headline": "Mercury-Atlas 8, the fifth United States crewed space mission, was launched from Cape Canaveral Air Force Station in...",
+    "headline": "Mercury-Atlas 8, the fifth United States crewed space mission, was launched from Cape Canaveral Air Force Station in Florida, carrying astronaut Wally Schirra.",
     "text": "Mercury-Atlas 8, the fifth United States crewed space mission, was launched from Cape Canaveral Air Force Station in Florida, carrying astronaut Wally Schirra.",
     "source": "https://en.wikipedia.org/wiki/Mercury-Atlas_8",
     "sourceLabel": "Wikipedia: Mercury-Atlas 8",
@@ -17990,7 +17990,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Mercury-Atlas 8 put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new..."
+        "value": "Mercury-Atlas 8 put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new."
       },
       {
         "label": "Connected to",
@@ -18040,7 +18040,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1925,
     "title": "Great Syrian Revolt",
     "topic": "Great Syrian Revolt",
-    "headline": "Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of...",
+    "headline": "Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of Syria.",
     "text": "Great Syrian Revolt: Rebels led by Fawzi al-Qawuqji captured the city of Hama from the French Mandate of Syria.",
     "source": "https://en.wikipedia.org/wiki/Great_Syrian_Revolt",
     "sourceLabel": "Wikipedia: Great Syrian Revolt",
@@ -18113,7 +18113,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2000,
     "title": "Colour revolution",
     "topic": "Colour revolution",
-    "headline": "Colour revolutions: During protests over irregularities in the Yugoslavian general election, a wheel-loader was driven into the Radio...",
+    "headline": "Colour revolutions: During protests over irregularities in the Yugoslavian general election, a wheel-loader was driven into the Radio Television of Serbia building, giving the protests the nickname \"Bulldozer Revolution\".",
     "text": "Colour revolutions: During protests over irregularities in the Yugoslavian general election, a wheel-loader was driven into the Radio Television of Serbia building, giving the protests the nickname \"Bulldozer Revolution\".",
     "source": "https://en.wikipedia.org/wiki/Colour_revolution",
     "sourceLabel": "Wikipedia: Colour revolution",
@@ -18209,7 +18209,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "MESSENGER turned an argument into a formal rule, and it pushed space exploration into a new technical or symbolic frontier, testing..."
+        "value": "MESSENGER turned an argument into a formal rule, and it pushed space exploration into a new technical or symbolic frontier, testing."
       },
       {
         "label": "Connected to",
@@ -18254,7 +18254,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2023,
     "title": "Hamas",
     "topic": "Hamas",
-    "headline": "The military wing of the Palestinian nationalist Islamist political organization Hamas massacred people attending an open-air music festival...",
+    "headline": "The military wing of the Palestinian nationalist Islamist political organization Hamas massacred people attending an open-air music festival in southern Israel.",
     "text": "The military wing of the Palestinian nationalist Islamist political organization Hamas massacred people attending an open-air music festival in southern Israel.",
     "source": "https://en.wikipedia.org/wiki/Hamas",
     "sourceLabel": "Wikipedia: Hamas",
@@ -18400,7 +18400,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1874,
     "title": "Treaty of Bern",
     "topic": "Treaty of Bern",
-    "headline": "The Universal Postal Union, then known as the General Postal Union, was established with the signing of the...",
+    "headline": "The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily.",
     "text": "The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily.",
     "source": "https://en.wikipedia.org/wiki/Treaty_of_Bern",
     "sourceLabel": "Wikipedia: Treaty of Bern",
@@ -18463,7 +18463,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1903,
     "title": "Women's Social and Political Union",
     "topic": "Women's Social and Political Union",
-    "headline": "Emmeline Pankhurst founded the Women's Social and Political Union, a militant organisation campaigning for women's suffrage in the...",
+    "headline": "Emmeline Pankhurst founded the Women's Social and Political Union, a militant organisation campaigning for women's suffrage in the United Kingdom.",
     "text": "Emmeline Pankhurst founded the Women's Social and Political Union, a militant organisation campaigning for women's suffrage in the United Kingdom.",
     "source": "https://en.wikipedia.org/wiki/Women's_Social_and_Political_Union",
     "sourceLabel": "Wikipedia: Women's Social and Political Union",
@@ -18486,7 +18486,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Women's Social and Political Union matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or..."
+        "value": "Women's Social and Political Union matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or."
       },
       {
         "label": "Connected to",
@@ -18531,7 +18531,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1968,
     "title": "Apollo 7",
     "topic": "Apollo 7",
-    "headline": "Apollo 7, the first manned mission of NASA's Apollo program, and the first three-man American space mission, launched...",
+    "headline": "Apollo 7, the first manned mission of NASA's Apollo program, and the first three-man American space mission, launched from Complex 34 in Cape Kennedy, Florida.",
     "text": "Apollo 7, the first manned mission of NASA's Apollo program, and the first three-man American space mission, launched from Complex 34 in Cape Kennedy, Florida.",
     "source": "https://en.wikipedia.org/wiki/Apollo_7",
     "sourceLabel": "Wikipedia: Apollo 7",
@@ -18554,7 +18554,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Apollo 7 marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "Apollo 7 marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -18604,7 +18604,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1960,
     "title": "Nikita Khrushchev",
     "topic": "Nikita Khrushchev",
-    "headline": "Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations...",
+    "headline": "Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations General Assembly in protest at a speech by Philippine delegate Lorenzo Sumulong.",
     "text": "Soviet leader Nikita Khrushchev reportedly pounded his shoe on a desk during a meeting of the United Nations General Assembly in protest at a speech by Philippine delegate Lorenzo Sumulong.",
     "source": "https://en.wikipedia.org/wiki/Nikita_Khrushchev",
     "sourceLabel": "Wikipedia: Nikita Khrushchev",
@@ -18677,7 +18677,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2019,
     "title": "Brigid Kosgei",
     "topic": "Brigid Kosgei",
-    "headline": "At the Chicago Marathon, Kenyan runner Brigid Kosgei set the current marathon world record for women running in...",
+    "headline": "At the Chicago Marathon, Kenyan runner Brigid Kosgei set the current marathon world record for women running in a mixed-sex race.",
     "text": "At the Chicago Marathon, Kenyan runner Brigid Kosgei set the current marathon world record for women running in a mixed-sex race.",
     "source": "https://en.wikipedia.org/wiki/Brigid_Kosgei",
     "sourceLabel": "Wikipedia: Brigid Kosgei",
@@ -18813,7 +18813,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2011,
     "title": "15 October 2011 global protests",
     "topic": "15 October 2011 global protests",
-    "headline": "Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950...",
+    "headline": "Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950 cities in 82 countries.",
     "text": "Global demonstrations against economic inequality, corporate influence on government, and other issues, were held in more than 950 cities in 82 countries.",
     "source": "https://en.wikipedia.org/wiki/15_October_2011_global_protests",
     "sourceLabel": "Wikipedia: 15 October 2011 global protests",
@@ -18871,7 +18871,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1950,
     "title": "The Chronicles of Narnia",
     "topic": "The Chronicles of Narnia",
-    "headline": "The first novel of the The Chronicles of Narnia series by C. S. Lewis, The Lion, the Witch...",
+    "headline": "The first novel of the The Chronicles of Narnia series by C. S. Lewis, The Lion, the Witch and the Wardrobe, was published in the United Kingdom.",
     "text": "The first novel of the The Chronicles of Narnia series by C. S. Lewis, The Lion, the Witch and the Wardrobe, was published in the United Kingdom.",
     "source": "https://en.wikipedia.org/wiki/The_Chronicles_of_Narnia",
     "sourceLabel": "Wikipedia: The Chronicles of Narnia",
@@ -18939,7 +18939,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1860,
     "title": "The Open Championship",
     "topic": "The Open Championship",
-    "headline": "The Open Championship, the oldest of the four major championships in men's golf, was first played at Prestwick...",
+    "headline": "The Open Championship, the oldest of the four major championships in men's golf, was first played at Prestwick Golf Club in Scotland.",
     "text": "The Open Championship, the oldest of the four major championships in men's golf, was first played at Prestwick Golf Club in Scotland.",
     "source": "https://en.wikipedia.org/wiki/The_Open_Championship",
     "sourceLabel": "Wikipedia: The Open Championship",
@@ -18962,7 +18962,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "The Open Championship marked a first, and it became a durable marker in the public record because it changed an institution, community..."
+        "value": "The Open Championship marked a first, and it became a durable marker in the public record because it changed an institution, community."
       },
       {
         "label": "Connected to",
@@ -19080,7 +19080,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2013,
     "title": "YouTube",
     "topic": "YouTube",
-    "headline": "British YouTube collective the Sidemen were formed as a Rockstar Games Social Club group in Grand Theft Auto...",
+    "headline": "British YouTube collective the Sidemen were formed as a Rockstar Games Social Club group in Grand Theft Auto Online.",
     "text": "British YouTube collective the Sidemen were formed as a Rockstar Games Social Club group in Grand Theft Auto Online.",
     "source": "https://en.wikipedia.org/wiki/YouTube",
     "sourceLabel": "Wikipedia: YouTube",
@@ -19153,7 +19153,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1973,
     "title": "Watergate scandal",
     "topic": "Watergate scandal",
-    "headline": "Watergate scandal: Attorney General Elliot Richardson and his deputy William Ruckelshaus resigned after refusing to obey President Richard...",
+    "headline": "Watergate scandal: Attorney General Elliot Richardson and his deputy William Ruckelshaus resigned after refusing to obey President Richard Nixon's order to have Archibald Cox fired.",
     "text": "Watergate scandal: Attorney General Elliot Richardson and his deputy William Ruckelshaus resigned after refusing to obey President Richard Nixon's order to have Archibald Cox fired.",
     "source": "https://en.wikipedia.org/wiki/Watergate_scandal",
     "sourceLabel": "Wikipedia: Watergate scandal",
@@ -19226,7 +19226,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1867,
     "title": "Medicine Lodge, Kansas",
     "topic": "Medicine Lodge, Kansas",
-    "headline": "The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal...",
+    "headline": "The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in present-day western Oklahoma.",
     "text": "The first and second of three treaties were signed near Medicine Lodge, Kansas, between the United States federal government and several Native American tribes in the Great Plains, requiring them to relocate to areas in present-day western Oklahoma.",
     "source": "https://en.wikipedia.org/wiki/Medicine_Lodge%2C_Kansas",
     "sourceLabel": "Wikipedia: Medicine Lodge, Kansas",
@@ -19249,7 +19249,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Medicine Lodge, Kansas marked a first, and it changed how doctors, patients, public-health officials, or researchers understood disease..."
+        "value": "Medicine Lodge, Kansas marked a first, and it changed how doctors, patients, public-health officials, or researchers understood disease."
       },
       {
         "label": "Connected to",
@@ -19425,7 +19425,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1975,
     "title": "1975 Icelandic women's strike",
     "topic": "1975 Icelandic women's strike",
-    "headline": "In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike...",
+    "headline": "In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike for a day.",
     "text": "In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike for a day.",
     "source": "https://en.wikipedia.org/wiki/1975_Icelandic_women's_strike",
     "sourceLabel": "Wikipedia: 1975 Icelandic women's strike",
@@ -19448,7 +19448,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "1975 Icelandic women's strike matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human..."
+        "value": "1975 Icelandic women's strike matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human."
       },
       {
         "label": "Connected to",
@@ -19506,7 +19506,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Mount Merapi matters because it became a durable marker in the public record because it changed an institution, community, practice, or..."
+        "value": "Mount Merapi matters because it became a durable marker in the public record because it changed an institution, community, practice, or."
       },
       {
         "label": "Connected to",
@@ -19551,7 +19551,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2004,
     "title": "Grand Theft Auto: San Andreas",
     "topic": "Grand Theft Auto: San Andreas",
-    "headline": "Rockstar Games released Grand Theft Auto: San Andreas, considered one of the best video games ever made, in...",
+    "headline": "Rockstar Games released Grand Theft Auto: San Andreas, considered one of the best video games ever made, in North America.",
     "text": "Rockstar Games released Grand Theft Auto: San Andreas, considered one of the best video games ever made, in North America.",
     "source": "https://en.wikipedia.org/wiki/Grand_Theft_Auto%3A_San_Andreas",
     "sourceLabel": "Wikipedia: Grand Theft Auto: San Andreas",
@@ -19642,7 +19642,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "New York City Subway marked a first, and it became a durable marker in the public record because it changed an institution, community..."
+        "value": "New York City Subway marked a first, and it became a durable marker in the public record because it changed an institution, community."
       },
       {
         "label": "Connected to",
@@ -19692,7 +19692,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1886,
     "title": "United States Declaration of Independence",
     "topic": "United States Declaration of Independence",
-    "headline": "In New York Harbor, U.S. president Grover Cleveland dedicated the Statue of Liberty, a gift from France commemorating...",
+    "headline": "In New York Harbor, U.S. president Grover Cleveland dedicated the Statue of Liberty, a gift from France commemorating the Declaration of Independence.",
     "text": "In New York Harbor, U.S. president Grover Cleveland dedicated the Statue of Liberty, a gift from France commemorating the Declaration of Independence.",
     "source": "https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence",
     "sourceLabel": "Wikipedia: United States Declaration of Independence",
@@ -19788,7 +19788,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Galileo (spacecraft) marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines..."
+        "value": "Galileo (spacecraft) marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines."
       },
       {
         "label": "Connected to",
@@ -19901,7 +19901,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2005,
     "title": "Hubble Space Telescope",
     "topic": "Hubble Space Telescope",
-    "headline": "The discovery of the Plutonian moons Nix and Hydra, based on photographs taken by the Hubble Space Telescope...",
+    "headline": "The discovery of the Plutonian moons Nix and Hydra, based on photographs taken by the Hubble Space Telescope nearly five months prior, was announced.",
     "text": "The discovery of the Plutonian moons Nix and Hydra, based on photographs taken by the Hubble Space Telescope nearly five months prior, was announced.",
     "source": "https://en.wikipedia.org/wiki/Hubble_Space_Telescope",
     "sourceLabel": "Wikipedia: Hubble Space Telescope",
@@ -19924,7 +19924,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Hubble Space Telescope matters because it pushed space exploration into a new technical or symbolic frontier, testing machines..."
+        "value": "Hubble Space Telescope matters because it pushed space exploration into a new technical or symbolic frontier, testing machines."
       },
       {
         "label": "Connected to",
@@ -19997,7 +19997,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Ansel Adams matters because it became a durable marker in the public record because it changed an institution, community, practice, or..."
+        "value": "Ansel Adams matters because it became a durable marker in the public record because it changed an institution, community, practice, or."
       },
       {
         "label": "Connected to",
@@ -20037,7 +20037,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1880,
     "title": "James A. Garfield",
     "topic": "James A. Garfield",
-    "headline": "James A. Garfield was elected as president of the United States; the election is the closest to date...",
+    "headline": "James A. Garfield was elected as president of the United States; the election is the closest to date by popular vote margin.",
     "text": "James A. Garfield was elected as president of the United States; the election is the closest to date by popular vote margin.",
     "source": "https://en.wikipedia.org/wiki/James_A._Garfield",
     "sourceLabel": "Wikipedia: James A. Garfield",
@@ -20178,7 +20178,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1780,
     "title": "Túpac Amaru II",
     "topic": "Túpac Amaru II",
-    "headline": "Túpac Amaru II led a rebellion of Aymara, Quechua, and mestizo peasants in protest against the Bourbon Reforms...",
+    "headline": "Túpac Amaru II led a rebellion of Aymara, Quechua, and mestizo peasants in protest against the Bourbon Reforms in the Spanish Viceroyalty of Peru.",
     "text": "Túpac Amaru II led a rebellion of Aymara, Quechua, and mestizo peasants in protest against the Bourbon Reforms in the Spanish Viceroyalty of Peru.",
     "source": "https://en.wikipedia.org/wiki/T%C3%BApac_Amaru_II",
     "sourceLabel": "Wikipedia: Túpac Amaru II",
@@ -20274,7 +20274,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Mars Orbiter Mission marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines..."
+        "value": "Mars Orbiter Mission marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines."
       },
       {
         "label": "Connected to",
@@ -20319,7 +20319,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1868,
     "title": "Red Cloud",
     "topic": "Red Cloud",
-    "headline": "Red Cloud, a Native American leader of the Oglala Lakota tribe, signed the Treaty of Fort Laramie, ending...",
+    "headline": "Red Cloud, a Native American leader of the Oglala Lakota tribe, signed the Treaty of Fort Laramie, ending Red Cloud's War and establishing the Great Sioux Reservation.",
     "text": "Red Cloud, a Native American leader of the Oglala Lakota tribe, signed the Treaty of Fort Laramie, ending Red Cloud's War and establishing the Great Sioux Reservation.",
     "source": "https://en.wikipedia.org/wiki/Red_Cloud",
     "sourceLabel": "Wikipedia: Red Cloud",
@@ -20455,7 +20455,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1999,
     "title": "Federal Intelligence Service",
     "topic": "Federal Intelligence Service",
-    "headline": "German newspaper Der Spiegel publishes a report by the Federal Intelligence Service accusing figures in Liechtenstein of cooperating...",
+    "headline": "German newspaper Der Spiegel publishes a report by the Federal Intelligence Service accusing figures in Liechtenstein of cooperating with organized crime.",
     "text": "German newspaper Der Spiegel publishes a report by the Federal Intelligence Service accusing figures in Liechtenstein of cooperating with organized crime.",
     "source": "https://en.wikipedia.org/wiki/Federal_Intelligence_Service",
     "sourceLabel": "Wikipedia: Federal Intelligence Service",
@@ -20604,7 +20604,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Nadarajah Raviraj turned an argument into a formal rule, and it changed the legal or public meaning of citizenship, equality, personal..."
+        "value": "Nadarajah Raviraj turned an argument into a formal rule, and it changed the legal or public meaning of citizenship, equality, personal."
       },
       {
         "label": "Connected to",
@@ -20649,7 +20649,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1778,
     "title": "American Revolutionary War",
     "topic": "American Revolutionary War",
-    "headline": "American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley...",
+    "headline": "American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley, New York, killing 14 soldiers and 30 civilians.",
     "text": "American Revolutionary War: British forces and their Iroquois allies attacked a fort and the village of Cherry Valley, New York, killing 14 soldiers and 30 civilians.",
     "source": "https://en.wikipedia.org/wiki/American_Revolutionary_War",
     "sourceLabel": "Wikipedia: American Revolutionary War",
@@ -20790,7 +20790,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1940,
     "title": "Walt Disney",
     "topic": "Walt Disney",
-    "headline": "Walt Disney's Fantasia, the first commercial film shown with stereophonic sound, premiered at the Broadway Theatre in New...",
+    "headline": "Walt Disney's Fantasia, the first commercial film shown with stereophonic sound, premiered at the Broadway Theatre in New York City.",
     "text": "Walt Disney's Fantasia, the first commercial film shown with stereophonic sound, premiered at the Broadway Theatre in New York City.",
     "source": "https://en.wikipedia.org/wiki/Walt_Disney",
     "sourceLabel": "Wikipedia: Walt Disney",
@@ -20863,7 +20863,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1969,
     "title": "Kennedy Space Center",
     "topic": "Kennedy Space Center",
-    "headline": "Apollo 12 launched from the Kennedy Space Center, later becoming the second crewed flight to land on the...",
+    "headline": "Apollo 12 launched from the Kennedy Space Center, later becoming the second crewed flight to land on the Moon.",
     "text": "Apollo 12 launched from the Kennedy Space Center, later becoming the second crewed flight to land on the Moon.",
     "source": "https://en.wikipedia.org/wiki/Kennedy_Space_Center",
     "sourceLabel": "Wikipedia: Kennedy Space Center",
@@ -20886,7 +20886,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Kennedy Space Center put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new..."
+        "value": "Kennedy Space Center put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new."
       },
       {
         "label": "Connected to",
@@ -20994,7 +20994,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1885,
     "title": "North-West Rebellion",
     "topic": "North-West Rebellion",
-    "headline": "After a five-day trial following the North-West Rebellion, Louis Riel, a Canadian Métis leader and \"Father of Manitoba\"...",
+    "headline": "After a five-day trial following the North-West Rebellion, Louis Riel, a Canadian Métis leader and \"Father of Manitoba\", was hanged for high treason.",
     "text": "After a five-day trial following the North-West Rebellion, Louis Riel, a Canadian Métis leader and \"Father of Manitoba\", was hanged for high treason.",
     "source": "https://en.wikipedia.org/wiki/North-West_Rebellion",
     "sourceLabel": "Wikipedia: North-West Rebellion",
@@ -21067,7 +21067,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1968,
     "title": "NBC",
     "topic": "NBC",
-    "headline": "NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to...",
+    "headline": "NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to broadcast Heidi, causing viewers in the Eastern United States to miss the game's dramatic ending.",
     "text": "NBC controversially cut away from an American football game between the Oakland Raiders and New York Jets to broadcast Heidi, causing viewers in the Eastern United States to miss the game's dramatic ending.",
     "source": "https://en.wikipedia.org/wiki/NBC",
     "sourceLabel": "Wikipedia: NBC",
@@ -21271,7 +21271,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1820,
     "title": "Essex (whaleship)",
     "topic": "Essex (whaleship)",
-    "headline": "The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America...",
+    "headline": "The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by Herman Melville.",
     "text": "The American whaleship Essex sank 2,000 nautical miles (3,700 km) west of the western coast of South America after it was attacked by a sperm whale, an event which inspired the novel Moby-Dick by Herman Melville.",
     "source": "https://en.wikipedia.org/wiki/Essex_(whaleship)",
     "sourceLabel": "Wikipedia: Essex (whaleship)",
@@ -21344,7 +21344,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1950,
     "title": "Valemount",
     "topic": "Valemount",
-    "headline": "Two trains collided near Valemount, Canada, killing 21 people; the subsequent trial brought future prime minister John Diefenbaker...",
+    "headline": "Two trains collided near Valemount, Canada, killing 21 people; the subsequent trial brought future prime minister John Diefenbaker to greater political attention.",
     "text": "Two trains collided near Valemount, Canada, killing 21 people; the subsequent trial brought future prime minister John Diefenbaker to greater political attention.",
     "source": "https://en.wikipedia.org/wiki/Valemount",
     "sourceLabel": "Wikipedia: Valemount",
@@ -21412,7 +21412,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1995,
     "title": "Toy Story",
     "topic": "Toy Story",
-    "headline": "Toy Story, the first feature film created using only computer-generated imagery, was released in theaters in the United...",
+    "headline": "Toy Story, the first feature film created using only computer-generated imagery, was released in theaters in the United States.",
     "text": "Toy Story, the first feature film created using only computer-generated imagery, was released in theaters in the United States.",
     "source": "https://en.wikipedia.org/wiki/Toy_Story",
     "sourceLabel": "Wikipedia: Toy Story",
@@ -21548,7 +21548,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1859,
     "title": "Charles Darwin",
     "topic": "Charles Darwin",
-    "headline": "British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print...",
+    "headline": "British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print run on the first day.",
     "text": "British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print run on the first day.",
     "source": "https://en.wikipedia.org/wiki/Charles_Darwin",
     "sourceLabel": "Wikipedia: Charles Darwin",
@@ -21571,7 +21571,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Charles Darwin marked a first, and it became a durable marker in the public record because it changed an institution, community, practice..."
+        "value": "Charles Darwin marked a first, and it became a durable marker in the public record because it changed an institution, community, practice."
       },
       {
         "label": "Connected to",
@@ -21611,7 +21611,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2013,
     "title": "One Direction",
     "topic": "One Direction",
-    "headline": "English-Irish boy band One Direction released their third studio album Midnight Memories which debuted at number one on...",
+    "headline": "English-Irish boy band One Direction released their third studio album Midnight Memories which debuted at number one on the Billboard 200 and became the best-selling album of 2013.",
     "text": "English-Irish boy band One Direction released their third studio album Midnight Memories which debuted at number one on the Billboard 200 and became the best-selling album of 2013.",
     "source": "https://en.wikipedia.org/wiki/One_Direction",
     "sourceLabel": "Wikipedia: One Direction",
@@ -21707,7 +21707,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Mars Science Laboratory put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new..."
+        "value": "Mars Science Laboratory put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new."
       },
       {
         "label": "Connected to",
@@ -21757,7 +21757,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1989,
     "title": "Medellín Cartel",
     "topic": "Medellín Cartel",
-    "headline": "A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed...",
+    "headline": "A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the flight.",
     "text": "A bomb placed by the Medellín Cartel in an attempt to kill Colombian presidential candidate César Gaviria destroyed Avianca Flight 203, killing all 107 people on board, excluding Gaviria, who was not on the flight.",
     "source": "https://en.wikipedia.org/wiki/Medell%C3%ADn_Cartel",
     "sourceLabel": "Wikipedia: Medellín Cartel",
@@ -21848,7 +21848,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Piano Concerto No. 5 (Beethoven) matters because it became a durable marker in the public record because it changed an institution..."
+        "value": "Piano Concerto No. 5 (Beethoven) matters because it became a durable marker in the public record because it changed an institution."
       },
       {
         "label": "Connected to",
@@ -21961,7 +21961,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1935,
     "title": "Texas",
     "topic": "Texas",
-    "headline": "A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in...",
+    "headline": "A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in Texas to be broadcast nationally on radio.",
     "text": "A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in Texas to be broadcast nationally on radio.",
     "source": "https://en.wikipedia.org/wiki/Texas",
     "sourceLabel": "Wikipedia: Texas",
@@ -22034,7 +22034,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1955,
     "title": "Rosa Parks",
     "topic": "Rosa Parks",
-    "headline": "Rosa Parks was arrested for refusing to give up her seat on a public bus to a white...",
+    "headline": "Rosa Parks was arrested for refusing to give up her seat on a public bus to a white man in Montgomery, Alabama, United States, sparking the Montgomery bus boycott.",
     "text": "Rosa Parks was arrested for refusing to give up her seat on a public bus to a white man in Montgomery, Alabama, United States, sparking the Montgomery bus boycott.",
     "source": "https://en.wikipedia.org/wiki/Rosa_Parks",
     "sourceLabel": "Wikipedia: Rosa Parks",
@@ -22102,7 +22102,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1993,
     "title": "Pablo Escobar",
     "topic": "Pablo Escobar",
-    "headline": "Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel...",
+    "headline": "Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel boss.",
     "text": "Colombian National Police killed Pablo Escobar on a Medellín rooftop, ending the long manhunt for the Medellín Cartel boss.",
     "source": "https://en.wikipedia.org/wiki/Pablo_Escobar",
     "sourceLabel": "Wikipedia: Pablo Escobar",
@@ -22223,7 +22223,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1969,
     "title": "Black Panther Party",
     "topic": "Black Panther Party",
-    "headline": "Fred Hampton, the leader of the Illinois chapter of the Black Panther Party, and Mark Clark were killed...",
+    "headline": "Fred Hampton, the leader of the Illinois chapter of the Black Panther Party, and Mark Clark were killed in a raid by Chicago police officers in what many scholars consider an illegal assassination.",
     "text": "Fred Hampton, the leader of the Illinois chapter of the Black Panther Party, and Mark Clark were killed in a raid by Chicago police officers in what many scholars consider an illegal assassination.",
     "source": "https://en.wikipedia.org/wiki/Black_Panther_Party",
     "sourceLabel": "Wikipedia: Black Panther Party",
@@ -22296,7 +22296,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1965,
     "title": "Glasnost meeting",
     "topic": "Glasnost meeting",
-    "headline": "The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War...",
+    "headline": "The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War II and marking the beginning of the civil rights movement in the country.",
     "text": "The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War II and marking the beginning of the civil rights movement in the country.",
     "source": "https://en.wikipedia.org/wiki/Glasnost_meeting",
     "sourceLabel": "Wikipedia: Glasnost meeting",
@@ -22359,7 +22359,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1865,
     "title": "Slavery in the United States",
     "topic": "Slavery in the United States",
-    "headline": "Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S....",
+    "headline": "Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S. Constitution.",
     "text": "Slavery in the United States was officially abolished with the ratification of the Thirteenth Amendment to the U.S. Constitution.",
     "source": "https://en.wikipedia.org/wiki/Slavery_in_the_United_States",
     "sourceLabel": "Wikipedia: Slavery in the United States",
@@ -22382,7 +22382,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Slavery in the United States matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human..."
+        "value": "Slavery in the United States matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human."
       },
       {
         "label": "Connected to",
@@ -22427,7 +22427,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1995,
     "title": "Galileo (spacecraft)",
     "topic": "Galileo (spacecraft)",
-    "headline": "The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space...",
+    "headline": "The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space Shuttle Atlantis during Mission STS-34.",
     "text": "The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space Shuttle Atlantis during Mission STS-34.",
     "source": "https://en.wikipedia.org/wiki/Galileo_(spacecraft)",
     "sourceLabel": "Wikipedia: Galileo (spacecraft)",
@@ -22450,7 +22450,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Galileo (spacecraft) put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new..."
+        "value": "Galileo (spacecraft) put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new."
       },
       {
         "label": "Connected to",
@@ -22563,7 +22563,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1981,
     "title": "Mumia Abu-Jamal",
     "topic": "Mumia Abu-Jamal",
-    "headline": "Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death...",
+    "headline": "Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death sentence generated controversy in the United States.",
     "text": "Mumia Abu-Jamal was arrested for the murder of Philadelphia police officer Daniel Faulkner; his subsequent conviction and death sentence generated controversy in the United States.",
     "source": "https://en.wikipedia.org/wiki/Mumia_Abu-Jamal",
     "sourceLabel": "Wikipedia: Mumia Abu-Jamal",
@@ -22689,7 +22689,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2006,
     "title": "Mexican drug war",
     "topic": "Mexican drug war",
-    "headline": "The first action in the Mexican drug war began as President Felipe Calderón ordered Mexican soldiers and Federal...",
+    "headline": "The first action in the Mexican drug war began as President Felipe Calderón ordered Mexican soldiers and Federal Police units into the state of Michoacán.",
     "text": "The first action in the Mexican drug war began as President Felipe Calderón ordered Mexican soldiers and Federal Police units into the state of Michoacán.",
     "source": "https://en.wikipedia.org/wiki/Mexican_drug_war",
     "sourceLabel": "Wikipedia: Mexican drug war",
@@ -22762,7 +22762,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1969,
     "title": "Greek junta",
     "topic": "Greek junta",
-    "headline": "The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of...",
+    "headline": "The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of torture and other human-rights violations by the European Commission of Human Rights.",
     "text": "The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of torture and other human-rights violations by the European Commission of Human Rights.",
     "source": "https://en.wikipedia.org/wiki/Greek_junta",
     "sourceLabel": "Wikipedia: Greek junta",
@@ -22835,7 +22835,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2013,
     "title": "Beyoncé",
     "topic": "Beyoncé",
-    "headline": "Beyoncé released her fifth studio album without any prior announcement or promotion; it sold 2.3 million copies before...",
+    "headline": "Beyoncé released her fifth studio album without any prior announcement or promotion; it sold 2.3 million copies before the end of the year.",
     "text": "Beyoncé released her fifth studio album without any prior announcement or promotion; it sold 2.3 million copies before the end of the year.",
     "source": "https://en.wikipedia.org/wiki/Beyonc%C3%A9",
     "sourceLabel": "Wikipedia: Beyoncé",
@@ -22898,7 +22898,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1972,
     "title": "Apollo 17",
     "topic": "Apollo 17",
-    "headline": "Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to...",
+    "headline": "Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to date to walk on the Moon.",
     "text": "Upon completing the third extra-vehicular activity of Apollo 17, American astronaut Gene Cernan became the last person to date to walk on the Moon.",
     "source": "https://en.wikipedia.org/wiki/Apollo_17",
     "sourceLabel": "Wikipedia: Apollo 17",
@@ -22921,7 +22921,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Apollo 17 matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "Apollo 17 matters because it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -22971,7 +22971,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2019,
     "title": "Citizenship Amendment Act protests",
     "topic": "Citizenship Amendment Act protests",
-    "headline": "Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest...",
+    "headline": "Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest the exclusion of Muslims from the amended Citizenship Act.",
     "text": "Citizenship Amendment Act protests: 10 to 15 local women blockaded a major road in Delhi, India, to protest the exclusion of Muslims from the amended Citizenship Act.",
     "source": "https://en.wikipedia.org/wiki/Citizenship_Amendment_Act_protests",
     "sourceLabel": "Wikipedia: Citizenship Amendment Act protests",
@@ -22994,7 +22994,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Citizenship Amendment Act protests turned an argument into a formal rule, and it changed the legal or public meaning of citizenship..."
+        "value": "Citizenship Amendment Act protests turned an argument into a formal rule, and it changed the legal or public meaning of citizenship."
       },
       {
         "label": "Connected to",
@@ -23044,7 +23044,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1689,
     "title": "Universal Declaration of Human Rights",
     "topic": "Universal Declaration of Human Rights",
-    "headline": "The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other...",
+    "headline": "The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S. Bill of Rights and the Universal Declaration of Human Rights.",
     "text": "The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S. Bill of Rights and the Universal Declaration of Human Rights.",
     "source": "https://en.wikipedia.org/wiki/Universal_Declaration_of_Human_Rights",
     "sourceLabel": "Wikipedia: Universal Declaration of Human Rights",
@@ -23067,7 +23067,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Universal Declaration of Human Rights matters because it changed the legal or public meaning of citizenship, equality, personal freedom..."
+        "value": "Universal Declaration of Human Rights matters because it changed the legal or public meaning of citizenship, equality, personal freedom."
       },
       {
         "label": "Connected to",
@@ -23117,7 +23117,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2010,
     "title": "Arab Spring",
     "topic": "Arab Spring",
-    "headline": "Arab Spring: Mohamed Bouazizi, a street vendor in Sidi Bouzid, set himself on fire in protest against police...",
+    "headline": "Arab Spring: Mohamed Bouazizi, a street vendor in Sidi Bouzid, set himself on fire in protest against police harassment, triggering the Tunisian revolution.",
     "text": "Arab Spring: Mohamed Bouazizi, a street vendor in Sidi Bouzid, set himself on fire in protest against police harassment, triggering the Tunisian revolution.",
     "source": "https://en.wikipedia.org/wiki/Arab_Spring",
     "sourceLabel": "Wikipedia: Arab Spring",
@@ -23253,7 +23253,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1997,
     "title": "Titanic (1997 film)",
     "topic": "Titanic (1997 film)",
-    "headline": "Titanic, the fourth-highest-grossing film of all time with a worldwide total of more than US$2.2 billion, was released...",
+    "headline": "Titanic, the fourth-highest-grossing film of all time with a worldwide total of more than US$2.2 billion, was released in the United States.",
     "text": "Titanic, the fourth-highest-grossing film of all time with a worldwide total of more than US$2.2 billion, was released in the United States.",
     "source": "https://en.wikipedia.org/wiki/Titanic_(1997_film)",
     "sourceLabel": "Wikipedia: Titanic (1997 film)",
@@ -23379,7 +23379,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1968,
     "title": "Kennedy Space Center",
     "topic": "Kennedy Space Center",
-    "headline": "Apollo 8 launched from Kennedy Space Center in Florida on a trajectory to the Moon; its crew became...",
+    "headline": "Apollo 8 launched from Kennedy Space Center in Florida on a trajectory to the Moon; its crew became the first humans to visit another celestial body.",
     "text": "Apollo 8 launched from Kennedy Space Center in Florida on a trajectory to the Moon; its crew became the first humans to visit another celestial body.",
     "source": "https://en.wikipedia.org/wiki/Kennedy_Space_Center",
     "sourceLabel": "Wikipedia: Kennedy Space Center",
@@ -23402,7 +23402,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Kennedy Space Center marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines..."
+        "value": "Kennedy Space Center marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines."
       },
       {
         "label": "Connected to",
@@ -23447,7 +23447,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2001,
     "title": "Richard Reid",
     "topic": "Richard Reid",
-    "headline": "Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to...",
+    "headline": "Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to Miami.",
     "text": "Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to Miami.",
     "source": "https://en.wikipedia.org/wiki/Richard_Reid",
     "sourceLabel": "Wikipedia: Richard Reid",
@@ -23596,7 +23596,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
       },
       {
         "label": "Why it mattered",
-        "value": "Jim Lovell marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation..."
+        "value": "Jim Lovell marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation."
       },
       {
         "label": "Connected to",
@@ -23719,7 +23719,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2006,
     "title": "Submarine communications cable",
     "topic": "Submarine communications cable",
-    "headline": "Two earthquakes off the southwest coast of Taiwan damaged submarine communications cables, disrupting Internet services in Asia and...",
+    "headline": "Two earthquakes off the southwest coast of Taiwan damaged submarine communications cables, disrupting Internet services in Asia and affecting financial transactions.",
     "text": "Two earthquakes off the southwest coast of Taiwan damaged submarine communications cables, disrupting Internet services in Asia and affecting financial transactions.",
     "source": "https://en.wikipedia.org/wiki/Submarine_communications_cable",
     "sourceLabel": "Wikipedia: Submarine communications cable",
@@ -23918,7 +23918,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1890,
     "title": "Wounded Knee Massacre",
     "topic": "Wounded Knee Massacre",
-    "headline": "Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded...",
+    "headline": "Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded Knee Massacre, beginning the Ghost Dance War.",
     "text": "Sioux Wars: The United States Army killed 250 to 300 Lakota men, women and children at the Wounded Knee Massacre, beginning the Ghost Dance War.",
     "source": "https://en.wikipedia.org/wiki/Wounded_Knee_Massacre",
     "sourceLabel": "Wikipedia: Wounded Knee Massacre",
@@ -23991,7 +23991,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 2006,
     "title": "Saddam Hussein",
     "topic": "Saddam Hussein",
-    "headline": "Saddam Hussein, the former president of Iraq, was executed after being found guilty of crimes against humanity by...",
+    "headline": "Saddam Hussein, the former president of Iraq, was executed after being found guilty of crimes against humanity by the Iraqi High Tribunal.",
     "text": "Saddam Hussein, the former president of Iraq, was executed after being found guilty of crimes against humanity by the Iraqi High Tribunal.",
     "source": "https://en.wikipedia.org/wiki/Saddam_Hussein",
     "sourceLabel": "Wikipedia: Saddam Hussein",
@@ -24064,7 +24064,7 @@ window.PRESS_ON_THIS_DAY_MOMENTS = {
     "year": 1972,
     "title": "Roberto Clemente",
     "topic": "Roberto Clemente",
-    "headline": "Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims...",
+    "headline": "Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims of that year's Nicaragua earthquake.",
     "text": "Puerto Rican baseball player Roberto Clemente died in a plane crash en route to deliver aid to victims of that year's Nicaragua earthquake.",
     "source": "https://en.wikipedia.org/wiki/Roberto_Clemente",
     "sourceLabel": "Wikipedia: Roberto Clemente",

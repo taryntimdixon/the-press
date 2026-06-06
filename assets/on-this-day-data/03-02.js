@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["03-02"] = {
   "year": 1962,
   "title": "Wilt Chamberlain",
   "topic": "Wilt Chamberlain",
-  "headline": "Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the...",
+  "headline": "Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the New York Knicks, which remains an NBA record.",
   "text": "Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the New York Knicks, which remains an NBA record.",
   "source": "https://en.wikipedia.org/wiki/Wilt_Chamberlain",
   "sourceLabel": "Wikipedia: Wilt Chamberlain",
   "sourceDescription": "American basketball player (1936–1999)",
   "visual": "sports",
   "palette": "public-square",
-  "dek": "Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the... The deeper story is how this history moment changed what people could expect from the world around them.",
+  "dek": "Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the New York Knicks, which remains an NBA record. The deeper story is how this history moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["03-02"] = {
   ],
   "summary": [
     "March 2, 1962, is not just a date label for Wilt Chamberlain. It is the point where a larger history story becomes visible enough to study. Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the New York Knicks, which remains an NBA record. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the New York Knicks, which remains an NBA record. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1886,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["03-02"] = {
       ]
     },
     {
-      "text": "Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the New York Knicks, which remains an NBA record. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["03-02"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On March 2, 1962, Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the New York Knicks, which remains an NBA record. Why it mattered: Wilt Chamberlain matters because it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood its own limits. The source record identifies Wilt Chamberlain as american basketball player (1936–1999). Related subjects include Golden State Warriors (National Basketball Association team in San Francisco, California), Wilt Chamberlain (American basketball player (1936–1999)), Wilt Chamberlain's 100-point game (1962 NBA record-setting basketball game), New York Knicks (National... The related trail points to Golden State Warriors, Wilt Chamberlain, Wilt Chamberlain's 100-point game, New York Knicks, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On March 2, 1962, Playing for the Philadelphia Warriors, American basketball player Wilt Chamberlain scored 100 points in a game against the New York Knicks, which remains an NBA record. Why it mattered: Wilt Chamberlain matters because it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood its own limits. The source record identifies Wilt Chamberlain as american basketball player (1936–1999). Related subjects include Golden State Warriors (National Basketball Association team in San Francisco, California), Wilt Chamberlain (American basketball player (1936–1999)), Wilt Chamberlain's 100-point game (1962 NBA record-setting basketball game), New York Knicks (National. The related trail points to Golden State Warriors, Wilt Chamberlain, Wilt Chamberlain's 100-point game, New York Knicks, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

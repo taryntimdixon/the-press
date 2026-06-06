@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-08"] = {
     },
     {
       "label": "Scene",
-      "value": "Kennedy Space Center as Atlantis launched STS-135, closing the Space Shuttle era with fuel, flame, crowds, cameras, and..."
+      "value": "Kennedy Space Center as Atlantis launched STS-135, closing the Space Shuttle era with fuel, flame, crowds, cameras, and."
     },
     {
       "label": "Why it mattered",

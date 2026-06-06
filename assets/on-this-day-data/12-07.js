@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-07"] = {
   "year": 1995,
   "title": "Galileo (spacecraft)",
   "topic": "Galileo (spacecraft)",
-  "headline": "The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space...",
+  "headline": "The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space Shuttle Atlantis during Mission STS-34.",
   "text": "The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space Shuttle Atlantis during Mission STS-34.",
   "source": "https://en.wikipedia.org/wiki/Galileo_(spacecraft)",
   "sourceLabel": "Wikipedia: Galileo (spacecraft)",
   "sourceDescription": "First NASA mission to orbit Jupiter (1989–2003)",
   "visual": "space",
   "palette": "lunar",
-  "dek": "The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space... The deeper story is how this space exploration moment changed what people could expect from the world around them.",
+  "dek": "The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space Shuttle Atlantis during Mission STS-34. The deeper story is how this space exploration moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-07"] = {
   ],
   "summary": [
     "December 7, 1995, is not just a date label for Galileo (spacecraft). It is the point where a larger space exploration story becomes visible enough to study. The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space Shuttle Atlantis during Mission STS-34. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space Shuttle Atlantis during Mission STS-34. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a mission environment where hardware, risk, mathematics, weather, and public imagination had to line up. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1880,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-07"] = {
       ]
     },
     {
-      "text": "The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space Shuttle Atlantis during Mission STS-34. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-07"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On December 7, 1995, the Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space Shuttle Atlantis during Mission STS-34. Why it mattered: Galileo (spacecraft) put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications... The source record identifies Galileo (spacecraft) as the first NASA mission to orbit Jupiter (1989–2003). Related subjects include Galileo (spacecraft) (First NASA mission to orbit Jupiter (1989–2003)), Jupiter (Fifth planet from the Sun), Space Shuttle Atlantis (Space Shuttle orbiter (1985–2011)), STS-34 (1989 American crewed... The related trail points to Galileo (spacecraft), Jupiter, Space Shuttle Atlantis, STS-34, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On December 7, 1995, the Galileo spacecraft arrived at Jupiter, a little more than six years after it was launched by Space Shuttle Atlantis during Mission STS-34. Why it mattered: Galileo (spacecraft) put a new mission, institution, product, or public force into motion, and it pushed space exploration into a new. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications. The source record identifies Galileo (spacecraft) as the first NASA mission to orbit Jupiter (1989–2003). Related subjects include Galileo (spacecraft) (First NASA mission to orbit Jupiter (1989–2003)), Jupiter (Fifth planet from the Sun), Space Shuttle Atlantis (Space Shuttle orbiter (1985–2011)), STS-34 (1989 American crewed. The related trail points to Galileo (spacecraft), Jupiter, Space Shuttle Atlantis, STS-34, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-24"] = {
   "year": 1859,
   "title": "Charles Darwin",
   "topic": "Charles Darwin",
-  "headline": "British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print...",
+  "headline": "British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print run on the first day.",
   "text": "British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print run on the first day.",
   "source": "https://en.wikipedia.org/wiki/Charles_Darwin",
   "sourceLabel": "Wikipedia: Charles Darwin",
   "sourceDescription": "English naturalist and biologist (1809–1882)",
   "visual": "chronicle",
   "palette": "archive",
-  "dek": "British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print... The deeper story is how this history moment changed what people could expect from the world around them.",
+  "dek": "British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print run on the first day. The deeper story is how this history moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-24"] = {
   ],
   "summary": [
     "November 24, 1859, is not just a date label for Charles Darwin. It is the point where a larger history story becomes visible enough to study. British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print run on the first day. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print run on the first day. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1870,
@@ -109,7 +109,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-24"] = {
       ]
     },
     {
-      "text": "British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print run on the first day. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -152,7 +152,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-24"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On November 24, 1859, British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print run on the first day. Why it mattered: Charles Darwin marked a first, and it became a durable marker in the public record because it changed an institution, community, practice. In the wider chronicle story, it became a durable marker in the public record because it changed an institution... The source record identifies Charles Darwin as english naturalist and biologist (1809–1882). Related subjects include Charles Darwin (English naturalist and biologist (1809–1882)), On the Origin of Species (1859 book on evolution by Charles Darwin). The lasting consequence was public memory: the event stayed in... The related trail points to Charles Darwin, On the Origin of Species, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On November 24, 1859, British naturalist Charles Darwin's On the Origin of Species was first published, and sold out its initial print run on the first day. Why it mattered: Charles Darwin marked a first, and it became a durable marker in the public record because it changed an institution, community, practice. In the wider chronicle story, it became a durable marker in the public record because it changed an institution. The source record identifies Charles Darwin as english naturalist and biologist (1809–1882). Related subjects include Charles Darwin (English naturalist and biologist (1809–1882)), On the Origin of Species (1859 book on evolution by Charles Darwin). The lasting consequence was public memory: the event stayed in. The related trail points to Charles Darwin, On the Origin of Species, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

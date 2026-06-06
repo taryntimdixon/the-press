@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-01"] = {
     },
     {
       "label": "Scene",
-      "value": "a 1980 cable-news studio and control room where Ted Turner’s 24-hour news experiment turned clocks, satellite feeds, anchors..."
+      "value": "a 1980 cable-news studio and control room where Ted Turner’s 24-hour news experiment turned clocks, satellite feeds, anchors."
     },
     {
       "label": "Why it mattered",

@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-24"] = {
     },
     {
       "label": "Scene",
-      "value": "Berlin in 1948 as Soviet blockade pressure turned roads, rails, coal, food, aircraft, and Cold War diplomacy into..."
+      "value": "Berlin in 1948 as Soviet blockade pressure turned roads, rails, coal, food, aircraft, and Cold War diplomacy into."
     },
     {
       "label": "Why it mattered",

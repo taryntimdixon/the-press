@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-21"] = {
   "year": 2007,
   "title": "BioShock",
   "topic": "BioShock",
-  "headline": "BioShock was released in North America, becoming a critical success and a demonstration of video games as an...",
+  "headline": "BioShock was released in North America, becoming a critical success and a demonstration of video games as an art form.",
   "text": "BioShock was released in North America, becoming a critical success and a demonstration of video games as an art form.",
   "source": "https://en.wikipedia.org/wiki/BioShock",
   "sourceLabel": "Wikipedia: BioShock",
   "sourceDescription": "2007 video game",
   "visual": "tech",
   "palette": "laboratory",
-  "dek": "BioShock was released in North America, becoming a critical success and a demonstration of video games as an... The deeper story is how this technology moment changed what people could expect from the world around them.",
+  "dek": "BioShock was released in North America, becoming a critical success and a demonstration of video games as an art form. The deeper story is how this technology moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-21"] = {
   ],
   "summary": [
     "August 21, 2007, is not just a date label for BioShock. It is the point where a larger technology story becomes visible enough to study. BioShock was released in North America, becoming a critical success and a demonstration of video games as an art form. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "BioShock was released in North America, becoming a critical success and a demonstration of video games as an... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "BioShock was released in North America, becoming a critical success and a demonstration of video games as an art form. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a workspace where machines, investors, users, engineers, and public curiosity started pulling in the same direction. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1839,
@@ -109,7 +109,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-21"] = {
       ]
     },
     {
-      "text": "BioShock was released in North America, becoming a critical success and a demonstration of video games as an... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "BioShock was released in North America, becoming a critical success and a demonstration of video games as an art form. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -152,7 +152,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-21"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On August 21, 2007, BioShock was released in North America, becoming a critical success and a demonstration of video games as an art form. Why it mattered: BioShock matters because it changed how people used machines, networks, media, or information in everyday life. In the wider tech story, it changed how people used machines, networks, media, or information in everyday life. The source record identifies BioShock as 2007 video game. Related subjects include BioShock (2007 video game), Video games as an art form (Artistic value of video games). The lasting consequence was a faster information world: new tools changed how messages, images, money, work, or... The related trail points to BioShock, Video games as an art form, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On August 21, 2007, BioShock was released in North America, becoming a critical success and a demonstration of video games as an art form. Why it mattered: BioShock matters because it changed how people used machines, networks, media, or information in everyday life. In the wider tech story, it changed how people used machines, networks, media, or information in everyday life. The source record identifies BioShock as 2007 video game. Related subjects include BioShock (2007 video game), Video games as an art form (Artistic value of video games). The lasting consequence was a faster information world: new tools changed how messages, images, money, work, or. The related trail points to BioShock, Video games as an art form, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

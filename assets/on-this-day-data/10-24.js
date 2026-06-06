@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-24"] = {
   "year": 1975,
   "title": "1975 Icelandic women's strike",
   "topic": "1975 Icelandic women's strike",
-  "headline": "In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike...",
+  "headline": "In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike for a day.",
   "text": "In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike for a day.",
   "source": "https://en.wikipedia.org/wiki/1975_Icelandic_women's_strike",
   "sourceLabel": "Wikipedia: 1975 Icelandic women's strike",
   "sourceDescription": "General strike to achieve equal pay protection",
   "visual": "rights",
   "palette": "public-square",
-  "dek": "In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike... The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
+  "dek": "In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike for a day. The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-24"] = {
   ],
   "summary": [
     "October 24, 1975, is not just a date label for 1975 Icelandic women's strike. It is the point where a larger rights and public power story becomes visible enough to study. In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike for a day. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike for a day. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a public institution or street-level confrontation where law, identity, courage, and pressure met in the open. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1883,
@@ -104,7 +104,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-24"] = {
       ]
     },
     {
-      "text": "In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike for a day. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -147,7 +147,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-24"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On October 24, 1975, In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike for a day. Why it mattered: 1975 Icelandic women's strike matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies 1975 Icelandic women's strike as general strike to achieve equal pay protection. Related subjects include 1975 Icelandic women's strike (General strike to achieve equal pay protection). The lasting consequence was a shift in who could claim protection, recognition, participation, or... The related trail points to 1975 Icelandic women's strike, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On October 24, 1975, In protest against wage discrepancy and unfair employment practices, 90 percent of Iceland's female population went on strike for a day. Why it mattered: 1975 Icelandic women's strike matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies 1975 Icelandic women's strike as general strike to achieve equal pay protection. Related subjects include 1975 Icelandic women's strike (General strike to achieve equal pay protection). The lasting consequence was a shift in who could claim protection, recognition, participation, or. The related trail points to 1975 Icelandic women's strike, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

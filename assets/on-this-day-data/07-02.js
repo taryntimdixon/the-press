@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-02"] = {
     },
     {
       "label": "Scene",
-      "value": "the Civil Rights Act of 1964 entering law, backed by movement pressure, congressional struggle, presidential signature, and public-accommodation..."
+      "value": "the Civil Rights Act of 1964 entering law, backed by movement pressure, congressional struggle, presidential signature, and public-accommodation."
     },
     {
       "label": "Why it mattered",

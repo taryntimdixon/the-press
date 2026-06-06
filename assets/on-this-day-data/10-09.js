@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-09"] = {
   "year": 1874,
   "title": "Treaty of Bern",
   "topic": "Treaty of Bern",
-  "headline": "The Universal Postal Union, then known as the General Postal Union, was established with the signing of the...",
+  "headline": "The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily.",
   "text": "The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily.",
   "source": "https://en.wikipedia.org/wiki/Treaty_of_Bern",
   "sourceLabel": "Wikipedia: Treaty of Bern",
   "sourceDescription": "1874 treaty establishing the Universal Postal Union",
   "visual": "civic",
   "palette": "civic",
-  "dek": "The Universal Postal Union, then known as the General Postal Union, was established with the signing of the... The deeper story is how this government and civic power moment changed what people could expect from the world around them.",
+  "dek": "The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily. The deeper story is how this government and civic power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-09"] = {
   ],
   "summary": [
     "October 9, 1874, is not just a date label for Treaty of Bern. It is the point where a larger government and civic power story becomes visible enough to study. The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The Universal Postal Union, then known as the General Postal Union, was established with the signing of the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a formal place where documents, offices, ceremonies, laws, and public legitimacy became the center of the story. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1930,
@@ -109,7 +109,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-09"] = {
       ]
     },
     {
-      "text": "The Universal Postal Union, then known as the General Postal Union, was established with the signing of the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -152,7 +152,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-09"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On October 9, 1874, the Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily. Why it mattered: Treaty of Bern matters because it changed how an institution, law, government, treaty, or public office worked. In the wider civic story, it changed how an institution, law, government, treaty, or public office worked. The source record identifies Treaty of Bern as 1874 treaty establishing the Universal Postal Union. Related subjects include Universal Postal Union (Specialized agency of the United Nations), Treaty of Bern (1874 treaty establishing the Universal Postal Union). The lasting consequence was institutional: a rule... The related trail points to Universal Postal Union, Treaty of Bern, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On October 9, 1874, the Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily. Why it mattered: Treaty of Bern matters because it changed how an institution, law, government, treaty, or public office worked. In the wider civic story, it changed how an institution, law, government, treaty, or public office worked. The source record identifies Treaty of Bern as 1874 treaty establishing the Universal Postal Union. Related subjects include Universal Postal Union (Specialized agency of the United Nations), Treaty of Bern (1874 treaty establishing the Universal Postal Union). The lasting consequence was institutional: a rule. The related trail points to Universal Postal Union, Treaty of Bern, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4
@@ -236,7 +236,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-09"] = {
       ]
     },
     {
-      "text": "For Treaty of Bern, the detail work starts with the nouns inside the event itself: The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail... Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
+      "text": "For Treaty of Bern, the detail work starts with the nouns inside the event itself: The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily. Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
       "sources": [
         1,
         2,
@@ -248,7 +248,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["10-09"] = {
       "text": "The Takeaway"
     },
     {
-      "text": "The short version of October 9 is easy: The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be... The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
+      "text": "The short version of October 9 is easy: The Universal Postal Union, then known as the General Postal Union, was established with the signing of the Treaty of Bern to unify disparate postal services and regulations so that international mail could be exchanged easily. The fuller version is that this was a day when the world revealed one of its moving parts. People saw a tool, a right, a danger, a performance, a mission, a decision, or a public shock differently afterward. That is why this moment belongs in the daily history calendar. It gives the reader something exact to look at, but it also opens into a bigger question: what changed once people understood that this had happened?",
       "sources": [
         1
       ]

@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-30"] = {
   "year": 2013,
   "title": "Korea Aerospace Research Institute",
   "topic": "Korea Aerospace Research Institute",
-  "headline": "The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to...",
+  "headline": "The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to achieve Earth orbit.",
   "text": "The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to achieve Earth orbit.",
   "source": "https://en.wikipedia.org/wiki/Korea_Aerospace_Research_Institute",
   "sourceLabel": "Wikipedia: Korea Aerospace Research Institute",
   "sourceDescription": "South Korean space agency",
   "visual": "space",
   "palette": "lunar",
-  "dek": "The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to... The deeper story is how this space exploration moment changed what people could expect from the world around them.",
+  "dek": "The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to achieve Earth orbit. The deeper story is how this space exploration moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-30"] = {
   ],
   "summary": [
     "January 30, 2013, is not just a date label for Korea Aerospace Research Institute. It is the point where a larger space exploration story becomes visible enough to study. The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to achieve Earth orbit. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to achieve Earth orbit. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a mission environment where hardware, risk, mathematics, weather, and public imagination had to line up. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1888,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-30"] = {
       ]
     },
     {
-      "text": "The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to achieve Earth orbit. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["01-30"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On January 30, 2013, the Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to achieve Earth orbit. Why it mattered: Korea Aerospace Research Institute marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and... The source record identifies Korea Aerospace Research Institute as south Korean space agency. Related subjects include Korea Aerospace Research Institute (South Korean space agency), Naro-1 (South Korea's first carrier rocket (2009–2013)), Launch vehicle (Rocket used to carry a spacecraft into space). The lasting consequence... The related trail points to Korea Aerospace Research Institute, Naro-1, Launch vehicle, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On January 30, 2013, the Korea Aerospace Research Institute launched Naro-1, South Korea's first carrier rocket and their first launch vehicle to achieve Earth orbit. Why it mattered: Korea Aerospace Research Institute marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and. The source record identifies Korea Aerospace Research Institute as south Korean space agency. Related subjects include Korea Aerospace Research Institute (South Korean space agency), Naro-1 (South Korea's first carrier rocket (2009–2013)), Launch vehicle (Rocket used to carry a spacecraft into space). The lasting consequence. The related trail points to Korea Aerospace Research Institute, Naro-1, Launch vehicle, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

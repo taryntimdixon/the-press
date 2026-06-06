@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-30"] = {
     },
     {
       "label": "Scene",
-      "value": "Rouen after Joan of Arc’s politically charged trial, with church authority, English power, French memory, gender, prophecy, and..."
+      "value": "Rouen after Joan of Arc’s politically charged trial, with church authority, English power, French memory, gender, prophecy, and."
     },
     {
       "label": "Why it mattered",

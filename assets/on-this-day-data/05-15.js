@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-15"] = {
   "year": 1862,
   "title": "Fertilisation of Orchids",
   "topic": "Fertilisation of Orchids",
-  "headline": "Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail...",
+  "headline": "Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail, was published.",
   "text": "Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail, was published.",
   "source": "https://en.wikipedia.org/wiki/Fertilisation_of_Orchids",
   "sourceLabel": "Wikipedia: Fertilisation of Orchids",
   "sourceDescription": "1862 book by Charles Darwin",
   "visual": "culture",
   "palette": "stage",
-  "dek": "Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail... The deeper story is how this culture moment changed what people could expect from the world around them.",
+  "dek": "Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail, was published. The deeper story is how this culture moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-15"] = {
   ],
   "summary": [
     "May 15, 1862, is not just a date label for Fertilisation of Orchids. It is the point where a larger culture story becomes visible enough to study. Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail, was published. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail, was published. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a theater, shop, studio, page, screen, or public crowd where an idea moved from private work into mass imagination. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1869,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-15"] = {
       ]
     },
     {
-      "text": "Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail, was published. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-15"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On May 15, 1862, Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail, was published. Why it mattered: Fertilisation of Orchids marked a first, and it changed what audiences read, watched, collected, celebrated, or argued about together. In the wider culture story, it changed what audiences read, watched, collected, celebrated, or argued about together. The source record identifies Fertilisation of Orchids as 1862 book by Charles Darwin. Related subjects include Fertilisation of Orchids (1862 book by Charles Darwin), Charles Darwin (English naturalist and biologist (1809–1882)), Natural selection (Mechanism of evolution by differential reproduction). The lasting consequence was shared... The related trail points to Fertilisation of Orchids, Charles Darwin, Natural selection, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On May 15, 1862, Fertilisation of Orchids, the first book by Charles Darwin which demonstrated the power of natural selection in detail, was published. Why it mattered: Fertilisation of Orchids marked a first, and it changed what audiences read, watched, collected, celebrated, or argued about together. In the wider culture story, it changed what audiences read, watched, collected, celebrated, or argued about together. The source record identifies Fertilisation of Orchids as 1862 book by Charles Darwin. Related subjects include Fertilisation of Orchids (1862 book by Charles Darwin), Charles Darwin (English naturalist and biologist (1809–1882)), Natural selection (Mechanism of evolution by differential reproduction). The lasting consequence was shared. The related trail points to Fertilisation of Orchids, Charles Darwin, Natural selection, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

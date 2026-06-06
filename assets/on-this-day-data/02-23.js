@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-23"] = {
   "year": 1739,
   "title": "Highwayman",
   "topic": "Highwayman",
-  "headline": "The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading...",
+  "headline": "The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading to Turpin's trial.",
   "text": "The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading to Turpin's trial.",
   "source": "https://en.wikipedia.org/wiki/Highwayman",
   "sourceLabel": "Wikipedia: Highwayman",
   "sourceDescription": "Archaic term for a mounted robber who steals from travelers",
   "visual": "crime",
   "palette": "dispatch",
-  "dek": "The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading... The deeper story is how this crime and accountability moment changed what people could expect from the world around them.",
+  "dek": "The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading to Turpin's trial. The deeper story is how this crime and accountability moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-23"] = {
   ],
   "summary": [
     "February 23, 1739, is not just a date label for Highwayman. It is the point where a larger crime and accountability story becomes visible enough to study. The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading to Turpin's trial. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading to Turpin's trial. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a hallway, office, courtroom, evidence table, newsroom, or police setting where a case became bigger than the act itself. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1848,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-23"] = {
       ]
     },
     {
-      "text": "The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading to Turpin's trial. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-23"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On February 23, 1739, the identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading to Turpin's trial. Why it mattered: Highwayman matters because it exposed how law, evidence, fear, media attention, and state power collided in public. In the wider crime story, it exposed how law, evidence, fear, media attention, and state power collided in public. The source record identifies Highwayman as archaic term for a mounted robber who steals from travelers. Related subjects include Highwayman (Archaic term for a mounted robber who steals from travelers), Dick Turpin (English highwayman (1705–1739)), Handwriting (Writing created by a person with a writing... The related trail points to Highwayman, Dick Turpin, Handwriting, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On February 23, 1739, the identity of English highwayman Dick Turpin was uncovered by his former schoolmate, who recognised his handwriting, leading to Turpin's trial. Why it mattered: Highwayman matters because it exposed how law, evidence, fear, media attention, and state power collided in public. In the wider crime story, it exposed how law, evidence, fear, media attention, and state power collided in public. The source record identifies Highwayman as archaic term for a mounted robber who steals from travelers. Related subjects include Highwayman (Archaic term for a mounted robber who steals from travelers), Dick Turpin (English highwayman (1705–1739)), Handwriting (Writing created by a person with a writing. The related trail points to Highwayman, Dick Turpin, Handwriting, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

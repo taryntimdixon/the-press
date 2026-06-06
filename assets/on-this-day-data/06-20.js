@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-20"] = {
     },
     {
       "label": "Scene",
-      "value": "movie theaters in 1975 as Jaws turned a shark thriller into a summer-release phenomenon with television advertising, suspense..."
+      "value": "movie theaters in 1975 as Jaws turned a shark thriller into a summer-release phenomenon with television advertising, suspense."
     },
     {
       "label": "Why it mattered",

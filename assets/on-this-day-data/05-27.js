@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-27"] = {
     },
     {
       "label": "Scene",
-      "value": "the pedestrian opening of the Golden Gate Bridge, with San Francisco and Marin joined by a suspension span..."
+      "value": "the pedestrian opening of the Golden Gate Bridge, with San Francisco and Marin joined by a suspension span."
     },
     {
       "label": "Why it mattered",

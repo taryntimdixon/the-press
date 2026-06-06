@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-12"] = {
     },
     {
       "label": "Scene",
-      "value": "the Supreme Court’s Loving v. Virginia decision, where Richard and Mildred Loving’s marriage case struck down bans on..."
+      "value": "the Supreme Court’s Loving v. Virginia decision, where Richard and Mildred Loving’s marriage case struck down bans on."
     },
     {
       "label": "Why it mattered",

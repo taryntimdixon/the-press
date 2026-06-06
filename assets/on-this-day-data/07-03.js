@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-03"] = {
     },
     {
       "label": "Scene",
-      "value": "1985 movie theaters where Back to the Future mixed teen comedy, time travel, rock-and-roll nostalgia, product design, and..."
+      "value": "1985 movie theaters where Back to the Future mixed teen comedy, time travel, rock-and-roll nostalgia, product design, and."
     },
     {
       "label": "Why it mattered",

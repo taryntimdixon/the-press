@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["03-26"] = {
   "year": 1885,
   "title": "Métis",
   "topic": "Métis",
-  "headline": "Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel...",
+  "headline": "Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel began the North-West Rebellion.",
   "text": "Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel began the North-West Rebellion.",
   "source": "https://en.wikipedia.org/wiki/M%C3%A9tis",
   "sourceLabel": "Wikipedia: Métis",
   "sourceDescription": "Mixed Indigenous ethnic group of Canada and the US",
   "visual": "rights",
   "palette": "public-square",
-  "dek": "Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel... The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
+  "dek": "Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel began the North-West Rebellion. The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["03-26"] = {
   ],
   "summary": [
     "March 26, 1885, is not just a date label for Métis. It is the point where a larger rights and public power story becomes visible enough to study. Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel began the North-West Rebellion. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel began the North-West Rebellion. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a public institution or street-level confrontation where law, identity, courage, and pressure met in the open. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1878,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["03-26"] = {
       ]
     },
     {
-      "text": "Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel began the North-West Rebellion. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["03-26"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On March 26, 1885, Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel began the North-West Rebellion. Why it mattered: Métis matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies Métis as mixed Indigenous ethnic group of Canada and the US. Related subjects include Métis (Mixed Indigenous ethnic group of Canada and the US), Louis Riel (Métis leader in Canada (1844–1885)), North-West Rebellion (1885 Métis and First Nations revolt in... The related trail points to Métis, Louis Riel, North-West Rebellion, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On March 26, 1885, Perceiving that the Canadian government was failing to protect their rights, the Métis people led by Louis Riel began the North-West Rebellion. Why it mattered: Métis matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies Métis as mixed Indigenous ethnic group of Canada and the US. Related subjects include Métis (Mixed Indigenous ethnic group of Canada and the US), Louis Riel (Métis leader in Canada (1844–1885)), North-West Rebellion (1885 Métis and First Nations revolt in. The related trail points to Métis, Louis Riel, North-West Rebellion, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

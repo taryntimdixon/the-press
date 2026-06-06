@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-05"] = {
   "year": 1965,
   "title": "Glasnost meeting",
   "topic": "Glasnost meeting",
-  "headline": "The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War...",
+  "headline": "The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War II and marking the beginning of the civil rights movement in the country.",
   "text": "The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War II and marking the beginning of the civil rights movement in the country.",
   "source": "https://en.wikipedia.org/wiki/Glasnost_meeting",
   "sourceLabel": "Wikipedia: Glasnost meeting",
   "sourceDescription": "1965 Soviet civil rights protest",
   "visual": "rights",
   "palette": "public-square",
-  "dek": "The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War... The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
+  "dek": "The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War II and marking the beginning of the civil rights movement in the country. The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-05"] = {
   ],
   "summary": [
     "December 5, 1965, is not just a date label for Glasnost meeting. It is the point where a larger rights and public power story becomes visible enough to study. The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War II and marking the beginning of the civil rights movement in the country. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War II and marking the beginning of the civil rights movement in the country. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a public institution or street-level confrontation where law, identity, courage, and pressure met in the open. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1905,
@@ -109,7 +109,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-05"] = {
       ]
     },
     {
-      "text": "The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War II and marking the beginning of the civil rights movement in the country. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -152,7 +152,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-05"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On December 5, 1965, the \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War II and marking the beginning of the civil rights movement in the country. Why it mattered: Glasnost meeting marked a first, and it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies Glasnost meeting as 1965 Soviet civil rights protest. Related subjects include Glasnost meeting (1965 Soviet civil rights protest), Human rights movement in the Soviet Union. The lasting consequence was a shift in who could claim protection, recognition, participation, or dignity... The related trail points to Glasnost meeting, Human rights movement in the Soviet Union, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On December 5, 1965, the \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War II and marking the beginning of the civil rights movement in the country. Why it mattered: Glasnost meeting marked a first, and it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies Glasnost meeting as 1965 Soviet civil rights protest. Related subjects include Glasnost meeting (1965 Soviet civil rights protest), Human rights movement in the Soviet Union. The lasting consequence was a shift in who could claim protection, recognition, participation, or dignity. The related trail points to Glasnost meeting, Human rights movement in the Soviet Union, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

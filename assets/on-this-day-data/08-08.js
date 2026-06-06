@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-08"] = {
   "year": 1969,
   "title": "Zebra crossing",
   "topic": "Zebra crossing",
-  "headline": "At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for...",
+  "headline": "At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for the cover of the Beatles' album Abbey Road.",
   "text": "At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for the cover of the Beatles' album Abbey Road.",
   "source": "https://en.wikipedia.org/wiki/Zebra_crossing",
   "sourceLabel": "Wikipedia: Zebra crossing",
   "sourceDescription": "Type of pedestrian crossing",
   "visual": "music",
   "palette": "stage",
-  "dek": "At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for... The deeper story is how this music and broadcast culture moment changed what people could expect from the world around them.",
+  "dek": "At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for the cover of the Beatles' album Abbey Road. The deeper story is how this music and broadcast culture moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-08"] = {
   ],
   "summary": [
     "August 8, 1969, is not just a date label for Zebra crossing. It is the point where a larger music and broadcast culture story becomes visible enough to study. At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for the cover of the Beatles' album Abbey Road. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for the cover of the Beatles' album Abbey Road. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a performance, studio, stadium, record shop, broadcast booth, or crowd where sound became a public event. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1877,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-08"] = {
       ]
     },
     {
-      "text": "At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for the cover of the Beatles' album Abbey Road. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-08"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On August 8, 1969, At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for the cover of the Beatles' album Abbey Road. Why it mattered: Zebra crossing matters because it changed the sound, business, audience, or shared memory of popular music. In the wider music story, it changed the sound, business, audience, or shared memory of popular music. The source record identifies Zebra crossing as type of pedestrian crossing. Related subjects include Zebra crossing (Type of pedestrian crossing), Abbey Road, London (Road in London), Iain Macmillan (20th-century Scottish photographer), The Beatles (English rock band (1960–1970)). The lasting consequence was cultural memory: a... The related trail points to Zebra crossing, Abbey Road, London, Iain Macmillan, The Beatles, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On August 8, 1969, At a zebra crossing on Abbey Road in London, Iain Macmillan took the photograph that was used for the cover of the Beatles' album Abbey Road. Why it mattered: Zebra crossing matters because it changed the sound, business, audience, or shared memory of popular music. In the wider music story, it changed the sound, business, audience, or shared memory of popular music. The source record identifies Zebra crossing as type of pedestrian crossing. Related subjects include Zebra crossing (Type of pedestrian crossing), Abbey Road, London (Road in London), Iain Macmillan (20th-century Scottish photographer), The Beatles (English rock band (1960–1970)). The lasting consequence was cultural memory: a. The related trail points to Zebra crossing, Abbey Road, London, Iain Macmillan, The Beatles, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

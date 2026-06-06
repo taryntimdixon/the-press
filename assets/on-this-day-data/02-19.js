@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-19"] = {
   "year": 2012,
   "title": "Mexican drug war",
   "topic": "Mexican drug war",
-  "headline": "Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas...",
+  "headline": "Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas and the Gulf Cartel.",
   "text": "Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas and the Gulf Cartel.",
   "source": "https://en.wikipedia.org/wiki/Mexican_drug_war",
   "sourceLabel": "Wikipedia: Mexican drug war",
   "sourceDescription": "War between Mexico's government and various drug trafficking syndicates",
   "visual": "protest",
   "palette": "public-square",
-  "dek": "Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas... The deeper story is how this protest moment changed what people could expect from the world around them.",
+  "dek": "Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas and the Gulf Cartel. The deeper story is how this protest moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-19"] = {
   ],
   "summary": [
     "February 19, 2012, is not just a date label for Mexican drug war. It is the point where a larger protest story becomes visible enough to study. Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas and the Gulf Cartel. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas and the Gulf Cartel. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a street, square, prison, factory gate, school, or public building where ordinary people made power answer back. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1876,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-19"] = {
       ]
     },
     {
-      "text": "Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas and the Gulf Cartel. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-19"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On February 19, 2012, Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas and the Gulf Cartel. Why it mattered: Mexican drug war matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies Mexican drug war as war between Mexico's government and various drug trafficking syndicates. Related subjects include Mexican drug war (War between Mexico's government and various drug trafficking syndicates), Apodaca prison riot (2012 riot in Nuevo León, Mexico), Apodaca (City and... The related trail points to Mexican drug war, Apodaca prison riot, Apodaca, Los Zetas, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On February 19, 2012, Mexican drug war: Forty-four inmates died in a prison riot in Apodaca, Mexico, between members of Los Zetas and the Gulf Cartel. Why it mattered: Mexican drug war matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies Mexican drug war as war between Mexico's government and various drug trafficking syndicates. Related subjects include Mexican drug war (War between Mexico's government and various drug trafficking syndicates), Apodaca prison riot (2012 riot in Nuevo León, Mexico), Apodaca (City and. The related trail points to Mexican drug war, Apodaca prison riot, Apodaca, Los Zetas, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

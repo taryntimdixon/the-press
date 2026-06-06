@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-29"] = {
   "year": 1954,
   "title": "The Fellowship of the Ring",
   "topic": "The Fellowship of the Ring",
-  "headline": "The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the...",
+  "headline": "The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the Rings, was published by Allen & Unwin.",
   "text": "The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the Rings, was published by Allen & Unwin.",
   "source": "https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring",
   "sourceLabel": "Wikipedia: The Fellowship of the Ring",
   "sourceDescription": "1954 part of novel by J. R. R. Tolkien",
   "visual": "culture",
   "palette": "stage",
-  "dek": "The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the... The deeper story is how this culture moment changed what people could expect from the world around them.",
+  "dek": "The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the Rings, was published by Allen & Unwin. The deeper story is how this culture moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-29"] = {
   ],
   "summary": [
     "July 29, 1954, is not just a date label for The Fellowship of the Ring. It is the point where a larger culture story becomes visible enough to study. The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the Rings, was published by Allen & Unwin. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the Rings, was published by Allen & Unwin. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a theater, shop, studio, page, screen, or public crowd where an idea moved from private work into mass imagination. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1921,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-29"] = {
       ]
     },
     {
-      "text": "The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the Rings, was published by Allen & Unwin. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-29"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On July 29, 1954, the Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the Rings, was published by Allen & Unwin. Why it mattered: The Fellowship of the Ring marked a first, and it changed what audiences read, watched, collected, celebrated, or argued about together. In the wider culture story, it changed what audiences read, watched, collected, celebrated, or argued about together. The source record identifies The Fellowship of the Ring as 1954 part of novel by J. R. R. Tolkien. Related subjects include The Fellowship of the Ring (1954 part of novel by J. R. R. Tolkien), J. R. R. Tolkien (English writer and philologist... The related trail points to The Fellowship of the Ring, J. R. R. Tolkien, The Lord of the Rings, Allen & Unwin, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On July 29, 1954, the Fellowship of the Ring, the first part of J. R. R. Tolkien's novel The Lord of the Rings, was published by Allen & Unwin. Why it mattered: The Fellowship of the Ring marked a first, and it changed what audiences read, watched, collected, celebrated, or argued about together. In the wider culture story, it changed what audiences read, watched, collected, celebrated, or argued about together. The source record identifies The Fellowship of the Ring as 1954 part of novel by J. R. R. Tolkien. Related subjects include The Fellowship of the Ring (1954 part of novel by J. R. R. Tolkien), J. R. R. Tolkien (English writer and philologist. The related trail points to The Fellowship of the Ring, J. R. R. Tolkien, The Lord of the Rings, Allen & Unwin, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

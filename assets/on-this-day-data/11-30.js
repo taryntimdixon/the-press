@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-30"] = {
   "year": 1935,
   "title": "Texas",
   "topic": "Texas",
-  "headline": "A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in...",
+  "headline": "A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in Texas to be broadcast nationally on radio.",
   "text": "A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in Texas to be broadcast nationally on radio.",
   "source": "https://en.wikipedia.org/wiki/Texas",
   "sourceLabel": "Wikipedia: Texas",
   "sourceDescription": "U.S. state",
   "visual": "sports",
   "palette": "public-square",
-  "dek": "A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in... The deeper story is how this history moment changed what people could expect from the world around them.",
+  "dek": "A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in Texas to be broadcast nationally on radio. The deeper story is how this history moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-30"] = {
   ],
   "summary": [
     "November 30, 1935, is not just a date label for Texas. It is the point where a larger history story becomes visible enough to study. A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in Texas to be broadcast nationally on radio. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in Texas to be broadcast nationally on radio. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1871,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-30"] = {
       ]
     },
     {
-      "text": "A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "A college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in Texas to be broadcast nationally on radio. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["11-30"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On November 30, 1935, a college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in Texas to be broadcast nationally on radio. Why it mattered: Texas marked a first, and it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood its own... The source record identifies Texas as u.S. state. Related subjects include 1935 SMU vs. TCU football game (American college football game), SMU Mustangs football (SMU college football team), TCU Horned Frogs football (American football team of Texas Christian University), Texas (U.S. state). The lasting... The related trail points to 1935 SMU vs. TCU football game, SMU Mustangs football, TCU Horned Frogs football, Texas, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On November 30, 1935, a college football game between the SMU Mustangs and the TCU Horned Frogs became the first game in Texas to be broadcast nationally on radio. Why it mattered: Texas marked a first, and it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood its own. The source record identifies Texas as u.S. state. Related subjects include 1935 SMU vs. TCU football game (American college football game), SMU Mustangs football (SMU college football team), TCU Horned Frogs football (American football team of Texas Christian University), Texas (U.S. state). The lasting. The related trail points to 1935 SMU vs. TCU football game, SMU Mustangs football, TCU Horned Frogs football, Texas, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

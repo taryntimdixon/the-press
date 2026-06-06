@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-17"] = {
     },
     {
       "label": "Scene",
-      "value": "Disneyland’s televised 1955 opening day, where themed environments, family tourism, corporate showmanship, and live broadcast glitches all became..."
+      "value": "Disneyland’s televised 1955 opening day, where themed environments, family tourism, corporate showmanship, and live broadcast glitches all became."
     },
     {
       "label": "Why it mattered",

@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-13"] = {
   "year": 2017,
   "title": "Amar pelos dois",
   "topic": "Amar pelos dois",
-  "headline": "Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed...",
+  "headline": "Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed by Salvador Sobral.",
   "text": "Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed by Salvador Sobral.",
   "source": "https://en.wikipedia.org/wiki/Amar_pelos_dois",
   "sourceLabel": "Wikipedia: Amar pelos dois",
   "sourceDescription": "2017 song by Salvador Sobral",
   "visual": "music",
   "palette": "stage",
-  "dek": "Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed... The deeper story is how this music and broadcast culture moment changed what people could expect from the world around them.",
+  "dek": "Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed by Salvador Sobral. The deeper story is how this music and broadcast culture moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-13"] = {
   ],
   "summary": [
     "May 13, 2017, is not just a date label for Amar pelos dois. It is the point where a larger music and broadcast culture story becomes visible enough to study. Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed by Salvador Sobral. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed by Salvador Sobral. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a performance, studio, stadium, record shop, broadcast booth, or crowd where sound became a public event. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1878,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-13"] = {
       ]
     },
     {
-      "text": "Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed by Salvador Sobral. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-13"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On May 13, 2017, Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed by Salvador Sobral. Why it mattered: Amar pelos dois marked a first, and it changed the sound, business, audience, or shared memory of popular music. In the wider music story, it changed the sound, business, audience, or shared memory of popular music. The source record identifies Amar pelos dois as 2017 song by Salvador Sobral. Related subjects include Eurovision Song Contest 2017 (International song competition), Portugal in the Eurovision Song Contest 2017, Amar pelos dois (2017 song by Salvador Sobral), Salvador Sobral (Portuguese singer (born 1989)).... The related trail points to Eurovision Song Contest 2017, Portugal in the Eurovision Song Contest 2017, Amar pelos dois, Salvador Sobral, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On May 13, 2017, Eurovision Song Contest: Portugal won the contest for the first time, with the song \"Amar pelos dois,\" performed by Salvador Sobral. Why it mattered: Amar pelos dois marked a first, and it changed the sound, business, audience, or shared memory of popular music. In the wider music story, it changed the sound, business, audience, or shared memory of popular music. The source record identifies Amar pelos dois as 2017 song by Salvador Sobral. Related subjects include Eurovision Song Contest 2017 (International song competition), Portugal in the Eurovision Song Contest 2017, Amar pelos dois (2017 song by Salvador Sobral), Salvador Sobral (Portuguese singer (born 1989)).. The related trail points to Eurovision Song Contest 2017, Portugal in the Eurovision Song Contest 2017, Amar pelos dois, Salvador Sobral, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

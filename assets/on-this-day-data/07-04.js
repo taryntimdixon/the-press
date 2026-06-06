@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-04"] = {
     },
     {
       "label": "Scene",
-      "value": "CERN’s 2012 announcement hall, where ATLAS and CMS data, physicists, detector images, and decades of theory focused on..."
+      "value": "CERN’s 2012 announcement hall, where ATLAS and CMS data, physicists, detector images, and decades of theory focused on."
     },
     {
       "label": "Why it mattered",

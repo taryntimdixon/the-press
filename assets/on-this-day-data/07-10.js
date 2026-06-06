@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-10"] = {
     },
     {
       "label": "Scene",
-      "value": "Telstar 1’s launch and tracking network, with Bell Labs, NASA launch hardware, ground stations, antennas, and live television..."
+      "value": "Telstar 1’s launch and tracking network, with Bell Labs, NASA launch hardware, ground stations, antennas, and live television."
     },
     {
       "label": "Why it mattered",

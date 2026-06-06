@@ -99,15 +99,23 @@ function collapseWhitespace(value) {
 }
 
 function ensureSentence(value) {
-  const text = collapseWhitespace(value);
+  const text = collapseWhitespace(value).replace(/\.\.\./g, '.');
   if (!text) return '';
   return /[.!?]$/.test(text) ? text : `${text}.`;
 }
 
 function trimWords(value, maxWords) {
-  const words = collapseWhitespace(value).split(/\s+/).filter(Boolean);
+  const text = collapseWhitespace(value);
+  const words = text.split(/\s+/).filter(Boolean);
   if (words.length <= maxWords) return words.join(' ');
-  return `${words.slice(0, maxWords).join(' ').replace(/[,:;]$/, '')}...`;
+  return firstCompleteSentence(text);
+}
+
+function firstCompleteSentence(value) {
+  const text = collapseWhitespace(value).replace(/\.\.\./g, '.');
+  if (!text) return '';
+  const sentence = text.match(/^.{12,420}?[.!?](?:\s|$)/);
+  return ensureSentence(sentence ? sentence[0] : text);
 }
 
 function wordCount(value) {

@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-29"] = {
     },
     {
       "label": "Scene",
-      "value": "the 1953 Everest expedition at the summit ridge, with Tenzing Norgay and Edmund Hillary climbing inside a world..."
+      "value": "the 1953 Everest expedition at the summit ridge, with Tenzing Norgay and Edmund Hillary climbing inside a world."
     },
     {
       "label": "Why it mattered",

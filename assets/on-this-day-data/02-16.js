@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-16"] = {
   "year": 1859,
   "title": "Musical note",
   "topic": "Musical note",
-  "headline": "The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in...",
+  "headline": "The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in the first attempt to standardize concert pitch.",
   "text": "The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in the first attempt to standardize concert pitch.",
   "source": "https://en.wikipedia.org/wiki/Musical_note",
   "sourceLabel": "Wikipedia: Musical note",
   "sourceDescription": "Representation of isolatable musical sound",
   "visual": "music",
   "palette": "stage",
-  "dek": "The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in... The deeper story is how this music and broadcast culture moment changed what people could expect from the world around them.",
+  "dek": "The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in the first attempt to standardize concert pitch. The deeper story is how this music and broadcast culture moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-16"] = {
   ],
   "summary": [
     "February 16, 1859, is not just a date label for Musical note. It is the point where a larger music and broadcast culture story becomes visible enough to study. The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in the first attempt to standardize concert pitch. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in the first attempt to standardize concert pitch. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a performance, studio, stadium, record shop, broadcast booth, or crowd where sound became a public event. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1871,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-16"] = {
       ]
     },
     {
-      "text": "The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The French government passed a law setting the musical note A4 to a frequency of 435 hertz, in the first attempt to standardize concert pitch. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-16"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On February 16, 1859, the French government passed a law setting the musical note A4 to a frequency of 435 hertz, in the first attempt to standardize concert pitch. Why it mattered: Musical note marked a first, and it changed the sound, business, audience, or shared memory of popular music. In the wider music story, it changed the sound, business, audience, or shared memory of popular music. The source record identifies Musical note as representation of isolatable musical sound. Related subjects include Musical note (Representation of isolatable musical sound), Hertz (SI unit of frequency), Concert pitch (Reference point for tuning musical instruments). The lasting consequence was cultural memory: a sound, performance... The related trail points to Musical note, Hertz, Concert pitch, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On February 16, 1859, the French government passed a law setting the musical note A4 to a frequency of 435 hertz, in the first attempt to standardize concert pitch. Why it mattered: Musical note marked a first, and it changed the sound, business, audience, or shared memory of popular music. In the wider music story, it changed the sound, business, audience, or shared memory of popular music. The source record identifies Musical note as representation of isolatable musical sound. Related subjects include Musical note (Representation of isolatable musical sound), Hertz (SI unit of frequency), Concert pitch (Reference point for tuning musical instruments). The lasting consequence was cultural memory: a sound, performance. The related trail points to Musical note, Hertz, Concert pitch, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

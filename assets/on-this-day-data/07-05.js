@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-05"] = {
     },
     {
       "label": "Scene",
-      "value": "the Roslin Institute lambing and laboratory world where Dolly became the first mammal cloned from an adult somatic..."
+      "value": "the Roslin Institute lambing and laboratory world where Dolly became the first mammal cloned from an adult somatic."
     },
     {
       "label": "Why it mattered",

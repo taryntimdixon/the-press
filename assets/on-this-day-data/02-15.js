@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-15"] = {
   "year": 1995,
   "title": "Kevin Mitnick",
   "topic": "Kevin Mitnick",
-  "headline": "Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with...",
+  "headline": "Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with computer fraud and wire fraud.",
   "text": "Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with computer fraud and wire fraud.",
   "source": "https://en.wikipedia.org/wiki/Kevin_Mitnick",
   "sourceLabel": "Wikipedia: Kevin Mitnick",
   "sourceDescription": "American hacker (1963–2023)",
   "visual": "tech",
   "palette": "laboratory",
-  "dek": "Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with... The deeper story is how this technology moment changed what people could expect from the world around them.",
+  "dek": "Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with computer fraud and wire fraud. The deeper story is how this technology moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-15"] = {
   ],
   "summary": [
     "February 15, 1995, is not just a date label for Kevin Mitnick. It is the point where a larger technology story becomes visible enough to study. Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with computer fraud and wire fraud. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with computer fraud and wire fraud. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a workspace where machines, investors, users, engineers, and public curiosity started pulling in the same direction. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1874,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-15"] = {
       ]
     },
     {
-      "text": "Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with computer fraud and wire fraud. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["02-15"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On February 15, 1995, Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with computer fraud and wire fraud. Why it mattered: Kevin Mitnick matters because it changed how people used machines, networks, media, or information in everyday life. In the wider tech story, it changed how people used machines, networks, media, or information in everyday life. The source record identifies Kevin Mitnick as american hacker (1963–2023). Related subjects include Kevin Mitnick (American hacker (1963–2023)), Security hacker (Computer security term; someone who hacks computer systems), Computer fraud (Use of computers to defraud), Mail and wire fraud (Federal crimes using the post... The related trail points to Kevin Mitnick, Security hacker, Computer fraud, Mail and wire fraud, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On February 15, 1995, Kevin Mitnick, the most wanted computer hacker at the time in the U.S., was arrested and charged with computer fraud and wire fraud. Why it mattered: Kevin Mitnick matters because it changed how people used machines, networks, media, or information in everyday life. In the wider tech story, it changed how people used machines, networks, media, or information in everyday life. The source record identifies Kevin Mitnick as american hacker (1963–2023). Related subjects include Kevin Mitnick (American hacker (1963–2023)), Security hacker (Computer security term; someone who hacks computer systems), Computer fraud (Use of computers to defraud), Mail and wire fraud (Federal crimes using the post. The related trail points to Kevin Mitnick, Security hacker, Computer fraud, Mail and wire fraud, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

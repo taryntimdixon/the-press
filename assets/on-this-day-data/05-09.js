@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-09"] = {
   "year": 1960,
   "title": "Food and Drug Administration",
   "topic": "Food and Drug Administration",
-  "headline": "The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first...",
+  "headline": "The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first combined oral contraceptive pill.",
   "text": "The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first combined oral contraceptive pill.",
   "source": "https://en.wikipedia.org/wiki/Food_and_Drug_Administration",
   "sourceLabel": "Wikipedia: Food and Drug Administration",
   "sourceDescription": "Federal agency of the United States Department of Health and Human Services",
   "visual": "medicine",
   "palette": "laboratory",
-  "dek": "The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first... The deeper story is how this medicine and public health moment changed what people could expect from the world around them.",
+  "dek": "The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first combined oral contraceptive pill. The deeper story is how this medicine and public health moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-09"] = {
   ],
   "summary": [
     "May 9, 1960, is not just a date label for Food and Drug Administration. It is the point where a larger medicine and public health story becomes visible enough to study. The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first combined oral contraceptive pill. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first combined oral contraceptive pill. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a clinic, lab, hospital, farm, health office, or research institute where bodies and evidence changed the argument. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1901,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-09"] = {
       ]
     },
     {
-      "text": "The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first combined oral contraceptive pill. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-09"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On May 9, 1960, the U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first combined oral contraceptive pill. Why it mattered: Food and Drug Administration marked a first, and it changed how doctors, patients, public-health officials, or researchers understood. In the wider medicine story, it changed how doctors, patients, public-health officials, or researchers understood disease and treatment. The source record identifies Food and Drug Administration as federal agency of the United States Department of Health and Human Services. Related subjects include Food and Drug Administration (Federal agency of the United States Department of Health and Human Services), G. D. Searle &... The related trail points to Food and Drug Administration, G. D. Searle & Company, Mestranol/noretynodrel, Combined oral contraceptive pill, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On May 9, 1960, the U.S. Food and Drug Administration announced that it would approve the use of Searle's Enovid, the first combined oral contraceptive pill. Why it mattered: Food and Drug Administration marked a first, and it changed how doctors, patients, public-health officials, or researchers understood. In the wider medicine story, it changed how doctors, patients, public-health officials, or researchers understood disease and treatment. The source record identifies Food and Drug Administration as federal agency of the United States Department of Health and Human Services. Related subjects include Food and Drug Administration (Federal agency of the United States Department of Health and Human Services), G. D. Searle &. The related trail points to Food and Drug Administration, G. D. Searle & Company, Mestranol/noretynodrel, Combined oral contraceptive pill, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

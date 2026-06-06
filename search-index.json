@@ -5807,5 +5807,39 @@
     "excludeFromEdition": true,
     "excludeFromArchive": true,
     "excludeFromGallery": true
+  },
+  {
+    "title": "Hate to See You Go",
+    "section": "Cartoons",
+    "type": "Comic",
+    "dek": "The first Press comic is about the little performance every app gives when a reader, customer, or exhausted human tries to leave.",
+    "url": "cartoons-hate-to-see-you-go.html",
+    "author": "The Press",
+    "published": "June 5, 2026 • 8:00 a.m. EDT",
+    "keywords": [
+      "comic",
+      "cartoons",
+      "subscription apps",
+      "unsubscribe",
+      "digital life",
+      "satire"
+    ]
+  },
+  {
+    "title": "The Mission Statement Takes the Stand",
+    "section": "Cartoons",
+    "type": "Editorial Cartoon",
+    "dek": "An editorial cartoon on the Musk-OpenAI trial, where the legal deadline ended the case but the mission-versus-money question kept its seat in the courtroom.",
+    "url": "cartoons-the-mission-statement-takes-the-stand.html",
+    "author": "The Press",
+    "published": "June 5, 2026 • 11:00 a.m. EDT",
+    "keywords": [
+      "editorial cartoon",
+      "OpenAI",
+      "Elon Musk",
+      "Sam Altman",
+      "AI governance",
+      "nonprofit mission"
+    ]
   }
 ]

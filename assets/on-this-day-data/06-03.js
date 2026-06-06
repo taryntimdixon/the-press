@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-03"] = {
     },
     {
       "label": "Scene",
-      "value": "Gemini 4 above Earth as Ed White floated outside the capsule with a hand-held maneuvering gun and a..."
+      "value": "Gemini 4 above Earth as Ed White floated outside the capsule with a hand-held maneuvering gun and a."
     },
     {
       "label": "Why it mattered",

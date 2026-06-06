@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-22"] = {
     },
     {
       "label": "Scene",
-      "value": "Operation Barbarossa’s opening, when Nazi Germany invaded the Soviet Union across a huge front and turned the war..."
+      "value": "Operation Barbarossa’s opening, when Nazi Germany invaded the Soviet Union across a huge front and turned the war."
     },
     {
       "label": "Why it mattered",

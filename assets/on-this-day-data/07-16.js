@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-16"] = {
     },
     {
       "label": "Scene",
-      "value": "Apollo 11’s Saturn V lifting from Kennedy Space Center, with astronauts, launch crews, television, spectators, and Cold War..."
+      "value": "Apollo 11’s Saturn V lifting from Kennedy Space Center, with astronauts, launch crews, television, spectators, and Cold War."
     },
     {
       "label": "Why it mattered",

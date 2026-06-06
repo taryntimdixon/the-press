@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-11"] = {
     },
     {
       "label": "Scene",
-      "value": "the University of Alabama’s registration site, where Vivian Malone and James Hood entered under federal protection after George..."
+      "value": "the University of Alabama’s registration site, where Vivian Malone and James Hood entered under federal protection after George."
     },
     {
       "label": "Why it mattered",

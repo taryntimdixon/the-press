@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-30"] = {
   "year": 2004,
   "title": "The New Yorker",
   "topic": "The New Yorker",
-  "headline": "The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military...",
+  "headline": "The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military personnel of Iraqi prisoners held at Abu Ghraib prison in Baghdad.",
   "text": "The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military personnel of Iraqi prisoners held at Abu Ghraib prison in Baghdad.",
   "source": "https://en.wikipedia.org/wiki/The_New_Yorker",
   "sourceLabel": "Wikipedia: The New Yorker",
   "sourceDescription": "American weekly magazine",
   "visual": "crime",
   "palette": "dispatch",
-  "dek": "The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military... The deeper story is how this crime and accountability moment changed what people could expect from the world around them.",
+  "dek": "The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military personnel of Iraqi prisoners held at Abu Ghraib prison in Baghdad. The deeper story is how this crime and accountability moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-30"] = {
   ],
   "summary": [
     "April 30, 2004, is not just a date label for The New Yorker. It is the point where a larger crime and accountability story becomes visible enough to study. The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military personnel of Iraqi prisoners held at Abu Ghraib prison in Baghdad. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military personnel of Iraqi prisoners held at Abu Ghraib prison in Baghdad. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a hallway, office, courtroom, evidence table, newsroom, or police setting where a case became bigger than the act itself. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1905,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-30"] = {
       ]
     },
     {
-      "text": "The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The New Yorker published an online article and photographs detailing accounts of torture and abuse by American military personnel of Iraqi prisoners held at Abu Ghraib prison in Baghdad. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-30"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On April 30, 2004, the New Yorker published an online article and photographs detailing accounts of torture and abuse by American military personnel of Iraqi prisoners held at Abu Ghraib prison in Baghdad. Why it mattered: The New Yorker matters because it exposed how law, evidence, fear, media attention, and state power collided in public. In the wider crime story, it exposed how law, evidence, fear, media attention, and state power collided in public. The source record identifies The New Yorker as american weekly magazine. Related subjects include The New Yorker (American weekly magazine), Abu Ghraib torture and prisoner abuse (2004 American military scandal), Abu Ghraib prison (1960s–2014 prison in central Iraq). The lasting consequence was a public... The related trail points to The New Yorker, Abu Ghraib torture and prisoner abuse, Abu Ghraib prison, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On April 30, 2004, the New Yorker published an online article and photographs detailing accounts of torture and abuse by American military personnel of Iraqi prisoners held at Abu Ghraib prison in Baghdad. Why it mattered: The New Yorker matters because it exposed how law, evidence, fear, media attention, and state power collided in public. In the wider crime story, it exposed how law, evidence, fear, media attention, and state power collided in public. The source record identifies The New Yorker as american weekly magazine. Related subjects include The New Yorker (American weekly magazine), Abu Ghraib torture and prisoner abuse (2004 American military scandal), Abu Ghraib prison (1960s–2014 prison in central Iraq). The lasting consequence was a public. The related trail points to The New Yorker, Abu Ghraib torture and prisoner abuse, Abu Ghraib prison, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

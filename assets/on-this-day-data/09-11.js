@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-11"] = {
   "year": 1893,
   "title": "Swami Vivekananda",
   "topic": "Swami Vivekananda",
-  "headline": "Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's...",
+  "headline": "Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's Religions in Chicago.",
   "text": "Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's Religions in Chicago.",
   "source": "https://en.wikipedia.org/wiki/Swami_Vivekananda",
   "sourceLabel": "Wikipedia: Swami Vivekananda",
   "sourceDescription": "Indian monk and philosopher (1863–1902)",
   "visual": "civic",
   "palette": "civic",
-  "dek": "Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's... The deeper story is how this government and civic power moment changed what people could expect from the world around them.",
+  "dek": "Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's Religions in Chicago. The deeper story is how this government and civic power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-11"] = {
   ],
   "summary": [
     "September 11, 1893, is not just a date label for Swami Vivekananda. It is the point where a larger government and civic power story becomes visible enough to study. Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's Religions in Chicago. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's Religions in Chicago. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a formal place where documents, offices, ceremonies, laws, and public legitimacy became the center of the story. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1869,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-11"] = {
       ]
     },
     {
-      "text": "Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's Religions in Chicago. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-11"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On September 11, 1893, Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's Religions in Chicago. Why it mattered: Swami Vivekananda marked a first, and it changed how an institution, law, government, treaty, or public office worked. In the wider civic story, it changed how an institution, law, government, treaty, or public office worked. The source record identifies Swami Vivekananda as indian monk and philosopher (1863–1902). Related subjects include Swami Vivekananda (Indian monk and philosopher (1863–1902)), Hinduism (Range of Indian religious traditions), Parliament of the World's Religions (Series of meetings intended to create a global interfaith dialogue). The... The related trail points to Swami Vivekananda, Hinduism, Parliament of the World's Religions, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On September 11, 1893, Swami Vivekananda gave a speech introducing Hinduism on the opening day of the first Parliament of the World's Religions in Chicago. Why it mattered: Swami Vivekananda marked a first, and it changed how an institution, law, government, treaty, or public office worked. In the wider civic story, it changed how an institution, law, government, treaty, or public office worked. The source record identifies Swami Vivekananda as indian monk and philosopher (1863–1902). Related subjects include Swami Vivekananda (Indian monk and philosopher (1863–1902)), Hinduism (Range of Indian religious traditions), Parliament of the World's Religions (Series of meetings intended to create a global interfaith dialogue). The. The related trail points to Swami Vivekananda, Hinduism, Parliament of the World's Religions, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

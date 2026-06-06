@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-12"] = {
   "year": 1969,
   "title": "Greek junta",
   "topic": "Greek junta",
-  "headline": "The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of...",
+  "headline": "The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of torture and other human-rights violations by the European Commission of Human Rights.",
   "text": "The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of torture and other human-rights violations by the European Commission of Human Rights.",
   "source": "https://en.wikipedia.org/wiki/Greek_junta",
   "sourceLabel": "Wikipedia: Greek junta",
   "sourceDescription": "Military rulers of Greece, 1967–1974",
   "visual": "rights",
   "palette": "public-square",
-  "dek": "The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of... The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
+  "dek": "The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of torture and other human-rights violations by the European Commission of Human Rights. The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-12"] = {
   ],
   "summary": [
     "December 12, 1969, is not just a date label for Greek junta. It is the point where a larger rights and public power story becomes visible enough to study. The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of torture and other human-rights violations by the European Commission of Human Rights. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of torture and other human-rights violations by the European Commission of Human Rights. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a public institution or street-level confrontation where law, identity, courage, and pressure met in the open. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1908,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-12"] = {
       ]
     },
     {
-      "text": "The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of torture and other human-rights violations by the European Commission of Human Rights. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-12"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On December 12, 1969, the Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of torture and other human-rights violations by the European Commission of Human Rights. Why it mattered: Greek junta matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies Greek junta as military rulers of Greece, 1967–1974. Related subjects include Greek junta (Military rulers of Greece, 1967–1974), Greece in the Council of Europe, Greek case (1967 human rights case against Greece), European Commission of Human Rights (Former body of... The related trail points to Greek junta, Greece in the Council of Europe, Greek case, European Commission of Human Rights, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On December 12, 1969, the Greek junta announced its withdrawal from the Council of Europe after the junta was found guilty of torture and other human-rights violations by the European Commission of Human Rights. Why it mattered: Greek junta matters because it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies Greek junta as military rulers of Greece, 1967–1974. Related subjects include Greek junta (Military rulers of Greece, 1967–1974), Greece in the Council of Europe, Greek case (1967 human rights case against Greece), European Commission of Human Rights (Former body of. The related trail points to Greek junta, Greece in the Council of Europe, Greek case, European Commission of Human Rights, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

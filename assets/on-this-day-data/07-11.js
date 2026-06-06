@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-11"] = {
     },
     {
       "label": "Scene",
-      "value": "Skylab’s fiery reentry over the Indian Ocean and Western Australia, where space debris became a media event, legal..."
+      "value": "Skylab’s fiery reentry over the Indian Ocean and Western Australia, where space debris became a media event, legal."
     },
     {
       "label": "Why it mattered",
@@ -159,7 +159,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-11"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On July 11, 1979, Skylab reentered Earth’s atmosphere, scattering debris over the Indian Ocean and Western Australia and turning space infrastructure, media suspense, and orbital decay into a worldwide spectacle. Why it mattered: A space-age spectacle that made orbital debris, public risk, and the physical reality of space stations visible on Earth. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and public... The source record identifies NASA: Skylab reenters Earth’s atmosphere as nASA history of Skylab reentry on July 11, 1979. The lasting consequence was a larger map of what humans and their machines could reach, measure, or survive beyond Earth.  Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On July 11, 1979, Skylab reentered Earth’s atmosphere, scattering debris over the Indian Ocean and Western Australia and turning space infrastructure, media suspense, and orbital decay into a worldwide spectacle. Why it mattered: A space-age spectacle that made orbital debris, public risk, and the physical reality of space stations visible on Earth. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and public. The source record identifies NASA: Skylab reenters Earth’s atmosphere as nASA history of Skylab reentry on July 11, 1979. The lasting consequence was a larger map of what humans and their machines could reach, measure, or survive beyond Earth. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

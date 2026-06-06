@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-03"] = {
   "year": 1936,
   "title": "Jesse Owens",
   "topic": "Jesse Owens",
-  "headline": "African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi...",
+  "headline": "African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi leaders' hopes of Aryan domination at the games.",
   "text": "African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi leaders' hopes of Aryan domination at the games.",
   "source": "https://en.wikipedia.org/wiki/Jesse_Owens",
   "sourceLabel": "Wikipedia: Jesse Owens",
   "sourceDescription": "American track and field athlete (1913–1980)",
   "visual": "sports",
   "palette": "public-square",
-  "dek": "African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi... The deeper story is how this history moment changed what people could expect from the world around them.",
+  "dek": "African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi leaders' hopes of Aryan domination at the games. The deeper story is how this history moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-03"] = {
   ],
   "summary": [
     "August 3, 1936, is not just a date label for Jesse Owens. It is the point where a larger history story becomes visible enough to study. African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi leaders' hopes of Aryan domination at the games. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi leaders' hopes of Aryan domination at the games. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a recorded setting where documents, eyewitnesses, objects, and later memory keep pulling one date back into view. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1885,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-03"] = {
       ]
     },
     {
-      "text": "African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi leaders' hopes of Aryan domination at the games. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["08-03"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On August 3, 1936, African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi leaders' hopes of Aryan domination at the games. Why it mattered: Jesse Owens marked a first, and it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood its... The source record identifies Jesse Owens as american track and field athlete (1913–1980). Related subjects include African Americans (Ethnic and cultural group in the United States), Jesse Owens (American track and field athlete (1913–1980)), 1936 Summer Olympics (Multi-sport event in Berlin, Germany), Aryan race... The related trail points to African Americans, Jesse Owens, 1936 Summer Olympics, Aryan race, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On August 3, 1936, African-American athlete Jesse Owens won the first of his four gold medals at the Berlin Olympics, dashing Nazi leaders' hopes of Aryan domination at the games. Why it mattered: Jesse Owens marked a first, and it changed the record book, the audience, or the way a sport understood its own limits. In the wider sports story, it changed the record book, the audience, or the way a sport understood its. The source record identifies Jesse Owens as american track and field athlete (1913–1980). Related subjects include African Americans (Ethnic and cultural group in the United States), Jesse Owens (American track and field athlete (1913–1980)), 1936 Summer Olympics (Multi-sport event in Berlin, Germany), Aryan race. The related trail points to African Americans, Jesse Owens, 1936 Summer Olympics, Aryan race, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

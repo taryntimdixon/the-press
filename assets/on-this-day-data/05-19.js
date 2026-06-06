@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-19"] = {
   "year": 2010,
   "title": "2010 Thai military crackdown",
   "topic": "2010 Thai military crackdown",
-  "headline": "In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition...",
+  "headline": "In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition leaders.",
   "text": "In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition leaders.",
   "source": "https://en.wikipedia.org/wiki/2010_Thai_military_crackdown",
   "sourceLabel": "Wikipedia: 2010 Thai military crackdown",
   "sourceDescription": "State suppression of pro-democracy protests in Bangkok, Thailand",
   "visual": "protest",
   "palette": "public-square",
-  "dek": "In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition... The deeper story is how this protest moment changed what people could expect from the world around them.",
+  "dek": "In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition leaders. The deeper story is how this protest moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-19"] = {
   ],
   "summary": [
     "May 19, 2010, is not just a date label for 2010 Thai military crackdown. It is the point where a larger protest story becomes visible enough to study. In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition leaders. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition leaders. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a street, square, prison, factory gate, school, or public building where ordinary people made power answer back. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1883,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-19"] = {
       ]
     },
     {
-      "text": "In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition leaders. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-19"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On May 19, 2010, In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition leaders. Why it mattered: 2010 Thai military crackdown matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies 2010 Thai military crackdown as state suppression of pro-democracy protests in Bangkok, Thailand. Related subjects include Royal Thai Armed Forces (Unified military forces of Thailand), 2010 Thai military crackdown (State suppression of pro-democracy protests in Bangkok, Thailand), 2010 Thai political... The related trail points to Royal Thai Armed Forces, 2010 Thai military crackdown, 2010 Thai political protests, United Front for Democracy Against Dictatorship, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On May 19, 2010, In Bangkok, the Thai military concluded a week-long crackdown on widespread protests by forcing the surrender of opposition leaders. Why it mattered: 2010 Thai military crackdown matters because it showed public pressure becoming a political force rather than background noise. In the wider protest story, it showed public pressure becoming a political force rather than background noise. The source record identifies 2010 Thai military crackdown as state suppression of pro-democracy protests in Bangkok, Thailand. Related subjects include Royal Thai Armed Forces (Unified military forces of Thailand), 2010 Thai military crackdown (State suppression of pro-democracy protests in Bangkok, Thailand), 2010 Thai political. The related trail points to Royal Thai Armed Forces, 2010 Thai military crackdown, 2010 Thai political protests, United Front for Democracy Against Dictatorship, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

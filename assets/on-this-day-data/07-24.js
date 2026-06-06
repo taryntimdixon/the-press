@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-24"] = {
     },
     {
       "label": "Scene",
-      "value": "Apollo 11’s Pacific splashdown, where astronauts, quarantine procedures, Navy divers, helicopters, cameras, and recovery ships completed the lunar..."
+      "value": "Apollo 11’s Pacific splashdown, where astronauts, quarantine procedures, Navy divers, helicopters, cameras, and recovery ships completed the lunar."
     },
     {
       "label": "Why it mattered",
@@ -159,7 +159,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["07-24"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On July 24, 1969, Apollo 11 splashed down safely in the Pacific Ocean, completing the first Moon landing mission as recovery crews, quarantine procedures, and global television turned triumph into return. Why it mattered: A spaceflight return that completed the Moon landing story and brought its risk, engineering, and spectacle back to Earth. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and public... The source record identifies NASA: Apollo 11 as nASA mission page for Apollo 11. The lasting consequence was a larger map of what humans and their machines could reach, measure, or survive beyond Earth.  Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On July 24, 1969, Apollo 11 splashed down safely in the Pacific Ocean, completing the first Moon landing mission as recovery crews, quarantine procedures, and global television turned triumph into return. Why it mattered: A spaceflight return that completed the Moon landing story and brought its risk, engineering, and spectacle back to Earth. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and public. The source record identifies NASA: Apollo 11 as nASA mission page for Apollo 11. The lasting consequence was a larger map of what humans and their machines could reach, measure, or survive beyond Earth. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

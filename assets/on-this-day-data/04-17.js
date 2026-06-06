@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-17"] = {
   "year": 2014,
   "title": "NASA",
   "topic": "NASA",
-  "headline": "NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the...",
+  "headline": "NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the habitable zone of another star.",
   "text": "NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the habitable zone of another star.",
   "source": "https://en.wikipedia.org/wiki/NASA",
   "sourceLabel": "Wikipedia: NASA",
   "sourceDescription": "American space and aeronautics agency",
   "visual": "space",
   "palette": "lunar",
-  "dek": "NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the... The deeper story is how this space exploration moment changed what people could expect from the world around them.",
+  "dek": "NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the habitable zone of another star. The deeper story is how this space exploration moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-17"] = {
   ],
   "summary": [
     "April 17, 2014, is not just a date label for NASA. It is the point where a larger space exploration story becomes visible enough to study. NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the habitable zone of another star. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the habitable zone of another star. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a mission environment where hardware, risk, mathematics, weather, and public imagination had to line up. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1861,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-17"] = {
       ]
     },
     {
-      "text": "NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the habitable zone of another star. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["04-17"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On April 17, 2014, NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the habitable zone of another star. Why it mattered: NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and public... The source record identifies NASA as american space and aeronautics agency. Related subjects include NASA (American space and aeronautics agency), Kepler-186f (Terrestrial exoplanet orbiting Kepler-186), Exoplanet (Planet outside of the Solar System), Habitable zone (Orbits where planets may have liquid surface water). The lasting... The related trail points to NASA, Kepler-186f, Exoplanet, Habitable zone, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On April 17, 2014, NASA announced the discovery of Kepler-186f, the first exoplanet with a radius similar to Earth's discovered in the habitable zone of another star. Why it mattered: NASA marked a first, and it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation. In the wider space story, it pushed space exploration into a new technical or symbolic frontier, testing machines, navigation, communications, and public. The source record identifies NASA as american space and aeronautics agency. Related subjects include NASA (American space and aeronautics agency), Kepler-186f (Terrestrial exoplanet orbiting Kepler-186), Exoplanet (Planet outside of the Solar System), Habitable zone (Orbits where planets may have liquid surface water). The lasting. The related trail points to NASA, Kepler-186f, Exoplanet, Habitable zone, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

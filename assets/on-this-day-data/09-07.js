@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-07"] = {
   "year": 1996,
   "title": "Tupac Shakur",
   "topic": "Tupac Shakur",
-  "headline": "American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six...",
+  "headline": "American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six days later.",
   "text": "American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six days later.",
   "source": "https://en.wikipedia.org/wiki/Tupac_Shakur",
   "sourceLabel": "Wikipedia: Tupac Shakur",
   "sourceDescription": "American rapper and actor (1971–1996)",
   "visual": "music",
   "palette": "stage",
-  "dek": "American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six... The deeper story is how this music and broadcast culture moment changed what people could expect from the world around them.",
+  "dek": "American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six days later. The deeper story is how this music and broadcast culture moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-07"] = {
   ],
   "summary": [
     "September 7, 1996, is not just a date label for Tupac Shakur. It is the point where a larger music and broadcast culture story becomes visible enough to study. American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six days later. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six days later. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a performance, studio, stadium, record shop, broadcast booth, or crowd where sound became a public event. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1856,
@@ -114,7 +114,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-07"] = {
       ]
     },
     {
-      "text": "American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six days later. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -157,7 +157,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["09-07"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On September 7, 1996, American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six days later. Why it mattered: Tupac Shakur matters because it changed the sound, business, audience, or shared memory of popular music. In the wider music story, it changed the sound, business, audience, or shared memory of popular music. The source record identifies Tupac Shakur as american rapper and actor (1971–1996). Related subjects include Tupac Shakur (American rapper and actor (1971–1996)), Murder of Tupac Shakur (1996 killing in Las Vegas, Nevada, U.S.), Las Vegas (Most populous city in Nevada, United States). The lasting... The related trail points to Tupac Shakur, Murder of Tupac Shakur, Las Vegas, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On September 7, 1996, American rapper Tupac Shakur was shot by an unknown assailant in Las Vegas, dying from his injuries six days later. Why it mattered: Tupac Shakur matters because it changed the sound, business, audience, or shared memory of popular music. In the wider music story, it changed the sound, business, audience, or shared memory of popular music. The source record identifies Tupac Shakur as american rapper and actor (1971–1996). Related subjects include Tupac Shakur (American rapper and actor (1971–1996)), Murder of Tupac Shakur (1996 killing in Las Vegas, Nevada, U.S.), Las Vegas (Most populous city in Nevada, United States). The lasting. The related trail points to Tupac Shakur, Murder of Tupac Shakur, Las Vegas, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

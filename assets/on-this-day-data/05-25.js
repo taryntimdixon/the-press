@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["05-25"] = {
     },
     {
       "label": "Scene",
-      "value": "the first 1977 theater lines, a gamble by 20th Century Fox, George Lucas, Industrial Light & Magic, John..."
+      "value": "the first 1977 theater lines, a gamble by 20th Century Fox, George Lucas, Industrial Light & Magic, John."
     },
     {
       "label": "Why it mattered",

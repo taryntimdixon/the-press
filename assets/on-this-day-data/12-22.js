@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-22"] = {
   "year": 2001,
   "title": "Richard Reid",
   "topic": "Richard Reid",
-  "headline": "Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to...",
+  "headline": "Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to Miami.",
   "text": "Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to Miami.",
   "source": "https://en.wikipedia.org/wiki/Richard_Reid",
   "sourceLabel": "Wikipedia: Richard Reid",
   "sourceDescription": "British terrorist jailed in a US federal prison",
   "visual": "crime",
   "palette": "dispatch",
-  "dek": "Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to... The deeper story is how this crime and accountability moment changed what people could expect from the world around them.",
+  "dek": "Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to Miami. The deeper story is how this crime and accountability moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-22"] = {
   ],
   "summary": [
     "December 22, 2001, is not just a date label for Richard Reid. It is the point where a larger crime and accountability story becomes visible enough to study. Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to Miami. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to Miami. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a hallway, office, courtroom, evidence table, newsroom, or police setting where a case became bigger than the act itself. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1852,
@@ -109,7 +109,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-22"] = {
       ]
     },
     {
-      "text": "Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to Miami. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -152,7 +152,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-22"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On December 22, 2001, Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to Miami. Why it mattered: Richard Reid matters because it exposed how law, evidence, fear, media attention, and state power collided in public. In the wider crime story, it exposed how law, evidence, fear, media attention, and state power collided in public. The source record identifies Richard Reid as british terrorist jailed in a US federal prison. Related subjects include Richard Reid (British terrorist jailed in a US federal prison), American Airlines Flight 63 (2001) (Failed act of terrorism). The lasting consequence was a public test... The related trail points to Richard Reid, American Airlines Flight 63 (2001), which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On December 22, 2001, Richard Reid unsuccessfully attempted to detonate a bomb in his shoe on a transatlantic flight from Paris to Miami. Why it mattered: Richard Reid matters because it exposed how law, evidence, fear, media attention, and state power collided in public. In the wider crime story, it exposed how law, evidence, fear, media attention, and state power collided in public. The source record identifies Richard Reid as british terrorist jailed in a US federal prison. Related subjects include Richard Reid (British terrorist jailed in a US federal prison), American Airlines Flight 63 (2001) (Failed act of terrorism). The lasting consequence was a public test. The related trail points to Richard Reid, American Airlines Flight 63 (2001), which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4

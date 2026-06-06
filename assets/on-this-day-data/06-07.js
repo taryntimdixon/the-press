@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-07"] = {
     },
     {
       "label": "Scene",
-      "value": "Pietermaritzburg station, where Gandhi’s removal from a first-class railway compartment became a remembered trigger in his thinking about..."
+      "value": "Pietermaritzburg station, where Gandhi’s removal from a first-class railway compartment became a remembered trigger in his thinking about."
     },
     {
       "label": "Why it mattered",

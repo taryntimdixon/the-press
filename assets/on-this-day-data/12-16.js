@@ -6,14 +6,14 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-16"] = {
   "year": 1689,
   "title": "Universal Declaration of Human Rights",
   "topic": "Universal Declaration of Human Rights",
-  "headline": "The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other...",
+  "headline": "The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S. Bill of Rights and the Universal Declaration of Human Rights.",
   "text": "The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S. Bill of Rights and the Universal Declaration of Human Rights.",
   "source": "https://en.wikipedia.org/wiki/Universal_Declaration_of_Human_Rights",
   "sourceLabel": "Wikipedia: Universal Declaration of Human Rights",
   "sourceDescription": "Document of human rights by the United Nations",
   "visual": "rights",
   "palette": "public-square",
-  "dek": "The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other... The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
+  "dek": "The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S. Bill of Rights and the Universal Declaration of Human Rights. The deeper story is how this rights and public power moment changed what people could expect from the world around them.",
   "facts": [
     {
       "label": "Date",
@@ -42,7 +42,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-16"] = {
   ],
   "summary": [
     "December 16, 1689, is not just a date label for Universal Declaration of Human Rights. It is the point where a larger rights and public power story becomes visible enough to study. The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S. Bill of Rights and the Universal Declaration of Human Rights. The useful way to read the event is to slow it down: who had power in the room, what tools or institutions made the moment possible, who had to live with the result, and why later generations kept returning to it. That is what turns a calendar note into history. The event looks simple in one sentence, but the one sentence is only the doorway.",
-    "The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+    "The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S. Bill of Rights and the Universal Declaration of Human Rights. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
     "The clearest scene is a public institution or street-level confrontation where law, identity, courage, and pressure met in the open. Historical change moved through real places and material clues: documents, machines, voices, clothing, weather, architecture, instruments, crowds, and waiting. Those details help the event feel less like trivia and more like a situation people had to navigate in real time."
   ],
   "wordCount": 1957,
@@ -119,7 +119,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-16"] = {
       ]
     },
     {
-      "text": "The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other... That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
+      "text": "The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S. Bill of Rights and the Universal Declaration of Human Rights. That sentence already contains the spine of the story: a date, a public action, a result, and a claim about importance. What the short version cannot show is the atmosphere around it. The day belonged to people moving through a specific world with the technology, politics, prejudices, hopes, and limits of their time. The point of slowing down is to let the reader stand inside that world long enough to understand why the event mattered before it became famous, clean, and easy to summarize.",
       "sources": [
         1
       ]
@@ -162,7 +162,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-16"] = {
       ]
     },
     {
-      "text": "The event record also gives this page its factual grain: On December 16, 1689, the Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S. Bill of Rights and the Universal Declaration of Human Rights. Why it mattered: Universal Declaration of Human Rights matters because it changed the legal or public meaning of citizenship, equality, personal freedom. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies Universal Declaration of Human Rights as document of human rights by the United Nations. Related subjects include Parliament of England (Legislature of England, c. 1236 to 1707), Bill of Rights 1689 (English civil rights legislation), Civil and political rights (Rights... The related trail points to Parliament of England, Bill of Rights 1689, Civil and political rights, United States Bill of Rights, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
+      "text": "The event record also gives this page its factual grain: On December 16, 1689, the Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S. Bill of Rights and the Universal Declaration of Human Rights. Why it mattered: Universal Declaration of Human Rights matters because it changed the legal or public meaning of citizenship, equality, personal freedom. In the wider rights story, it changed the legal or public meaning of citizenship, equality, personal freedom, or human dignity. The source record identifies Universal Declaration of Human Rights as document of human rights by the United Nations. Related subjects include Parliament of England (Legislature of England, c. 1236 to 1707), Bill of Rights 1689 (English civil rights legislation), Civil and political rights (Rights. The related trail points to Parliament of England, Bill of Rights 1689, Civil and political rights, United States Bill of Rights, which gives the reader names, places, institutions, and neighboring subjects to follow after the main entry. Those details matter because they keep the article attached to the actual historical event instead of drifting into a generic lesson. They give the reader a way to ask better questions: what happened first, what happened next, which people or systems were closest to the change, and which pieces of evidence are worth opening in a new tab.",
       "sources": [
         1,
         4
@@ -246,7 +246,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["12-16"] = {
       ]
     },
     {
-      "text": "For Universal Declaration of Human Rights, the detail work starts with the nouns inside the event itself: The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S. Bill of Rights and the Universal Declaration of Human... Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
+      "text": "For Universal Declaration of Human Rights, the detail work starts with the nouns inside the event itself: The Parliament of England enacted the Bill of Rights, setting out basic civil rights and later influencing other documents such as the U.S. Bill of Rights and the Universal Declaration of Human. Each noun points outward. If the entry names a person, the reader should ask what network, training, opposition, or opportunity surrounded that person. If it names a tool, building, route, law, performance, or mission, the reader should ask who made it, who used it, who paid for it, and who was left outside its benefits. That is how the one-day marker becomes a story about process, cause, and consequence.",
       "sources": [
         1,
         2,

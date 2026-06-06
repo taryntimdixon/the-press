@@ -33,7 +33,7 @@ window.PRESS_ON_THIS_DAY_DETAIL["06-05"] = {
     },
     {
       "label": "Scene",
-      "value": "a public-health report describing unusual pneumonia in five young gay men in Los Angeles, before HIV/AIDS had its..."
+      "value": "a public-health report describing unusual pneumonia in five young gay men in Los Angeles, before HIV/AIDS had its."
     },
     {
       "label": "Why it mattered",
