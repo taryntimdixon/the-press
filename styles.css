@@ -13064,9 +13064,11 @@ html[data-theme="dark"] body.page-article .listen-speed-value{
   line-height:1.22;
 }
 .on-this-day__story [data-history-text]{
-  color:var(--ink);
-  font-size:clamp(.88rem,1.08vw,.96rem);
-  line-height:1.28;
+  color:var(--muted);
+  font-family:var(--sans);
+  font-size:clamp(.86rem,1.05vw,.94rem);
+  font-weight:700;
+  line-height:1.22;
 }
 .on-this-day__facts{
   display:grid;
