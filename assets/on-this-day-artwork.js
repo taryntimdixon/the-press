@@ -1444,7 +1444,7 @@ window.PRESS_ON_THIS_DAY_ARTWORK = {
     "status": "generated"
   },
   "09-09": {
-    "src": "assets/on-this-day-images/09-09-civil-rights-act-1957.png",
+    "src": "assets/on-this-day-images/09-09-civil-rights-act-1957.png?v=1780757231",
     "alt": "1957: Civil Rights Act of 1957. U.S. president Dwight D. Eisenhower signed the Civil Rights Act of 1957, the first civil rights bill since Reconstruction.",
     "style": "photorealistic editorial historical scene",
     "status": "generated"

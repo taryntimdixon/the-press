@@ -210,24 +210,45 @@
 
   function firstHistorySentence(value) {
     const cleaned = cleanHistoryImageText(value).replace(/\s+The deeper story is\b.*$/i, '');
-    const sentence = cleaned.match(/^.{24,260}?[.!?](?:\s|$)/);
-    return trimCaption(sentence ? sentence[0] : cleaned);
+    return trimCaption(sentenceFromText(cleaned) || cleaned);
   }
 
   function historyDisplayDek(moment = {}) {
-    const dek = collapseWhitespace(moment.dek || '');
-    if (dek && !dek.includes('...')) return dek;
+    const event = firstHistorySentence(moment.text || moment.headline || '');
+    if (event) return event;
+    return firstHistorySentence(stripHistoryDekBoilerplate(moment.dek || '') || moment.title || '');
+  }
 
-    const event = firstHistorySentence(moment.text || moment.headline || moment.title || '');
-    const deeperMatch = dek.match(/\bThe deeper story is\b.*$/i);
-    const fallback = [event, deeperMatch ? ensureSentence(deeperMatch[0]) : ''].filter(Boolean).join(' ');
-    return collapseWhitespace(fallback || dek.replace(/\.\.\./g, '.'));
+  function stripHistoryDekBoilerplate(value) {
+    return collapseWhitespace(value)
+      .replace(/\.\.\./g, '.')
+      .replace(/\s+\bThe deeper story is\b.*$/i, '');
   }
 
   function ensureSentence(value) {
     const text = collapseWhitespace(value);
     if (!text) return '';
     return /[.!?]$/.test(text) ? text : `${text}.`;
+  }
+
+  function sentenceFromText(text) {
+    for (let index = 0; index < text.length; index += 1) {
+      if (!/[.!?]/.test(text[index])) continue;
+      if (index < text.length - 1 && !/\s/.test(text[index + 1])) continue;
+      if (isProtectedSentencePeriod(text, index)) continue;
+      return text.slice(0, index + 1);
+    }
+    return '';
+  }
+
+  function isProtectedSentencePeriod(text, index) {
+    const before = text.slice(0, index + 1);
+    const token = before.match(/(?:^|\s)(\S+)$/)?.[1] || '';
+    const next = text.slice(index + 1).trimStart();
+    if (/^(?:[A-Z]\.)+$/.test(token)) return true;
+    if (/^(?:Mr|Mrs|Ms|Dr|Prof|St|Sen|Rep|Gov|Gen|Col|Lt|Capt|Sgt|Jr|Sr|No|v|vs)\.$/i.test(token)) return true;
+    if (next && /^[a-z]/.test(next)) return true;
+    return false;
   }
 
   function cleanHistoryImageText(value) {

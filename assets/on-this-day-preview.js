@@ -19,6 +19,54 @@
   const entries = Object.values(moments)
     .filter(Boolean)
     .sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
+  const extraNotes = {
+    '06-06': "More than 150,000 Allied troops crossed the English Channel that day, with airborne landings, naval bombardment, and beach assaults spread across five Normandy landing areas.",
+    '01-16': "Carol Channing led the original Broadway cast, and Jerry Herman wrote the music and lyrics for the production.",
+    '02-08': "Johnson fell one electoral vote short after Virginia's electors refused to support him, sending the decision to the Senate.",
+    '02-14': "Its first video, \"Me at the zoo,\" was uploaded in April 2005, and Google bought the company the next year.",
+    '02-19': "Officials later said prison staff had opened doors and helped cartel-linked inmates escape.",
+    '02-22': "The game came during the medal round; the United States still had to beat Finland to win gold.",
+    '03-02': "Chamberlain also made 28 free throws that night while playing every minute of the game.",
+    '03-14': "W. S. Gilbert wrote the libretto, and Arthur Sullivan composed the music for the Savoy Theatre production.",
+    '04-02': "The film was developed with Arthur C. Clarke, who also wrote the companion novel released after the premiere.",
+    '04-13': "The Island Records release introduced the Wailers to a wider international rock audience.",
+    '04-28': "Released in 1973, the record used studio effects, spoken-word fragments, and continuous transitions between tracks.",
+    '05-03': "The images helped push the Kennedy administration toward federal civil rights legislation later that year.",
+    '05-13': "Salvador Sobral's sister wrote the song, which won with a then-record Eurovision points total.",
+    '05-21': "The flight lasted more than 33 hours and ended at Le Bourget, where a huge crowd met Lindbergh.",
+    '05-26': "Between May 26 and June 4, Operation Dynamo evacuated more than 338,000 Allied troops from Dunkirk's beaches and harbor.",
+    '06-04': "Troops and tanks moved into central Beijing after weeks of student-led demonstrations in Tiananmen Square.",
+    '06-11': "Governor George Wallace stood at the schoolhouse door before federalized National Guard troops enforced enrollment.",
+    '06-14': "The French government had already left Paris, and the city was declared open to avoid street fighting.",
+    '06-16': "Valentina Tereshkova orbited Earth 48 times aboard Vostok 6 over nearly three days.",
+    '06-17': "The arrests eventually led to Senate hearings, taped Oval Office evidence, and Richard Nixon's resignation.",
+    '06-18': "The battle ended Napoleon's Hundred Days and sent him into final exile on Saint Helena.",
+    '06-26': "Bloomsbury printed only about 500 hardback copies in the first United Kingdom run.",
+    '07-02': "The law barred discrimination in public accommodations and employment and strengthened federal enforcement of school desegregation.",
+    '07-05': "Scientists announced Dolly publicly in February 1997 after keeping the birth quiet for months while confirming the result.",
+    '07-08': "Atlantis flew the STS-135 mission, carrying supplies to the International Space Station.",
+    '07-12': "France beat Brazil 3-0 at Stade de France, with Zinedine Zidane scoring twice from headers.",
+    '07-15': "Nintendo launched the console in Japan with Donkey Kong, Donkey Kong Jr., and Popeye as early cartridges.",
+    '07-19': "Cassini photographed Saturn and Earth during an imaging campaign while the spacecraft was in Saturn's shadow.",
+    '07-22': "Wiley Post circled the globe alone in the Lockheed Vega Winnie Mae in 7 days, 18 hours, and 49 minutes.",
+    '07-29': "Allen & Unwin issued the book in Britain in 1954, followed by The Two Towers and The Return of the King.",
+    '08-08': "The cover shoot took only minutes outside EMI Studios, later renamed Abbey Road Studios.",
+    '08-10': "His death occurred while he was awaiting trial on federal sex-trafficking charges in New York.",
+    '08-12': "Investigators traced the crash to a faulty repair of the aircraft's rear pressure bulkhead years earlier.",
+    '08-18': "Tennessee's ratification supplied the final state approval needed for the amendment to become part of the Constitution.",
+    '08-27': "Twin brothers Norris and Ross McWhirter compiled the early volumes after being commissioned by Guinness.",
+    '09-15': "De Gouges addressed the text to Queen Marie Antoinette and modeled it against the 1789 rights declaration.",
+    '10-02': "Before joining the Court, Marshall argued Brown v. Board of Education as NAACP chief counsel.",
+    '10-10': "The group's motto was \"Deeds, not words,\" and its tactics brought arrests, hunger strikes, and force-feeding.",
+    '10-16': "The book introduced Narnia, Aslan, and the Pevensie children before six more novels expanded the series.",
+    '10-17': "The first tournament was a 36-hole event played over three rounds on Prestwick's 12-hole course.",
+    '11-06': "The treaty created the Great Sioux Reservation and recognized Native rights to the Black Hills, promises later broken by the United States.",
+    '11-09': "Jann Wenner and critic Ralph J. Gleason launched the magazine in San Francisco.",
+    '11-16': "Riel's execution deepened divisions between French and English Canada and made him a lasting Metis symbol.",
+    '11-25': "The release followed the concert film This Is Us and preceded the Where We Are stadium tour.",
+    '12-06': "Georgia's ratification supplied the final state approval, and William H. Seward certified the amendment on December 18, 1865.",
+    '12-29': "The killings took place near Wounded Knee Creek on the Pine Ridge Reservation in South Dakota.",
+  };
 
   const laneLabels = {
     chronicle: 'Chronicle',
@@ -124,19 +172,259 @@
   }
 
   function displayDek(moment = {}) {
-    const dek = cleanText(moment.dek || '');
-    if (dek && !dek.includes('...')) return dek;
+    const event = firstCompleteSentence(moment.text || moment.headline || '');
+    if (event) return event;
+    return firstCompleteSentence(stripHistoryDekBoilerplate(moment.dek || '') || moment.title || '');
+  }
 
-    const event = firstCompleteSentence(moment.text || moment.headline || moment.title || '');
-    const deeperMatch = dek.match(/\bThe deeper story is\b.*$/i);
-    const fallback = [event, deeperMatch ? ensureSentence(deeperMatch[0]) : ''].filter(Boolean).join(' ');
-    return cleanText(fallback || dek.replace(/\.\.\./g, '.'));
+  function previewInsights(moment = {}, dek = '') {
+    const blockedKeys = new Set([
+      comparableText(dek),
+      comparableText(moment.text || ''),
+      comparableText(moment.headline || ''),
+      comparableText(stripHistoryDekBoilerplate(moment.dek || '')),
+    ].filter(Boolean));
+    const referenceTexts = [
+      dek,
+      moment.text || '',
+    ].filter(Boolean);
+    const insights = [];
+
+    addInsight(headlineExtraSentence(moment, dek));
+    addInsight(extraNotes[moment.date], true);
+    addInsight(sourceDescriptionSentence(moment));
+    addInsight(connectedSubjectsSentence(moment));
+
+    (Array.isArray(moment.coolFacts) ? moment.coolFacts : []).forEach((fact) => {
+      addInsight(cleanPreviewInsight(fact, moment));
+    });
+    if (!insights.length) addInsight(stakesSentence(moment));
+
+    return insights.slice(0, 3);
+
+    function addInsight(value, allowNearRepeat = false) {
+      const text = ensureSentence(cleanPreviewInsight(value, moment));
+      const key = comparableText(text);
+      if (!text || !key || blockedKeys.has(key)) return;
+      if (!allowNearRepeat && referenceTexts.some((reference) => isRepeatingText(text, reference))) return;
+      if (!allowNearRepeat && insights.some((item) => isRepeatingText(text, item))) return;
+      insights.push(text);
+    }
+  }
+
+  function cleanPreviewInsight(value, moment = {}) {
+    let text = stripHistoryDekBoilerplate(value);
+    if (!text) return '';
+    if (/^\w+\s+\d+\s+places the reader\b/i.test(text)) return '';
+    if (/^\w+\s+\d{1,2},\s+\d{3,4}:/i.test(text)) return '';
+    if (/^A useful starting source is\b/i.test(text)) return '';
+    if (/^A calendar entry matters\b/i.test(text)) return '';
+    if (/^The lasting meaning sits\b/i.test(text)) return '';
+    if (/^(?:The lasting consequence|The practical result|The consequence was)\b/i.test(text)) return '';
+    if (/^(?:Why it mattered|The big historical pressure point):/i.test(text)) return '';
+    if (/^(?:Context|Source context|Connected subjects|Connected to|Stakes|Main subject):/i.test(text)) return '';
+    if (/^Scene:/i.test(text)) return '';
+    return ensureSentence(sentenceCase(text));
+  }
+
+  function sourceDescriptionSentence(moment = {}) {
+    const description = cleanText(moment.sourceDescription || '');
+    if (!description) return '';
+    const subject = cleanText(moment.topic || moment.title || 'The event');
+    if (!subject || comparableText(subject) === comparableText(description)) return '';
+    return `${displaySubject(subject)} ${pastSubjectVerb(subject)} ${descriptionPhrase(description)}.`;
+  }
+
+  function headlineExtraSentence(moment = {}, dek = '') {
+    const headline = stripHistoryDekBoilerplate(moment.headline || '');
+    if (!headline || comparableText(headline) === comparableText(dek)) return '';
+    const clauses = headline.split(/[,;]\s+/).map((clause) => cleanText(clause)).filter(Boolean);
+    for (const clause of clauses.slice(1)) {
+      const sentence = clauseToSentence(clause, moment);
+      if (sentence && comparableText(sentence) !== comparableText(dek)) return sentence;
+    }
+    return '';
+  }
+
+  function clauseToSentence(value, moment = {}) {
+    const clause = cleanText(value).replace(/[.!?]$/, '');
+    if (!clause) return '';
+    const replacements = {
+      opening: 'opened',
+      beginning: 'began',
+      creating: 'created',
+      making: 'made',
+      becoming: 'became',
+      presenting: 'presented',
+      introducing: 'introduced',
+      establishing: 'established',
+      resulting: 'resulted',
+      marking: 'marked',
+      giving: 'gave',
+      hoping: 'hoped',
+      exposing: 'exposed',
+      changing: 'changed',
+    };
+    const match = clause.match(/^([a-z]+ing)\b\s*(.*)$/i);
+    if (match) {
+      const verb = replacements[match[1].toLowerCase()] || match[1];
+      return `${shortSubject(moment)} ${verb} ${match[2]}.`;
+    }
+    return ensureSentence(sentenceCase(clause));
+  }
+
+  function connectedSubjectsSentence(moment = {}) {
+    const subjects = connectedSubjects(moment);
+    if (!subjects.length) return '';
+    return `The surrounding record also points to ${readableList(subjects)}.`;
+  }
+
+  function connectedSubjects(moment = {}) {
+    const titleKey = comparableText(moment.title || '');
+    const topicKey = comparableText(moment.topic || '');
+    const descriptionKey = comparableText(moment.sourceDescription || '');
+    const items = [];
+
+    (Array.isArray(moment.facts) ? moment.facts : []).forEach((fact) => {
+      if (!/^connected to$/i.test(fact.label || '')) return;
+      String(fact.value || '').split(',').forEach((item) => add(item));
+    });
+    (Array.isArray(moment.related) ? moment.related : []).forEach((item) => add(item.title || item.name || ''));
+
+    return items.slice(0, 4);
+
+    function add(value) {
+      const text = cleanText(value).replace(/[.!?]$/, '');
+      const key = comparableText(text);
+      if (!text || !key || key === titleKey || key === topicKey || key === descriptionKey) return;
+      if (items.some((item) => comparableText(item) === key)) return;
+      items.push(text);
+    }
+  }
+
+  function stakesSentence(moment = {}) {
+    const stakes = cleanText(moment.stakes || '');
+    if (!stakes) return '';
+    return /^it\b/i.test(stakes) ? ensureSentence(stakes) : `It was ${lowercaseFirst(stakes)}.`;
+  }
+
+  function displaySubject(subject) {
+    const text = cleanText(subject);
+    if (!text || /^(?:a|an|the)\b/i.test(text) || /:/.test(text)) return text;
+    if (/\b(?:act|battle|declaration|landings|massacre|revolution|treaty|war)\b/i.test(text)) return `The ${text}`;
+    return text;
+  }
+
+  function shortSubject(moment = {}) {
+    return displaySubject(moment.title || moment.topic || 'The event');
+  }
+
+  function subjectVerb(subject) {
+    return /\b(?:landings|games|olympics|wars|rights|protests|treaties|forces|people)\b$/i.test(subject) ? 'are' : 'is';
+  }
+
+  function pastSubjectVerb(subject) {
+    return /\b(?:landings|games|olympics|wars|rights|protests|treaties|forces|people)\b$/i.test(subject) ? 'were' : 'was';
+  }
+
+  function descriptionPhrase(value) {
+    const text = cleanText(value);
+    if (!text) return '';
+    if (/^(?:a|an|the)\b/i.test(text)) return text;
+    if (/^allied invasion\b/i.test(text)) return `the ${text}`;
+    if (/^\d/.test(text)) return `the ${text}`;
+    return `${/^[aeiou]/i.test(text) ? 'an' : 'a'} ${text}`;
+  }
+
+  function readableList(items) {
+    const list = items.map((item) => cleanText(item)).filter(Boolean);
+    if (list.length <= 1) return list[0] || '';
+    if (list.length === 2) return `${list[0]} and ${list[1]}`;
+    return `${list.slice(0, -1).join(', ')}, and ${list[list.length - 1]}`;
+  }
+
+  function sentenceCase(value) {
+    const text = cleanText(value);
+    if (!text || !/^[a-z]/.test(text)) return text;
+    return `${text.charAt(0).toUpperCase()}${text.slice(1)}`;
+  }
+
+  function lowercaseFirst(value) {
+    const text = cleanText(value);
+    if (!text || !/^[A-Z]/.test(text)) return text;
+    return `${text.charAt(0).toLowerCase()}${text.slice(1)}`;
+  }
+
+  function comparableText(value) {
+    return cleanText(value)
+      .toLowerCase()
+      .replace(/&amp;/g, '&')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  }
+
+  function isRepeatingText(value, reference) {
+    const valueKey = comparableText(value);
+    const referenceKey = comparableText(reference);
+    if (!valueKey || !referenceKey) return false;
+    if (valueKey === referenceKey) return true;
+    if (valueKey.length > 24 && referenceKey.includes(valueKey)) return true;
+    if (referenceKey.length > 24 && valueKey.includes(referenceKey)) return true;
+    return textOverlap(value, reference) >= 0.62;
+  }
+
+  function textOverlap(value, reference) {
+    const valueTokens = meaningfulTokens(value);
+    const referenceTokens = meaningfulTokens(reference);
+    if (valueTokens.length < 4 || referenceTokens.length < 4) return 0;
+    const referenceSet = new Set(referenceTokens);
+    const shared = valueTokens.filter((token) => referenceSet.has(token)).length;
+    return shared / Math.min(valueTokens.length, referenceTokens.length);
+  }
+
+  function meaningfulTokens(value) {
+    const stopWords = new Set([
+      'about', 'above', 'after', 'again', 'against', 'also', 'because', 'before', 'began', 'being',
+      'could', 'during', 'each', 'event', 'first', 'from', 'have', 'history', 'into', 'itself',
+      'made', 'more', 'most', 'other', 'over', 'same', 'some', 'story', 'than', 'that', 'their',
+      'them', 'then', 'there', 'these', 'they', 'this', 'through', 'under', 'very', 'were', 'what',
+      'when', 'where', 'which', 'while', 'with', 'world', 'would',
+    ]);
+    return comparableText(value)
+      .split(/\s+/)
+      .filter((token) => token.length > 2 && !stopWords.has(token));
+  }
+
+  function stripHistoryDekBoilerplate(value) {
+    return cleanText(value)
+      .replace(/\.\.\./g, '.')
+      .replace(/\s+\bThe deeper story is\b.*$/i, '');
   }
 
   function firstCompleteSentence(value) {
     const text = cleanText(value).replace(/\.\.\./g, '.');
-    const match = text.match(/^.{12,360}?[.!?](?:\s|$)/);
-    return ensureSentence(match ? match[0] : text);
+    const sentence = sentenceFromText(text);
+    return ensureSentence(sentence || text);
+  }
+
+  function sentenceFromText(text) {
+    for (let index = 0; index < text.length; index += 1) {
+      if (!/[.!?]/.test(text[index])) continue;
+      if (index < text.length - 1 && !/\s/.test(text[index + 1])) continue;
+      if (isProtectedSentencePeriod(text, index)) continue;
+      return text.slice(0, index + 1);
+    }
+    return '';
+  }
+
+  function isProtectedSentencePeriod(text, index) {
+    const before = text.slice(0, index + 1);
+    const token = before.match(/(?:^|\s)(\S+)$/)?.[1] || '';
+    const next = text.slice(index + 1).trimStart();
+    if (/^(?:[A-Z]\.)+$/.test(token)) return true;
+    if (/^(?:Mr|Mrs|Ms|Dr|Prof|St|Sen|Rep|Gov|Gen|Col|Lt|Capt|Sgt|Jr|Sr|No|v|vs)\.$/i.test(token)) return true;
+    if (next && /^[a-z]/.test(next)) return true;
+    return false;
   }
 
   function ensureSentence(value) {
@@ -240,8 +528,10 @@
   function cardMarkup(moment) {
     const art = artwork[moment.date];
     const hasImage = Boolean(art?.src);
-    const facts = (moment.coolFacts || []).slice(0, 2);
-    const factItems = facts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join('');
+    const dek = displayDek(moment);
+    const insights = previewInsights(moment, dek);
+    const supportText = insights[0] || '';
+    const factItems = insights.slice(1, 3).map((fact) => `<li>${escapeHtml(fact)}</li>`).join('');
 
     return `
       <article class="history-preview-card" id="${escapeHtml(dateId(moment.date))}" data-preview-card data-date="${escapeHtml(moment.date || '')}" data-search="${escapeHtml(textBlob(moment))}" tabindex="-1">
@@ -261,9 +551,9 @@
             <span>${escapeHtml(laneLabels[moment.visual] || moment.visual || 'History')}</span>
           </div>
           <h2>${escapeHtml(moment.title || 'Historical moment')}</h2>
-          <p class="history-preview-card__dek">${escapeHtml(displayDek(moment))}</p>
-          <p class="history-preview-card__text">${escapeHtml(moment.text || '')}</p>
-          <ul class="history-preview-card__facts">${factItems}</ul>
+          <p class="history-preview-card__dek">${escapeHtml(dek)}</p>
+          ${supportText ? `<p class="history-preview-card__text">${escapeHtml(supportText)}</p>` : ''}
+          ${factItems ? `<ul class="history-preview-card__facts">${factItems}</ul>` : ''}
           <a class="history-preview-card__more" href="on-this-day-event.html?date=${escapeHtml(moment.date || '')}">Read more about this</a>
         </div>
       </article>

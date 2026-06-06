@@ -1387,6 +1387,55 @@ function pressIsCartoonIndexItem(item = {}, urlOverride = '', sectionOverride = 
     });
   }
 
+  const historyExtraNotes = {
+    '06-06': "More than 150,000 Allied troops crossed the English Channel that day, with airborne landings, naval bombardment, and beach assaults spread across five Normandy landing areas.",
+    '01-16': "Carol Channing led the original Broadway cast, and Jerry Herman wrote the music and lyrics for the production.",
+    '02-08': "Johnson fell one electoral vote short after Virginia's electors refused to support him, sending the decision to the Senate.",
+    '02-14': "Its first video, \"Me at the zoo,\" was uploaded in April 2005, and Google bought the company the next year.",
+    '02-19': "Officials later said prison staff had opened doors and helped cartel-linked inmates escape.",
+    '02-22': "The game came during the medal round; the United States still had to beat Finland to win gold.",
+    '03-02': "Chamberlain also made 28 free throws that night while playing every minute of the game.",
+    '03-14': "W. S. Gilbert wrote the libretto, and Arthur Sullivan composed the music for the Savoy Theatre production.",
+    '04-02': "The film was developed with Arthur C. Clarke, who also wrote the companion novel released after the premiere.",
+    '04-13': "The Island Records release introduced the Wailers to a wider international rock audience.",
+    '04-28': "Released in 1973, the record used studio effects, spoken-word fragments, and continuous transitions between tracks.",
+    '05-03': "The images helped push the Kennedy administration toward federal civil rights legislation later that year.",
+    '05-13': "Salvador Sobral's sister wrote the song, which won with a then-record Eurovision points total.",
+    '05-21': "The flight lasted more than 33 hours and ended at Le Bourget, where a huge crowd met Lindbergh.",
+    '05-26': "Between May 26 and June 4, Operation Dynamo evacuated more than 338,000 Allied troops from Dunkirk's beaches and harbor.",
+    '06-04': "Troops and tanks moved into central Beijing after weeks of student-led demonstrations in Tiananmen Square.",
+    '06-11': "Governor George Wallace stood at the schoolhouse door before federalized National Guard troops enforced enrollment.",
+    '06-14': "The French government had already left Paris, and the city was declared open to avoid street fighting.",
+    '06-16': "Valentina Tereshkova orbited Earth 48 times aboard Vostok 6 over nearly three days.",
+    '06-17': "The arrests eventually led to Senate hearings, taped Oval Office evidence, and Richard Nixon's resignation.",
+    '06-18': "The battle ended Napoleon's Hundred Days and sent him into final exile on Saint Helena.",
+    '06-26': "Bloomsbury printed only about 500 hardback copies in the first United Kingdom run.",
+    '07-02': "The law barred discrimination in public accommodations and employment and strengthened federal enforcement of school desegregation.",
+    '07-05': "Scientists announced Dolly publicly in February 1997 after keeping the birth quiet for months while confirming the result.",
+    '07-08': "Atlantis flew the STS-135 mission, carrying supplies to the International Space Station.",
+    '07-12': "France beat Brazil 3-0 at Stade de France, with Zinedine Zidane scoring twice from headers.",
+    '07-15': "Nintendo launched the console in Japan with Donkey Kong, Donkey Kong Jr., and Popeye as early cartridges.",
+    '07-19': "Cassini photographed Saturn and Earth during an imaging campaign while the spacecraft was in Saturn's shadow.",
+    '07-22': "Wiley Post circled the globe alone in the Lockheed Vega Winnie Mae in 7 days, 18 hours, and 49 minutes.",
+    '07-29': "Allen & Unwin issued the book in Britain in 1954, followed by The Two Towers and The Return of the King.",
+    '08-08': "The cover shoot took only minutes outside EMI Studios, later renamed Abbey Road Studios.",
+    '08-10': "His death occurred while he was awaiting trial on federal sex-trafficking charges in New York.",
+    '08-12': "Investigators traced the crash to a faulty repair of the aircraft's rear pressure bulkhead years earlier.",
+    '08-18': "Tennessee's ratification supplied the final state approval needed for the amendment to become part of the Constitution.",
+    '08-27': "Twin brothers Norris and Ross McWhirter compiled the early volumes after being commissioned by Guinness.",
+    '09-15': "De Gouges addressed the text to Queen Marie Antoinette and modeled it against the 1789 rights declaration.",
+    '10-02': "Before joining the Court, Marshall argued Brown v. Board of Education as NAACP chief counsel.",
+    '10-10': "The group's motto was \"Deeds, not words,\" and its tactics brought arrests, hunger strikes, and force-feeding.",
+    '10-16': "The book introduced Narnia, Aslan, and the Pevensie children before six more novels expanded the series.",
+    '10-17': "The first tournament was a 36-hole event played over three rounds on Prestwick's 12-hole course.",
+    '11-06': "The treaty created the Great Sioux Reservation and recognized Native rights to the Black Hills, promises later broken by the United States.",
+    '11-09': "Jann Wenner and critic Ralph J. Gleason launched the magazine in San Francisco.",
+    '11-16': "Riel's execution deepened divisions between French and English Canada and made him a lasting Metis symbol.",
+    '11-25': "The release followed the concert film This Is Us and preceded the Where We Are stadium tour.",
+    '12-06': "Georgia's ratification supplied the final state approval, and William H. Seward certified the amendment on December 18, 1865.",
+    '12-29': "The killings took place near Wounded Knee Creek on the Pine Ridge Reservation in South Dakota.",
+  };
+
   function ensureOnThisDaySection() {
     let section = document.querySelector('[data-on-this-day]');
     if (section) {
@@ -1472,13 +1521,19 @@ function pressIsCartoonIndexItem(item = {}, urlOverride = '', sectionOverride = 
       dateNode.textContent = `${displayDate}${fallbackNote}`;
     }
 
+    const dekText = historyDisplayDek(moment);
+    const support = historyDisplaySupport(moment, dekText);
+
     if (yearNode) yearNode.textContent = formatHistoryYear(moment.year);
     if (titleNode) titleNode.textContent = moment.title || moment.headline || 'Historical moment';
-    if (dekNode) dekNode.textContent = moment.dek || '';
-    if (textNode) textNode.textContent = moment.text || '';
+    if (dekNode) dekNode.textContent = dekText;
+    if (textNode) {
+      textNode.textContent = support.text || '';
+      textNode.hidden = !support.text;
+    }
 
     if (factsNode) {
-      const facts = Array.isArray(moment.facts) ? moment.facts.slice(0, 5) : [];
+      const facts = historyDisplayFacts(moment, dekText, support).slice(0, 5);
       factsNode.innerHTML = facts.map((fact) => `
         <div class="on-this-day__fact">
           <span>${escapeHtml(fact.label || '')}</span>
@@ -1578,8 +1633,310 @@ function pressIsCartoonIndexItem(item = {}, urlOverride = '', sectionOverride = 
 
   function firstHistoryImageSentence(value) {
     const cleaned = cleanHistoryImageText(value).replace(/\s+The deeper story is\b.*$/i, '');
-    const sentence = cleaned.match(/^.{24,260}?[.!?](?:\s|$)/);
-    return trimHistoryImageText(sentence ? sentence[0] : cleaned);
+    return trimHistoryImageText(sentenceFromHistoryText(cleaned) || cleaned);
+  }
+
+  function historyDisplayDek(moment = {}) {
+    const event = firstHistoryDisplaySentence(moment.text || moment.headline || '');
+    if (event) return event;
+    return firstHistoryDisplaySentence(stripHistoryDekBoilerplate(moment.dek || '') || moment.title || '');
+  }
+
+  function historyDisplaySupport(moment = {}, dek = '') {
+    const blockedKeys = new Set([
+      comparableHistoryText(dek),
+      comparableHistoryText(moment.text || ''),
+      comparableHistoryText(moment.headline || ''),
+      comparableHistoryText(stripHistoryDekBoilerplate(moment.dek || '')),
+    ].filter(Boolean));
+    const referenceTexts = [
+      dek,
+      moment.text || '',
+    ].filter(Boolean);
+    const candidates = [];
+
+    addCandidate(historyHeadlineExtraSentence(moment, dek), 'headline');
+    addCandidate(historyExtraNotes[moment.date], 'extraNote', true);
+    addCandidate(historySourceDescriptionSentence(moment), 'sourceDescription');
+    addCandidate(historyConnectedSubjectsSentence(moment), 'connected');
+    (Array.isArray(moment.coolFacts) ? moment.coolFacts : []).forEach((fact) => {
+      addCandidate(cleanHistorySupportLine(fact, moment), 'coolFacts');
+    });
+    if (!candidates.length) addCandidate(historyStakesSentence(moment), 'stakes');
+
+    const picked = [];
+    const hideFactLabels = new Set();
+    for (const candidate of candidates) {
+      if (!candidate.text) continue;
+      if (picked.some((item) => historyIsRepeating(candidate.text, item.text))) continue;
+      picked.push(candidate);
+      if (candidate.factLabel) hideFactLabels.add(String(candidate.factLabel).toLowerCase());
+      if (historyWordCount(picked.map((item) => item.text).join(' ')) >= 24) break;
+    }
+
+    return {
+      text: picked.map((item) => item.text).join(' '),
+      hideFactLabels,
+    };
+
+    function addCandidate(value, factLabel = '', allowNearRepeat = false) {
+      const text = ensureHistorySentence(cleanHistorySupportLine(value, moment));
+      const key = comparableHistoryText(text);
+      if (!text || !key || blockedKeys.has(key)) return;
+      if (!allowNearRepeat && referenceTexts.some((reference) => historyIsRepeating(text, reference))) return;
+      if (!allowNearRepeat && candidates.some((candidate) => historyIsRepeating(text, candidate.text))) return;
+      candidates.push({ text, factLabel });
+    }
+  }
+
+  function historyDisplayFacts(moment = {}, dek = '', support = {}) {
+    const hiddenLabels = support.hideFactLabels || new Set();
+    const blockedValues = new Set([
+      comparableHistoryText(dek),
+      comparableHistoryText(support.text || ''),
+      comparableHistoryText(moment.text || ''),
+      comparableHistoryText(moment.headline || ''),
+    ].filter(Boolean));
+
+    return (Array.isArray(moment.facts) ? moment.facts : []).filter((fact) => {
+      const label = String(fact.label || '');
+      const value = String(fact.value || '');
+      if (/^why\b/i.test(label)) return false;
+      if (/^scene$/i.test(label)) return false;
+      if (/^(?:context|source context|main subject|connected to|stakes)$/i.test(label)) return false;
+      if (hiddenLabels.has(label.toLowerCase())) return false;
+      if (blockedValues.has(comparableHistoryText(value))) return false;
+      return true;
+    });
+  }
+
+  function historySourceDescriptionSentence(moment = {}) {
+    const description = collapseWhitespace(moment.sourceDescription || '');
+    if (!description) return '';
+    const subject = collapseWhitespace(moment.topic || moment.title || 'The event');
+    if (!subject || comparableHistoryText(subject) === comparableHistoryText(description)) return '';
+    return `${historyDisplaySubject(subject)} ${historyPastSubjectVerb(subject)} ${historyDescriptionPhrase(description)}.`;
+  }
+
+  function historyHeadlineExtraSentence(moment = {}, dek = '') {
+    const headline = stripHistoryDekBoilerplate(moment.headline || '');
+    if (!headline || comparableHistoryText(headline) === comparableHistoryText(dek)) return '';
+    const clauses = headline.split(/[,;]\s+/).map((clause) => collapseWhitespace(clause)).filter(Boolean);
+    for (const clause of clauses.slice(1)) {
+      const sentence = historyClauseToSentence(clause, moment);
+      if (sentence && comparableHistoryText(sentence) !== comparableHistoryText(dek)) return sentence;
+    }
+    return '';
+  }
+
+  function historyClauseToSentence(value, moment = {}) {
+    const clause = collapseWhitespace(value).replace(/[.!?]$/, '');
+    if (!clause) return '';
+    const replacements = {
+      opening: 'opened',
+      beginning: 'began',
+      creating: 'created',
+      making: 'made',
+      becoming: 'became',
+      presenting: 'presented',
+      introducing: 'introduced',
+      establishing: 'established',
+      resulting: 'resulted',
+      marking: 'marked',
+      giving: 'gave',
+      hoping: 'hoped',
+      exposing: 'exposed',
+      changing: 'changed',
+    };
+    const match = clause.match(/^([a-z]+ing)\b\s*(.*)$/i);
+    if (match) {
+      const verb = replacements[match[1].toLowerCase()] || match[1];
+      const subject = historyShortSubject(moment);
+      return `${subject} ${verb} ${match[2]}.`;
+    }
+    return ensureHistorySentence(sentenceCaseHistory(clause));
+  }
+
+  function historyConnectedSubjectsSentence(moment = {}) {
+    const subjects = historyConnectedSubjects(moment);
+    if (!subjects.length) return '';
+    return `The surrounding record also points to ${historyReadableList(subjects)}.`;
+  }
+
+  function historyConnectedSubjects(moment = {}) {
+    const titleKey = comparableHistoryText(moment.title || '');
+    const topicKey = comparableHistoryText(moment.topic || '');
+    const descriptionKey = comparableHistoryText(moment.sourceDescription || '');
+    const items = [];
+
+    (Array.isArray(moment.facts) ? moment.facts : []).forEach((fact) => {
+      if (!/^connected to$/i.test(fact.label || '')) return;
+      String(fact.value || '').split(',').forEach((item) => add(item));
+    });
+    (Array.isArray(moment.related) ? moment.related : []).forEach((item) => add(item.title || item.name || ''));
+
+    return items.slice(0, 4);
+
+    function add(value) {
+      const text = collapseWhitespace(value).replace(/[.!?]$/, '');
+      const key = comparableHistoryText(text);
+      if (!text || !key || key === titleKey || key === topicKey || key === descriptionKey) return;
+      if (items.some((item) => comparableHistoryText(item) === key)) return;
+      items.push(text);
+    }
+  }
+
+  function historyStakesSentence(moment = {}) {
+    const stakes = collapseWhitespace(moment.stakes || '');
+    if (!stakes) return '';
+    return /^it\b/i.test(stakes) ? ensureHistorySentence(stakes) : `It was ${lowercaseFirstHistory(stakes)}.`;
+  }
+
+  function cleanHistorySupportLine(value, moment = {}) {
+    const text = stripHistoryDekBoilerplate(value)
+      .replace(/^A useful starting source is\b.*$/i, '')
+      .replace(/^\w+\s+\d+\s+places the reader\b.*$/i, '')
+      .replace(/^\w+\s+\d{1,2},\s+\d{3,4}:\s+.*$/i, '')
+      .replace(/^The deeper story\b.*$/i, '');
+    if (/^(?:Why it mattered|The big historical pressure point):/i.test(text)) return '';
+    if (/^(?:Context|Source context|Main subject|Connected subjects|Connected to|Stakes):/i.test(text)) return '';
+    if (/^Scene:/i.test(text)) return '';
+    if (/^The lasting meaning sits\b/i.test(text)) return '';
+    if (/^(?:The lasting consequence|The practical result|The consequence was)\b/i.test(text)) return '';
+    if (/^A calendar entry matters\b/i.test(text)) return '';
+    return sentenceCaseHistory(text);
+  }
+
+  function sentenceCaseHistory(value) {
+    const text = collapseWhitespace(value);
+    if (!text || !/^[a-z]/.test(text)) return text;
+    return `${text.charAt(0).toUpperCase()}${text.slice(1)}`;
+  }
+
+  function lowercaseFirstHistory(value) {
+    const text = collapseWhitespace(value);
+    if (!text || !/^[A-Z]/.test(text)) return text;
+    return `${text.charAt(0).toLowerCase()}${text.slice(1)}`;
+  }
+
+  function historySubjectVerb(subject) {
+    return /\b(?:landings|games|olympics|wars|rights|protests|treaties|forces|people)\b$/i.test(subject) ? 'are' : 'is';
+  }
+
+  function historyPastSubjectVerb(subject) {
+    return /\b(?:landings|games|olympics|wars|rights|protests|treaties|forces|people)\b$/i.test(subject) ? 'were' : 'was';
+  }
+
+  function historyDisplaySubject(subject) {
+    const text = collapseWhitespace(subject);
+    if (!text || /^(?:a|an|the)\b/i.test(text) || /:/.test(text)) return text;
+    if (/\b(?:act|battle|declaration|landings|massacre|revolution|treaty|war)\b/i.test(text)) return `The ${text}`;
+    return text;
+  }
+
+  function historyShortSubject(moment = {}) {
+    const title = collapseWhitespace(moment.title || moment.topic || 'The event');
+    if (/^the\b/i.test(title)) return title;
+    if (/\b(?:act|battle|declaration|landings|massacre|revolution|treaty|war)\b/i.test(title)) return `The ${title}`;
+    return title;
+  }
+
+  function historyDescriptionPhrase(value) {
+    const text = collapseWhitespace(value);
+    if (!text) return '';
+    if (/^(?:a|an|the)\b/i.test(text)) return text;
+    if (/^allied invasion\b/i.test(text)) return `the ${text}`;
+    if (/^\d/.test(text)) return `the ${text}`;
+    return `${/^[aeiou]/i.test(text) ? 'an' : 'a'} ${text}`;
+  }
+
+  function historyReadableList(items) {
+    const list = items.map((item) => collapseWhitespace(item)).filter(Boolean);
+    if (list.length <= 1) return list[0] || '';
+    if (list.length === 2) return `${list[0]} and ${list[1]}`;
+    return `${list.slice(0, -1).join(', ')}, and ${list[list.length - 1]}`;
+  }
+
+  function comparableHistoryText(value) {
+    return collapseWhitespace(value)
+      .toLowerCase()
+      .replace(/&amp;/g, '&')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  }
+
+  function historyIsRepeating(value, reference) {
+    const valueKey = comparableHistoryText(value);
+    const referenceKey = comparableHistoryText(reference);
+    if (!valueKey || !referenceKey) return false;
+    if (valueKey === referenceKey) return true;
+    if (valueKey.length > 24 && referenceKey.includes(valueKey)) return true;
+    if (referenceKey.length > 24 && valueKey.includes(referenceKey)) return true;
+    return historyTextOverlap(value, reference) >= 0.62;
+  }
+
+  function historyTextOverlap(value, reference) {
+    const valueTokens = historyMeaningfulTokens(value);
+    const referenceTokens = historyMeaningfulTokens(reference);
+    if (valueTokens.length < 4 || referenceTokens.length < 4) return 0;
+    const referenceSet = new Set(referenceTokens);
+    const shared = valueTokens.filter((token) => referenceSet.has(token)).length;
+    return shared / Math.min(valueTokens.length, referenceTokens.length);
+  }
+
+  function historyMeaningfulTokens(value) {
+    const stopWords = new Set([
+      'about', 'above', 'after', 'again', 'against', 'also', 'because', 'before', 'began', 'being',
+      'could', 'during', 'each', 'event', 'first', 'from', 'have', 'history', 'into', 'itself',
+      'made', 'more', 'most', 'other', 'over', 'same', 'some', 'story', 'than', 'that', 'their',
+      'them', 'then', 'there', 'these', 'they', 'this', 'through', 'under', 'very', 'were', 'what',
+      'when', 'where', 'which', 'while', 'with', 'world', 'would',
+    ]);
+    return comparableHistoryText(value)
+      .split(/\s+/)
+      .filter((token) => token.length > 2 && !stopWords.has(token));
+  }
+
+  function historyWordCount(value) {
+    const text = collapseWhitespace(value);
+    return text ? text.split(/\s+/).length : 0;
+  }
+
+  function firstHistoryDisplaySentence(value) {
+    const text = stripHistoryDekBoilerplate(value);
+    return ensureHistorySentence(sentenceFromHistoryText(text) || text);
+  }
+
+  function stripHistoryDekBoilerplate(value) {
+    return collapseWhitespace(value)
+      .replace(/\.\.\./g, '.')
+      .replace(/\s+\bThe deeper story is\b.*$/i, '');
+  }
+
+  function ensureHistorySentence(value) {
+    const text = collapseWhitespace(value);
+    if (!text) return '';
+    return /[.!?]$/.test(text) ? text : `${text}.`;
+  }
+
+  function sentenceFromHistoryText(text) {
+    for (let index = 0; index < text.length; index += 1) {
+      if (!/[.!?]/.test(text[index])) continue;
+      if (index < text.length - 1 && !/\s/.test(text[index + 1])) continue;
+      if (isProtectedHistorySentencePeriod(text, index)) continue;
+      return text.slice(0, index + 1);
+    }
+    return '';
+  }
+
+  function isProtectedHistorySentencePeriod(text, index) {
+    const before = text.slice(0, index + 1);
+    const token = before.match(/(?:^|\s)(\S+)$/)?.[1] || '';
+    const next = text.slice(index + 1).trimStart();
+    if (/^(?:[A-Z]\.)+$/.test(token)) return true;
+    if (/^(?:Mr|Mrs|Ms|Dr|Prof|St|Sen|Rep|Gov|Gen|Col|Lt|Capt|Sgt|Jr|Sr|No|v|vs)\.$/i.test(token)) return true;
+    if (next && /^[a-z]/.test(next)) return true;
+    return false;
   }
 
   function cleanHistoryImageText(value) {
