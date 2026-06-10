@@ -327,6 +327,7 @@
         "supply chains"
       ],
       "stories": [
+        "world-cartels-beneath-the-state.html",
         "world-americas-military-year-is-a-map-of-force.html",
         "world-europes-defense-turn-is-now-a-budget-supply-chain-and-time-problem.html"
       ]
@@ -422,6 +423,62 @@
     }
   ],
   "stories": [
+    {
+      "slug": "world-cartels-beneath-the-state",
+      "filename": "world-cartels-beneath-the-state.html",
+      "title": "Cartels Beneath the State",
+      "section": "World",
+      "sectionSlug": "world",
+      "type": "Investigation",
+      "author": "Samir Haddad",
+      "authorSlug": "samir-haddad",
+      "authorRole": "World Affairs Correspondent",
+      "publishedLabel": "June 8, 2026 • 9:00 a.m. EDT",
+      "updatedLabel": "June 8, 2026 • 9:00 a.m. EDT",
+      "publishedIso": "2026-06-08T09:00:00-04:00",
+      "updatedIso": "2026-06-08T09:00:00-04:00",
+      "wordCount": "15,000 words",
+      "wordCountNumber": 15000,
+      "readTime": "75 min read",
+      "dek": "A source-forward investigation into how modern cartels recruit labor, tax local economies, launder money, exploit global demand, corrupt institutions, and govern by fear beneath the state.",
+      "image": "assets/press-display/article-thumbnails/2026-06-09-cartels-beneath-state-floating-head.png",
+      "imageAlt": "Glossy stylized floating illustrated head of a mustached man against a bright blue sky with soft white clouds",
+      "imageCaptionHtml": "",
+      "imageCreditPlain": "",
+      "imageAiGenerated": true,
+      "imageAiCaption": "",
+      "keywords": [
+        "cartels",
+        "Mexico cartels",
+        "Sinaloa Cartel",
+        "CJNG",
+        "Los Chapitos",
+        "El Mayo Zambada",
+        "Ovidio Guzman Lopez",
+        "Teuchitlan",
+        "cartel recruitment",
+        "cartel extortion",
+        "money laundering",
+        "state capture",
+        "fentanyl",
+        "methamphetamine",
+        "cocaine trafficking",
+        "organized crime",
+        "missing persons",
+        "Genaro Garcia Luna",
+        "El Mencho"
+      ],
+      "asideFile": "content/asides/world-cartels-beneath-the-state.html",
+      "bodyFile": "content/bodies/world-cartels-beneath-the-state.html",
+      "related": [
+        "world-europes-cocaine-boom-is-hiding-in-plain-sight.html",
+        "world-americas-military-year-is-a-map-of-force.html",
+        "health-measles-is-not-a-childhood-memory-anymore.html"
+      ],
+      "excerpt": "Cartel power is sustained by recruitment, extortion, laundering, corruption, consumer demand, and weak institutions, not by kingpin charisma alone.",
+      "imageWidth": 1254,
+      "imageHeight": 1254
+    },
     {
       "slug": "cartoons-the-mission-statement-takes-the-stand",
       "filename": "cartoons-the-mission-statement-takes-the-stand.html",

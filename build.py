@@ -94,6 +94,17 @@ def is_below_fold_index_item(item: dict) -> bool:
     return section in {"below the fold", "below-the-fold"} or story_type in {"newsstand", "issue"}
 
 
+def is_cartoon_index_item(item: dict) -> bool:
+    section = str(item.get("section") or item.get("section_slug") or item.get("sectionSlug") or "").strip().lower()
+    path = str(item.get("url") or item.get("filename") or item.get("href") or item.get("link") or "").strip().lower()
+    path = path.split("?", 1)[0].split("#", 1)[0].lstrip("./")
+    return section == "cartoons" or path.startswith("cartoons-") or "/cartoons-" in path
+
+
+def shared_archive_stories() -> list[dict]:
+    return [story for story in STORIES if not is_cartoon_index_item(story)]
+
+
 def load_below_fold_issues() -> list[dict]:
     if not BELOW_FOLD_REGISTRY_PATH.exists():
         return []
@@ -582,7 +593,7 @@ def richer_existing_search_index() -> list[dict]:
 def gallery_story_rows() -> list[dict]:
     rows: list[dict] = []
 
-    for story in STORIES:
+    for story in shared_archive_stories():
         image = str(story.get("image") or "")
         filename = str(story.get("filename") or "")
         if not image or not filename:
@@ -621,7 +632,7 @@ def gallery_story_rows() -> list[dict]:
         for item in items:
             if not isinstance(item, dict):
                 continue
-            if is_below_fold_index_item(item):
+            if is_below_fold_index_item(item) or is_cartoon_index_item(item):
                 continue
             filename = item.get("url") or item.get("filename")
             image = item.get("image") or ""
@@ -2813,12 +2824,13 @@ def render_homepage() -> str:
 
 
 def render_archive() -> str:
-    filters = ['All'] + [section['name'] for section in SECTIONS] + sorted({story['type'] for story in STORIES})
+    archive_stories = shared_archive_stories()
+    filters = ['All'] + [section['name'] for section in SECTIONS if section.get("slug") != "cartoons"] + sorted({story['type'] for story in archive_stories})
     filter_buttons = "\n".join(
         f'<button class="filter-chip{" is-active" if value=="All" else ""}" type="button" data-filter="{h(value)}" aria-pressed="{str(value=="All").lower()}">{h(value)}</button>'
         for value in filters
     )
-    cards = "\n".join(story_card(story, archive=True) for story in STORIES)
+    cards = "\n".join(story_card(story, archive=True) for story in archive_stories)
     main = f"""
 <main class="page page-archive">
   <section class="page-hero">

@@ -4,8 +4,14 @@
     <title>The Press</title>
     <link>https://thepress.live/index.html</link>
     <description>Source-forward news across politics, culture, technology, economics, education, health, philosophy, science, world, opinion, and cartoons.</description>
-    <lastBuildDate>Fri, 05 Jun 2026 11:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2026 09:00:00 -0400</lastBuildDate>
     <item>
+  <title>Cartels Beneath the State</title>
+  <link>https://thepress.live/world-cartels-beneath-the-state.html</link>
+  <guid>https://thepress.live/world-cartels-beneath-the-state.html</guid>
+  <pubDate>Mon, 08 Jun 2026 09:00:00 -0400</pubDate>
+  <description>A source-forward investigation into how modern cartels recruit labor, tax local economies, launder money, exploit global demand, corrupt institutions, and govern by fear beneath the state.</description>
+</item> <item>
   <title>The Mission Statement Takes the Stand</title>
   <link>https://thepress.live/cartoons-the-mission-statement-takes-the-stand.html</link>
   <guid>https://thepress.live/cartoons-the-mission-statement-takes-the-stand.html</guid>
@@ -119,12 +125,6 @@
   <guid>https://thepress.live/technology-pentagon-ai-classified-networks.html</guid>
   <pubDate>Sun, 03 May 2026 16:30:00 -0400</pubDate>
   <description>The Pentagon&#x27;s classified-network AI agreements are not a chatbot story. They are the moment frontier models, cloud infrastructure, and defense power began moving into the same secured room — with Anthropic&#x27;s empty chair revealing the fight over who controls the guardrails.</description>
-</item> <item>
-  <title>The Last Month at Atla</title>
-  <link>https://thepress.live/food-atla-noho-closing.html</link>
-  <guid>https://thepress.live/food-atla-noho-closing.html</guid>
-  <pubDate>Sun, 03 May 2026 09:00:00 -0400</pubDate>
-  <description>Enrique Olvera’s Atla is closing in NoHo, but the Lafayette Street room is not going dark. The restaurant’s final month is a story about all-day dining, modern Mexican cooking, and the strange tenderness of eating a place before it becomes history.</description>
 </item>
   </channel>
 </rss>

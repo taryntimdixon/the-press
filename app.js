@@ -9055,7 +9055,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!grid) return;
 
-    const archiveStories = stories.filter((story) => !pressIsBelowFoldIndexItem(story.raw || story, story.url, story.section, story.type));
+    const archiveStories = stories.filter((story) => (
+      !pressIsBelowFoldIndexItem(story.raw || story, story.url, story.section, story.type)
+      && !pressIsCartoonIndexItem(story.raw || story, story.url, story.section)
+    ));
 
     grid.innerHTML = archiveStories.map((story) => storyCard(story, {
       archive: true,
