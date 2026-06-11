@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T02:19:37.277828+00:00",
+  "generated_at": "2026-06-11T10:32:08.310094+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -10,16 +10,16 @@
   "home": {
     "hero_slots": 7,
     "hero": [
+      "world-cartels-beneath-the-state",
       "technology-the-data-center-is-the-new-utility-bill",
       "science-wildlife-for-sale",
       "technology-drones-have-left-the-gadget-era",
       "sports-world-cup-game-day-machine",
       "world-europes-cocaine-boom-is-hiding-in-plain-sight",
-      "world-americas-military-year-is-a-map-of-force",
-      "climate-the-mountain-that-fell-into-the-sea"
+      "world-americas-military-year-is-a-map-of-force"
     ],
     "secondary": [
-      "world-cartels-beneath-the-state",
+      "climate-the-mountain-that-fell-into-the-sea",
       "cartoons-the-mission-statement-takes-the-stand",
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington"
     ],

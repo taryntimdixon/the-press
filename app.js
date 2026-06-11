@@ -346,12 +346,96 @@ function pressAddScrollListener(callback) {
 
 (() => {
   const IMAGE_LINK_SELECTOR = '.drone-article-visual__media[href]';
+  const ARTICLE_IMAGE_SELECTOR = [
+    'body.page-article .article-hero .hero-figure img',
+    'body.page-article .article-body figure > img',
+    'body.page-article .article-body figure picture > img',
+    'body.page-article .article-aside figure > img',
+    'body.page-article .article-aside figure picture > img',
+    'body.page-article .press-social-side figure > img',
+    'body.page-article .press-social-side figure picture > img',
+  ].join(',');
+  const IMAGE_LIGHTBOX_MIN_ZOOM = 1;
+  const IMAGE_LIGHTBOX_MAX_ZOOM = 6;
+  const IMAGE_LIGHTBOX_ZOOM_STEP = 0.75;
   let activeLightbox = null;
 
-  function openImageLightbox(link, event) {
-    if (!link) return;
-    const image = link.querySelector('img');
-    if (!image) return;
+  function getImageLightboxSource(image) {
+    if (!image) return '';
+    return image.currentSrc || image.getAttribute('src') || '';
+  }
+
+  function clampImageLightboxValue(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+  }
+
+  function getImageLightboxPanBounds(lightbox) {
+    const frameRect = lightbox.frame.getBoundingClientRect();
+    const imageWidth = lightbox.image.offsetWidth * lightbox.zoom;
+    const imageHeight = lightbox.image.offsetHeight * lightbox.zoom;
+    return {
+      x: Math.max(0, (imageWidth - frameRect.width) / 2),
+      y: Math.max(0, (imageHeight - frameRect.height) / 2),
+    };
+  }
+
+  function updateImageLightboxTransform() {
+    if (!activeLightbox) return;
+    const lightbox = activeLightbox;
+    if (lightbox.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM) {
+      lightbox.zoom = IMAGE_LIGHTBOX_MIN_ZOOM;
+      lightbox.panX = 0;
+      lightbox.panY = 0;
+    } else {
+      const bounds = getImageLightboxPanBounds(lightbox);
+      lightbox.panX = clampImageLightboxValue(lightbox.panX, -bounds.x, bounds.x);
+      lightbox.panY = clampImageLightboxValue(lightbox.panY, -bounds.y, bounds.y);
+    }
+
+    lightbox.image.style.transform = `translate3d(${lightbox.panX}px, ${lightbox.panY}px, 0) scale(${lightbox.zoom})`;
+    lightbox.image.classList.toggle('is-zoomed', lightbox.zoom > IMAGE_LIGHTBOX_MIN_ZOOM);
+    lightbox.frame.classList.toggle('is-zoomed', lightbox.zoom > IMAGE_LIGHTBOX_MIN_ZOOM);
+    lightbox.zoomLevel.textContent = `${Math.round(lightbox.zoom * 100)}%`;
+    lightbox.zoomOutButton.disabled = lightbox.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM;
+    lightbox.zoomResetButton.disabled = lightbox.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM;
+    lightbox.zoomInButton.disabled = lightbox.zoom >= IMAGE_LIGHTBOX_MAX_ZOOM;
+  }
+
+  function setImageLightboxZoom(nextZoom, event) {
+    if (!activeLightbox) return;
+    const lightbox = activeLightbox;
+    const previousZoom = lightbox.zoom;
+    lightbox.zoom = clampImageLightboxValue(nextZoom, IMAGE_LIGHTBOX_MIN_ZOOM, IMAGE_LIGHTBOX_MAX_ZOOM);
+
+    if (event && lightbox.zoom > IMAGE_LIGHTBOX_MIN_ZOOM && previousZoom > 0) {
+      const frameRect = lightbox.frame.getBoundingClientRect();
+      const offsetX = event.clientX - (frameRect.left + frameRect.width / 2);
+      const offsetY = event.clientY - (frameRect.top + frameRect.height / 2);
+      const zoomRatio = lightbox.zoom / previousZoom - 1;
+      lightbox.panX -= offsetX * zoomRatio;
+      lightbox.panY -= offsetY * zoomRatio;
+    }
+
+    updateImageLightboxTransform();
+  }
+
+  function resetImageLightboxZoom() {
+    if (!activeLightbox) return;
+    activeLightbox.zoom = IMAGE_LIGHTBOX_MIN_ZOOM;
+    activeLightbox.panX = 0;
+    activeLightbox.panY = 0;
+    updateImageLightboxTransform();
+  }
+
+  function panImageLightbox(deltaX, deltaY) {
+    if (!activeLightbox || activeLightbox.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM) return;
+    activeLightbox.panX += deltaX;
+    activeLightbox.panY += deltaY;
+    updateImageLightboxTransform();
+  }
+
+  function openImageLightbox(source, image, opener, event) {
+    if (!source || !image) return;
     event?.preventDefault();
 
     closeImageLightbox({ restoreHistory: false, restoreFocus: false });
@@ -374,23 +458,65 @@ function pressAddScrollListener(callback) {
     closeButton.setAttribute('aria-label', 'Close full image view');
     closeButton.textContent = 'X';
 
+    const zoomControls = document.createElement('div');
+    zoomControls.className = 'press-image-lightbox__zoom';
+    zoomControls.setAttribute('aria-label', 'Image zoom controls');
+
+    const zoomOutButton = document.createElement('button');
+    zoomOutButton.type = 'button';
+    zoomOutButton.className = 'press-image-lightbox__zoom-button';
+    zoomOutButton.setAttribute('aria-label', 'Zoom out');
+    zoomOutButton.textContent = '-';
+
+    const zoomResetButton = document.createElement('button');
+    zoomResetButton.type = 'button';
+    zoomResetButton.className = 'press-image-lightbox__zoom-reset';
+    zoomResetButton.setAttribute('aria-label', 'Reset zoom');
+    zoomResetButton.textContent = '100%';
+
+    const zoomInButton = document.createElement('button');
+    zoomInButton.type = 'button';
+    zoomInButton.className = 'press-image-lightbox__zoom-button';
+    zoomInButton.setAttribute('aria-label', 'Zoom in');
+    zoomInButton.textContent = '+';
+
+    const zoomLevel = document.createElement('span');
+    zoomLevel.className = 'press-image-lightbox__zoom-level';
+    zoomLevel.setAttribute('aria-live', 'polite');
+    zoomLevel.textContent = '100%';
+
+    zoomControls.append(zoomOutButton, zoomResetButton, zoomInButton, zoomLevel);
+
     const frame = document.createElement('div');
     frame.className = 'press-image-lightbox__frame';
 
     const fullImage = document.createElement('img');
     fullImage.className = 'press-image-lightbox__image';
-    fullImage.src = link.href;
+    fullImage.src = source;
     fullImage.alt = image.alt || '';
     fullImage.decoding = 'async';
+    fullImage.draggable = false;
 
     frame.appendChild(fullImage);
-    overlay.append(backButton, closeButton, frame);
+    overlay.append(backButton, closeButton, zoomControls, frame);
     document.body.appendChild(overlay);
     document.body.classList.add('press-image-lightbox-open');
 
     activeLightbox = {
       overlay,
-      opener: link,
+      frame,
+      image: fullImage,
+      opener,
+      zoomOutButton,
+      zoomResetButton,
+      zoomInButton,
+      zoomLevel,
+      zoom: IMAGE_LIGHTBOX_MIN_ZOOM,
+      panX: 0,
+      panY: 0,
+      dragPointerId: null,
+      dragX: 0,
+      dragY: 0,
       historyPushed: false,
     };
 
@@ -403,10 +529,70 @@ function pressAddScrollListener(callback) {
 
     backButton.addEventListener('click', () => closeImageLightbox());
     closeButton.addEventListener('click', () => closeImageLightbox());
+    zoomOutButton.addEventListener('click', () => setImageLightboxZoom(activeLightbox.zoom - IMAGE_LIGHTBOX_ZOOM_STEP));
+    zoomResetButton.addEventListener('click', () => resetImageLightboxZoom());
+    zoomInButton.addEventListener('click', () => setImageLightboxZoom(activeLightbox.zoom + IMAGE_LIGHTBOX_ZOOM_STEP));
+    frame.addEventListener('wheel', (wheelEvent) => {
+      wheelEvent.preventDefault();
+      const direction = wheelEvent.deltaY < 0 ? 1 : -1;
+      setImageLightboxZoom(activeLightbox.zoom + direction * IMAGE_LIGHTBOX_ZOOM_STEP, wheelEvent);
+    }, { passive: false });
+    fullImage.addEventListener('dblclick', (dblClickEvent) => {
+      dblClickEvent.preventDefault();
+      setImageLightboxZoom(activeLightbox.zoom > IMAGE_LIGHTBOX_MIN_ZOOM ? IMAGE_LIGHTBOX_MIN_ZOOM : 2.5, dblClickEvent);
+    });
+    frame.addEventListener('pointerdown', (pointerEvent) => {
+      if (!activeLightbox || activeLightbox.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM) return;
+      pointerEvent.preventDefault();
+      activeLightbox.dragPointerId = pointerEvent.pointerId;
+      activeLightbox.dragX = pointerEvent.clientX;
+      activeLightbox.dragY = pointerEvent.clientY;
+      frame.setPointerCapture?.(pointerEvent.pointerId);
+      fullImage.classList.add('is-dragging');
+    });
+    frame.addEventListener('pointermove', (pointerEvent) => {
+      if (!activeLightbox || activeLightbox.dragPointerId !== pointerEvent.pointerId) return;
+      pointerEvent.preventDefault();
+      panImageLightbox(pointerEvent.clientX - activeLightbox.dragX, pointerEvent.clientY - activeLightbox.dragY);
+      activeLightbox.dragX = pointerEvent.clientX;
+      activeLightbox.dragY = pointerEvent.clientY;
+    });
+    const stopDrag = (pointerEvent) => {
+      if (!activeLightbox || activeLightbox.dragPointerId !== pointerEvent.pointerId) return;
+      activeLightbox.dragPointerId = null;
+      fullImage.classList.remove('is-dragging');
+    };
+    frame.addEventListener('pointerup', stopDrag);
+    frame.addEventListener('pointercancel', stopDrag);
     overlay.addEventListener('click', (clickEvent) => {
       if (clickEvent.target === overlay) closeImageLightbox();
     });
+    fullImage.addEventListener('load', () => updateImageLightboxTransform(), { once: true });
+    updateImageLightboxTransform();
     overlay.focus({ preventScroll: true });
+  }
+
+  function openLinkedImageLightbox(link, event) {
+    if (!link) return;
+    const image = link.querySelector('img');
+    if (!image) return;
+    openImageLightbox(link.href, image, link, event);
+  }
+
+  function shouldEnhanceArticleImage(image) {
+    if (!image || image.closest(IMAGE_LINK_SELECTOR)) return false;
+    if (image.closest('a[href], button, [role="button"]')) return false;
+    return Boolean(getImageLightboxSource(image));
+  }
+
+  function enhanceArticleImageZoom() {
+    document.querySelectorAll(ARTICLE_IMAGE_SELECTOR).forEach((image) => {
+      if (!shouldEnhanceArticleImage(image)) return;
+      image.dataset.pressImageZoom = 'true';
+      image.setAttribute('role', 'button');
+      image.setAttribute('tabindex', image.getAttribute('tabindex') || '0');
+      image.setAttribute('aria-label', image.alt ? `Open full-size image: ${image.alt}` : 'Open full-size image');
+    });
   }
 
   function closeImageLightbox(options = {}) {
@@ -424,21 +610,77 @@ function pressAddScrollListener(callback) {
 
   document.addEventListener('click', (event) => {
     const link = event.target.closest?.(IMAGE_LINK_SELECTOR);
-    if (!link) return;
-    openImageLightbox(link, event);
+    if (link) {
+      openLinkedImageLightbox(link, event);
+      return;
+    }
+
+    const image = event.target.closest?.(ARTICLE_IMAGE_SELECTOR);
+    if (!image || image.dataset.pressImageZoom !== 'true') return;
+    openImageLightbox(getImageLightboxSource(image), image, image, event);
   });
 
   document.addEventListener('keydown', (event) => {
-    if (!activeLightbox) return;
+    if (!activeLightbox) {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const image = event.target?.matches?.(ARTICLE_IMAGE_SELECTOR) ? event.target : null;
+      if (!image || image.dataset.pressImageZoom !== 'true') return;
+      event.preventDefault();
+      openImageLightbox(getImageLightboxSource(image), image, image, event);
+      return;
+    }
+
     if (event.key === 'Escape') {
       event.preventDefault();
       closeImageLightbox();
+      return;
+    }
+
+    if (event.key === '+' || event.key === '=') {
+      event.preventDefault();
+      setImageLightboxZoom(activeLightbox.zoom + IMAGE_LIGHTBOX_ZOOM_STEP);
+      return;
+    }
+
+    if (event.key === '-' || event.key === '_') {
+      event.preventDefault();
+      setImageLightboxZoom(activeLightbox.zoom - IMAGE_LIGHTBOX_ZOOM_STEP);
+      return;
+    }
+
+    if (event.key === '0') {
+      event.preventDefault();
+      resetImageLightboxZoom();
+      return;
+    }
+
+    const panStep = event.shiftKey ? 120 : 48;
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      panImageLightbox(panStep, 0);
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      panImageLightbox(-panStep, 0);
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      panImageLightbox(0, panStep);
+    } else if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      panImageLightbox(0, -panStep);
     }
   });
+
+  window.addEventListener('resize', () => updateImageLightboxTransform());
 
   window.addEventListener('popstate', () => {
     if (activeLightbox) closeImageLightbox({ restoreHistory: false });
   });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', enhanceArticleImageZoom, { once: true });
+  } else {
+    enhanceArticleImageZoom();
+  }
 })();
 
 (() => {
@@ -541,6 +783,7 @@ function pressAddScrollListener(callback) {
   const SOURCE_RAIL_LINK_SELECTOR = [
     '.drone-social-feature .press-static-post > a[href]',
     '.article-rail-gallery__card[href]',
+    '.press-static-post__source a[href^="#source-"]',
   ].join(', ');
 
   function isExternalSourceHref(href) {
@@ -550,7 +793,7 @@ function pressAddScrollListener(callback) {
   function applyExternalSourceLink(link, source, options = {}) {
     if (!link || !source?.href) return;
     link.setAttribute('href', source.href);
-    link.removeAttribute('target');
+    link.setAttribute('target', '_blank');
     link.setAttribute('rel', 'noopener noreferrer');
     link.setAttribute('data-source-external', 'true');
     if (source.label) link.setAttribute('aria-label', `Open source: ${source.label}`);
@@ -598,7 +841,8 @@ function pressAddScrollListener(callback) {
       const source = href.startsWith('#source-')
         ? sourceMap.get(href.slice(1))
         : (isExternalSourceHref(href) ? { href, label: link.textContent.trim() } : null);
-      applyExternalSourceLink(link, source, { relabel: link.closest('.press-static-post') });
+      const relabel = link.matches('.drone-social-feature .press-static-post > a[href], .article-rail-gallery__card[href]');
+      applyExternalSourceLink(link, source, { relabel });
     });
   }
 
@@ -3376,7 +3620,7 @@ function enhanceBreakingStrip(stories) {
     root.querySelectorAll('#source-notes a[href^="http"], .source-notes a[href^="http"], .article-sources a[href^="http"], .source-list a[href^="http"]').forEach((link) => {
       if (link.dataset.sourceNoteExternalBound === 'true') return;
       link.dataset.sourceNoteExternalBound = 'true';
-      link.removeAttribute('target');
+      link.setAttribute('target', '_blank');
       link.setAttribute('rel', 'noopener noreferrer');
     });
   }
@@ -12594,10 +12838,41 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!button || button.dataset.livingTopBound === 'true') return;
 
     button.dataset.livingTopBound = 'true';
-    button.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: livingPrefersReducedMotion() ? 'auto' : 'smooth',
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      scrollLivingArticleTop();
+    });
+  }
+
+  function scrollLivingArticleTop() {
+    const behavior = livingPrefersReducedMotion() ? 'auto' : 'smooth';
+    const roots = [
+      document.scrollingElement,
+      document.documentElement,
+      document.body,
+    ].filter(Boolean);
+
+    roots.forEach((root) => {
+      if (typeof root.scrollTo === 'function') {
+        try {
+          root.scrollTo({ top: 0, behavior });
+        } catch (_) {
+          root.scrollTop = 0;
+        }
+      } else {
+        root.scrollTop = 0;
+      }
+    });
+
+    try {
+      window.scrollTo({ top: 0, behavior });
+    } catch (_) {
+      window.scrollTo(0, 0);
+    }
+
+    window.requestAnimationFrame(() => {
+      roots.forEach((root) => {
+        root.scrollTop = 0;
       });
     });
   }
@@ -12608,6 +12883,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function bindGlobalLivingActions() {
     document.addEventListener('click', function onLivingClick(event) {
+      const topButton = event.target.closest('[data-living-top]');
+      if (topButton) {
+        event.preventDefault();
+        scrollLivingArticleTop();
+        return;
+      }
+
       const opener = event.target.closest('[data-living-open]');
       if (opener) {
         event.preventDefault();
@@ -13649,12 +13931,12 @@ document.addEventListener("DOMContentLoaded", () => {
       sourcesById.set(source.id.replace(/^source-/, ''), source);
     });
 
-    context.body.querySelectorAll('.press-static-post__source a[data-source-id]').forEach((link) => {
-      const sourceKey = link.getAttribute('data-source-id') || '';
+    context.body.querySelectorAll('.press-static-post__source a[data-source-id], .press-static-post__source a[href^="#source-"]').forEach((link) => {
+      const sourceKey = link.getAttribute('data-source-id') || (link.getAttribute('href') || '').replace(/^#/, '');
       const source = sourcesById.get(sourceKey) || sourcesById.get(`source-${sourceKey}`);
       if (!source?.href) return;
       link.setAttribute('href', source.href);
-      link.removeAttribute('target');
+      link.setAttribute('target', '_blank');
       link.setAttribute('rel', 'noopener noreferrer');
       link.setAttribute('data-source-external', 'true');
       link.setAttribute('aria-label', `Open external source: ${source.label || cleanText(link.textContent) || 'source'}`);
