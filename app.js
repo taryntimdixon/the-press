@@ -67,6 +67,31 @@ function pressIsCartoonIndexItem(item = {}, urlOverride = '', sectionOverride = 
   return section === 'cartoons' || url.startsWith('cartoons-') || url.includes('/cartoons-');
 }
 
+function pressNumericScrollTop(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : 0;
+}
+
+function pressPageScrollTop() {
+  return Math.max(
+    pressNumericScrollTop(window.scrollY),
+    pressNumericScrollTop(window.pageYOffset),
+    pressNumericScrollTop(document.scrollingElement?.scrollTop),
+    pressNumericScrollTop(document.documentElement?.scrollTop),
+    pressNumericScrollTop(document.body?.scrollTop)
+  );
+}
+
+function pressAddScrollListener(callback) {
+  const targets = new Set([
+    window,
+    document,
+    document.documentElement,
+    document.body,
+  ].filter(Boolean));
+  targets.forEach((target) => target.addEventListener('scroll', callback, { passive: true }));
+}
+
 (() => {
   if (document.querySelector('[data-press-fonts]')) return;
   const script = document.createElement('script');
@@ -2998,14 +3023,14 @@ function pressIsCartoonIndexItem(item = {}, urlOverride = '', sectionOverride = 
       const article = document.querySelector('.article, .article-body, [data-article-body]');
       if (!article) return;
       const rect = article.getBoundingClientRect();
-      const scrollTop = window.scrollY || window.pageYOffset;
+      const scrollTop = pressPageScrollTop();
       const articleTop = scrollTop + rect.top;
       const articleHeight = article.offsetHeight - window.innerHeight;
       const progress = Math.min(1, Math.max(0, (scrollTop - articleTop) / Math.max(articleHeight, 1)));
       progressBar.style.width = `${progress * 100}%`;
     };
     updateProgress();
-    document.addEventListener('scroll', updateProgress, { passive: true });
+    pressAddScrollListener(updateProgress);
     window.addEventListener('resize', updateProgress);
   }
 
@@ -12542,11 +12567,11 @@ document.addEventListener("DOMContentLoaded", () => {
       updateCurrentBeat(context);
     };
 
-    window.addEventListener('scroll', () => {
+    pressAddScrollListener(() => {
       if (queued) return;
       queued = true;
       window.requestAnimationFrame(update);
-    }, { passive: true });
+    });
 
     document.addEventListener('mouseover', (event) => {
       const ref = event.target.closest(SOURCE_NOTE_REF_SELECTOR);
@@ -13790,7 +13815,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function buildProgressSnapshot(context, beat = currentBeat(context)) {
     const rect = context.article.getBoundingClientRect();
-    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const scrollY = pressPageScrollTop();
     const articleTop = scrollY + rect.top;
     const articleHeight = Math.max(1, context.article.scrollHeight - window.innerHeight * 0.65);
     const progress = Math.max(0, Math.min(100, ((scrollY - articleTop) / articleHeight) * 100));
