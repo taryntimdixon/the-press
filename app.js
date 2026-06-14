@@ -3466,6 +3466,21 @@ function enhanceBreakingStrip(stories) {
   ];
   const HOMEPAGE_SOCIAL_SHARE_STORAGE_PREFIX = 'press-homepage-social-share';
   const BELOW_FOLD_SCROLL_STORY_ASSET_CACHE = new Map();
+  const ARTICLE_SCROLL_READER_LIMITS = Object.freeze({
+    maxSections: 14,
+    maxFigureSections: 7,
+    maxParagraphsPerSection: 4,
+    stripScale: 2.5,
+    maxCanvasHeight: 15000,
+    captureScaleMin: 1.15,
+    captureScaleMax: 1.45,
+    captureAreaBudget: 14000000,
+    minDurationSeconds: 15,
+    maxDurationSeconds: 45,
+    scrollPixelsPerSecond: 280,
+    frameRate: 60,
+    videoBitsPerSecond: 42000000,
+  });
   const BELOW_FOLD_SCROLL_STORY_CRITERIA = Object.freeze({
     maxCards: 12,
     maxStripHeight: 10800,
@@ -3785,11 +3800,11 @@ function enhanceBreakingStrip(stories) {
   function buildArticleScrollStoryChoiceMarkup() {
     return `
       <details class="share-row__scroll-choice" data-share-scroll-choice>
-        <summary aria-label="Choose a scroll preview share platform" title="Scroll preview">
+        <summary aria-label="Choose an article scroll video platform" title="Article scroll">
           ${sharePlatformIcon('scroll')}
           <span>Scroll</span>
         </summary>
-        <div class="share-row__buttons share-row__buttons--scroll-video" aria-label="Share article scroll preview">
+        <div class="share-row__buttons share-row__buttons--scroll-video" aria-label="Share article scroll video">
           ${buildBelowFoldScrollStoryButtons('share-btn', 'data-share-scroll-story', 'article')}
         </div>
       </details>
@@ -3817,11 +3832,11 @@ function enhanceBreakingStrip(stories) {
 
   function getBelowFoldScrollStoryPlatforms(subject = 'issue') {
     const isArticle = subject === 'article';
-    const titleNoun = isArticle ? 'scroll preview' : 'scroll video';
-    const ariaNoun = isArticle ? 'scrolling article preview' : 'scrolling issue video';
+    const titleNoun = 'scroll video';
+    const ariaNoun = isArticle ? 'scrolling article video' : 'scrolling issue video';
     return [
       { platform: 'x', title: `X ${titleNoun}`, ariaLabel: `Make a ${ariaNoun} for X or Twitter` },
-      { platform: 'instagram', title: `Instagram Story ${isArticle ? 'preview' : 'scroll'}`, ariaLabel: `Make a ${ariaNoun} for Instagram Stories` },
+      { platform: 'instagram', title: `Instagram Story scroll`, ariaLabel: `Make a ${ariaNoun} for Instagram Stories` },
       { platform: 'facebook', title: `Facebook ${titleNoun}`, ariaLabel: `Make a ${ariaNoun} for Facebook` },
       { platform: 'sms', title: `Message ${titleNoun}`, ariaLabel: `Make a ${ariaNoun} for Messages` },
     ];
@@ -4230,7 +4245,7 @@ function enhanceBreakingStrip(stories) {
     const video = modal.querySelector('[data-instagram-story-video]');
 
     if (kicker) kicker.textContent = scrollStoryMode ? platform.kicker : 'Instagram Story';
-    if (title) title.textContent = scrollStoryMode ? 'Scroll Preview' : 'Story Preview';
+    if (title) title.textContent = scrollStoryMode ? 'Scroll Video' : 'Story Preview';
     if (nativeButton) nativeButton.textContent = scrollStoryMode ? 'Share video' : 'Share image';
     if (downloadButton) downloadButton.textContent = scrollStoryMode ? 'Save video' : 'Save to device';
     if (openButton) openButton.textContent = scrollStoryMode ? platform.openLabel : 'Instagram Story';
@@ -4480,7 +4495,7 @@ function enhanceBreakingStrip(stories) {
         drawBelowFoldScrollFrame(ctx, partialStrip, 0);
       },
     });
-    const timing = getBelowFoldScrollTiming(strip, canvas);
+    const timing = getBelowFoldScrollTiming(strip, canvas, context);
     drawBelowFoldScrollFrame(ctx, strip, 0);
     setInstagramStoryStatus(status, strip.kind === 'dom' ? 'Recording live page scroll...' : 'Recording scroll tour video...');
 
@@ -4497,7 +4512,7 @@ function enhanceBreakingStrip(stories) {
     const streamVideoTrack = stream.getVideoTracks?.()[0] || null;
     const chunks = [];
     const recorderOptions = {
-      videoBitsPerSecond: BELOW_FOLD_SCROLL_STORY_CRITERIA.videoBitsPerSecond,
+      videoBitsPerSecond: getBelowFoldScrollVideoBitsPerSecond(context),
     };
     if (videoType) recorderOptions.mimeType = videoType;
     const recorder = new MediaRecorder(stream, recorderOptions);
@@ -4568,6 +4583,9 @@ function enhanceBreakingStrip(stories) {
   }
 
   async function buildBelowFoldActualScrollStrip(context, callbacks = {}) {
+    if (context?.type === 'article') {
+      return buildArticleCanvasScrollStrip(context, callbacks);
+    }
     try {
       const domStrip = await buildBelowFoldDomScrollStrip(context, callbacks);
       if (domStrip?.chunks?.length) return domStrip;
@@ -4575,6 +4593,185 @@ function enhanceBreakingStrip(stories) {
       console.warn('Below the Fold live page capture fell back to generated cards.', error);
     }
     return buildBelowFoldScrollStrip(context, callbacks);
+  }
+
+  async function buildArticleCanvasScrollStrip(context, callbacks = {}) {
+    const colorway = getBelowFoldScrollStoryColorway(context?.scrollStoryColorway);
+    const model = await collectArticleCanvasScrollModel(context);
+    await waitForShareFontsReady();
+
+    const scale = ARTICLE_SCROLL_READER_LIMITS.stripScale;
+    const cssWidth = getBelowFoldScrollVideoProfile(context).viewportWidth || 430;
+    const canvas = document.createElement('canvas');
+    canvas.width = cssWidth * scale;
+    canvas.height = ARTICLE_SCROLL_READER_LIMITS.maxCanvasHeight;
+    const ctx = canvas.getContext('2d');
+    const usedHeight = drawArticleCanvasScrollStrip(ctx, model, colorway, scale);
+    const finalHeight = Math.max(canvas.width, Math.min(canvas.height, Math.ceil(usedHeight)));
+    const finalCanvas = document.createElement('canvas');
+    finalCanvas.width = canvas.width;
+    finalCanvas.height = finalHeight;
+    finalCanvas.getContext('2d').drawImage(canvas, 0, 0);
+
+    const strip = {
+      chunks: [{ canvas: finalCanvas, y: 0, height: finalCanvas.height }],
+      height: finalCanvas.height,
+      width: finalCanvas.width,
+      kind: 'dom',
+      theme: colorway,
+    };
+    if (typeof callbacks.onFirstFrame === 'function') callbacks.onFirstFrame(strip);
+    return strip;
+  }
+
+  async function collectArticleCanvasScrollModel(context) {
+    const heroUrl = normalizeShareAssetUrl(context?.imageUrl || getShareImageUrl());
+    const segments = collectArticleScrollSegments().map((segment, index) => collectArticleCanvasScrollSection(segment, index));
+    const [heroImage, loadedSections] = await Promise.all([
+      heroUrl ? loadShareImage(heroUrl).catch(() => null) : Promise.resolve(null),
+      Promise.all(segments.map(async (section) => {
+        if (!section.imageUrl) return section;
+        const image = await loadShareImage(section.imageUrl).catch(() => null);
+        return { ...section, image };
+      })),
+    ]);
+    return {
+      title: collapseWhitespace(context?.title || document.querySelector('.article-headline')?.textContent || document.title || 'The Press'),
+      dek: collapseWhitespace(context?.text || document.querySelector('.article-dek')?.textContent || ''),
+      eyebrow: collapseWhitespace(document.querySelector('.article-hero .eyebrow, .eyebrow')?.textContent || 'The Press'),
+      meta: collapseWhitespace(document.querySelector('.article-meta')?.textContent || ''),
+      url: context?.url || window.location.href,
+      heroImage,
+      sections: loadedSections.filter((section) => section.heading || section.texts.length || section.image),
+    };
+  }
+
+  function collectArticleCanvasScrollSection(segment, index) {
+    const image = index < ARTICLE_SCROLL_READER_LIMITS.maxFigureSections
+      ? segment.querySelector('figure img, img')
+      : null;
+    const imageUrl = normalizeShareAssetUrl(image?.currentSrc || image?.getAttribute('src') || '');
+    return {
+      number: `Section ${String(index + 1).padStart(2, '0')}`,
+      heading: getArticleScrollCleanText(segment.querySelector('h2, h3, h4')) || collapseWhitespace(segment.getAttribute('aria-label') || ''),
+      imageUrl,
+      imageCaption: image ? getArticleScrollCleanText(image.closest('figure')?.querySelector('figcaption')) : '',
+      texts: Array.from(segment.querySelectorAll('p'))
+        .filter((paragraph) => !paragraph.closest('figcaption, .press-static-post, .source-list, .share-row'))
+        .map((paragraph) => getArticleScrollCleanText(paragraph))
+        .filter((text) => text.length > 40)
+        .slice(0, ARTICLE_SCROLL_READER_LIMITS.maxParagraphsPerSection),
+    };
+  }
+
+  function drawArticleCanvasScrollStrip(ctx, model, theme, scale) {
+    const width = ctx.canvas.width;
+    const maxHeight = ctx.canvas.height;
+    const pad = 18 * scale;
+    const innerX = pad;
+    const innerWidth = width - pad * 2;
+    let y = 22 * scale;
+    ctx.fillStyle = theme.paper;
+    ctx.fillRect(0, 0, width, maxHeight);
+    drawPaperGrain(ctx, width, maxHeight, theme.ink, 0.018);
+
+    ctx.fillStyle = theme.accent;
+    ctx.font = `900 ${12 * scale}px Inter, ui-sans-serif, system-ui, sans-serif`;
+    fillTrackedCanvasText(ctx, (model.eyebrow || 'The Press').toUpperCase(), innerX, y + 12 * scale, 1.4 * scale);
+    y += 35 * scale;
+
+    ctx.fillStyle = theme.ink;
+    ctx.font = `800 ${44 * scale}px "Playfair Display", Georgia, "Times New Roman", serif`;
+    y = wrapShareCanvasText(ctx, model.title || 'The Press', innerX, y + 44 * scale, innerWidth, 46 * scale, 3, { minFontSize: 31 * scale }) + 12 * scale;
+
+    ctx.fillStyle = theme.muted;
+    ctx.font = `500 ${19 * scale}px "Playfair Display", Georgia, "Times New Roman", serif`;
+    y = wrapShareCanvasText(ctx, model.dek || '', innerX, y + 14 * scale, innerWidth, 26 * scale, 5, { minFontSize: 15 * scale }) + 18 * scale;
+
+    if (model.meta) {
+      ctx.font = `800 ${10 * scale}px Inter, ui-sans-serif, system-ui, sans-serif`;
+      ctx.fillStyle = theme.muted;
+      y = wrapShareCanvasText(ctx, model.meta.toUpperCase(), innerX, y + 8 * scale, innerWidth, 15 * scale, 3, { minFontSize: 8 * scale }) + 18 * scale;
+    }
+
+    if (model.heroImage) {
+      y = drawArticleCanvasScrollImage(ctx, model.heroImage, innerX, y, innerWidth, 330 * scale, theme) + 22 * scale;
+    }
+    y = drawArticleCanvasRule(ctx, innerX, y, innerWidth, theme) + 18 * scale;
+
+    for (const section of model.sections) {
+      if (y > maxHeight - 760 * scale) break;
+      y = drawArticleCanvasScrollSection(ctx, section, y, innerX, innerWidth, theme, scale);
+    }
+
+    y += 10 * scale;
+    ctx.fillStyle = theme.cardAlt;
+    roundRectPath(ctx, innerX, y, innerWidth, 124 * scale, 10 * scale);
+    ctx.fill();
+    ctx.fillStyle = theme.accent;
+    ctx.font = `900 ${11 * scale}px Inter, ui-sans-serif, system-ui, sans-serif`;
+    fillTrackedCanvasText(ctx, 'READ THE FULL ARTICLE', innerX + 18 * scale, y + 38 * scale, 1.8 * scale);
+    ctx.fillStyle = theme.ink;
+    ctx.font = `700 ${15 * scale}px "Playfair Display", Georgia, "Times New Roman", serif`;
+    wrapShareCanvasText(ctx, model.url || 'thepress.live', innerX + 18 * scale, y + 74 * scale, innerWidth - 36 * scale, 20 * scale, 2, { minFontSize: 11 * scale });
+    y += 154 * scale;
+    ctx.fillStyle = theme.paper;
+    ctx.fillRect(0, y, width, Math.max(0, maxHeight - y));
+    return y;
+  }
+
+  function drawArticleCanvasScrollSection(ctx, section, y, x, width, theme, scale) {
+    ctx.fillStyle = theme.accent;
+    ctx.font = `900 ${11 * scale}px Inter, ui-sans-serif, system-ui, sans-serif`;
+    fillTrackedCanvasText(ctx, (section.number || '').toUpperCase(), x, y + 12 * scale, 1.3 * scale);
+    y += 34 * scale;
+
+    if (section.heading) {
+      ctx.fillStyle = theme.ink;
+      ctx.font = `800 ${29 * scale}px "Playfair Display", Georgia, "Times New Roman", serif`;
+      y = wrapShareCanvasText(ctx, section.heading, x, y + 29 * scale, width, 32 * scale, 3, { minFontSize: 22 * scale }) + 8 * scale;
+    }
+
+    if (section.image) {
+      y = drawArticleCanvasScrollImage(ctx, section.image, x, y, width, 238 * scale, theme);
+      if (section.imageCaption) {
+        ctx.fillStyle = theme.muted;
+        ctx.font = `700 ${10 * scale}px Inter, ui-sans-serif, system-ui, sans-serif`;
+        y = wrapShareCanvasText(ctx, section.imageCaption, x + 8 * scale, y + 15 * scale, width - 16 * scale, 14 * scale, 2, { minFontSize: 8 * scale }) + 12 * scale;
+      } else {
+        y += 14 * scale;
+      }
+    }
+
+    ctx.fillStyle = theme.ink;
+    ctx.font = `400 ${16 * scale}px Georgia, "Times New Roman", serif`;
+    section.texts.forEach((text) => {
+      y = wrapShareCanvasText(ctx, text, x, y + 16 * scale, width, 23 * scale, 5, { minFontSize: 13 * scale }) + 10 * scale;
+    });
+    return drawArticleCanvasRule(ctx, x, y + 10 * scale, width, theme) + 18 * scale;
+  }
+
+  function drawArticleCanvasScrollImage(ctx, image, x, y, width, height, theme) {
+    ctx.save();
+    ctx.fillStyle = theme.card;
+    ctx.strokeStyle = theme.rule;
+    ctx.lineWidth = 1;
+    roundRectPath(ctx, x, y, width, height, 8);
+    ctx.fill();
+    ctx.clip();
+    drawShareImageContain(ctx, image, x + 1, y + 1, width - 2, height - 2);
+    ctx.restore();
+    ctx.strokeStyle = theme.rule;
+    ctx.lineWidth = 1;
+    roundRectPath(ctx, x, y, width, height, 8);
+    ctx.stroke();
+    return y + height;
+  }
+
+  function drawArticleCanvasRule(ctx, x, y, width, theme) {
+    ctx.fillStyle = theme.rule;
+    ctx.fillRect(x, y, width, 1);
+    return y + 1;
   }
 
   async function applyBelowFoldScrollStoryAssetToModal(modal, context, canvas, video, asset) {
@@ -4805,7 +5002,9 @@ function enhanceBreakingStrip(stories) {
   }
 
   function getBelowFoldScrollSourceRoot(context) {
-    if (context?.type === 'article') return context.articleScrollRoot || buildArticleScrollSourceRoot(context);
+    if (context?.type === 'article') {
+      return context.articleScrollRoot || buildArticleScrollSourceRoot(context);
+    }
     return context?.belowFoldRoot
       || document.querySelector('.page-below-fold-issue [data-below-fold-root]')
       || document.querySelector('.page-below-fold-issue .below-fold-issue-page__paper [data-below-fold-root]');
@@ -4813,13 +5012,13 @@ function enhanceBreakingStrip(stories) {
 
   function getScrollCaptureShellClass(context) {
     return context?.type === 'article'
-      ? 'press-scroll-capture-shell page-article page-article--scroll-preview'
+      ? 'press-scroll-capture-shell page-article page-article--scroll-share'
       : 'press-scroll-capture-shell page-below-fold-issue';
   }
 
   function buildArticleScrollSourceRoot(context) {
     const root = document.createElement('article');
-    root.className = 'press-article-scroll-preview';
+    root.className = 'press-article-scroll-reader';
 
     const title = collapseWhitespace(context?.title || document.querySelector('.article-headline')?.textContent || document.title || 'The Press');
     const dek = collapseWhitespace(context?.text || document.querySelector('.article-dek')?.textContent || '');
@@ -4828,14 +5027,14 @@ function enhanceBreakingStrip(stories) {
     const imageUrl = normalizeShareAssetUrl(context?.imageUrl || getShareImageUrl());
 
     const header = document.createElement('header');
-    header.className = 'press-article-scroll-preview__header';
-    appendArticleScrollText(header, 'p', 'press-article-scroll-preview__kicker', eyebrow);
+    header.className = 'press-article-scroll-reader__header';
+    appendArticleScrollText(header, 'p', 'press-article-scroll-reader__kicker', eyebrow);
     appendArticleScrollText(header, 'h1', '', title);
-    appendArticleScrollText(header, 'p', 'press-article-scroll-preview__dek', dek);
-    appendArticleScrollText(header, 'p', 'press-article-scroll-preview__meta', meta);
+    appendArticleScrollText(header, 'p', 'press-article-scroll-reader__dek', dek);
+    appendArticleScrollText(header, 'p', 'press-article-scroll-reader__meta', meta);
     if (imageUrl) {
       const figure = buildArticleScrollFigure(imageUrl, getShareImageAltText());
-      figure.classList.add('press-article-scroll-preview__figure--hero');
+      figure.classList.add('press-article-scroll-reader__figure--hero');
       header.appendChild(figure);
     }
     root.appendChild(header);
@@ -4846,7 +5045,7 @@ function enhanceBreakingStrip(stories) {
     });
 
     const footer = document.createElement('footer');
-    footer.className = 'press-article-scroll-preview__footer';
+    footer.className = 'press-article-scroll-reader__footer';
     appendArticleScrollText(footer, 'strong', '', 'READ THE FULL ARTICLE');
     appendArticleScrollText(footer, 'p', '', context?.url || window.location.href);
     root.appendChild(footer);
@@ -4864,50 +5063,61 @@ function enhanceBreakingStrip(stories) {
     const seen = new Set();
     return Array.from(candidates).filter((node) => {
       if (!node || seen.has(node)) return false;
-      if (node.closest('.press-social-side, .share-row, [data-article-trust-card]')) return false;
+      if (node.closest('.press-social-side, .share-row, [data-article-trust-card], .cartel-source-matrix, .article-sources, .source-notes, .related-block')) return false;
       if (Array.from(seen).some((usedNode) => usedNode.contains(node) || node.contains(usedNode))) return false;
       seen.add(node);
       return Boolean(node.querySelector('h2, h3, p, figure, img'));
-    }).slice(0, 14);
+    }).slice(0, ARTICLE_SCROLL_READER_LIMITS.maxSections);
   }
 
   function buildArticleScrollSection(segment, index) {
-    const heading = collapseWhitespace(segment.querySelector('h2, h3, h4')?.textContent || segment.getAttribute('aria-label') || '');
+    const heading = getArticleScrollCleanText(segment.querySelector('h2, h3, h4')) || collapseWhitespace(segment.getAttribute('aria-label') || '');
     const section = document.createElement('section');
-    section.className = 'press-article-scroll-preview__section';
-    appendArticleScrollText(section, 'p', 'press-article-scroll-preview__section-number', `Part ${index + 1}`);
+    section.className = 'press-article-scroll-reader__section';
+    appendArticleScrollText(section, 'p', 'press-article-scroll-reader__section-number', `Section ${String(index + 1).padStart(2, '0')}`);
     appendArticleScrollText(section, 'h2', '', heading);
 
-    const image = segment.querySelector('figure img, img');
+    const image = index < ARTICLE_SCROLL_READER_LIMITS.maxFigureSections
+      ? segment.querySelector('figure img, img')
+      : null;
     const imageUrl = normalizeShareAssetUrl(image?.currentSrc || image?.getAttribute('src') || '');
     if (imageUrl) {
       const figure = buildArticleScrollFigure(imageUrl, image?.getAttribute('alt') || '');
-      const caption = collapseWhitespace(image.closest('figure')?.querySelector('figcaption')?.textContent || '');
+      const caption = getArticleScrollCleanText(image.closest('figure')?.querySelector('figcaption'));
       appendArticleScrollText(figure, 'figcaption', '', caption);
       section.appendChild(figure);
     }
 
+    const usedText = new Set();
     Array.from(segment.querySelectorAll('p'))
       .filter((paragraph) => !paragraph.closest('figcaption, .press-static-post, .source-list, .share-row'))
-      .map((paragraph) => collapseWhitespace(paragraph.textContent || ''))
-      .filter((text) => text.length > 40)
-      .slice(0, 5)
+      .map((paragraph) => getArticleScrollCleanText(paragraph))
+      .filter((text) => text.length > 40 && !usedText.has(text) && usedText.add(text))
+      .slice(0, ARTICLE_SCROLL_READER_LIMITS.maxParagraphsPerSection)
       .forEach((text) => appendArticleScrollText(section, 'p', '', text));
 
-    if (!section.querySelector('h2, figure, p:not(.press-article-scroll-preview__section-number)')) return null;
+    if (!section.querySelector('h2, figure, p:not(.press-article-scroll-reader__section-number)')) return null;
     return section;
   }
 
   function buildArticleScrollFigure(imageUrl, altText = '') {
     const figure = document.createElement('figure');
-    figure.className = 'press-article-scroll-preview__figure';
+    figure.className = 'press-article-scroll-reader__figure';
     const image = document.createElement('img');
     image.src = imageUrl;
     image.alt = altText || '';
     image.loading = 'eager';
     image.decoding = 'sync';
+    image.setAttribute('fetchpriority', 'high');
     figure.appendChild(image);
     return figure;
+  }
+
+  function getArticleScrollCleanText(node) {
+    if (!node) return '';
+    const clone = node.cloneNode(true);
+    clone.querySelectorAll('sup, .source-ref, script, style').forEach((child) => child.remove());
+    return collapseWhitespace(clone.textContent || '');
   }
 
   function appendArticleScrollText(parent, tagName, className, value) {
@@ -4925,7 +5135,29 @@ function enhanceBreakingStrip(stories) {
   }
 
   function sanitizeBelowFoldScrollClone(clone) {
-    clone.querySelectorAll('script, style, .share-row, [data-below-fold-story-share]').forEach((node) => node.remove());
+    clone.querySelectorAll([
+      'script',
+      'style',
+      'nav',
+      '.share-row',
+      '[data-below-fold-story-share]',
+      '[data-article-folio-share]',
+      '.article-folio__share',
+      '[data-living-article-dock]',
+      '[data-living-drawer]',
+      '.article-source-drawer',
+      '.related-block',
+      '#related-stories',
+      '.story-card--related',
+      '.article-sources',
+      '#source-notes',
+      '.source-notes',
+      '.source-list',
+      '.reader-mode-toggle',
+      '.theme-toggle',
+      '.reading-progress',
+      '.press-command',
+    ].join(', ')).forEach((node) => node.remove());
     clone.querySelectorAll('[id]').forEach((node, index) => {
       node.id = `scroll-story-${index}-${node.id}`;
     });
@@ -4963,11 +5195,12 @@ function enhanceBreakingStrip(stories) {
   async function buildBelowFoldDomScrollStrip(context, callbacks = {}) {
     const sourceRoot = getBelowFoldScrollSourceRoot(context);
     if (!sourceRoot) return null;
-    const sourceMeasuredHeight = getBelowFoldLayoutHeight(sourceRoot);
+    const sourceMeasuredHeight = context?.type === 'article' ? 0 : getBelowFoldLayoutHeight(sourceRoot);
 
     const profile = callbacks.profile || getBelowFoldScrollVideoProfile(context);
     const colorway = getBelowFoldScrollStoryColorway(context?.scrollStoryColorway);
     const viewportWidth = profile.viewportWidth || 430;
+    const captureBackground = context?.type === 'article' ? colorway.paper : colorway.screen;
     const clone = sourceRoot.cloneNode(true);
     sanitizeBelowFoldScrollClone(clone);
     await normalizeBelowFoldCaptureMedia(clone);
@@ -4982,7 +5215,7 @@ function enhanceBreakingStrip(stories) {
       'min-height:1px',
       'pointer-events:none',
       'z-index:-1',
-      `background:${colorway.screen}`,
+      `background:${captureBackground}`,
     ].join(';');
     captureHost.setAttribute('aria-hidden', 'true');
 
@@ -5009,12 +5242,13 @@ function enhanceBreakingStrip(stories) {
         captureHost.scrollHeight,
         1200
       ));
-      const captureScale = getBelowFoldCaptureScale(measuredHeight, viewportWidth);
+      const captureScale = getBelowFoldCaptureScale(measuredHeight, viewportWidth, context);
       const html2canvas = await ensureHtml2Canvas();
       const chunks = await captureBelowFoldDomChunks(html2canvas, capturePage, {
         captureScale,
         measuredHeight,
         onFirstChunk: callbacks.onFirstFrame,
+        subjectType: context?.type || '',
         theme: colorway,
         viewportWidth,
       });
@@ -5035,11 +5269,13 @@ function enhanceBreakingStrip(stories) {
     const measuredHeight = Math.max(1, options.measuredHeight || 1200);
     const captureScale = options.captureScale || 1;
     const colorway = options.theme || getBelowFoldScrollStoryColorway();
+    const captureBackground = options.subjectType === 'article' ? colorway.paper : colorway.screen;
     const chunkCssHeight = Math.max(1100, Math.min(1800, Math.floor(2400 / captureScale)));
     const chunks = [];
 
     capturePage.style.willChange = 'transform';
     capturePage.parentElement.style.overflow = 'hidden';
+    capturePage.parentElement.style.background = captureBackground;
     const fullCanvasArea = viewportWidth * measuredHeight * captureScale * captureScale;
     const canCaptureWholeIssue = viewportWidth >= 720
       && fullCanvasArea <= 30000000
@@ -5051,7 +5287,7 @@ function enhanceBreakingStrip(stories) {
         capturePage.parentElement.style.height = `${measuredHeight}px`;
         const canvas = await withBelowFoldTimeout(html2canvas(capturePage.parentElement, {
           allowTaint: false,
-          backgroundColor: colorway.screen,
+          backgroundColor: captureBackground,
           height: measuredHeight,
           logging: false,
           scale: captureScale,
@@ -5083,7 +5319,7 @@ function enhanceBreakingStrip(stories) {
       capturePage.style.transform = `translateY(-${offset}px)`;
       const canvas = await withBelowFoldTimeout(html2canvas(capturePage.parentElement, {
         allowTaint: false,
-        backgroundColor: colorway.screen,
+        backgroundColor: captureBackground,
         height,
         logging: false,
         scale: captureScale,
@@ -5143,8 +5379,16 @@ function enhanceBreakingStrip(stories) {
     } catch (_) {}
   }
 
-  function getBelowFoldCaptureScale(measuredHeight, viewportWidth) {
+  function getBelowFoldCaptureScale(measuredHeight, viewportWidth, context) {
     const deviceScale = Number(window.devicePixelRatio) || 1;
+    if (context?.type === 'article') {
+      const height = Math.max(1, measuredHeight || 1);
+      const areaScale = Math.sqrt(ARTICLE_SCROLL_READER_LIMITS.captureAreaBudget / Math.max(1, viewportWidth * height));
+      return Math.max(
+        ARTICLE_SCROLL_READER_LIMITS.captureScaleMin,
+        Math.min(ARTICLE_SCROLL_READER_LIMITS.captureScaleMax, deviceScale, areaScale)
+      );
+    }
     if ((viewportWidth || 0) >= 720) {
       const height = Math.max(1, measuredHeight || 1);
       const areaScale = Math.sqrt(30000000 / Math.max(1, viewportWidth * height));
@@ -5459,54 +5703,413 @@ function enhanceBreakingStrip(stories) {
         max-width:100%;
         height:auto;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview{
+      .press-scroll-capture-shell.page-article{
         width:${viewportWidth}px;
         max-width:none;
         min-height:100%;
         margin:0;
-        padding:22px 18px 30px;
         background:var(--scroll-paper) !important;
         color:var(--scroll-ink) !important;
         font-family:Georgia, "Times New Roman", serif;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__header{
+      .press-scroll-capture-shell.page-article .article,
+      .press-scroll-capture-shell.page-article .article--newspaper,
+      .press-scroll-capture-shell.page-article .article--heritage{
+        display:block !important;
+        width:${viewportWidth}px !important;
+        max-width:none !important;
+        margin:0 !important;
+        padding:0 !important;
+        background:var(--scroll-paper) !important;
+        color:var(--scroll-ink) !important;
+        border:0 !important;
+      }
+      .press-scroll-capture-shell.page-article .article-hero{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:12px !important;
+        width:100% !important;
+        max-width:none !important;
+        margin:0 !important;
+        padding:22px 18px 20px !important;
+        background:var(--scroll-paper) !important;
+        border:0 !important;
+        border-bottom:2px solid var(--scroll-rule) !important;
+        box-shadow:none !important;
+      }
+      .press-scroll-capture-shell.page-article .article-folio{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:4px !important;
+        width:100% !important;
+        margin:0 0 4px !important;
+        padding:0 0 10px !important;
+        border-bottom:1px solid var(--scroll-rule) !important;
+        background:transparent !important;
+      }
+      .press-scroll-capture-shell.page-article .article-folio :where(a,span){
+        display:block !important;
+        min-width:0 !important;
+        margin:0 !important;
+        padding:0 !important;
+        border:0 !important;
+        color:var(--scroll-muted) !important;
+        font:800 11px/1.22 Inter, ui-sans-serif, system-ui, sans-serif !important;
+        letter-spacing:.08em !important;
+        text-transform:uppercase !important;
+        text-decoration:none !important;
+        overflow-wrap:anywhere !important;
+      }
+      .press-scroll-capture-shell.page-article .article-folio__home,
+      .press-scroll-capture-shell.page-article .article-hero > .eyebrow{
+        color:var(--scroll-accent) !important;
+      }
+      .press-scroll-capture-shell.page-article .article-hero > .eyebrow{
+        margin:0 !important;
+        font:900 12px/1.2 Inter, ui-sans-serif, system-ui, sans-serif !important;
+        letter-spacing:.11em !important;
+        text-transform:uppercase !important;
+      }
+      .press-scroll-capture-shell.page-article .article-headline{
+        max-width:none !important;
+        margin:0 !important;
+        color:var(--scroll-ink) !important;
+        font:800 clamp(44px, 14vw, 72px)/.9 "Playfair Display", Georgia, "Times New Roman", serif !important;
+        letter-spacing:0 !important;
+        text-wrap:balance;
+      }
+      .press-scroll-capture-shell.page-article .article-dek{
+        max-width:none !important;
+        margin:0 !important;
+        color:var(--scroll-muted) !important;
+        font:500 20px/1.28 "Playfair Display", Georgia, "Times New Roman", serif !important;
+      }
+      .press-scroll-capture-shell.page-article .article-meta{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:4px !important;
+        margin:0 !important;
+        color:var(--scroll-muted) !important;
+        font:800 11px/1.22 Inter, ui-sans-serif, system-ui, sans-serif !important;
+        letter-spacing:.06em !important;
+        text-transform:uppercase !important;
+      }
+      .press-scroll-capture-shell.page-article .hero-figure,
+      .press-scroll-capture-shell.page-article .article-body figure{
+        display:grid !important;
+        gap:7px !important;
+        width:100% !important;
+        max-width:none !important;
+        margin:4px 0 0 !important;
+        padding:0 !important;
+        border:1px solid var(--scroll-rule) !important;
+        background:var(--scroll-card) !important;
+        overflow:hidden !important;
+        break-inside:avoid !important;
+      }
+      .press-scroll-capture-shell.page-article .hero-figure img,
+      .press-scroll-capture-shell.page-article .article-body figure img{
+        display:block !important;
+        width:100% !important;
+        height:auto !important;
+        max-height:none !important;
+        object-fit:contain !important;
+        filter:none !important;
+      }
+      .press-scroll-capture-shell.page-article figcaption{
+        margin:0 !important;
+        padding:8px 10px 10px !important;
+        color:var(--scroll-muted) !important;
+        font:700 12px/1.28 Inter, ui-sans-serif, system-ui, sans-serif !important;
+      }
+      .press-scroll-capture-shell.page-article .article-shell,
+      .press-scroll-capture-shell.page-article .article-body,
+      .press-scroll-capture-shell.page-article .article-body--newspaper,
+      .press-scroll-capture-shell.page-article .press-feature-body{
+        display:block !important;
+        width:100% !important;
+        max-width:none !important;
+        margin:0 !important;
+        padding:0 !important;
+        background:var(--scroll-paper) !important;
+        color:var(--scroll-ink) !important;
+        border:0 !important;
+        columns:auto !important;
+        column-count:1 !important;
+      }
+      .press-scroll-capture-shell.page-article .article-shell{
+        padding:0 18px 30px !important;
+      }
+      .press-scroll-capture-shell.page-article .press-social-feature{
+        display:block !important;
+        margin:0 !important;
+        padding:0 !important;
+        background:transparent !important;
+        border:0 !important;
+      }
+      .press-scroll-capture-shell.page-article .press-social-row{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        grid-template-areas:none !important;
+        gap:12px !important;
+        margin:0 !important;
+        padding:18px 0 !important;
+        border:0 !important;
+        border-bottom:1px solid var(--scroll-rule) !important;
+        background:transparent !important;
+      }
+      .press-scroll-capture-shell.page-article .press-social-content,
+      .press-scroll-capture-shell.page-article .press-social-sources{
+        display:block !important;
+        order:1 !important;
+        width:100% !important;
+        max-width:none !important;
+        margin:0 !important;
+        padding:0 !important;
+        border:0 !important;
+        background:transparent !important;
+        grid-area:auto !important;
+      }
+      .press-scroll-capture-shell.page-article .press-social-side{
+        display:grid !important;
+        order:2 !important;
+        grid-template-columns:1fr !important;
+        gap:10px !important;
+        width:100% !important;
+        max-width:none !important;
+        margin:0 !important;
+        padding:0 !important;
+        border:0 !important;
+        background:transparent !important;
+        grid-area:auto !important;
+      }
+      .press-scroll-capture-shell.page-article .press-social-side--right{
+        order:3 !important;
+      }
+      .press-scroll-capture-shell.page-article .press-social-content h2,
+      .press-scroll-capture-shell.page-article .article-body h2,
+      .press-scroll-capture-shell.page-article .article-body h3{
+        margin:0 0 10px !important;
+        color:var(--scroll-ink) !important;
+        font:800 32px/1.02 "Playfair Display", Georgia, "Times New Roman", serif !important;
+        letter-spacing:0 !important;
+        text-wrap:balance;
+      }
+      .press-scroll-capture-shell.page-article .press-social-content p,
+      .press-scroll-capture-shell.page-article .press-social-content li,
+      .press-scroll-capture-shell.page-article .article-body > :where(p,ul,ol,blockquote),
+      .press-scroll-capture-shell.page-article .article-body section > :where(p,ul,ol,blockquote){
+        max-width:none !important;
+        margin:0 0 12px !important;
+        color:var(--scroll-ink) !important;
+        font:400 17px/1.42 Georgia, "Times New Roman", serif !important;
+      }
+      .press-scroll-capture-shell.page-article .press-social-content p:last-child,
+      .press-scroll-capture-shell.page-article .article-body section > p:last-child{
+        margin-bottom:0 !important;
+      }
+      .press-scroll-capture-shell.page-article .source-ref,
+      .press-scroll-capture-shell.page-article .source-ref a{
+        color:var(--scroll-accent) !important;
+        font-size:.72em !important;
+        line-height:1 !important;
+        text-decoration:none !important;
+      }
+      .press-scroll-capture-shell.page-article .press-static-post,
+      .press-scroll-capture-shell.page-article .cartel-rail-card,
+      .press-scroll-capture-shell.page-article .data-center-grid-rail-card,
+      .press-scroll-capture-shell.page-article .wildlife-rail-card,
+      .press-scroll-capture-shell.page-article .aside-card,
+      .press-scroll-capture-shell.page-article .story-aside-module,
+      .press-scroll-capture-shell.page-article .info-box,
+      .press-scroll-capture-shell.page-article .notice-panel{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:8px !important;
+        width:100% !important;
+        max-width:none !important;
+        margin:0 !important;
+        padding:10px !important;
+        border:1px solid var(--scroll-rule) !important;
+        background:var(--scroll-card) !important;
+        color:var(--scroll-ink) !important;
+        break-inside:avoid !important;
+      }
+      .press-scroll-capture-shell.page-article .press-static-post__top{
+        display:grid !important;
+        grid-template-columns:auto minmax(0,1fr) !important;
+        gap:8px !important;
+        align-items:center !important;
+      }
+      .press-scroll-capture-shell.page-article .press-static-post__avatar{
+        display:grid !important;
+        place-items:center !important;
+        width:34px !important;
+        height:34px !important;
+        border:1px solid var(--scroll-rule) !important;
+        color:var(--scroll-accent) !important;
+        font:900 10px/1 Inter, ui-sans-serif, system-ui, sans-serif !important;
+      }
+      .press-scroll-capture-shell.page-article .press-static-post__top strong,
+      .press-scroll-capture-shell.page-article .press-static-post__visual strong,
+      .press-scroll-capture-shell.page-article .press-static-post h3{
+        margin:0 !important;
+        color:var(--scroll-ink) !important;
+        font:800 18px/1.08 "Playfair Display", Georgia, "Times New Roman", serif !important;
+      }
+      .press-scroll-capture-shell.page-article .press-static-post__top span,
+      .press-scroll-capture-shell.page-article .press-static-post__kicker,
+      .press-scroll-capture-shell.page-article .press-static-post__source{
+        color:var(--scroll-accent) !important;
+        font:900 10px/1.18 Inter, ui-sans-serif, system-ui, sans-serif !important;
+        letter-spacing:.08em !important;
+        text-transform:uppercase !important;
+      }
+      .press-scroll-capture-shell.page-article .press-static-post p,
+      .press-scroll-capture-shell.page-article .press-static-post em{
+        margin:0 !important;
+        color:var(--scroll-muted) !important;
+        font:600 13px/1.32 Inter, ui-sans-serif, system-ui, sans-serif !important;
+      }
+      .press-scroll-capture-shell.page-article .press-static-post a{
+        color:var(--scroll-accent) !important;
+        font:900 10px/1.2 Inter, ui-sans-serif, system-ui, sans-serif !important;
+        letter-spacing:.08em !important;
+        text-decoration:none !important;
+        text-transform:uppercase !important;
+      }
+      .press-scroll-capture-shell.page-article .press-static-post__media,
+      .press-scroll-capture-shell.page-article .press-static-post__media img,
+      .press-scroll-capture-shell.page-article .press-static-post__visual{
+        width:100% !important;
+        max-width:none !important;
+      }
+      .press-scroll-capture-shell.page-article .press-static-post__media{
+        display:block !important;
+        margin:0 !important;
+        border:1px solid var(--scroll-rule) !important;
+        background:var(--scroll-paper-deep) !important;
+        overflow:hidden !important;
+      }
+      .press-scroll-capture-shell.page-article .press-static-post__media img{
+        display:block !important;
+        height:auto !important;
+        object-fit:cover !important;
+        filter:none !important;
+      }
+      .press-scroll-capture-shell.page-article .press-static-post__visual{
+        display:grid !important;
+        gap:5px !important;
+        padding:0 !important;
+        background:transparent !important;
+      }
+      body.page-article--heritage .press-scroll-capture-shell.page-article,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .article,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .article-hero,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .article-shell,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .article-body,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .press-feature-body,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .press-social-feature,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .press-social-row,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .press-social-content,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .press-social-side{
+        background:var(--scroll-paper) !important;
+        background-image:none !important;
+        border-color:var(--scroll-rule) !important;
+        box-shadow:none !important;
+        color:var(--scroll-ink) !important;
+      }
+      body.page-article--heritage .press-scroll-capture-shell.page-article .hero-figure,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .article-body figure,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .press-static-post,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .cartel-rail-card,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .data-center-grid-rail-card,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .wildlife-rail-card,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .aside-card,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .story-aside-module,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .info-box,
+      body.page-article--heritage .press-scroll-capture-shell.page-article .notice-panel{
+        background:var(--scroll-card) !important;
+        background-image:none !important;
+        border-color:var(--scroll-rule) !important;
+        box-shadow:none !important;
+        color:var(--scroll-ink) !important;
+      }
+      body.page-article--heritage .press-scroll-capture-shell.page-article *,
+      body.page-article--heritage .press-scroll-capture-shell.page-article *::before,
+      body.page-article--heritage .press-scroll-capture-shell.page-article *::after{
+        border-color:var(--scroll-rule) !important;
+        box-shadow:none !important;
+        text-shadow:none !important;
+      }
+      body.page-article--heritage .press-scroll-capture-shell.page-article *::before,
+      body.page-article--heritage .press-scroll-capture-shell.page-article *::after{
+        background:transparent !important;
+        background-image:none !important;
+      }
+      .press-scroll-capture-shell .press-article-scroll-reader{
+        width:${viewportWidth}px;
+        max-width:none;
+        min-height:100%;
+        margin:0;
+        padding:22px 18px 32px;
+        background:var(--scroll-paper) !important;
+        color:var(--scroll-ink) !important;
+        font-family:Georgia, "Times New Roman", serif;
+        writing-mode:horizontal-tb !important;
+        text-orientation:mixed !important;
+        white-space:normal !important;
+        overflow-wrap:break-word !important;
+      }
+      .press-scroll-capture-shell .press-article-scroll-reader,
+      .press-scroll-capture-shell .press-article-scroll-reader *{
+        direction:ltr !important;
+        writing-mode:horizontal-tb !important;
+        text-orientation:mixed !important;
+        white-space:normal !important;
+      }
+      .press-scroll-capture-shell .press-article-scroll-reader__header{
         display:grid;
         gap:12px;
         padding:0 0 18px;
         border-bottom:2px solid var(--scroll-rule);
+        background:var(--scroll-paper) !important;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__kicker,
-      .press-scroll-capture-shell .press-article-scroll-preview__meta,
-      .press-scroll-capture-shell .press-article-scroll-preview__section-number{
+      .press-scroll-capture-shell .press-article-scroll-reader__kicker,
+      .press-scroll-capture-shell .press-article-scroll-reader__meta,
+      .press-scroll-capture-shell .press-article-scroll-reader__section-number{
         margin:0;
         color:var(--scroll-accent) !important;
         font:900 12px/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
         letter-spacing:.1em;
         text-transform:uppercase;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview h1{
+      .press-scroll-capture-shell .press-article-scroll-reader h1{
         margin:0;
         color:var(--scroll-ink) !important;
-        font:800 clamp(48px, 15vw, 76px)/.9 "Playfair Display", Georgia, "Times New Roman", serif;
+        font:800 56px/.92 "Playfair Display", Georgia, "Times New Roman", serif;
         letter-spacing:0;
+        overflow-wrap:break-word !important;
+        text-wrap:balance;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__dek{
+      .press-scroll-capture-shell .press-article-scroll-reader__dek{
         margin:0;
         color:var(--scroll-muted) !important;
         font:500 20px/1.25 "Playfair Display", Georgia, "Times New Roman", serif;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__figure{
+      .press-scroll-capture-shell .press-article-scroll-reader__figure{
         display:block;
         margin:0;
         padding:0;
         border:1px solid var(--scroll-rule);
         background:var(--scroll-card) !important;
+        overflow:hidden;
         break-inside:avoid;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__figure--hero{
+      .press-scroll-capture-shell .press-article-scroll-reader__figure--hero{
         margin-top:4px;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__figure img{
+      .press-scroll-capture-shell .press-article-scroll-reader__figure img{
         display:block;
         width:100%;
         height:auto !important;
@@ -5514,30 +6117,34 @@ function enhanceBreakingStrip(stories) {
         object-fit:contain !important;
         filter:none !important;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__figure figcaption{
+      .press-scroll-capture-shell .press-article-scroll-reader__figure figcaption{
         margin:0;
         padding:8px 10px 10px;
         color:var(--scroll-muted) !important;
         font:700 12px/1.28 Inter, ui-sans-serif, system-ui, sans-serif;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__section{
+      .press-scroll-capture-shell .press-article-scroll-reader__section{
         display:grid;
         gap:12px;
         padding:20px 0;
+        background:var(--scroll-paper) !important;
         border-bottom:1px solid var(--scroll-rule);
         break-inside:avoid;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__section h2{
+      .press-scroll-capture-shell .press-article-scroll-reader__section h2{
         margin:0;
         color:var(--scroll-ink) !important;
         font:800 32px/1.02 "Playfair Display", Georgia, "Times New Roman", serif;
+        letter-spacing:0;
+        overflow-wrap:break-word !important;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__section p:not(.press-article-scroll-preview__section-number){
+      .press-scroll-capture-shell .press-article-scroll-reader__section p:not(.press-article-scroll-reader__section-number){
         margin:0;
         color:var(--scroll-ink) !important;
         font:400 17px/1.42 Georgia, "Times New Roman", serif;
+        overflow-wrap:break-word !important;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__footer{
+      .press-scroll-capture-shell .press-article-scroll-reader__footer{
         display:grid;
         gap:8px;
         margin:24px 0 0;
@@ -5545,12 +6152,12 @@ function enhanceBreakingStrip(stories) {
         background:var(--scroll-card-alt) !important;
         border:1px solid var(--scroll-rule);
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__footer strong{
+      .press-scroll-capture-shell .press-article-scroll-reader__footer strong{
         color:var(--scroll-accent) !important;
         font:900 13px/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
         letter-spacing:.12em;
       }
-      .press-scroll-capture-shell .press-article-scroll-preview__footer p{
+      .press-scroll-capture-shell .press-article-scroll-reader__footer p{
         margin:0;
         color:var(--scroll-ink) !important;
         font:700 16px/1.24 "Playfair Display", Georgia, "Times New Roman", serif;
@@ -5930,8 +6537,15 @@ function enhanceBreakingStrip(stories) {
       '.below-fold-spread article',
       '.below-fold-spread figure',
       '.below-fold-spread aside',
-      '.press-article-scroll-preview__section',
-      '.press-article-scroll-preview__figure',
+      '.press-feature-segment',
+      '.press-social-content',
+      '.article-body > section',
+      '[data-article-body] > section',
+      '.article-body figure',
+      '.article-body blockquote',
+      '.press-static-post',
+      '.press-article-scroll-reader__section',
+      '.press-article-scroll-reader__figure',
       'article[data-below-fold-hook]',
       'figure[data-below-fold-hook]',
       'aside[data-below-fold-hook]',
@@ -6360,17 +6974,27 @@ function enhanceBreakingStrip(stories) {
     });
   }
 
-  function getBelowFoldScrollTiming(strip, canvas) {
+  function getBelowFoldScrollTiming(strip, canvas, context) {
     const metrics = getBelowFoldScrollMetrics(strip, canvas);
+    const isArticle = context?.type === 'article';
+    const minDurationSeconds = isArticle
+      ? ARTICLE_SCROLL_READER_LIMITS.minDurationSeconds
+      : BELOW_FOLD_SCROLL_STORY_CRITERIA.minDurationSeconds;
+    const maxDurationSeconds = isArticle
+      ? ARTICLE_SCROLL_READER_LIMITS.maxDurationSeconds
+      : BELOW_FOLD_SCROLL_STORY_CRITERIA.maxDurationSeconds;
+    const scrollPixelsPerSecond = isArticle
+      ? ARTICLE_SCROLL_READER_LIMITS.scrollPixelsPerSecond
+      : BELOW_FOLD_SCROLL_STORY_CRITERIA.scrollPixelsPerSecond;
     const seconds = metrics.maxScroll > 0
       ? Math.max(
-        BELOW_FOLD_SCROLL_STORY_CRITERIA.minDurationSeconds,
+        minDurationSeconds,
         Math.min(
-          BELOW_FOLD_SCROLL_STORY_CRITERIA.maxDurationSeconds,
-          metrics.maxScroll / BELOW_FOLD_SCROLL_STORY_CRITERIA.scrollPixelsPerSecond
+          maxDurationSeconds,
+          metrics.maxScroll / scrollPixelsPerSecond
         )
       )
-      : 6;
+      : (isArticle ? minDurationSeconds : 6);
     const duration = Math.round(seconds * 1000);
     return {
       duration,
@@ -6378,8 +7002,14 @@ function enhanceBreakingStrip(stories) {
       holdBottom: 300,
       returnDuration: 0,
       holdEnd: 260,
-      frameRate: BELOW_FOLD_SCROLL_STORY_CRITERIA.frameRate,
+      frameRate: isArticle ? ARTICLE_SCROLL_READER_LIMITS.frameRate : BELOW_FOLD_SCROLL_STORY_CRITERIA.frameRate,
     };
+  }
+
+  function getBelowFoldScrollVideoBitsPerSecond(context) {
+    return context?.type === 'article'
+      ? ARTICLE_SCROLL_READER_LIMITS.videoBitsPerSecond
+      : BELOW_FOLD_SCROLL_STORY_CRITERIA.videoBitsPerSecond;
   }
 
   function getBelowFoldScrollMetrics(strip, canvas) {
