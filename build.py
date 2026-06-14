@@ -79,6 +79,8 @@ BELOW_FOLD_NEWSSTAND_URL = "below-the-fold.html"
 BELOW_FOLD_REGISTRY_PATH = SITE_DIR / "data" / "below-the-fold.json"
 ARTICLE_SPREAD_START = datetime.fromisoformat("2026-05-11T09:00:00-04:00")
 ARTICLE_SPREAD_VARIANTS = 5
+ARTICLE_LATEST_COUNT = 5
+CARTEL_FLAGSHIP_FILENAME = "world-cartels-beneath-the-state.html"
 BELOW_FOLD_SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 
@@ -121,6 +123,118 @@ def story_spread_variant(story: dict) -> int | None:
     )
     digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
     return (int(digest[:8], 16) % ARTICLE_SPREAD_VARIANTS) + 1
+
+
+def story_article_rank(story: dict) -> int:
+    filename = str(story.get("filename") or "").strip()
+    slug = str(story.get("slug") or "").strip()
+    for index, item in enumerate(STORIES):
+        if filename and filename == str(item.get("filename") or "").strip():
+            return index
+        if slug and slug == str(item.get("slug") or "").strip():
+            return index
+    return len(STORIES)
+
+
+def is_latest_five_story(story: dict) -> bool:
+    return story_article_rank(story) < ARTICLE_LATEST_COUNT
+
+
+def story_article_design(story: dict) -> str:
+    filename = str(story.get("filename") or "").strip()
+    if filename == CARTEL_FLAGSHIP_FILENAME:
+        return "cartel-flagship"
+    if is_cartoon_index_item(story):
+        return "cartoon-poster"
+
+    section = str(story.get("sectionSlug") or story.get("section") or "").strip().lower()
+    story_type = str(story.get("type") or "").strip().lower()
+
+    if "investigation" in story_type and section in {"technology", "science", "systems", "economics", "money"}:
+        return "ledger"
+    if "investigation" in story_type or section in {"world", "politics", "power", "geopolitics"}:
+        return "frontpage"
+    if section in {"sports", "pop-culture", "culture", "film", "food", "the-weird-file"}:
+        return "tabloid"
+    if section in {"health", "science", "climate", "education", "life"}:
+        return "magazine"
+    if section in {"technology", "systems", "memory", "ai"}:
+        return "ledger"
+    if "analysis" in story_type:
+        return "broadsheet"
+    return "broadsheet"
+
+
+def render_article_folio(story: dict) -> str:
+    section = str(story.get("section") or "News").strip() or "News"
+    published = str(story.get("publishedLabel") or story.get("publishedIso") or "").strip()
+    published_label = f"Published {published}" if published else "Published"
+    return f"""
+<div class="article-folio" aria-label="Article folio">
+  <span>{h(SITE['name'])}</span>
+  <span>{h(section)} Desk</span>
+  <span>{h(published_label)}</span>
+</div>
+""".strip()
+
+
+def render_article_companion_rail(story: dict, design_key: str) -> str:
+    related = related_stories(story)
+    section = str(story.get("section") or "News").strip() or "News"
+    story_type = str(story.get("type") or "Feature").strip() or "Feature"
+    rail_label = {
+        "cartel-flagship": "Flagship file",
+        "cartoon-poster": "Cartoon file",
+        "ledger": "Ledger file",
+        "frontpage": "Front page file",
+        "tabloid": "Culture file",
+        "magazine": "Feature file",
+    }.get(design_key, "Article file")
+    image = story.get("heroImage") or story.get("image") or ""
+    image_alt = public_image_alt(story, story.get("title"))
+    related_items = "\n".join(
+        f'<li><a href="{h(item["filename"])}">{h(item["title"])}</a><span>{h(item.get("section") or "News")}</span></li>'
+        for item in related[:3]
+    )
+    if not related_items:
+        related_items = '<li><span>More related reads will appear as the desk grows.</span></li>'
+    metric_rows = [
+        ("Section", section),
+        ("Type", story_type),
+        ("Read", story.get("readTime") or ""),
+        ("Length", story.get("wordCount") or ""),
+    ]
+    metric_html = "\n".join(
+        f'<div><dt>{h(label)}</dt><dd>{h(value)}</dd></div>'
+        for label, value in metric_rows
+        if str(value or "").strip()
+    )
+    image_html = (
+        f"""  <figure class="heritage-rail-card__thumb">
+    <img src="{h(image)}" alt="{h(image_alt)}" loading="lazy" decoding="async" />
+  </figure>
+""".rstrip()
+        if image
+        else ""
+    )
+    return f"""
+<aside class="article-companion-rail" aria-label="Article companion rail">
+  <section class="heritage-rail-card heritage-rail-card--cover">
+    <p class="heritage-rail-card__kicker">{h(rail_label)}</p>
+{image_html}
+    <h3>{h(story.get("title") or section)}</h3>
+    <dl class="heritage-rail-card__meta">
+      {metric_html}
+    </dl>
+  </section>
+  <section class="heritage-rail-card heritage-rail-card--related">
+    <p class="heritage-rail-card__kicker">Read next</p>
+    <ol>
+      {related_items}
+    </ol>
+  </section>
+</aside>
+""".strip()
 
 
 def load_below_fold_issues() -> list[dict]:
@@ -459,6 +573,18 @@ def strip_article_method_sections(fragment: str) -> str:
   return cleaned.strip()
 
 
+def strip_summary_asides(fragment: str) -> str:
+  summary_label = r"(?:Key points|Main idea)"
+  patterns = (
+    rf'\s*<section\b[^>]*>\s*<h[23]\b[^>]*>\s*{summary_label}\s*</h[23]>.*?</section>\s*',
+    rf'\s*<section\b[^>]*>\s*<p\b[^>]*class="[^"]*\beyebrow\b[^"]*"[^>]*>\s*{summary_label}\s*</p>.*?</section>\s*',
+  )
+  cleaned = fragment
+  for pattern in patterns:
+    cleaned = re.sub(pattern, "\n", cleaned, flags=re.S | re.I)
+  return cleaned.strip()
+
+
 def extract_balanced_div_content(page_html: str, start_tag: re.Match[str]) -> str | None:
   start = start_tag.end()
   depth = 1
@@ -504,6 +630,8 @@ def read_fragment(rel_path: str) -> str:
     fragment = fragment_path.read_text(encoding="utf-8")
     if "content/bodies/" in rel_path:
       return strip_article_method_sections(fragment)
+    if "content/asides/" in rel_path:
+      return strip_summary_asides(fragment)
     return fragment
 
   fallback_page = SITE_DIR / Path(rel_path).name
@@ -512,6 +640,8 @@ def read_fragment(rel_path: str) -> str:
     fragment = extract_story_fragment(page_html, rel_path)
     if "content/bodies/" in rel_path:
       return strip_article_method_sections(fragment)
+    if "content/asides/" in rel_path:
+      return strip_summary_asides(fragment)
     return fragment
 
   return fragment_path.read_text(encoding="utf-8")
@@ -1242,7 +1372,7 @@ def render_below_fold_makers_register(issue_month: str | None = None) -> str:
   <section class="below-fold-ledger below-fold-makers-ledger" aria-label="Makers Register ledger" data-below-fold-slot="ledger">
     <p><strong>Fact line:</strong> 1976 Apple, 1993 Nvidia, 2004 Facebook, 2007 iPhone, 2014 Oculus deal, 2017 Falcon 9 reflight, 2022 ChatGPT.</p>
     <p><strong>Scale line:</strong> Meta reported 3.56 billion family daily active people in March 2026; Robinhood reported 27.6 million funded customers in April 2026.</p>
-    <p><strong>Why it matters:</strong> Each slot marks a standard: graphical desktop, social feed, reusable launch, prompt box, retail trading app, defense OS, GPU compute.</p>
+    <p><strong>Slot logic:</strong> Each slot marks a standard: graphical desktop, social feed, reusable launch, prompt box, retail trading app, defense OS, GPU compute.</p>
   </section>
 </section>
 """.strip()
@@ -3272,13 +3402,10 @@ def render_authors() -> str:
     )
 
 def render_story(story: dict) -> str:
-    aside_html = read_fragment(story["asideFile"])
     body_html = read_fragment(story["bodyFile"])
     gallery_html = gallery_block(story)
     related_html = related_block(story)
-    social_rail_html = social_embeds_block(story, "rail")
     social_bottom_html = social_embeds_block(story, "bottom")
-    aside_extra_html = f"\n          {social_rail_html}" if social_rail_html else ""
     body_extras = "\n        ".join(block for block in (gallery_html, social_bottom_html, related_html) if block)
     body_extra_html = f"\n        {body_extras}" if body_extras else ""
     hero_image = story.get("heroImage") or story["image"]
@@ -3287,6 +3414,13 @@ def render_story(story: dict) -> str:
     hero_alt = public_image_alt(story, story["title"])
     hero_caption = public_image_caption(story)
     hero_caption_html = f"\n        <figcaption>{hero_caption}</figcaption>" if hero_caption else ""
+    design_key = story_article_design(story)
+    latest_five = is_latest_five_story(story)
+    cartel_flagship = str(story.get("filename") or "").strip() == CARTEL_FLAGSHIP_FILENAME
+    folio_html = render_article_folio(story)
+    body_has_feature_rails = "press-social-feature" in body_html
+    companion_rail_html = "" if body_has_feature_rails else render_article_companion_rail(story, design_key)
+    companion_rail_slot = f"\n      {companion_rail_html}" if companion_rail_html else ""
     static_interactive = story.get("staticInteractive") if isinstance(story.get("staticInteractive"), dict) else {}
     static_css = str(static_interactive.get("css") or "").strip()
     static_js = str(static_interactive.get("js") or "").strip()
@@ -3302,19 +3436,35 @@ def render_story(story: dict) -> str:
     )
     spread_variant = story_spread_variant(story)
     spread_value = f"v{spread_variant}" if spread_variant else ""
-    article_classes = "article article--newspaper"
-    body_classes = "article-body article-body--newspaper"
-    article_spread_attr = ""
+    article_class_list = [
+        "article",
+        "article--newspaper",
+    ]
+    body_class_list = [
+        "article-body",
+        "article-body--newspaper",
+    ]
+    article_attrs = [f'data-article-design="{h(design_key)}"']
     body_spread_attr = ' data-article-body'
     if spread_variant:
-        article_classes += f" article--spread article--spread-v{spread_variant}"
-        body_classes += " article-body--spread"
-        article_spread_attr = f' data-article-spread="{spread_value}"'
+        article_class_list.extend(["article--spread", f"article--spread-v{spread_variant}"])
+        body_class_list.append("article-body--spread")
+        article_attrs.append(f'data-article-spread="{spread_value}"')
         body_spread_attr += f' data-article-spread="{spread_value}"'
+    article_class_list.extend(["article--heritage", f"article--heritage-{design_key}"])
+    body_class_list.append("article-body--heritage")
+    if latest_five:
+        article_class_list.append("article--latest-five")
+    if cartel_flagship:
+        article_class_list.append("article--cartel-flagship")
+    article_classes = " ".join(article_class_list)
+    body_classes = " ".join(body_class_list)
+    article_attr_html = f" {' '.join(article_attrs)}" if article_attrs else ""
     main = f"""
 <main class="page page-article">
-  <article class="{article_classes}"{article_spread_attr}>
+  <article class="{article_classes}"{article_attr_html}>
     <header class="article-hero">
+      {folio_html}
       <p class="eyebrow">{h(story['section'])} • {h(story['type'])}</p>
       <h1 class="article-headline">{h(story['title'])}</h1>
       <p class="article-dek">{h(story['dek'])}</p>
@@ -3328,14 +3478,9 @@ def render_story(story: dict) -> str:
       </figure>
     </header>
     <div class="article-shell">
-      <aside class="article-aside">
-        <div class="sticky-stack">
-          {aside_html}{aside_extra_html}
-        </div>
-      </aside>
       <div class="{body_classes}"{body_spread_attr}>
         {body_html}{body_extra_html}
-      </div>
+      </div>{companion_rail_slot}
     </div>
   </article>
 </main>
@@ -3344,7 +3489,7 @@ def render_story(story: dict) -> str:
         f"{story['title']} — {SITE['name']}",
         story["dek"],
         story["filename"],
-        "page-article page-article--newspaper",
+        "page-article page-article--newspaper page-article--heritage",
         main,
         current_section=story["sectionSlug"],
         jsonld=jsonld_article(story),
@@ -3425,6 +3570,18 @@ def render_sitemap() -> str:
 
 
 def sanitize_public_html(markup: str) -> str:
+    markup = re.sub(
+        r'\s*<aside\b[^>]*class="[^"]*\barticle-aside\b[^"]*"[^>]*>\s*<div\b[^>]*class="[^"]*\bsticky-stack\b[^"]*"[^>]*>[\s\S]*?</div>\s*</aside>\s*',
+        "\n",
+        markup,
+        flags=re.I,
+    )
+    markup = re.sub(
+        r'\s*<aside\b[^>]*class="[^"]*\barticle-aside\b[^"]*"[^>]*>[\s\S]*?</aside>\s*',
+        "\n",
+        markup,
+        flags=re.I,
+    )
     markup = re.sub(
         r"<figcaption\b[^>]*>[^<]*(?:AI[- ]generated|not a documentary|not documentary evidence|official FIFA image|real social-media screenshot)[\s\S]*?</figcaption>",
         "",
