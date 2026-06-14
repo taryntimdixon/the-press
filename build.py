@@ -4,6 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 from datetime import datetime
 from email.utils import format_datetime
+import hashlib
 import html
 import json
 import math
@@ -76,6 +77,8 @@ def h(value: object) -> str:
 
 BELOW_FOLD_NEWSSTAND_URL = "below-the-fold.html"
 BELOW_FOLD_REGISTRY_PATH = SITE_DIR / "data" / "below-the-fold.json"
+ARTICLE_SPREAD_START = datetime.fromisoformat("2026-05-11T09:00:00-04:00")
+ARTICLE_SPREAD_VARIANTS = 5
 BELOW_FOLD_SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 
@@ -103,6 +106,21 @@ def is_cartoon_index_item(item: dict) -> bool:
 
 def shared_archive_stories() -> list[dict]:
     return [story for story in STORIES if not is_cartoon_index_item(story)]
+
+
+def story_spread_variant(story: dict) -> int | None:
+    if is_cartoon_index_item(story) or is_below_fold_index_item(story):
+        return None
+    published = parse_iso_datetime(story.get("publishedIso")) or parse_iso_datetime(story.get("updatedIso"))
+    if not published or published < ARTICLE_SPREAD_START:
+        return None
+
+    key = "|".join(
+        str(story.get(field) or "").strip()
+        for field in ("slug", "filename", "title")
+    )
+    digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
+    return (int(digest[:8], 16) % ARTICLE_SPREAD_VARIANTS) + 1
 
 
 def load_below_fold_issues() -> list[dict]:
@@ -426,38 +444,75 @@ def strip_generated_body_extras(fragment: str) -> str:
   return fragment[:end].strip()
 
 
+def strip_article_method_sections(fragment: str) -> str:
+  patterns = (
+    r'\s*<section\b[^>]*\baria-labelledby="how-to-read-this"[^>]*>.*?</section>\s*',
+    r'\s*<section\b[^>]*>\s*<h2\b[^>]*\bid="how-to-read-this"[^>]*>.*?</section>\s*',
+    r'\s*<div\b[^>]*class="[^"]*\batla-editor-note\b[^"]*"[^>]*>.*?</div>\s*',
+    r'\s*<div\b[^>]*class="[^"]*\bcartel-editor-note\b[^"]*"[^>]*>.*?</div>\s*',
+    r'\s*<section\b[^>]*class="[^"]*\bcartel-rewrite-audit\b[^"]*"[^>]*>.*?</section>\s*',
+  )
+  cleaned = fragment
+  for pattern in patterns:
+    cleaned = re.sub(pattern, "\n", cleaned, flags=re.S | re.I)
+  cleaned = re.sub(r'\s+data-rewrite-passes="[^"]*"', "", cleaned, flags=re.I)
+  return cleaned.strip()
+
+
+def extract_balanced_div_content(page_html: str, start_tag: re.Match[str]) -> str | None:
+  start = start_tag.end()
+  depth = 1
+  tag_pattern = re.compile(r"</?div\b[^>]*>", re.I)
+  for match in tag_pattern.finditer(page_html, start):
+    tag = match.group(0).lstrip().lower()
+    if tag.startswith("</"):
+      depth -= 1
+      if depth == 0:
+        return page_html[start:match.start()].strip()
+    else:
+      depth += 1
+  return None
+
+
 def extract_story_fragment(page_html: str, rel_path: str) -> str:
   if "content/asides/" in rel_path:
     pattern = re.compile(
       r'<aside class="article-aside">\s*<div class="sticky-stack">\s*(?P<content>.*?)\s*</div>\s*</aside>',
       re.S,
     )
+    match = pattern.search(page_html)
+    if not match:
+      raise FileNotFoundError(rel_path)
+    return match.group("content").strip()
   elif "content/bodies/" in rel_path:
     pattern = re.compile(
-      r'<div class="article-body">\s*(?P<content>.*?)\s*</div>\s*</div>\s*</article>',
+      r'<div\b[^>]*class="[^"]*\barticle-body\b[^"]*"[^>]*>',
       re.S,
     )
+    match = pattern.search(page_html)
+    content = extract_balanced_div_content(page_html, match) if match else None
+    if not content:
+      raise FileNotFoundError(rel_path)
+    return strip_generated_body_extras(content)
   else:
     raise FileNotFoundError(rel_path)
-
-  match = pattern.search(page_html)
-  if not match:
-    raise FileNotFoundError(rel_path)
-  content = match.group("content").strip()
-  if "content/bodies/" in rel_path:
-    return strip_generated_body_extras(content)
-  return content
 
 
 def read_fragment(rel_path: str) -> str:
   fragment_path = DATA_DIR / rel_path
   if fragment_path.exists():
-    return fragment_path.read_text(encoding="utf-8")
+    fragment = fragment_path.read_text(encoding="utf-8")
+    if "content/bodies/" in rel_path:
+      return strip_article_method_sections(fragment)
+    return fragment
 
   fallback_page = SITE_DIR / Path(rel_path).name
   if fallback_page.exists():
     page_html = fallback_page.read_text(encoding="utf-8")
-    return extract_story_fragment(page_html, rel_path)
+    fragment = extract_story_fragment(page_html, rel_path)
+    if "content/bodies/" in rel_path:
+      return strip_article_method_sections(fragment)
+    return fragment
 
   return fragment_path.read_text(encoding="utf-8")
 
@@ -3245,9 +3300,20 @@ def render_story(story: dict) -> str:
         if static_js
         else ""
     )
+    spread_variant = story_spread_variant(story)
+    spread_value = f"v{spread_variant}" if spread_variant else ""
+    article_classes = "article article--newspaper"
+    body_classes = "article-body article-body--newspaper"
+    article_spread_attr = ""
+    body_spread_attr = ' data-article-body'
+    if spread_variant:
+        article_classes += f" article--spread article--spread-v{spread_variant}"
+        body_classes += " article-body--spread"
+        article_spread_attr = f' data-article-spread="{spread_value}"'
+        body_spread_attr += f' data-article-spread="{spread_value}"'
     main = f"""
 <main class="page page-article">
-  <article class="article">
+  <article class="{article_classes}"{article_spread_attr}>
     <header class="article-hero">
       <p class="eyebrow">{h(story['section'])} • {h(story['type'])}</p>
       <h1 class="article-headline">{h(story['title'])}</h1>
@@ -3267,7 +3333,7 @@ def render_story(story: dict) -> str:
           {aside_html}{aside_extra_html}
         </div>
       </aside>
-      <div class="article-body">
+      <div class="{body_classes}"{body_spread_attr}>
         {body_html}{body_extra_html}
       </div>
     </div>
@@ -3278,7 +3344,7 @@ def render_story(story: dict) -> str:
         f"{story['title']} — {SITE['name']}",
         story["dek"],
         story["filename"],
-        "page-article",
+        "page-article page-article--newspaper",
         main,
         current_section=story["sectionSlug"],
         jsonld=jsonld_article(story),
