@@ -170,10 +170,11 @@ def render_article_folio(story: dict) -> str:
     published = str(story.get("publishedLabel") or story.get("publishedIso") or "").strip()
     published_label = f"Published {published}" if published else "Published"
     return f"""
-<div class="article-folio" aria-label="Article folio">
-  <span>{h(SITE['name'])}</span>
-  <span>{h(section)} Desk</span>
-  <span>{h(published_label)}</span>
+<div class="article-folio" aria-label="Article navigation and sharing">
+  <a class="article-folio__home" href="index.html" aria-label="{h(SITE['name'])} home">{h(SITE['name'])}</a>
+  <span class="article-folio__desk">{h(section)} Desk</span>
+  <span class="article-folio__date">{h(published_label)}</span>
+  <div class="article-folio__share" data-article-folio-share aria-label="Share this article"></div>
 </div>
 """.strip()
 

@@ -19527,11 +19527,12 @@ body.page-article--heritage .article--heritage > .article-hero{
 body.page-article--heritage .article-folio{
   grid-column:1 / -1;
   display:grid;
-  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+  grid-template-columns:minmax(7rem,1fr) auto minmax(11rem,1fr) auto;
+  grid-template-areas:"home desk date share";
   gap:.7rem;
   align-items:center;
   border-block:1px solid var(--heritage-rule);
-  padding:.42rem 0;
+  padding:.36rem 0;
   font-family:var(--mono);
   font-size:.78rem;
   font-weight:700;
@@ -19541,17 +19542,81 @@ body.page-article--heritage .article-folio{
   color:var(--muted);
 }
 
-body.page-article--heritage .article-folio span{
+body.page-article--heritage .article-folio :where(a, span, div){
   min-width:0;
 }
 
-body.page-article--heritage .article-folio span:nth-child(2){
+body.page-article--heritage .article-folio__home{
+  grid-area:home;
+  color:var(--ink);
+  text-decoration:none;
+}
+
+body.page-article--heritage .article-folio__home:hover,
+body.page-article--heritage .article-folio__home:focus-visible{
+  color:var(--accent);
+  text-decoration:underline;
+  text-underline-offset:.18em;
+}
+
+body.page-article--heritage .article-folio__desk{
+  grid-area:desk;
   color:var(--ink);
   text-align:center;
 }
 
-body.page-article--heritage .article-folio span:last-child{
+body.page-article--heritage .article-folio__date{
+  grid-area:date;
   text-align:right;
+}
+
+body.page-article--heritage .article-folio__share{
+  grid-area:share;
+  position:relative;
+  display:flex;
+  justify-content:flex-end;
+  min-width:0;
+}
+
+body.page-article--heritage .article-folio__share:empty{
+  display:none;
+}
+
+body.page-article--heritage .article-folio__share .share-row{
+  align-items:flex-end;
+  justify-content:flex-end;
+  margin:0;
+  text-align:right;
+}
+
+body.page-article--heritage .article-folio__share .share-row__buttons{
+  justify-content:flex-end;
+  gap:.32rem;
+  width:auto;
+}
+
+body.page-article--heritage .article-folio__share .share-btn{
+  width:2rem;
+  height:2rem;
+  min-height:2rem;
+}
+
+body.page-article--heritage .article-folio__share .share-btn__icon,
+body.page-article--heritage .article-folio__share .share-btn__icon svg{
+  width:1rem;
+  height:1rem;
+}
+
+body.page-article--heritage .article-folio__share .share-row__status{
+  position:absolute;
+  top:calc(100% + .18rem);
+  right:0;
+  width:max-content;
+  max-width:min(16rem,70vw);
+  min-height:0;
+  margin:0;
+  text-align:right;
+  z-index:4;
 }
 
 body.page-article--heritage .article--heritage .article-hero > .eyebrow{
@@ -20049,14 +20114,31 @@ body.page-article--heritage .article--heritage-cartoon-poster .hero-figure{
 
 @media (max-width:680px){
   body.page-article--heritage .article-folio{
-    grid-template-columns:1fr;
-    gap:.2rem;
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:
+      "home share"
+      "desk date";
+    gap:.32rem .6rem;
     text-align:left;
   }
 
-  body.page-article--heritage .article-folio span:nth-child(2),
-  body.page-article--heritage .article-folio span:last-child{
+  body.page-article--heritage .article-folio__desk,
+  body.page-article--heritage .article-folio__date{
     text-align:left;
+  }
+
+  body.page-article--heritage .article-folio__date{
+    text-align:right;
+  }
+
+  body.page-article--heritage .article-folio__share .share-row__buttons{
+    gap:.24rem;
+  }
+
+  body.page-article--heritage .article-folio__share .share-btn{
+    width:1.82rem;
+    height:1.82rem;
+    min-height:1.82rem;
   }
 
   body.page-article--heritage .article--heritage .article-headline,
@@ -20078,6 +20160,39 @@ body.page-article--heritage .article--heritage-cartoon-poster .hero-figure{
 
   body.page-article--heritage .article--heritage:has(.press-social-feature) .sticky-stack{
     grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:520px){
+  body.page-article--heritage .article-folio{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "home"
+      "desk"
+      "date"
+      "share";
+  }
+
+  body.page-article--heritage .article-folio__date,
+  body.page-article--heritage .article-folio__share{
+    justify-content:flex-start;
+    text-align:left;
+  }
+
+  body.page-article--heritage .article-folio__share .share-row{
+    align-items:flex-start;
+    text-align:left;
+  }
+
+  body.page-article--heritage .article-folio__share .share-row__buttons{
+    flex-wrap:wrap;
+    justify-content:flex-start;
+  }
+
+  body.page-article--heritage .article-folio__share .share-row__status{
+    left:0;
+    right:auto;
+    text-align:left;
   }
 }
 

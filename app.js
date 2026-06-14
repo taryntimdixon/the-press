@@ -3488,6 +3488,7 @@ function enhanceBreakingStrip(stories) {
     const belowFoldIssueHeader = document.querySelector('.page-below-fold-issue .below-fold-issue-page__masthead');
     const belowFoldIssueNav = document.querySelector('.page-below-fold-issue .below-fold-issue-nav');
     const articleHero = document.querySelector('.article-hero');
+    const articleFolioShare = articleHero?.querySelector('[data-article-folio-share]');
     const articleMeta = articleHero?.querySelector('.article-meta');
     const articleBody = document.querySelector('[data-article-body], .article-body, .generated-story');
     const articleHeadline = document.querySelector('.article-headline, .article-title, h1');
@@ -3497,7 +3498,7 @@ function enhanceBreakingStrip(stories) {
       : (articleHero || articleBody || articleHeadline) && !document.body.classList.contains('page-home')
       ? 'article'
       : (homeIntro ? 'site' : '');
-    const target = belowFoldIssueNav || belowFoldIssueHeader || articleMeta || articleBody || homeIntro;
+    const target = belowFoldIssueNav || belowFoldIssueHeader || articleFolioShare || articleMeta || articleBody || homeIntro;
     if (!contextType || !target) return;
 
     const context = buildShareContext(contextType);
@@ -3516,7 +3517,7 @@ function enhanceBreakingStrip(stories) {
     shareRow.setAttribute('data-share-url', context.url);
     shareRow.innerHTML = buildShareRowMarkup(context);
 
-    if (belowFoldIssueHeader) {
+    if (belowFoldIssueHeader || articleFolioShare) {
       target.appendChild(shareRow);
     } else if (articleMeta) {
       articleMeta.insertAdjacentElement('afterend', shareRow);
@@ -3767,13 +3768,13 @@ function enhanceBreakingStrip(stories) {
     const instagramTitle = context.type === 'belowFoldIssue' ? 'Instagram Story scroll' : 'Instagram Story';
     return `
       <div class="share-row__buttons">
-        <a class="share-btn share-btn--x" href="${escapeAttribute(intent.x)}" target="_blank" rel="noopener noreferrer" data-share-platform="x" data-share-target="${escapeAttribute(intent.x)}" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></a>
+        <button class="share-btn share-btn--x" type="button" data-share-platform="x" data-share-target="${escapeAttribute(intent.x)}" aria-label="Share on X" title="X">${sharePlatformIcon('x')}<span class="sr-only">X</span></button>
         <button class="share-btn share-btn--instagram" type="button" data-share-platform="instagram" aria-label="${escapeAttribute(instagramLabel)}" title="${escapeAttribute(instagramTitle)}">${sharePlatformIcon('instagram')}<span class="sr-only">${escapeHtml(instagramTitle)}</span></button>
-        <a class="share-btn share-btn--facebook" href="${escapeAttribute(intent.facebook)}" target="_blank" rel="noopener noreferrer" data-share-platform="facebook" data-share-target="${escapeAttribute(intent.facebook)}" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></a>
-        <a class="share-btn share-btn--whatsapp" href="${escapeAttribute(intent.whatsapp)}" target="_blank" rel="noopener noreferrer" data-share-platform="whatsapp" data-share-target="${escapeAttribute(intent.whatsapp)}" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></a>
-        <a class="share-btn share-btn--sms" href="${escapeAttribute(intent.sms)}" target="_blank" rel="noopener noreferrer" data-share-platform="sms" data-share-target="${escapeAttribute(intent.sms)}" aria-label="Share by message" title="Messages">${sharePlatformIcon('sms')}<span class="sr-only">Messages</span></a>
-        <a class="share-btn share-btn--reddit" href="${escapeAttribute(intent.reddit)}" target="_blank" rel="noopener noreferrer" data-share-platform="reddit" data-share-target="${escapeAttribute(intent.reddit)}" aria-label="Share on Reddit" title="Reddit">${sharePlatformIcon('reddit')}<span class="sr-only">Reddit</span></a>
-        <a class="share-btn share-btn--discord" href="${escapeAttribute(intent.discord)}" target="_blank" rel="noopener noreferrer" data-share-platform="discord" data-share-target="${escapeAttribute(intent.discord)}" aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></a>
+        <button class="share-btn share-btn--facebook" type="button" data-share-platform="facebook" data-share-target="${escapeAttribute(intent.facebook)}" aria-label="Share on Facebook" title="Facebook">${sharePlatformIcon('facebook')}<span class="sr-only">Facebook</span></button>
+        <button class="share-btn share-btn--whatsapp" type="button" data-share-platform="whatsapp" data-share-target="${escapeAttribute(intent.whatsapp)}" aria-label="Share on WhatsApp" title="WhatsApp">${sharePlatformIcon('whatsapp')}<span class="sr-only">WhatsApp</span></button>
+        <button class="share-btn share-btn--sms" type="button" data-share-platform="sms" data-share-target="${escapeAttribute(intent.sms)}" aria-label="Share by message" title="Messages">${sharePlatformIcon('sms')}<span class="sr-only">Messages</span></button>
+        <button class="share-btn share-btn--reddit" type="button" data-share-platform="reddit" data-share-target="${escapeAttribute(intent.reddit)}" aria-label="Share on Reddit" title="Reddit">${sharePlatformIcon('reddit')}<span class="sr-only">Reddit</span></button>
+        <button class="share-btn share-btn--discord" type="button" data-share-platform="discord" data-share-target="${escapeAttribute(intent.discord)}" aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></button>
         <button class="share-btn share-btn--copy" type="button" data-share-platform="copy" aria-label="Copy share link" title="Copy link">${sharePlatformIcon('copy')}<span class="sr-only">Copy link</span></button>
       </div>
       <p class="share-row__status" data-share-status aria-live="polite"></p>
@@ -3933,19 +3934,19 @@ function enhanceBreakingStrip(stories) {
           openInstagramStoryStudio(row, context);
           return;
         }
-        if (control.matches('a[href]')) {
+        const shareTarget = control.dataset.shareTarget || control.getAttribute('href') || '';
+        if (shareTarget) {
           const platform = control.dataset.sharePlatform;
           if (['x', 'facebook'].includes(platform)) {
-            control.href = buildShareIntents(context)[platform] || control.href;
-            control.dataset.shareTarget = control.href;
+            control.dataset.shareTarget = buildShareIntents(context)[platform] || control.dataset.shareTarget || shareTarget;
           }
+          event.preventDefault();
           const label = getSharePlatformLabel(platform);
           let copiedForDiscord = false;
           if (platform === 'discord') {
             copiedForDiscord = copyShareTextImmediately(context);
           }
-          const opened = openShareWindow(control.href);
-          if (opened) event.preventDefault();
+          const opened = openShareWindow(control.dataset.shareTarget || shareTarget);
           if (platform === 'discord') {
             const openingMessage = opened ? 'Discord opened in a new tab' : 'If nothing opened, this browser blocked the new tab.';
             const copiedMessage = copiedForDiscord ? `Link copied. ${openingMessage}` : openingMessage;
@@ -3955,7 +3956,12 @@ function enhanceBreakingStrip(stories) {
             });
             return;
           }
-          setShareStatus(row, opened ? `Opening ${label} in a new tab` : 'If nothing opened, this browser blocked the new tab.');
+          if (opened) {
+            setShareStatus(row, `Opening ${label} in a new tab`);
+          } else {
+            const copied = await copyShareText(context);
+            setShareStatus(row, copied ? `${label} blocked. Share text copied instead.` : 'If nothing opened, this browser blocked the new tab.');
+          }
         }
       });
     });
@@ -3977,10 +3983,8 @@ function enhanceBreakingStrip(stories) {
 
   function openShareWindow(url) {
     try {
-      const shareWindow = window.open('', '_blank');
+      const shareWindow = window.open(url, '_blank', 'noopener,noreferrer');
       if (!shareWindow) return false;
-      shareWindow.opener = null;
-      shareWindow.location.href = url;
       return true;
     } catch (_) {
       return false;
