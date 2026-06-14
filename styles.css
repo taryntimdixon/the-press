@@ -29,10 +29,18 @@ body.page-article{
   --press-article-wide-measure:min(86ch, 100%);
 }
 
+body.page-article .site-header{
+  display:none !important;
+}
+
 body.page-article .page.page-article,
 body.page-article .article{
   width:100%;
   max-width:none;
+}
+
+body.page-article .page.page-article{
+  padding-top:clamp(.45rem, 1.2vw, .9rem);
 }
 
 body.page-article .article{
@@ -9487,6 +9495,46 @@ body.page-article:has(.press-social-feature)::before{
 
 .drone-feature-body .drone-method-note{
   border-radius:8px;
+}
+
+.drone-feature-body > .drone-feature-opener{
+  width:min(860px,100%);
+  margin:0 auto clamp(1rem,2vw,1.45rem);
+  border-block:1px solid color-mix(in srgb,var(--line) 78%,var(--accent));
+  padding:clamp(1rem,2vw,1.4rem) 0;
+}
+
+.drone-feature-body > .drone-feature-opener > p{
+  max-width:none;
+  margin:0 0 1rem;
+  font-size:clamp(1.04rem,1vw,1.16rem);
+  line-height:1.68;
+}
+
+.drone-feature-body > .drone-feature-opener > p:last-child{
+  margin-bottom:0;
+}
+
+.drone-feature-body > .drone-feature-opener > .lede{
+  font-family:var(--serif);
+  font-size:clamp(1.24rem,2vw,1.64rem);
+  font-weight:800;
+  line-height:1.34;
+  color:var(--ink);
+}
+
+.drone-social-feature .drone-story-row{
+  row-gap:clamp(1rem,2vw,1.5rem);
+}
+
+.drone-social-feature .press-social-row--sources{
+  grid-template-columns:minmax(0,min(100%,1040px));
+  grid-template-areas:"story";
+  justify-content:center;
+}
+
+.drone-social-feature .press-social-row--sources > .press-social-content{
+  width:100%;
 }
 
 .drone-social-feature .press-static-post{

@@ -2830,6 +2830,7 @@ def layout(
     og_type: str = "website",
     social_title: str = "",
     base_href: str = "",
+    show_header: bool = True,
 ) -> str:
     progress = """
 <div class="reading-progress"><div class="reading-progress__bar" data-reading-progress></div></div>
@@ -2840,6 +2841,7 @@ def layout(
     scripts.append(f'<script src="app.js?v={h(APP_VERSION)}" defer></script>')
     scripts_html = "\n".join(scripts)
     progress_html = f"  {progress}\n" if progress else ""
+    header_html = f"  {header(current_section=current_section, current_aux=current_aux)}\n" if show_header else ""
     return f"""<!doctype html>
 <html lang="en">
 {page_head(
@@ -2858,8 +2860,7 @@ def layout(
 )}
 <body class="{h(body_class)}">
   {search_overlay()}
-{progress_html}  {header(current_section=current_section, current_aux=current_aux)}
-  {main_html}
+{progress_html}{header_html}  {main_html}
   {footer()}
 {scripts_html}
 </body>
@@ -3502,6 +3503,7 @@ def render_story(story: dict) -> str:
         social_image_height=story.get("imageHeight", ""),
         og_type="article",
         social_title=story["title"],
+        show_header=False,
     )
 
 
