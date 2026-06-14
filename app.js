@@ -3777,7 +3777,22 @@ function enhanceBreakingStrip(stories) {
         <button class="share-btn share-btn--discord" type="button" data-share-platform="discord" data-share-target="${escapeAttribute(intent.discord)}" aria-label="Share on Discord" title="Discord">${sharePlatformIcon('discord')}<span class="sr-only">Discord</span></button>
         <button class="share-btn share-btn--copy" type="button" data-share-platform="copy" aria-label="Copy share link" title="Copy link">${sharePlatformIcon('copy')}<span class="sr-only">Copy link</span></button>
       </div>
+      ${context.type === 'article' ? buildArticleScrollStoryChoiceMarkup() : ''}
       <p class="share-row__status" data-share-status aria-live="polite"></p>
+    `;
+  }
+
+  function buildArticleScrollStoryChoiceMarkup() {
+    return `
+      <details class="share-row__scroll-choice" data-share-scroll-choice>
+        <summary aria-label="Choose a scroll preview share platform" title="Scroll preview">
+          ${sharePlatformIcon('scroll')}
+          <span>Scroll</span>
+        </summary>
+        <div class="share-row__buttons share-row__buttons--scroll-video" aria-label="Share article scroll preview">
+          ${buildBelowFoldScrollStoryButtons('share-btn', 'data-share-scroll-story', 'article')}
+        </div>
+      </details>
     `;
   }
 
@@ -3791,8 +3806,8 @@ function enhanceBreakingStrip(stories) {
     `;
   }
 
-  function buildBelowFoldScrollStoryButtons(buttonClassName, dataAttributeName) {
-    return getBelowFoldScrollStoryPlatforms().map((item) => `
+  function buildBelowFoldScrollStoryButtons(buttonClassName, dataAttributeName, subject = 'issue') {
+    return getBelowFoldScrollStoryPlatforms(subject).map((item) => `
       <button class="${escapeAttribute(buttonClassName)} ${escapeAttribute(buttonClassName === 'share-btn' ? `share-btn--${item.platform}` : `${buttonClassName}--${item.platform}`)}" type="button" data-share-platform="${escapeAttribute(item.platform)}" ${dataAttributeName}="${escapeAttribute(item.platform)}" aria-label="${escapeAttribute(item.ariaLabel)}" title="${escapeAttribute(item.title)}">
         ${sharePlatformIcon(item.platform)}
         <span class="sr-only">${escapeHtml(item.title)}</span>
@@ -3800,12 +3815,15 @@ function enhanceBreakingStrip(stories) {
     `).join('');
   }
 
-  function getBelowFoldScrollStoryPlatforms() {
+  function getBelowFoldScrollStoryPlatforms(subject = 'issue') {
+    const isArticle = subject === 'article';
+    const titleNoun = isArticle ? 'scroll preview' : 'scroll video';
+    const ariaNoun = isArticle ? 'scrolling article preview' : 'scrolling issue video';
     return [
-      { platform: 'x', title: 'X scroll video', ariaLabel: 'Make a scrolling issue video for X or Twitter' },
-      { platform: 'instagram', title: 'Instagram Story scroll', ariaLabel: 'Make a scrolling issue video for Instagram Stories' },
-      { platform: 'facebook', title: 'Facebook scroll video', ariaLabel: 'Make a scrolling issue video for Facebook' },
-      { platform: 'sms', title: 'Message scroll video', ariaLabel: 'Make a scrolling issue video for Messages' },
+      { platform: 'x', title: `X ${titleNoun}`, ariaLabel: `Make a ${ariaNoun} for X or Twitter` },
+      { platform: 'instagram', title: `Instagram Story ${isArticle ? 'preview' : 'scroll'}`, ariaLabel: `Make a ${ariaNoun} for Instagram Stories` },
+      { platform: 'facebook', title: `Facebook ${titleNoun}`, ariaLabel: `Make a ${ariaNoun} for Facebook` },
+      { platform: 'sms', title: `Message ${titleNoun}`, ariaLabel: `Make a ${ariaNoun} for Messages` },
     ];
   }
 
@@ -3827,6 +3845,7 @@ function enhanceBreakingStrip(stories) {
       messenger: '<svg viewBox="0 0 24 24" focusable="false"><path d="M12 4C7.3 4 3.7 7.3 3.7 11.6c0 2.3 1 4.3 2.7 5.7v2.8l2.6-1.4c.9.3 1.9.5 3 .5 4.7 0 8.3-3.3 8.3-7.6S16.7 4 12 4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path fill="currentColor" d="m7.6 14 3.3-3.5 2.3 2.2 3.5-3.8-3.3 5.2-2.4-2.2L7.6 14Z"/></svg>',
       discord: '<svg viewBox="0 0 24 24" focusable="false"><path d="M7.4 7.9c2.9-1.1 6.3-1.1 9.2 0l1.1 7.4c-1.7 1.4-3.5 2.1-5.7 2.1s-4-.7-5.7-2.1l1.1-7.4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="9.9" cy="12.2" r="1.1" fill="currentColor"/><circle cx="14.1" cy="12.2" r="1.1" fill="currentColor"/><path d="M10 15c1.2.6 2.8.6 4 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
       copy: '<svg viewBox="0 0 24 24" focusable="false"><rect x="8" y="8" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+      scroll: '<svg viewBox="0 0 24 24" focusable="false"><path d="M7 4h10a2 2 0 0 1 2 2v10.5A3.5 3.5 0 0 1 15.5 20H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 8h7M8.5 11.5h7M8.5 15h4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 17.5l2 2 2-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     };
     return `<span class="share-btn__icon" aria-hidden="true">${icons[platform] || icons.copy}</span>`;
   }
@@ -3914,6 +3933,7 @@ function enhanceBreakingStrip(stories) {
         if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
         if (control.dataset.shareScrollStory) {
           event.preventDefault();
+          control.closest('[data-share-scroll-choice]')?.removeAttribute('open');
           openInstagramStoryStudio(row, withScrollStoryPlatform(context, control.dataset.shareScrollStory));
           return;
         }
@@ -4072,7 +4092,7 @@ function enhanceBreakingStrip(stories) {
   }
 
   function isBelowFoldScrollStoryContext(context) {
-    return context?.type === 'belowFoldIssue';
+    return Boolean(context?.scrollStoryPlatform);
   }
 
   function withBelowFoldScrollStoryColorway(context, colorwayKey) {
@@ -4453,7 +4473,7 @@ function enhanceBreakingStrip(stories) {
       video.load?.();
     }
 
-    setInstagramStoryStatus(status, 'Capturing live issue layout...');
+    setInstagramStoryStatus(status, 'Capturing live scroll layout...');
     const strip = await buildBelowFoldActualScrollStrip(context, {
       profile,
       onFirstFrame: (partialStrip) => {
@@ -4462,7 +4482,7 @@ function enhanceBreakingStrip(stories) {
     });
     const timing = getBelowFoldScrollTiming(strip, canvas);
     drawBelowFoldScrollFrame(ctx, strip, 0);
-    setInstagramStoryStatus(status, strip.kind === 'dom' ? 'Recording live page scroll...' : 'Recording issue tour video...');
+    setInstagramStoryStatus(status, strip.kind === 'dom' ? 'Recording live page scroll...' : 'Recording scroll tour video...');
 
     const videoType = getSupportedInstagramStoryVideoType();
     if (!canvas.captureStream || typeof MediaRecorder === 'undefined') {
@@ -4657,7 +4677,7 @@ function enhanceBreakingStrip(stories) {
     captureStyle.textContent = getBelowFoldCaptureStyles(viewportWidth, colorway);
 
     const capturePage = document.createElement('div');
-    capturePage.className = 'press-scroll-capture-shell page-below-fold-issue';
+    capturePage.className = getScrollCaptureShellClass(context);
     capturePage.style.transform = 'translateY(0)';
     capturePage.style.transition = 'none';
     capturePage.appendChild(clone);
@@ -4785,9 +4805,123 @@ function enhanceBreakingStrip(stories) {
   }
 
   function getBelowFoldScrollSourceRoot(context) {
+    if (context?.type === 'article') return context.articleScrollRoot || buildArticleScrollSourceRoot(context);
     return context?.belowFoldRoot
       || document.querySelector('.page-below-fold-issue [data-below-fold-root]')
       || document.querySelector('.page-below-fold-issue .below-fold-issue-page__paper [data-below-fold-root]');
+  }
+
+  function getScrollCaptureShellClass(context) {
+    return context?.type === 'article'
+      ? 'press-scroll-capture-shell page-article page-article--scroll-preview'
+      : 'press-scroll-capture-shell page-below-fold-issue';
+  }
+
+  function buildArticleScrollSourceRoot(context) {
+    const root = document.createElement('article');
+    root.className = 'press-article-scroll-preview';
+
+    const title = collapseWhitespace(context?.title || document.querySelector('.article-headline')?.textContent || document.title || 'The Press');
+    const dek = collapseWhitespace(context?.text || document.querySelector('.article-dek')?.textContent || '');
+    const eyebrow = collapseWhitespace(document.querySelector('.article-hero .eyebrow, .eyebrow')?.textContent || 'The Press');
+    const meta = collapseWhitespace(document.querySelector('.article-meta')?.textContent || '');
+    const imageUrl = normalizeShareAssetUrl(context?.imageUrl || getShareImageUrl());
+
+    const header = document.createElement('header');
+    header.className = 'press-article-scroll-preview__header';
+    appendArticleScrollText(header, 'p', 'press-article-scroll-preview__kicker', eyebrow);
+    appendArticleScrollText(header, 'h1', '', title);
+    appendArticleScrollText(header, 'p', 'press-article-scroll-preview__dek', dek);
+    appendArticleScrollText(header, 'p', 'press-article-scroll-preview__meta', meta);
+    if (imageUrl) {
+      const figure = buildArticleScrollFigure(imageUrl, getShareImageAltText());
+      figure.classList.add('press-article-scroll-preview__figure--hero');
+      header.appendChild(figure);
+    }
+    root.appendChild(header);
+
+    collectArticleScrollSegments().forEach((segment, index) => {
+      const section = buildArticleScrollSection(segment, index);
+      if (section) root.appendChild(section);
+    });
+
+    const footer = document.createElement('footer');
+    footer.className = 'press-article-scroll-preview__footer';
+    appendArticleScrollText(footer, 'strong', '', 'READ THE FULL ARTICLE');
+    appendArticleScrollText(footer, 'p', '', context?.url || window.location.href);
+    root.appendChild(footer);
+    return root;
+  }
+
+  function collectArticleScrollSegments() {
+    const body = document.querySelector('[data-article-body], .generated-story, .article-body');
+    if (!body) return [];
+    const primarySelectors = '.press-feature-segment, .press-social-content';
+    const fallbackSelectors = '.article-body > section:not(.press-social-feature), [data-article-body] > section:not(.press-social-feature)';
+    const candidates = body.querySelectorAll(primarySelectors).length
+      ? body.querySelectorAll(primarySelectors)
+      : body.querySelectorAll(fallbackSelectors);
+    const seen = new Set();
+    return Array.from(candidates).filter((node) => {
+      if (!node || seen.has(node)) return false;
+      if (node.closest('.press-social-side, .share-row, [data-article-trust-card]')) return false;
+      if (Array.from(seen).some((usedNode) => usedNode.contains(node) || node.contains(usedNode))) return false;
+      seen.add(node);
+      return Boolean(node.querySelector('h2, h3, p, figure, img'));
+    }).slice(0, 14);
+  }
+
+  function buildArticleScrollSection(segment, index) {
+    const heading = collapseWhitespace(segment.querySelector('h2, h3, h4')?.textContent || segment.getAttribute('aria-label') || '');
+    const section = document.createElement('section');
+    section.className = 'press-article-scroll-preview__section';
+    appendArticleScrollText(section, 'p', 'press-article-scroll-preview__section-number', `Part ${index + 1}`);
+    appendArticleScrollText(section, 'h2', '', heading);
+
+    const image = segment.querySelector('figure img, img');
+    const imageUrl = normalizeShareAssetUrl(image?.currentSrc || image?.getAttribute('src') || '');
+    if (imageUrl) {
+      const figure = buildArticleScrollFigure(imageUrl, image?.getAttribute('alt') || '');
+      const caption = collapseWhitespace(image.closest('figure')?.querySelector('figcaption')?.textContent || '');
+      appendArticleScrollText(figure, 'figcaption', '', caption);
+      section.appendChild(figure);
+    }
+
+    Array.from(segment.querySelectorAll('p'))
+      .filter((paragraph) => !paragraph.closest('figcaption, .press-static-post, .source-list, .share-row'))
+      .map((paragraph) => collapseWhitespace(paragraph.textContent || ''))
+      .filter((text) => text.length > 40)
+      .slice(0, 5)
+      .forEach((text) => appendArticleScrollText(section, 'p', '', text));
+
+    if (!section.querySelector('h2, figure, p:not(.press-article-scroll-preview__section-number)')) return null;
+    return section;
+  }
+
+  function buildArticleScrollFigure(imageUrl, altText = '') {
+    const figure = document.createElement('figure');
+    figure.className = 'press-article-scroll-preview__figure';
+    const image = document.createElement('img');
+    image.src = imageUrl;
+    image.alt = altText || '';
+    image.loading = 'eager';
+    image.decoding = 'sync';
+    figure.appendChild(image);
+    return figure;
+  }
+
+  function appendArticleScrollText(parent, tagName, className, value) {
+    const text = collapseWhitespace(value || '');
+    if (!text) return null;
+    const node = document.createElement(tagName);
+    if (className) node.className = className;
+    node.textContent = text;
+    parent.appendChild(node);
+    return node;
+  }
+
+  function getShareImageAltText() {
+    return document.querySelector('.article-hero img, [data-article-body] img')?.getAttribute('alt') || '';
   }
 
   function sanitizeBelowFoldScrollClone(clone) {
@@ -4856,7 +4990,7 @@ function enhanceBreakingStrip(stories) {
     captureStyle.textContent = getBelowFoldCaptureStyles(viewportWidth, colorway);
 
     const capturePage = document.createElement('div');
-    capturePage.className = 'press-scroll-capture-shell page-below-fold-issue';
+    capturePage.className = getScrollCaptureShellClass(context);
     capturePage.appendChild(clone);
     captureHost.appendChild(captureStyle);
     captureHost.appendChild(capturePage);
@@ -5325,6 +5459,103 @@ function enhanceBreakingStrip(stories) {
         max-width:100%;
         height:auto;
       }
+      .press-scroll-capture-shell .press-article-scroll-preview{
+        width:${viewportWidth}px;
+        max-width:none;
+        min-height:100%;
+        margin:0;
+        padding:22px 18px 30px;
+        background:var(--scroll-paper) !important;
+        color:var(--scroll-ink) !important;
+        font-family:Georgia, "Times New Roman", serif;
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__header{
+        display:grid;
+        gap:12px;
+        padding:0 0 18px;
+        border-bottom:2px solid var(--scroll-rule);
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__kicker,
+      .press-scroll-capture-shell .press-article-scroll-preview__meta,
+      .press-scroll-capture-shell .press-article-scroll-preview__section-number{
+        margin:0;
+        color:var(--scroll-accent) !important;
+        font:900 12px/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
+        letter-spacing:.1em;
+        text-transform:uppercase;
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview h1{
+        margin:0;
+        color:var(--scroll-ink) !important;
+        font:800 clamp(48px, 15vw, 76px)/.9 "Playfair Display", Georgia, "Times New Roman", serif;
+        letter-spacing:0;
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__dek{
+        margin:0;
+        color:var(--scroll-muted) !important;
+        font:500 20px/1.25 "Playfair Display", Georgia, "Times New Roman", serif;
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__figure{
+        display:block;
+        margin:0;
+        padding:0;
+        border:1px solid var(--scroll-rule);
+        background:var(--scroll-card) !important;
+        break-inside:avoid;
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__figure--hero{
+        margin-top:4px;
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__figure img{
+        display:block;
+        width:100%;
+        height:auto !important;
+        max-height:none !important;
+        object-fit:contain !important;
+        filter:none !important;
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__figure figcaption{
+        margin:0;
+        padding:8px 10px 10px;
+        color:var(--scroll-muted) !important;
+        font:700 12px/1.28 Inter, ui-sans-serif, system-ui, sans-serif;
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__section{
+        display:grid;
+        gap:12px;
+        padding:20px 0;
+        border-bottom:1px solid var(--scroll-rule);
+        break-inside:avoid;
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__section h2{
+        margin:0;
+        color:var(--scroll-ink) !important;
+        font:800 32px/1.02 "Playfair Display", Georgia, "Times New Roman", serif;
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__section p:not(.press-article-scroll-preview__section-number){
+        margin:0;
+        color:var(--scroll-ink) !important;
+        font:400 17px/1.42 Georgia, "Times New Roman", serif;
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__footer{
+        display:grid;
+        gap:8px;
+        margin:24px 0 0;
+        padding:18px;
+        background:var(--scroll-card-alt) !important;
+        border:1px solid var(--scroll-rule);
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__footer strong{
+        color:var(--scroll-accent) !important;
+        font:900 13px/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
+        letter-spacing:.12em;
+      }
+      .press-scroll-capture-shell .press-article-scroll-preview__footer p{
+        margin:0;
+        color:var(--scroll-ink) !important;
+        font:700 16px/1.24 "Playfair Display", Georgia, "Times New Roman", serif;
+        overflow-wrap:anywhere;
+      }
       .press-scroll-capture-shell .below-fold-image-media{
         display:block;
         width:100%;
@@ -5621,21 +5852,26 @@ function enhanceBreakingStrip(stories) {
   }
 
   function collectBelowFoldScrollStoryModel(context) {
-    const root = context.belowFoldRoot
-      || document.querySelector('.page-below-fold-issue [data-below-fold-root]')
-      || document.querySelector('.page-below-fold-issue .below-fold-issue-page__paper');
+    const isArticle = context?.type === 'article';
+    const root = isArticle
+      ? getBelowFoldScrollSourceRoot(context)
+      : (context.belowFoldRoot
+        || document.querySelector('.page-below-fold-issue [data-below-fold-root]')
+        || document.querySelector('.page-below-fold-issue .below-fold-issue-page__paper'));
     const masthead = document.querySelector('.page-below-fold-issue .below-fold-issue-page__masthead');
-    const title = collapseWhitespace(context.title || masthead?.querySelector('h1')?.textContent || 'Below the Fold');
-    const issueMeta = collapseWhitespace(context.issueMeta || masthead?.querySelector('.below-fold-issue-page__meta')?.textContent || 'Below the Fold');
+    const title = collapseWhitespace(context.title || masthead?.querySelector('h1')?.textContent || (isArticle ? 'The Press' : 'Below the Fold'));
+    const issueMeta = collapseWhitespace(context.issueMeta || masthead?.querySelector('.below-fold-issue-page__meta')?.textContent || (isArticle ? 'The Press Article' : 'Below the Fold'));
     const dek = collapseWhitespace(context.text || masthead?.querySelector('p:not(.eyebrow):not(.below-fold-issue-page__meta)')?.textContent || '');
     const sections = collectBelowFoldScrollStorySections(root).slice(0, BELOW_FOLD_SCROLL_STORY_CRITERIA.maxCards);
 
     return {
+      type: isArticle ? 'article' : 'belowFoldIssue',
       title,
       issueMeta,
       dek,
       coverImageUrl: '',
       sections,
+      readLabel: isArticle ? 'READ THE FULL ARTICLE' : 'READ THE FULL ISSUE',
       url: context.url,
     };
   }
@@ -5694,6 +5930,8 @@ function enhanceBreakingStrip(stories) {
       '.below-fold-spread article',
       '.below-fold-spread figure',
       '.below-fold-spread aside',
+      '.press-article-scroll-preview__section',
+      '.press-article-scroll-preview__figure',
       'article[data-below-fold-hook]',
       'figure[data-below-fold-hook]',
       'aside[data-below-fold-hook]',
@@ -5814,7 +6052,7 @@ function enhanceBreakingStrip(stories) {
     drawShadowedPanel(ctx, 86, y + 6, 908, 250, 22, theme.footer, theme.shadow, 0, 22, 42);
     ctx.fillStyle = theme.footerInk;
     ctx.font = '900 30px Inter, ui-sans-serif, system-ui, sans-serif';
-    fillTrackedCanvasText(ctx, 'READ THE FULL ISSUE', 126, y + 82, 3);
+    fillTrackedCanvasText(ctx, model.readLabel || 'READ THE FULL ISSUE', 126, y + 82, 3);
     ctx.fillStyle = theme.footerMuted;
     ctx.font = '700 34px "Playfair Display", Georgia, "Times New Roman", serif';
     wrapShareCanvasText(ctx, model.url || 'thepress.live', 126, y + 145, 820, 42, 2, { minFontSize: 24 });
