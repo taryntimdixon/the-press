@@ -19576,8 +19576,14 @@ body.page-article--heritage .article--heritage > .article-hero{
   margin:clamp(.85rem, 2vw, 1.35rem) auto 0;
   border-block:4px double var(--heritage-rule) !important;
   padding:clamp(.85rem, 2vw, 1.4rem) 0 clamp(1.1rem, 2.8vw, 2rem);
-  background:linear-gradient(180deg,var(--heritage-paper),color-mix(in srgb,var(--heritage-paper) 78%,transparent)) !important;
+  background:#fff !important;
+  background-image:none !important;
   text-align:left;
+}
+
+body.page-article--heritage .article--heritage > .article-hero .hero-figure,
+body.page-article--heritage .article--heritage > .article-hero .hero-figure img{
+  background:#fff !important;
 }
 
 body.page-article--heritage .article-folio{
@@ -20076,9 +20082,8 @@ body.page-article--heritage .article--heritage-cartel-flagship .article-headline
 
 body.page-article--heritage .article--heritage-cartel-flagship > .article-hero{
   max-width:1440px;
-  background:
-    linear-gradient(90deg, color-mix(in srgb,var(--ink) 6%,transparent), transparent 30%),
-    var(--heritage-paper) !important;
+  background:#fff !important;
+  background-image:none !important;
 }
 
 body.page-article--heritage .article--heritage-cartel-flagship .article-headline{
@@ -20352,6 +20357,17 @@ body.page-article.page-article--heritage .article.article--heritage.article--her
 body.page-article.page-article--heritage{
   background:#fff !important;
   background-image:none !important;
+}
+
+body.page-article.page-article--heritage .article.article--heritage > .article-hero,
+body.page-article.page-article--heritage .article.article--heritage.article--heritage-cartel-flagship > .article-hero{
+  background:#fff !important;
+  background-image:none !important;
+}
+
+body.page-article.page-article--heritage .article.article--heritage > .article-hero > .hero-figure,
+body.page-article.page-article--heritage .article.article--heritage > .article-hero > .hero-figure img{
+  background:#fff !important;
 }
 
 body.page-article.page-article--heritage .article.article--heritage > .article-shell > .article-aside .sticky-stack > :where(.story-aside-module,.aside-card,.info-box,.notice-panel,.article-interactive,.article-rail-gallery),
