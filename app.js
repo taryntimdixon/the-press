@@ -3471,15 +3471,20 @@ function enhanceBreakingStrip(stories) {
     maxFigureSections: 7,
     maxParagraphsPerSection: 4,
     stripScale: 2.5,
-    maxCanvasHeight: 15000,
+    maxCanvasHeight: 20000,
+    heroImageMinHeight: 280,
+    heroImageMaxHeight: 520,
+    sectionImageMinHeight: 210,
+    sectionImageMaxHeight: 470,
+    paragraphExcerptCharacters: 320,
     captureScaleMin: 1.15,
     captureScaleMax: 1.45,
     captureAreaBudget: 14000000,
     minDurationSeconds: 15,
     maxDurationSeconds: 45,
     scrollPixelsPerSecond: 280,
-    frameRate: 60,
-    videoBitsPerSecond: 42000000,
+    frameRate: 30,
+    videoBitsPerSecond: 24000000,
   });
   const BELOW_FOLD_SCROLL_STORY_CRITERIA = Object.freeze({
     maxCards: 12,
@@ -4659,9 +4664,26 @@ function enhanceBreakingStrip(stories) {
       texts: Array.from(segment.querySelectorAll('p'))
         .filter((paragraph) => !paragraph.closest('figcaption, .press-static-post, .source-list, .share-row'))
         .map((paragraph) => getArticleScrollCleanText(paragraph))
+        .map((text) => getArticleScrollReadableExcerpt(text, ARTICLE_SCROLL_READER_LIMITS.paragraphExcerptCharacters))
         .filter((text) => text.length > 40)
         .slice(0, ARTICLE_SCROLL_READER_LIMITS.maxParagraphsPerSection),
     };
+  }
+
+  function getArticleScrollReadableExcerpt(value, maxCharacters) {
+    const text = collapseWhitespace(value || '');
+    if (!text || text.length <= maxCharacters) return text;
+    const sentences = text.match(/[^.!?]+[.!?]+(?=\s|$)/g) || [];
+    let excerpt = '';
+    sentences.some((sentence) => {
+      const next = collapseWhitespace(`${excerpt} ${sentence}`);
+      if (next.length > maxCharacters && excerpt) return true;
+      excerpt = next;
+      return excerpt.length >= maxCharacters * 0.72;
+    });
+    if (excerpt) return excerpt;
+    const clipped = text.slice(0, maxCharacters);
+    return collapseWhitespace(clipped.slice(0, Math.max(0, clipped.lastIndexOf(' '))).replace(/[-,:;]+$/g, ''));
   }
 
   function drawArticleCanvasScrollStrip(ctx, model, theme, scale) {
@@ -4682,20 +4704,26 @@ function enhanceBreakingStrip(stories) {
 
     ctx.fillStyle = theme.ink;
     ctx.font = `800 ${44 * scale}px "Playfair Display", Georgia, "Times New Roman", serif`;
-    y = wrapShareCanvasText(ctx, model.title || 'The Press', innerX, y + 44 * scale, innerWidth, 46 * scale, 3, { minFontSize: 31 * scale }) + 12 * scale;
+    y = wrapArticleCanvasText(ctx, model.title || 'The Press', innerX, y + 44 * scale, innerWidth, 46 * scale, { minFontSize: 31 * scale, targetLines: 3 }) + 12 * scale;
 
     ctx.fillStyle = theme.muted;
     ctx.font = `500 ${19 * scale}px "Playfair Display", Georgia, "Times New Roman", serif`;
-    y = wrapShareCanvasText(ctx, model.dek || '', innerX, y + 14 * scale, innerWidth, 26 * scale, 5, { minFontSize: 15 * scale }) + 18 * scale;
+    y = wrapArticleCanvasText(ctx, model.dek || '', innerX, y + 14 * scale, innerWidth, 26 * scale, { minFontSize: 15 * scale, targetLines: 5 }) + 18 * scale;
 
     if (model.meta) {
       ctx.font = `800 ${10 * scale}px Inter, ui-sans-serif, system-ui, sans-serif`;
       ctx.fillStyle = theme.muted;
-      y = wrapShareCanvasText(ctx, model.meta.toUpperCase(), innerX, y + 8 * scale, innerWidth, 15 * scale, 3, { minFontSize: 8 * scale }) + 18 * scale;
+      y = wrapArticleCanvasText(ctx, model.meta.toUpperCase(), innerX, y + 8 * scale, innerWidth, 15 * scale, { minFontSize: 8 * scale, targetLines: 3 }) + 18 * scale;
     }
 
     if (model.heroImage) {
-      y = drawArticleCanvasScrollImage(ctx, model.heroImage, innerX, y, innerWidth, 330 * scale, theme) + 22 * scale;
+      const heroHeight = getArticleCanvasScrollImageHeight(
+        model.heroImage,
+        innerWidth,
+        ARTICLE_SCROLL_READER_LIMITS.heroImageMinHeight * scale,
+        ARTICLE_SCROLL_READER_LIMITS.heroImageMaxHeight * scale
+      );
+      y = drawArticleCanvasScrollImage(ctx, model.heroImage, innerX, y, innerWidth, heroHeight, theme) + 22 * scale;
     }
     y = drawArticleCanvasRule(ctx, innerX, y, innerWidth, theme) + 18 * scale;
 
@@ -4729,24 +4757,30 @@ function enhanceBreakingStrip(stories) {
     if (section.heading) {
       ctx.fillStyle = theme.ink;
       ctx.font = `800 ${29 * scale}px "Playfair Display", Georgia, "Times New Roman", serif`;
-      y = wrapShareCanvasText(ctx, section.heading, x, y + 29 * scale, width, 32 * scale, 3, { minFontSize: 22 * scale }) + 8 * scale;
+      y = wrapArticleCanvasText(ctx, section.heading, x, y + 29 * scale, width, 32 * scale, { minFontSize: 22 * scale, targetLines: 3 }) + 8 * scale;
     }
 
     if (section.image) {
-      y = drawArticleCanvasScrollImage(ctx, section.image, x, y, width, 238 * scale, theme);
+      const imageHeight = getArticleCanvasScrollImageHeight(
+        section.image,
+        width,
+        ARTICLE_SCROLL_READER_LIMITS.sectionImageMinHeight * scale,
+        ARTICLE_SCROLL_READER_LIMITS.sectionImageMaxHeight * scale
+      );
+      y = drawArticleCanvasScrollImage(ctx, section.image, x, y, width, imageHeight, theme);
       if (section.imageCaption) {
         ctx.fillStyle = theme.muted;
         ctx.font = `700 ${10 * scale}px Inter, ui-sans-serif, system-ui, sans-serif`;
-        y = wrapShareCanvasText(ctx, section.imageCaption, x + 8 * scale, y + 15 * scale, width - 16 * scale, 14 * scale, 2, { minFontSize: 8 * scale }) + 12 * scale;
+        y = wrapArticleCanvasText(ctx, section.imageCaption, x + 8 * scale, y + 15 * scale, width - 16 * scale, 14 * scale, { minFontSize: 8 * scale, targetLines: 3 }) + 12 * scale;
       } else {
         y += 14 * scale;
       }
     }
 
     ctx.fillStyle = theme.ink;
-    ctx.font = `400 ${16 * scale}px Georgia, "Times New Roman", serif`;
+    ctx.font = `400 ${15 * scale}px Georgia, "Times New Roman", serif`;
     section.texts.forEach((text) => {
-      y = wrapShareCanvasText(ctx, text, x, y + 16 * scale, width, 23 * scale, 5, { minFontSize: 13 * scale }) + 10 * scale;
+      y = wrapArticleCanvasText(ctx, text, x, y + 15 * scale, width, 21 * scale, { minFontSize: 11.5 * scale, targetLines: 7 }) + 10 * scale;
     });
     return drawArticleCanvasRule(ctx, x, y + 10 * scale, width, theme) + 18 * scale;
   }
@@ -4759,13 +4793,48 @@ function enhanceBreakingStrip(stories) {
     roundRectPath(ctx, x, y, width, height, 8);
     ctx.fill();
     ctx.clip();
-    drawShareImageContain(ctx, image, x + 1, y + 1, width - 2, height - 2);
+    drawShareImageCover(ctx, image, x + 1, y + 1, width - 2, height - 2);
     ctx.restore();
     ctx.strokeStyle = theme.rule;
     ctx.lineWidth = 1;
     roundRectPath(ctx, x, y, width, height, 8);
     ctx.stroke();
     return y + height;
+  }
+
+  function getArticleCanvasScrollImageHeight(image, width, minHeight, maxHeight) {
+    const naturalWidth = image?.naturalWidth || image?.width || 0;
+    const naturalHeight = image?.naturalHeight || image?.height || 0;
+    if (!naturalWidth || !naturalHeight) return Math.max(minHeight, Math.min(maxHeight, width * 0.62));
+    return Math.max(minHeight, Math.min(maxHeight, width * (naturalHeight / naturalWidth)));
+  }
+
+  function wrapArticleCanvasText(ctx, text, x, y, maxWidth, lineHeight, options = {}) {
+    const originalFont = ctx.font;
+    const originalSize = getShareCanvasFontSize(originalFont);
+    const minFontSize = options.minFontSize || Math.max(18, Math.round(originalSize * 0.74));
+    const targetLines = options.targetLines || 0;
+    const step = options.step || 1;
+    let fontSize = originalSize;
+    let lines = [];
+
+    while (fontSize >= minFontSize) {
+      ctx.font = setShareCanvasFontSize(originalFont, fontSize);
+      lines = getShareCanvasTextLines(ctx, text, maxWidth);
+      if (!targetLines || lines.length <= targetLines) break;
+      fontSize -= step;
+    }
+
+    if (fontSize < minFontSize) {
+      fontSize = minFontSize;
+      ctx.font = setShareCanvasFontSize(originalFont, fontSize);
+      lines = getShareCanvasTextLines(ctx, text, maxWidth);
+    }
+
+    const fittedLineHeight = Math.max(14, Math.round(lineHeight * (fontSize / originalSize)));
+    const endY = drawShareCanvasTextLines(ctx, lines, x, y, fittedLineHeight, ctx.font);
+    ctx.font = originalFont;
+    return endY;
   }
 
   function drawArticleCanvasRule(ctx, x, y, width, theme) {
@@ -5811,10 +5880,14 @@ function enhanceBreakingStrip(stories) {
       .press-scroll-capture-shell.page-article .article-body figure img{
         display:block !important;
         width:100% !important;
-        height:auto !important;
+        height:clamp(210px, 58vw, 470px) !important;
         max-height:none !important;
-        object-fit:contain !important;
+        object-fit:cover !important;
+        object-position:center center !important;
         filter:none !important;
+      }
+      .press-scroll-capture-shell.page-article .hero-figure img{
+        height:clamp(280px, 72vw, 520px) !important;
       }
       .press-scroll-capture-shell.page-article figcaption{
         margin:0 !important;
@@ -6112,10 +6185,14 @@ function enhanceBreakingStrip(stories) {
       .press-scroll-capture-shell .press-article-scroll-reader__figure img{
         display:block;
         width:100%;
-        height:auto !important;
+        height:clamp(210px, 58vw, 470px) !important;
         max-height:none !important;
-        object-fit:contain !important;
+        object-fit:cover !important;
+        object-position:center center !important;
         filter:none !important;
+      }
+      .press-scroll-capture-shell .press-article-scroll-reader__figure--hero img{
+        height:clamp(280px, 72vw, 520px) !important;
       }
       .press-scroll-capture-shell .press-article-scroll-reader__figure figcaption{
         margin:0;
@@ -7068,6 +7145,10 @@ function enhanceBreakingStrip(stories) {
 
   function waitForBelowFoldAnimationDelay(delay) {
     return new Promise((resolve) => {
+      if (document.visibilityState && document.visibilityState !== 'visible') {
+        window.setTimeout(resolve, Math.max(0, delay));
+        return;
+      }
       const done = () => {
         if (window.requestAnimationFrame) {
           window.requestAnimationFrame(resolve);
