@@ -8,6 +8,7 @@ This folder turns the static site into a repeatable publishing workflow.
 - `content/asides/*.html` holds the sidebar modules for each story: key points, table of contents, and reporting notes.
 - `content/bodies/*.html` holds the main article body for each story.
 - `templates/story-template.html` is the blank story shell for new features.
+- `editorial-standards.md` defines the fact-density, source, image, and independent-rail layout rules for future features.
 - `build.py` regenerates the public pages.
 
 ## Publishing a new story
@@ -18,7 +19,8 @@ This folder turns the static site into a repeatable publishing workflow.
    - `content/bodies/<slug>.html`
 3. Add the story metadata to `master-edition.json`.
 4. Add the local image file to `assets/`.
-5. Run:
+5. For illustration-led features, use `.press-editorial-region` with two `.press-editorial-rail` stacks so short modules can move upward independently of taller neighboring modules.
+6. Run:
 
 ```bash
 python studio/build.py

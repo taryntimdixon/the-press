@@ -103,6 +103,8 @@ body.page-article .article-hero img{
   object-fit:contain !important;
   object-position:center center;
   background:transparent !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
 }
 
 body.page-article .hero-figure figcaption{
@@ -180,6 +182,8 @@ body.page-article .article-body figure picture > img{
   aspect-ratio:auto;
   object-fit:contain;
   background:transparent;
+  filter:none !important;
+  mix-blend-mode:normal !important;
 }
 
 body.page-article .article-body figcaption{
@@ -280,6 +284,8 @@ body.page-article .press-static-post__media--illustration img{
   object-fit:contain !important;
   object-position:center center;
   background:transparent !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
 }
 
 body.page-article .press-static-post__media figcaption,
@@ -342,6 +348,102 @@ body.page-article .press-static-post a:focus-visible{
   }
 }
 /* PRESS_NEWSPAPER_ARTICLE_DEFAULTS_END */
+
+/* PRESS_FEATURE_PACING_STANDARD_START
+   Canonical illustrated-feature layout: two independent rails, no shared
+   grid-row stretching, no filler modules, and no image color filters.
+*/
+.press-editorial-region{
+  display:grid;
+  grid-template-columns:minmax(260px, .72fr) minmax(0, 1.45fr);
+  gap:clamp(1.25rem, 1.8vw, 2rem);
+  align-items:start;
+  width:100%;
+  min-width:0;
+}
+
+.press-editorial-region--balanced{
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+}
+
+.press-editorial-rail{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(1.25rem, 1.8vw, 2rem);
+  min-width:0;
+}
+
+.press-editorial-rail > *{
+  height:auto !important;
+  min-height:0 !important;
+  margin-block:0;
+  align-self:auto;
+  grid-row:auto !important;
+}
+
+.press-editorial-full{
+  grid-column:1 / -1;
+}
+
+.press-editorial-region :where(article, aside, div, figure, section){
+  min-width:0;
+  max-width:100%;
+}
+
+.press-editorial-figure{
+  margin:0;
+  overflow:visible;
+}
+
+.press-editorial-figure img,
+.press-editorial-region figure > img,
+.press-editorial-region picture > img{
+  display:block;
+  width:100%;
+  height:auto !important;
+  max-height:none !important;
+  aspect-ratio:auto !important;
+  object-fit:contain !important;
+  object-position:center center;
+  background:transparent;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+}
+
+.press-editorial-figure figcaption{
+  padding:.55rem 0 0;
+}
+
+.press-editorial-fact-copy :where(p, li){
+  max-width:70ch;
+  line-height:1.65;
+}
+
+.press-editorial-record-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap:clamp(.75rem, 1.2vw, 1rem);
+  align-items:start;
+}
+
+.press-editorial-record-grid > *{
+  height:auto !important;
+  min-height:0 !important;
+  margin-block:0;
+}
+
+@media (max-width:760px){
+  .press-editorial-region,
+  .press-editorial-region--balanced{
+    grid-template-columns:1fr;
+    gap:clamp(1rem, 4vw, 1.5rem);
+  }
+
+  .press-editorial-rail{
+    gap:clamp(1rem, 4vw, 1.5rem);
+  }
+}
+/* PRESS_FEATURE_PACING_STANDARD_END */
 
 /* ── Dark mode ─────────────────────────────────────────────────────────── */
 @media (prefers-color-scheme: dark){
