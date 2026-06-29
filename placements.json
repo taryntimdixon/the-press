@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T10:32:08.310094+00:00",
+  "generated_at": "2026-06-29T14:42:25.026841+00:00",
   "rules": {
     "live_window_days": 14,
     "dedupe": "url + cluster_id",
@@ -10,7 +10,7 @@
   "home": {
     "hero_slots": 7,
     "hero": [
-      "world-cartels-beneath-the-state",
+      "culture-a-love-letter-to-new-york",
       "technology-the-data-center-is-the-new-utility-bill",
       "science-wildlife-for-sale",
       "technology-drones-have-left-the-gadget-era",
@@ -19,28 +19,29 @@
       "world-americas-military-year-is-a-map-of-force"
     ],
     "secondary": [
-      "climate-the-mountain-that-fell-into-the-sea",
-      "cartoons-the-mission-statement-takes-the-stand",
-      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington"
+      "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
+      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
+      "2026-04-27-3-98-million-home-sales-turn-spring-open-houses-into-math-class"
     ],
     "most_read": [
-      "cartoons-hate-to-see-you-go",
-      "cartoons-the-cartoon-desk-opens-its-notebook",
-      "2026-04-28-strait-of-hormuz-worlds-oil-panic-button",
       "2026-04-27-darfur-s-burn-scars-are-starting-to-read-like-a-food-map",
-      "2026-04-27-nairobi-s-drains-are-running-out-of-room"
+      "2026-04-27-nairobi-s-drains-are-running-out-of-room",
+      "2026-04-27-ndis-autism-test-asks-whether-help-can-beat-the-label",
+      "2026-04-27-blue-proxy-card-puts-burbank-s-back-lot-in-a-streaming-fight",
+      "2026-04-27-wichita-s-one-robot-dog-has-a-july-rulebook-test"
     ],
     "editors_picks": [
+      "climate-the-mountain-that-fell-into-the-sea",
       "memory-the-internet-is-eating-its-own-memory",
       "education-the-phone-free-school-day-is-a-live-experiment",
-      "technology-the-battery-is-becoming-the-grid",
-      "climate-your-home-insurance-bill-is-the-new-climate-map"
+      "technology-the-battery-is-becoming-the-grid"
     ],
     "latest": [
       "world-cartels-beneath-the-state",
       "cartoons-the-mission-statement-takes-the-stand",
       "cartoons-hate-to-see-you-go",
       "cartoons-the-cartoon-desk-opens-its-notebook",
+      "climate-the-mountain-that-fell-into-the-sea",
       "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
       "memory-the-internet-is-eating-its-own-memory",
       "education-the-phone-free-school-day-is-a-live-experiment",
@@ -50,8 +51,7 @@
       "climate-your-home-insurance-bill-is-the-new-climate-map",
       "sports-texas-holdem-prime-time-moment-back",
       "technology-pentagon-ai-classified-networks",
-      "food-atla-noho-closing",
-      "technology-musk-altman-openai-court-battle"
+      "food-atla-noho-closing"
     ],
     "daily": [
       "2026-04-28-a-gunman-a-ballroom-and-a-shaken-washington",
@@ -70,6 +70,7 @@
       "cartoons-the-mission-statement-takes-the-stand",
       "cartoons-hate-to-see-you-go",
       "cartoons-the-cartoon-desk-opens-its-notebook",
+      "climate-the-mountain-that-fell-into-the-sea",
       "systems-the-cold-chain-is-the-invisible-machine-that-feeds-the-world",
       "memory-the-internet-is-eating-its-own-memory",
       "education-the-phone-free-school-day-is-a-live-experiment",
@@ -78,10 +79,15 @@
       "science-the-ocean-has-a-fever-and-the-thermometer-is-everywhere",
       "climate-your-home-insurance-bill-is-the-new-climate-map",
       "sports-texas-holdem-prime-time-moment-back",
-      "technology-pentagon-ai-classified-networks",
-      "food-atla-noho-closing"
+      "technology-pentagon-ai-classified-networks"
     ],
     "desk_pulse": [
+      {
+        "count": 7,
+        "latest_ts": 1781528400.0,
+        "story_id": "culture-a-love-letter-to-new-york",
+        "section": "Culture"
+      },
       {
         "count": 11,
         "latest_ts": 1780923600.0,
@@ -135,12 +141,6 @@
         "latest_ts": 1778175600.0,
         "story_id": "education-the-phone-free-school-day-is-a-live-experiment",
         "section": "Education"
-      },
-      {
-        "count": 3,
-        "latest_ts": 1778171400.0,
-        "story_id": "health-the-next-public-health-system-is-the-room-you-are-in",
-        "section": "Health"
       }
     ]
   }

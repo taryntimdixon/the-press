@@ -1,7 +1,38 @@
 {
-  "generated_at": "2026-06-11T10:32:08.310094+00:00",
-  "story_count": 308,
+  "generated_at": "2026-06-29T14:42:25.026841+00:00",
+  "story_count": 309,
   "stories": [
+    {
+      "story_id": "2026-04-25-a-batch-record-met-an-ai-agent-fda-asked-who-checked-it",
+      "cluster_id": "ai-batch-record-met-agent-fda-asked",
+      "title": "A Batch Record Met an AI Agent. FDA Asked Who Checked It.",
+      "section": "AI",
+      "section_slug": "ai",
+      "type": "Daily Issue",
+      "dek": "The warning letter that put AI overreliance into a drug-manufacturing deficiency is not an anti-AI manifesto. It is a labor-and-safety message: in regulated work, the machine can draft, but a qualified quality unit still owns the release.",
+      "url": "daily/2026-04-25-a-batch-record-met-an-ai-agent-fda-asked-who-checked-it.html",
+      "author": "The Press",
+      "published": "April 25, 2026 • 7:21 p.m.",
+      "published_iso": "2026-04-25T19:21:00+00:00",
+      "updated": "April 25, 2026 • 12:00 p.m. UTC",
+      "updated_iso": "2026-04-25T12:00:00+00:00",
+      "image": "",
+      "image_alt": "A Batch Record Met an AI Agent. FDA Asked Who Checked It.",
+      "keywords": [
+        "FDA",
+        "AI agents",
+        "drug manufacturing",
+        "quality assurance",
+        "cGMP"
+      ],
+      "read_time": "",
+      "word_count": "",
+      "status": "published",
+      "priority": 0,
+      "hero_eligible": true,
+      "source": "search-index",
+      "is_daily": true
+    },
     {
       "story_id": "2026-04-25-syunik-s-42-kilometers-move-onto-washington-s-infrastructure-desk",
       "cluster_id": "geopolitics-syuniks-kilometers-move-onto-washingtons-infrastructure",
