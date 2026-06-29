@@ -92,6 +92,48 @@ function pressAddScrollListener(callback) {
   targets.forEach((target) => target.addEventListener('scroll', callback, { passive: true }));
 }
 
+const PRESS_EDITABLE_TARGET_SELECTOR = [
+  'input',
+  'textarea',
+  'select',
+  '[contenteditable]:not([contenteditable="false"])',
+  '[role="textbox"]',
+  '[aria-multiline="true"]',
+].join(', ');
+
+function pressClosestElement(target) {
+  if (target instanceof Element) return target;
+  return target?.parentElement || null;
+}
+
+function pressIsEditableTarget(target) {
+  return Boolean(pressClosestElement(target)?.closest?.(PRESS_EDITABLE_TARGET_SELECTOR));
+}
+
+function pressBootNyLovePageMenu() {
+  document.querySelectorAll('[data-page-menu]').forEach((menu) => {
+    const toggle = menu.querySelector('[data-page-menu-toggle]');
+    const nav = menu.querySelector('[data-illustration-nav]');
+    if (!(toggle instanceof HTMLButtonElement) || !nav) return;
+    menu.setAttribute('data-page-menu-ready', 'true');
+    const setOpen = (open) => {
+      menu.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    setOpen(false);
+    toggle.addEventListener('click', () => setOpen(!menu.classList.contains('is-open')));
+    nav.querySelectorAll('a[href^="#page-"]').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', pressBootNyLovePageMenu, { once: true });
+} else {
+  pressBootNyLovePageMenu();
+}
+
 (() => {
   if (document.querySelector('[data-press-fonts]')) return;
   const script = document.createElement('script');
@@ -108,7 +150,6 @@ function pressAddScrollListener(callback) {
     !body?.classList.contains('page-archive')
   ) return;
 
-  const editableSelector = 'input, textarea, select, [contenteditable=""], [contenteditable="true"]';
   const step = (amount) => {
     body.scrollTop = Math.max(0, Math.min(
       body.scrollHeight - body.clientHeight,
@@ -118,7 +159,7 @@ function pressAddScrollListener(callback) {
 
   document.addEventListener('keydown', (event) => {
     if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) return;
-    if (event.target?.closest?.(editableSelector)) return;
+    if (pressIsEditableTarget(event.target)) return;
     if (event.key === 'PageDown' || (event.key === ' ' && !event.shiftKey)) {
       event.preventDefault();
       step(body.clientHeight * .86);
@@ -321,7 +362,7 @@ function pressAddScrollListener(callback) {
 
     flipper.addEventListener('keydown', (event) => {
       if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) return;
-      if (event.target?.closest?.('input, textarea, select, [contenteditable=""], [contenteditable="true"]')) return;
+      if (pressIsEditableTarget(event.target)) return;
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         flip('newer');
@@ -358,6 +399,7 @@ function pressAddScrollListener(callback) {
   const IMAGE_LIGHTBOX_MIN_ZOOM = 1;
   const IMAGE_LIGHTBOX_MAX_ZOOM = 6;
   const IMAGE_LIGHTBOX_ZOOM_STEP = 0.75;
+  const IMAGE_LIGHTBOX_ZOOM_EPSILON = 0.01;
   let activeLightbox = null;
 
   function getImageLightboxSource(image) {
@@ -379,9 +421,24 @@ function pressAddScrollListener(callback) {
     };
   }
 
+  function getImageLightboxMaxZoom(lightbox) {
+    const renderedWidth = lightbox?.image?.offsetWidth || 0;
+    const renderedHeight = lightbox?.image?.offsetHeight || 0;
+    const naturalWidth = lightbox?.image?.naturalWidth || 0;
+    const naturalHeight = lightbox?.image?.naturalHeight || 0;
+    if (!renderedWidth || !renderedHeight || !naturalWidth || !naturalHeight) return IMAGE_LIGHTBOX_MAX_ZOOM;
+    const nativePixelZoom = Math.min(naturalWidth / renderedWidth, naturalHeight / renderedHeight);
+    return Math.max(
+      IMAGE_LIGHTBOX_MIN_ZOOM,
+      Math.min(IMAGE_LIGHTBOX_MAX_ZOOM, nativePixelZoom),
+    );
+  }
+
   function updateImageLightboxTransform() {
     if (!activeLightbox) return;
     const lightbox = activeLightbox;
+    const maxZoom = getImageLightboxMaxZoom(lightbox);
+    if (lightbox.zoom > maxZoom) lightbox.zoom = maxZoom;
     if (lightbox.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM) {
       lightbox.zoom = IMAGE_LIGHTBOX_MIN_ZOOM;
       lightbox.panX = 0;
@@ -398,14 +455,14 @@ function pressAddScrollListener(callback) {
     lightbox.zoomLevel.textContent = `${Math.round(lightbox.zoom * 100)}%`;
     lightbox.zoomOutButton.disabled = lightbox.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM;
     lightbox.zoomResetButton.disabled = lightbox.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM;
-    lightbox.zoomInButton.disabled = lightbox.zoom >= IMAGE_LIGHTBOX_MAX_ZOOM;
+    lightbox.zoomInButton.disabled = lightbox.zoom >= maxZoom - IMAGE_LIGHTBOX_ZOOM_EPSILON;
   }
 
   function setImageLightboxZoom(nextZoom, event) {
     if (!activeLightbox) return;
     const lightbox = activeLightbox;
     const previousZoom = lightbox.zoom;
-    lightbox.zoom = clampImageLightboxValue(nextZoom, IMAGE_LIGHTBOX_MIN_ZOOM, IMAGE_LIGHTBOX_MAX_ZOOM);
+    lightbox.zoom = clampImageLightboxValue(nextZoom, IMAGE_LIGHTBOX_MIN_ZOOM, getImageLightboxMaxZoom(lightbox));
 
     if (event && lightbox.zoom > IMAGE_LIGHTBOX_MIN_ZOOM && previousZoom > 0) {
       const frameRect = lightbox.frame.getBoundingClientRect();
@@ -431,6 +488,10 @@ function pressAddScrollListener(callback) {
     if (!activeLightbox || activeLightbox.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM) return;
     activeLightbox.panX += deltaX;
     activeLightbox.panY += deltaY;
+    updateImageLightboxTransform();
+  }
+
+  function handleImageLightboxResize() {
     updateImageLightboxTransform();
   }
 
@@ -565,9 +626,15 @@ function pressAddScrollListener(callback) {
     frame.addEventListener('pointerup', stopDrag);
     frame.addEventListener('pointercancel', stopDrag);
     overlay.addEventListener('click', (clickEvent) => {
-      if (clickEvent.target === overlay) closeImageLightbox();
+      if (
+        clickEvent.target === overlay ||
+        (clickEvent.target === frame && activeLightbox?.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM)
+      ) {
+        closeImageLightbox();
+      }
     });
     fullImage.addEventListener('load', () => updateImageLightboxTransform(), { once: true });
+    window.addEventListener('resize', handleImageLightboxResize);
     updateImageLightboxTransform();
     overlay.focus({ preventScroll: true });
   }
@@ -600,6 +667,7 @@ function pressAddScrollListener(callback) {
     if (!activeLightbox) return;
     const { overlay, opener, historyPushed } = activeLightbox;
     activeLightbox = null;
+    window.removeEventListener('resize', handleImageLightboxResize);
     overlay.remove();
     document.body.classList.remove('press-image-lightbox-open');
     if (restoreFocus) opener?.focus?.({ preventScroll: true });
@@ -822,11 +890,11 @@ function pressAddScrollListener(callback) {
     document.querySelectorAll(INLINE_SOURCE_SELECTOR).forEach((link) => {
       const id = (link.getAttribute('href') || '').slice(1);
       const source = sourceMap.get(id);
-      applyExternalSourceLink(link, source);
       if (source?.number) {
         link.textContent = `[${source.number}]`;
         link.dataset.sourceNumber = String(source.number);
         link.title = source.label ? `Source ${source.number}: ${source.label}` : `Source ${source.number}`;
+        link.setAttribute('aria-label', source.label ? `Source ${source.number}: ${source.label}` : `Source ${source.number}`);
       }
     });
 
@@ -1030,7 +1098,7 @@ function pressAddScrollListener(callback) {
 
       card.addEventListener('click', (event) => {
 
-        if (event.target.closest('a, button, input, textarea, select, label')) return;
+        if (event.target.closest('a, button, label') || pressIsEditableTarget(event.target)) return;
 
         window.location.href = link.href;
 
@@ -1038,6 +1106,7 @@ function pressAddScrollListener(callback) {
 
       card.addEventListener('keydown', (event) => {
 
+        if (pressIsEditableTarget(event.target)) return;
         if (event.key === 'Enter' || event.key === ' ') {
 
           event.preventDefault();
@@ -2573,10 +2642,11 @@ function pressAddScrollListener(callback) {
       card.setAttribute('tabindex', '0');
       card.setAttribute('role', 'link');
       card.addEventListener('click', (event) => {
-        if (event.target.closest('a, button, input, textarea, select, label')) return;
+        if (event.target.closest('a, button, label') || pressIsEditableTarget(event.target)) return;
         window.location.href = link.href;
       });
       card.addEventListener('keydown', (event) => {
+        if (pressIsEditableTarget(event.target)) return;
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
           link.click();
@@ -2613,11 +2683,12 @@ function pressAddScrollListener(callback) {
       };
 
       card.addEventListener('click', (event) => {
-        if (event.target.closest('a, button, input, textarea, select, label')) return;
+        if (event.target.closest('a, button, label') || pressIsEditableTarget(event.target)) return;
         openSource();
       });
 
       card.addEventListener('keydown', (event) => {
+        if (pressIsEditableTarget(event.target)) return;
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
           openSource();
@@ -8830,11 +8901,12 @@ function pressMakeCardsClickable() {
     card.setAttribute('role', 'link');
 
     card.addEventListener('click', (event) => {
-      if (event.target.closest('a, button, input, textarea, select, label')) return;
+      if (event.target.closest('a, button, label') || pressIsEditableTarget(event.target)) return;
       window.location.href = link.href;
     });
 
     card.addEventListener('keydown', (event) => {
+      if (pressIsEditableTarget(event.target)) return;
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
         link.click();
@@ -10144,7 +10216,7 @@ document.addEventListener("DOMContentLoaded", () => {
       card.classList.add('is-clickable');
 
       card.addEventListener('click', (event) => {
-        if (event.target.closest('a, button, summary, details, input, textarea, select, label')) return;
+        if (event.target.closest('a, button, summary, details, label') || pressIsEditableTarget(event.target)) return;
         window.location.href = link.href;
       });
     });
@@ -10857,7 +10929,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.addEventListener('click', (event) => {
 
-        if (event.target.closest('a, button, input, textarea, select, label')) return;
+        if (event.target.closest('a, button, label') || pressIsEditableTarget(event.target)) return;
 
         window.location.href = link.href;
 
@@ -10865,6 +10937,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.addEventListener('keydown', (event) => {
 
+        if (pressIsEditableTarget(event.target)) return;
         if (event.key === 'Enter' || event.key === ' ') {
 
           event.preventDefault();
@@ -11042,7 +11115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.defaultPrevented || isModifiedClick(event)) return null;
     const target = event.target instanceof Element ? event.target : null;
     if (!target) return null;
-    if (target.closest('button, input, textarea, select, label, [contenteditable="true"]')) return null;
+    if (target.closest('button, label') || pressIsEditableTarget(target)) return null;
 
     const directLink = target.closest('a[href]');
     const cardLink = directLink ? null : target.closest(CARD_SELECTOR)?.querySelector('a[href]');
@@ -11166,7 +11239,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function setupRipples() {
     document.addEventListener('pointerdown', (event) => {
       if (!(event.target instanceof Element)) return;
-      if (event.target.closest('input, textarea, select, label, [contenteditable="true"]')) return;
+      if (event.target.closest('label') || pressIsEditableTarget(event.target)) return;
       const host = event.target.closest(RIPPLE_SELECTOR);
       if (!host) return;
       createRipple(host, event);
@@ -11906,7 +11979,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener('keydown', function onGlobalKeydown(event) {
       const target = event.target;
-      const typing = target && /input|textarea|select/i.test(target.tagName || '');
+      const typing = pressIsEditableTarget(target);
 
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault();
