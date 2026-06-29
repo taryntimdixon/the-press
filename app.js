@@ -3561,6 +3561,8 @@ function enhanceBreakingStrip(stories) {
     captureScaleMin: 1.45,
     captureScaleMax: 1.7,
     captureAreaBudget: 26000000,
+    maxFlattenedCanvasArea: 24000000,
+    maxFlattenedCanvasHeight: 32000,
     minDurationSeconds: 32,
     maxDurationSeconds: 85,
     scrollPixelsPerSecond: 150,
@@ -4147,6 +4149,10 @@ function enhanceBreakingStrip(stories) {
     });
 
     modal.querySelector('[data-instagram-story-download]').onclick = async () => {
+      if (isBelowFoldScrollStoryContext(storyContext) && modal._pressInstagramStoryAsset?.kind === 'video') {
+        await saveInstagramStoryStudioAsset(modal, canvas, storyContext, status);
+        return;
+      }
       await ensureInstagramStoryReady(modal, status);
       if (isBelowFoldScrollStoryContext(storyContext)) {
         await saveInstagramStoryStudioAsset(modal, canvas, storyContext, status);
@@ -4279,6 +4285,7 @@ function enhanceBreakingStrip(stories) {
 
   function scheduleBelowFoldScrollStoryPrewarm(context) {
     if (!isBelowFoldScrollStoryContext(context)) return;
+    if (isContinuousArticleScrollContext(context)) return;
     const platform = getScrollStoryPlatformMeta(context?.scrollStoryPlatform).platform;
     const colorContext = withBelowFoldScrollStoryColorway(
       withScrollStoryPlatform(context, platform),
@@ -4610,7 +4617,7 @@ function enhanceBreakingStrip(stories) {
       recorder.onstop = () => resolve();
     });
 
-    recorder.start(1000);
+    recorder.start(isContinuousArticleScrollContext(context) ? 5000 : 1000);
     drawBelowFoldScrollFrame(ctx, strip, 0);
     streamVideoTrack?.requestFrame?.();
     await waitForNextScrollPreviewFrame();
@@ -4673,7 +4680,7 @@ function enhanceBreakingStrip(stories) {
       if (isContinuousArticleScrollContext(context)) {
         try {
           const domStrip = await buildBelowFoldDomScrollStrip(context, callbacks);
-          if (domStrip?.chunks?.length) return domStrip;
+          if (isUsableBelowFoldDomScrollStrip(domStrip)) return domStrip;
         } catch (error) {
           console.warn('Article live page capture fell back to generated cards.', error);
         }
@@ -4682,11 +4689,15 @@ function enhanceBreakingStrip(stories) {
     }
     try {
       const domStrip = await buildBelowFoldDomScrollStrip(context, callbacks);
-      if (domStrip?.chunks?.length) return domStrip;
+      if (isUsableBelowFoldDomScrollStrip(domStrip)) return domStrip;
     } catch (error) {
       console.warn('Below the Fold live page capture fell back to generated cards.', error);
     }
     return buildBelowFoldScrollStrip(context, callbacks);
+  }
+
+  function isUsableBelowFoldDomScrollStrip(strip) {
+    return strip?.kind === 'dom' && Boolean(strip.canvas || strip.chunks?.length);
   }
 
   async function buildArticleCanvasScrollStrip(context, callbacks = {}) {
@@ -5055,9 +5066,10 @@ function enhanceBreakingStrip(stories) {
     };
     const armLiveScrollStart = () => {
       if (liveScrollStartAt || liveScrollStarted || !livePreview.isConnected) return;
-      liveScrollStartAt = getBelowFoldPreviewNow() + 2400;
-      waitForBelowFoldLivePreviewMedia(capturePage, 1300).then(startLiveScroll);
-      window.setTimeout(startLiveScroll, 2700);
+      const continuousArticleScroll = isContinuousArticleScrollContext(context);
+      liveScrollStartAt = getBelowFoldPreviewNow() + (continuousArticleScroll ? 120 : 2400);
+      waitForBelowFoldLivePreviewMedia(capturePage, continuousArticleScroll ? 500 : 1300).then(startLiveScroll);
+      window.setTimeout(startLiveScroll, continuousArticleScroll ? 520 : 2700);
     };
     const startLiveScroll = () => {
       if (liveScrollStarted || !livePreview.isConnected) return;
@@ -5468,15 +5480,49 @@ function enhanceBreakingStrip(stories) {
         theme: colorway,
         viewportWidth,
       });
-      return {
+      const strip = {
         chunks,
         height: Math.ceil(measuredHeight * captureScale),
         width: Math.round(viewportWidth * captureScale),
         kind: 'dom',
         theme: colorway,
       };
+      return flattenContinuousArticleDomStrip(strip, context);
     } finally {
       captureHost.remove();
+    }
+  }
+
+  function flattenContinuousArticleDomStrip(strip, context) {
+    if (!isContinuousArticleScrollContext(context) || !Array.isArray(strip?.chunks) || !strip.chunks.length) return strip;
+    const limits = getArticleScrollReaderLimits(context);
+    const width = Math.ceil(strip.width || strip.chunks[0]?.canvas?.width || 0);
+    const height = Math.ceil(strip.height || 0);
+    if (!width || !height) return strip;
+    if (height > limits.maxFlattenedCanvasHeight || width * height > limits.maxFlattenedCanvasArea) return strip;
+
+    try {
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      const theme = strip.theme || getBelowFoldScrollStoryColorway();
+      ctx.fillStyle = theme.screen || theme.paper || '#ece1cf';
+      ctx.fillRect(0, 0, width, height);
+      strip.chunks.forEach((chunk) => {
+        if (!chunk?.canvas) return;
+        ctx.drawImage(chunk.canvas, 0, Math.round(chunk.y || 0));
+      });
+      return {
+        ...strip,
+        canvas,
+        chunks: [],
+        height,
+        width,
+      };
+    } catch (error) {
+      console.warn('Continuous article strip flattening unavailable.', error);
+      return strip;
     }
   }
 
@@ -5601,10 +5647,14 @@ function enhanceBreakingStrip(stories) {
       const limits = getArticleScrollReaderLimits(context);
       const height = Math.max(1, measuredHeight || 1);
       const areaScale = Math.sqrt(limits.captureAreaBudget / Math.max(1, viewportWidth * height));
-      return Math.max(
-        limits.captureScaleMin,
-        Math.min(limits.captureScaleMax, deviceScale, areaScale)
+      const heightScale = limits.maxFlattenedCanvasHeight
+        ? limits.maxFlattenedCanvasHeight / height
+        : Number.POSITIVE_INFINITY;
+      const maxAllowedScale = Math.max(
+        1,
+        Math.min(limits.captureScaleMax, deviceScale, areaScale, heightScale)
       );
+      return maxAllowedScale;
     }
     if ((viewportWidth || 0) >= 720) {
       const height = Math.max(1, measuredHeight || 1);
@@ -7267,6 +7317,7 @@ function enhanceBreakingStrip(stories) {
   function getBelowFoldScrollTiming(strip, canvas, context) {
     const metrics = getBelowFoldScrollMetrics(strip, canvas);
     const isArticle = context?.type === 'article';
+    const continuousArticleScroll = isContinuousArticleScrollContext(context);
     const articleLimits = isArticle ? getArticleScrollReaderLimits(context) : null;
     const minDurationSeconds = isArticle
       ? articleLimits.minDurationSeconds
@@ -7289,12 +7340,12 @@ function enhanceBreakingStrip(stories) {
     const duration = Math.round(seconds * 1000);
     return {
       duration,
-      holdStart: 260,
-      holdBottom: 300,
+      holdStart: continuousArticleScroll ? 0 : 260,
+      holdBottom: continuousArticleScroll ? 0 : 300,
       returnDuration: 0,
-      holdEnd: 260,
+      holdEnd: continuousArticleScroll ? 0 : 260,
       frameRate: isArticle ? articleLimits.frameRate : BELOW_FOLD_SCROLL_STORY_CRITERIA.frameRate,
-      smoothFramePacing: isContinuousArticleScrollContext(context),
+      smoothFramePacing: continuousArticleScroll,
     };
   }
 
@@ -8311,6 +8362,10 @@ function enhanceBreakingStrip(stories) {
         });
         if (shared) return true;
       }
+      if (!isMobileShareDevice() && typeof window.showSaveFilePicker === 'function') {
+        const picked = await saveInstagramStoryBlobWithPicker(asset, status);
+        if (picked) return true;
+      }
       return downloadInstagramStoryBlobAsset(asset, status, isMobileShareDevice()
         ? 'Device download started. For Photos, use Share video and choose Save Video.'
         : 'Video download started.');
@@ -8465,6 +8520,32 @@ function enhanceBreakingStrip(stories) {
       return true;
     } catch (_) {
       setInstagramStoryStatus(status, options.cancelMessage || 'Video share did not open. Starting download.');
+      return false;
+    }
+  }
+
+  async function saveInstagramStoryBlobWithPicker(asset, status) {
+    if (!asset?.blob || typeof window.showSaveFilePicker !== 'function') return false;
+    const filename = asset.filename || 'the-press-instagram-story.webm';
+    const mimeType = String(asset.mimeType || asset.blob.type || 'video/webm').split(';')[0] || 'video/webm';
+    const extension = filename.toLowerCase().endsWith('.mp4') ? '.mp4' : '.webm';
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName: filename,
+        types: [{
+          description: extension === '.mp4' ? 'MP4 video' : 'WebM video',
+          accept: { [mimeType]: [extension] },
+        }],
+      });
+      const writable = await handle.createWritable();
+      await writable.write(asset.blob);
+      await writable.close();
+      setInstagramStoryStatus(status, 'Video saved.');
+      return true;
+    } catch (error) {
+      if (error?.name !== 'AbortError') {
+        console.warn('Video file picker save failed.', error);
+      }
       return false;
     }
   }
