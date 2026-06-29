@@ -3557,6 +3557,16 @@ function enhanceBreakingStrip(stories) {
     frameRate: 30,
     videoBitsPerSecond: 24000000,
   });
+  const ARTICLE_CONTINUOUS_SCROLL_READER_LIMITS = Object.freeze({
+    captureScaleMin: 1.45,
+    captureScaleMax: 1.7,
+    captureAreaBudget: 26000000,
+    minDurationSeconds: 32,
+    maxDurationSeconds: 85,
+    scrollPixelsPerSecond: 150,
+    frameRate: 60,
+    videoBitsPerSecond: 36000000,
+  });
   const BELOW_FOLD_SCROLL_STORY_CRITERIA = Object.freeze({
     maxCards: 12,
     maxStripHeight: 10800,
@@ -4660,6 +4670,14 @@ function enhanceBreakingStrip(stories) {
 
   async function buildBelowFoldActualScrollStrip(context, callbacks = {}) {
     if (context?.type === 'article') {
+      if (isContinuousArticleScrollContext(context)) {
+        try {
+          const domStrip = await buildBelowFoldDomScrollStrip(context, callbacks);
+          if (domStrip?.chunks?.length) return domStrip;
+        } catch (error) {
+          console.warn('Article live page capture fell back to generated cards.', error);
+        }
+      }
       return buildArticleCanvasScrollStrip(context, callbacks);
     }
     try {
@@ -5061,24 +5079,15 @@ function enhanceBreakingStrip(stories) {
       if (maxScroll <= 8) return;
       liveScrollStarted = true;
       liveScrollAnimation?.cancel?.();
-      capturePage.style.transform = 'translateY(0)';
+      capturePage.style.transform = 'translate3d(0, 0, 0)';
       capturePage.style.transition = 'none';
+      capturePage.style.backfaceVisibility = 'hidden';
+      capturePage.style.transformStyle = 'preserve-3d';
       capturePage.style.willChange = 'transform';
-      const duration = getBelowFoldLivePreviewScrollDuration(maxScroll);
+      const duration = getBelowFoldLivePreviewScrollDuration(maxScroll, context);
       const runAnimation = () => {
         if (!livePreview.isConnected) return;
-        if (typeof capturePage.animate === 'function') {
-          liveScrollAnimation = capturePage.animate(
-            [
-              { transform: 'translateY(0)' },
-              { transform: `translateY(-${maxScroll}px)` },
-            ],
-            { duration, easing: 'linear', fill: 'forwards' }
-          );
-        } else {
-          capturePage.style.transition = `transform ${duration}ms linear`;
-          capturePage.style.transform = `translateY(-${maxScroll}px)`;
-        }
+        liveScrollAnimation = animateBelowFoldLivePreviewScroll(capturePage, maxScroll, duration, livePreview);
       };
       if (window.requestAnimationFrame) {
         window.requestAnimationFrame(() => window.requestAnimationFrame(runAnimation));
@@ -5096,6 +5105,38 @@ function enhanceBreakingStrip(stories) {
     window.setTimeout(armLiveScrollStart, 1200);
   }
 
+  function animateBelowFoldLivePreviewScroll(capturePage, maxScroll, duration, livePreview) {
+    const scrollDistance = Math.round(Math.max(0, maxScroll || 0));
+    const totalDuration = Math.max(1000, duration || 36000);
+    const startedAt = getBelowFoldPreviewNow();
+    let frameId = 0;
+    let cancelled = false;
+
+    const animation = {
+      cancel() {
+        cancelled = true;
+        if (frameId && window.cancelAnimationFrame) window.cancelAnimationFrame(frameId);
+      },
+    };
+
+    const tick = () => {
+      if (cancelled || !livePreview?.isConnected) return;
+      const elapsed = Math.max(0, getBelowFoldPreviewNow() - startedAt);
+      const progress = Math.min(1, elapsed / totalDuration);
+      capturePage.style.transform = `translate3d(0, -${Math.round(scrollDistance * progress)}px, 0)`;
+      if (progress < 1) {
+        if (window.requestAnimationFrame) {
+          frameId = window.requestAnimationFrame(tick);
+        } else {
+          window.setTimeout(tick, 16);
+        }
+      }
+    };
+
+    tick();
+    return animation;
+  }
+
   function hideBelowFoldLiveScrollPreview(modal) {
     modal?.querySelectorAll('[data-below-fold-live-preview]').forEach((node) => {
       node.getAnimations?.({ subtree: true }).forEach((animation) => animation.cancel());
@@ -5104,7 +5145,10 @@ function enhanceBreakingStrip(stories) {
     modal?.classList.remove('press-instagram-story--live-previewing');
   }
 
-  function getBelowFoldLivePreviewScrollDuration(maxScroll) {
+  function getBelowFoldLivePreviewScrollDuration(maxScroll, context) {
+    if (isContinuousArticleScrollContext(context)) {
+      return Math.round(Math.max(52000, Math.min(96000, maxScroll * 4.2)));
+    }
     return Math.round(Math.max(36000, Math.min(66000, maxScroll * 5.7)));
   }
 
@@ -5179,10 +5223,15 @@ function enhanceBreakingStrip(stories) {
     }
     root.appendChild(header);
 
-    collectArticleScrollSegments().forEach((segment, index) => {
-      const section = buildArticleScrollSection(segment, index);
-      if (section) root.appendChild(section);
-    });
+    const continuousFlow = buildContinuousArticleScrollFlow();
+    if (continuousFlow) {
+      root.appendChild(continuousFlow);
+    } else {
+      collectArticleScrollSegments().forEach((segment, index) => {
+        const section = buildArticleScrollSection(segment, index);
+        if (section) root.appendChild(section);
+      });
+    }
 
     const footer = document.createElement('footer');
     footer.className = 'press-article-scroll-reader__footer';
@@ -5190,6 +5239,33 @@ function enhanceBreakingStrip(stories) {
     appendArticleScrollText(footer, 'p', '', context?.url || window.location.href);
     root.appendChild(footer);
     return root;
+  }
+
+  function isContinuousArticleScrollContext(context) {
+    if (context?.type !== 'article') return false;
+    const body = document.querySelector('[data-article-body], .generated-story, .article-body');
+    return Boolean(body?.matches?.('.ny-love-letter-feature') || body?.querySelector?.('.ny-love-letter-feature, .ny-love-page--newspaper-opener'));
+  }
+
+  function buildContinuousArticleScrollFlow() {
+    const body = document.querySelector('[data-article-body], .generated-story, .article-body');
+    const source = body?.matches?.('.ny-love-letter-feature')
+      ? body
+      : body?.querySelector?.('.ny-love-letter-feature');
+    if (!source?.querySelector?.('.ny-love-page--newspaper-opener')) return null;
+
+    const clone = source.cloneNode(true);
+    clone.classList.add('press-article-scroll-reader__ny-love-flow');
+    clone.querySelectorAll([
+      '.ny-love-page-menu',
+      '[data-page-menu]',
+      '[data-illustration-nav]',
+      '.share-row',
+      '[data-article-folio-share]',
+      '.article-folio__share',
+    ].join(', ')).forEach((node) => node.remove());
+    prepareBelowFoldLivePreviewMedia(clone);
+    return clone;
   }
 
   function collectArticleScrollSegments() {
@@ -5522,11 +5598,12 @@ function enhanceBreakingStrip(stories) {
   function getBelowFoldCaptureScale(measuredHeight, viewportWidth, context) {
     const deviceScale = Number(window.devicePixelRatio) || 1;
     if (context?.type === 'article') {
+      const limits = getArticleScrollReaderLimits(context);
       const height = Math.max(1, measuredHeight || 1);
-      const areaScale = Math.sqrt(ARTICLE_SCROLL_READER_LIMITS.captureAreaBudget / Math.max(1, viewportWidth * height));
+      const areaScale = Math.sqrt(limits.captureAreaBudget / Math.max(1, viewportWidth * height));
       return Math.max(
-        ARTICLE_SCROLL_READER_LIMITS.captureScaleMin,
-        Math.min(ARTICLE_SCROLL_READER_LIMITS.captureScaleMax, deviceScale, areaScale)
+        limits.captureScaleMin,
+        Math.min(limits.captureScaleMax, deviceScale, areaScale)
       );
     }
     if ((viewportWidth || 0) >= 720) {
@@ -6270,6 +6347,71 @@ function enhanceBreakingStrip(stories) {
         padding:8px 10px 10px;
         color:var(--scroll-muted) !important;
         font:700 12px/1.28 Inter, ui-sans-serif, system-ui, sans-serif;
+      }
+      .press-scroll-capture-shell .press-article-scroll-reader__ny-love-flow{
+        display:block !important;
+        width:100% !important;
+        max-width:none !important;
+        margin:0 !important;
+        padding:0 !important;
+        border:0 !important;
+        background:#ece1cf !important;
+        color:var(--scroll-ink) !important;
+      }
+      .press-scroll-capture-shell .press-article-scroll-reader__ny-love-flow .ny-love-page-menu,
+      .press-scroll-capture-shell .press-article-scroll-reader__ny-love-flow [data-page-menu],
+      .press-scroll-capture-shell .press-article-scroll-reader__ny-love-flow [data-illustration-nav]{
+        display:none !important;
+      }
+      .press-scroll-capture-shell .press-article-scroll-reader__ny-love-flow .ny-love-page,
+      .press-scroll-capture-shell .press-article-scroll-reader__ny-love-flow .ny-love-page.ny-love-page--newspaper-opener{
+        display:block !important;
+        width:100% !important;
+        max-width:none !important;
+        min-height:0 !important;
+        margin:0 !important;
+        padding:0 !important;
+        border:0 !important;
+        background:#ece1cf !important;
+        box-shadow:none !important;
+        break-inside:auto !important;
+      }
+      .press-scroll-capture-shell .press-article-scroll-reader__ny-love-flow .ny-love-newspaper-sheet,
+      .press-scroll-capture-shell.page-article .press-article-scroll-reader__ny-love-flow .article-body figure,
+      .press-scroll-capture-shell.page-article .press-article-scroll-reader__ny-love-flow figure{
+        display:block !important;
+        width:100% !important;
+        max-width:none !important;
+        margin:0 !important;
+        padding:0 !important;
+        border:0 !important;
+        background:#ece1cf !important;
+        box-shadow:none !important;
+        overflow:visible !important;
+        break-inside:auto !important;
+      }
+      .press-scroll-capture-shell .press-article-scroll-reader__ny-love-flow .ny-love-newspaper-sheet img,
+      .press-scroll-capture-shell.page-article .press-article-scroll-reader__ny-love-flow figure > img{
+        display:block !important;
+        width:100% !important;
+        max-width:none !important;
+        height:auto !important;
+        max-height:none !important;
+        margin:0 !important;
+        object-fit:contain !important;
+        object-position:center center !important;
+        filter:none !important;
+      }
+      .press-scroll-capture-shell .press-article-scroll-reader__ny-love-flow .sr-only{
+        position:absolute !important;
+        width:1px !important;
+        height:1px !important;
+        padding:0 !important;
+        margin:-1px !important;
+        overflow:hidden !important;
+        clip:rect(0,0,0,0) !important;
+        white-space:nowrap !important;
+        border:0 !important;
       }
       .press-scroll-capture-shell .press-article-scroll-reader__section{
         display:grid;
@@ -7125,14 +7267,15 @@ function enhanceBreakingStrip(stories) {
   function getBelowFoldScrollTiming(strip, canvas, context) {
     const metrics = getBelowFoldScrollMetrics(strip, canvas);
     const isArticle = context?.type === 'article';
+    const articleLimits = isArticle ? getArticleScrollReaderLimits(context) : null;
     const minDurationSeconds = isArticle
-      ? ARTICLE_SCROLL_READER_LIMITS.minDurationSeconds
+      ? articleLimits.minDurationSeconds
       : BELOW_FOLD_SCROLL_STORY_CRITERIA.minDurationSeconds;
     const maxDurationSeconds = isArticle
-      ? ARTICLE_SCROLL_READER_LIMITS.maxDurationSeconds
+      ? articleLimits.maxDurationSeconds
       : BELOW_FOLD_SCROLL_STORY_CRITERIA.maxDurationSeconds;
     const scrollPixelsPerSecond = isArticle
-      ? ARTICLE_SCROLL_READER_LIMITS.scrollPixelsPerSecond
+      ? articleLimits.scrollPixelsPerSecond
       : BELOW_FOLD_SCROLL_STORY_CRITERIA.scrollPixelsPerSecond;
     const seconds = metrics.maxScroll > 0
       ? Math.max(
@@ -7150,14 +7293,21 @@ function enhanceBreakingStrip(stories) {
       holdBottom: 300,
       returnDuration: 0,
       holdEnd: 260,
-      frameRate: isArticle ? ARTICLE_SCROLL_READER_LIMITS.frameRate : BELOW_FOLD_SCROLL_STORY_CRITERIA.frameRate,
+      frameRate: isArticle ? articleLimits.frameRate : BELOW_FOLD_SCROLL_STORY_CRITERIA.frameRate,
+      smoothFramePacing: isContinuousArticleScrollContext(context),
     };
   }
 
   function getBelowFoldScrollVideoBitsPerSecond(context) {
     return context?.type === 'article'
-      ? ARTICLE_SCROLL_READER_LIMITS.videoBitsPerSecond
+      ? getArticleScrollReaderLimits(context).videoBitsPerSecond
       : BELOW_FOLD_SCROLL_STORY_CRITERIA.videoBitsPerSecond;
+  }
+
+  function getArticleScrollReaderLimits(context) {
+    return isContinuousArticleScrollContext(context)
+      ? ARTICLE_CONTINUOUS_SCROLL_READER_LIMITS
+      : ARTICLE_SCROLL_READER_LIMITS;
   }
 
   function getBelowFoldScrollMetrics(strip, canvas) {
@@ -7188,6 +7338,20 @@ function enhanceBreakingStrip(stories) {
     const frameDelay = 1000 / frameRate;
     const startedAt = performance.now();
 
+    if (options.smoothFramePacing) {
+      return animateBelowFoldScrollStripFixedFrames(ctx, strip, {
+        ...options,
+        duration,
+        frameDelay,
+        frameRate,
+        holdBottom,
+        holdEnd,
+        holdStart,
+        returnDuration,
+        total,
+      });
+    }
+
     return (async () => {
       let nextFrameAt = startedAt;
       while (true) {
@@ -7208,6 +7372,37 @@ function enhanceBreakingStrip(stories) {
           nextFrameAt = performance.now() + frameDelay;
         }
         await waitForBelowFoldAnimationDelay(Math.max(0, nextFrameAt - performance.now()));
+      }
+      drawBelowFoldScrollFrame(ctx, strip, returnDuration ? 0 : 1);
+      options.onFrame?.();
+    })();
+  }
+
+  function animateBelowFoldScrollStripFixedFrames(ctx, strip, options = {}) {
+    const duration = options.duration || 7600;
+    const holdStart = options.holdStart || 400;
+    const holdBottom = options.holdBottom || 0;
+    const returnDuration = options.returnDuration || 0;
+    const holdEnd = options.holdEnd || 500;
+    const total = options.total || (holdStart + duration + holdBottom + returnDuration + holdEnd);
+    const frameDelay = options.frameDelay || (1000 / Math.max(2, Math.min(60, options.frameRate || 60)));
+    const totalFrames = Math.max(2, Math.ceil(total / frameDelay));
+    const startedAt = performance.now();
+
+    return (async () => {
+      for (let frameIndex = 0; frameIndex <= totalFrames; frameIndex += 1) {
+        const elapsed = Math.min(total, frameIndex * frameDelay);
+        const progress = getBelowFoldScrollAnimationProgress(elapsed, {
+          duration,
+          holdStart,
+          holdBottom,
+          returnDuration,
+        });
+        drawBelowFoldScrollFrame(ctx, strip, progress);
+        options.onFrame?.();
+        if (elapsed >= total) break;
+        const targetFrameAt = startedAt + ((frameIndex + 1) * frameDelay);
+        await waitForBelowFoldAnimationDelay(Math.max(0, targetFrameAt - performance.now()));
       }
       drawBelowFoldScrollFrame(ctx, strip, returnDuration ? 0 : 1);
       options.onFrame?.();
