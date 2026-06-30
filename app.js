@@ -3766,11 +3766,11 @@ function enhanceBreakingStrip(stories) {
     captureAreaBudget: 26000000,
     maxFlattenedCanvasArea: 24000000,
     maxFlattenedCanvasHeight: 32000,
-    minDurationSeconds: 38,
-    maxDurationSeconds: 44,
-    scrollPixelsPerSecond: 680,
-    frameRate: 30,
-    videoBitsPerSecond: 10000000,
+    minDurationSeconds: 44,
+    maxDurationSeconds: 52,
+    scrollPixelsPerSecond: 610,
+    frameRate: 45,
+    videoBitsPerSecond: 18000000,
   });
   const BELOW_FOLD_SCROLL_STORY_CRITERIA = Object.freeze({
     maxCards: 12,
@@ -4783,7 +4783,7 @@ function enhanceBreakingStrip(stories) {
 
     const continuousArticleScroll = isContinuousArticleScrollContext(context);
     setInstagramStoryStatus(status, continuousArticleScroll
-      ? 'Building optimized article scroll...'
+      ? 'Building connected article scroll...'
       : 'Capturing live scroll layout...');
     const strip = await buildBelowFoldActualScrollStrip(context, {
       profile,
@@ -4795,7 +4795,7 @@ function enhanceBreakingStrip(stories) {
     drawBelowFoldScrollFrame(ctx, strip, 0);
     setInstagramStoryStatus(status, strip.source === 'article-canvas'
       ? 'Recording optimized article scroll...'
-      : (strip.kind === 'dom' ? 'Recording live page scroll...' : 'Recording scroll tour video...'));
+      : (strip.source === 'article-dom' ? 'Recording connected article scroll...' : (strip.kind === 'dom' ? 'Recording live page scroll...' : 'Recording scroll tour video...')));
 
     const videoType = getSupportedInstagramStoryVideoType();
     if (!canvas.captureStream || typeof MediaRecorder === 'undefined') {
@@ -4894,7 +4894,12 @@ function enhanceBreakingStrip(stories) {
   async function buildBelowFoldActualScrollStrip(context, callbacks = {}) {
     if (context?.type === 'article') {
       if (isContinuousArticleScrollContext(context)) {
-        return buildArticleCanvasScrollStrip(context, callbacks);
+        try {
+          const domStrip = await buildBelowFoldDomScrollStrip(context, callbacks);
+          if (isUsableBelowFoldDomScrollStrip(domStrip)) return domStrip;
+        } catch (error) {
+          console.warn('Connected article scroll capture fell back to optimized canvas.', error);
+        }
       }
       return buildArticleCanvasScrollStrip(context, callbacks);
     }
@@ -5432,7 +5437,7 @@ function enhanceBreakingStrip(stories) {
 
   function getBelowFoldLivePreviewScrollDuration(maxScroll, context) {
     if (isContinuousArticleScrollContext(context)) {
-      return Math.round(Math.max(52000, Math.min(96000, maxScroll * 4.2)));
+      return Math.round(Math.max(44000, Math.min(52000, maxScroll * 2.85)));
     }
     return Math.round(Math.max(36000, Math.min(66000, maxScroll * 5.7)));
   }
@@ -5758,6 +5763,7 @@ function enhanceBreakingStrip(stories) {
         height: Math.ceil(measuredHeight * captureScale),
         width: Math.round(viewportWidth * captureScale),
         kind: 'dom',
+        source: context?.type === 'article' ? 'article-dom' : 'dom',
         theme: colorway,
       };
       return flattenContinuousArticleDomStrip(strip, context);

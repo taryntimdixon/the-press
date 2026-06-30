@@ -21169,11 +21169,11 @@ body.page-article .article:has(.ny-love-letter-feature) .ny-love-letter-feature 
   max-width:min(100%, 75rem);
   min-height:auto;
   margin-bottom:0;
-  padding:clamp(.45rem, 1vw, .8rem);
-  border-color:rgba(61,42,25,.34);
+  padding:0;
+  border:0;
   background:#ece1cf;
   background-color:#ece1cf !important;
-  box-shadow:0 1.25rem 3rem rgba(31,25,18,.18);
+  box-shadow:none;
 }
 
 .ny-love-page.ny-love-page--newspaper-opener + .ny-love-page.ny-love-page--newspaper-opener{
@@ -21195,7 +21195,11 @@ body.page-article:has(.ny-love-letter-feature) .article > .article-shell > .ny-l
   width:100%;
   max-width:100%;
   margin:0 auto;
-  background:#f4ead7;
+  padding:0;
+  border:0;
+  background:#ece1cf;
+  box-shadow:none;
+  overflow:visible;
 }
 
 .ny-love-newspaper-sheet img,
@@ -21208,6 +21212,7 @@ body.page-article .ny-love-letter-feature .ny-love-page--newspaper-opener .ny-lo
   margin:0 auto;
   object-fit:contain !important;
   object-position:center center;
+  vertical-align:top;
 }
 
 .ny-love-page.ny-love-page--city-overview{
