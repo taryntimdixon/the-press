@@ -3730,7 +3730,7 @@ function enhanceBreakingStrip(stories) {
   ];
   const HOMEPAGE_SOCIAL_SHARE_STORAGE_PREFIX = 'press-homepage-social-share';
   const BELOW_FOLD_SCROLL_STORY_ASSET_CACHE = new Map();
-  const ARTICLE_SCROLL_VIDEO_SLOWDOWN_FACTOR = 1.25;
+  const ARTICLE_SCROLL_VIDEO_DURATION_MULTIPLIER = 5 / 3;
   const ARTICLE_SCROLL_READER_LIMITS = Object.freeze({
     maxSections: 14,
     maxFigureSections: 7,
@@ -4986,9 +4986,7 @@ function enhanceBreakingStrip(stories) {
       ...page,
       height: Math.max(1, Math.round(stripWidth * (page.naturalHeight / page.naturalWidth))),
     }));
-    const logoImage = await loadContinuousArticleScrollImage(normalizeShareAssetUrl('assets/the-press-logo.svg')).catch(() => null);
-    const logoPanelHeight = Math.round(Math.max(stripWidth * 0.42, Math.min(stripWidth * 0.62, 540)));
-    const totalHeight = Math.ceil(pageLayouts.reduce((sum, page) => sum + page.height, 0) + logoPanelHeight);
+    const totalHeight = Math.ceil(pageLayouts.reduce((sum, page) => sum + page.height, 0));
     const chunkHeight = Math.max(1800, Math.min(2600, Math.round(stripWidth * 2.8)));
     const chunks = [];
 
@@ -5034,20 +5032,6 @@ function enhanceBreakingStrip(stories) {
         notifiedFirstFrame = true;
         callbacks.onFirstFrame(strip);
       }
-    });
-
-    const logoPanel = buildContinuousArticleLogoPanel({
-      logoImage,
-      theme: colorway,
-      width: stripWidth,
-      height: logoPanelHeight,
-    });
-    drawContinuousArticleImageAcrossChunks(chunks, logoPanel, {
-      sourceWidth: logoPanel.width,
-      sourceHeight: logoPanel.height,
-      destTop: cursorY,
-      destWidth: stripWidth,
-      destHeight: logoPanelHeight,
     });
 
     if (!notifiedFirstFrame && typeof callbacks.onFirstFrame === 'function') callbacks.onFirstFrame(strip);
@@ -7829,7 +7813,7 @@ function enhanceBreakingStrip(stories) {
         )
       )
       : (isArticle ? minDurationSeconds : 6);
-    const duration = Math.round(seconds * (isArticle ? ARTICLE_SCROLL_VIDEO_SLOWDOWN_FACTOR : 1) * 1000);
+    const duration = Math.round(seconds * (isArticle ? ARTICLE_SCROLL_VIDEO_DURATION_MULTIPLIER : 1) * 1000);
     return {
       duration,
       holdStart: continuousArticleScroll ? 0 : 260,
