@@ -3766,9 +3766,9 @@ function enhanceBreakingStrip(stories) {
     captureAreaBudget: 26000000,
     maxFlattenedCanvasArea: 24000000,
     maxFlattenedCanvasHeight: 32000,
-    minDurationSeconds: 44,
-    maxDurationSeconds: 52,
-    scrollPixelsPerSecond: 610,
+    minDurationSeconds: 70,
+    maxDurationSeconds: 82,
+    scrollPixelsPerSecond: 410,
     frameRate: 45,
     videoBitsPerSecond: 18000000,
   });
