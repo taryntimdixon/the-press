@@ -3563,11 +3563,11 @@ function enhanceBreakingStrip(stories) {
     captureAreaBudget: 26000000,
     maxFlattenedCanvasArea: 24000000,
     maxFlattenedCanvasHeight: 32000,
-    minDurationSeconds: 32,
-    maxDurationSeconds: 85,
-    scrollPixelsPerSecond: 150,
-    frameRate: 60,
-    videoBitsPerSecond: 36000000,
+    minDurationSeconds: 14,
+    maxDurationSeconds: 24,
+    scrollPixelsPerSecond: 820,
+    frameRate: 24,
+    videoBitsPerSecond: 8000000,
   });
   const BELOW_FOLD_SCROLL_STORY_CRITERIA = Object.freeze({
     maxCards: 12,
@@ -4278,6 +4278,7 @@ function enhanceBreakingStrip(stories) {
   }
 
   function rememberBelowFoldScrollStoryAsset(context, asset) {
+    if (isContinuousArticleScrollContext(context)) return;
     const cachedAsset = copyBelowFoldScrollStoryAssetForCache(asset);
     if (!cachedAsset) return;
     BELOW_FOLD_SCROLL_STORY_ASSET_CACHE.set(getBelowFoldScrollStoryAssetCacheKey(context), { asset: cachedAsset });
@@ -4343,12 +4344,7 @@ function enhanceBreakingStrip(stories) {
     if (downloadButton) downloadButton.textContent = scrollStoryMode ? 'Save video' : 'Save to device';
     if (openButton) openButton.textContent = scrollStoryMode ? platform.openLabel : 'Instagram Story';
     if (canvas) canvas.hidden = false;
-    if (video) {
-      video.hidden = true;
-      video.pause?.();
-      video.removeAttribute('src');
-      video.load?.();
-    }
+    resetInstagramStoryPreviewVideo(video);
 
     if (modal._pressInstagramStoryVideoUrl) {
       URL.revokeObjectURL(modal._pressInstagramStoryVideoUrl);
@@ -4421,7 +4417,16 @@ function enhanceBreakingStrip(stories) {
 
   function closeInstagramStoryStudio(modal) {
     if (!modal) return;
+    modal._pressInstagramStoryRenderId = (modal._pressInstagramStoryRenderId || 0) + 1;
     modal.hidden = true;
+    hideBelowFoldLiveScrollPreview(modal);
+    if (modal._pressInstagramStoryVideoUrl) {
+      URL.revokeObjectURL(modal._pressInstagramStoryVideoUrl);
+      modal._pressInstagramStoryVideoUrl = '';
+    }
+    resetInstagramStoryPreviewVideo(modal.querySelector('[data-instagram-story-video]'));
+    modal._pressInstagramStoryAsset = null;
+    modal._pressInstagramStoryReady = null;
     document.documentElement.classList.remove('press-instagram-story-open');
   }
 
@@ -4501,7 +4506,7 @@ function enhanceBreakingStrip(stories) {
     const ready = await modal._pressInstagramStoryReady;
     if (ready) {
       const asset = modal._pressInstagramStoryAsset;
-      setInstagramStoryStatus(status, asset?.kind === 'video' ? 'High-quality scroll video ready.' : 'Story image ready.');
+      setInstagramStoryStatus(status, asset?.kind === 'video' ? 'Scroll video ready. Tap Save video.' : 'Story image ready.');
     }
     return ready;
   }
@@ -4524,12 +4529,7 @@ function enhanceBreakingStrip(stories) {
       modal._pressInstagramStoryVideoUrl = '';
     }
     modal._pressInstagramStoryAsset = null;
-    if (video) {
-      video.hidden = true;
-      video.pause?.();
-      video.removeAttribute('src');
-      video.load?.();
-    }
+    resetInstagramStoryPreviewVideo(video);
     showBelowFoldLiveScrollPreview(modal, colorContext);
     const cachedAssetPromise = getCachedBelowFoldScrollStoryAssetPromise(colorContext);
     const assetPromise = (cachedAssetPromise
@@ -4543,8 +4543,10 @@ function enhanceBreakingStrip(stories) {
       modal._pressInstagramStoryAsset = asset;
       rememberBelowFoldScrollStoryAsset(colorContext, asset);
       setInstagramStoryAssetActionLabels(modal, asset?.kind || 'image');
+      setInstagramStoryActionsDisabled(modal, false);
+      setInstagramStoryStyleControlsDisabled(modal, false);
       setInstagramStoryStatus(status, asset?.kind === 'video'
-        ? 'High-quality scroll video ready.'
+        ? 'Scroll video ready. Tap Save video.'
         : 'Video unavailable here. Story image ready.');
       return true;
     }).catch(async (error) => {
@@ -4574,14 +4576,12 @@ function enhanceBreakingStrip(stories) {
     canvas.hidden = true;
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (video) {
-      video.hidden = true;
-      video.pause?.();
-      video.removeAttribute('src');
-      video.load?.();
-    }
+    resetInstagramStoryPreviewVideo(video);
 
-    setInstagramStoryStatus(status, 'Capturing live scroll layout...');
+    const continuousArticleScroll = isContinuousArticleScrollContext(context);
+    setInstagramStoryStatus(status, continuousArticleScroll
+      ? 'Building optimized article scroll...'
+      : 'Capturing live scroll layout...');
     const strip = await buildBelowFoldActualScrollStrip(context, {
       profile,
       onFirstFrame: (partialStrip) => {
@@ -4590,7 +4590,9 @@ function enhanceBreakingStrip(stories) {
     });
     const timing = getBelowFoldScrollTiming(strip, canvas, context);
     drawBelowFoldScrollFrame(ctx, strip, 0);
-    setInstagramStoryStatus(status, strip.kind === 'dom' ? 'Recording live page scroll...' : 'Recording scroll tour video...');
+    setInstagramStoryStatus(status, strip.source === 'article-canvas'
+      ? 'Recording optimized article scroll...'
+      : (strip.kind === 'dom' ? 'Recording live page scroll...' : 'Recording scroll tour video...'));
 
     const videoType = getSupportedInstagramStoryVideoType();
     if (!canvas.captureStream || typeof MediaRecorder === 'undefined') {
@@ -4617,7 +4619,7 @@ function enhanceBreakingStrip(stories) {
       recorder.onstop = () => resolve();
     });
 
-    recorder.start(isContinuousArticleScrollContext(context) ? 5000 : 1000);
+    recorder.start(1000);
     drawBelowFoldScrollFrame(ctx, strip, 0);
     streamVideoTrack?.requestFrame?.();
     await waitForNextScrollPreviewFrame();
@@ -4640,6 +4642,20 @@ function enhanceBreakingStrip(stories) {
       hideBelowFoldLiveScrollPreview(modal);
       canvas.hidden = false;
       return { kind: 'image', canvas };
+    }
+    const asset = {
+      kind: 'video',
+      blob,
+      mimeType,
+      filename: getInstagramStoryVideoFilename(context, mimeType),
+    };
+
+    if (shouldSkipFinishedScrollVideoPlayback(context)) {
+      hideBelowFoldLiveScrollPreview(modal);
+      resetInstagramStoryPreviewVideo(video);
+      canvas.hidden = false;
+      setInstagramStoryStatus(status, 'Scroll video ready. Tap Save video.');
+      return asset;
     }
 
     const url = URL.createObjectURL(blob);
@@ -4667,23 +4683,15 @@ function enhanceBreakingStrip(stories) {
     }
 
     return {
-      kind: 'video',
-      blob,
+      ...asset,
       url,
-      mimeType,
-      filename: getInstagramStoryVideoFilename(context, mimeType),
     };
   }
 
   async function buildBelowFoldActualScrollStrip(context, callbacks = {}) {
     if (context?.type === 'article') {
       if (isContinuousArticleScrollContext(context)) {
-        try {
-          const domStrip = await buildBelowFoldDomScrollStrip(context, callbacks);
-          if (isUsableBelowFoldDomScrollStrip(domStrip)) return domStrip;
-        } catch (error) {
-          console.warn('Article live page capture fell back to generated cards.', error);
-        }
+        return buildArticleCanvasScrollStrip(context, callbacks);
       }
       return buildArticleCanvasScrollStrip(context, callbacks);
     }
@@ -4723,6 +4731,7 @@ function enhanceBreakingStrip(stories) {
       height: finalCanvas.height,
       width: finalCanvas.width,
       kind: 'dom',
+      source: 'article-canvas',
       theme: colorway,
     };
     if (typeof callbacks.onFirstFrame === 'function') callbacks.onFirstFrame(strip);
@@ -4947,6 +4956,16 @@ function enhanceBreakingStrip(stories) {
     if (!asset) return asset;
     if (asset.kind === 'video' && asset.blob?.size && video) {
       const mimeType = asset.mimeType || asset.blob.type || 'video/webm';
+      if (shouldSkipFinishedScrollVideoPlayback(context)) {
+        hideBelowFoldLiveScrollPreview(modal);
+        resetInstagramStoryPreviewVideo(video);
+        if (canvas) canvas.hidden = false;
+        return {
+          ...asset,
+          mimeType,
+          filename: asset.filename || getInstagramStoryVideoFilename(context, mimeType),
+        };
+      }
       const url = URL.createObjectURL(asset.blob);
       if (modal?._pressInstagramStoryVideoUrl) URL.revokeObjectURL(modal._pressInstagramStoryVideoUrl);
       if (modal) modal._pressInstagramStoryVideoUrl = url;
@@ -4975,6 +4994,19 @@ function enhanceBreakingStrip(stories) {
       };
     }
     return asset;
+  }
+
+  function shouldSkipFinishedScrollVideoPlayback(context) {
+    return isContinuousArticleScrollContext(context);
+  }
+
+  function resetInstagramStoryPreviewVideo(video) {
+    if (!video) return;
+    video.hidden = true;
+    video.pause?.();
+    video.removeAttribute('src');
+    video.removeAttribute('autoplay');
+    video.load?.();
   }
 
   async function buildBelowFoldScrollStrip(context, callbacks = {}) {
@@ -8504,7 +8536,8 @@ function enhanceBreakingStrip(stories) {
 
   async function shareInstagramStoryBlob(blob, filename, context, status, options = {}) {
     if (!blob || typeof File === 'undefined' || !navigator.share) return false;
-    const file = new File([blob], filename || 'the-press-instagram-story.webm', { type: blob.type || 'video/webm' });
+    const fileType = getInstagramStoryVideoFileMimeType(blob.type || filename || '');
+    const file = new File([blob], filename || `the-press-instagram-story${getInstagramStoryVideoFileExtension(fileType)}`, { type: fileType });
     const shareData = {
       files: [file],
       title: context.title,
@@ -8527,8 +8560,8 @@ function enhanceBreakingStrip(stories) {
   async function saveInstagramStoryBlobWithPicker(asset, status) {
     if (!asset?.blob || typeof window.showSaveFilePicker !== 'function') return false;
     const filename = asset.filename || 'the-press-instagram-story.webm';
-    const mimeType = String(asset.mimeType || asset.blob.type || 'video/webm').split(';')[0] || 'video/webm';
-    const extension = filename.toLowerCase().endsWith('.mp4') ? '.mp4' : '.webm';
+    const mimeType = getInstagramStoryVideoFileMimeType(asset.mimeType || asset.blob.type || filename);
+    const extension = getInstagramStoryVideoFileExtension(mimeType);
     try {
       const handle = await window.showSaveFilePicker({
         suggestedName: filename,
@@ -8554,7 +8587,7 @@ function enhanceBreakingStrip(stories) {
     if (!asset?.blob) return false;
     const url = asset.url || URL.createObjectURL(asset.blob);
     const started = triggerTemporaryDownload(url, asset.filename || 'the-press-instagram-story.webm');
-    if (!asset.url) window.setTimeout(() => URL.revokeObjectURL(url), 2000);
+    if (!asset.url) window.setTimeout(() => URL.revokeObjectURL(url), 60000);
     setInstagramStoryStatus(status, started
       ? (message || 'Video download started.')
       : 'Save was blocked. Try Share video.');
@@ -8573,11 +8606,19 @@ function enhanceBreakingStrip(stories) {
   }
 
   function getInstagramStoryVideoFilename(context, mimeType) {
-    const extension = /mp4/i.test(mimeType || '') ? 'mp4' : 'webm';
+    const extension = getInstagramStoryVideoFileExtension(mimeType).slice(1);
     const platform = getScrollStoryPlatformMeta(context?.scrollStoryPlatform).platform;
     const colorway = getBelowFoldScrollStoryColorway(context?.scrollStoryColorway);
     const suffix = platform === 'instagram' ? 'instagram-scroll' : `${platform}-scroll-video`;
     return `${slugifyShareFilename(context.title || 'the-press')}-${suffix}-${colorway.key}.${extension}`;
+  }
+
+  function getInstagramStoryVideoFileMimeType(value) {
+    return /mp4/i.test(String(value || '')) ? 'video/mp4' : 'video/webm';
+  }
+
+  function getInstagramStoryVideoFileExtension(mimeType) {
+    return /mp4/i.test(String(mimeType || '')) ? '.mp4' : '.webm';
   }
 
   async function downloadInstagramStoryCanvas(canvas, context, status, options = {}) {
