@@ -4795,7 +4795,7 @@ function enhanceBreakingStrip(stories) {
     drawBelowFoldScrollFrame(ctx, strip, 0);
     setInstagramStoryStatus(status, strip.source === 'article-canvas'
       ? 'Recording optimized article scroll...'
-      : (strip.source === 'article-dom' ? 'Recording connected article scroll...' : (strip.kind === 'dom' ? 'Recording live page scroll...' : 'Recording scroll tour video...')));
+      : (strip.source === 'article-pages' ? 'Recording connected page roll...' : (strip.source === 'article-dom' ? 'Recording connected article scroll...' : (strip.kind === 'dom' ? 'Recording live page scroll...' : 'Recording scroll tour video...'))));
 
     const videoType = getSupportedInstagramStoryVideoType();
     if (!canvas.captureStream || typeof MediaRecorder === 'undefined') {
@@ -4894,6 +4894,11 @@ function enhanceBreakingStrip(stories) {
   async function buildBelowFoldActualScrollStrip(context, callbacks = {}) {
     if (context?.type === 'article') {
       if (isContinuousArticleScrollContext(context)) {
+        const pageStrip = await buildContinuousArticlePageImageScrollStrip(context, callbacks).catch((error) => {
+          console.warn('Connected article page roll capture unavailable.', error);
+          return null;
+        });
+        if (isUsableBelowFoldDomScrollStrip(pageStrip)) return pageStrip;
         try {
           const domStrip = await buildBelowFoldDomScrollStrip(context, callbacks);
           if (isUsableBelowFoldDomScrollStrip(domStrip)) return domStrip;
@@ -4945,6 +4950,213 @@ function enhanceBreakingStrip(stories) {
     };
     if (typeof callbacks.onFirstFrame === 'function') callbacks.onFirstFrame(strip);
     return strip;
+  }
+
+  async function buildContinuousArticlePageImageScrollStrip(context, callbacks = {}) {
+    const pageNodes = collectContinuousArticlePageImageNodes();
+    if (!pageNodes.length) return null;
+
+    const profile = callbacks.profile || getBelowFoldScrollVideoProfile(context);
+    const colorway = getBelowFoldScrollStoryColorway(context?.scrollStoryColorway);
+    const limits = getArticleScrollReaderLimits(context);
+    const scale = Math.max(1, limits.stripScale || ARTICLE_CONTINUOUS_SCROLL_READER_LIMITS.stripScale || 2);
+    const viewportWidth = profile.viewportWidth || 430;
+    const stripWidth = Math.round(viewportWidth * scale);
+    const background = '#ece1cf';
+    const pages = (await Promise.all(pageNodes.map(async (node, index) => {
+      const src = normalizeShareAssetUrl(node.currentSrc || node.getAttribute('src') || '');
+      if (!src) return null;
+      const image = await loadContinuousArticleScrollImage(src, node).catch((error) => {
+        console.warn(`NYC page ${index + 1} could not be loaded for scroll export.`, error);
+        return null;
+      });
+      const naturalWidth = image?.naturalWidth || image?.width || 0;
+      const naturalHeight = image?.naturalHeight || image?.height || 0;
+      if (!image || !naturalWidth || !naturalHeight) return null;
+      return {
+        image,
+        naturalWidth,
+        naturalHeight,
+      };
+    }))).filter(Boolean);
+    if (!pages.length) return null;
+
+    const pageLayouts = pages.map((page) => ({
+      ...page,
+      height: Math.max(1, Math.round(stripWidth * (page.naturalHeight / page.naturalWidth))),
+    }));
+    const logoImage = await loadContinuousArticleScrollImage(normalizeShareAssetUrl('assets/the-press-logo.svg')).catch(() => null);
+    const logoPanelHeight = Math.round(Math.max(stripWidth * 0.62, Math.min(stripWidth * 0.9, 760)));
+    const totalHeight = Math.ceil(pageLayouts.reduce((sum, page) => sum + page.height, 0) + logoPanelHeight);
+    const chunkHeight = Math.max(1800, Math.min(2600, Math.round(stripWidth * 2.8)));
+    const chunks = [];
+
+    for (let y = 0; y < totalHeight; y += chunkHeight) {
+      const canvas = document.createElement('canvas');
+      canvas.width = stripWidth;
+      canvas.height = Math.min(chunkHeight, totalHeight - y);
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = background;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      chunks.push({
+        canvas,
+        y,
+        height: canvas.height,
+      });
+    }
+
+    const strip = {
+      chunks,
+      height: totalHeight,
+      width: stripWidth,
+      kind: 'dom',
+      source: 'article-pages',
+      theme: {
+        ...colorway,
+        screen: background,
+        paper: background,
+      },
+    };
+    let notifiedFirstFrame = false;
+    let cursorY = 0;
+
+    pageLayouts.forEach((page) => {
+      drawContinuousArticleImageAcrossChunks(chunks, page.image, {
+        sourceWidth: page.naturalWidth,
+        sourceHeight: page.naturalHeight,
+        destTop: cursorY,
+        destWidth: stripWidth,
+        destHeight: page.height,
+      });
+      cursorY += page.height;
+      if (!notifiedFirstFrame && typeof callbacks.onFirstFrame === 'function') {
+        notifiedFirstFrame = true;
+        callbacks.onFirstFrame(strip);
+      }
+    });
+
+    const logoPanel = buildContinuousArticleLogoPanel({
+      logoImage,
+      theme: colorway,
+      width: stripWidth,
+      height: logoPanelHeight,
+    });
+    drawContinuousArticleImageAcrossChunks(chunks, logoPanel, {
+      sourceWidth: logoPanel.width,
+      sourceHeight: logoPanel.height,
+      destTop: cursorY,
+      destWidth: stripWidth,
+      destHeight: logoPanelHeight,
+    });
+
+    if (!notifiedFirstFrame && typeof callbacks.onFirstFrame === 'function') callbacks.onFirstFrame(strip);
+    return strip;
+  }
+
+  function collectContinuousArticlePageImageNodes() {
+    const body = document.querySelector('[data-article-body], .generated-story, .article-body');
+    const source = body?.matches?.('.ny-love-letter-feature')
+      ? body
+      : body?.querySelector?.('.ny-love-letter-feature');
+    if (!source) return [];
+    const seen = new Set();
+    return Array.from(source.querySelectorAll('.ny-love-page--newspaper-opener .ny-love-newspaper-sheet > img')).filter((image) => {
+      const src = normalizeShareAssetUrl(image.currentSrc || image.getAttribute('src') || '');
+      if (!src || seen.has(src)) return false;
+      seen.add(src);
+      return true;
+    });
+  }
+
+  function loadContinuousArticleScrollImage(src, existingImage = null) {
+    if (existingImage?.complete && existingImage.naturalWidth && existingImage.naturalHeight) {
+      return Promise.resolve(existingImage);
+    }
+    if (!src) return Promise.reject(new Error('Missing image source.'));
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      let timeout = 0;
+      const finish = (callback, value) => {
+        window.clearTimeout(timeout);
+        image.onload = null;
+        image.onerror = null;
+        callback(value);
+      };
+      timeout = window.setTimeout(() => finish(reject, new Error('Article page image load timed out.')), 9000);
+      image.onload = () => finish(resolve, image);
+      image.onerror = () => finish(reject, new Error('Article page image failed to load.'));
+      image.decoding = 'async';
+      image.src = src;
+    });
+  }
+
+  function drawContinuousArticleImageAcrossChunks(chunks, image, options) {
+    const sourceWidth = options.sourceWidth || image?.naturalWidth || image?.width || 0;
+    const sourceHeight = options.sourceHeight || image?.naturalHeight || image?.height || 0;
+    const destTop = options.destTop || 0;
+    const destWidth = options.destWidth || 0;
+    const destHeight = options.destHeight || 0;
+    if (!image || !sourceWidth || !sourceHeight || !destWidth || !destHeight) return;
+
+    let drawnHeight = 0;
+    while (drawnHeight < destHeight - 0.5) {
+      const absoluteY = destTop + drawnHeight;
+      const chunk = chunks.find((candidate) => absoluteY >= candidate.y && absoluteY < candidate.y + candidate.height);
+      if (!chunk) break;
+      const chunkOffsetY = absoluteY - chunk.y;
+      const sliceHeight = Math.min(destHeight - drawnHeight, chunk.height - chunkOffsetY);
+      if (sliceHeight <= 0) break;
+      const sourceY = (drawnHeight / destHeight) * sourceHeight;
+      const sourceSliceHeight = (sliceHeight / destHeight) * sourceHeight;
+      chunk.canvas.getContext('2d').drawImage(
+        image,
+        0,
+        sourceY,
+        sourceWidth,
+        sourceSliceHeight,
+        0,
+        chunkOffsetY,
+        destWidth,
+        sliceHeight
+      );
+      drawnHeight += sliceHeight;
+    }
+  }
+
+  function buildContinuousArticleLogoPanel(options = {}) {
+    const width = Math.max(1, options.width || 860);
+    const height = Math.max(1, options.height || 640);
+    const theme = options.theme || getBelowFoldScrollStoryColorway();
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ece1cf';
+    ctx.fillRect(0, 0, width, height);
+    drawPaperGrain(ctx, width, height, theme.ink || '#1f1f1b', 0.018);
+
+    const logoMaxWidth = width * 0.56;
+    const logoMaxHeight = height * 0.22;
+    const logoX = (width - logoMaxWidth) / 2;
+    const logoY = height * 0.34;
+    if (options.logoImage) {
+      drawShareImageContain(ctx, options.logoImage, logoX, logoY, logoMaxWidth, logoMaxHeight);
+    } else {
+      ctx.fillStyle = theme.ink || '#1f1f1b';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = `900 ${Math.round(width * 0.092)}px "Playfair Display", Georgia, "Times New Roman", serif`;
+      ctx.fillText('The Press', width / 2, logoY + logoMaxHeight / 2);
+      ctx.textAlign = 'start';
+      ctx.textBaseline = 'alphabetic';
+    }
+
+    ctx.fillStyle = theme.muted || '#6f6255';
+    ctx.textAlign = 'left';
+    ctx.font = `800 ${Math.round(width * 0.026)}px Inter, ui-sans-serif, system-ui, sans-serif`;
+    fillTrackedCanvasText(ctx, 'THEPRESS.LIVE', width / 2, height * 0.64, width * 0.004, 'center');
+    ctx.textAlign = 'start';
+    return canvas;
   }
 
   async function collectArticleCanvasScrollModel(context) {
