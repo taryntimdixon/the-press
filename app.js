@@ -3730,6 +3730,7 @@ function enhanceBreakingStrip(stories) {
   ];
   const HOMEPAGE_SOCIAL_SHARE_STORAGE_PREFIX = 'press-homepage-social-share';
   const BELOW_FOLD_SCROLL_STORY_ASSET_CACHE = new Map();
+  const ARTICLE_SCROLL_VIDEO_SLOWDOWN_FACTOR = 1.25;
   const ARTICLE_SCROLL_READER_LIMITS = Object.freeze({
     maxSections: 14,
     maxFigureSections: 7,
@@ -7828,7 +7829,7 @@ function enhanceBreakingStrip(stories) {
         )
       )
       : (isArticle ? minDurationSeconds : 6);
-    const duration = Math.round(seconds * 1000);
+    const duration = Math.round(seconds * (isArticle ? ARTICLE_SCROLL_VIDEO_SLOWDOWN_FACTOR : 1) * 1000);
     return {
       duration,
       holdStart: continuousArticleScroll ? 0 : 260,
