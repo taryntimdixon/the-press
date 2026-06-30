@@ -3558,16 +3558,26 @@ function enhanceBreakingStrip(stories) {
     videoBitsPerSecond: 24000000,
   });
   const ARTICLE_CONTINUOUS_SCROLL_READER_LIMITS = Object.freeze({
+    maxSections: 26,
+    maxFigureSections: 26,
+    maxParagraphsPerSection: 1,
+    paragraphExcerptCharacters: 220,
+    stripScale: 2,
+    maxCanvasHeight: 30000,
+    heroImageMinHeight: 250,
+    heroImageMaxHeight: 500,
+    sectionImageMinHeight: 300,
+    sectionImageMaxHeight: 560,
     captureScaleMin: 1.45,
     captureScaleMax: 1.7,
     captureAreaBudget: 26000000,
     maxFlattenedCanvasArea: 24000000,
     maxFlattenedCanvasHeight: 32000,
-    minDurationSeconds: 14,
-    maxDurationSeconds: 24,
-    scrollPixelsPerSecond: 820,
-    frameRate: 24,
-    videoBitsPerSecond: 8000000,
+    minDurationSeconds: 38,
+    maxDurationSeconds: 44,
+    scrollPixelsPerSecond: 680,
+    frameRate: 30,
+    videoBitsPerSecond: 10000000,
   });
   const BELOW_FOLD_SCROLL_STORY_CRITERIA = Object.freeze({
     maxCards: 12,
@@ -4713,11 +4723,12 @@ function enhanceBreakingStrip(stories) {
     const model = await collectArticleCanvasScrollModel(context);
     await waitForShareFontsReady();
 
-    const scale = ARTICLE_SCROLL_READER_LIMITS.stripScale;
+    const limits = getArticleScrollReaderLimits(context);
+    const scale = limits.stripScale || ARTICLE_SCROLL_READER_LIMITS.stripScale;
     const cssWidth = getBelowFoldScrollVideoProfile(context).viewportWidth || 430;
     const canvas = document.createElement('canvas');
     canvas.width = cssWidth * scale;
-    canvas.height = ARTICLE_SCROLL_READER_LIMITS.maxCanvasHeight;
+    canvas.height = limits.maxCanvasHeight || ARTICLE_SCROLL_READER_LIMITS.maxCanvasHeight;
     const ctx = canvas.getContext('2d');
     const usedHeight = drawArticleCanvasScrollStrip(ctx, model, colorway, scale);
     const finalHeight = Math.max(canvas.width, Math.min(canvas.height, Math.ceil(usedHeight)));
@@ -4740,9 +4751,12 @@ function enhanceBreakingStrip(stories) {
 
   async function collectArticleCanvasScrollModel(context) {
     const heroUrl = normalizeShareAssetUrl(context?.imageUrl || getShareImageUrl());
-    const segments = collectArticleScrollSegments().map((segment, index) => collectArticleCanvasScrollSection(segment, index));
-    const [heroImage, loadedSections] = await Promise.all([
+    const logoUrl = normalizeShareAssetUrl('assets/the-press-logo.svg');
+    const limits = getArticleScrollReaderLimits(context);
+    const segments = collectArticleScrollSegments(limits).map((segment, index) => collectArticleCanvasScrollSection(segment, index, limits));
+    const [heroImage, logoImage, loadedSections] = await Promise.all([
       heroUrl ? loadShareImage(heroUrl).catch(() => null) : Promise.resolve(null),
+      logoUrl ? loadShareImage(logoUrl).catch(() => null) : Promise.resolve(null),
       Promise.all(segments.map(async (section) => {
         if (!section.imageUrl) return section;
         const image = await loadShareImage(section.imageUrl).catch(() => null);
@@ -4756,12 +4770,14 @@ function enhanceBreakingStrip(stories) {
       meta: collapseWhitespace(document.querySelector('.article-meta')?.textContent || ''),
       url: context?.url || window.location.href,
       heroImage,
+      logoImage,
+      limits,
       sections: loadedSections.filter((section) => section.heading || section.texts.length || section.image),
     };
   }
 
-  function collectArticleCanvasScrollSection(segment, index) {
-    const image = index < ARTICLE_SCROLL_READER_LIMITS.maxFigureSections
+  function collectArticleCanvasScrollSection(segment, index, limits = ARTICLE_SCROLL_READER_LIMITS) {
+    const image = index < (limits.maxFigureSections || ARTICLE_SCROLL_READER_LIMITS.maxFigureSections)
       ? segment.querySelector('figure img, img')
       : null;
     const imageUrl = normalizeShareAssetUrl(image?.currentSrc || image?.getAttribute('src') || '');
@@ -4773,9 +4789,9 @@ function enhanceBreakingStrip(stories) {
       texts: Array.from(segment.querySelectorAll('p'))
         .filter((paragraph) => !paragraph.closest('figcaption, .press-static-post, .source-list, .share-row'))
         .map((paragraph) => getArticleScrollCleanText(paragraph))
-        .map((text) => getArticleScrollReadableExcerpt(text, ARTICLE_SCROLL_READER_LIMITS.paragraphExcerptCharacters))
+        .map((text) => getArticleScrollReadableExcerpt(text, limits.paragraphExcerptCharacters || ARTICLE_SCROLL_READER_LIMITS.paragraphExcerptCharacters))
         .filter((text) => text.length > 40)
-        .slice(0, ARTICLE_SCROLL_READER_LIMITS.maxParagraphsPerSection),
+        .slice(0, limits.maxParagraphsPerSection || ARTICLE_SCROLL_READER_LIMITS.maxParagraphsPerSection),
     };
   }
 
@@ -4798,6 +4814,7 @@ function enhanceBreakingStrip(stories) {
   function drawArticleCanvasScrollStrip(ctx, model, theme, scale) {
     const width = ctx.canvas.width;
     const maxHeight = ctx.canvas.height;
+    const limits = model.limits || ARTICLE_SCROLL_READER_LIMITS;
     const pad = 18 * scale;
     const innerX = pad;
     const innerWidth = width - pad * 2;
@@ -4829,35 +4846,25 @@ function enhanceBreakingStrip(stories) {
       const heroHeight = getArticleCanvasScrollImageHeight(
         model.heroImage,
         innerWidth,
-        ARTICLE_SCROLL_READER_LIMITS.heroImageMinHeight * scale,
-        ARTICLE_SCROLL_READER_LIMITS.heroImageMaxHeight * scale
+        (limits.heroImageMinHeight || ARTICLE_SCROLL_READER_LIMITS.heroImageMinHeight) * scale,
+        (limits.heroImageMaxHeight || ARTICLE_SCROLL_READER_LIMITS.heroImageMaxHeight) * scale
       );
       y = drawArticleCanvasScrollImage(ctx, model.heroImage, innerX, y, innerWidth, heroHeight, theme) + 22 * scale;
     }
     y = drawArticleCanvasRule(ctx, innerX, y, innerWidth, theme) + 18 * scale;
 
     for (const section of model.sections) {
-      if (y > maxHeight - 760 * scale) break;
-      y = drawArticleCanvasScrollSection(ctx, section, y, innerX, innerWidth, theme, scale);
+      if (y > maxHeight - 620 * scale) break;
+      y = drawArticleCanvasScrollSection(ctx, section, y, innerX, innerWidth, theme, scale, limits);
     }
 
-    y += 10 * scale;
-    ctx.fillStyle = theme.cardAlt;
-    roundRectPath(ctx, innerX, y, innerWidth, 124 * scale, 10 * scale);
-    ctx.fill();
-    ctx.fillStyle = theme.accent;
-    ctx.font = `900 ${11 * scale}px Inter, ui-sans-serif, system-ui, sans-serif`;
-    fillTrackedCanvasText(ctx, 'READ THE FULL ARTICLE', innerX + 18 * scale, y + 38 * scale, 1.8 * scale);
-    ctx.fillStyle = theme.ink;
-    ctx.font = `700 ${15 * scale}px "Playfair Display", Georgia, "Times New Roman", serif`;
-    wrapShareCanvasText(ctx, model.url || 'thepress.live', innerX + 18 * scale, y + 74 * scale, innerWidth - 36 * scale, 20 * scale, 2, { minFontSize: 11 * scale });
-    y += 154 * scale;
+    y = drawArticleCanvasScrollClosingPanel(ctx, model, innerX, y + 12 * scale, innerWidth, theme, scale);
     ctx.fillStyle = theme.paper;
     ctx.fillRect(0, y, width, Math.max(0, maxHeight - y));
     return y;
   }
 
-  function drawArticleCanvasScrollSection(ctx, section, y, x, width, theme, scale) {
+  function drawArticleCanvasScrollSection(ctx, section, y, x, width, theme, scale, limits = ARTICLE_SCROLL_READER_LIMITS) {
     ctx.fillStyle = theme.accent;
     ctx.font = `900 ${11 * scale}px Inter, ui-sans-serif, system-ui, sans-serif`;
     fillTrackedCanvasText(ctx, (section.number || '').toUpperCase(), x, y + 12 * scale, 1.3 * scale);
@@ -4873,8 +4880,8 @@ function enhanceBreakingStrip(stories) {
       const imageHeight = getArticleCanvasScrollImageHeight(
         section.image,
         width,
-        ARTICLE_SCROLL_READER_LIMITS.sectionImageMinHeight * scale,
-        ARTICLE_SCROLL_READER_LIMITS.sectionImageMaxHeight * scale
+        (limits.sectionImageMinHeight || ARTICLE_SCROLL_READER_LIMITS.sectionImageMinHeight) * scale,
+        (limits.sectionImageMaxHeight || ARTICLE_SCROLL_READER_LIMITS.sectionImageMaxHeight) * scale
       );
       y = drawArticleCanvasScrollImage(ctx, section.image, x, y, width, imageHeight, theme);
       if (section.imageCaption) {
@@ -4892,6 +4899,47 @@ function enhanceBreakingStrip(stories) {
       y = wrapArticleCanvasText(ctx, text, x, y + 15 * scale, width, 21 * scale, { minFontSize: 11.5 * scale, targetLines: 7 }) + 10 * scale;
     });
     return drawArticleCanvasRule(ctx, x, y + 10 * scale, width, theme) + 18 * scale;
+  }
+
+  function drawArticleCanvasScrollClosingPanel(ctx, model, x, y, width, theme, scale) {
+    y += 8 * scale;
+    ctx.fillStyle = theme.cardAlt;
+    roundRectPath(ctx, x, y, width, 112 * scale, 10 * scale);
+    ctx.fill();
+    ctx.fillStyle = theme.accent;
+    ctx.font = `900 ${10.5 * scale}px Inter, ui-sans-serif, system-ui, sans-serif`;
+    fillTrackedCanvasText(ctx, 'READ THE FULL ARTICLE', x + 18 * scale, y + 35 * scale, 1.8 * scale);
+    ctx.fillStyle = theme.ink;
+    ctx.font = `700 ${14 * scale}px "Playfair Display", Georgia, "Times New Roman", serif`;
+    wrapShareCanvasText(ctx, model.url || 'thepress.live', x + 18 * scale, y + 68 * scale, width - 36 * scale, 18 * scale, 2, { minFontSize: 10 * scale });
+    y += 136 * scale;
+
+    const logoPanelHeight = 238 * scale;
+    const inset = 20 * scale;
+    ctx.fillStyle = theme.paper;
+    roundRectPath(ctx, x, y, width, logoPanelHeight, 14 * scale);
+    ctx.fill();
+    ctx.strokeStyle = theme.rule;
+    ctx.lineWidth = Math.max(1, 1 * scale);
+    roundRectPath(ctx, x, y, width, logoPanelHeight, 14 * scale);
+    ctx.stroke();
+
+    const logoBoxHeight = 116 * scale;
+    if (model.logoImage) {
+      drawShareImageContain(ctx, model.logoImage, x + inset, y + 42 * scale, width - inset * 2, logoBoxHeight);
+    } else {
+      ctx.fillStyle = theme.ink;
+      ctx.font = `900 ${44 * scale}px "Playfair Display", Georgia, "Times New Roman", serif`;
+      fillTrackedCanvasText(ctx, 'THE PRESS', x + width / 2, y + 94 * scale, 2.2 * scale, 'center');
+      ctx.fillStyle = theme.accent;
+      ctx.font = `900 ${11 * scale}px Inter, ui-sans-serif, system-ui, sans-serif`;
+      fillTrackedCanvasText(ctx, 'AI POWERED JOURNALISM', x + width / 2, y + 124 * scale, 2.2 * scale, 'center');
+    }
+
+    ctx.fillStyle = theme.muted;
+    ctx.font = `800 ${10 * scale}px Inter, ui-sans-serif, system-ui, sans-serif`;
+    fillTrackedCanvasText(ctx, 'SOURCE-FORWARD REPORTING', x + width / 2, y + 194 * scale, 1.8 * scale, 'center');
+    return y + logoPanelHeight + 34 * scale;
   }
 
   function drawArticleCanvasScrollImage(ctx, image, x, y, width, height, theme) {
@@ -5312,7 +5360,7 @@ function enhanceBreakingStrip(stories) {
     return clone;
   }
 
-  function collectArticleScrollSegments() {
+  function collectArticleScrollSegments(limits = ARTICLE_SCROLL_READER_LIMITS) {
     const body = document.querySelector('[data-article-body], .generated-story, .article-body');
     if (!body) return [];
     const primarySelectors = '.press-feature-segment, .press-social-content';
@@ -5327,7 +5375,7 @@ function enhanceBreakingStrip(stories) {
       if (Array.from(seen).some((usedNode) => usedNode.contains(node) || node.contains(usedNode))) return false;
       seen.add(node);
       return Boolean(node.querySelector('h2, h3, p, figure, img'));
-    }).slice(0, ARTICLE_SCROLL_READER_LIMITS.maxSections);
+    }).slice(0, limits.maxSections || ARTICLE_SCROLL_READER_LIMITS.maxSections);
   }
 
   function buildArticleScrollSection(segment, index) {
@@ -7373,7 +7421,7 @@ function enhanceBreakingStrip(stories) {
     return {
       duration,
       holdStart: continuousArticleScroll ? 0 : 260,
-      holdBottom: continuousArticleScroll ? 0 : 300,
+      holdBottom: continuousArticleScroll ? 1400 : 300,
       returnDuration: 0,
       holdEnd: continuousArticleScroll ? 0 : 260,
       frameRate: isArticle ? articleLimits.frameRate : BELOW_FOLD_SCROLL_STORY_CRITERIA.frameRate,
