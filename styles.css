@@ -10154,6 +10154,7 @@ body.page-article:has(.press-social-feature)::before{
   min-height:0;
   overflow:hidden;
   cursor:zoom-in;
+  overscroll-behavior:contain;
   touch-action:none;
 }
 
@@ -10280,6 +10281,22 @@ body.page-article:has(.press-social-feature)::before{
   color:#050608;
   outline:3px solid rgba(255,255,255,.42);
   outline-offset:2px;
+}
+
+@media (hover:none), (pointer:coarse){
+  .press-image-lightbox__zoom{
+    display:none;
+  }
+
+  .press-image-lightbox__frame,
+  .press-image-lightbox__image{
+    cursor:zoom-in;
+  }
+
+  .press-image-lightbox__frame.is-zoomed,
+  .press-image-lightbox__image.is-zoomed{
+    cursor:grab;
+  }
 }
 
 .press-chart-lightbox{

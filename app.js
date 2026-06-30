@@ -476,6 +476,94 @@ if (document.readyState === 'loading') {
     updateImageLightboxTransform();
   }
 
+  function getImageLightboxGesturePoints(lightbox) {
+    return Array.from(lightbox?.gesturePointers?.values?.() || []);
+  }
+
+  function getImageLightboxGestureDistance(points) {
+    if (!points || points.length < 2) return 0;
+    return Math.hypot(points[0].clientX - points[1].clientX, points[0].clientY - points[1].clientY);
+  }
+
+  function getImageLightboxGestureCenter(points) {
+    if (!points || !points.length) return null;
+    if (points.length === 1) return { clientX: points[0].clientX, clientY: points[0].clientY };
+    return {
+      clientX: (points[0].clientX + points[1].clientX) / 2,
+      clientY: (points[0].clientY + points[1].clientY) / 2,
+    };
+  }
+
+  function getImageLightboxTouchPoints(touches) {
+    return Array.from(touches || []).map((touch) => ({
+      clientX: touch.clientX,
+      clientY: touch.clientY,
+    }));
+  }
+
+  function startImageLightboxPinch(lightbox) {
+    const points = getImageLightboxGesturePoints(lightbox);
+    const distance = getImageLightboxGestureDistance(points);
+    const center = getImageLightboxGestureCenter(points);
+    if (!distance || !center) return;
+    lightbox.pinch = {
+      startDistance: distance,
+      startZoom: lightbox.zoom,
+      center,
+    };
+    lightbox.dragPointerId = null;
+    lightbox.suppressClickUntil = Date.now() + 420;
+    lightbox.image.classList.remove('is-dragging');
+  }
+
+  function updateImageLightboxPinch(lightbox) {
+    if (!lightbox?.pinch) return false;
+    const points = getImageLightboxGesturePoints(lightbox);
+    if (points.length < 2) return false;
+    const distance = getImageLightboxGestureDistance(points);
+    const center = getImageLightboxGestureCenter(points);
+    if (!distance || !center || !lightbox.pinch.startDistance) return false;
+    const previousCenter = lightbox.pinch.center || center;
+    if (lightbox.zoom > IMAGE_LIGHTBOX_MIN_ZOOM) {
+      lightbox.panX += center.clientX - previousCenter.clientX;
+      lightbox.panY += center.clientY - previousCenter.clientY;
+    }
+    lightbox.pinch.center = center;
+    setImageLightboxZoom(lightbox.pinch.startZoom * (distance / lightbox.pinch.startDistance), center);
+    lightbox.suppressClickUntil = Date.now() + 420;
+    return true;
+  }
+
+  function handleImageLightboxNaturalTap(event) {
+    if (!activeLightbox || event.pointerType === 'mouse') return;
+    const lightbox = activeLightbox;
+    if (lightbox.pinch || lightbox.didDrag || lightbox.gesturePointers?.size) return;
+    const now = Date.now();
+    const previousTap = lightbox.lastTap;
+    lightbox.lastTap = {
+      at: now,
+      x: event.clientX,
+      y: event.clientY,
+    };
+    if (!previousTap) return;
+    const elapsed = now - previousTap.at;
+    const isSeededOpenTap = Boolean(previousTap.fromOpen);
+    const distance = isSeededOpenTap
+      ? 0
+      : Math.hypot(event.clientX - previousTap.x, event.clientY - previousTap.y);
+    if (elapsed > (isSeededOpenTap ? 560 : 320) || distance > 42) return;
+    event.preventDefault();
+    lightbox.lastTap = null;
+    lightbox.suppressClickUntil = now + 420;
+    setImageLightboxZoom(lightbox.zoom > IMAGE_LIGHTBOX_MIN_ZOOM ? IMAGE_LIGHTBOX_MIN_ZOOM : 2.6, event);
+  }
+
+  function captureImageLightboxPointer(frame, pointerId) {
+    try {
+      frame?.setPointerCapture?.(pointerId);
+    } catch (_) {}
+  }
+
   function resetImageLightboxZoom() {
     if (!activeLightbox) return;
     activeLightbox.zoom = IMAGE_LIGHTBOX_MIN_ZOOM;
@@ -578,8 +666,26 @@ if (document.readyState === 'loading') {
       dragPointerId: null,
       dragX: 0,
       dragY: 0,
+      didDrag: false,
+      gesturePointers: new Map(),
+      pinch: null,
+      lastTap: null,
+      suppressClickUntil: 0,
       historyPushed: false,
     };
+    if (
+      event
+      && typeof event.clientX === 'number'
+      && typeof event.clientY === 'number'
+      && window.matchMedia?.('(hover: none), (pointer: coarse)')?.matches
+    ) {
+      activeLightbox.lastTap = {
+        at: Date.now(),
+        x: event.clientX,
+        y: event.clientY,
+        fromOpen: true,
+      };
+    }
 
     try {
       window.history.pushState({ ...(window.history.state || {}), pressImageLightbox: true }, '', window.location.href);
@@ -603,29 +709,116 @@ if (document.readyState === 'loading') {
       setImageLightboxZoom(activeLightbox.zoom > IMAGE_LIGHTBOX_MIN_ZOOM ? IMAGE_LIGHTBOX_MIN_ZOOM : 2.5, dblClickEvent);
     });
     frame.addEventListener('pointerdown', (pointerEvent) => {
-      if (!activeLightbox || activeLightbox.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM) return;
+      if (!activeLightbox) return;
+      if (pointerEvent.pointerType !== 'mouse') {
+        activeLightbox.gesturePointers.set(pointerEvent.pointerId, {
+          clientX: pointerEvent.clientX,
+          clientY: pointerEvent.clientY,
+        });
+        captureImageLightboxPointer(frame, pointerEvent.pointerId);
+        if (activeLightbox.gesturePointers.size >= 2) {
+          pointerEvent.preventDefault();
+          startImageLightboxPinch(activeLightbox);
+          return;
+        }
+      }
+      if (activeLightbox.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM) return;
       pointerEvent.preventDefault();
       activeLightbox.dragPointerId = pointerEvent.pointerId;
       activeLightbox.dragX = pointerEvent.clientX;
       activeLightbox.dragY = pointerEvent.clientY;
-      frame.setPointerCapture?.(pointerEvent.pointerId);
+      activeLightbox.didDrag = false;
+      captureImageLightboxPointer(frame, pointerEvent.pointerId);
       fullImage.classList.add('is-dragging');
     });
     frame.addEventListener('pointermove', (pointerEvent) => {
-      if (!activeLightbox || activeLightbox.dragPointerId !== pointerEvent.pointerId) return;
+      if (!activeLightbox) return;
+      if (activeLightbox.gesturePointers.has(pointerEvent.pointerId)) {
+        activeLightbox.gesturePointers.set(pointerEvent.pointerId, {
+          clientX: pointerEvent.clientX,
+          clientY: pointerEvent.clientY,
+        });
+        if (activeLightbox.pinch && updateImageLightboxPinch(activeLightbox)) {
+          pointerEvent.preventDefault();
+          return;
+        }
+      }
+      if (activeLightbox.dragPointerId !== pointerEvent.pointerId) return;
       pointerEvent.preventDefault();
+      if (Math.hypot(pointerEvent.clientX - activeLightbox.dragX, pointerEvent.clientY - activeLightbox.dragY) > 3) {
+        activeLightbox.didDrag = true;
+        activeLightbox.suppressClickUntil = Date.now() + 240;
+      }
       panImageLightbox(pointerEvent.clientX - activeLightbox.dragX, pointerEvent.clientY - activeLightbox.dragY);
       activeLightbox.dragX = pointerEvent.clientX;
       activeLightbox.dragY = pointerEvent.clientY;
     });
     const stopDrag = (pointerEvent) => {
-      if (!activeLightbox || activeLightbox.dragPointerId !== pointerEvent.pointerId) return;
-      activeLightbox.dragPointerId = null;
-      fullImage.classList.remove('is-dragging');
+      if (!activeLightbox) return;
+      activeLightbox.gesturePointers.delete(pointerEvent.pointerId);
+      if (activeLightbox.gesturePointers.size < 2) activeLightbox.pinch = null;
+      if (activeLightbox.dragPointerId === pointerEvent.pointerId) {
+        activeLightbox.dragPointerId = null;
+        fullImage.classList.remove('is-dragging');
+      }
+      if (pointerEvent.target === fullImage) handleImageLightboxNaturalTap(pointerEvent);
     };
     frame.addEventListener('pointerup', stopDrag);
     frame.addEventListener('pointercancel', stopDrag);
+    frame.addEventListener('touchstart', (touchEvent) => {
+      if (!activeLightbox || touchEvent.touches.length < 2) return;
+      touchEvent.preventDefault();
+      const points = getImageLightboxTouchPoints(touchEvent.touches);
+      const distance = getImageLightboxGestureDistance(points);
+      const center = getImageLightboxGestureCenter(points);
+      if (!distance || !center) return;
+      activeLightbox.pinch = {
+        startDistance: distance,
+        startZoom: activeLightbox.zoom,
+        center,
+      };
+      activeLightbox.dragPointerId = null;
+      activeLightbox.suppressClickUntil = Date.now() + 420;
+      fullImage.classList.remove('is-dragging');
+    }, { passive: false });
+    frame.addEventListener('touchmove', (touchEvent) => {
+      if (!activeLightbox?.pinch || touchEvent.touches.length < 2) return;
+      touchEvent.preventDefault();
+      const points = getImageLightboxTouchPoints(touchEvent.touches);
+      const distance = getImageLightboxGestureDistance(points);
+      const center = getImageLightboxGestureCenter(points);
+      if (!distance || !center || !activeLightbox.pinch.startDistance) return;
+      const previousCenter = activeLightbox.pinch.center || center;
+      if (activeLightbox.zoom > IMAGE_LIGHTBOX_MIN_ZOOM) {
+        activeLightbox.panX += center.clientX - previousCenter.clientX;
+        activeLightbox.panY += center.clientY - previousCenter.clientY;
+      }
+      activeLightbox.pinch.center = center;
+      setImageLightboxZoom(activeLightbox.pinch.startZoom * (distance / activeLightbox.pinch.startDistance), center);
+      activeLightbox.suppressClickUntil = Date.now() + 420;
+    }, { passive: false });
+    frame.addEventListener('touchend', (touchEvent) => {
+      if (!activeLightbox) return;
+      const wasPinching = Boolean(activeLightbox.pinch);
+      if (touchEvent.touches.length < 2) activeLightbox.pinch = null;
+      if (wasPinching) {
+        activeLightbox.suppressClickUntil = Date.now() + 420;
+        return;
+      }
+      if (touchEvent.changedTouches.length !== 1 || touchEvent.touches.length) return;
+      const touch = touchEvent.changedTouches[0];
+      handleImageLightboxNaturalTap({
+        pointerType: 'touch',
+        clientX: touch.clientX,
+        clientY: touch.clientY,
+        preventDefault: () => touchEvent.preventDefault(),
+      });
+    }, { passive: false });
     overlay.addEventListener('click', (clickEvent) => {
+      if (Date.now() < (activeLightbox?.suppressClickUntil || 0)) {
+        clickEvent.preventDefault();
+        return;
+      }
       if (
         clickEvent.target === overlay ||
         (clickEvent.target === frame && activeLightbox?.zoom <= IMAGE_LIGHTBOX_MIN_ZOOM)
