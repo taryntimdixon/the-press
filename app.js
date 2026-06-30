@@ -3766,11 +3766,11 @@ function enhanceBreakingStrip(stories) {
     captureAreaBudget: 26000000,
     maxFlattenedCanvasArea: 24000000,
     maxFlattenedCanvasHeight: 32000,
-    minDurationSeconds: 70,
-    maxDurationSeconds: 82,
-    scrollPixelsPerSecond: 410,
+    minDurationSeconds: 88,
+    maxDurationSeconds: 104,
+    scrollPixelsPerSecond: 328,
     frameRate: 45,
-    videoBitsPerSecond: 18000000,
+    videoBitsPerSecond: 14000000,
   });
   const BELOW_FOLD_SCROLL_STORY_CRITERIA = Object.freeze({
     maxCards: 12,
@@ -4986,7 +4986,7 @@ function enhanceBreakingStrip(stories) {
       height: Math.max(1, Math.round(stripWidth * (page.naturalHeight / page.naturalWidth))),
     }));
     const logoImage = await loadContinuousArticleScrollImage(normalizeShareAssetUrl('assets/the-press-logo.svg')).catch(() => null);
-    const logoPanelHeight = Math.round(Math.max(stripWidth * 0.62, Math.min(stripWidth * 0.9, 760)));
+    const logoPanelHeight = Math.round(Math.max(stripWidth * 0.42, Math.min(stripWidth * 0.62, 540)));
     const totalHeight = Math.ceil(pageLayouts.reduce((sum, page) => sum + page.height, 0) + logoPanelHeight);
     const chunkHeight = Math.max(1800, Math.min(2600, Math.round(stripWidth * 2.8)));
     const chunks = [];
@@ -7832,7 +7832,7 @@ function enhanceBreakingStrip(stories) {
     return {
       duration,
       holdStart: continuousArticleScroll ? 0 : 260,
-      holdBottom: continuousArticleScroll ? 1400 : 300,
+      holdBottom: continuousArticleScroll ? 350 : 300,
       returnDuration: 0,
       holdEnd: continuousArticleScroll ? 0 : 260,
       frameRate: isArticle ? articleLimits.frameRate : BELOW_FOLD_SCROLL_STORY_CRITERIA.frameRate,
