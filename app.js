@@ -3730,7 +3730,7 @@ function enhanceBreakingStrip(stories) {
   ];
   const HOMEPAGE_SOCIAL_SHARE_STORAGE_PREFIX = 'press-homepage-social-share';
   const BELOW_FOLD_SCROLL_STORY_ASSET_CACHE = new Map();
-  const ARTICLE_SCROLL_VIDEO_DURATION_MULTIPLIER = 889 / 375;
+  const ARTICLE_SCROLL_VIDEO_DURATION_MULTIPLIER = 1778 / 1125;
   const ARTICLE_SCROLL_READER_LIMITS = Object.freeze({
     maxSections: 14,
     maxFigureSections: 7,
