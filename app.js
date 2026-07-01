@@ -3730,7 +3730,7 @@ function enhanceBreakingStrip(stories) {
   ];
   const HOMEPAGE_SOCIAL_SHARE_STORAGE_PREFIX = 'press-homepage-social-share';
   const BELOW_FOLD_SCROLL_STORY_ASSET_CACHE = new Map();
-  const ARTICLE_SCROLL_VIDEO_DURATION_MULTIPLIER = 127 / 60;
+  const ARTICLE_SCROLL_VIDEO_DURATION_MULTIPLIER = 889 / 300;
   const ARTICLE_SCROLL_READER_LIMITS = Object.freeze({
     maxSections: 14,
     maxFigureSections: 7,
@@ -3770,8 +3770,8 @@ function enhanceBreakingStrip(stories) {
     minDurationSeconds: 107,
     maxDurationSeconds: 127,
     scrollPixelsPerSecond: 269,
-    frameRate: 45,
-    videoBitsPerSecond: 11000000,
+    frameRate: 24,
+    videoBitsPerSecond: 4500000,
   });
   const BELOW_FOLD_SCROLL_STORY_CRITERIA = Object.freeze({
     maxCards: 12,
@@ -4823,13 +4823,17 @@ function enhanceBreakingStrip(stories) {
       recorder.onstop = () => resolve();
     });
 
+    if (continuousArticleScroll) updateBelowFoldLiveScrollPreviewProgress(modal, 0);
     recorder.start(1000);
     drawBelowFoldScrollFrame(ctx, strip, 0);
     streamVideoTrack?.requestFrame?.();
     await waitForNextScrollPreviewFrame();
     await animateBelowFoldScrollStrip(canvas, strip, {
       ...timing,
-      onFrame: () => streamVideoTrack?.requestFrame?.(),
+      onFrame: (progress) => {
+        streamVideoTrack?.requestFrame?.();
+        if (continuousArticleScroll) updateBelowFoldLiveScrollPreviewProgress(modal, progress);
+      },
     });
     setInstagramStoryStatus(status, 'Finalizing scroll video...');
     recorder.requestData?.();
@@ -5495,6 +5499,7 @@ function enhanceBreakingStrip(stories) {
 
     const profile = getBelowFoldScrollVideoProfile(context);
     const colorway = getBelowFoldScrollStoryColorway(context?.scrollStoryColorway);
+    const continuousArticleScroll = isContinuousArticleScrollContext(context);
     const viewportWidth = profile.viewportWidth;
     const clone = sourceRoot.cloneNode(true);
     sanitizeBelowFoldScrollClone(clone);
@@ -5532,6 +5537,22 @@ function enhanceBreakingStrip(stories) {
     let liveScrollAnimation = null;
     let liveScrollStarted = false;
     let liveScrollStartAt = 0;
+    let liveScrollDurationOverride = 0;
+    let liveScrollStartPromise = null;
+    let resolveLiveScrollStart = null;
+    const getLiveScrollStartPromise = () => {
+      if (!liveScrollStartPromise) {
+        liveScrollStartPromise = new Promise((resolve) => {
+          resolveLiveScrollStart = resolve;
+        });
+      }
+      return liveScrollStartPromise;
+    };
+    const resolveLiveScrollStarted = (started) => {
+      if (!resolveLiveScrollStart) return;
+      resolveLiveScrollStart(Boolean(started));
+      resolveLiveScrollStart = null;
+    };
     const updateScale = () => {
       const phoneRect = livePhone.getBoundingClientRect();
       if (!phoneRect.width) return;
@@ -5539,15 +5560,32 @@ function enhanceBreakingStrip(stories) {
       liveScreen.style.transform = `scale(${scale})`;
       liveScreen.style.height = `${Math.ceil(phoneRect.height / scale)}px`;
     };
-    const armLiveScrollStart = () => {
-      if (liveScrollStartAt || liveScrollStarted || !livePreview.isConnected) return;
-      const continuousArticleScroll = isContinuousArticleScrollContext(context);
-      liveScrollStartAt = getBelowFoldPreviewNow() + (continuousArticleScroll ? 120 : 2400);
-      waitForBelowFoldLivePreviewMedia(capturePage, continuousArticleScroll ? 500 : 1300).then(startLiveScroll);
-      window.setTimeout(startLiveScroll, continuousArticleScroll ? 520 : 2700);
+    const armLiveScrollStart = (delayOverride = null) => {
+      const startPromise = getLiveScrollStartPromise();
+      if (!livePreview.isConnected) {
+        resolveLiveScrollStarted(false);
+        return startPromise;
+      }
+      if (liveScrollStartAt || liveScrollStarted) return startPromise;
+      const startDelay = Number.isFinite(delayOverride)
+        ? Math.max(0, delayOverride)
+        : (continuousArticleScroll ? 120 : 2400);
+      liveScrollStartAt = getBelowFoldPreviewNow() + startDelay;
+      const mediaTimeout = continuousArticleScroll ? 500 : 1300;
+      const fallbackDelay = startDelay + (continuousArticleScroll ? 520 : 2700);
+      waitForBelowFoldLivePreviewMedia(capturePage, mediaTimeout).then(startLiveScroll);
+      window.setTimeout(startLiveScroll, fallbackDelay);
+      return startPromise;
     };
     const startLiveScroll = () => {
-      if (liveScrollStarted || !livePreview.isConnected) return;
+      if (liveScrollStarted) {
+        resolveLiveScrollStarted(true);
+        return;
+      }
+      if (!livePreview.isConnected) {
+        resolveLiveScrollStarted(false);
+        return;
+      }
       if (!liveScrollStartAt) {
         armLiveScrollStart();
         return;
@@ -5563,7 +5601,10 @@ function enhanceBreakingStrip(stories) {
       const scale = phoneRect.width / viewportWidth;
       const visibleHeight = Math.max(1, phoneRect.height / scale);
       const maxScroll = Math.max(0, capturePage.scrollHeight - visibleHeight);
-      if (maxScroll <= 8) return;
+      if (maxScroll <= 8) {
+        resolveLiveScrollStarted(false);
+        return;
+      }
       liveScrollStarted = true;
       liveScrollAnimation?.cancel?.();
       capturePage.style.transform = 'translate3d(0, 0, 0)';
@@ -5571,10 +5612,11 @@ function enhanceBreakingStrip(stories) {
       capturePage.style.backfaceVisibility = 'hidden';
       capturePage.style.transformStyle = 'preserve-3d';
       capturePage.style.willChange = 'transform';
-      const duration = getBelowFoldLivePreviewScrollDuration(maxScroll, context);
+      const duration = liveScrollDurationOverride || getBelowFoldLivePreviewScrollDuration(maxScroll, context);
       const runAnimation = () => {
         if (!livePreview.isConnected) return;
         liveScrollAnimation = animateBelowFoldLivePreviewScroll(capturePage, maxScroll, duration, livePreview);
+        resolveLiveScrollStarted(true);
       };
       if (window.requestAnimationFrame) {
         window.requestAnimationFrame(() => window.requestAnimationFrame(runAnimation));
@@ -5582,14 +5624,67 @@ function enhanceBreakingStrip(stories) {
         window.setTimeout(runAnimation, 34);
       }
     };
+    const setLiveScrollProgress = (progress = 0) => {
+      if (!livePreview.isConnected) return false;
+      updateScale();
+      const phoneRect = livePhone.getBoundingClientRect();
+      if (!phoneRect.width) return false;
+      const scale = phoneRect.width / viewportWidth;
+      const visibleHeight = Math.max(1, phoneRect.height / scale);
+      const maxScroll = Math.max(0, capturePage.scrollHeight - visibleHeight);
+      if (maxScroll <= 8) return false;
+      const clampedProgress = Math.max(0, Math.min(1, Number(progress) || 0));
+      liveScrollAnimation?.cancel?.();
+      liveScrollStarted = true;
+      liveScrollStartAt = 0;
+      capturePage.style.transition = 'none';
+      capturePage.style.backfaceVisibility = 'hidden';
+      capturePage.style.transformStyle = 'preserve-3d';
+      capturePage.style.willChange = 'transform';
+      capturePage.style.transform = `translate3d(0, -${Math.round(maxScroll * clampedProgress)}px, 0)`;
+      resolveLiveScrollStarted(true);
+      return true;
+    };
+    livePreview._pressStartLiveScroll = (durationOverride = 0) => {
+      const override = Number(durationOverride);
+      if (Number.isFinite(override) && override > 0) liveScrollDurationOverride = Math.round(override);
+      liveScrollAnimation?.cancel?.();
+      liveScrollStarted = false;
+      liveScrollStartAt = 0;
+      liveScrollStartPromise = null;
+      resolveLiveScrollStart = null;
+      return armLiveScrollStart(0);
+    };
+    livePreview._pressSetLiveScrollProgress = setLiveScrollProgress;
     updateScale();
     window.requestAnimationFrame?.(updateScale);
-    if (window.requestAnimationFrame) {
-      window.requestAnimationFrame(() => window.requestAnimationFrame(armLiveScrollStart));
-    } else {
-      window.setTimeout(armLiveScrollStart, 80);
+    if (!continuousArticleScroll) {
+      if (window.requestAnimationFrame) {
+        window.requestAnimationFrame(() => window.requestAnimationFrame(() => armLiveScrollStart()));
+      } else {
+        window.setTimeout(armLiveScrollStart, 80);
+      }
+      window.setTimeout(armLiveScrollStart, 1200);
     }
-    window.setTimeout(armLiveScrollStart, 1200);
+  }
+
+  function startBelowFoldLiveScrollPreview(modal, duration) {
+    const livePreview = modal?.querySelector('[data-below-fold-live-preview]');
+    if (!livePreview || typeof livePreview._pressStartLiveScroll !== 'function') return Promise.resolve(false);
+    return livePreview._pressStartLiveScroll(duration);
+  }
+
+  function waitForBelowFoldLiveScrollPreviewStart(modal, duration) {
+    return Promise.race([
+      startBelowFoldLiveScrollPreview(modal, duration),
+      new Promise((resolve) => window.setTimeout(() => resolve(false), 1200)),
+    ]).catch(() => false);
+  }
+
+  function updateBelowFoldLiveScrollPreviewProgress(modal, progress) {
+    const livePreview = modal?.querySelector('[data-below-fold-live-preview]');
+    if (!livePreview || typeof livePreview._pressSetLiveScrollProgress !== 'function') return false;
+    return livePreview._pressSetLiveScrollProgress(progress);
   }
 
   function animateBelowFoldLivePreviewScroll(capturePage, maxScroll, duration, livePreview) {
@@ -5634,7 +5729,12 @@ function enhanceBreakingStrip(stories) {
 
   function getBelowFoldLivePreviewScrollDuration(maxScroll, context) {
     if (isContinuousArticleScrollContext(context)) {
-      return Math.round(Math.max(44000, Math.min(52000, maxScroll * 2.85)));
+      const limits = getArticleScrollReaderLimits(context);
+      const seconds = Math.max(
+        limits.minDurationSeconds,
+        Math.min(limits.maxDurationSeconds, maxScroll / limits.scrollPixelsPerSecond)
+      );
+      return Math.round(seconds * ARTICLE_SCROLL_VIDEO_DURATION_MULTIPLIER * 1000);
     }
     return Math.round(Math.max(36000, Math.min(66000, maxScroll * 5.7)));
   }
@@ -7891,7 +7991,7 @@ function enhanceBreakingStrip(stories) {
           returnDuration,
         });
         drawBelowFoldScrollFrame(ctx, strip, progress);
-        options.onFrame?.();
+        options.onFrame?.(progress);
         if (elapsed >= total) break;
 
         nextFrameAt += frameDelay;
@@ -7900,8 +8000,9 @@ function enhanceBreakingStrip(stories) {
         }
         await waitForBelowFoldAnimationDelay(Math.max(0, nextFrameAt - performance.now()));
       }
-      drawBelowFoldScrollFrame(ctx, strip, returnDuration ? 0 : 1);
-      options.onFrame?.();
+      const finalProgress = returnDuration ? 0 : 1;
+      drawBelowFoldScrollFrame(ctx, strip, finalProgress);
+      options.onFrame?.(finalProgress);
     })();
   }
 
@@ -7913,12 +8014,12 @@ function enhanceBreakingStrip(stories) {
     const holdEnd = options.holdEnd || 500;
     const total = options.total || (holdStart + duration + holdBottom + returnDuration + holdEnd);
     const frameDelay = options.frameDelay || (1000 / Math.max(2, Math.min(60, options.frameRate || 60)));
-    const totalFrames = Math.max(2, Math.ceil(total / frameDelay));
     const startedAt = performance.now();
 
     return (async () => {
-      for (let frameIndex = 0; frameIndex <= totalFrames; frameIndex += 1) {
-        const elapsed = Math.min(total, frameIndex * frameDelay);
+      let frameIndex = 0;
+      while (true) {
+        const elapsed = Math.min(total, Math.max(0, performance.now() - startedAt));
         const progress = getBelowFoldScrollAnimationProgress(elapsed, {
           duration,
           holdStart,
@@ -7926,13 +8027,16 @@ function enhanceBreakingStrip(stories) {
           returnDuration,
         });
         drawBelowFoldScrollFrame(ctx, strip, progress);
-        options.onFrame?.();
+        options.onFrame?.(progress);
         if (elapsed >= total) break;
-        const targetFrameAt = startedAt + ((frameIndex + 1) * frameDelay);
+
+        frameIndex = Math.max(frameIndex + 1, Math.floor(elapsed / frameDelay) + 1);
+        const targetFrameAt = startedAt + (frameIndex * frameDelay);
         await waitForBelowFoldAnimationDelay(Math.max(0, targetFrameAt - performance.now()));
       }
-      drawBelowFoldScrollFrame(ctx, strip, returnDuration ? 0 : 1);
-      options.onFrame?.();
+      const finalProgress = returnDuration ? 0 : 1;
+      drawBelowFoldScrollFrame(ctx, strip, finalProgress);
+      options.onFrame?.(finalProgress);
     })();
   }
 
