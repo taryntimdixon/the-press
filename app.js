@@ -3756,7 +3756,7 @@ function enhanceBreakingStrip(stories) {
     maxFigureSections: 26,
     maxParagraphsPerSection: 1,
     paragraphExcerptCharacters: 220,
-    stripScale: 2,
+    stripScale: 2.25,
     maxCanvasHeight: 30000,
     heroImageMinHeight: 250,
     heroImageMaxHeight: 500,
@@ -3770,8 +3770,8 @@ function enhanceBreakingStrip(stories) {
     minDurationSeconds: 107,
     maxDurationSeconds: 127,
     scrollPixelsPerSecond: 269,
-    frameRate: 24,
-    videoBitsPerSecond: 4500000,
+    frameRate: 30,
+    videoBitsPerSecond: 12000000,
   });
   const BELOW_FOLD_SCROLL_STORY_CRITERIA = Object.freeze({
     maxCards: 12,
@@ -4991,7 +4991,7 @@ function enhanceBreakingStrip(stories) {
       height: Math.max(1, Math.round(stripWidth * (page.naturalHeight / page.naturalWidth))),
     }));
     const totalHeight = Math.ceil(pageLayouts.reduce((sum, page) => sum + page.height, 0));
-    const chunkHeight = Math.max(1800, Math.min(2600, Math.round(stripWidth * 2.8)));
+    const chunkHeight = Math.max(2600, Math.min(3600, Math.round(stripWidth * 3.75)));
     const chunks = [];
 
     for (let y = 0; y < totalHeight; y += chunkHeight) {
